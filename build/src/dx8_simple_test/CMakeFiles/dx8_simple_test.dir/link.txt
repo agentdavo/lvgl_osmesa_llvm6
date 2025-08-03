@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/dx8_simple_test.dir/main.cpp.o -o dx8_simple_test  -Wl,-rpath,/home/djs/lvgl_osmesa_llvm6/build/mesa-install/lib/x86_64-linux-gnu:/home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib ../../ext/dx8gl/libdx8gl.a -ldl ../../mesa-install/lib/x86_64-linux-gnu/libOSMesa.so ../../llvm-install/lib/libLLVM-20.so -lpthread -ldl -lm 

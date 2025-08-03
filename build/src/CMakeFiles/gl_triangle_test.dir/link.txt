@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/gl_triangle_test.dir/gl_triangle_test.cpp.o -o gl_triangle_test   -L/home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib  -Wl,-rpath,/home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib:/home/djs/lvgl_osmesa_llvm6/build/mesa-install/lib/x86_64-linux-gnu ../mesa-install/lib/x86_64-linux-gnu/libOSMesa.so -ldl 

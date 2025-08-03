@@ -1,0 +1,13 @@
+# Target labels
+ osmesa
+# Source files and their labels
+/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/osmesa
+/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/osmesa.rule
+/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/osmesa-complete.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-build.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-configure.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-download.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-install.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-mkdir.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-patch.rule
+/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-update.rule

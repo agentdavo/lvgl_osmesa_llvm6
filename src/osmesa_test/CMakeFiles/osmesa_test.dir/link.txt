@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/osmesa_test.dir/main.cpp.o -o osmesa_test  -lGLU ../../mesa-install/lib/libOSMesa.a -lpthread -ldl -lz -lm -lrt -lncurses -ltinfo 

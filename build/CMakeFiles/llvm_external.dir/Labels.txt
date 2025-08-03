@@ -1,0 +1,13 @@
+# Target labels
+ llvm_external
+# Source files and their labels
+/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/llvm_external
+/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/llvm_external.rule
+/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/llvm_external-complete.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-build.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-configure.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-download.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-install.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-mkdir.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-patch.rule
+/home/djs/lvgl_osmesa_llvm6/build/llvm_external-prefix/src/llvm_external-stamp/llvm_external-update.rule

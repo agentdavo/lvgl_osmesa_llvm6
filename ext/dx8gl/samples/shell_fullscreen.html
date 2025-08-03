@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DX8GL Spinning Cubes Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #00ff88;
+            font-family: monospace;
+            font-size: 24px;
+            text-align: center;
+        }
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 255, 136, 0.3);
+            border-top-color: #00ff88;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 10px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            line-height: 1.5;
+            /* pointer-events: none; -- Removed to allow button clicks */
+        }
+        #info h1 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #00ff88;
+        }
+        #fps {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #ffff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">
+        Loading Spinning Cubes Demo...
+        <div class="spinner"></div>
+    </div>
+    <div id="info">
+        <h1>DirectX 8 → OpenGL ES 2.0</h1>
+        <div>1000 Spinning Cubes (10×10×10 grid)</div>
+        <div>3 Dynamic Lights • Per-pixel Lighting</div>
+        <div>Translated by dx8gl</div>
+        <button onclick="Module.canvas.requestFullscreen()" style="margin-top: 10px; padding: 5px 10px; background: #00ff88; color: black; border: none; cursor: pointer; border-radius: 3px;">Fullscreen</button>
+    </div>
+    <div id="fps">FPS: <span id="fps-value">--</span></div>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+    <script>
+        var Module = {
+            canvas: document.getElementById('canvas'),
+            print: (text) => console.log('[stdout]', text),
+            printErr: (text) => console.error('[stderr]', text),
+            onRuntimeInitialized: () => {
+                document.getElementById('loading').style.display = 'none';
+                handleResize();
+                // Don't request fullscreen automatically - requires user interaction
+                // Module.canvas.requestFullscreen().catch((e) => console.error('Fullscreen request failed:', e));
+                updateFPS();
+            },
+            monitorRunDependencies: (left) => {
+                document.getElementById('loading').textContent = `Preparing... (${left} dependencies remaining)`;
+                if (!left) document.getElementById('loading').textContent = 'Finalizing...';
+            }
+        };
+
+        function handleResize() {
+            const canvas = Module.canvas;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        let frames = 0, lastTime = performance.now();
+        function updateFPS() {
+            frames++;
+            const currentTime = performance.now();
+            if (currentTime - lastTime >= 1000) {
+                document.getElementById('fps-value').textContent = Math.round((frames * 1000) / (currentTime - lastTime));
+                frames = 0;
+                lastTime = currentTime;
+            }
+            requestAnimationFrame(updateFPS);
+        }
+
+        Module.canvas.addEventListener('webglcontextlost', (e) => {
+            e.preventDefault();
+            Module.printErr('WebGL context lost. Please reload the page.');
+        });
+    </script>
+    {{{ SCRIPT }}}
+</body>
+</html>

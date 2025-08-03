@@ -1,0 +1,12 @@
+[submodule "ext/llvm-project"]
+	path = ext/llvm-project
+	url = https://github.com/llvm/llvm-project.git
+[submodule "ext/mesa"]
+	path = ext/mesa
+	url = https://gitlab.freedesktop.org/mesa/mesa.git
+[submodule "ext/lvgl"]
+	path = ext/lvgl
+	url = https://github.com/lvgl/lvgl.git
+[submodule "ext/glm"]
+	path = ext/glm
+	url = https://github.com/g-truc/glm.git

@@ -1,0 +1,74 @@
+[DX8GL] Direct3DCreate8 called with SDK version 0x00000078 (expected 0x00000078)
+[DX8GL] Direct3DCreate8_CPP returned C++ interface at 0x5928d1136aa0
+[DX8GL] Returning C++ interface directly (compiled with DX8GL_USE_CPP_INTERFACES)
+=== render_cube called, frame 0, elapsed: 0ms ===
+
+=== Matrix Debug Frame 0 ===
+Rotation: 0 radians
+World Matrix:
+  [  1.00,   0.00,   0.00,   0.00]
+  [  0.00,   1.00,   0.00,   0.00]
+  [  0.00,   0.00,   1.00,   0.00]
+  [  0.00,   0.00,   0.00,   1.00]
+Test vertex (1,1,-1):
+  World space: 1.00, 1.00, -1.00
+  View space: -1.00, 0.34, -4.46
+  Proj space: -2.41, 0.83, 4.30, w=4.46
+  NDC: -0.54, 0.19, 0.96
+Drawing cube: 24 vertices, 12 triangles
+Frame 0: fb=0x5928d331c5d0, updated=1, size=400x400
+  First pixel RGBA: 64,64,128,255
+  Center pixel RGBA: 64,64,128,255
+Saved dx8_cube_frame_00.ppm
+Canvas updated, frame 0
+=== render_cube called, frame 1, elapsed: 50ms ===
+
+=== Matrix Debug Frame 1 ===
+Rotation: 0.02 radians
+World Matrix:
+  [  1.00,   0.00,  -0.02,   0.00]
+  [  0.00,   1.00,   0.00,   0.00]
+  [  0.02,   0.00,   1.00,   0.00]
+  [  0.00,   0.00,   0.00,   1.00]
+Test vertex (1,1,-1):
+  World space: 0.98, 1.00, -1.02
+  View space: -0.98, 0.33, -4.44
+  Proj space: -2.37, 0.80, 4.29, w=4.44
+  NDC: -0.53, 0.18, 0.96
+Drawing cube: 24 vertices, 12 triangles
+Frame 1: fb=0x5928d331c5d0, updated=1, size=400x400
+  First pixel RGBA: 64,64,128,255
+  Center pixel RGBA: 64,64,128,255
+Saved dx8_cube_frame_01.ppm
+Canvas updated, frame 1
+=== render_cube called, frame 2, elapsed: 43ms ===
+
+=== Matrix Debug Frame 2 ===
+Rotation: 0.04 radians
+World Matrix:
+  [  1.00,   0.00,  -0.04,   0.00]
+  [  0.00,   1.00,   0.00,   0.00]
+  [  0.04,   0.00,   1.00,   0.00]
+  [  0.00,   0.00,   0.00,   1.00]
+Test vertex (1,1,-1):
+  World space: 0.96, 1.00, -1.04
+  View space: -0.96, 0.32, -4.43
+  Proj space: -2.32, 0.78, 4.27, w=4.43
+  NDC: -0.52, 0.18, 0.96
+Drawing cube: 24 vertices, 12 triangles
+Frame 2: fb=0x5928d331c5d0, updated=1, size=400x400
+  First pixel RGBA: 64,64,128,255
+  Center pixel RGBA: 64,64,128,255
+Saved dx8_cube_frame_02.ppm
+Canvas updated, frame 2
+Frame 3: fb=0x5928d331c5d0, updated=1, size=400x400
+  First pixel RGBA: 64,64,128,255
+  Center pixel RGBA: 64,64,128,255
+Saved dx8_cube_frame_03.ppm
+Canvas updated, frame 3
+Frame 4: fb=0x5928d331c5d0, updated=1, size=400x400
+  First pixel RGBA: 64,64,128,255
+  Center pixel RGBA: 64,64,128,255
+Saved dx8_cube_frame_04.ppm
+Canvas updated, frame 4
+20 second timeout reached, exiting...

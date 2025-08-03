@@ -1,0 +1,2 @@
+/usr/bin/ar Dqc ../../lib/libLLVMOptDriver.a CMakeFiles/LLVMOptDriver.dir/NewPMDriver.cpp.o CMakeFiles/LLVMOptDriver.dir/optdriver.cpp.o
+/usr/bin/ranlib -D ../../lib/libLLVMOptDriver.a

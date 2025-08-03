@@ -1,0 +1,266 @@
+#include "d3dx_compat.h"
+#include <cmath>
+#include <cstring>
+
+// D3DX Math Implementation
+extern "C" {
+
+// Matrix operations
+D3DMATRIX* D3DXMatrixIdentity(D3DMATRIX* pOut) {
+    if (!pOut) return nullptr;
+    
+    memset(pOut, 0, sizeof(D3DMATRIX));
+    pOut->_11 = pOut->_22 = pOut->_33 = pOut->_44 = 1.0f;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixMultiply(D3DMATRIX* pOut, const D3DMATRIX* pM1, const D3DMATRIX* pM2) {
+    if (!pOut || !pM1 || !pM2) return nullptr;
+    
+    D3DMATRIX result;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            float sum = 0.0f;
+            for (int k = 0; k < 4; k++) {
+                sum += pM1->m(i, k) * pM2->m(k, j);
+            }
+            result.m(i, j) = sum;
+        }
+    }
+    *pOut = result;
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixTranspose(D3DMATRIX* pOut, const D3DMATRIX* pM) {
+    if (!pOut || !pM) return nullptr;
+    
+    D3DMATRIX result;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            result.m(i, j) = pM->m(j, i);
+        }
+    }
+    *pOut = result;
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixInverse(D3DMATRIX* pOut, float* pDeterminant, const D3DMATRIX* pM) {
+    if (!pOut || !pM) return nullptr;
+    
+    // Simplified 4x4 matrix inverse using Gaussian elimination
+    // For full implementation, this would be quite complex
+    // For now, return identity as a stub
+    D3DXMatrixIdentity(pOut);
+    if (pDeterminant) *pDeterminant = 1.0f;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixScaling(D3DMATRIX* pOut, float sx, float sy, float sz) {
+    if (!pOut) return nullptr;
+    
+    D3DXMatrixIdentity(pOut);
+    pOut->_11 = sx;
+    pOut->_22 = sy;
+    pOut->_33 = sz;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixTranslation(D3DMATRIX* pOut, float x, float y, float z) {
+    if (!pOut) return nullptr;
+    
+    D3DXMatrixIdentity(pOut);
+    pOut->_41 = x;
+    pOut->_42 = y;
+    pOut->_43 = z;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixRotationX(D3DMATRIX* pOut, float angle) {
+    if (!pOut) return nullptr;
+    
+    float c = cosf(angle);
+    float s = sinf(angle);
+    
+    D3DXMatrixIdentity(pOut);
+    pOut->_22 = c;
+    pOut->_23 = s;
+    pOut->_32 = -s;
+    pOut->_33 = c;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixRotationY(D3DMATRIX* pOut, float angle) {
+    if (!pOut) return nullptr;
+    
+    float c = cosf(angle);
+    float s = sinf(angle);
+    
+    D3DXMatrixIdentity(pOut);
+    pOut->_11 = c;
+    pOut->_13 = -s;
+    pOut->_31 = s;
+    pOut->_33 = c;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixRotationZ(D3DMATRIX* pOut, float angle) {
+    if (!pOut) return nullptr;
+    
+    float c = cosf(angle);
+    float s = sinf(angle);
+    
+    D3DXMatrixIdentity(pOut);
+    pOut->_11 = c;
+    pOut->_12 = s;
+    pOut->_21 = -s;
+    pOut->_22 = c;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixPerspectiveFovLH(D3DMATRIX* pOut, float fovy, float aspect, float zn, float zf) {
+    if (!pOut) return nullptr;
+    
+    float yScale = 1.0f / tanf(fovy * 0.5f);
+    float xScale = yScale / aspect;
+    
+    memset(pOut, 0, sizeof(D3DMATRIX));
+    pOut->_11 = xScale;
+    pOut->_22 = yScale;
+    pOut->_33 = zf / (zf - zn);
+    pOut->_34 = 1.0f;
+    pOut->_43 = -zn * zf / (zf - zn);
+    
+    return pOut;
+}
+
+// Vector operations
+float WINAPI D3DXVec3Length(const D3DXVECTOR3* pV) {
+    if (!pV) return 0.0f;
+    return sqrtf(pV->x * pV->x + pV->y * pV->y + pV->z * pV->z);
+}
+
+float WINAPI D3DXVec3LengthSq(const D3DXVECTOR3* pV) {
+    if (!pV) return 0.0f;
+    return pV->x * pV->x + pV->y * pV->y + pV->z * pV->z;
+}
+
+float WINAPI D3DXVec3Dot(const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2) {
+    if (!pV1 || !pV2) return 0.0f;
+    return pV1->x * pV2->x + pV1->y * pV2->y + pV1->z * pV2->z;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Cross(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2) {
+    if (!pOut || !pV1 || !pV2) return nullptr;
+    
+    D3DXVECTOR3 result;
+    result.x = pV1->y * pV2->z - pV1->z * pV2->y;
+    result.y = pV1->z * pV2->x - pV1->x * pV2->z;
+    result.z = pV1->x * pV2->y - pV1->y * pV2->x;
+    
+    *pOut = result;
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Normalize(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV) {
+    if (!pOut || !pV) return nullptr;
+    
+    float length = D3DXVec3Length(pV);
+    if (length == 0.0f) {
+        pOut->x = pOut->y = pOut->z = 0.0f;
+    } else {
+        pOut->x = pV->x / length;
+        pOut->y = pV->y / length;
+        pOut->z = pV->z / length;
+    }
+    
+    return pOut;
+}
+
+D3DXVECTOR4* WINAPI D3DXVec3Transform(D3DXVECTOR4* pOut, const D3DXVECTOR3* pV, const D3DMATRIX* pM) {
+    if (!pOut || !pV || !pM) return nullptr;
+    
+    D3DXVECTOR4 result;
+    result.x = pV->x * pM->_11 + pV->y * pM->_21 + pV->z * pM->_31 + pM->_41;
+    result.y = pV->x * pM->_12 + pV->y * pM->_22 + pV->z * pM->_32 + pM->_42;
+    result.z = pV->x * pM->_13 + pV->y * pM->_23 + pV->z * pM->_33 + pM->_43;
+    result.w = pV->x * pM->_14 + pV->y * pM->_24 + pV->z * pM->_34 + pM->_44;
+    
+    *pOut = result;
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3TransformCoord(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV, const D3DMATRIX* pM) {
+    if (!pOut || !pV || !pM) return nullptr;
+    
+    D3DXVECTOR4 v4;
+    D3DXVec3Transform(&v4, pV, pM);
+    
+    if (v4.w != 0.0f) {
+        pOut->x = v4.x / v4.w;
+        pOut->y = v4.y / v4.w;
+        pOut->z = v4.z / v4.w;
+    } else {
+        pOut->x = v4.x;
+        pOut->y = v4.y;
+        pOut->z = v4.z;
+    }
+    
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3TransformNormal(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV, const D3DMATRIX* pM) {
+    if (!pOut || !pV || !pM) return nullptr;
+    
+    // Transform as direction vector (ignore translation)
+    D3DXVECTOR3 result;
+    result.x = pV->x * pM->_11 + pV->y * pM->_21 + pV->z * pM->_31;
+    result.y = pV->x * pM->_12 + pV->y * pM->_22 + pV->z * pM->_32;
+    result.z = pV->x * pM->_13 + pV->y * pM->_23 + pV->z * pM->_33;
+    
+    *pOut = result;
+    return pOut;
+}
+
+// FVF utility functions
+UINT D3DXGetFVFVertexSize(DWORD FVF) {
+    UINT size = 0;
+    
+    // Position
+    if (FVF & D3DFVF_XYZ) size += 12; // 3 floats
+    else if (FVF & D3DFVF_XYZRHW) size += 16; // 4 floats
+    else if (FVF & D3DFVF_XYZB1) size += 16; // 4 floats
+    else if (FVF & D3DFVF_XYZB2) size += 20; // 5 floats
+    else if (FVF & D3DFVF_XYZB3) size += 24; // 6 floats
+    else if (FVF & D3DFVF_XYZB4) size += 28; // 7 floats
+    else if (FVF & D3DFVF_XYZB5) size += 32; // 8 floats
+    
+    // Normal
+    if (FVF & D3DFVF_NORMAL) size += 12; // 3 floats
+    
+    // Point size
+    if (FVF & D3DFVF_PSIZE) size += 4; // 1 float
+    
+    // Diffuse color
+    if (FVF & D3DFVF_DIFFUSE) size += 4; // 1 DWORD
+    
+    // Specular color
+    if (FVF & D3DFVF_SPECULAR) size += 4; // 1 DWORD
+    
+    // Texture coordinates
+    DWORD tex_count = (FVF & D3DFVF_TEXCOUNT_MASK) >> D3DFVF_TEXCOUNT_SHIFT;
+    for (DWORD i = 0; i < tex_count; i++) {
+        // Default to 2D texture coordinates
+        size += 8; // 2 floats
+    }
+    
+    return size;
+}
+
+} // extern "C"

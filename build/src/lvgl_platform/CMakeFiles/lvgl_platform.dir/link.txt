@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblvgl_platform.a CMakeFiles/lvgl_platform.dir/lvgl_platform.cpp.o
+/usr/bin/ranlib liblvgl_platform.a

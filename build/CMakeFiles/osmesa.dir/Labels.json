@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/osmesa"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/osmesa.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/osmesa-complete.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-build.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-configure.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-download.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-install.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-mkdir.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-patch.rule"
+		},
+		{
+			"file" : "/home/djs/lvgl_osmesa_llvm6/build/osmesa-prefix/src/osmesa-stamp/osmesa-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"osmesa"
+		],
+		"name" : "osmesa"
+	}
+}

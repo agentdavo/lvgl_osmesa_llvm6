@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/osmesa_test.dir/main.cpp.o -o osmesa_test  -Wl,-rpath,/home/djs/lvgl_osmesa_llvm6/build/mesa-install/lib/x86_64-linux-gnu:/home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib -lGLU ../../mesa-install/lib/x86_64-linux-gnu/libOSMesa.so ../../llvm-install/lib/libLLVM-20.so -lpthread -ldl -lm 

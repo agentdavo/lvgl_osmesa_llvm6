@@ -1,0 +1,3 @@
+/home/djs/CnC_Generals_Zero_Hour/lib/dx8gl/CMakeFiles/CMakeScratch/TryCompile-Myhjuz/CMakeFiles/cmTC_f59de.dir
+/home/djs/CnC_Generals_Zero_Hour/lib/dx8gl/CMakeFiles/CMakeScratch/TryCompile-Myhjuz/CMakeFiles/edit_cache.dir
+/home/djs/CnC_Generals_Zero_Hour/lib/dx8gl/CMakeFiles/CMakeScratch/TryCompile-Myhjuz/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,12 @@
+prefix=/home/djs/lvgl_osmesa_llvm6/build/llvm-install
+exec_prefix=${prefix}
+libdir=/home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib
+includedir=/home/djs/lvgl_osmesa_llvm6/build/llvm-install/include
+
+Name: benchmark
+Description: Google microbenchmark framework
+Version: v0.0.0
+
+Libs: -L${libdir} -lbenchmark
+Libs.private: -lpthread
+Cflags: -I${includedir}

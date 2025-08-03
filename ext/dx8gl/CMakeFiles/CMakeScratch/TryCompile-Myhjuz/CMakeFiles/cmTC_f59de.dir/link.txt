@@ -1,0 +1,1 @@
+/usr/bin/emcc  -DCHECK_FUNCTION_EXISTS=fmemopen @CMakeFiles/cmTC_f59de.dir/objects1.rsp -o cmTC_f59de.js 
