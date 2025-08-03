@@ -1,7 +1,7 @@
 === DX8GL Command Buffer Frame 0 ===
-Buffer size: 516 bytes, Command count: 18
+Buffer size: 1188 bytes, Command count: 28
 
-[000] SET_RENDER_STATE: state=137 value=0
+[000] SET_RENDER_STATE: state=137 value=1
 [001] SET_RENDER_STATE: state=7 value=1
 [002] SET_RENDER_STATE: state=14 value=1
 [003] SET_RENDER_STATE: state=23 value=4
@@ -9,34 +9,47 @@ Buffer size: 516 bytes, Command count: 18
 [005] SET_RENDER_STATE: state=8 value=3
 [006] SET_RENDER_STATE: state=9 value=2
 [007] SET_RENDER_STATE: state=26 value=1
-[008] SET_RENDER_STATE: state=27 value=0
-[009] SET_RENDER_STATE: state=19 value=5
-[010] SET_RENDER_STATE: state=20 value=6
-[011] CLEAR: flags=0x00000003 color=0xFF404080 z=1.000 stencil=0
+[008] SET_RENDER_STATE: state=139 value=4282400832
+[009] SET_RENDER_STATE: state=143 value=1
+[010] SET_RENDER_STATE: state=27 value=0
+[011] SET_RENDER_STATE: state=19 value=5
+[012] SET_RENDER_STATE: state=20 value=6
+[013] CommandType 4 (size=120)
+[014] CommandType 4 (size=120)
+[015] CommandType 4 (size=120)
+[016] CommandType 4 (size=120)
+[017] CommandType 3 (size=76)
+[018] CLEAR: flags=0x00000003 color=0xFF404080 z=1.000 stencil=0
       → glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-[012] SET_TRANSFORM: WORLD
+[019] SET_TRANSFORM: WORLD
       → glUniformMatrix4fv(u_WORLD)
         Matrix: [0.400 0.000 0.000 0.000]
-                [0.000 0.363 -0.169 0.000]
-                [0.000 0.169 0.363 0.000]
+                [0.000 0.400 0.000 0.000]
+                [0.000 0.000 0.400 0.000]
                 [0.000 0.000 0.000 1.000]
-[013] SET_TRANSFORM: VIEW
+[020] SET_TRANSFORM: VIEW
       → glUniformMatrix4fv(u_VIEW)
-        Matrix: [1.000 -0.000 0.000 -0.000]
-                [0.000 0.928 -0.371 -0.000]
-                [-0.000 0.371 0.928 -2.154]
-                [0.000 0.000 0.000 1.000]
-[014] SET_TRANSFORM: PROJECTION
+        Matrix: [-0.707 -0.348 -0.615 0.000]
+                [0.000 0.870 -0.492 0.000]
+                [0.707 -0.348 -0.615 0.000]
+                [-0.000 -0.000 2.437 1.000]
+[021] SET_TRANSFORM: PROJECTION
       → glUniformMatrix4fv(u_PROJECTION)
-        Matrix: [2.145 0.000 0.000 0.000]
-                [0.000 2.145 0.000 0.000]
-                [0.000 0.000 -1.020 -0.202]
-                [0.000 0.000 -1.000 0.000]
-[015] SET_STREAM_SOURCE: stream=0 buffer=0x5E1AD0327B00 stride=16
+        Matrix: [2.414 0.000 0.000 0.000]
+                [0.000 2.414 0.000 0.000]
+                [0.000 0.000 1.053 1.000]
+                [0.000 0.000 -0.526 0.000]
+[022] SET_STREAM_SOURCE: stream=0 buffer=0x5E3291C46310 stride=28
       → glBindBuffer(GL_ARRAY_BUFFER, ...)
-[016] SET_INDICES: buffer=0x5E1ACDE97050 base_vertex=0
+[023] SET_INDICES: buffer=0x5E328F6AF780 base_vertex=0
       → glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ...)
-[017] DRAW_INDEXED_PRIMITIVE: type=4 min_idx=0 num_verts=24 start_idx=0 prim_count=12
+[024] DRAW_INDEXED_PRIMITIVE: type=4 min_idx=0 num_verts=4 start_idx=0 prim_count=2
+      → glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, ...)
+[025] SET_STREAM_SOURCE: stream=0 buffer=0x5E3291BA6780 stride=28
+      → glBindBuffer(GL_ARRAY_BUFFER, ...)
+[026] SET_INDICES: buffer=0x5E328F8408E0 base_vertex=0
+      → glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ...)
+[027] DRAW_INDEXED_PRIMITIVE: type=4 min_idx=0 num_verts=24 start_idx=0 prim_count=12
       → glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, ...)
 
 === End of Command Buffer ===

@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+import sys
+
+# Read PPM file
+filename = sys.argv[1] if len(sys.argv) > 1 else 'dx8_cube_frame_00.ppm'
+with open(filename, 'rb') as f:
+    # Skip header
+    line = f.readline()  # P6
+    dims = f.readline().decode().strip()
+    f.readline()  # 255
+    
+    # Read pixel data
+    width, height = map(int, dims.split())
+    print(f'Image size: {width}x{height}')
+    
+    # Find bounding box of non-background pixels
+    bg_r, bg_g, bg_b = 64, 64, 128  # Clear color
+    min_x, min_y = width, height
+    max_x, max_y = 0, 0
+    non_bg = 0
+    
+    for y in range(height):
+        for x in range(width):
+            r = ord(f.read(1))
+            g = ord(f.read(1))
+            b = ord(f.read(1))
+            if r != bg_r or g != bg_g or b != bg_b:
+                non_bg += 1
+                min_x = min(min_x, x)
+                min_y = min(min_y, y)
+                max_x = max(max_x, x)
+                max_y = max(max_y, y)
+    
+    print(f'Non-background pixels: {non_bg}')
+    if non_bg > 0:
+        print(f'Bounding box: ({min_x},{min_y}) to ({max_x},{max_y})')
+        print(f'Size: {max_x - min_x + 1} x {max_y - min_y + 1}')

@@ -11,6 +11,7 @@
 // DirectX 8 headers from dx8gl
 #include "d3d8.h"
 #include "dx8gl.h"
+#include "../ext/dx8gl/src/d3dx_compat.h"
 
 // Canvas dimensions
 #define CANVAS_WIDTH 400
@@ -18,76 +19,94 @@
 #define WINDOW_WIDTH 1024
 #define WINDOW_HEIGHT 768
 
-// Cube vertex structure
+// Cube vertex structure with normals for lighting
 struct CUSTOMVERTEX {
     float x, y, z;     // Position
+    float nx, ny, nz;  // Normal
     DWORD color;       // Color
 };
 
 // Define the FVF for our vertex structure
-#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ | D3DFVF_DIFFUSE)
+#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE)
 
 // Global variables
 static IDirect3D8* g_pD3D = nullptr;
 static IDirect3DDevice8* g_pDevice = nullptr;
 static IDirect3DVertexBuffer8* g_pVB = nullptr;
+static IDirect3DVertexBuffer8* g_pFloorVB = nullptr;
+static IDirect3DIndexBuffer8* g_pIB = nullptr;
+static IDirect3DIndexBuffer8* g_pFloorIB = nullptr;
 static lv_obj_t* g_canvas = nullptr;
 static lv_color_t* g_canvas_buf = nullptr;
 static float g_rotation = 0.0f;
 
-// Cube vertices with colors - scaled down to 0.5 units
-static const CUSTOMVERTEX g_vertices[] = {
-    // Front face (red)
-    {-0.5f, -0.5f, -0.5f, 0xFFFF0000},
-    { 0.5f, -0.5f, -0.5f, 0xFFFF0000},
-    { 0.5f,  0.5f, -0.5f, 0xFFFF0000},
-    {-0.5f,  0.5f, -0.5f, 0xFFFF0000},
+// Cube vertices with normals and colors - scaled down to 0.5 units
+static const CUSTOMVERTEX g_cube_vertices[] = {
+    // Front face (red) - Normal pointing towards -Z
+    {-0.5f, -0.5f, -0.5f,  0.0f, 0.0f, -1.0f, 0xFFFF0000},
+    { 0.5f, -0.5f, -0.5f,  0.0f, 0.0f, -1.0f, 0xFFFF0000},
+    { 0.5f,  0.5f, -0.5f,  0.0f, 0.0f, -1.0f, 0xFFFF0000},
+    {-0.5f,  0.5f, -0.5f,  0.0f, 0.0f, -1.0f, 0xFFFF0000},
     
-    // Back face (green)
-    {-0.5f, -0.5f,  0.5f, 0xFF00FF00},
-    { 0.5f, -0.5f,  0.5f, 0xFF00FF00},
-    { 0.5f,  0.5f,  0.5f, 0xFF00FF00},
-    {-0.5f,  0.5f,  0.5f, 0xFF00FF00},
+    // Back face (green) - Normal pointing towards +Z
+    {-0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0xFF00FF00},
+    { 0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0xFF00FF00},
+    { 0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0xFF00FF00},
+    {-0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 1.0f, 0xFF00FF00},
     
-    // Top face (blue)
-    {-0.5f,  0.5f, -0.5f, 0xFF0000FF},
-    { 0.5f,  0.5f, -0.5f, 0xFF0000FF},
-    { 0.5f,  0.5f,  0.5f, 0xFF0000FF},
-    {-0.5f,  0.5f,  0.5f, 0xFF0000FF},
+    // Top face (blue) - Normal pointing towards +Y
+    {-0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f, 0xFF0000FF},
+    { 0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f, 0xFF0000FF},
+    { 0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0xFF0000FF},
+    {-0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 0.0f, 0xFF0000FF},
     
-    // Bottom face (yellow)
-    {-0.5f, -0.5f, -0.5f, 0xFFFFFF00},
-    { 0.5f, -0.5f, -0.5f, 0xFFFFFF00},
-    { 0.5f, -0.5f,  0.5f, 0xFFFFFF00},
-    {-0.5f, -0.5f,  0.5f, 0xFFFFFF00},
+    // Bottom face (yellow) - Normal pointing towards -Y
+    {-0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f, 0xFFFFFF00},
+    { 0.5f, -0.5f, -0.5f,  0.0f, -1.0f, 0.0f, 0xFFFFFF00},
+    { 0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f, 0xFFFFFF00},
+    {-0.5f, -0.5f,  0.5f,  0.0f, -1.0f, 0.0f, 0xFFFFFF00},
     
-    // Right face (magenta)
-    { 0.5f, -0.5f, -0.5f, 0xFFFF00FF},
-    { 0.5f, -0.5f,  0.5f, 0xFFFF00FF},
-    { 0.5f,  0.5f,  0.5f, 0xFFFF00FF},
-    { 0.5f,  0.5f, -0.5f, 0xFFFF00FF},
+    // Right face (magenta) - Normal pointing towards +X
+    { 0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 0.0f, 0xFFFF00FF},
+    { 0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f, 0xFFFF00FF},
+    { 0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f, 0xFFFF00FF},
+    { 0.5f,  0.5f, -0.5f,  1.0f, 0.0f, 0.0f, 0xFFFF00FF},
     
-    // Left face (cyan)
-    {-0.5f, -0.5f, -0.5f, 0xFF00FFFF},
-    {-0.5f, -0.5f,  0.5f, 0xFF00FFFF},
-    {-0.5f,  0.5f,  0.5f, 0xFF00FFFF},
-    {-0.5f,  0.5f, -0.5f, 0xFF00FFFF},
+    // Left face (cyan) - Normal pointing towards -X
+    {-0.5f, -0.5f, -0.5f,  -1.0f, 0.0f, 0.0f, 0xFF00FFFF},
+    {-0.5f, -0.5f,  0.5f,  -1.0f, 0.0f, 0.0f, 0xFF00FFFF},
+    {-0.5f,  0.5f,  0.5f,  -1.0f, 0.0f, 0.0f, 0xFF00FFFF},
+    {-0.5f,  0.5f, -0.5f,  -1.0f, 0.0f, 0.0f, 0xFF00FFFF},
 };
 
-// Cube indices (two triangles per face) - reversed winding for testing
+// Floor vertices - a large plane below the cube
+static const CUSTOMVERTEX g_floor_vertices[] = {
+    // Floor at Y = -1.0, gray color, normal pointing up
+    {-3.0f, -1.0f, -3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
+    { 3.0f, -1.0f, -3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
+    { 3.0f, -1.0f,  3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
+    {-3.0f, -1.0f,  3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
+};
+
+// Cube indices (two triangles per face)
 static const WORD g_indices[] = {
-    // Front face
-    0, 2, 1,    0, 3, 2,
-    // Back face  
-    4, 5, 6,    4, 6, 7,
-    // Top face
-    8, 10, 9,   8, 11, 10,
-    // Bottom face
-    12, 13, 14, 12, 14, 15,
-    // Right face
-    16, 18, 17, 16, 19, 18,
-    // Left face
-    20, 21, 22, 20, 22, 23,
+    // Front face (vertices 0-3)
+    0, 1, 2,    0, 2, 3,
+    // Back face (vertices 4-7)
+    4, 6, 5,    4, 7, 6,
+    // Top face (vertices 8-11)
+    8, 9, 10,   8, 10, 11,
+    // Bottom face (vertices 12-15)
+    12, 14, 13, 12, 15, 14,
+    // Right face (vertices 16-19)
+    16, 17, 18, 16, 18, 19,
+    // Left face (vertices 20-23)
+    20, 22, 21, 20, 23, 22,
+};
+
+// Floor indices - two triangles
+static const WORD g_floor_indices[] = {
+    0, 1, 2,    0, 2, 3,
 };
 
 static bool init_d3d() {
@@ -130,7 +149,7 @@ static bool init_d3d() {
     }
     
     // Set up render states
-    g_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
+    g_pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);   // Enable lighting
     g_pDevice->SetRenderState(D3DRS_ZENABLE, TRUE);   // Enable depth testing 
     g_pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE); // Enable depth writing
     g_pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL); // Depth comparison
@@ -138,15 +157,79 @@ static bool init_d3d() {
     g_pDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID); // Solid fill
     g_pDevice->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
     g_pDevice->SetRenderState(D3DRS_DITHERENABLE, TRUE);
+    g_pDevice->SetRenderState(D3DRS_AMBIENT, 0xFF404040); // Ambient light (dark gray)
+    g_pDevice->SetRenderState(D3DRS_NORMALIZENORMALS, TRUE); // Normalize normals after scaling
     
     // Enable alpha blending for smoother edges
     g_pDevice->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
     g_pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
     g_pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
     
-    // Create vertex buffer
+    // Set up lighting
+    D3DLIGHT8 light;
+    memset(&light, 0, sizeof(D3DLIGHT8));
+    
+    // Light 0: Directional light (sun-like)
+    light.Type = D3DLIGHT_DIRECTIONAL;
+    light.Diffuse.r = 0.8f;
+    light.Diffuse.g = 0.8f;
+    light.Diffuse.b = 0.8f;
+    light.Diffuse.a = 1.0f;
+    light.Specular.r = 0.5f;
+    light.Specular.g = 0.5f;
+    light.Specular.b = 0.5f;
+    light.Specular.a = 1.0f;
+    light.Direction.x = -0.5f;
+    light.Direction.y = -1.0f;
+    light.Direction.z = -0.5f;
+    g_pDevice->SetLight(0, &light);
+    g_pDevice->LightEnable(0, TRUE);
+    
+    // Light 1: Spotlight
+    memset(&light, 0, sizeof(D3DLIGHT8));
+    light.Type = D3DLIGHT_SPOT;
+    light.Diffuse.r = 1.0f;
+    light.Diffuse.g = 0.9f;
+    light.Diffuse.b = 0.7f;
+    light.Diffuse.a = 1.0f;
+    light.Position.x = 2.0f;
+    light.Position.y = 3.0f;
+    light.Position.z = 2.0f;
+    light.Direction.x = -2.0f;
+    light.Direction.y = -3.0f;
+    light.Direction.z = -2.0f;
+    D3DXVec3Normalize((D3DXVECTOR3*)&light.Direction, (D3DXVECTOR3*)&light.Direction);
+    light.Range = 10.0f;
+    light.Falloff = 1.0f;
+    light.Attenuation0 = 0.0f;
+    light.Attenuation1 = 0.1f;
+    light.Attenuation2 = 0.0f;
+    light.Theta = 0.5f;   // Inner cone angle
+    light.Phi = 1.0f;     // Outer cone angle
+    g_pDevice->SetLight(1, &light);
+    g_pDevice->LightEnable(1, TRUE);
+    
+    // Set material properties
+    D3DMATERIAL8 material;
+    memset(&material, 0, sizeof(D3DMATERIAL8));
+    material.Diffuse.r = 1.0f;
+    material.Diffuse.g = 1.0f;
+    material.Diffuse.b = 1.0f;
+    material.Diffuse.a = 1.0f;
+    material.Ambient.r = 1.0f;
+    material.Ambient.g = 1.0f;
+    material.Ambient.b = 1.0f;
+    material.Ambient.a = 1.0f;
+    material.Specular.r = 0.5f;
+    material.Specular.g = 0.5f;
+    material.Specular.b = 0.5f;
+    material.Specular.a = 1.0f;
+    material.Power = 20.0f;
+    g_pDevice->SetMaterial(&material);
+    
+    // Create vertex buffer for cube
     hr = g_pDevice->CreateVertexBuffer(
-        sizeof(g_vertices),
+        sizeof(g_cube_vertices),
         D3DUSAGE_WRITEONLY,
         D3DFVF_CUSTOMVERTEX,
         D3DPOOL_MANAGED,
@@ -154,26 +237,52 @@ static bool init_d3d() {
     );
     
     if (FAILED(hr)) {
-        std::cerr << "Failed to create vertex buffer" << std::endl;
+        std::cerr << "Failed to create cube vertex buffer" << std::endl;
         return false;
     }
     
-    // Fill vertex buffer
+    // Fill cube vertex buffer
     void* pVertices;
-    if (SUCCEEDED(g_pVB->Lock(0, sizeof(g_vertices), (BYTE**)&pVertices, 0))) {
-        memcpy(pVertices, g_vertices, sizeof(g_vertices));
+    if (SUCCEEDED(g_pVB->Lock(0, sizeof(g_cube_vertices), (BYTE**)&pVertices, 0))) {
+        memcpy(pVertices, g_cube_vertices, sizeof(g_cube_vertices));
         g_pVB->Unlock();
+    }
+    
+    // Create vertex buffer for floor
+    hr = g_pDevice->CreateVertexBuffer(
+        sizeof(g_floor_vertices),
+        D3DUSAGE_WRITEONLY,
+        D3DFVF_CUSTOMVERTEX,
+        D3DPOOL_MANAGED,
+        &g_pFloorVB
+    );
+    
+    if (FAILED(hr)) {
+        std::cerr << "Failed to create floor vertex buffer" << std::endl;
+        return false;
+    }
+    
+    // Fill floor vertex buffer
+    if (SUCCEEDED(g_pFloorVB->Lock(0, sizeof(g_floor_vertices), (BYTE**)&pVertices, 0))) {
+        memcpy(pVertices, g_floor_vertices, sizeof(g_floor_vertices));
+        g_pFloorVB->Unlock();
     }
     
     return true;
 }
 
-static IDirect3DIndexBuffer8* g_pIB = nullptr;  // Move to global scope
-
 static void cleanup_d3d() {
+    if (g_pFloorIB) {
+        g_pFloorIB->Release();
+        g_pFloorIB = nullptr;
+    }
     if (g_pIB) {
         g_pIB->Release();
         g_pIB = nullptr;
+    }
+    if (g_pFloorVB) {
+        g_pFloorVB->Release();
+        g_pFloorVB = nullptr;
     }
     if (g_pVB) {
         g_pVB->Release();
@@ -190,61 +299,59 @@ static void cleanup_d3d() {
     dx8gl_shutdown();  // Clean up dx8gl resources
 }
 
-// Helper function to convert glm::mat4 to D3DMATRIX
-static void glm_to_d3d_matrix(const glm::mat4& src, D3DMATRIX* dst) {
-    const float* ptr = glm::value_ptr(src);
-    // DirectX uses row-major matrices, GLM uses column-major
-    // So we need to transpose
-    dst->_11 = ptr[0];  dst->_12 = ptr[4];  dst->_13 = ptr[8];   dst->_14 = ptr[12];
-    dst->_21 = ptr[1];  dst->_22 = ptr[5];  dst->_23 = ptr[9];   dst->_24 = ptr[13];
-    dst->_31 = ptr[2];  dst->_32 = ptr[6];  dst->_33 = ptr[10];  dst->_34 = ptr[14];
-    dst->_41 = ptr[3];  dst->_42 = ptr[7];  dst->_43 = ptr[11];  dst->_44 = ptr[15];
-}
 
 static void set_matrices() {
     static int matrix_debug = 0;
     bool debug_this_frame = (matrix_debug < 3);
     
-    // Create rotation matrix for the cube
-    float c = cos(g_rotation);
-    float s = sin(g_rotation);
+    // Build world matrix - combine scaling and Y rotation
+    D3DMATRIX matScale, matRotY, matWorld;
     
-    // World matrix - scale down and rotate for better view
-    glm::mat4 world = glm::mat4(1.0f);
-    world = glm::scale(world, glm::vec3(0.4f, 0.4f, 0.4f)); // 40% scale
-    world = glm::rotate(world, g_rotation, glm::vec3(0.0f, 1.0f, 0.0f));
-    world = glm::rotate(world, glm::radians(25.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // Slight tilt
+    // Scale matrix (40% size)
+    D3DXMatrixScaling(&matScale, 0.4f, 0.4f, 0.4f);
     
-    // View matrix - simple camera back and slightly elevated
-    glm::mat4 view = glm::lookAt(
-        glm::vec3(0.0f, 0.8f, 2.0f),  // Eye position
-        glm::vec3(0.0f, 0.0f, 0.0f),  // Look at origin
-        glm::vec3(0.0f, 1.0f, 0.0f)   // Up vector
-    );
+    // Rotation around Y axis (spin)
+    D3DXMatrixRotationY(&matRotY, g_rotation);
     
-    // Projection matrix - perspective view
-    glm::mat4 projection = glm::perspective(
-        glm::radians(50.0f),  // Moderate field of view
-        1.0f,                 // Aspect ratio (400x400)
-        0.1f,                 // Near plane
-        10.0f                 // Far plane
-    );
+    // No X-axis tilt for now - just Y rotation
     
-    // Convert to D3D matrices and set
-    D3DMATRIX d3d_world, d3d_view, d3d_proj;
-    glm_to_d3d_matrix(world, &d3d_world);
-    glm_to_d3d_matrix(view, &d3d_view);
-    glm_to_d3d_matrix(projection, &d3d_proj);
+    // Combine transformations: Scale * RotY
+    D3DXMatrixMultiply(&matWorld, &matScale, &matRotY);
     
-    g_pDevice->SetTransform(D3DTS_WORLD, &d3d_world);
-    g_pDevice->SetTransform(D3DTS_VIEW, &d3d_view);
-    g_pDevice->SetTransform(D3DTS_PROJECTION, &d3d_proj);
+    // Build view matrix using D3DXMatrixLookAtLH
+    D3DXVECTOR3 vEye(1.5f, 1.2f, 1.5f);    // Camera position - closer diagonal view
+    D3DXVECTOR3 vAt(0.0f, 0.0f, 0.0f);     // Look at origin
+    D3DXVECTOR3 vUp(0.0f, 1.0f, 0.0f);     // Up vector
+    
+    D3DMATRIX matView;
+    D3DXMatrixLookAtLH(&matView, &vEye, &vAt, &vUp);
+    
+    // Build projection matrix
+    D3DMATRIX matProj;
+    float fov = 45.0f * 3.14159f / 180.0f;    // Convert degrees to radians
+    D3DXMatrixPerspectiveFovLH(&matProj, fov, 1.0f, 0.5f, 10.0f);
+    
+    // Set the matrices
+    g_pDevice->SetTransform(D3DTS_WORLD, &matWorld);
+    g_pDevice->SetTransform(D3DTS_VIEW, &matView);
+    g_pDevice->SetTransform(D3DTS_PROJECTION, &matProj);
     
     if (debug_this_frame) {
         std::cout << "\n=== Matrix Debug Frame " << matrix_debug << " ===" << std::endl;
         std::cout << "Rotation: " << g_rotation << " radians" << std::endl;
-        std::cout << "Camera at (0, 0.8, 2.0) looking at origin, cube scaled to 40%" << std::endl;
-        std::cout << "Perspective projection: 50 degree FOV" << std::endl;
+        std::cout << "Camera at (1.5, 1.2, 1.5) looking at origin, cube scaled to 40%" << std::endl;
+        std::cout << "Perspective projection: 45 degree FOV, near=0.5, far=10.0" << std::endl;
+        
+        // Print projection matrix values
+        std::cout << "Projection matrix:" << std::endl;
+        for (int i = 0; i < 4; i++) {
+            std::cout << "  [";
+            for (int j = 0; j < 4; j++) {
+                std::cout << std::fixed << std::setprecision(2) << matProj.m(i,j);
+                if (j < 3) std::cout << ", ";
+            }
+            std::cout << "]" << std::endl;
+        }
         matrix_debug++;
     }
 }
@@ -274,9 +381,36 @@ static void render_cube() {
         // Set up transformations
         set_matrices();
         
-        // Set the vertex buffer
-        g_pDevice->SetStreamSource(0, g_pVB, sizeof(CUSTOMVERTEX));
+        // First, render the floor
+        g_pDevice->SetStreamSource(0, g_pFloorVB, sizeof(CUSTOMVERTEX));
         g_pDevice->SetVertexShader(D3DFVF_CUSTOMVERTEX);
+        
+        // Create and set index buffer for floor rendering
+        if (!g_pFloorIB) {
+            HRESULT hr = g_pDevice->CreateIndexBuffer(
+                sizeof(g_floor_indices),
+                D3DUSAGE_WRITEONLY,
+                D3DFMT_INDEX16,
+                D3DPOOL_MANAGED,
+                &g_pFloorIB
+            );
+            
+            if (SUCCEEDED(hr)) {
+                void* pIndices;
+                if (SUCCEEDED(g_pFloorIB->Lock(0, sizeof(g_floor_indices), (BYTE**)&pIndices, 0))) {
+                    memcpy(pIndices, g_floor_indices, sizeof(g_floor_indices));
+                    g_pFloorIB->Unlock();
+                }
+            }
+        }
+        
+        if (g_pFloorIB) {
+            g_pDevice->SetIndices(g_pFloorIB, 0);
+            g_pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 4, 0, 2);
+        }
+        
+        // Now render the cube
+        g_pDevice->SetStreamSource(0, g_pVB, sizeof(CUSTOMVERTEX));
         
         // Create and set index buffer for cube rendering
         if (!g_pIB) {
@@ -405,8 +539,8 @@ static void update_canvas() {
 static void animation_timer_cb(lv_timer_t* timer) {
     (void)timer;
     
-    // Update rotation
-    g_rotation += 0.02f;
+    // Update rotation - slower for debugging
+    g_rotation += 0.05f;
     if (g_rotation > 2.0f * 3.14159f) {
         g_rotation -= 2.0f * 3.14159f;
     }

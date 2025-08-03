@@ -407,6 +407,69 @@ void CommandBuffer::execute(StateManager& state_manager,
                     } else {
                         DX8GL_INFO("worldViewProj uniform not found in shader!");
                     }
+                    
+                    // Set lighting uniforms if lighting is enabled
+                    if (state_manager.get_render_state(D3DRS_LIGHTING) != 0) {
+                        // Set material uniforms
+                        D3DMATERIAL8 material;
+                        state_manager.get_material(&material);
+                        
+                        if (uniforms->material_ambient >= 0) {
+                            glUniform4f(uniforms->material_ambient, material.Ambient.r, material.Ambient.g, material.Ambient.b, material.Ambient.a);
+                        }
+                        if (uniforms->material_diffuse >= 0) {
+                            glUniform4f(uniforms->material_diffuse, material.Diffuse.r, material.Diffuse.g, material.Diffuse.b, material.Diffuse.a);
+                        }
+                        if (uniforms->material_specular >= 0) {
+                            glUniform4f(uniforms->material_specular, material.Specular.r, material.Specular.g, material.Specular.b, material.Specular.a);
+                        }
+                        if (uniforms->material_emissive >= 0) {
+                            glUniform4f(uniforms->material_emissive, material.Emissive.r, material.Emissive.g, material.Emissive.b, material.Emissive.a);
+                        }
+                        if (uniforms->material_power >= 0) {
+                            glUniform1f(uniforms->material_power, material.Power);
+                        }
+                        
+                        // Set ambient light
+                        DWORD ambient = state_manager.get_render_state(D3DRS_AMBIENT);
+                        float r = ((ambient >> 16) & 0xFF) / 255.0f;
+                        float g = ((ambient >> 8) & 0xFF) / 255.0f;
+                        float b = (ambient & 0xFF) / 255.0f;
+                        float a = ((ambient >> 24) & 0xFF) / 255.0f;
+                        if (uniforms->ambient_light >= 0) {
+                            glUniform4f(uniforms->ambient_light, r, g, b, a);
+                        }
+                        
+                        // Set light uniforms
+                        int num_active_lights = 0;
+                        for (int i = 0; i < 8; i++) {
+                            if (state_manager.is_light_enabled(i)) {
+                                D3DLIGHT8 light;
+                                state_manager.get_light(i, &light);
+                                
+                                if (uniforms->light_position[num_active_lights] >= 0) {
+                                    if (light.Type == D3DLIGHT_DIRECTIONAL) {
+                                        // For directional lights, use negative direction as position at infinity
+                                        glUniform3f(uniforms->light_position[num_active_lights], 
+                                                   -light.Direction.x * 1000.0f, 
+                                                   -light.Direction.y * 1000.0f, 
+                                                   -light.Direction.z * 1000.0f);
+                                    } else {
+                                        glUniform3f(uniforms->light_position[num_active_lights], 
+                                                   light.Position.x, light.Position.y, light.Position.z);
+                                    }
+                                }
+                                
+                                if (uniforms->light_diffuse[num_active_lights] >= 0) {
+                                    glUniform4f(uniforms->light_diffuse[num_active_lights], 
+                                               light.Diffuse.r, light.Diffuse.g, light.Diffuse.b, light.Diffuse.a);
+                                }
+                                
+                                num_active_lights++;
+                                if (num_active_lights >= 8) break;  // Max 8 lights in shader
+                            }
+                        }
+                    }
                 } else {
                     // Vertex/pixel shader pipeline - uniforms are set by ShaderProgramManager
                     DX8GL_INFO("Using vertex/pixel shaders - uniforms already set by ShaderProgramManager");
@@ -549,6 +612,16 @@ void CommandBuffer::execute(StateManager& state_manager,
                     ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
                     ff_state.vertex_format = stream_sources[0].vb->get_fvf();
                     
+                    // Count active lights for shader generation
+                    ff_state.num_active_lights = 0;
+                    if (ff_state.lighting_enabled) {
+                        for (int i = 0; i < 8; i++) {
+                            if (state_manager.is_light_enabled(i)) {
+                                ff_state.num_active_lights++;
+                            }
+                        }
+                    }
+                    
                     program = ff_shader->get_program(ff_state);
                     if (!program) {
                         DX8GL_ERROR("Failed to get shader program");
@@ -599,6 +672,81 @@ void CommandBuffer::execute(StateManager& state_manager,
                     }
                 } else {
                     DX8GL_INFO("worldViewProj uniform not found in shader!");
+                }
+                
+                // Calculate and set normal matrix if needed
+                if (uniforms->normal_matrix >= 0 && (stream_sources[0].vb->get_fvf() & D3DFVF_NORMAL)) {
+                    // Normal matrix is the transpose of the inverse of the upper 3x3 of the world matrix
+                    // For now, assuming uniform scaling, we can just use the upper 3x3 of world matrix
+                    glm::mat3 normalMatrix(
+                        world._11, world._12, world._13,
+                        world._21, world._22, world._23,
+                        world._31, world._32, world._33
+                    );
+                    glUniformMatrix3fv(uniforms->normal_matrix, 1, GL_FALSE, glm::value_ptr(normalMatrix));
+                }
+                
+                // Set lighting uniforms if lighting is enabled
+                if (state_manager.get_render_state(D3DRS_LIGHTING) != 0 && (stream_sources[0].vb->get_fvf() & D3DFVF_NORMAL)) {
+                    // Set material uniforms
+                    D3DMATERIAL8 material;
+                    state_manager.get_material(&material);
+                    
+                    if (uniforms->material_ambient >= 0) {
+                        glUniform4f(uniforms->material_ambient, material.Ambient.r, material.Ambient.g, material.Ambient.b, material.Ambient.a);
+                    }
+                    if (uniforms->material_diffuse >= 0) {
+                        glUniform4f(uniforms->material_diffuse, material.Diffuse.r, material.Diffuse.g, material.Diffuse.b, material.Diffuse.a);
+                    }
+                    if (uniforms->material_specular >= 0) {
+                        glUniform4f(uniforms->material_specular, material.Specular.r, material.Specular.g, material.Specular.b, material.Specular.a);
+                    }
+                    if (uniforms->material_emissive >= 0) {
+                        glUniform4f(uniforms->material_emissive, material.Emissive.r, material.Emissive.g, material.Emissive.b, material.Emissive.a);
+                    }
+                    if (uniforms->material_power >= 0) {
+                        glUniform1f(uniforms->material_power, material.Power);
+                    }
+                    
+                    // Set ambient light
+                    DWORD ambient = state_manager.get_render_state(D3DRS_AMBIENT);
+                    float r = ((ambient >> 16) & 0xFF) / 255.0f;
+                    float g = ((ambient >> 8) & 0xFF) / 255.0f;
+                    float b = (ambient & 0xFF) / 255.0f;
+                    float a = ((ambient >> 24) & 0xFF) / 255.0f;
+                    if (uniforms->ambient_light >= 0) {
+                        glUniform4f(uniforms->ambient_light, r, g, b, a);
+                    }
+                    
+                    // Set light uniforms
+                    int num_active_lights = 0;
+                    for (int i = 0; i < 8; i++) {
+                        if (state_manager.is_light_enabled(i)) {
+                            D3DLIGHT8 light;
+                            state_manager.get_light(i, &light);
+                            
+                            if (uniforms->light_position[num_active_lights] >= 0) {
+                                if (light.Type == D3DLIGHT_DIRECTIONAL) {
+                                    // For directional lights, use negative direction as position at infinity
+                                    glUniform3f(uniforms->light_position[num_active_lights], 
+                                               -light.Direction.x * 1000.0f, 
+                                               -light.Direction.y * 1000.0f, 
+                                               -light.Direction.z * 1000.0f);
+                                } else {
+                                    glUniform3f(uniforms->light_position[num_active_lights], 
+                                               light.Position.x, light.Position.y, light.Position.z);
+                                }
+                            }
+                            
+                            if (uniforms->light_diffuse[num_active_lights] >= 0) {
+                                glUniform4f(uniforms->light_diffuse[num_active_lights], 
+                                           light.Diffuse.r, light.Diffuse.g, light.Diffuse.b, light.Diffuse.a);
+                            }
+                            
+                            num_active_lights++;
+                            if (num_active_lights >= 8) break;  // Max 8 lights in shader
+                        }
+                    }
                 }
                 } else {
                     // Vertex/pixel shader pipeline - uniforms are set by ShaderProgramManager
@@ -884,6 +1032,18 @@ void CommandBuffer::execute(StateManager& state_manager,
                     DX8GL_INFO("worldViewProj uniform not found in shader!");
                 }
                 
+                // Calculate and set normal matrix if needed
+                if (uniforms->normal_matrix >= 0 && (stream_sources[0].vb->get_fvf() & D3DFVF_NORMAL)) {
+                    // Normal matrix is the transpose of the inverse of the upper 3x3 of the world matrix
+                    // For now, assuming uniform scaling, we can just use the upper 3x3 of world matrix
+                    glm::mat3 normalMatrix(
+                        world._11, world._12, world._13,
+                        world._21, world._22, world._23,
+                        world._31, world._32, world._33
+                    );
+                    glUniformMatrix3fv(uniforms->normal_matrix, 1, GL_FALSE, glm::value_ptr(normalMatrix));
+                }
+                
                 // Get or create VAO for this immediate mode rendering
                 VAOManager& vao_mgr = get_vao_manager();
                 fprintf(stderr, "[DEBUG] About to get VAO for FVF 0x%x, program %u, VBO %u, stride %u\n", 
@@ -1054,6 +1214,18 @@ void CommandBuffer::execute(StateManager& state_manager,
                     }
                 } else {
                     DX8GL_INFO("worldViewProj uniform not found in shader!");
+                }
+                
+                // Calculate and set normal matrix if needed
+                if (uniforms->normal_matrix >= 0 && (stream_sources[0].vb->get_fvf() & D3DFVF_NORMAL)) {
+                    // Normal matrix is the transpose of the inverse of the upper 3x3 of the world matrix
+                    // For now, assuming uniform scaling, we can just use the upper 3x3 of world matrix
+                    glm::mat3 normalMatrix(
+                        world._11, world._12, world._13,
+                        world._21, world._22, world._23,
+                        world._31, world._32, world._33
+                    );
+                    glUniformMatrix3fv(uniforms->normal_matrix, 1, GL_FALSE, glm::value_ptr(normalMatrix));
                 }
                 
                 // Set up vertex attributes based on FVF

@@ -1466,7 +1466,13 @@ HRESULT Direct3DDevice8::SetMaterial(const D3DMATERIAL8* pMaterial) {
         return D3DERR_INVALIDCALL;
     }
     
+    // Update state manager immediately
     state_manager_->set_material(pMaterial);
+    
+    // Also queue command for batched processing
+    auto cmd = current_command_buffer_->allocate_command<SetMaterialCmd>();
+    cmd->material = *pMaterial;
+    
     return D3D_OK;
 }
 
@@ -1484,7 +1490,15 @@ HRESULT Direct3DDevice8::SetLight(DWORD Index, const D3DLIGHT8* pLight) {
         return D3DERR_INVALIDCALL;
     }
     
+    // Update state manager immediately
     state_manager_->set_light(Index, pLight);
+    
+    // Also queue command for batched processing
+    auto cmd = current_command_buffer_->allocate_command<SetLightCmd>();
+    cmd->index = Index;
+    cmd->light = *pLight;
+    cmd->enable = state_manager_->is_light_enabled(Index);
+    
     return D3D_OK;
 }
 
@@ -1498,7 +1512,19 @@ HRESULT Direct3DDevice8::GetLight(DWORD Index, D3DLIGHT8* pLight) {
 }
 
 HRESULT Direct3DDevice8::LightEnable(DWORD Index, BOOL Enable) {
+    // Update state manager immediately
     state_manager_->light_enable(Index, Enable);
+    
+    // Also queue command for batched processing
+    // Get the current light properties to include in the command
+    D3DLIGHT8 light;
+    state_manager_->get_light(Index, &light);
+    
+    auto cmd = current_command_buffer_->allocate_command<SetLightCmd>();
+    cmd->index = Index;
+    cmd->light = light;
+    cmd->enable = Enable;
+    
     return D3D_OK;
 }
 

@@ -140,6 +140,92 @@ D3DMATRIX* D3DXMatrixPerspectiveFovLH(D3DMATRIX* pOut, float fovy, float aspect,
     return pOut;
 }
 
+D3DMATRIX* D3DXMatrixLookAtLH(D3DMATRIX* pOut, const D3DXVECTOR3* pEye, const D3DXVECTOR3* pAt, const D3DXVECTOR3* pUp) {
+    if (!pOut || !pEye || !pAt || !pUp) return nullptr;
+    
+    // Calculate look direction
+    D3DXVECTOR3 zaxis;
+    zaxis.x = pAt->x - pEye->x;
+    zaxis.y = pAt->y - pEye->y;
+    zaxis.z = pAt->z - pEye->z;
+    D3DXVec3Normalize(&zaxis, &zaxis);
+    
+    // Calculate right vector (cross product of up and look)
+    D3DXVECTOR3 xaxis;
+    D3DXVec3Cross(&xaxis, const_cast<D3DXVECTOR3*>(pUp), &zaxis);
+    D3DXVec3Normalize(&xaxis, &xaxis);
+    
+    // Calculate actual up vector (cross product of look and right)
+    D3DXVECTOR3 yaxis;
+    D3DXVec3Cross(&yaxis, &zaxis, &xaxis);
+    
+    // Build the view matrix
+    pOut->_11 = xaxis.x;
+    pOut->_21 = xaxis.y;
+    pOut->_31 = xaxis.z;
+    pOut->_41 = -D3DXVec3Dot(&xaxis, pEye);
+    
+    pOut->_12 = yaxis.x;
+    pOut->_22 = yaxis.y;
+    pOut->_32 = yaxis.z;
+    pOut->_42 = -D3DXVec3Dot(&yaxis, pEye);
+    
+    pOut->_13 = zaxis.x;
+    pOut->_23 = zaxis.y;
+    pOut->_33 = zaxis.z;
+    pOut->_43 = -D3DXVec3Dot(&zaxis, pEye);
+    
+    pOut->_14 = 0.0f;
+    pOut->_24 = 0.0f;
+    pOut->_34 = 0.0f;
+    pOut->_44 = 1.0f;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixLookAtRH(D3DMATRIX* pOut, const D3DXVECTOR3* pEye, const D3DXVECTOR3* pAt, const D3DXVECTOR3* pUp) {
+    if (!pOut || !pEye || !pAt || !pUp) return nullptr;
+    
+    // Calculate look direction (negated for RH)
+    D3DXVECTOR3 zaxis;
+    zaxis.x = pEye->x - pAt->x;
+    zaxis.y = pEye->y - pAt->y;
+    zaxis.z = pEye->z - pAt->z;
+    D3DXVec3Normalize(&zaxis, &zaxis);
+    
+    // Calculate right vector (cross product of up and look)
+    D3DXVECTOR3 xaxis;
+    D3DXVec3Cross(&xaxis, const_cast<D3DXVECTOR3*>(pUp), &zaxis);
+    D3DXVec3Normalize(&xaxis, &xaxis);
+    
+    // Calculate actual up vector (cross product of look and right)
+    D3DXVECTOR3 yaxis;
+    D3DXVec3Cross(&yaxis, &zaxis, &xaxis);
+    
+    // Build the view matrix
+    pOut->_11 = xaxis.x;
+    pOut->_21 = xaxis.y;
+    pOut->_31 = xaxis.z;
+    pOut->_41 = -D3DXVec3Dot(&xaxis, pEye);
+    
+    pOut->_12 = yaxis.x;
+    pOut->_22 = yaxis.y;
+    pOut->_32 = yaxis.z;
+    pOut->_42 = -D3DXVec3Dot(&yaxis, pEye);
+    
+    pOut->_13 = zaxis.x;
+    pOut->_23 = zaxis.y;
+    pOut->_33 = zaxis.z;
+    pOut->_43 = -D3DXVec3Dot(&zaxis, pEye);
+    
+    pOut->_14 = 0.0f;
+    pOut->_24 = 0.0f;
+    pOut->_34 = 0.0f;
+    pOut->_44 = 1.0f;
+    
+    return pOut;
+}
+
 // Vector operations
 float WINAPI D3DXVec3Length(const D3DXVECTOR3* pV) {
     if (!pV) return 0.0f;

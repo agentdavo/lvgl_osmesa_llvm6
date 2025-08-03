@@ -306,6 +306,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/vao_manager.h \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/iostream \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/glm.hpp \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/detail/_fixes.hpp \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/detail/setup.hpp \

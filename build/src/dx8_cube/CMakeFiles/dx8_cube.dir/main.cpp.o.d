@@ -198,228 +198,6 @@ src/dx8_cube/CMakeFiles/dx8_cube.dir/main.cpp.o: \
  /usr/include/c++/13/bits/locale_conv.h \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/sstream \
  /usr/include/c++/13/bits/sstream.tcc \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/glm.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/_fixes.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/setup.hpp \
- /usr/include/c++/13/cassert /usr/include/assert.h \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/../simd/platform.h \
- /usr/include/c++/13/climits \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/13/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/fwd.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/qualifier.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/vec2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_bool2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_vec2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_vec2.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/./compute_vector_relational.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/./setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_bool2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_float2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_float2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_double2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_double2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_int2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_int2_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../ext/scalar_int_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../ext/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_uint2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_uint2_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../ext/scalar_uint_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/vec3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_bool3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_vec3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_vec3.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/compute_vector_decl.hpp \
- /usr/include/c++/13/functional /usr/include/c++/13/bits/std_function.h \
- /usr/include/c++/13/unordered_map \
- /usr/include/c++/13/bits/unordered_map.h \
- /usr/include/c++/13/bits/hashtable.h \
- /usr/include/c++/13/bits/hashtable_policy.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/vector \
- /usr/include/c++/13/bits/stl_uninitialized.h \
- /usr/include/c++/13/bits/stl_vector.h \
- /usr/include/c++/13/bits/stl_bvector.h \
- /usr/include/c++/13/bits/vector.tcc /usr/include/c++/13/array \
- /usr/include/c++/13/compare /usr/include/c++/13/bits/stl_algo.h \
- /usr/include/c++/13/bits/algorithmfwd.h \
- /usr/include/c++/13/bits/stl_heap.h \
- /usr/include/c++/13/bits/uniform_int_dist.h \
- /usr/include/c++/13/bits/stl_tempbuf.h \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/_vectorize.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_bool3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_float3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_float3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_double3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_double3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_int3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_int3_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_uint3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_uint3_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/vec4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_bool4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_vec4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_vec4.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_bool4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_float4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_float4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_double4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_double4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_int4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_int4_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_uint4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/vector_uint4_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/mat2x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/matrix_double2x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_mat2x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/type_mat2x2.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../matrix.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat2x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat2x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat3x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat3x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../common.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/_fixes.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/func_common.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/../vector_relational.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/../detail/func_vector_relational.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/compute_common.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/type_vec1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/type_vec1.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat3x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat4x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat4x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../mat4x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../geometric.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/func_geometric.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/../exponential.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/../detail/../detail/../detail/func_exponential.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/../detail/../detail/func_matrix.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/matrix_double2x2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/matrix_float2x2.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/./ext/matrix_float2x2_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/trigonometric.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/func_trigonometric.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/packing.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/func_packing.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/type_half.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/type_half.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/integer.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/detail/func_integer.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/matrix_transform.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/matrix_projection.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/../gtc/constants.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/../gtc/constants.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/matrix_projection.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/matrix_clip_space.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/matrix_clip_space.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/matrix_transform.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../ext/matrix_transform.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/matrix_transform.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/type_ptr.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/quaternion.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_relational.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_relational.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_common.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_common.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_float.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_double.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/quaternion_transform.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/quaternion.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/epsilon.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../detail/setup.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/epsilon.inl \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/vec1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_bool1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_float1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_double1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_int1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_uint1.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/glm/glm/gtc/type_ptr.inl \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/lvgl.h \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/lv_version.h \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/lv_init.h \
@@ -430,6 +208,14 @@ src/dx8_cube/CMakeFiles/dx8_cube.dir/main.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/../lv_conf_internal.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /usr/include/inttypes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/lv_mem.h \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/../lv_conf_internal.h \
  /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/lv_string.h \
@@ -865,4 +651,5 @@ src/dx8_cube/CMakeFiles/dx8_cube.dir/main.cpp.o: \
  /usr/include/c++/13/math.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8_core.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_game.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/../ext/dx8gl/src/d3dx_compat.h
