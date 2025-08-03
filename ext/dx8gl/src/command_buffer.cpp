@@ -11,6 +11,8 @@
 #include "vao_manager.h"
 #include <cstring>
 #include <algorithm>
+#include <cstdio>
+#include <iostream>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
@@ -61,6 +63,134 @@ void CommandBuffer::execute(StateManager& state_manager,
     
     DX8GL_TRACE("Executing command buffer with %zu commands (%zu bytes)", 
                 command_count_, write_pos_);
+    
+    // Log command buffer to file
+    static int frame_number = 0;
+    static bool enable_logging = true;
+    
+    if (enable_logging && frame_number < 10) {
+        char filename[256];
+        snprintf(filename, sizeof(filename), "dx8gl_commands_frame_%04d.txt", frame_number);
+        FILE* log_file = fopen(filename, "w");
+        
+        if (log_file) {
+            fprintf(log_file, "=== DX8GL Command Buffer Frame %d ===\n", frame_number);
+            fprintf(log_file, "Buffer size: %zu bytes, Command count: %zu\n\n", write_pos_, command_count_);
+            
+            const uint8_t* log_ptr = buffer_.data();
+            const uint8_t* log_end = buffer_.data() + write_pos_;
+            size_t log_cmd_index = 0;
+            
+            while (log_ptr < log_end) {
+                const Command* log_cmd = reinterpret_cast<const Command*>(log_ptr);
+                
+                fprintf(log_file, "[%03zu] ", log_cmd_index);
+                
+                switch (log_cmd->type) {
+                    case CommandType::CLEAR: {
+                        const ClearCmd* clear = static_cast<const ClearCmd*>(log_cmd);
+                        fprintf(log_file, "CLEAR: flags=0x%08X color=0x%08X z=%.3f stencil=%u\n",
+                                clear->flags, clear->color, clear->z, clear->stencil);
+                        fprintf(log_file, "      → glClear(");
+                        bool first = true;
+                        if (clear->flags & D3DCLEAR_TARGET) {
+                            fprintf(log_file, "GL_COLOR_BUFFER_BIT");
+                            first = false;
+                        }
+                        if (clear->flags & D3DCLEAR_ZBUFFER) {
+                            if (!first) fprintf(log_file, " | ");
+                            fprintf(log_file, "GL_DEPTH_BUFFER_BIT");
+                            first = false;
+                        }
+                        if (clear->flags & D3DCLEAR_STENCIL) {
+                            if (!first) fprintf(log_file, " | ");
+                            fprintf(log_file, "GL_STENCIL_BUFFER_BIT");
+                        }
+                        fprintf(log_file, ")\n");
+                        break;
+                    }
+                    
+                    case CommandType::SET_RENDER_STATE: {
+                        const SetRenderStateCmd* rs = static_cast<const SetRenderStateCmd*>(log_cmd);
+                        fprintf(log_file, "SET_RENDER_STATE: state=%u value=%u\n", rs->state, rs->value);
+                        break;
+                    }
+                    
+                    case CommandType::SET_TRANSFORM: {
+                        const SetTransformCmd* transform = static_cast<const SetTransformCmd*>(log_cmd);
+                        const char* transform_name = "UNKNOWN";
+                        switch (transform->state) {
+                            case D3DTS_WORLD: transform_name = "WORLD"; break;
+                            case D3DTS_VIEW: transform_name = "VIEW"; break;
+                            case D3DTS_PROJECTION: transform_name = "PROJECTION"; break;
+                            default: break;
+                        }
+                        fprintf(log_file, "SET_TRANSFORM: %s\n", transform_name);
+                        fprintf(log_file, "      → glUniformMatrix4fv(u_%s)\n", transform_name);
+                        fprintf(log_file, "        Matrix: [%.3f %.3f %.3f %.3f]\n", 
+                                transform->matrix._11, transform->matrix._12, transform->matrix._13, transform->matrix._14);
+                        fprintf(log_file, "                [%.3f %.3f %.3f %.3f]\n",
+                                transform->matrix._21, transform->matrix._22, transform->matrix._23, transform->matrix._24);
+                        fprintf(log_file, "                [%.3f %.3f %.3f %.3f]\n",
+                                transform->matrix._31, transform->matrix._32, transform->matrix._33, transform->matrix._34);
+                        fprintf(log_file, "                [%.3f %.3f %.3f %.3f]\n",
+                                transform->matrix._41, transform->matrix._42, transform->matrix._43, transform->matrix._44);
+                        break;
+                    }
+                    
+                    case CommandType::SET_STREAM_SOURCE: {
+                        const SetStreamSourceCmd* stream = static_cast<const SetStreamSourceCmd*>(log_cmd);
+                        fprintf(log_file, "SET_STREAM_SOURCE: stream=%u buffer=0x%lX stride=%u\n",
+                                stream->stream, stream->vertex_buffer, stream->stride);
+                        fprintf(log_file, "      → glBindBuffer(GL_ARRAY_BUFFER, ...)\n");
+                        break;
+                    }
+                    
+                    case CommandType::SET_INDICES: {
+                        const SetIndicesCmd* indices = static_cast<const SetIndicesCmd*>(log_cmd);
+                        fprintf(log_file, "SET_INDICES: buffer=0x%lX base_vertex=%u\n",
+                                indices->index_buffer, indices->base_vertex_index);
+                        fprintf(log_file, "      → glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ...)\n");
+                        break;
+                    }
+                    
+                    case CommandType::DRAW_INDEXED_PRIMITIVE: {
+                        const DrawIndexedPrimitiveCmd* draw = static_cast<const DrawIndexedPrimitiveCmd*>(log_cmd);
+                        fprintf(log_file, "DRAW_INDEXED_PRIMITIVE: type=%d min_idx=%u num_verts=%u start_idx=%u prim_count=%u\n",
+                                draw->primitive_type, draw->min_index, draw->num_vertices, 
+                                draw->start_index, draw->primitive_count);
+                        fprintf(log_file, "      → glDrawElements(GL_TRIANGLES, %u, GL_UNSIGNED_SHORT, ...)\n",
+                                draw->primitive_count * 3);
+                        break;
+                    }
+                    
+                    case CommandType::SET_VIEWPORT: {
+                        const SetViewportCmd* vp = static_cast<const SetViewportCmd*>(log_cmd);
+                        fprintf(log_file, "SET_VIEWPORT: x=%u y=%u w=%u h=%u minZ=%.3f maxZ=%.3f\n",
+                                vp->viewport.X, vp->viewport.Y, vp->viewport.Width, vp->viewport.Height,
+                                vp->viewport.MinZ, vp->viewport.MaxZ);
+                        fprintf(log_file, "      → glViewport(%u, %u, %u, %u)\n",
+                                vp->viewport.X, vp->viewport.Y, vp->viewport.Width, vp->viewport.Height);
+                        break;
+                    }
+                    
+                    default:
+                        fprintf(log_file, "CommandType %d (size=%u)\n", (int)log_cmd->type, log_cmd->size);
+                        break;
+                }
+                
+                log_ptr += log_cmd->size;
+                log_cmd_index++;
+            }
+            
+            fprintf(log_file, "\n=== End of Command Buffer ===\n");
+            fclose(log_file);
+            
+            std::cout << "Saved command buffer to " << filename << std::endl;
+        }
+        
+        frame_number++;
+    }
     
     // OSMesa context is always current
     

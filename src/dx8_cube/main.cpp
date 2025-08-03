@@ -4,11 +4,6 @@
 #include <chrono>
 #include <iomanip>
 
-// GLM headers for matrix operations
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 // LVGL headers
 #include "lvgl/lvgl.h"
 #include "lvgl_platform.h"
@@ -137,7 +132,10 @@ static bool init_d3d() {
     // Set up render states
     g_pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
     g_pDevice->SetRenderState(D3DRS_ZENABLE, TRUE);   // Enable depth testing 
-    g_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_NONE);  // Disable culling to see all faces
+    g_pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE); // Enable depth writing
+    g_pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL); // Depth comparison
+    g_pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);  // Enable proper culling
+    g_pDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID); // Solid fill
     g_pDevice->SetRenderState(D3DRS_SHADEMODE, D3DSHADE_GOURAUD);
     g_pDevice->SetRenderState(D3DRS_DITHERENABLE, TRUE);
     
@@ -204,50 +202,49 @@ static void glm_to_d3d_matrix(const glm::mat4& src, D3DMATRIX* dst) {
 }
 
 static void set_matrices() {
-    // Use identity matrices like dx8_ndc_test which works
-    D3DMATRIX identity;
-    memset(&identity, 0, sizeof(identity));
-    identity._11 = identity._22 = identity._33 = identity._44 = 1.0f;
+    static int matrix_debug = 0;
+    bool debug_this_frame = (matrix_debug < 3);
     
-    // Apply simple rotation in world matrix
+    // Create rotation matrix for the cube
     float c = cos(g_rotation);
     float s = sin(g_rotation);
-    D3DMATRIX world = identity;
-    world._11 = c;
-    world._13 = -s;
-    world._31 = s;
-    world._33 = c;
     
-    g_pDevice->SetTransform(D3DTS_WORLD, &world);
-    g_pDevice->SetTransform(D3DTS_VIEW, &identity);
-    g_pDevice->SetTransform(D3DTS_PROJECTION, &identity);
+    // World matrix - scale down and rotate for better view
+    glm::mat4 world = glm::mat4(1.0f);
+    world = glm::scale(world, glm::vec3(0.4f, 0.4f, 0.4f)); // 40% scale
+    world = glm::rotate(world, g_rotation, glm::vec3(0.0f, 1.0f, 0.0f));
+    world = glm::rotate(world, glm::radians(25.0f), glm::vec3(1.0f, 0.0f, 0.0f)); // Slight tilt
+    
+    // View matrix - simple camera back and slightly elevated
+    glm::mat4 view = glm::lookAt(
+        glm::vec3(0.0f, 0.8f, 2.0f),  // Eye position
+        glm::vec3(0.0f, 0.0f, 0.0f),  // Look at origin
+        glm::vec3(0.0f, 1.0f, 0.0f)   // Up vector
+    );
+    
+    // Projection matrix - perspective view
+    glm::mat4 projection = glm::perspective(
+        glm::radians(50.0f),  // Moderate field of view
+        1.0f,                 // Aspect ratio (400x400)
+        0.1f,                 // Near plane
+        10.0f                 // Far plane
+    );
+    
+    // Convert to D3D matrices and set
+    D3DMATRIX d3d_world, d3d_view, d3d_proj;
+    glm_to_d3d_matrix(world, &d3d_world);
+    glm_to_d3d_matrix(view, &d3d_view);
+    glm_to_d3d_matrix(projection, &d3d_proj);
+    
+    g_pDevice->SetTransform(D3DTS_WORLD, &d3d_world);
+    g_pDevice->SetTransform(D3DTS_VIEW, &d3d_view);
+    g_pDevice->SetTransform(D3DTS_PROJECTION, &d3d_proj);
     
     if (debug_this_frame) {
         std::cout << "\n=== Matrix Debug Frame " << matrix_debug << " ===" << std::endl;
         std::cout << "Rotation: " << g_rotation << " radians" << std::endl;
-        
-        // Print world matrix
-        std::cout << "World Matrix:" << std::endl;
-        for (int i = 0; i < 4; i++) {
-            std::cout << "  [" 
-                      << std::fixed << std::setprecision(2) << std::setw(6) << matWorld[i][0] << ", "
-                      << std::fixed << std::setprecision(2) << std::setw(6) << matWorld[i][1] << ", "
-                      << std::fixed << std::setprecision(2) << std::setw(6) << matWorld[i][2] << ", "
-                      << std::fixed << std::setprecision(2) << std::setw(6) << matWorld[i][3] << "]" << std::endl;
-        }
-        
-        // Test transform a vertex (scaled down cube)
-        glm::vec4 testVertex(0.5f, 0.5f, -0.5f, 1.0f);  // Top-right-front vertex
-        glm::vec4 worldPos = matWorld * testVertex;
-        glm::vec4 viewPos = matView * worldPos;
-        glm::vec4 projPos = matProj * viewPos;
-        
-        std::cout << "Test vertex (1,1,-1):" << std::endl;
-        std::cout << "  World space: " << worldPos.x << ", " << worldPos.y << ", " << worldPos.z << std::endl;
-        std::cout << "  View space: " << viewPos.x << ", " << viewPos.y << ", " << viewPos.z << std::endl;
-        std::cout << "  Proj space: " << projPos.x << ", " << projPos.y << ", " << projPos.z << ", w=" << projPos.w << std::endl;
-        std::cout << "  NDC: " << projPos.x/projPos.w << ", " << projPos.y/projPos.w << ", " << projPos.z/projPos.w << std::endl;
-        
+        std::cout << "Camera at (0, 0.8, 2.0) looking at origin, cube scaled to 40%" << std::endl;
+        std::cout << "Perspective projection: 50 degree FOV" << std::endl;
         matrix_debug++;
     }
 }
@@ -378,22 +375,23 @@ static void update_canvas() {
         debug_count++;
     }
     
-    // Convert from RGBA to LVGL native format
+    // Convert from RGBA to LVGL native format (XRGB8888 = BGRX in memory)
     uint8_t* src = (uint8_t*)framebuffer;
-    lv_color_t* dst = g_canvas_buf;
+    uint8_t* dst = (uint8_t*)g_canvas_buf;
     
     // OSMesa renders upside down, so flip vertically
     for (int y = 0; y < CANVAS_HEIGHT; y++) {
         for (int x = 0; x < CANVAS_WIDTH; x++) {
             int src_y = CANVAS_HEIGHT - 1 - y;
             int src_idx = (src_y * CANVAS_WIDTH + x) * 4;
-            int dst_idx = y * CANVAS_WIDTH + x;
+            int dst_idx = (y * CANVAS_WIDTH + x) * 4;
             
-            uint8_t r = src[src_idx + 0];
-            uint8_t g = src[src_idx + 1];
-            uint8_t b = src[src_idx + 2];
-            
-            dst[dst_idx] = lv_color_make(r, g, b);
+            // OSMesa: RGBA -> LVGL XRGB8888: BGRX
+            // Shader now outputs correct RGBA after swizzling from BGRA
+            dst[dst_idx + 0] = src[src_idx + 2];  // B
+            dst[dst_idx + 1] = src[src_idx + 1];  // G
+            dst[dst_idx + 2] = src[src_idx + 0];  // R
+            dst[dst_idx + 3] = 0xFF;               // X (unused alpha)
         }
     }
     

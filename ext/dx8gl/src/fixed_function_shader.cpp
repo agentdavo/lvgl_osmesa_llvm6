@@ -267,7 +267,9 @@ std::string FixedFunctionShader::generate_fragment_shader(const FixedFunctionSta
     
     // Start with vertex color if available
     if (state.vertex_format & D3DFVF_DIFFUSE) {
-        ss << "    color = v_color;\n";
+        // DirectX stores ARGB as 0xAARRGGBB which in little-endian memory becomes BGRA bytes
+        // OpenGL reads this as BGRA, so we need to swizzle to RGBA
+        ss << "    color = v_color.bgra;\n";
     }
     
     // Apply lighting

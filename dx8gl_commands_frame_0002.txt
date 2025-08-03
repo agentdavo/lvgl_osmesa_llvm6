@@ -1,0 +1,31 @@
+=== DX8GL Command Buffer Frame 2 ===
+Buffer size: 340 bytes, Command count: 7
+
+[000] CLEAR: flags=0x00000003 color=0xFF404080 z=1.000 stencil=0
+      → glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+[001] SET_TRANSFORM: WORLD
+      → glUniformMatrix4fv(u_WORLD)
+        Matrix: [0.400 0.007 0.014 0.000]
+                [0.000 0.363 -0.169 0.000]
+                [-0.016 0.169 0.362 0.000]
+                [0.000 0.000 0.000 1.000]
+[002] SET_TRANSFORM: VIEW
+      → glUniformMatrix4fv(u_VIEW)
+        Matrix: [1.000 -0.000 0.000 -0.000]
+                [0.000 0.928 -0.371 -0.000]
+                [-0.000 0.371 0.928 -2.154]
+                [0.000 0.000 0.000 1.000]
+[003] SET_TRANSFORM: PROJECTION
+      → glUniformMatrix4fv(u_PROJECTION)
+        Matrix: [2.145 0.000 0.000 0.000]
+                [0.000 2.145 0.000 0.000]
+                [0.000 0.000 -1.020 -0.202]
+                [0.000 0.000 -1.000 0.000]
+[004] SET_STREAM_SOURCE: stream=0 buffer=0x5E1AD0327B00 stride=16
+      → glBindBuffer(GL_ARRAY_BUFFER, ...)
+[005] SET_INDICES: buffer=0x5E1ACDE97050 base_vertex=0
+      → glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ...)
+[006] DRAW_INDEXED_PRIMITIVE: type=4 min_idx=0 num_verts=24 start_idx=0 prim_count=12
+      → glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, ...)
+
+=== End of Command Buffer ===
