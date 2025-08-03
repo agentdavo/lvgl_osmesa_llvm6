@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/lvgl_hello.dir/main.cpp.o -o lvgl_hello  ../lvgl_platform/liblvgl_platform.a ../../liblvgl.a /usr/lib/x86_64-linux-gnu/libSDL2.so /usr/lib/x86_64-linux-gnu/libSM.so /usr/lib/x86_64-linux-gnu/libICE.so /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
