@@ -681,4 +681,5 @@ src/lvgl_platform/CMakeFiles/lvgl_platform.dir/lvgl_platform.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h
+ /usr/include/SDL2/SDL_misc.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/x11/lv_x11.h

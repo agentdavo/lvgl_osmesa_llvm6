@@ -536,6 +536,30 @@ src/dx8gl.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/dx8gl.cpp.s
 .PHONY : src/dx8gl.cpp.s
 
+src/egl_backend.o: src/egl_backend.cpp.o
+.PHONY : src/egl_backend.o
+
+# target to build an object file
+src/egl_backend.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/egl_backend.cpp.o
+.PHONY : src/egl_backend.cpp.o
+
+src/egl_backend.i: src/egl_backend.cpp.i
+.PHONY : src/egl_backend.i
+
+# target to preprocess a source file
+src/egl_backend.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/egl_backend.cpp.i
+.PHONY : src/egl_backend.cpp.i
+
+src/egl_backend.s: src/egl_backend.cpp.s
+.PHONY : src/egl_backend.s
+
+# target to generate assembly for a file
+src/egl_backend.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/egl_backend.cpp.s
+.PHONY : src/egl_backend.cpp.s
+
 src/fixed_function_shader.o: src/fixed_function_shader.cpp.o
 .PHONY : src/fixed_function_shader.o
 
@@ -1122,6 +1146,9 @@ help:
 	@echo "... src/dx8gl.o"
 	@echo "... src/dx8gl.i"
 	@echo "... src/dx8gl.s"
+	@echo "... src/egl_backend.o"
+	@echo "... src/egl_backend.i"
+	@echo "... src/egl_backend.s"
 	@echo "... src/fixed_function_shader.o"
 	@echo "... src/fixed_function_shader.i"
 	@echo "... src/fixed_function_shader.s"

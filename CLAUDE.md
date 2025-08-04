@@ -19,6 +19,7 @@ The todo list is critical for project organization and helps track complex multi
 This project combines LLVM, Mesa (OSMesa), LVGL, and dx8gl to create GUI applications with software-based OpenGL rendering. It demonstrates:
 - LVGL windows containing OpenGL-rendered content using OSMesa for off-screen rendering
 - DirectX 8 API compatibility through dx8gl translation layer
+- **Flexible rendering backends**: Switch between OSMesa (software) and EGL (hardware) at runtime
 - Texture loading from TGA files with full mipmap generation
 - Fixed vertex attribute binding for texture coordinates
 - Integration with GLM for modern C++ matrix operations
@@ -78,6 +79,9 @@ git submodule update --init --recursive
 # Set parallel jobs (default: 8)
 ./scripts/compile.sh -j 4 all
 
+# Enable EGL backend support
+./scripts/compile.sh -e all
+
 # Check build status
 ./scripts/compile.sh status
 ```
@@ -95,6 +99,13 @@ LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu \
   build/src/dx8_cube/dx8_cube
 
 # dx8_cube now exits gracefully after 100 frames (no timeout needed)
+
+# Run with different rendering backends
+DX8GL_BACKEND=osmesa ./scripts/run_dx8_cube.sh  # Software rendering (default)
+DX8GL_BACKEND=egl ./scripts/run_dx8_cube.sh     # Hardware acceleration (requires -e build)
+
+# Run EGL backend test (requires -e build)
+./scripts/run_egl_test.sh
 ```
 
 ## Architecture Overview
@@ -113,7 +124,9 @@ LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu \
   - Canvas widget for displaying OpenGL framebuffers
 - **dx8gl**: DirectX 8.1 to OpenGL 3.3 Core translation layer
   - Allows legacy DirectX 8 code to run on OpenGL
-  - Integrated with OSMesa for software rendering
+  - **Backend abstraction**: Switch between OSMesa and EGL at runtime
+  - OSMesa backend for software rendering
+  - EGL backend for hardware acceleration via surfaceless context
 - **GLM**: Header-only C++ mathematics library for graphics programming
 - **Platform Layer**: C++ abstraction (`src/lvgl_platform/`) providing unified LVGL backend interface
 
@@ -169,6 +182,42 @@ build/
 - Uses custom Meson native file with Fedora security flags
 - Static library build for easier distribution
 - No Vulkan, VA-API, VDPAU, or other acceleration APIs
+
+## Rendering Backend System
+
+### Backend Architecture
+The dx8gl library supports multiple rendering backends through a clean abstraction interface:
+
+```cpp
+// Select backend at runtime
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_EGL;  // or DX8GL_BACKEND_OSMESA
+dx8gl_init(&config);
+```
+
+### Available Backends
+1. **OSMesa Backend** (Default)
+   - Pure software rendering using Mesa's llvmpipe
+   - No GPU or display required
+   - Consistent behavior across all systems
+   - Ideal for testing and CI/CD environments
+
+2. **EGL Backend** (Optional)
+   - Hardware-accelerated rendering via EGL surfaceless context
+   - Requires EGL 1.5+ with surfaceless context extension
+   - Significantly better performance when GPU is available
+   - Falls back gracefully if not available
+
+### Backend Selection Methods
+```bash
+# Environment variable
+export DX8GL_BACKEND=egl
+
+# Command line argument
+export DX8GL_ARGS="--backend=egl"
+
+# API configuration (shown above)
+```
 
 ## Known Issues and Solutions
 

@@ -204,6 +204,20 @@ test_indexed_xyzrhw/fast:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/build
 .PHONY : test_indexed_xyzrhw/fast
 
+# Convenience name for target.
+src/CMakeFiles/test_loading_screen.dir/rule:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_loading_screen.dir/rule
+.PHONY : src/CMakeFiles/test_loading_screen.dir/rule
+
+# Convenience name for target.
+test_loading_screen: src/CMakeFiles/test_loading_screen.dir/rule
+.PHONY : test_loading_screen
+
+# fast build rule for target.
+test_loading_screen/fast:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/build
+.PHONY : test_loading_screen/fast
+
 test_indexed_xyzrhw.o: test_indexed_xyzrhw.cpp.o
 .PHONY : test_indexed_xyzrhw.o
 
@@ -227,6 +241,30 @@ test_indexed_xyzrhw.s: test_indexed_xyzrhw.cpp.s
 test_indexed_xyzrhw.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/test_indexed_xyzrhw.cpp.s
 .PHONY : test_indexed_xyzrhw.cpp.s
+
+test_loading_screen.o: test_loading_screen.cpp.o
+.PHONY : test_loading_screen.o
+
+# target to build an object file
+test_loading_screen.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/test_loading_screen.cpp.o
+.PHONY : test_loading_screen.cpp.o
+
+test_loading_screen.i: test_loading_screen.cpp.i
+.PHONY : test_loading_screen.i
+
+# target to preprocess a source file
+test_loading_screen.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/test_loading_screen.cpp.i
+.PHONY : test_loading_screen.cpp.i
+
+test_loading_screen.s: test_loading_screen.cpp.s
+.PHONY : test_loading_screen.s
+
+# target to generate assembly for a file
+test_loading_screen.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/test_loading_screen.cpp.s
+.PHONY : test_loading_screen.cpp.s
 
 test_mixed_vertices.o: test_mixed_vertices.cpp.o
 .PHONY : test_mixed_vertices.o
@@ -289,11 +327,15 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test_indexed_xyzrhw"
+	@echo "... test_loading_screen"
 	@echo "... test_mixed_vertices"
 	@echo "... test_xyzrhw"
 	@echo "... test_indexed_xyzrhw.o"
 	@echo "... test_indexed_xyzrhw.i"
 	@echo "... test_indexed_xyzrhw.s"
+	@echo "... test_loading_screen.o"
+	@echo "... test_loading_screen.i"
+	@echo "... test_loading_screen.s"
 	@echo "... test_mixed_vertices.o"
 	@echo "... test_mixed_vertices.i"
 	@echo "... test_mixed_vertices.s"

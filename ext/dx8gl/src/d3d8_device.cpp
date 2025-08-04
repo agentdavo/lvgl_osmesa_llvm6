@@ -12,10 +12,7 @@
 #include <cstring>
 #include <cstdlib>
 
-// External render backend from dx8gl.cpp
-namespace dx8gl {
-    extern std::unique_ptr<DX8RenderBackend> g_render_backend;
-}
+// No need for extern declaration - we use get_render_backend() function
 
 // Include OpenGL headers - order is important!
 #ifdef DX8GL_HAS_OSMESA
@@ -218,7 +215,7 @@ bool Direct3DDevice8::initialize() {
     int height = present_params_.BackBufferHeight ? present_params_.BackBufferHeight : 600;
     
     // Use the global render backend instead of creating our own context
-    render_backend_ = get_render_backend();
+    render_backend_ = dx8gl::get_render_backend();
     if (!render_backend_) {
         DX8GL_ERROR("No render backend available. Call dx8gl_init() first.");
         return false;
@@ -350,7 +347,7 @@ bool Direct3DDevice8::complete_deferred_osmesa_init() {
     int height = present_params_.BackBufferHeight ? present_params_.BackBufferHeight : 600;
     
     // Use the global render backend
-    render_backend_ = get_render_backend();
+    render_backend_ = dx8gl::get_render_backend();
     if (!render_backend_) {
         DX8GL_ERROR("No render backend available. Call dx8gl_init() first.");
         return false;

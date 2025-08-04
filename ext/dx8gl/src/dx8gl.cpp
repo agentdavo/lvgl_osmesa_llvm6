@@ -282,15 +282,12 @@ void* dx8gl_get_shared_framebuffer(int* width, int* height, int* frame_number, b
         return nullptr;
     }
     
-    // Get OSMesa framebuffer from the device
-    void* framebuffer = device->get_osmesa_framebuffer();
+    // Get framebuffer from the device (which uses the render backend)
+    int fb_width = 0, fb_height = 0, format = 0;
+    void* framebuffer = device->get_framebuffer(&fb_width, &fb_height, &format);
     if (!framebuffer) {
         return nullptr;
     }
-    
-    // Get dimensions from device
-    int fb_width = 0, fb_height = 0;
-    device->get_osmesa_dimensions(&fb_width, &fb_height);
     
     // Check for OpenGL errors and show blue screen if needed
     GLenum gl_error = glGetError();

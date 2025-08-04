@@ -1,0 +1,59 @@
+[INFO ] dx8gl.cpp:120 in dx8gl_init(): Selected OSMesa backend from environment
+[INFO ] render_backend.cpp:12 in create_render_backend(): Creating OSMesa rendering backend
+[INFO ] osmesa_backend.cpp:31 in initialize(): Initializing OSMesa backend 800x600
+[INFO ] osmesa_backend.cpp:34 in initialize(): Attempting to create OpenGL 4.5 Core context with OSMesaCreateContextAttribs
+[INFO ] osmesa_backend.cpp:112 in initialize(): OSMesa version: 11.2.0
+[INFO ] osmesa_backend.cpp:113 in initialize(): OSMesa context: 800x600 (max: 16384x16384)
+[INFO ] osmesa_backend.cpp:114 in initialize(): Actual OpenGL context: version 4.5, profile mask=0x1
+[INFO ] osmesa_backend.cpp:122 in initialize(): === OSMesa Backend OpenGL Capabilities ===
+[INFO ] osmesa_backend.cpp:123 in initialize(): OpenGL vendor: Mesa
+[INFO ] osmesa_backend.cpp:124 in initialize(): OpenGL renderer: llvmpipe (LLVM 20.1.8, 256 bits)
+[INFO ] osmesa_backend.cpp:125 in initialize(): OpenGL version: 4.5 (Core Profile) Mesa 25.0.7 (git-742a20f48c)
+[INFO ] osmesa_backend.cpp:126 in initialize(): GLSL version: 4.50
+[INFO ] osmesa_backend.cpp:129 in initialize(): Initializing OpenGL function pointers via OSMesaGetProcAddress
+[INFO ] osmesa_gl_loader.cpp:58 in InitializeOSMesaGL(): Initializing OSMesa GL function pointers
+[INFO ] osmesa_gl_loader.cpp:119 in InitializeOSMesaGL(): Successfully loaded all OSMesa GL function pointers
+[INFO ] dx8gl.cpp:140 in dx8gl_init(): dx8gl initialized
+[INFO ] dx8gl.cpp:56 in Direct3DCreate8_CPP(): Direct3DCreate8 called with SDK version 120
+[INFO ] d3d8_interface.cpp:43 in initialize(): Initializing Direct3D8 interface
+[INFO ] d3d8_interface.cpp:45 in initialize(): Using OSMesa-only software rendering (no EGL complexity)
+[INFO ] d3d8_interface.cpp:564 in enumerate_adapters(): Enumerating adapters for OSMesa mode
+[INFO ] d3d8_interface.cpp:565 in enumerate_adapters():   - OSMesa provides software rendering via llvmpipe
+[INFO ] d3d8_interface.cpp:566 in enumerate_adapters():   - Simulating 1 adapter (no actual hardware enumeration)
+[INFO ] d3d8_interface.cpp:567 in enumerate_adapters():   - Adapter 0: OSMesa Software Renderer
+[INFO ] d3d8_interface.cpp:568 in enumerate_adapters():   - Vendor: Mesa/llvmpipe (fake ATI VendorId 0x1002)
+[INFO ] d3d8_interface.cpp:569 in enumerate_adapters():   - Device: Software Rasterizer (fake Radeon 7500 DeviceId 0x5159)
+[INFO ] d3d8_interface.cpp:575 in enumerate_adapters(): OSMesa adapter enumeration complete - 1 software adapter available
+[INFO ] dx8gl.cpp:65 in Direct3DCreate8_CPP(): Created IDirect3D8 interface at 0x576296104c00
+[INFO ] d3d8_interface.cpp:507 in CreateDevice(): CreateDevice() called with parameters:
+[INFO ] d3d8_interface.cpp:508 in CreateDevice():   Adapter: 0 (OSMesa software adapter)
+[INFO ] d3d8_interface.cpp:509 in CreateDevice():   DeviceType: HAL
+[INFO ] d3d8_interface.cpp:510 in CreateDevice():   Focus Window: (nil)
+[INFO ] d3d8_interface.cpp:511 in CreateDevice():   Behavior Flags: 0x00000020
+[INFO ] d3d8_interface.cpp:513 in CreateDevice():     - SOFTWARE_VERTEXPROCESSING
+[INFO ] d3d8_interface.cpp:527 in CreateDevice():   Present Parameters:
+[INFO ] d3d8_interface.cpp:528 in CreateDevice():     BackBuffer Size: 400x400
+[INFO ] d3d8_interface.cpp:531 in CreateDevice():     BackBuffer Format: 0x00000016
+[INFO ] d3d8_interface.cpp:532 in CreateDevice():     BackBuffer Count: 0
+[INFO ] d3d8_interface.cpp:533 in CreateDevice():     MultiSample Type: 0
+[INFO ] d3d8_interface.cpp:534 in CreateDevice():     SwapEffect: 1
+[INFO ] d3d8_interface.cpp:535 in CreateDevice():     Windowed: Yes
+[INFO ] d3d8_interface.cpp:536 in CreateDevice():     EnableAutoDepthStencil: Yes
+[INFO ] d3d8_interface.cpp:538 in CreateDevice():     AutoDepthStencilFormat: 0x0000004B
+[INFO ] d3d8_interface.cpp:540 in CreateDevice():     FullScreen_RefreshRateInHz: 0
+[INFO ] d3d8_interface.cpp:541 in CreateDevice():     FullScreen_PresentationInterval: 0x00000000
+[INFO ] d3d8_interface.cpp:544 in CreateDevice(): Creating Direct3DDevice8 instance...
+[INFO ] thread_pool.cpp:24 in ThreadPool(): Creating thread pool with 8 threads
+[INFO ] d3d8_device.cpp:110 in Direct3DDevice8(): Direct3DDevice8 created: adapter=0, type=1, flags=0x00000020
+[INFO ] d3d8_interface.cpp:547 in CreateDevice(): Direct3DDevice8 instance created at 0x576295f7a330
+[INFO ] d3d8_interface.cpp:549 in CreateDevice(): Initializing Direct3DDevice8...
+[INFO ] d3d8_device.cpp:206 in initialize(): Initializing Direct3DDevice8
+[INFO ] osmesa_backend.cpp:195 in resize(): Resizing OSMesa backend from 800x600 to 400x400
+[INFO ] d3d8_device.cpp:236 in initialize(): OSMesa backend initialized successfully
+[INFO ] d3d8_device.cpp:249 in initialize(): Actual OpenGL version: 4.5 (Core Profile) Mesa 25.0.7 (git-742a20f48c)
+[INFO ] d3d8_device.cpp:256 in initialize(): Using OpenGL 4.5 Core Profile - VAO required
+[INFO ] state_manager.cpp:23 in initialize(): Initializing state manager
+[INFO ] state_manager.cpp:468 in apply_render_states(): Applying render states, z_enable=1
+[INFO ] state_manager.cpp:478 in apply_render_states(): Enabled GL_DEPTH_TEST (was disabled)
+[INFO ] state_manager.cpp:532 in apply_render_states(): GL_CULL_FACE already in correct state: enabled
+[INFO ] d3d8_device.cpp:169 in set_default_global_render_states(): Setting default global render states

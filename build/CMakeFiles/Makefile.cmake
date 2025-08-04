@@ -20,8 +20,12 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/djs/lvgl_osmesa_llvm6/src/dx8_backend_test/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/dx8_cube/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/dx8_cube/wall01.tga"
+  "/home/djs/lvgl_osmesa_llvm6/src/egl_backend_test/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/lvgl_osmesa/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/lvgl_platform/CMakeLists.txt"
+  "/home/djs/lvgl_osmesa_llvm6/src/test_lvgl_canvas/CMakeLists.txt"
+  "/home/djs/lvgl_osmesa_llvm6/src/test_lvgl_platform/CMakeLists.txt"
+  "/home/djs/lvgl_osmesa_llvm6/src/test_static_canvas/CMakeLists.txt"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config-version.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/SDL2/sdl2-config.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCInformation.cmake"
@@ -92,6 +96,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/dx8_cube/wall01.tga"
   "src/dx8_cube/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/dx8_backend_test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/egl_backend_test/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/test_lvgl_platform/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/test_lvgl_canvas/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/test_static_canvas/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -103,8 +111,13 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/test_xyzrhw.dir/DependInfo.cmake"
   "src/CMakeFiles/test_mixed_vertices.dir/DependInfo.cmake"
   "src/CMakeFiles/test_indexed_xyzrhw.dir/DependInfo.cmake"
+  "src/CMakeFiles/test_loading_screen.dir/DependInfo.cmake"
   "src/lvgl_platform/CMakeFiles/lvgl_platform.dir/DependInfo.cmake"
   "src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/DependInfo.cmake"
   "src/dx8_cube/CMakeFiles/dx8_cube.dir/DependInfo.cmake"
   "src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/DependInfo.cmake"
+  "src/egl_backend_test/CMakeFiles/egl_backend_test.dir/DependInfo.cmake"
+  "src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/DependInfo.cmake"
+  "src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/DependInfo.cmake"
+  "src/test_static_canvas/CMakeFiles/test_static_canvas.dir/DependInfo.cmake"
   )

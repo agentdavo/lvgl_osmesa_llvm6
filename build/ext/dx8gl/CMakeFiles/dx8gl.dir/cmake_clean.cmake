@@ -29,6 +29,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dx8gl.dir/src/dx8_shader_translator.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/dx8gl.cpp.o"
   "CMakeFiles/dx8gl.dir/src/dx8gl.cpp.o.d"
+  "CMakeFiles/dx8gl.dir/src/egl_backend.cpp.o"
+  "CMakeFiles/dx8gl.dir/src/egl_backend.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/fixed_function_shader.cpp.o"
   "CMakeFiles/dx8gl.dir/src/fixed_function_shader.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/fvf_utils.cpp.o"

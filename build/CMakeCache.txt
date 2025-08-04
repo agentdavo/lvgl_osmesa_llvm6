@@ -231,7 +231,7 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Enable EGL backend support
-DX8GL_ENABLE_EGL:BOOL=OFF
+DX8GL_ENABLE_EGL:BOOL=ON
 
 //Path to a file.
 FREETYPE_INCLUDE_DIR_freetype2:PATH=/usr/include/freetype2
@@ -741,6 +741,15 @@ dx8gl_IS_TOP_LEVEL:STATIC=OFF
 dx8gl_SOURCE_DIR:STATIC=/home/djs/lvgl_osmesa_llvm6/ext/dx8gl
 
 //Value Computed by CMake
+egl_backend_test_BINARY_DIR:STATIC=/home/djs/lvgl_osmesa_llvm6/build/src/egl_backend_test
+
+//Value Computed by CMake
+egl_backend_test_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+egl_backend_test_SOURCE_DIR:STATIC=/home/djs/lvgl_osmesa_llvm6/src/egl_backend_test
+
+//Value Computed by CMake
 lvgl_osmesa_example_BINARY_DIR:STATIC=/home/djs/lvgl_osmesa_llvm6/build/src/lvgl_osmesa
 
 //Value Computed by CMake
@@ -760,6 +769,9 @@ lvgl_osmesa_llvm_SOURCE_DIR:STATIC=/home/djs/lvgl_osmesa_llvm6
 
 //Path to a library.
 pkgcfg_lib_EGL_EGL:FILEPATH=/usr/lib/x86_64-linux-gnu/libEGL.so
+
+//Path to a library.
+pkgcfg_lib_GLES2_GLESv2:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLESv2.so
 
 //Path to a library.
 pkgcfg_lib_GLES3_GLESv2:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLESv2.so
@@ -892,7 +904,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=11
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -992,6 +1004,41 @@ FREETYPE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 Fontconfig_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Fontconfig_LIBRARY
 Fontconfig_LIBRARY-ADVANCED:INTERNAL=1
+GLES2_CFLAGS:INTERNAL=-I/usr/include
+GLES2_CFLAGS_I:INTERNAL=
+GLES2_CFLAGS_OTHER:INTERNAL=
+GLES2_FOUND:INTERNAL=1
+GLES2_INCLUDEDIR:INTERNAL=/usr/include
+GLES2_INCLUDE_DIRS:INTERNAL=/usr/include
+GLES2_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lGLESv2
+GLES2_LDFLAGS_OTHER:INTERNAL=
+GLES2_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
+GLES2_LIBRARIES:INTERNAL=GLESv2
+GLES2_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+GLES2_LIBS:INTERNAL=
+GLES2_LIBS_L:INTERNAL=
+GLES2_LIBS_OTHER:INTERNAL=
+GLES2_LIBS_PATHS:INTERNAL=
+GLES2_MODULE_NAME:INTERNAL=glesv2
+GLES2_PREFIX:INTERNAL=/usr
+GLES2_STATIC_CFLAGS:INTERNAL=-I/usr/include
+GLES2_STATIC_CFLAGS_I:INTERNAL=
+GLES2_STATIC_CFLAGS_OTHER:INTERNAL=
+GLES2_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+GLES2_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/x86_64-linux-gnu;-lGLESv2
+GLES2_STATIC_LDFLAGS_OTHER:INTERNAL=
+GLES2_STATIC_LIBDIR:INTERNAL=
+GLES2_STATIC_LIBRARIES:INTERNAL=GLESv2
+GLES2_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/x86_64-linux-gnu
+GLES2_STATIC_LIBS:INTERNAL=
+GLES2_STATIC_LIBS_L:INTERNAL=
+GLES2_STATIC_LIBS_OTHER:INTERNAL=
+GLES2_STATIC_LIBS_PATHS:INTERNAL=
+GLES2_VERSION:INTERNAL=3.2
+GLES2_glesv2_INCLUDEDIR:INTERNAL=
+GLES2_glesv2_LIBDIR:INTERNAL=
+GLES2_glesv2_PREFIX:INTERNAL=
+GLES2_glesv2_VERSION:INTERNAL=
 GLES3_CFLAGS:INTERNAL=-I/usr/include
 GLES3_CFLAGS_I:INTERNAL=
 GLES3_CFLAGS_OTHER:INTERNAL=
@@ -1396,15 +1443,19 @@ X11_xkbfile_LIB-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 __pkg_config_arguments_EGL:INTERNAL=egl
+__pkg_config_arguments_GLES2:INTERNAL=glesv2
 __pkg_config_arguments_GLES3:INTERNAL=glesv2
 __pkg_config_arguments_GLU:INTERNAL=REQUIRED;glu
 __pkg_config_arguments_PKG_FONTCONFIG:INTERNAL=QUIET;fontconfig
 __pkg_config_checked_EGL:INTERNAL=1
+__pkg_config_checked_GLES2:INTERNAL=1
 __pkg_config_checked_GLES3:INTERNAL=1
 __pkg_config_checked_GLU:INTERNAL=1
 __pkg_config_checked_PKG_FONTCONFIG:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_EGL_EGL
 pkgcfg_lib_EGL_EGL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_GLES2_GLESv2
+pkgcfg_lib_GLES2_GLESv2-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_GLES3_GLESv2
 pkgcfg_lib_GLES3_GLESv2-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_GLU_GLU

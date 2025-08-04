@@ -27,3 +27,16 @@ add_subdirectory(dx8_backend_test)
 if(DX8GL_ENABLE_EGL)
     add_subdirectory(egl_backend_test)
 endif()
+
+# Test loading screen
+add_executable(test_loading_screen test_loading_screen.cpp)
+target_link_libraries(test_loading_screen PRIVATE lvgl)
+
+# Test LVGL platform
+add_subdirectory(test_lvgl_platform)
+
+# Test LVGL canvas
+add_subdirectory(test_lvgl_canvas)
+
+# Test static canvas
+add_subdirectory(test_static_canvas)

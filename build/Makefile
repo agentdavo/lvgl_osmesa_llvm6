@@ -254,6 +254,19 @@ test_indexed_xyzrhw/fast:
 .PHONY : test_indexed_xyzrhw/fast
 
 #=============================================================================
+# Target rules for targets named test_loading_screen
+
+# Build rule for target.
+test_loading_screen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_loading_screen
+.PHONY : test_loading_screen
+
+# fast build rule for target.
+test_loading_screen/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/build
+.PHONY : test_loading_screen/fast
+
+#=============================================================================
 # Target rules for targets named lvgl_platform
 
 # Build rule for target.
@@ -304,6 +317,58 @@ dx8_backend_test: cmake_check_build_system
 dx8_backend_test/fast:
 	$(MAKE) $(MAKESILENT) -f src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build.make src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build
 .PHONY : dx8_backend_test/fast
+
+#=============================================================================
+# Target rules for targets named egl_backend_test
+
+# Build rule for target.
+egl_backend_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 egl_backend_test
+.PHONY : egl_backend_test
+
+# fast build rule for target.
+egl_backend_test/fast:
+	$(MAKE) $(MAKESILENT) -f src/egl_backend_test/CMakeFiles/egl_backend_test.dir/build.make src/egl_backend_test/CMakeFiles/egl_backend_test.dir/build
+.PHONY : egl_backend_test/fast
+
+#=============================================================================
+# Target rules for targets named test_lvgl_platform
+
+# Build rule for target.
+test_lvgl_platform: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_lvgl_platform
+.PHONY : test_lvgl_platform
+
+# fast build rule for target.
+test_lvgl_platform/fast:
+	$(MAKE) $(MAKESILENT) -f src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/build.make src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/build
+.PHONY : test_lvgl_platform/fast
+
+#=============================================================================
+# Target rules for targets named test_lvgl_canvas
+
+# Build rule for target.
+test_lvgl_canvas: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_lvgl_canvas
+.PHONY : test_lvgl_canvas
+
+# fast build rule for target.
+test_lvgl_canvas/fast:
+	$(MAKE) $(MAKESILENT) -f src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/build.make src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/build
+.PHONY : test_lvgl_canvas/fast
+
+#=============================================================================
+# Target rules for targets named test_static_canvas
+
+# Build rule for target.
+test_static_canvas: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_static_canvas
+.PHONY : test_static_canvas
+
+# fast build rule for target.
+test_static_canvas/fast:
+	$(MAKE) $(MAKESILENT) -f src/test_static_canvas/CMakeFiles/test_static_canvas.dir/build.make src/test_static_canvas/CMakeFiles/test_static_canvas.dir/build
+.PHONY : test_static_canvas/fast
 
 ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o: ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o
 .PHONY : ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o
@@ -13762,11 +13827,16 @@ help:
 	@echo "... dx8_backend_test"
 	@echo "... dx8_cube"
 	@echo "... dx8gl"
+	@echo "... egl_backend_test"
 	@echo "... lvgl"
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
 	@echo "... test_indexed_xyzrhw"
+	@echo "... test_loading_screen"
+	@echo "... test_lvgl_canvas"
+	@echo "... test_lvgl_platform"
 	@echo "... test_mixed_vertices"
+	@echo "... test_static_canvas"
 	@echo "... test_xyzrhw"
 	@echo "... ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o"
 	@echo "... ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.i"

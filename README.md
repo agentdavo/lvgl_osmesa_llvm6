@@ -8,6 +8,9 @@ This project showcases:
 - **LVGL GUI Applications** with software-rendered 3D graphics
 - **OSMesa** (Off-Screen Mesa) for CPU-based OpenGL rendering without GPU
 - **DirectX 8 API** support through the dx8gl translation layer
+- **Flexible Rendering Backends** - Switch between OSMesa (software) and EGL (hardware) at runtime
+- **Loading Screen** - Professional 1-second loading animation before rendering starts
+- **Error Handling** - Graceful fallback screens when initialization fails
 - **Texture loading** from TGA files with full mipmap generation
 - **Cross-platform** support for X11 and SDL2 backends
 - **Modern C++** with GLM for matrix operations
@@ -23,6 +26,9 @@ cd lvgl_osmesa_llvm6
 # Build everything (takes 30-45 minutes due to LLVM)
 ./scripts/compile.sh all
 
+# Build with EGL backend support
+./scripts/compile.sh -e all      # Enable EGL backend
+
 # Or build components individually
 ./scripts/compile.sh llvm      # Build LLVM first (required)
 ./scripts/compile.sh mesa      # Then Mesa
@@ -33,6 +39,10 @@ cd lvgl_osmesa_llvm6
 ./scripts/run_lvgl_osmesa.sh             # OpenGL triangle in LVGL
 ./scripts/run_dx8_cube.sh                # DirectX 8 spinning cube (with logging)
 ./scripts/run_osmesa_test.sh             # Creates test.ppm image
+
+# Run with different backends
+DX8GL_BACKEND=osmesa ./scripts/run_dx8_cube.sh  # Software rendering (default)
+DX8GL_BACKEND=egl ./scripts/run_dx8_cube.sh     # Hardware acceleration
 ```
 
 ## Examples
@@ -59,22 +69,29 @@ Standalone OSMesa test that renders a triangle to a PPM image file.
 ```
 Application Code (OpenGL/DirectX 8)
         ↓
-  OSMesa/dx8gl Layer
+    dx8gl Translation Layer
         ↓
-  Mesa llvmpipe Driver
-        ↓
-  LLVM JIT Compiler
-        ↓
-  CPU Rasterization
-        ↓
-    RGBA Float Buffer
-        ↓
-  RGB565 Conversion
-        ↓
-   LVGL Canvas Widget
-        ↓
-    GUI Window (X11/SDL2)
+  Render Backend Interface
+     ↙         ↘
+OSMesa Backend   EGL Backend
+     ↓               ↓
+Software Render  Hardware GPU
+     ↓               ↓
+  RGBA Buffer    RGBA Buffer
+        ↘         ↙
+      RGB565 Conversion
+            ↓
+       LVGL Canvas Widget
+            ↓
+      GUI Window (X11/SDL2)
 ```
+
+### Backend Architecture
+
+The dx8gl library now supports multiple rendering backends:
+- **OSMesa Backend**: Pure software rendering using Mesa's llvmpipe driver
+- **EGL Backend**: Hardware-accelerated rendering via EGL surfaceless context
+- **Runtime Selection**: Choose backend via environment variable, API, or command line
 
 ## Dependencies
 
@@ -103,6 +120,7 @@ The project uses a unified build system with `scripts/compile.sh`:
 ./scripts/compile.sh -C          # Clean everything
 ./scripts/compile.sh -d all      # Debug build
 ./scripts/compile.sh -j 4 all    # Use 4 parallel jobs
+./scripts/compile.sh -e all      # Enable EGL backend support
 ```
 
 Build times (approximate):

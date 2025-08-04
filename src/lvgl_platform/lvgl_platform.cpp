@@ -11,7 +11,7 @@
 #endif
 
 #ifdef LV_USE_X11
-// X11 backend support would go here
+#include "src/drivers/x11/lv_x11.h"
 #endif
 
 namespace LvglPlatform {
@@ -31,10 +31,17 @@ lv_display_t* create_window(int width, int height, const char* backend) {
     if (auto_detect || strcmp(backend, "x11") == 0) {
         // Check if X11 display is available
         if (getenv("DISPLAY") != nullptr) {
-            // X11 display creation would go here
-            // For now, fall through to SDL if available
-            if (!auto_detect) {
-                printf("X11 backend not fully implemented\n");
+            lv_display_t* disp = lv_x11_window_create("DirectX 8 Demo", width, height);
+            if (disp) {
+                // Create input devices
+                lv_x11_inputs_create(disp, nullptr);
+                if (auto_detect) {
+                    printf("Using X11 backend\n");
+                }
+                return disp;
+            } else if (!auto_detect) {
+                printf("Failed to create X11 window\n");
+                return nullptr;
             }
         } else if (!auto_detect) {
             printf("X11 requested but DISPLAY not set\n");

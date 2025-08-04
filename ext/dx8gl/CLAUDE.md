@@ -17,11 +17,40 @@ dx8gl is a DirectX 8.1 to OpenGL ES 3.0 / OpenGL 3.3 Core translation library un
 
 ## Rendering Backends
 
-dx8gl supports multiple rendering backends:
-- **OSMesa Backend** (default): Software rendering, no display required
-- **EGL Backend** (optional): Hardware acceleration via EGL surfaceless context
+dx8gl supports multiple rendering backends through a flexible abstraction layer:
 
-Select backend via environment variable (`DX8GL_BACKEND=osmesa|egl`) or API configuration.
+### Backend Types
+- **OSMesa Backend** (default): Software rendering, no display required
+  - Uses Mesa's llvmpipe driver for CPU-based rasterization
+  - Consistent behavior across all platforms
+  - Ideal for CI/CD and testing environments
+  
+- **EGL Backend** (optional): Hardware acceleration via EGL surfaceless context
+  - Requires EGL 1.5+ with `EGL_KHR_surfaceless_context` extension
+  - Significant performance improvement when GPU is available
+  - Transparent fallback to OSMesa if unavailable
+
+### Backend Selection
+Select backend via multiple methods:
+```bash
+# Environment variable
+export DX8GL_BACKEND=osmesa  # or 'egl'
+
+# Command line argument
+export DX8GL_ARGS="--backend=egl"
+
+# API configuration
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_EGL;
+dx8gl_init(&config);
+```
+
+### Backend Architecture
+The backend abstraction provides:
+- Unified interface (`DX8RenderBackend`) for all implementations
+- Runtime backend switching without recompilation
+- Clean separation between DirectX translation and rendering
+- Easy addition of new backends (Vulkan, Metal, etc.)
 
 ## Architecture
 
@@ -141,8 +170,10 @@ The dx8gl library is an active DirectX 8 to OpenGL ES 2.0 translation layer with
 Applications use dx8gl through standard DirectX 8 API:
 
 ```cpp
-// Initialize dx8gl (sets up OSMesa)
-dx8gl_init(nullptr);
+// Initialize dx8gl with desired backend
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_OSMESA;  // or DX8GL_BACKEND_EGL
+dx8gl_init(&config);
 
 // Create Direct3D8 interface
 IDirect3D8* d3d8 = Direct3DCreate8(D3D_SDK_VERSION);

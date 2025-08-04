@@ -38,6 +38,7 @@ private:
     EGLDisplay display_;
     EGLContext context_;
     EGLConfig config_;
+    EGLSurface surface_;
     
     // Offscreen framebuffer resources
     unsigned int framebuffer_id_;
