@@ -17,6 +17,7 @@ BUILD_TYPE="Release"
 JOBS=8
 BUILD_DIR="build"
 VERBOSE=false
+EGL_ENABLED=false
 
 # Print colored message
 print_msg() {
@@ -40,6 +41,7 @@ OPTIONS:
     -j, --jobs N        Number of parallel jobs (default: 8)
     -v, --verbose       Verbose build output
     -r, --reconfigure   Force reconfigure with cmake
+    -e, --egl           Enable EGL backend for dx8gl
 
 TARGETS:
     all                 Build everything (default)
@@ -93,6 +95,10 @@ configure_cmake() {
     
     if [ "$VERBOSE" = true ]; then
         CMAKE_ARGS="$CMAKE_ARGS -DCMAKE_VERBOSE_MAKEFILE=ON"
+    fi
+    
+    if [ "$EGL_ENABLED" = true ]; then
+        CMAKE_ARGS="$CMAKE_ARGS -DDX8GL_ENABLE_EGL=ON"
     fi
     
     cmake $CMAKE_ARGS ..
@@ -270,6 +276,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         -r|--reconfigure)
             RECONFIGURE=true
+            shift
+            ;;
+        -e|--egl)
+            EGL_ENABLED=true
             shift
             ;;
         *)

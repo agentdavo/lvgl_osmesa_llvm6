@@ -17,8 +17,13 @@ namespace dx8gl {
 // Global state
 static std::atomic<bool> g_initialized{false};
 static std::mutex g_init_mutex;
-std::unique_ptr<DX8RenderBackend> g_render_backend;  // Not static - needs to be accessible from d3d8_device.cpp
+static std::unique_ptr<DX8RenderBackend> g_render_backend;
 static DX8BackendType g_selected_backend = DX8_BACKEND_OSMESA;
+
+// Accessor for render backend
+DX8RenderBackend* get_render_backend() {
+    return g_render_backend.get();
+}
 
 // Thread-local error string
 static thread_local std::string g_last_error;
@@ -117,13 +122,18 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
     }
     
     // Create render backend
-    // TODO: Properly integrate backend with d3d8_device to avoid duplicate contexts
-    // For now, let d3d8_device create its own context
-    // dx8gl::g_render_backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
-    // if (!dx8gl::g_render_backend) {
-    //     dx8gl::set_error("Failed to create render backend");
-    //     return DX8GL_ERROR_INTERNAL;
-    // }
+    dx8gl::g_render_backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
+    if (!dx8gl::g_render_backend) {
+        dx8gl::set_error("Failed to create render backend");
+        return DX8GL_ERROR_INTERNAL;
+    }
+    
+    // Initialize the backend with default size (will be resized by device)
+    if (!dx8gl::g_render_backend->initialize(800, 600)) {
+        dx8gl::set_error("Failed to initialize render backend");
+        dx8gl::g_render_backend.reset();
+        return DX8GL_ERROR_INTERNAL;
+    }
     
     // OSMesa mode doesn't need SDL initialization
     
@@ -135,16 +145,16 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
 void dx8gl_shutdown(void) {
     std::lock_guard<std::mutex> lock(dx8gl::g_init_mutex);
     
-    // if (dx8gl::g_render_backend) {
-    //     dx8gl::g_render_backend->shutdown();
-    //     dx8gl::g_render_backend.reset();
-    // }
-    
     if (!dx8gl::g_initialized) {
         return;
     }
     
     DX8GL_INFO("dx8gl shutting down");
+    
+    if (dx8gl::g_render_backend) {
+        dx8gl::g_render_backend->shutdown();
+        dx8gl::g_render_backend.reset();
+    }
     
     // OSMesa mode doesn't need shared context
     dx8gl::g_initialized = false;

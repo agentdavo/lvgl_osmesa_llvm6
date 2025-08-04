@@ -169,7 +169,7 @@ public:
     
     // Render backend access methods
     void* get_framebuffer(int* width, int* height, int* format) const;
-    DX8RenderBackend* get_render_backend() const { return render_backend_.get(); }
+    DX8RenderBackend* get_render_backend() const { return render_backend_; }
     
     // State management
     void InvalidateCachedRenderStates();
@@ -266,7 +266,7 @@ private:
 #endif
 #ifdef DX8GL_HAS_OSMESA
     std::unique_ptr<class DX8OSMesaContext> osmesa_context_;  // Legacy, to be replaced
-    std::unique_ptr<class DX8RenderBackend> render_backend_;  // New backend interface
+    class DX8RenderBackend* render_backend_ = nullptr;  // Non-owning pointer to global backend
     bool osmesa_deferred_init_ = false;  // Flag to defer OSMesa initialization
     int gl_version_major_ = 0;
     int gl_version_minor_ = 0;

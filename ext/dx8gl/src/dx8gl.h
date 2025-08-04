@@ -278,6 +278,12 @@ DX8GL_API void* dx8gl_get_shared_framebuffer(int* width, int* height, int* frame
 
 #ifdef __cplusplus
 }
+
+// C++ only functions
+namespace dx8gl {
+    class DX8RenderBackend;
+    DX8RenderBackend* get_render_backend();
+}
 #endif
 
 #endif /* DX8GL_H */

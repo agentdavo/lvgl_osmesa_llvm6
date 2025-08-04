@@ -975,6 +975,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o: /home/djs/lvgl_osmesa_llvm
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8_core.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_compat.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8_shader_translator.h \
+  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/guid_utils.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
@@ -13010,8 +13011,6 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: /home/djs/lvgl_o
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_backend.h:
 
-/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h:
-
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.cpp:
 
 /usr/include/c++/13/stack:
@@ -13065,6 +13064,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: /home/djs/lvgl_o
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_missing_stubs.cpp:
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_indexbuffer.cpp:
+
+/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_surface.h:
 

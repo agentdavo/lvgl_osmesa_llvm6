@@ -25,6 +25,9 @@ option(LVGL_USE_LINUX_DRM "Enable LVGL DRM backend" OFF)
 option(LVGL_USE_LINUX_FBDEV "Enable LVGL FBDev backend" OFF)
 option(LVGL_USE_NUTTX "Enable LVGL NuttX backend" OFF)
 
+# dx8gl Backend Options
+option(DX8GL_ENABLE_EGL "Enable EGL backend for dx8gl" OFF)
+
 # Minimal LLVM build configuration for Mesa
 # Additional optimizations to reduce build time and size
 

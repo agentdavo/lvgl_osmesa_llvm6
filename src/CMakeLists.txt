@@ -22,3 +22,8 @@ target_include_directories(test_indexed_xyzrhw PRIVATE ${CMAKE_SOURCE_DIR}/ext/d
 
 # Backend regression test
 add_subdirectory(dx8_backend_test)
+
+# EGL backend test (only if EGL is enabled)
+if(DX8GL_ENABLE_EGL)
+    add_subdirectory(egl_backend_test)
+endif()

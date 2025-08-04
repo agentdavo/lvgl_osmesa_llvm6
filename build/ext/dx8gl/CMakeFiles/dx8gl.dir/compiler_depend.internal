@@ -978,6 +978,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8_core.h
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_compat.h
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8_shader_translator.h
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/guid_utils.h
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h

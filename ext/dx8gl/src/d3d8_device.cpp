@@ -7,6 +7,7 @@
 #include "logger.h"
 #include "osmesa_context.h"
 #include "render_backend.h"
+#include "dx8gl.h"
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
@@ -216,23 +217,27 @@ bool Direct3DDevice8::initialize() {
     int width = present_params_.BackBufferWidth ? present_params_.BackBufferWidth : 800;
     int height = present_params_.BackBufferHeight ? present_params_.BackBufferHeight : 600;
     
-    // dx8gl uses OSMesa-only for software rendering (no EGL complexity)
-    DX8GL_INFO("Using OSMesa for software rendering");
-    
-    // Create OSMesa context
-    osmesa_context_ = std::make_unique<DX8OSMesaContext>();
-    
-    if (!osmesa_context_->initialize(width, height)) {
-        DX8GL_ERROR("Failed to initialize OSMesa context: %s", osmesa_context_->get_error());
+    // Use the global render backend instead of creating our own context
+    render_backend_ = get_render_backend();
+    if (!render_backend_) {
+        DX8GL_ERROR("No render backend available. Call dx8gl_init() first.");
         return false;
     }
     
-    if (!osmesa_context_->make_current()) {
-        DX8GL_ERROR("Failed to make OSMesa context current");
+    // Resize backend to match requested dimensions
+    if (!render_backend_->resize(width, height)) {
+        DX8GL_ERROR("Failed to resize render backend");
         return false;
     }
     
-    DX8GL_INFO("OSMesa context initialized successfully");
+    // Make context current
+    if (!render_backend_->make_current()) {
+        DX8GL_ERROR("Failed to make render backend context current");
+        return false;
+    }
+    
+    DX8GL_INFO("%s backend initialized successfully", 
+               render_backend_->get_type() == DX8_BACKEND_OSMESA ? "OSMesa" : "EGL");
     
 #ifdef DX8GL_HAS_OSMESA
     // Clear any OpenGL errors from initialization
@@ -344,16 +349,21 @@ bool Direct3DDevice8::complete_deferred_osmesa_init() {
     int width = present_params_.BackBufferWidth ? present_params_.BackBufferWidth : 800;
     int height = present_params_.BackBufferHeight ? present_params_.BackBufferHeight : 600;
     
-    // Create OSMesa context
-    osmesa_context_ = std::make_unique<DX8OSMesaContext>();
-    
-    if (!osmesa_context_->initialize(width, height)) {
-        DX8GL_ERROR("Failed to initialize OSMesa context: %s", osmesa_context_->get_error());
+    // Use the global render backend
+    render_backend_ = get_render_backend();
+    if (!render_backend_) {
+        DX8GL_ERROR("No render backend available. Call dx8gl_init() first.");
         return false;
     }
     
-    if (!osmesa_context_->make_current()) {
-        DX8GL_ERROR("Failed to make OSMesa context current");
+    // Resize backend to match requested dimensions
+    if (!render_backend_->resize(width, height)) {
+        DX8GL_ERROR("Failed to resize render backend");
+        return false;
+    }
+    
+    if (!render_backend_->make_current()) {
+        DX8GL_ERROR("Failed to make render backend context current");
         return false;
     }
     
@@ -677,9 +687,9 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
     }
 #endif
     
-    // OSMesa doesn't have buffer swapping - rendering is done to memory
-    if (osmesa_context_) {
-        // TODO: Copy OSMesa framebuffer to display or shared memory
+    // Backend doesn't have buffer swapping - rendering is done to memory
+    if (render_backend_) {
+        // TODO: Copy backend framebuffer to display or shared memory
         
         // Handle vsync based on presentation interval
         if (present_params_.FullScreen_PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE) {
@@ -694,7 +704,7 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
     
     // Ensure all OpenGL commands are completed
 #ifdef DX8GL_HAS_OSMESA
-    if (osmesa_context_) {
+    if (render_backend_) {
         glFinish();
     }
 #endif
@@ -1057,8 +1067,8 @@ void Direct3DDevice8::flush_command_buffer() {
     
     // Ensure OSMesa context is current before executing OpenGL commands
 #ifdef DX8GL_HAS_OSMESA
-    if (osmesa_context_ && !osmesa_context_->make_current()) {
-        DX8GL_ERROR("Failed to make OSMesa context current for command buffer execution");
+    if (render_backend_ && !render_backend_->make_current()) {
+        DX8GL_ERROR("Failed to make render backend context current for command buffer execution");
         return;
     }
 #endif
@@ -1175,17 +1185,17 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     int width = present_params_.BackBufferWidth ? present_params_.BackBufferWidth : 800;
     int height = present_params_.BackBufferHeight ? present_params_.BackBufferHeight : 600;
     
-    // Resize OSMesa context with new dimensions
-    if (osmesa_context_) {
+    // Resize backend with new dimensions
+    if (render_backend_) {
         
-        if (!osmesa_context_->resize(width, height)) {
-            DX8GL_ERROR("Failed to resize OSMesa context");
+        if (!render_backend_->resize(width, height)) {
+            DX8GL_ERROR("Failed to resize render backend");
             return D3DERR_DEVICELOST;
         }
         
         // Make context current
-        if (!osmesa_context_->make_current()) {
-            DX8GL_ERROR("Failed to make OSMesa context current after reset");
+        if (!render_backend_->make_current()) {
+            DX8GL_ERROR("Failed to make render backend context current after reset");
             return D3DERR_DEVICELOST;
         }
     }
@@ -2399,22 +2409,21 @@ HRESULT Direct3DDevice8::copy_rect_internal(IDirect3DSurface8* src, const RECT* 
 }
 
 void* Direct3DDevice8::get_osmesa_framebuffer() const {
-#ifdef DX8GL_HAS_OSMESA
-    if (osmesa_context_) {
-        return osmesa_context_->get_framebuffer();
+    if (render_backend_) {
+        int width, height, format;
+        return render_backend_->get_framebuffer(width, height, format);
     }
-#endif
     return nullptr;
 }
 
 void Direct3DDevice8::get_osmesa_dimensions(int* width, int* height) const {
-#ifdef DX8GL_HAS_OSMESA
-    if (osmesa_context_) {
-        if (width) *width = osmesa_context_->get_width();
-        if (height) *height = osmesa_context_->get_height();
+    if (render_backend_) {
+        int w, h, format;
+        render_backend_->get_framebuffer(w, h, format);
+        if (width) *width = w;
+        if (height) *height = h;
         return;
     }
-#endif
     if (width) *width = 0;
     if (height) *height = 0;
 }
@@ -2435,14 +2444,6 @@ void* Direct3DDevice8::get_framebuffer(int* width, int* height, int* format) con
         if (height) *height = h;
         if (format) *format = fmt;
         return fb;
-    } else if (osmesa_context_) {
-        // Fallback to legacy OSMesa context
-        int w, h;
-        get_osmesa_dimensions(&w, &h);
-        if (width) *width = w;
-        if (height) *height = h;
-        if (format) *format = GL_RGBA;
-        return get_osmesa_framebuffer();
     }
     return nullptr;
 }

@@ -312,6 +312,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_surface.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h
