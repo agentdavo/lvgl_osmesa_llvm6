@@ -58,6 +58,7 @@ The dx8gl library implements a command buffer pattern where DirectX 8 calls are 
 | dx8_single_frame | DirectX 8 triangle | Visible colored triangle | ✓ PASS |
 | dx8_cube | DirectX 8 cube | Spinning colored cube | ✓ PASS |
 | dx8_ndc_test | DirectX 8 NDC triangle | Colored triangle | ✓ PASS |
+| dx8_cube_textured | DirectX 8 cube + floor | Textured floor + cube | ✓ PASS |
 
 ## Performance
 - Software rendering via llvmpipe

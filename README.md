@@ -8,6 +8,7 @@ This project showcases:
 - **LVGL GUI Applications** with software-rendered 3D graphics
 - **OSMesa** (Off-Screen Mesa) for CPU-based OpenGL rendering without GPU
 - **DirectX 8 API** support through the dx8gl translation layer
+- **Texture loading** from TGA files with full mipmap generation
 - **Cross-platform** support for X11 and SDL2 backends
 - **Modern C++** with GLM for matrix operations
 - **Complete software stack** - no GPU or hardware acceleration required
@@ -43,7 +44,12 @@ Basic LVGL application demonstrating window creation and simple UI elements.
 Renders an animated OpenGL triangle using OSMesa and displays it in an LVGL canvas widget.
 
 ### dx8_cube
-Demonstrates DirectX 8 API usage with a colorful spinning cube, rendered via dx8gl and OSMesa.
+Demonstrates DirectX 8 API usage with:
+- Colorful spinning cube with per-vertex lighting
+- Textured floor plane using TGA texture loading
+- Proper vertex attribute binding for texture coordinates
+- Frame-based rendering (100 frames then graceful exit)
+- Full DirectX 8 to OpenGL translation via dx8gl
 
 ### osmesa_test
 Standalone OSMesa test that renders a triangle to a PPM image file.
