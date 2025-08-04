@@ -147,6 +147,7 @@ bin/lli-child-target: lib/libLLVMRemarks.a
 bin/lli-child-target: lib/libLLVMBitstreamReader.a
 bin/lli-child-target: lib/libLLVMTargetParser.a
 bin/lli-child-target: lib/libLLVMSupport.a
+bin/lli-child-target: /usr/lib/x86_64-linux-gnu/libz.so
 bin/lli-child-target: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/lli-child-target: lib/libLLVMDemangle.a
 bin/lli-child-target: tools/lli/ChildTarget/CMakeFiles/lli-child-target.dir/link.txt

@@ -248,4 +248,5 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: \
  /usr/include/c++/13/optional \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/blue_screen.h

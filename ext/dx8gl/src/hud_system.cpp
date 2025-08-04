@@ -160,7 +160,6 @@ HUDSystem* HUD::s_instance = nullptr;
 HUDSystem::HUDSystem(IDirect3DDevice8* device)
     : m_device(device)
     , m_fontTexture(nullptr)
-    , m_vertexBuffer(nullptr)
     , m_flags(HUD_SHOW_FPS)
     , m_fps(0.0f)
     , m_frameTime(0.0f)
@@ -177,9 +176,6 @@ HUDSystem::~HUDSystem() {
     if (m_fontTexture) {
         m_fontTexture->Release();
     }
-    if (m_vertexBuffer) {
-        m_vertexBuffer->Release();
-    }
     if (m_device) {
         m_device->Release();
     }
@@ -187,7 +183,6 @@ HUDSystem::~HUDSystem() {
 
 bool HUDSystem::Initialize() {
     CreateFontTexture();
-    CreateVertexBuffer();
     
     // Set default control text
     std::vector<std::string> defaultControls = {
@@ -220,7 +215,7 @@ void HUDSystem::Update(float deltaTime) {
 }
 
 void HUDSystem::Render() {
-    if (!m_device || !m_fontTexture || !m_vertexBuffer) {
+    if (!m_device || !m_fontTexture) {
         return;
     }
     
@@ -262,10 +257,9 @@ void HUDSystem::Render() {
     m_device->SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
     
     m_device->SetTexture(0, m_fontTexture);
-    m_device->SetStreamSource(0, m_vertexBuffer, sizeof(HUDVertex));
     m_device->SetVertexShader(D3DFVF_HUDVERTEX);
     
-    int yOffset = PADDING;
+    int yOffset = HUD_PADDING;
     
     // Render FPS
     if (m_flags & HUD_SHOW_FPS) {
@@ -280,38 +274,38 @@ void HUDSystem::Render() {
             fpsColor = m_colors.fps_medium;
         }
         
-        int textWidth = ss.str().length() * (CHAR_WIDTH + CHAR_SPACING);
-        RenderBox(PADDING - 5, yOffset - 2, textWidth + 10, LINE_HEIGHT + 4, m_colors.background);
-        RenderText(ss.str(), PADDING, yOffset, fpsColor);
-        yOffset += LINE_HEIGHT + 5;
+        int textWidth = ss.str().length() * (HUD_CHAR_WIDTH + HUD_CHAR_SPACING);
+        RenderBox(HUD_PADDING - 5, yOffset - 2, textWidth + 10, HUD_LINE_HEIGHT + 4, m_colors.background);
+        RenderText(ss.str(), HUD_PADDING, yOffset, fpsColor);
+        yOffset += HUD_LINE_HEIGHT + 5;
     }
     
     // Render Debug Info
     if (m_flags & HUD_SHOW_DEBUG && (!m_debugText.empty() || !m_debugLines.empty())) {
-        RenderText("DEBUG INFO:", PADDING, yOffset, m_colors.header);
-        yOffset += LINE_HEIGHT;
+        RenderText("DEBUG INFO:", HUD_PADDING, yOffset, m_colors.header);
+        yOffset += HUD_LINE_HEIGHT;
         
         if (!m_debugText.empty()) {
-            RenderText(m_debugText, PADDING, yOffset, m_colors.text);
-            yOffset += LINE_HEIGHT;
+            RenderText(m_debugText, HUD_PADDING, yOffset, m_colors.text);
+            yOffset += HUD_LINE_HEIGHT;
         }
         
         for (const auto& line : m_debugLines) {
-            RenderText(line, PADDING, yOffset, m_colors.text);
-            yOffset += LINE_HEIGHT;
+            RenderText(line, HUD_PADDING, yOffset, m_colors.text);
+            yOffset += HUD_LINE_HEIGHT;
         }
         yOffset += 5;
     }
     
     // Render Stats
     if (m_flags & HUD_SHOW_STATS && !m_stats.empty()) {
-        RenderText("STATISTICS:", PADDING, yOffset, m_colors.header);
-        yOffset += LINE_HEIGHT;
+        RenderText("STATISTICS:", HUD_PADDING, yOffset, m_colors.header);
+        yOffset += HUD_LINE_HEIGHT;
         
         for (const auto& stat : m_stats) {
             std::string statLine = stat.first + ": " + stat.second;
-            RenderText(statLine, PADDING, yOffset, m_colors.text);
-            yOffset += LINE_HEIGHT;
+            RenderText(statLine, HUD_PADDING, yOffset, m_colors.text);
+            yOffset += HUD_LINE_HEIGHT;
         }
         yOffset += 5;
     }
@@ -323,22 +317,22 @@ void HUDSystem::Render() {
         
         int maxWidth = 0;
         for (const auto& control : m_controlText) {
-            int width = control.length() * (CHAR_WIDTH + CHAR_SPACING);
+            int width = control.length() * (HUD_CHAR_WIDTH + HUD_CHAR_SPACING);
             maxWidth = std::max(maxWidth, width);
         }
         
-        int xPos = viewport.Width - maxWidth - PADDING;
-        int yPos = viewport.Height - (m_controlText.size() * LINE_HEIGHT) - PADDING - LINE_HEIGHT;
+        int xPos = viewport.Width - maxWidth - HUD_PADDING;
+        int yPos = viewport.Height - (m_controlText.size() * HUD_LINE_HEIGHT) - HUD_PADDING - HUD_LINE_HEIGHT;
         
         RenderBox(xPos - 5, yPos - 2, maxWidth + 10, 
-                  (m_controlText.size() + 1) * LINE_HEIGHT + 4, m_colors.background);
+                  (m_controlText.size() + 1) * HUD_LINE_HEIGHT + 4, m_colors.background);
         
         RenderText("CONTROLS:", xPos, yPos, m_colors.header);
-        yPos += LINE_HEIGHT;
+        yPos += HUD_LINE_HEIGHT;
         
         for (const auto& control : m_controlText) {
             RenderText(control, xPos, yPos, m_colors.text);
-            yPos += LINE_HEIGHT;
+            yPos += HUD_LINE_HEIGHT;
         }
     }
     
@@ -396,19 +390,14 @@ void HUDSystem::RenderText(const std::string& text, int x, int y, D3DCOLOR color
         
         HUDVertex vertices[4];
         vertices[0] = { (float)x, (float)y, 0.5f, 1.0f, color, u1, v1 };
-        vertices[1] = { (float)(x + CHAR_WIDTH), (float)y, 0.5f, 1.0f, color, u2, v1 };
-        vertices[2] = { (float)x, (float)(y + CHAR_HEIGHT), 0.5f, 1.0f, color, u1, v2 };
-        vertices[3] = { (float)(x + CHAR_WIDTH), (float)(y + CHAR_HEIGHT), 0.5f, 1.0f, color, u2, v2 };
+        vertices[1] = { (float)(x + HUD_CHAR_WIDTH), (float)y, 0.5f, 1.0f, color, u2, v1 };
+        vertices[2] = { (float)x, (float)(y + HUD_CHAR_HEIGHT), 0.5f, 1.0f, color, u1, v2 };
+        vertices[3] = { (float)(x + HUD_CHAR_WIDTH), (float)(y + HUD_CHAR_HEIGHT), 0.5f, 1.0f, color, u2, v2 };
         
-        void* pVertices;
-        if (SUCCEEDED(m_vertexBuffer->Lock(0, sizeof(vertices), (BYTE**)&pVertices, D3DLOCK_DISCARD))) {
-            memcpy(pVertices, vertices, sizeof(vertices));
-            m_vertexBuffer->Unlock();
-            
-            m_device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
-        }
+        // Use DrawPrimitiveUP to go through the command buffer system
+        m_device->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(HUDVertex));
         
-        x += CHAR_WIDTH + CHAR_SPACING;
+        x += HUD_CHAR_WIDTH + HUD_CHAR_SPACING;
     }
 }
 
@@ -421,13 +410,8 @@ void HUDSystem::RenderBox(int x, int y, int width, int height, D3DCOLOR color) {
     vertices[2] = { (float)x, (float)(y + height), 0.5f, 1.0f, color, 0, 0 };
     vertices[3] = { (float)(x + width), (float)(y + height), 0.5f, 1.0f, color, 0, 0 };
     
-    void* pVertices;
-    if (SUCCEEDED(m_vertexBuffer->Lock(0, sizeof(vertices), (BYTE**)&pVertices, D3DLOCK_DISCARD))) {
-        memcpy(pVertices, vertices, sizeof(vertices));
-        m_vertexBuffer->Unlock();
-        
-        m_device->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
-    }
+    // Use DrawPrimitiveUP to go through the command buffer system
+    m_device->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(HUDVertex));
     
     m_device->SetTexture(0, m_fontTexture);
 }
@@ -473,14 +457,6 @@ void HUDSystem::CreateFontTexture() {
     }
 }
 
-void HUDSystem::CreateVertexBuffer() {
-    if (m_vertexBuffer) {
-        return;
-    }
-    
-    m_device->CreateVertexBuffer(4 * sizeof(HUDVertex), D3DUSAGE_DYNAMIC | D3DUSAGE_WRITEONLY,
-                                D3DFVF_HUDVERTEX, D3DPOOL_DEFAULT, &m_vertexBuffer);
-}
 
 // Global HUD helper implementation
 void HUD::Create(IDirect3DDevice8* device) {

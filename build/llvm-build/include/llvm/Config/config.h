@@ -67,13 +67,13 @@
 /* #undef HAVE_UNW_ADD_DYNAMIC_FDE */
 
 /* Define if libffi is available on this platform. */
-/* #undef HAVE_FFI_CALL */
+#define HAVE_FFI_CALL 1
 
 /* Define to 1 if you have the <ffi/ffi.h> header file. */
 /* #undef HAVE_FFI_FFI_H */
 
 /* Define to 1 if you have the <ffi.h> header file. */
-/* #undef HAVE_FFI_H */
+#define HAVE_FFI_H 1
 
 /* Define to 1 if you have the `futimens' function. */
 #define HAVE_FUTIMENS 1
@@ -253,7 +253,7 @@
 #define LLVM_VERSION_PRINTER_SHOW_BUILD_CONFIG 1
 
 /* Define if libxml2 is supported on this platform. */
-/* #undef LLVM_ENABLE_LIBXML2 */
+#define LLVM_ENABLE_LIBXML2 1
 
 /* Define to the extension used for shared libraries, say, ".so". */
 #define LTDL_SHLIB_EXT ".so"

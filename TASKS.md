@@ -9,12 +9,30 @@
 ## BACKLOG
 - [ ] T31:: Optimize:: Remove debug logging for production :: Depends=[none] :: Est=S :: Clean up verbose output
 - [ ] T32:: Documentation:: Update project status and achievements :: Depends=[none] :: Est=M :: Document successful implementation
+- [ ] T34:: Feature:: Add pixel shader 1.4 test to dx8_cube :: Depends=[none] :: Est=M :: Test pixel shader translation pipeline (see src/dx8_cube/sample_shaders.txt)
+- [ ] T36:: Test:: Create comprehensive shader test suite :: Depends=[T34] :: Est=L :: Test all DirectX 8 shader instructions
+- [ ] T51:: Fix:: Implement HUD font texture loading and rendering :: Depends=[none] :: Est=M :: Complete HUD text display functionality
+- [ ] T37:: Feature:: Implement shader binary caching :: Depends=[T36] :: Est=M :: Cache compiled GLSL shaders to disk
+- [ ] T38:: Test:: Add alpha blending and transparency tests :: Depends=[none] :: Est=M :: Test blend modes and alpha operations
+- [ ] T39:: Feature:: Multi-texture stage support :: Depends=[none] :: Est=L :: Support up to 8 texture stages
+- [ ] T40:: Feature:: Render-to-texture support :: Depends=[none] :: Est=L :: Implement D3D render targets
+- [ ] T41:: Optimize:: Add performance profiling framework :: Depends=[none] :: Est=M :: GPU/CPU timing and bottleneck analysis
+- [ ] T42:: Test:: Stencil buffer operations :: Depends=[none] :: Est=M :: Test stencil masks and operations
+- [ ] T43:: Test:: DirectX 8 conformance test suite :: Depends=[all] :: Est=XL :: Comprehensive API coverage tests
+- [ ] T44:: Fix:: Improve FVF state management for DrawIndexedPrimitiveUP :: Depends=[none] :: Est=S :: Already implemented, needs testing
+- [ ] T45:: Feature:: Add fog effect support :: Depends=[none] :: Est=M :: Implement fog in shader generation
+- [ ] T46:: Feature:: Point sprite support :: Depends=[none] :: Est=M :: Implement D3DFVF_PSIZE and point sprites
+- [ ] T47:: Test:: Texture format conversion tests :: Depends=[none] :: Est=M :: Test all D3DFORMAT to GL conversions
+- [ ] T48:: Feature:: Vertex blending and skinning :: Depends=[none] :: Est=L :: Support D3DFVF_XYZBn formats
+- [ ] T49:: Documentation:: Create shader assembly reference :: Depends=[T36] :: Est=M :: Document supported vs1.1 and ps1.4 instructions
+- [ ] T50:: Feature:: Add DirectX 8 debug overlay :: Depends=[T35] :: Est=M :: Show API calls and state in real-time
 
 ## IN_PROGRESS
-None
+- [x] T52:: Fix:: Fix Mesa llvmpipe crash during Clear operation on frame 2 :: Depends=[none] :: Est=M :: Workaround depth buffer clear issue
+- [x] T53:: Documentation:: Update documentation to reflect scripts/ reorganization :: Depends=[none] :: Est=S :: Move scripts to scripts/ directory
 
 ## BLOCKED
-None
+- [ ] T44:: Fix:: Test FVF state management fix for DrawIndexedPrimitiveUP :: Depends=[build system] :: Est=S :: Requires LLVM rebuild to test
 
 ## DONE
 - [x] T01:: Fix:: Add VAO creation for DrawIndexedPrimitive :: Depends=[none] :: Est=S :: OpenGL Core Profile requirement
@@ -47,10 +65,27 @@ None
 - [x] T28:: Test:: Verify cube is rendering with new projection matrix :: Depends=[none] :: Est=S :: Check for visible cube geometry ✅ CUBE VISIBLE
 - [x] T29:: Test:: Verify spinning cube animation :: Depends=[T28] :: Est=S :: Confirm rotation works ✅ ROTATING WITH COLORS
 - [x] T30:: Fix:: Complete color pipeline from DirectX ARGB to LVGL XRGB8888 :: Depends=[none] :: Est=L :: Full color correction ✅ ALL COLORS CORRECT
+- [x] T33:: Feature:: Add vertex shader 1.1 test to dx8_cube :: Depends=[none] :: Est=M :: Test DirectX 8 assembly shader translation ✅ COMPLETED
+- [x] T35:: Fix:: Resolve Mesa llvmpipe crash with XYZRHW vertices :: Depends=[none] :: Est=L :: Fix HUD rendering crash ✅ FIXED
 
 ## Current Execution Order
-1. T31 - Clean up debug logging for production
-2. T32 - Document successful implementation
+1. T52 - Fix Mesa llvmpipe crash during Clear operation (in progress)
+2. T53 - Update documentation for scripts/ reorganization (in progress)
+3. T34 - Add pixel shader 1.4 test to dx8_cube (after crash fix)
+4. T51 - Implement HUD font texture loading and rendering
+5. T44 - Test FVF state management fix (blocked on build)
+6. T38 - Add alpha blending and transparency tests
+7. T36 - Create comprehensive shader test suite
+8. T31 - Clean up debug logging for production
+9. T32 - Document successful implementation
+
+## Build Scripts Location
+All build and run scripts have been moved to `scripts/` directory:
+- `scripts/compile.sh` - Main build script
+- `scripts/run_dx8_cube.sh` - Run dx8_cube with logging
+- `scripts/run_osmesa_test.sh` - Run OSMesa test
+- `scripts/run_lvgl_hello.sh` - Run basic LVGL example
+- `scripts/run_lvgl_osmesa.sh` - Run LVGL+OSMesa demo
 
 ## 🎉 PROJECT STATUS: SUCCESS
 

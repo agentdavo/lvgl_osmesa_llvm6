@@ -71,3 +71,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib/ExecutionEngine/RuntimeDyld/cmake_install.cmake")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib/ExecutionEngine/PerfJITEvents/cmake_install.cmake")
+endif()
+

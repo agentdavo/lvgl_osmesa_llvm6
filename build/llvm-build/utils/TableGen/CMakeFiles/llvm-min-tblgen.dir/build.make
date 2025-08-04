@@ -113,6 +113,7 @@ bin/llvm-min-tblgen: utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/build.make
 bin/llvm-min-tblgen: lib/libLLVMSupport.a
 bin/llvm-min-tblgen: lib/libLLVMTableGen.a
 bin/llvm-min-tblgen: lib/libLLVMSupport.a
+bin/llvm-min-tblgen: /usr/lib/x86_64-linux-gnu/libz.so
 bin/llvm-min-tblgen: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/llvm-min-tblgen: lib/libLLVMDemangle.a
 bin/llvm-min-tblgen: utils/TableGen/CMakeFiles/llvm-min-tblgen.dir/link.txt

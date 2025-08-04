@@ -332,8 +332,6 @@ lib/Analysis/CMakeFiles/LLVMAnalysis.dir/RegionInfo.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Analysis/DominanceFrontier.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/SetVector.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/InitializePasses.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Analysis/RegionPrinter.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/DOTGraphTraits.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Analysis/Passes.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Analysis/RegionInfoImpl.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/PostOrderIterator.h \

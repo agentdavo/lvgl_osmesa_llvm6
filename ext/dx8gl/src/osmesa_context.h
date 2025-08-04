@@ -27,6 +27,9 @@ public:
     
     // Get the current error string
     const char* get_error() const;
+    
+    // Fill framebuffer with blue screen on error
+    void show_blue_screen(const char* error_msg = nullptr);
 
 private:
     OSMesaContext context_;  // OSMesa context handle

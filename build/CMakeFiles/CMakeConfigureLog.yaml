@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -71,13 +71,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c44b6/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_c44b6.dir/build.make CMakeFiles/cmTC_c44b6.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi'
-        Building C object CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -v -o CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f2760/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f2760.dir/build.make CMakeFiles/cmTC_f2760.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx'
+        Building C object CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -87,8 +87,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c44b6.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c44b6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc4uE1O5.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f2760.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f2760.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccvNcEm3.s
         GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
         	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
         
@@ -105,15 +105,15 @@ events:
          /usr/include
         End of search list.
         Compiler executable checksum: 38987c28e967c64056a6454abdef726e
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c44b6.dir/'
-         as -v --64 -o CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o /tmp/cc4uE1O5.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f2760.dir/'
+         as -v --64 -o CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o /tmp/ccvNcEm3.s
         GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_c44b6
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c44b6.dir/link.txt --verbose=1
-        /usr/bin/cc  -v CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o -o cmTC_c44b6 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_f2760
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f2760.dir/link.txt --verbose=1
+        /usr/bin/cc  -v CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o -o cmTC_f2760 
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
@@ -126,10 +126,10 @@ events:
         gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c44b6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c44b6.'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFW1bAy.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c44b6 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c44b6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c44b6.'
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f2760' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f2760.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccreliQ0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_f2760 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f2760' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f2760.'
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx'
         
       exitCode: 0
   -
@@ -163,13 +163,13 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi']
+        ignore line: [Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c44b6/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_c44b6.dir/build.make CMakeFiles/cmTC_c44b6.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-MUyxFi']
-        ignore line: [Building C object CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f2760/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_f2760.dir/build.make CMakeFiles/cmTC_f2760.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-5JQRMx']
+        ignore line: [Building C object CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -179,8 +179,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c44b6.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c44b6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/cc4uE1O5.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f2760.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1 -quiet -v -imultiarch x86_64-linux-gnu /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f2760.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccvNcEm3.s]
         ignore line: [GNU C17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -197,15 +197,15 @@ events:
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 38987c28e967c64056a6454abdef726e]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c44b6.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o /tmp/cc4uE1O5.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f2760.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o /tmp/ccvNcEm3.s]
         ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_c44b6]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c44b6.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o -o cmTC_c44b6 ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_f2760]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f2760.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o -o cmTC_f2760 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
@@ -218,13 +218,13 @@ events:
         ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c44b6' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_c44b6.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccFW1bAy.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_c44b6 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f2760' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f2760.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/ccreliQ0.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_f2760 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccFW1bAy.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccreliQ0.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -242,7 +242,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_c44b6] ==> ignore
+          arg [cmTC_f2760] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
@@ -254,7 +254,7 @@ events:
           arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
-          arg [CMakeFiles/cmTC_c44b6.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_f2760.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -294,8 +294,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -304,13 +304,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_41522/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_41522.dir/build.make CMakeFiles/cmTC_41522.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6'
-        Building CXX object CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -v -o CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_cc664/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_cc664.dir/build.make CMakeFiles/cmTC_cc664.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf'
+        Building CXX object CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa
@@ -320,8 +320,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_41522.dir/'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_41522.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccdzeUe6.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cc664.dir/'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_cc664.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccfYy53L.s
         GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)
         	compiled by GNU C version 13.3.0, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.26-GMP
         
@@ -342,15 +342,15 @@ events:
          /usr/include
         End of search list.
         Compiler executable checksum: c81c05345ce537099dafd5580045814a
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_41522.dir/'
-         as -v --64 -o CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccdzeUe6.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cc664.dir/'
+         as -v --64 -o CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccfYy53L.s
         GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_41522
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41522.dir/link.txt --verbose=1
-        /usr/bin/c++  -v CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_41522 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_cc664
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc664.dir/link.txt --verbose=1
+        /usr/bin/c++  -v CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_cc664 
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper
@@ -363,10 +363,10 @@ events:
         gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) 
         COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_41522' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_41522.'
-         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9XPHcV.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_41522 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_41522' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_41522.'
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cc664' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cc664.'
+         /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3BWh8t.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_cc664 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cc664' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cc664.'
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf'
         
       exitCode: 0
   -
@@ -406,13 +406,13 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6']
+        ignore line: [Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_41522/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_41522.dir/build.make CMakeFiles/cmTC_41522.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-TFkjC6']
-        ignore line: [Building CXX object CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_cc664/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_cc664.dir/build.make CMakeFiles/cmTC_cc664.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-JSAwgf']
+        ignore line: [Building CXX object CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none:amdgcn-amdhsa]
@@ -422,8 +422,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_41522.dir/']
-        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_41522.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccdzeUe6.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cc664.dir/']
+        ignore line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/cc1plus -quiet -v -imultiarch x86_64-linux-gnu -D_GNU_SOURCE /usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_cc664.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -fasynchronous-unwind-tables -fstack-protector-strong -Wformat -Wformat-security -fstack-clash-protection -fcf-protection -o /tmp/ccfYy53L.s]
         ignore line: [GNU C++17 (Ubuntu 13.3.0-6ubuntu2~24.04) version 13.3.0 (x86_64-linux-gnu)]
         ignore line: [	compiled by GNU C version 13.3.0  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.26-GMP]
         ignore line: []
@@ -444,15 +444,15 @@ events:
         ignore line: [ /usr/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: c81c05345ce537099dafd5580045814a]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_41522.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccdzeUe6.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cc664.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccfYy53L.s]
         ignore line: [GNU assembler version 2.42 (x86_64-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.42]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_41522]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41522.dir/link.txt --verbose=1]
-        ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_41522 ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_cc664]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cc664.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/c++  -v CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_cc664 ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper]
@@ -465,13 +465,13 @@ events:
         ignore line: [gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04) ]
         ignore line: [COMPILER_PATH=/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/13/:/usr/libexec/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/13/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/13/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_41522' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_41522.']
-        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cc9XPHcV.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_41522 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_cc664' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_cc664.']
+        link line: [ /usr/libexec/gcc/x86_64-linux-gnu/13/collect2 -plugin /usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper -plugin-opt=-fresolution=/tmp/cc3BWh8t.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_cc664 /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/13 -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/13/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/13/../../.. CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/13/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crtn.o]
           arg [/usr/libexec/gcc/x86_64-linux-gnu/13/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/libexec/gcc/x86_64-linux-gnu/13/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/libexec/gcc/x86_64-linux-gnu/13/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cc9XPHcV.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc3BWh8t.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -489,7 +489,7 @@ events:
           arg [-znow] ==> ignore
           arg [-zrelro] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_41522] ==> ignore
+          arg [cmTC_cc664] ==> ignore
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/../../../x86_64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o] ==> obj [/usr/lib/gcc/x86_64-linux-gnu/13/crtbeginS.o]
@@ -501,7 +501,7 @@ events:
           arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/x86_64-linux-gnu/13/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/13/../../..]
-          arg [CMakeFiles/cmTC_41522.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_cc664.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -533,12 +533,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/FindX11.cmake:682 (check_library_exists)"
-      - "CMakeLists.txt:237 (find_package)"
+      - "CMakeLists.txt:190 (find_package)"
     checks:
       - "Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-d31O0a"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-d31O0a"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-IPQgRk"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-IPQgRk"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -547,17 +547,17 @@ events:
       variable: "X11_LIB_X11_SOLO"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-d31O0a'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-IPQgRk'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_d6691/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_d6691.dir/build.make CMakeFiles/cmTC_d6691.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-d31O0a'
-        Building C object CMakeFiles/cmTC_d6691.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -o CMakeFiles/cmTC_d6691.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-d31O0a/CheckFunctionExists.c
-        Linking C executable cmTC_d6691
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6691.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_d6691.dir/CheckFunctionExists.c.o -o cmTC_d6691  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-d31O0a'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7d042/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_7d042.dir/build.make CMakeFiles/cmTC_7d042.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-IPQgRk'
+        Building C object CMakeFiles/cmTC_7d042.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=XOpenDisplay -o CMakeFiles/cmTC_7d042.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-IPQgRk/CheckFunctionExists.c
+        Linking C executable cmTC_7d042
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7d042.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=XOpenDisplay CMakeFiles/cmTC_7d042.dir/CheckFunctionExists.c.o -o cmTC_7d042  /usr/lib/x86_64-linux-gnu/libX11.so /usr/lib/x86_64-linux-gnu/libXext.so 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-IPQgRk'
         
       exitCode: 0
   -
@@ -565,12 +565,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/FindX11.cmake:697 (check_function_exists)"
-      - "CMakeLists.txt:237 (find_package)"
+      - "CMakeLists.txt:190 (find_package)"
     checks:
       - "Looking for gethostbyname"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-U5Ue0R"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-U5Ue0R"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-aK14KQ"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-aK14KQ"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -579,17 +579,17 @@ events:
       variable: "CMAKE_HAVE_GETHOSTBYNAME"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-U5Ue0R'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-aK14KQ'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4437c/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_4437c.dir/build.make CMakeFiles/cmTC_4437c.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-U5Ue0R'
-        Building C object CMakeFiles/cmTC_4437c.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -o CMakeFiles/cmTC_4437c.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-U5Ue0R/CheckFunctionExists.c
-        Linking C executable cmTC_4437c
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4437c.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_4437c.dir/CheckFunctionExists.c.o -o cmTC_4437c 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-U5Ue0R'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_542a8/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_542a8.dir/build.make CMakeFiles/cmTC_542a8.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-aK14KQ'
+        Building C object CMakeFiles/cmTC_542a8.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -o CMakeFiles/cmTC_542a8.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-aK14KQ/CheckFunctionExists.c
+        Linking C executable cmTC_542a8
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_542a8.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname CMakeFiles/cmTC_542a8.dir/CheckFunctionExists.c.o -o cmTC_542a8 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-aK14KQ'
         
       exitCode: 0
   -
@@ -597,12 +597,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/FindX11.cmake:711 (check_function_exists)"
-      - "CMakeLists.txt:237 (find_package)"
+      - "CMakeLists.txt:190 (find_package)"
     checks:
       - "Looking for connect"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-raS7EA"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-raS7EA"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-WZ1HzU"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-WZ1HzU"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -611,17 +611,17 @@ events:
       variable: "CMAKE_HAVE_CONNECT"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-raS7EA'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-WZ1HzU'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_0c2b7/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_0c2b7.dir/build.make CMakeFiles/cmTC_0c2b7.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-raS7EA'
-        Building C object CMakeFiles/cmTC_0c2b7.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -o CMakeFiles/cmTC_0c2b7.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-raS7EA/CheckFunctionExists.c
-        Linking C executable cmTC_0c2b7
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c2b7.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_0c2b7.dir/CheckFunctionExists.c.o -o cmTC_0c2b7 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-raS7EA'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_954ae/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_954ae.dir/build.make CMakeFiles/cmTC_954ae.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-WZ1HzU'
+        Building C object CMakeFiles/cmTC_954ae.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=connect -o CMakeFiles/cmTC_954ae.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-WZ1HzU/CheckFunctionExists.c
+        Linking C executable cmTC_954ae
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_954ae.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=connect CMakeFiles/cmTC_954ae.dir/CheckFunctionExists.c.o -o cmTC_954ae 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-WZ1HzU'
         
       exitCode: 0
   -
@@ -629,12 +629,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/FindX11.cmake:720 (check_function_exists)"
-      - "CMakeLists.txt:237 (find_package)"
+      - "CMakeLists.txt:190 (find_package)"
     checks:
       - "Looking for remove"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-oIKG84"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-oIKG84"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-uHQSIJ"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-uHQSIJ"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -643,17 +643,17 @@ events:
       variable: "CMAKE_HAVE_REMOVE"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-oIKG84'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-uHQSIJ'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b557a/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_b557a.dir/build.make CMakeFiles/cmTC_b557a.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-oIKG84'
-        Building C object CMakeFiles/cmTC_b557a.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -o CMakeFiles/cmTC_b557a.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-oIKG84/CheckFunctionExists.c
-        Linking C executable cmTC_b557a
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b557a.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_b557a.dir/CheckFunctionExists.c.o -o cmTC_b557a 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-oIKG84'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_98b4c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_98b4c.dir/build.make CMakeFiles/cmTC_98b4c.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-uHQSIJ'
+        Building C object CMakeFiles/cmTC_98b4c.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=remove -o CMakeFiles/cmTC_98b4c.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-uHQSIJ/CheckFunctionExists.c
+        Linking C executable cmTC_98b4c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98b4c.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=remove CMakeFiles/cmTC_98b4c.dir/CheckFunctionExists.c.o -o cmTC_98b4c 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-uHQSIJ'
         
       exitCode: 0
   -
@@ -661,12 +661,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CheckFunctionExists.cmake:86 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/FindX11.cmake:729 (check_function_exists)"
-      - "CMakeLists.txt:237 (find_package)"
+      - "CMakeLists.txt:190 (find_package)"
     checks:
       - "Looking for shmat"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-hsR5vn"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-hsR5vn"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-yx5zg7"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-yx5zg7"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -675,17 +675,17 @@ events:
       variable: "CMAKE_HAVE_SHMAT"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-hsR5vn'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-yx5zg7'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_a5f11/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_a5f11.dir/build.make CMakeFiles/cmTC_a5f11.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-hsR5vn'
-        Building C object CMakeFiles/cmTC_a5f11.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -o CMakeFiles/cmTC_a5f11.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-hsR5vn/CheckFunctionExists.c
-        Linking C executable cmTC_a5f11
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a5f11.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_a5f11.dir/CheckFunctionExists.c.o -o cmTC_a5f11 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-hsR5vn'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_71a85/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_71a85.dir/build.make CMakeFiles/cmTC_71a85.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-yx5zg7'
+        Building C object CMakeFiles/cmTC_71a85.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=shmat -o CMakeFiles/cmTC_71a85.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-yx5zg7/CheckFunctionExists.c
+        Linking C executable cmTC_71a85
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_71a85.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=shmat CMakeFiles/cmTC_71a85.dir/CheckFunctionExists.c.o -o cmTC_71a85 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-yx5zg7'
         
       exitCode: 0
   -
@@ -693,12 +693,12 @@ events:
     backtrace:
       - "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
       - "/usr/share/cmake-3.28/Modules/FindX11.cmake:739 (check_library_exists)"
-      - "CMakeLists.txt:237 (find_package)"
+      - "CMakeLists.txt:190 (find_package)"
     checks:
       - "Looking for IceConnectionNumber in ICE"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-clN3PQ"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-clN3PQ"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-lDJCVt"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-lDJCVt"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -707,17 +707,17 @@ events:
       variable: "CMAKE_LIB_ICE_HAS_ICECONNECTIONNUMBER"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-clN3PQ'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-lDJCVt'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_acfde/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_acfde.dir/build.make CMakeFiles/cmTC_acfde.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-clN3PQ'
-        Building C object CMakeFiles/cmTC_acfde.dir/CheckFunctionExists.c.o
-        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -o CMakeFiles/cmTC_acfde.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-clN3PQ/CheckFunctionExists.c
-        Linking C executable cmTC_acfde
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acfde.dir/link.txt --verbose=1
-        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber CMakeFiles/cmTC_acfde.dir/CheckFunctionExists.c.o -o cmTC_acfde  -lICE 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-clN3PQ'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b4832/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b4832.dir/build.make CMakeFiles/cmTC_b4832.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-lDJCVt'
+        Building C object CMakeFiles/cmTC_b4832.dir/CheckFunctionExists.c.o
+        /usr/bin/cc   -DCHECK_FUNCTION_EXISTS=IceConnectionNumber -o CMakeFiles/cmTC_b4832.dir/CheckFunctionExists.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-lDJCVt/CheckFunctionExists.c
+        Linking C executable cmTC_b4832
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4832.dir/link.txt --verbose=1
+        /usr/bin/cc  -DCHECK_FUNCTION_EXISTS=IceConnectionNumber CMakeFiles/cmTC_b4832.dir/CheckFunctionExists.c.o -o cmTC_b4832  -lICE 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-lDJCVt'
         
       exitCode: 0
   -
@@ -731,8 +731,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-o0zijS"
-      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-o0zijS"
+      source: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-xSpbzK"
+      binary: "/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-xSpbzK"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -741,17 +741,17 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-o0zijS'
+        Change Dir: '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-xSpbzK'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5fdac/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_5fdac.dir/build.make CMakeFiles/cmTC_5fdac.dir/build
-        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-o0zijS'
-        Building C object CMakeFiles/cmTC_5fdac.dir/src.c.o
-        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu11 -o CMakeFiles/cmTC_5fdac.dir/src.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-o0zijS/src.c
-        Linking C executable cmTC_5fdac
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5fdac.dir/link.txt --verbose=1
-        /usr/bin/cc CMakeFiles/cmTC_5fdac.dir/src.c.o -o cmTC_5fdac 
-        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-o0zijS'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_4391c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_4391c.dir/build.make CMakeFiles/cmTC_4391c.dir/build
+        gmake[1]: Entering directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-xSpbzK'
+        Building C object CMakeFiles/cmTC_4391c.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -std=gnu11 -o CMakeFiles/cmTC_4391c.dir/src.c.o -c /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-xSpbzK/src.c
+        Linking C executable cmTC_4391c
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4391c.dir/link.txt --verbose=1
+        /usr/bin/cc CMakeFiles/cmTC_4391c.dir/src.c.o -o cmTC_4391c 
+        gmake[1]: Leaving directory '/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles/CMakeScratch/TryCompile-xSpbzK'
         
       exitCode: 0
 ...

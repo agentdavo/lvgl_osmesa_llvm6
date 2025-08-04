@@ -768,6 +768,7 @@ bin/llvm-tblgen: lib/libLLVMCodeGenTypes.a
 bin/llvm-tblgen: lib/libLLVMSupport.a
 bin/llvm-tblgen: lib/libLLVMTableGen.a
 bin/llvm-tblgen: lib/libLLVMSupport.a
+bin/llvm-tblgen: /usr/lib/x86_64-linux-gnu/libz.so
 bin/llvm-tblgen: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/llvm-tblgen: lib/libLLVMDemangle.a
 bin/llvm-tblgen: utils/TableGen/CMakeFiles/llvm-tblgen.dir/link.txt

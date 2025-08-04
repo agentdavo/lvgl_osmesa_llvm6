@@ -93,6 +93,7 @@ UnicodeNameMappingGenerator_EXTERNAL_OBJECTS =
 bin/UnicodeNameMappingGenerator: utils/UnicodeData/CMakeFiles/UnicodeNameMappingGenerator.dir/UnicodeNameMappingGenerator.cpp.o
 bin/UnicodeNameMappingGenerator: utils/UnicodeData/CMakeFiles/UnicodeNameMappingGenerator.dir/build.make
 bin/UnicodeNameMappingGenerator: lib/libLLVMSupport.a
+bin/UnicodeNameMappingGenerator: /usr/lib/x86_64-linux-gnu/libz.so
 bin/UnicodeNameMappingGenerator: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/UnicodeNameMappingGenerator: lib/libLLVMDemangle.a
 bin/UnicodeNameMappingGenerator: utils/UnicodeData/CMakeFiles/UnicodeNameMappingGenerator.dir/link.txt

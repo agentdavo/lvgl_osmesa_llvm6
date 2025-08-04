@@ -10,10 +10,10 @@
     bool IsInstalled;
 
     /// The list of libraries required when linking this component.
-    const char *RequiredLibraries[100];
-  } AvailableComponents[100] = {
+    const char *RequiredLibraries[101];
+  } AvailableComponents[101] = {
   { "aggressiveinstcombine", "LLVMAggressiveInstCombine", true, {"analysis", "core", "support", "transformutils"} },
-{ "all", nullptr, true, {"demangle", "support", "tablegen", "core", "fuzzercli", "fuzzmutate", "filecheck", "interfacestub", "irprinter", "irreader", "cgdata", "codegen", "selectiondag", "asmprinter", "mirparser", "globalisel", "codegentypes", "binaryformat", "bitreader", "bitwriter", "bitstreamreader", "dwarflinker", "dwarflinkerclassic", "dwarflinkerparallel", "extensions", "frontendatomic", "frontenddriver", "frontendhlsl", "frontendopenacc", "frontendopenmp", "frontendoffloading", "transformutils", "instrumentation", "aggressiveinstcombine", "instcombine", "scalaropts", "ipo", "vectorize", "objcarcopts", "coroutines", "cfguard", "hipstdpar", "linker", "analysis", "lto", "mc", "mcparser", "mcdisassembler", "mca", "objcopy", "object", "objectyaml", "option", "remarks", "debuginfodwarf", "debuginfogsym", "debuginfologicalview", "debuginfomsf", "debuginfocodeview", "debuginfopdb", "symbolize", "debuginfobtf", "dwp", "executionengine", "interpreter", "jitlink", "mcjit", "orcjit", "orcdebugging", "orcshared", "orctargetprocess", "runtimedyld", "target", "x86codegen", "x86asmparser", "x86disassembler", "x86targetmca", "x86desc", "x86info", "sandboxir", "asmparser", "lineeditor", "profiledata", "coverage", "passes", "targetparser", "textapi", "textapibinaryreader", "telemetry", "dlltooldriver", "libdriver", "xray", "windowsdriver", "windowsmanifest", "all-targets", "engine", "native", "nativecodegen", "x86"} },
+{ "all", nullptr, true, {"demangle", "support", "tablegen", "core", "fuzzercli", "fuzzmutate", "filecheck", "interfacestub", "irprinter", "irreader", "cgdata", "codegen", "selectiondag", "asmprinter", "mirparser", "globalisel", "codegentypes", "binaryformat", "bitreader", "bitwriter", "bitstreamreader", "dwarflinker", "dwarflinkerclassic", "dwarflinkerparallel", "extensions", "frontendatomic", "frontenddriver", "frontendhlsl", "frontendopenacc", "frontendopenmp", "frontendoffloading", "transformutils", "instrumentation", "aggressiveinstcombine", "instcombine", "scalaropts", "ipo", "vectorize", "objcarcopts", "coroutines", "cfguard", "hipstdpar", "linker", "analysis", "lto", "mc", "mcparser", "mcdisassembler", "mca", "objcopy", "object", "objectyaml", "option", "remarks", "debuginfodwarf", "debuginfogsym", "debuginfologicalview", "debuginfomsf", "debuginfocodeview", "debuginfopdb", "symbolize", "debuginfobtf", "dwp", "executionengine", "interpreter", "jitlink", "mcjit", "orcjit", "orcdebugging", "orcshared", "orctargetprocess", "runtimedyld", "perfjitevents", "target", "x86codegen", "x86asmparser", "x86disassembler", "x86targetmca", "x86desc", "x86info", "sandboxir", "asmparser", "lineeditor", "profiledata", "coverage", "passes", "targetparser", "textapi", "textapibinaryreader", "telemetry", "dlltooldriver", "libdriver", "xray", "windowsdriver", "windowsmanifest", "all-targets", "engine", "native", "nativecodegen", "x86"} },
 { "all-targets", nullptr, true, {"x86"} },
 { "analysis", "LLVMAnalysis", true, {"binaryformat", "core", "object", "profiledata", "support", "targetparser"} },
 { "asmparser", "LLVMAsmParser", true, {"binaryformat", "core", "support"} },
@@ -86,6 +86,7 @@
 { "orcshared", "LLVMOrcShared", true, {"support"} },
 { "orctargetprocess", "LLVMOrcTargetProcess", true, {"orcshared", "support", "targetparser"} },
 { "passes", "LLVMPasses", true, {"aggressiveinstcombine", "analysis", "cfguard", "codegen", "core", "coroutines", "hipstdpar", "ipo", "instcombine", "irprinter", "objcarcopts", "scalaropts", "support", "target", "transformutils", "vectorize", "instrumentation"} },
+{ "perfjitevents", "LLVMPerfJITEvents", true, {"codegen", "core", "debuginfodwarf", "executionengine", "object", "support"} },
 { "profiledata", "LLVMProfileData", true, {"bitstreamreader", "core", "object", "support", "demangle", "symbolize", "debuginfodwarf", "targetparser"} },
 { "remarks", "LLVMRemarks", true, {"bitstreamreader", "support"} },
 { "runtimedyld", "LLVMRuntimeDyld", true, {"core", "mc", "object", "support", "targetparser"} },

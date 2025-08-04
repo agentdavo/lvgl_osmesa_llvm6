@@ -126,6 +126,7 @@ struct DrawPrimitiveUPCmd : Command {
     D3DPRIMITIVETYPE primitive_type;
     UINT primitive_count;
     UINT vertex_stride;
+    DWORD fvf;  // Store FVF with the command to avoid state timing issues
     // Vertex data follows immediately after this structure
 };
 
@@ -136,6 +137,7 @@ struct DrawIndexedPrimitiveUPCmd : Command {
     UINT primitive_count;
     D3DFORMAT index_format;
     UINT vertex_stride;
+    DWORD fvf;  // Store FVF with the command to avoid state timing issues
     // Index data follows, then vertex data
 };
 

@@ -9,6 +9,9 @@
 #include "pixel_shader_manager.h"
 #include "shader_program_manager.h"
 #include "vao_manager.h"
+#include "osmesa_gl_loader.h"
+#include "gl_error_check.h"
+#include "blue_screen.h"
 #include <cstring>
 #include <algorithm>
 #include <cstdio>
@@ -171,6 +174,140 @@ void CommandBuffer::execute(StateManager& state_manager,
                                 vp->viewport.MinZ, vp->viewport.MaxZ);
                         fprintf(log_file, "      → glViewport(%u, %u, %u, %u)\n",
                                 vp->viewport.X, vp->viewport.Y, vp->viewport.Width, vp->viewport.Height);
+                        break;
+                    }
+                    
+                    case CommandType::DRAW_PRIMITIVE_UP: {
+                        const DrawPrimitiveUPCmd* draw = static_cast<const DrawPrimitiveUPCmd*>(log_cmd);
+                        const uint8_t* vertex_data = log_ptr + sizeof(DrawPrimitiveUPCmd);
+                        
+                        const char* prim_type_str = "UNKNOWN";
+                        const char* gl_mode_str = "GL_TRIANGLES";
+                        UINT vertex_count = 0;
+                        
+                        switch (draw->primitive_type) {
+                            case D3DPT_POINTLIST: 
+                                prim_type_str = "POINTLIST"; 
+                                gl_mode_str = "GL_POINTS";
+                                vertex_count = draw->primitive_count; 
+                                break;
+                            case D3DPT_LINELIST: 
+                                prim_type_str = "LINELIST"; 
+                                gl_mode_str = "GL_LINES";
+                                vertex_count = draw->primitive_count * 2; 
+                                break;
+                            case D3DPT_LINESTRIP: 
+                                prim_type_str = "LINESTRIP"; 
+                                gl_mode_str = "GL_LINE_STRIP";
+                                vertex_count = draw->primitive_count + 1; 
+                                break;
+                            case D3DPT_TRIANGLELIST: 
+                                prim_type_str = "TRIANGLELIST"; 
+                                gl_mode_str = "GL_TRIANGLES";
+                                vertex_count = draw->primitive_count * 3; 
+                                break;
+                            case D3DPT_TRIANGLESTRIP: 
+                                prim_type_str = "TRIANGLESTRIP"; 
+                                gl_mode_str = "GL_TRIANGLE_STRIP";
+                                vertex_count = draw->primitive_count + 2; 
+                                break;
+                            case D3DPT_TRIANGLEFAN: 
+                                prim_type_str = "TRIANGLEFAN"; 
+                                gl_mode_str = "GL_TRIANGLE_FAN";
+                                vertex_count = draw->primitive_count + 2; 
+                                break;
+                        }
+                        
+                        fprintf(log_file, "DRAW_PRIMITIVE_UP: type=%s prim_count=%u stride=%u vertices=%u fvf=0x%04X\n",
+                                prim_type_str, draw->primitive_count, draw->vertex_stride, vertex_count, draw->fvf);
+                        fprintf(log_file, "      → glDrawArrays(%s, 0, %u) [%s vertices]\n", gl_mode_str, vertex_count,
+                                (draw->fvf & D3DFVF_XYZRHW) ? "XYZRHW" : "XYZ");
+                        
+                        // Log first vertex for HUD debugging
+                        if (vertex_count > 0 && draw->vertex_stride >= 28) { // HUD vertex format
+                            const float* pos = (const float*)vertex_data;
+                            const uint32_t* color = (const uint32_t*)(vertex_data + 16); // After XYZRHW
+                            const float* uv = (const float*)(vertex_data + 20); // After color
+                            fprintf(log_file, "      First vertex: pos(%.1f,%.1f,%.2f,%.2f) color(0x%08x) uv(%.3f,%.3f)\n",
+                                    pos[0], pos[1], pos[2], pos[3], *color, uv[0], uv[1]);
+                        }
+                        break;
+                    }
+                    
+                    case CommandType::DRAW_INDEXED_PRIMITIVE_UP: {
+                        const auto* draw = static_cast<const DrawIndexedPrimitiveUPCmd*>(log_cmd);
+                        const char* prim_type_str = "UNKNOWN";
+                        
+                        // Calculate index count
+                        UINT index_count = 0;
+                        const char* gl_mode_str = "GL_TRIANGLES";
+                        switch (draw->primitive_type) {
+                            case D3DPT_POINTLIST:
+                                prim_type_str = "POINTLIST";
+                                index_count = draw->primitive_count;
+                                gl_mode_str = "GL_POINTS";
+                                break;
+                            case D3DPT_LINELIST:
+                                prim_type_str = "LINELIST";
+                                index_count = draw->primitive_count * 2;
+                                gl_mode_str = "GL_LINES";
+                                break;
+                            case D3DPT_LINESTRIP:
+                                prim_type_str = "LINESTRIP";
+                                index_count = draw->primitive_count + 1;
+                                gl_mode_str = "GL_LINE_STRIP";
+                                break;
+                            case D3DPT_TRIANGLELIST:
+                                prim_type_str = "TRIANGLELIST";
+                                index_count = draw->primitive_count * 3;
+                                gl_mode_str = "GL_TRIANGLES";
+                                break;
+                            case D3DPT_TRIANGLESTRIP:
+                                prim_type_str = "TRIANGLESTRIP";
+                                index_count = draw->primitive_count + 2;
+                                gl_mode_str = "GL_TRIANGLE_STRIP";
+                                break;
+                            case D3DPT_TRIANGLEFAN:
+                                prim_type_str = "TRIANGLEFAN";
+                                index_count = draw->primitive_count + 2;
+                                gl_mode_str = "GL_TRIANGLE_FAN";
+                                break;
+                        }
+                        
+                        fprintf(log_file, "DRAW_INDEXED_PRIMITIVE_UP: type=%s min_idx=%u num_verts=%u prim_count=%u stride=%u indices=%u fvf=0x%04X\n",
+                                prim_type_str, draw->min_vertex_index, draw->num_vertices, draw->primitive_count, 
+                                draw->vertex_stride, index_count, draw->fvf);
+                        fprintf(log_file, "      → glDrawElements(%s, %u, %s, ...) [%s vertices]\n", 
+                                gl_mode_str, index_count, 
+                                (draw->index_format == D3DFMT_INDEX16) ? "GL_UNSIGNED_SHORT" : "GL_UNSIGNED_INT",
+                                (draw->fvf & D3DFVF_XYZRHW) ? "XYZRHW" : "XYZ");
+                        
+                        // Show first vertex data if available
+                        const uint8_t* data_start = reinterpret_cast<const uint8_t*>(log_cmd) + sizeof(DrawIndexedPrimitiveUPCmd);
+                        size_t index_size = (draw->index_format == D3DFMT_INDEX16) ? 2 : 4;
+                        size_t index_data_size = index_count * index_size;
+                        const uint8_t* vertex_data = data_start + index_data_size;
+                        
+                        if (draw->num_vertices > 0 && draw->vertex_stride >= 16) {
+                            const float* pos = (const float*)vertex_data;
+                            if (draw->fvf & D3DFVF_XYZRHW) {
+                                fprintf(log_file, "      First vertex: pos(%.1f,%.1f,%.2f,%.2f)", 
+                                        pos[0], pos[1], pos[2], pos[3]);
+                            } else {
+                                fprintf(log_file, "      First vertex: pos(%.1f,%.1f,%.1f)", 
+                                        pos[0], pos[1], pos[2]);
+                            }
+                            
+                            // Add color if present
+                            if (draw->fvf & D3DFVF_DIFFUSE) {
+                                size_t color_offset = (draw->fvf & D3DFVF_XYZRHW) ? 16 : 12;
+                                if (draw->fvf & D3DFVF_NORMAL) color_offset += 12;
+                                const uint32_t* color = (const uint32_t*)(vertex_data + color_offset);
+                                fprintf(log_file, " color(0x%08x)", *color);
+                            }
+                            
+                            fprintf(log_file, "\n");
+                        }
                         break;
                     }
                     
@@ -408,6 +545,14 @@ void CommandBuffer::execute(StateManager& state_manager,
                         DX8GL_INFO("worldViewProj uniform not found in shader!");
                     }
                     
+                    // Set viewport size uniform for XYZRHW coordinate conversion
+                    if (uniforms->viewport_size >= 0) {
+                        D3DVIEWPORT8 viewport;
+                        state_manager.get_viewport(&viewport);
+                        glUniform2f(uniforms->viewport_size, static_cast<float>(viewport.Width), static_cast<float>(viewport.Height));
+                        DX8GL_INFO("Set viewport_size uniform: %dx%d", viewport.Width, viewport.Height);
+                    }
+                    
                     // Set lighting uniforms if lighting is enabled
                     if (state_manager.get_render_state(D3DRS_LIGHTING) != 0) {
                         // Set material uniforms
@@ -540,6 +685,11 @@ void CommandBuffer::execute(StateManager& state_manager,
                 DX8GL_INFO("Depth test %s", depth_test_enabled ? "enabled" : "disabled");
                 
                 glDrawArrays(gl_mode, dp_cmd->start_vertex, vertex_count);
+                
+                // Check for OpenGL errors
+                if (check_gl_error_safe("glDrawArrays in DRAW_PRIMITIVE")) {
+                    DX8GL_ERROR("OpenGL error detected after DrawArrays - attempting recovery");
+                }
                 
                 // Unbind VAO
                 glBindVertexArray(0);
@@ -674,6 +824,14 @@ void CommandBuffer::execute(StateManager& state_manager,
                     DX8GL_INFO("worldViewProj uniform not found in shader!");
                 }
                 
+                // Set viewport size uniform for XYZRHW coordinate conversion
+                if (uniforms->viewport_size >= 0) {
+                    D3DVIEWPORT8 viewport;
+                    state_manager.get_viewport(&viewport);
+                    glUniform2f(uniforms->viewport_size, static_cast<float>(viewport.Width), static_cast<float>(viewport.Height));
+                    DX8GL_INFO("Set viewport_size uniform: %dx%d", viewport.Width, viewport.Height);
+                }
+                
                 // Calculate and set normal matrix if needed
                 if (uniforms->normal_matrix >= 0 && (stream_sources[0].vb->get_fvf() & D3DFVF_NORMAL)) {
                     // Normal matrix is the transpose of the inverse of the upper 3x3 of the world matrix
@@ -789,6 +947,8 @@ void CommandBuffer::execute(StateManager& state_manager,
                 if (stream_sources[0].vb->get_fvf() & D3DFVF_TEX1) {
                     glEnableVertexAttribArray(texcoord_loc);
                     glVertexAttribPointer(texcoord_loc, 2, GL_FLOAT, GL_FALSE, stream_sources[0].stride, (void*)offset);
+                    DX8GL_INFO("Enabled texcoord0 attribute at location %u, offset %zu, stride %u", texcoord_loc, offset, stream_sources[0].stride);
+                    offset += 2 * sizeof(float);
                 }
                 
                 // Bind index buffer
@@ -849,12 +1009,14 @@ void CommandBuffer::execute(StateManager& state_manager,
                           index_offset);
                 glDrawElements(gl_mode, index_count, current_ib->get_gl_type(), (void*)index_offset);
                 
-                // Check for errors
-                GLenum error = glGetError();
-                if (error != GL_NO_ERROR) {
-                    DX8GL_ERROR("OpenGL error in DRAW_INDEXED_PRIMITIVE: 0x%x", error);
-                } else {
-                    // Debug: Check if anything was drawn
+                // Check for OpenGL errors
+                if (check_gl_error_safe("glDrawElements in DRAW_INDEXED_PRIMITIVE")) {
+                    DX8GL_ERROR("OpenGL error detected after DrawElements - attempting recovery");
+                    // Don't crash, just continue
+                }
+                
+                // Debug: Check if anything was drawn
+                {
                     static int draw_debug_count = 0;
                     if (draw_debug_count < 5) {
                         GLint viewport[4];
@@ -909,8 +1071,19 @@ void CommandBuffer::execute(StateManager& state_manager,
                 const auto* dpup_cmd = static_cast<const DrawPrimitiveUPCmd*>(cmd);
                 const void* vertex_data = read_ptr + sizeof(DrawPrimitiveUPCmd);
                 
-                DX8GL_TRACE("DRAW_PRIMITIVE_UP type=%d count=%u stride=%u", 
-                           dpup_cmd->primitive_type, dpup_cmd->primitive_count, 
+                // Enhanced logging for HUD debugging
+                const char* prim_type_str = "UNKNOWN";
+                switch (dpup_cmd->primitive_type) {
+                    case D3DPT_POINTLIST: prim_type_str = "POINTLIST"; break;
+                    case D3DPT_LINELIST: prim_type_str = "LINELIST"; break;
+                    case D3DPT_LINESTRIP: prim_type_str = "LINESTRIP"; break;
+                    case D3DPT_TRIANGLELIST: prim_type_str = "TRIANGLELIST"; break;
+                    case D3DPT_TRIANGLESTRIP: prim_type_str = "TRIANGLESTRIP"; break;
+                    case D3DPT_TRIANGLEFAN: prim_type_str = "TRIANGLEFAN"; break;
+                }
+                
+                DX8GL_INFO("EXECUTE: DRAW_PRIMITIVE_UP type=%s(%d) prim_count=%u stride=%u", 
+                           prim_type_str, dpup_cmd->primitive_type, dpup_cmd->primitive_count, 
                            dpup_cmd->vertex_stride);
                 
                 // Create a temporary VBO for immediate mode data
@@ -954,13 +1127,14 @@ void CommandBuffer::execute(StateManager& state_manager,
                 DX8GL_INFO("Uploading %zu bytes of vertex data to VBO %u (count=%u, stride=%u)", 
                            data_size, temp_vbo, vertex_count, dpup_cmd->vertex_stride);
                 
-                // Debug: Print vertex data
+                // Debug: Print vertex data with enhanced HUD details
                 const uint8_t* vdata = (const uint8_t*)vertex_data;
-                for (UINT i = 0; i < vertex_count && i < 3; i++) {
+                for (UINT i = 0; i < vertex_count && i < 4; i++) {
                     const float* pos = (const float*)(vdata + i * dpup_cmd->vertex_stride);
-                    const uint32_t* color = (const uint32_t*)(vdata + i * dpup_cmd->vertex_stride + 12);
-                    DX8GL_INFO("Vertex %u: pos(%.2f,%.2f,%.2f) color(0x%08x)", 
-                               i, pos[0], pos[1], pos[2], *color);
+                    const uint32_t* color = (const uint32_t*)(vdata + i * dpup_cmd->vertex_stride + 16); // XYZRHW format
+                    const float* uv = (const float*)(vdata + i * dpup_cmd->vertex_stride + 20); // UV after color
+                    DX8GL_INFO("  HUD Vertex %u: pos(%.2f,%.2f,%.2f,%.2f) color(0x%08x) uv(%.3f,%.3f)", 
+                               i, pos[0], pos[1], pos[2], pos[3], *color, uv[0], uv[1]);
                 }
                 
                 glBufferData(GL_ARRAY_BUFFER, data_size, vertex_data, GL_STREAM_DRAW);
@@ -975,13 +1149,23 @@ void CommandBuffer::execute(StateManager& state_manager,
                 ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
                 ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
                 
-                // Get current FVF from state manager
-                DWORD current_fvf = state_manager.get_current_fvf();
+                // Log render state for HUD debugging
+                DX8GL_INFO("  HUD Render State: lighting=%s texture0=%s alpha_test=%s fog=%s", 
+                           ff_state.lighting_enabled ? "ON" : "OFF",
+                           ff_state.texture_enabled[0] ? "ON" : "OFF", 
+                           ff_state.alpha_test_enabled ? "ON" : "OFF",
+                           ff_state.fog_enabled ? "ON" : "OFF");
+                
+                // Use FVF stored with the command (fixes HUD vertex format issue)
+                DWORD current_fvf = dpup_cmd->fvf;
                 if (current_fvf == 0) {
                     // Fallback to position-only if no FVF is set
                     current_fvf = D3DFVF_XYZ;
                 }
                 ff_state.vertex_format = current_fvf;
+                
+                DX8GL_INFO("DrawPrimitiveUP using FVF 0x%04X (XYZRHW=%s)", 
+                           current_fvf, (current_fvf & D3DFVF_XYZRHW) ? "YES" : "NO");
                 
                 GLuint program = ff_shader->get_program(ff_state);
                 if (!program) {
@@ -1032,6 +1216,14 @@ void CommandBuffer::execute(StateManager& state_manager,
                     DX8GL_INFO("worldViewProj uniform not found in shader!");
                 }
                 
+                // Set viewport size uniform for XYZRHW coordinate conversion
+                if (uniforms->viewport_size >= 0) {
+                    D3DVIEWPORT8 viewport;
+                    state_manager.get_viewport(&viewport);
+                    glUniform2f(uniforms->viewport_size, static_cast<float>(viewport.Width), static_cast<float>(viewport.Height));
+                    DX8GL_INFO("Set viewport_size uniform: %dx%d", viewport.Width, viewport.Height);
+                }
+                
                 // Calculate and set normal matrix if needed
                 if (uniforms->normal_matrix >= 0 && (stream_sources[0].vb->get_fvf() & D3DFVF_NORMAL)) {
                     // Normal matrix is the transpose of the inverse of the upper 3x3 of the world matrix
@@ -1070,6 +1262,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                 glDrawArrays(gl_mode, 0, vertex_count);
                 
                 // Check for OpenGL errors
+                if (check_gl_error_safe("glDrawArrays in DRAW_PRIMITIVE_UP")) {
+                    DX8GL_ERROR("OpenGL error detected after DrawArrays - attempting recovery");
+                }
                 GLenum error = glGetError();
                 if (error != GL_NO_ERROR) {
                     DX8GL_ERROR("OpenGL error after DrawArrays: 0x%04x", error);
@@ -1159,12 +1354,15 @@ void CommandBuffer::execute(StateManager& state_manager,
                 ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
                 ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
                 
-                // Get current FVF from state manager
-                DWORD current_fvf = state_manager.get_current_fvf();
+                // Use FVF stored with the command (fixes vertex format timing issues)
+                DWORD current_fvf = dipup_cmd->fvf;
                 if (current_fvf == 0) {
                     // Fallback to position-only if no FVF is set
                     current_fvf = D3DFVF_XYZ;
                 }
+                
+                DX8GL_INFO("DrawIndexedPrimitiveUP using FVF 0x%04X (XYZRHW=%s)", 
+                           current_fvf, (current_fvf & D3DFVF_XYZRHW) ? "YES" : "NO");
                 ff_state.vertex_format = current_fvf;
                 
                 GLuint program = ff_shader->get_program(ff_state);
@@ -1214,6 +1412,14 @@ void CommandBuffer::execute(StateManager& state_manager,
                     }
                 } else {
                     DX8GL_INFO("worldViewProj uniform not found in shader!");
+                }
+                
+                // Set viewport size uniform for XYZRHW coordinate conversion
+                if (uniforms->viewport_size >= 0) {
+                    D3DVIEWPORT8 viewport;
+                    state_manager.get_viewport(&viewport);
+                    glUniform2f(uniforms->viewport_size, static_cast<float>(viewport.Width), static_cast<float>(viewport.Height));
+                    DX8GL_INFO("Set viewport_size uniform: %dx%d", viewport.Width, viewport.Height);
                 }
                 
                 // Calculate and set normal matrix if needed
@@ -1279,9 +1485,7 @@ void CommandBuffer::draw_primitive_up(D3DPRIMITIVETYPE primitive_type, UINT star
     cmd->primitive_type = primitive_type;
     cmd->primitive_count = primitive_count;
     cmd->vertex_stride = vertex_stride;
-    
-    // Store FVF in the unused start_vertex field (hack for now)
-    // In a proper implementation, we'd add an fvf field to the command
+    cmd->fvf = fvf;  // Store FVF with the command
     
     // Copy vertex data after the command
     void* data_ptr = get_command_data(cmd);
@@ -1302,6 +1506,7 @@ void CommandBuffer::draw_indexed_primitive_up(D3DPRIMITIVETYPE primitive_type, U
     cmd->primitive_count = primitive_count;
     cmd->index_format = index_format;
     cmd->vertex_stride = vertex_stride;
+    cmd->fvf = fvf;  // Store FVF with the command
     
     // Copy index data first, then vertex data
     uint8_t* data_ptr = reinterpret_cast<uint8_t*>(get_command_data(cmd));

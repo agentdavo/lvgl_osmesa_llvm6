@@ -74,6 +74,7 @@
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMOrcShared.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMOrcTargetProcess.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMRuntimeDyld.a
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMPerfJITEvents.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMTarget.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMX86CodeGen.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMX86AsmParser.a
@@ -96,6 +97,13 @@
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMXRay.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMWindowsDriver.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMWindowsManifest.a
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/FileCheck
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-PerfectShuffle
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/count
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/not
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/UnicodeNameMappingGenerator
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/yaml-bench
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/split-file
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLTO.so.20.1
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLTO.so
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/include/llvm-c/lto.h
@@ -107,6 +115,7 @@
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/bugpoint
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/dsymutil
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llc
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/lli-child-target
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/lli
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-as
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-bcanalyzer
@@ -135,6 +144,7 @@
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-extract
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-gsymutil
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-ifs
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-jitlink-executor
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-jitlink
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-libtool-darwin
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-link
@@ -168,6 +178,7 @@
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-tli-checker
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-undname
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/llvm-xray
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/obj2yaml
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/libLLVMOptDriver.a
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/opt
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/share/opt-viewer/opt-diff.py
@@ -183,6 +194,7 @@
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/sancov
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/sanstats
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/verify-uselistorder
+/home/djs/lvgl_osmesa_llvm6/build/llvm-install/bin/yaml2obj
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/cmake/llvm/LLVMExports.cmake
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/cmake/llvm/LLVMExports-minsizerel.cmake
 /home/djs/lvgl_osmesa_llvm6/build/llvm-install/lib/cmake/llvm/LLVMConfig.cmake

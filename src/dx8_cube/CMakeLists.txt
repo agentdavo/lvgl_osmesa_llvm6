@@ -26,3 +26,8 @@ set_target_properties(dx8_cube PROPERTIES
 install(TARGETS dx8_cube
     RUNTIME DESTINATION bin
 )
+
+# Copy texture file to build directory
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/wall01.tga
+               ${CMAKE_CURRENT_BINARY_DIR}/wall01.tga
+               COPYONLY)

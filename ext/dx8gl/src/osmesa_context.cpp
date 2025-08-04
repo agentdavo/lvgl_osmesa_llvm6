@@ -1,6 +1,7 @@
 #include "osmesa_context.h"
 #include "logger.h"
 #include "osmesa_gl_loader.h"
+#include "blue_screen.h"
 #include <cstring>
 #include <cstdlib>
 
@@ -29,18 +30,18 @@ bool DX8OSMesaContext::initialize(int width, int height) {
     
     DX8GL_INFO("Initializing OSMesa context %dx%d", width, height);
     
-    // Try to create OpenGL 3.3 Core context first
-    DX8GL_INFO("Attempting to create OpenGL 3.3 Core context with OSMesaCreateContextAttribs");
+    // Try to create OpenGL 4.5 Core context first
+    DX8GL_INFO("Attempting to create OpenGL 4.5 Core context with OSMesaCreateContextAttribs");
     
-    // Define context attributes for OpenGL 3.3 Core
+    // Define context attributes for OpenGL 4.5 Core
     const int attribs[] = {
         OSMESA_FORMAT, OSMESA_RGBA,
-        OSMESA_DEPTH_BITS, 24,
+        OSMESA_DEPTH_BITS, 32,
         OSMESA_STENCIL_BITS, 8,
-        OSMESA_ACCUM_BITS, 0,
+        OSMESA_ACCUM_BITS, 16,
         OSMESA_PROFILE, OSMESA_CORE_PROFILE,
-        OSMESA_CONTEXT_MAJOR_VERSION, 3,
-        OSMESA_CONTEXT_MINOR_VERSION, 3,
+        OSMESA_CONTEXT_MAJOR_VERSION, 4,
+        OSMESA_CONTEXT_MINOR_VERSION, 5,
         0  // End of attributes
     };
     
@@ -150,22 +151,69 @@ bool DX8OSMesaContext::initialize(int width, int height) {
     DX8GL_INFO("Max renderbuffer size: %d", max_renderbuffer_size);
     DX8GL_INFO("Max viewport: %dx%d", max_viewport[0], max_viewport[1]);
     
-    // Query extensions
-    const char* extensions = (const char*)glGetString(GL_EXTENSIONS);
-    DX8GL_INFO("=== OpenGL Extensions ===");
-    if (extensions) {
-        // Count extensions
-        int ext_count = 0;
-        const char* ptr = extensions;
-        while (*ptr) {
-            if (*ptr == ' ') ext_count++;
-            ptr++;
-        }
-        ext_count++; // Last extension doesn't have trailing space
+    // Enable OpenGL debug output for error detection
+    if (glDebugMessageCallback) {
+        DX8GL_INFO("=== Enabling OpenGL Debug Output ===");
+        glEnable(GL_DEBUG_OUTPUT);
+        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS); // Ensure messages are delivered immediately
+        glDebugMessageCallback([](GLenum source, GLenum type, GLuint id, GLenum severity,
+                                 GLsizei length, const GLchar* message, const void* userParam) {
+            const char* sourceStr = "UNKNOWN";
+            switch (source) {
+                case GL_DEBUG_SOURCE_API: sourceStr = "API"; break;
+                case GL_DEBUG_SOURCE_WINDOW_SYSTEM: sourceStr = "WINDOW_SYSTEM"; break;
+                case GL_DEBUG_SOURCE_SHADER_COMPILER: sourceStr = "SHADER_COMPILER"; break;
+                case GL_DEBUG_SOURCE_THIRD_PARTY: sourceStr = "THIRD_PARTY"; break;
+                case GL_DEBUG_SOURCE_APPLICATION: sourceStr = "APPLICATION"; break;
+                case GL_DEBUG_SOURCE_OTHER: sourceStr = "OTHER"; break;
+            }
+            
+            const char* typeStr = "UNKNOWN";
+            switch (type) {
+                case GL_DEBUG_TYPE_ERROR: typeStr = "ERROR"; break;
+                case GL_DEBUG_TYPE_DEPRECATED_BEHAVIOR: typeStr = "DEPRECATED"; break;
+                case GL_DEBUG_TYPE_UNDEFINED_BEHAVIOR: typeStr = "UNDEFINED"; break;
+                case GL_DEBUG_TYPE_PORTABILITY: typeStr = "PORTABILITY"; break;
+                case GL_DEBUG_TYPE_PERFORMANCE: typeStr = "PERFORMANCE"; break;
+                case GL_DEBUG_TYPE_MARKER: typeStr = "MARKER"; break;
+                case GL_DEBUG_TYPE_PUSH_GROUP: typeStr = "PUSH_GROUP"; break;
+                case GL_DEBUG_TYPE_POP_GROUP: typeStr = "POP_GROUP"; break;
+                case GL_DEBUG_TYPE_OTHER: typeStr = "OTHER"; break;
+            }
+            
+            const char* severityStr = "UNKNOWN";
+            switch (severity) {
+                case GL_DEBUG_SEVERITY_HIGH: severityStr = "HIGH"; break;
+                case GL_DEBUG_SEVERITY_MEDIUM: severityStr = "MEDIUM"; break;
+                case GL_DEBUG_SEVERITY_LOW: severityStr = "LOW"; break;
+                case GL_DEBUG_SEVERITY_NOTIFICATION: severityStr = "NOTIFICATION"; break;
+            }
+            
+            if (type == GL_DEBUG_TYPE_ERROR) {
+                DX8GL_ERROR("OpenGL ERROR [%s/%s/%s]: %s", sourceStr, typeStr, severityStr, message);
+            } else if (severity == GL_DEBUG_SEVERITY_HIGH || severity == GL_DEBUG_SEVERITY_MEDIUM) {
+                DX8GL_WARN("OpenGL WARNING [%s/%s/%s]: %s", sourceStr, typeStr, severityStr, message);
+            } else {
+                DX8GL_INFO("OpenGL DEBUG [%s/%s/%s]: %s", sourceStr, typeStr, severityStr, message);
+            }
+        }, nullptr);
         
+        // Filter out low-priority notifications to reduce noise
+        glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, nullptr, GL_FALSE);
+        DX8GL_INFO("OpenGL debug output enabled with filtering");
+    } else {
+        DX8GL_WARN("OpenGL debug output not available (glDebugMessageCallback not found)");
+    }
+    
+    // Query extensions (use modern OpenGL 3.0+ method for Core profile)
+    DX8GL_INFO("=== OpenGL Extensions ===");
+    GLint ext_count = 0;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &ext_count);
+    
+    if (ext_count > 0) {
         DX8GL_INFO("Extension count: %d", ext_count);
         
-        // Log key extensions for DirectX 8 compatibility
+        // Log key extensions for DirectX 8 compatibility (OpenGL 3.3 Core profile)
         const char* key_extensions[] = {
             "GL_ARB_framebuffer_object",
             "GL_ARB_vertex_buffer_object", 
@@ -173,30 +221,41 @@ bool DX8OSMesaContext::initialize(int width, int height) {
             "GL_ARB_texture_non_power_of_two",
             "GL_ARB_vertex_shader",
             "GL_ARB_fragment_shader",
-            "GL_ARB_shading_language_100",
+            "GL_ARB_get_program_binary",        // Replaces GL_OES_get_program_binary
             "GL_EXT_framebuffer_object",
             "GL_EXT_blend_equation_separate",
-            "GL_EXT_blend_func_separate",
+            "GL_EXT_blend_func_separate", 
             "GL_EXT_texture_compression_s3tc",
-            "GL_OES_standard_derivatives",
-            "GL_OES_vertex_array_object"
+            // Note: GL_OES_standard_derivatives -> Core in GLSL 3.30+ (dFdx, dFdy, fwidth built-in)
+            // Note: GL_OES_vertex_array_object -> Core in OpenGL 3.3+ (VAO core functionality)
         };
         
+        // Check for key extensions using modern OpenGL 3.0+ method
         DX8GL_INFO("=== Key Extensions for DirectX 8 Compatibility ===");
         for (size_t i = 0; i < sizeof(key_extensions) / sizeof(key_extensions[0]); i++) {
-            if (strstr(extensions, key_extensions[i])) {
-                DX8GL_INFO("✓ %s", key_extensions[i]);
-            } else {
-                DX8GL_INFO("✗ %s", key_extensions[i]);
+            bool found = false;
+            for (GLint j = 0; j < ext_count; j++) {
+                const char* ext = (const char*)glGetStringi(GL_EXTENSIONS, j);
+                if (ext && strcmp(ext, key_extensions[i]) == 0) {
+                    found = true;
+                    break;
+                }
             }
+            DX8GL_INFO("%s %s", found ? "✓" : "✗", key_extensions[i]);
         }
         
-        // Log all extensions (truncated for readability)
-        DX8GL_INFO("=== All Extensions (first 1000 chars) ===");
-        char ext_buffer[1001];
-        strncpy(ext_buffer, extensions, 1000);
-        ext_buffer[1000] = '\0';
-        DX8GL_INFO("%s%s", ext_buffer, strlen(extensions) > 1000 ? "..." : "");
+        // Log first 20 extensions for debugging
+        DX8GL_INFO("=== Sample Extensions (first 20) ===");
+        int log_count = ext_count < 20 ? ext_count : 20;
+        for (int i = 0; i < log_count; i++) {
+            const char* ext = (const char*)glGetStringi(GL_EXTENSIONS, i);
+            if (ext) {
+                DX8GL_INFO("  %s", ext);
+            }
+        }
+        if (ext_count > 20) {
+            DX8GL_INFO("  ... and %d more extensions", ext_count - 20);
+        }
     } else {
         DX8GL_INFO("No extensions available or GL_EXTENSIONS query failed");
     }
@@ -295,6 +354,22 @@ bool DX8OSMesaContext::resize(int width, int height) {
 
 const char* DX8OSMesaContext::get_error() const {
     return error_buffer_[0] ? error_buffer_ : "No error";
+}
+
+void DX8OSMesaContext::show_blue_screen(const char* error_msg) {
+    if (!framebuffer_ || !initialized_) {
+        return;
+    }
+    
+    DX8GL_ERROR("Showing blue screen due to error: %s", error_msg ? error_msg : "Unknown error");
+    
+    // Fill framebuffer with blue screen
+    BlueScreen::fill_framebuffer(framebuffer_, width_, height_, error_msg);
+    
+    // Make sure the blue screen is visible by flushing GL commands
+    if (context_ && OSMesaGetCurrentContext() == context_) {
+        glFinish();
+    }
 }
 
 } // namespace dx8gl

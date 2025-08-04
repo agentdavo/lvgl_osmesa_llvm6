@@ -96,6 +96,7 @@ bin/llvm-config: tools/llvm-config/CMakeFiles/llvm-config.dir/build.make
 bin/llvm-config: lib/libLLVMSupport.a
 bin/llvm-config: lib/libLLVMTargetParser.a
 bin/llvm-config: lib/libLLVMSupport.a
+bin/llvm-config: /usr/lib/x86_64-linux-gnu/libz.so
 bin/llvm-config: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/llvm-config: lib/libLLVMDemangle.a
 bin/llvm-config: tools/llvm-config/CMakeFiles/llvm-config.dir/link.txt

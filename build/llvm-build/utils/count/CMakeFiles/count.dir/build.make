@@ -93,6 +93,7 @@ count_EXTERNAL_OBJECTS =
 bin/count: utils/count/CMakeFiles/count.dir/count.c.o
 bin/count: utils/count/CMakeFiles/count.dir/build.make
 bin/count: lib/libLLVMSupport.a
+bin/count: /usr/lib/x86_64-linux-gnu/libz.so
 bin/count: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/count: lib/libLLVMDemangle.a
 bin/count: utils/count/CMakeFiles/count.dir/link.txt

@@ -15,7 +15,7 @@
 #define LLVM_CONFIG_H
 
 /* Define if LLVM_ENABLE_DUMP is enabled */
-/* #undef LLVM_ENABLE_DUMP */
+#define LLVM_ENABLE_DUMP
 
 /* Target triple LLVM will generate code for by default */
 /* Doesn't use `cmakedefine` because it is allowed to be empty. */
@@ -139,7 +139,7 @@
 #define LLVM_USE_OPROFILE 0
 
 /* Define if we have the perf JIT-support library */
-#define LLVM_USE_PERF 0
+#define LLVM_USE_PERF 1
 
 /* Major version of the LLVM API */
 #define LLVM_VERSION_MAJOR 20
@@ -168,7 +168,7 @@
 /* #undef LLVM_ENABLE_HTTPLIB */
 
 /* Define if zlib compression is available */
-#define LLVM_ENABLE_ZLIB 0
+#define LLVM_ENABLE_ZLIB 1
 
 /* Define if zstd compression is available */
 #define LLVM_ENABLE_ZSTD 1

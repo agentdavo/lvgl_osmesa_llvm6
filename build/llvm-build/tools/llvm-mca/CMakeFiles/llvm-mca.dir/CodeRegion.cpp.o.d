@@ -245,10 +245,10 @@ tools/llvm-mca/CMakeFiles/llvm-mca.dir/CodeRegion.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/VersionTuple.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/SourceMgr.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/Instruction.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/View.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MC/MCInstPrinter.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Format.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/HWEventListener.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/Support.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Error.h \

@@ -48,9 +48,6 @@ TARGETS:
     lvgl                Build only LVGL library
     examples            Build all examples
     dx8_cube            Build only dx8_cube example
-    osmesa_test         Build only osmesa_test
-    lvgl_hello          Build only lvgl_hello
-    lvgl_osmesa_example Build only lvgl_osmesa_example
 
 EXAMPLES:
     $0                  # Build everything
@@ -192,9 +189,6 @@ build_examples() {
     build_dx8gl
     
     # Build each example
-    build_example "osmesa_test"
-    build_example "lvgl_hello"
-    build_example "lvgl_osmesa_example"
     build_example "dx8_cube"
     
     print_msg $GREEN "All examples built successfully."
@@ -225,9 +219,6 @@ build_all() {
     
     print_msg $GREEN "Build complete!"
     print_msg $BLUE "You can now run the examples:"
-    print_msg $NC "  $BUILD_DIR/src/lvgl_hello/lvgl_hello"
-    print_msg $NC "  $BUILD_DIR/src/osmesa_test/osmesa_test"
-    print_msg $NC "  $BUILD_DIR/src/lvgl_osmesa/lvgl_osmesa_example"
     print_msg $NC "  $BUILD_DIR/src/dx8_cube/dx8_cube"
 }
 
@@ -241,9 +232,6 @@ check_status() {
     echo -n "  Platform: "; [ -f "$BUILD_DIR/src/lvgl_platform/liblvgl_platform.a" ] && print_msg $GREEN "Built" || print_msg $RED "Not built"
     echo ""
     print_msg $BLUE "Examples:"
-    echo -n "  osmesa_test:         "; [ -f "$BUILD_DIR/src/osmesa_test/osmesa_test" ] && print_msg $GREEN "Built" || print_msg $RED "Not built"
-    echo -n "  lvgl_hello:          "; [ -f "$BUILD_DIR/src/lvgl_hello/lvgl_hello" ] && print_msg $GREEN "Built" || print_msg $RED "Not built"
-    echo -n "  lvgl_osmesa_example: "; [ -f "$BUILD_DIR/src/lvgl_osmesa/lvgl_osmesa_example" ] && print_msg $GREEN "Built" || print_msg $RED "Not built"
     echo -n "  dx8_cube:            "; [ -f "$BUILD_DIR/src/dx8_cube/dx8_cube" ] && print_msg $GREEN "Built" || print_msg $RED "Not built"
 }
 
@@ -336,7 +324,7 @@ case "$TARGET" in
     "examples")
         build_examples
         ;;
-    "dx8_cube"|"osmesa_test"|"lvgl_hello"|"lvgl_osmesa_example")
+    "dx8_cube")
         build_example "$TARGET"
         ;;
     "status")

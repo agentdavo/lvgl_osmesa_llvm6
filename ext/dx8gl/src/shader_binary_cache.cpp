@@ -1,5 +1,6 @@
 #include "shader_binary_cache.h"
 #include "logger.h"
+#include "osmesa_gl_loader.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
@@ -17,13 +18,9 @@ std::unique_ptr<ShaderBinaryCache> g_shader_binary_cache;
 
 // Check if binary format is supported
 static bool check_binary_format_support() {
-    // Check for GL_ARB_get_program_binary or GL_OES_get_program_binary
-    const char* extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
-    if (!extensions) return false;
-    
-    std::string ext_string(extensions);
-    return (ext_string.find("GL_ARB_get_program_binary") != std::string::npos ||
-            ext_string.find("GL_OES_get_program_binary") != std::string::npos);
+    // In OpenGL 3.3 Core profile, use GL_ARB_get_program_binary (GL_OES_get_program_binary is OpenGL ES only)
+    // Note: glGetProgramBinary is core in OpenGL 4.1+, but we check for ARB extension for 3.3 compatibility
+    return has_extension("GL_ARB_get_program_binary");
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -685,15 +682,26 @@ uint32_t ShaderBinaryCache::compute_gl_version_hash() const {
 }
 
 uint32_t ShaderBinaryCache::compute_extension_hash() const {
-    const char* extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
-    if (!extensions) return 0;
-    
-    // Hash only first 1024 chars to avoid huge strings
-    size_t len = std::min(strlen(extensions), size_t(1024));
+    // Use modern OpenGL method to compute extension hash
+    GLint ext_count = 0;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &ext_count);
     
     uint32_t hash = 0;
-    for (size_t i = 0; i < len; i++) {
-        hash = hash * 31 + extensions[i];
+    
+    // Hash extension count first
+    hash = hash * 31 + ext_count;
+    
+    // Hash each extension name (limit to first 50 for performance)
+    int limit = std::min(ext_count, 50);
+    for (int i = 0; i < limit; i++) {
+        const char* ext = (const char*)glGetStringi(GL_EXTENSIONS, i);
+        if (ext) {
+            // Hash extension name
+            size_t len = strlen(ext);
+            for (size_t j = 0; j < len; j++) {
+                hash = hash * 31 + ext[j];
+            }
+        }
     }
     
     return hash;

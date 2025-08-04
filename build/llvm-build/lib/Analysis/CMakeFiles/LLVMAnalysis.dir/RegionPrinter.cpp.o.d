@@ -370,5 +370,4 @@ lib/Analysis/CMakeFiles/LLVMAnalysis.dir/RegionPrinter.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/InitializePasses.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/CommandLine.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/StringSaver.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Allocator.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/IR/LegacyPassManager.h
+ /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Allocator.h

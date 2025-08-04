@@ -1,6 +1,7 @@
 #version 330 core
 
 in vec4 v_color;
+in vec2 v_texcoord0;
 in vec3 v_normal;
 in vec3 v_worldPos;
 
@@ -14,6 +15,7 @@ uniform vec3 u_lightPos0;
 uniform vec4 u_lightDiffuse0;
 uniform vec3 u_lightPos1;
 uniform vec4 u_lightDiffuse1;
+uniform sampler2D u_texture0;
 
 out vec4 fragColor;
 
@@ -33,5 +35,6 @@ void main() {
         lightColor += diff * u_lightDiffuse1.rgb * u_materialDiffuse.rgb;
     }
     color.rgb *= lightColor;
+    color *= texture(u_texture0, v_texcoord0);
     fragColor = color;
 }

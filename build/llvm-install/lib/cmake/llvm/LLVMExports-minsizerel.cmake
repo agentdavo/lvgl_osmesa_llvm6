@@ -764,6 +764,16 @@ set_target_properties(LLVMRuntimeDyld PROPERTIES
 list(APPEND _cmake_import_check_targets LLVMRuntimeDyld )
 list(APPEND _cmake_import_check_files_for_LLVMRuntimeDyld "${_IMPORT_PREFIX}/lib/libLLVMRuntimeDyld.a" )
 
+# Import target "LLVMPerfJITEvents" for configuration "MinSizeRel"
+set_property(TARGET LLVMPerfJITEvents APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(LLVMPerfJITEvents PROPERTIES
+  IMPORTED_LINK_INTERFACE_LANGUAGES_MINSIZEREL "CXX"
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/lib/libLLVMPerfJITEvents.a"
+  )
+
+list(APPEND _cmake_import_check_targets LLVMPerfJITEvents )
+list(APPEND _cmake_import_check_files_for_LLVMPerfJITEvents "${_IMPORT_PREFIX}/lib/libLLVMPerfJITEvents.a" )
+
 # Import target "LLVMTarget" for configuration "MinSizeRel"
 set_property(TARGET LLVMTarget APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(LLVMTarget PROPERTIES
@@ -984,6 +994,69 @@ set_target_properties(LLVMWindowsManifest PROPERTIES
 list(APPEND _cmake_import_check_targets LLVMWindowsManifest )
 list(APPEND _cmake_import_check_files_for_LLVMWindowsManifest "${_IMPORT_PREFIX}/lib/libLLVMWindowsManifest.a" )
 
+# Import target "FileCheck" for configuration "MinSizeRel"
+set_property(TARGET FileCheck APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(FileCheck PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/FileCheck"
+  )
+
+list(APPEND _cmake_import_check_targets FileCheck )
+list(APPEND _cmake_import_check_files_for_FileCheck "${_IMPORT_PREFIX}/bin/FileCheck" )
+
+# Import target "llvm-PerfectShuffle" for configuration "MinSizeRel"
+set_property(TARGET llvm-PerfectShuffle APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(llvm-PerfectShuffle PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/llvm-PerfectShuffle"
+  )
+
+list(APPEND _cmake_import_check_targets llvm-PerfectShuffle )
+list(APPEND _cmake_import_check_files_for_llvm-PerfectShuffle "${_IMPORT_PREFIX}/bin/llvm-PerfectShuffle" )
+
+# Import target "count" for configuration "MinSizeRel"
+set_property(TARGET count APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(count PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/count"
+  )
+
+list(APPEND _cmake_import_check_targets count )
+list(APPEND _cmake_import_check_files_for_count "${_IMPORT_PREFIX}/bin/count" )
+
+# Import target "not" for configuration "MinSizeRel"
+set_property(TARGET not APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(not PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/not"
+  )
+
+list(APPEND _cmake_import_check_targets not )
+list(APPEND _cmake_import_check_files_for_not "${_IMPORT_PREFIX}/bin/not" )
+
+# Import target "UnicodeNameMappingGenerator" for configuration "MinSizeRel"
+set_property(TARGET UnicodeNameMappingGenerator APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(UnicodeNameMappingGenerator PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/UnicodeNameMappingGenerator"
+  )
+
+list(APPEND _cmake_import_check_targets UnicodeNameMappingGenerator )
+list(APPEND _cmake_import_check_files_for_UnicodeNameMappingGenerator "${_IMPORT_PREFIX}/bin/UnicodeNameMappingGenerator" )
+
+# Import target "yaml-bench" for configuration "MinSizeRel"
+set_property(TARGET yaml-bench APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(yaml-bench PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/yaml-bench"
+  )
+
+list(APPEND _cmake_import_check_targets yaml-bench )
+list(APPEND _cmake_import_check_files_for_yaml-bench "${_IMPORT_PREFIX}/bin/yaml-bench" )
+
+# Import target "split-file" for configuration "MinSizeRel"
+set_property(TARGET split-file APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(split-file PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/split-file"
+  )
+
+list(APPEND _cmake_import_check_targets split-file )
+list(APPEND _cmake_import_check_files_for_split-file "${_IMPORT_PREFIX}/bin/split-file" )
+
 # Import target "LTO" for configuration "MinSizeRel"
 set_property(TARGET LTO APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(LTO PROPERTIES
@@ -1066,6 +1139,15 @@ set_target_properties(llc PROPERTIES
 
 list(APPEND _cmake_import_check_targets llc )
 list(APPEND _cmake_import_check_files_for_llc "${_IMPORT_PREFIX}/bin/llc" )
+
+# Import target "lli-child-target" for configuration "MinSizeRel"
+set_property(TARGET lli-child-target APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(lli-child-target PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/lli-child-target"
+  )
+
+list(APPEND _cmake_import_check_targets lli-child-target )
+list(APPEND _cmake_import_check_files_for_lli-child-target "${_IMPORT_PREFIX}/bin/lli-child-target" )
 
 # Import target "lli" for configuration "MinSizeRel"
 set_property(TARGET lli APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
@@ -1322,6 +1404,15 @@ set_target_properties(llvm-ifs PROPERTIES
 
 list(APPEND _cmake_import_check_targets llvm-ifs )
 list(APPEND _cmake_import_check_files_for_llvm-ifs "${_IMPORT_PREFIX}/bin/llvm-ifs" )
+
+# Import target "llvm-jitlink-executor" for configuration "MinSizeRel"
+set_property(TARGET llvm-jitlink-executor APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(llvm-jitlink-executor PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/llvm-jitlink-executor"
+  )
+
+list(APPEND _cmake_import_check_targets llvm-jitlink-executor )
+list(APPEND _cmake_import_check_files_for_llvm-jitlink-executor "${_IMPORT_PREFIX}/bin/llvm-jitlink-executor" )
 
 # Import target "llvm-jitlink" for configuration "MinSizeRel"
 set_property(TARGET llvm-jitlink APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
@@ -1612,6 +1703,15 @@ set_target_properties(llvm-xray PROPERTIES
 list(APPEND _cmake_import_check_targets llvm-xray )
 list(APPEND _cmake_import_check_files_for_llvm-xray "${_IMPORT_PREFIX}/bin/llvm-xray" )
 
+# Import target "obj2yaml" for configuration "MinSizeRel"
+set_property(TARGET obj2yaml APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(obj2yaml PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/obj2yaml"
+  )
+
+list(APPEND _cmake_import_check_targets obj2yaml )
+list(APPEND _cmake_import_check_files_for_obj2yaml "${_IMPORT_PREFIX}/bin/obj2yaml" )
+
 # Import target "LLVMOptDriver" for configuration "MinSizeRel"
 set_property(TARGET LLVMOptDriver APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
 set_target_properties(LLVMOptDriver PROPERTIES
@@ -1677,6 +1777,15 @@ set_target_properties(verify-uselistorder PROPERTIES
 
 list(APPEND _cmake_import_check_targets verify-uselistorder )
 list(APPEND _cmake_import_check_files_for_verify-uselistorder "${_IMPORT_PREFIX}/bin/verify-uselistorder" )
+
+# Import target "yaml2obj" for configuration "MinSizeRel"
+set_property(TARGET yaml2obj APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
+set_target_properties(yaml2obj PROPERTIES
+  IMPORTED_LOCATION_MINSIZEREL "${_IMPORT_PREFIX}/bin/yaml2obj"
+  )
+
+list(APPEND _cmake_import_check_targets yaml2obj )
+list(APPEND _cmake_import_check_files_for_yaml2obj "${_IMPORT_PREFIX}/bin/yaml2obj" )
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)

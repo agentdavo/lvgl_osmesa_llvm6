@@ -40,6 +40,7 @@ public:
         GLint projection_matrix = -1;
         GLint world_view_proj_matrix = -1;
         GLint normal_matrix = -1;
+        GLint viewport_size = -1;  // For XYZRHW coordinate conversion
         
         GLint material_ambient = -1;
         GLint material_diffuse = -1;

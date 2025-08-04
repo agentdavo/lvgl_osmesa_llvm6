@@ -98,6 +98,7 @@ bin/llvm-jitlink-executor: lib/libLLVMSupport.a
 bin/llvm-jitlink-executor: lib/libLLVMOrcShared.a
 bin/llvm-jitlink-executor: lib/libLLVMTargetParser.a
 bin/llvm-jitlink-executor: lib/libLLVMSupport.a
+bin/llvm-jitlink-executor: /usr/lib/x86_64-linux-gnu/libz.so
 bin/llvm-jitlink-executor: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/llvm-jitlink-executor: lib/libLLVMDemangle.a
 bin/llvm-jitlink-executor: tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/llvm-jitlink-executor.dir/link.txt

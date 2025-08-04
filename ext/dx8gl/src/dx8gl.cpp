@@ -3,6 +3,8 @@
 #include "d3d8_device.h"
 #include "logger.h"
 #include "osmesa_context.h"
+#include "blue_screen.h"
+#include "osmesa_gl_loader.h"
 #include <atomic>
 #include <memory>
 #include <mutex>
@@ -199,6 +201,7 @@ void dx8gl_context_get_size(dx8gl_context* context, uint32_t* width, uint32_t* h
 void* dx8gl_get_shared_framebuffer(int* width, int* height, int* frame_number, bool* updated) {
     static int fb_frame = 0;
     static std::mutex fb_mutex;
+    static bool showing_blue_screen = false;
     
     std::lock_guard<std::mutex> lock(fb_mutex);
     
@@ -217,6 +220,29 @@ void* dx8gl_get_shared_framebuffer(int* width, int* height, int* frame_number, b
     // Get dimensions from device
     int fb_width = 0, fb_height = 0;
     device->get_osmesa_dimensions(&fb_width, &fb_height);
+    
+    // Check for OpenGL errors and show blue screen if needed
+    GLenum gl_error = glGetError();
+    if (gl_error != GL_NO_ERROR && !showing_blue_screen) {
+        DX8GL_ERROR("OpenGL error detected in dx8gl_get_shared_framebuffer: 0x%04X", gl_error);
+        
+        // Show blue screen
+        const char* error_msg = nullptr;
+        switch (gl_error) {
+            case GL_INVALID_ENUM: error_msg = "GL_INVALID_ENUM"; break;
+            case GL_INVALID_VALUE: error_msg = "GL_INVALID_VALUE"; break;
+            case GL_INVALID_OPERATION: error_msg = "GL_INVALID_OPERATION"; break;
+            case GL_OUT_OF_MEMORY: error_msg = "GL_OUT_OF_MEMORY"; break;
+            default: error_msg = "GL_ERROR"; break;
+        }
+        
+        // Fill framebuffer with blue screen
+        dx8gl::BlueScreen::fill_framebuffer(framebuffer, fb_width, fb_height, error_msg);
+        showing_blue_screen = true;
+        
+        // Clear remaining errors
+        while (glGetError() != GL_NO_ERROR) {}
+    }
     
     // Update output parameters
     if (width) *width = fb_width;

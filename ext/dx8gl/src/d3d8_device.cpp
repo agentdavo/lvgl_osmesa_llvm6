@@ -851,6 +851,10 @@ void Direct3DDevice8::flush_command_buffer() {
                                    pixel_shader_manager_.get(),
                                    shader_program_manager_.get());
     
+    // Force OpenGL to process all commands before continuing
+    // This helps prevent Mesa fence synchronization crashes
+    glFlush();
+    
     // Get new buffer from pool
     current_command_buffer_ = command_buffer_pool_.acquire();
 }

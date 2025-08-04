@@ -5443,7 +5443,10 @@ lib/Support/CMakeFiles/LLVMSupport.dir/CRC.cpp.o: /home/djs/lvgl_osmesa_llvm6/ex
   /usr/include/features-time64.h \
   /usr/include/features.h \
   /usr/include/inttypes.h \
+  /usr/include/limits.h \
+  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
+  /usr/include/linux/limits.h \
   /usr/include/locale.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
@@ -5454,19 +5457,28 @@ lib/Support/CMakeFiles/LLVMSupport.dir/CRC.cpp.o: /home/djs/lvgl_osmesa_llvm6/ex
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/asm/errno.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -5519,12 +5531,17 @@ lib/Support/CMakeFiles/LLVMSupport.dir/CRC.cpp.o: /home/djs/lvgl_osmesa_llvm6/ex
   /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
+  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd-decl.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
   /usr/include/x86_64-linux-gnu/bits/wchar2-decl.h \
   /usr/include/x86_64-linux-gnu/bits/wchar2.h \
   /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
   /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -5540,9 +5557,13 @@ lib/Support/CMakeFiles/LLVMSupport.dir/CRC.cpp.o: /home/djs/lvgl_osmesa_llvm6/ex
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/zconf.h \
+  /usr/include/zlib.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
-  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h \
+  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 lib/Support/CMakeFiles/LLVMSupport.dir/CSKYAttributeParser.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/CSKYAttributeParser.cpp \
   include/llvm/Config/abi-breaking.h \
@@ -7817,6 +7838,7 @@ lib/Support/CMakeFiles/LLVMSupport.dir/Compression.cpp.o: /home/djs/lvgl_osmesa_
   /usr/include/features.h \
   /usr/include/inttypes.h \
   /usr/include/limits.h \
+  /usr/include/linux/close_range.h \
   /usr/include/linux/errno.h \
   /usr/include/linux/limits.h \
   /usr/include/locale.h \
@@ -7829,22 +7851,28 @@ lib/Support/CMakeFiles/LLVMSupport.dir/Compression.cpp.o: /home/djs/lvgl_osmesa_
   /usr/include/string.h \
   /usr/include/strings.h \
   /usr/include/time.h \
+  /usr/include/unistd.h \
   /usr/include/wchar.h \
   /usr/include/x86_64-linux-gnu/asm/errno.h \
   /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h \
   /usr/include/x86_64-linux-gnu/bits/byteswap.h \
+  /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/cpu-set.h \
   /usr/include/x86_64-linux-gnu/bits/endian.h \
   /usr/include/x86_64-linux-gnu/bits/endianness.h \
+  /usr/include/x86_64-linux-gnu/bits/environments.h \
   /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
   /usr/include/x86_64-linux-gnu/bits/local_lim.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
   /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
   /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -7898,6 +7926,9 @@ lib/Support/CMakeFiles/LLVMSupport.dir/Compression.cpp.o: /home/djs/lvgl_osmesa_
   /usr/include/x86_64-linux-gnu/bits/typesizes.h \
   /usr/include/x86_64-linux-gnu/bits/uintn-identity.h \
   /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd-decl.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd.h \
+  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
   /usr/include/x86_64-linux-gnu/bits/waitflags.h \
   /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
   /usr/include/x86_64-linux-gnu/bits/wchar.h \
@@ -7920,6 +7951,8 @@ lib/Support/CMakeFiles/LLVMSupport.dir/Compression.cpp.o: /home/djs/lvgl_osmesa_
   /usr/include/x86_64-linux-gnu/sys/select.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
   /usr/include/x86_64-linux-gnu/sys/types.h \
+  /usr/include/zconf.h \
+  /usr/include/zlib.h \
   /usr/include/zstd.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
@@ -39748,8 +39781,6 @@ lib/Support/CMakeFiles/LLVMSupport.dir/xxhash.cpp.o: /home/djs/lvgl_osmesa_llvm6
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/SHA1.h:
 
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/RewriteBuffer.cpp:
-
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Regex.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/RandomNumberGenerator.h:
@@ -39960,6 +39991,10 @@ lib/Support/CMakeFiles/LLVMSupport.dir/xxhash.cpp.o: /home/djs/lvgl_osmesa_llvm6
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/ExponentialBackoff.h:
 
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/WindowsError.h:
+
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm-c/ErrorHandling.h:
+
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/BlockFrequency.cpp:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/YAMLParser.cpp:
@@ -40063,6 +40098,8 @@ lib/Support/CMakeFiles/LLVMSupport.dir/xxhash.cpp.o: /home/djs/lvgl_osmesa_llvm6
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/AllocatorBase.h:
 
 /usr/include/c++/13/cstdint:
+
+/usr/include/zconf.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h:
 
@@ -40376,6 +40413,10 @@ include/llvm/Config/llvm-config.h:
 
 /usr/include/c++/13/utility:
 
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/RewriteBuffer.cpp:
+
+/usr/include/zlib.h:
+
 /usr/include/x86_64-linux-gnu/bits/endianness.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/BitVector.h:
@@ -40649,8 +40690,6 @@ include/llvm/Config/llvm-config.h:
 /usr/include/c++/13/bits/streambuf.tcc:
 
 /usr/include/c++/13/bits/specfun.h:
-
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/WindowsError.h:
 
 /usr/include/endian.h:
 
@@ -40976,8 +41015,6 @@ include/llvm/Config/llvm-config.h:
 
 /usr/include/c++/13/bits/std_mutex.h:
 
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm-c/ErrorHandling.h:
-
 /usr/include/c++/13/bits/stl_deque.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/HexagonAttributeParser.h:
@@ -41076,6 +41113,34 @@ include/llvm/Config/config.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/CRC.h:
 
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/SpecialCaseList.cpp:
+
+/usr/include/unistd.h:
+
+/usr/include/c++/13/bits/deque.tcc:
+
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/WithColor.h:
+
+/usr/include/x86_64-linux-gnu/bits/confname.h:
+
+/usr/include/x86_64-linux-gnu/bits/stdlib.h:
+
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/ARMWinEH.cpp:
+
+/usr/include/c++/13/bits/stl_vector.h:
+
+/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
+
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/FileSystem.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd-decl.h:
+
+/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/IntervalMap.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd.h:
+
+/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
+
 /usr/include/c++/13/typeinfo:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/CSKYAttributeParser.cpp:
@@ -41100,14 +41165,6 @@ include/llvm/Config/config.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/MD5.h:
 
-/usr/include/c++/13/bits/deque.tcc:
-
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/WithColor.h:
-
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/SpecialCaseList.cpp:
-
-/usr/include/unistd.h:
-
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/DenseMapInfo.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/DeltaAlgorithm.h:
@@ -41119,26 +41176,6 @@ include/llvm/Config/config.h:
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Caching.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/stack_t.h:
-
-/usr/include/x86_64-linux-gnu/bits/confname.h:
-
-/usr/include/x86_64-linux-gnu/bits/stdlib.h:
-
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/ARMWinEH.cpp:
-
-/usr/include/c++/13/bits/stl_vector.h:
-
-/usr/include/x86_64-linux-gnu/bits/getopt_core.h:
-
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/FileSystem.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd-decl.h:
-
-/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/IntervalMap.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd.h:
-
-/usr/include/x86_64-linux-gnu/bits/unistd_ext.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/SmallVector.cpp:
 

@@ -222,11 +222,21 @@ lib/Support/CMakeFiles/LLVMSupport.dir/Compression.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/ErrorOr.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Format.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
- /usr/include/zstd.h /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/include/zlib.h /usr/include/zconf.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd-decl.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h /usr/include/zstd.h

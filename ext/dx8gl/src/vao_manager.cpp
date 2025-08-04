@@ -86,6 +86,14 @@ void VAOManager::setup_vertex_attributes(DWORD fvf, GLuint program, UINT stride)
     DX8GL_INFO("VAO setup for FVF 0x%x: position_loc=%d, normal_loc=%d, color_loc=%d, texcoord0_loc=%d",
                fvf, position_loc, normal_loc, color_loc, texcoord0_loc);
     
+    // IMPORTANT: Disable all possible attributes first to prevent Mesa crash
+    // This ensures attributes from previous VAOs don't remain enabled
+    if (position_loc >= 0) glDisableVertexAttribArray(position_loc);
+    if (normal_loc >= 0) glDisableVertexAttribArray(normal_loc);
+    if (color_loc >= 0) glDisableVertexAttribArray(color_loc);
+    if (texcoord0_loc >= 0) glDisableVertexAttribArray(texcoord0_loc);
+    if (texcoord1_loc >= 0) glDisableVertexAttribArray(texcoord1_loc);
+    
     UINT offset = 0;
     
     // Position

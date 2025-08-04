@@ -163,156 +163,118 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/simple_triangle.dir/rule:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/simple_triangle.dir/rule
-.PHONY : src/CMakeFiles/simple_triangle.dir/rule
+src/CMakeFiles/test_xyzrhw.dir/rule:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_xyzrhw.dir/rule
+.PHONY : src/CMakeFiles/test_xyzrhw.dir/rule
 
 # Convenience name for target.
-simple_triangle: src/CMakeFiles/simple_triangle.dir/rule
-.PHONY : simple_triangle
+test_xyzrhw: src/CMakeFiles/test_xyzrhw.dir/rule
+.PHONY : test_xyzrhw
 
 # fast build rule for target.
-simple_triangle/fast:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/simple_triangle.dir/build.make src/CMakeFiles/simple_triangle.dir/build
-.PHONY : simple_triangle/fast
+test_xyzrhw/fast:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_xyzrhw.dir/build.make src/CMakeFiles/test_xyzrhw.dir/build
+.PHONY : test_xyzrhw/fast
 
 # Convenience name for target.
-src/CMakeFiles/gl_triangle_test.dir/rule:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/gl_triangle_test.dir/rule
-.PHONY : src/CMakeFiles/gl_triangle_test.dir/rule
+src/CMakeFiles/test_mixed_vertices.dir/rule:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_mixed_vertices.dir/rule
+.PHONY : src/CMakeFiles/test_mixed_vertices.dir/rule
 
 # Convenience name for target.
-gl_triangle_test: src/CMakeFiles/gl_triangle_test.dir/rule
-.PHONY : gl_triangle_test
+test_mixed_vertices: src/CMakeFiles/test_mixed_vertices.dir/rule
+.PHONY : test_mixed_vertices
 
 # fast build rule for target.
-gl_triangle_test/fast:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/gl_triangle_test.dir/build.make src/CMakeFiles/gl_triangle_test.dir/build
-.PHONY : gl_triangle_test/fast
+test_mixed_vertices/fast:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_mixed_vertices.dir/build.make src/CMakeFiles/test_mixed_vertices.dir/build
+.PHONY : test_mixed_vertices/fast
 
 # Convenience name for target.
-src/CMakeFiles/dx8_single_frame.dir/rule:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/dx8_single_frame.dir/rule
-.PHONY : src/CMakeFiles/dx8_single_frame.dir/rule
+src/CMakeFiles/test_indexed_xyzrhw.dir/rule:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_indexed_xyzrhw.dir/rule
+.PHONY : src/CMakeFiles/test_indexed_xyzrhw.dir/rule
 
 # Convenience name for target.
-dx8_single_frame: src/CMakeFiles/dx8_single_frame.dir/rule
-.PHONY : dx8_single_frame
+test_indexed_xyzrhw: src/CMakeFiles/test_indexed_xyzrhw.dir/rule
+.PHONY : test_indexed_xyzrhw
 
 # fast build rule for target.
-dx8_single_frame/fast:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_single_frame.dir/build.make src/CMakeFiles/dx8_single_frame.dir/build
-.PHONY : dx8_single_frame/fast
+test_indexed_xyzrhw/fast:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/build
+.PHONY : test_indexed_xyzrhw/fast
 
-# Convenience name for target.
-src/CMakeFiles/dx8_ndc_test.dir/rule:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/dx8_ndc_test.dir/rule
-.PHONY : src/CMakeFiles/dx8_ndc_test.dir/rule
-
-# Convenience name for target.
-dx8_ndc_test: src/CMakeFiles/dx8_ndc_test.dir/rule
-.PHONY : dx8_ndc_test
-
-# fast build rule for target.
-dx8_ndc_test/fast:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_ndc_test.dir/build.make src/CMakeFiles/dx8_ndc_test.dir/build
-.PHONY : dx8_ndc_test/fast
-
-dx8_ndc_test.o: dx8_ndc_test.cpp.o
-.PHONY : dx8_ndc_test.o
+test_indexed_xyzrhw.o: test_indexed_xyzrhw.cpp.o
+.PHONY : test_indexed_xyzrhw.o
 
 # target to build an object file
-dx8_ndc_test.cpp.o:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_ndc_test.dir/build.make src/CMakeFiles/dx8_ndc_test.dir/dx8_ndc_test.cpp.o
-.PHONY : dx8_ndc_test.cpp.o
+test_indexed_xyzrhw.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/test_indexed_xyzrhw.cpp.o
+.PHONY : test_indexed_xyzrhw.cpp.o
 
-dx8_ndc_test.i: dx8_ndc_test.cpp.i
-.PHONY : dx8_ndc_test.i
+test_indexed_xyzrhw.i: test_indexed_xyzrhw.cpp.i
+.PHONY : test_indexed_xyzrhw.i
 
 # target to preprocess a source file
-dx8_ndc_test.cpp.i:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_ndc_test.dir/build.make src/CMakeFiles/dx8_ndc_test.dir/dx8_ndc_test.cpp.i
-.PHONY : dx8_ndc_test.cpp.i
+test_indexed_xyzrhw.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/test_indexed_xyzrhw.cpp.i
+.PHONY : test_indexed_xyzrhw.cpp.i
 
-dx8_ndc_test.s: dx8_ndc_test.cpp.s
-.PHONY : dx8_ndc_test.s
+test_indexed_xyzrhw.s: test_indexed_xyzrhw.cpp.s
+.PHONY : test_indexed_xyzrhw.s
 
 # target to generate assembly for a file
-dx8_ndc_test.cpp.s:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_ndc_test.dir/build.make src/CMakeFiles/dx8_ndc_test.dir/dx8_ndc_test.cpp.s
-.PHONY : dx8_ndc_test.cpp.s
+test_indexed_xyzrhw.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/test_indexed_xyzrhw.cpp.s
+.PHONY : test_indexed_xyzrhw.cpp.s
 
-dx8_single_frame.o: dx8_single_frame.cpp.o
-.PHONY : dx8_single_frame.o
+test_mixed_vertices.o: test_mixed_vertices.cpp.o
+.PHONY : test_mixed_vertices.o
 
 # target to build an object file
-dx8_single_frame.cpp.o:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_single_frame.dir/build.make src/CMakeFiles/dx8_single_frame.dir/dx8_single_frame.cpp.o
-.PHONY : dx8_single_frame.cpp.o
+test_mixed_vertices.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_mixed_vertices.dir/build.make src/CMakeFiles/test_mixed_vertices.dir/test_mixed_vertices.cpp.o
+.PHONY : test_mixed_vertices.cpp.o
 
-dx8_single_frame.i: dx8_single_frame.cpp.i
-.PHONY : dx8_single_frame.i
+test_mixed_vertices.i: test_mixed_vertices.cpp.i
+.PHONY : test_mixed_vertices.i
 
 # target to preprocess a source file
-dx8_single_frame.cpp.i:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_single_frame.dir/build.make src/CMakeFiles/dx8_single_frame.dir/dx8_single_frame.cpp.i
-.PHONY : dx8_single_frame.cpp.i
+test_mixed_vertices.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_mixed_vertices.dir/build.make src/CMakeFiles/test_mixed_vertices.dir/test_mixed_vertices.cpp.i
+.PHONY : test_mixed_vertices.cpp.i
 
-dx8_single_frame.s: dx8_single_frame.cpp.s
-.PHONY : dx8_single_frame.s
+test_mixed_vertices.s: test_mixed_vertices.cpp.s
+.PHONY : test_mixed_vertices.s
 
 # target to generate assembly for a file
-dx8_single_frame.cpp.s:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_single_frame.dir/build.make src/CMakeFiles/dx8_single_frame.dir/dx8_single_frame.cpp.s
-.PHONY : dx8_single_frame.cpp.s
+test_mixed_vertices.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_mixed_vertices.dir/build.make src/CMakeFiles/test_mixed_vertices.dir/test_mixed_vertices.cpp.s
+.PHONY : test_mixed_vertices.cpp.s
 
-gl_triangle_test.o: gl_triangle_test.cpp.o
-.PHONY : gl_triangle_test.o
+test_xyzrhw.o: test_xyzrhw.cpp.o
+.PHONY : test_xyzrhw.o
 
 # target to build an object file
-gl_triangle_test.cpp.o:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/gl_triangle_test.dir/build.make src/CMakeFiles/gl_triangle_test.dir/gl_triangle_test.cpp.o
-.PHONY : gl_triangle_test.cpp.o
+test_xyzrhw.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_xyzrhw.dir/build.make src/CMakeFiles/test_xyzrhw.dir/test_xyzrhw.cpp.o
+.PHONY : test_xyzrhw.cpp.o
 
-gl_triangle_test.i: gl_triangle_test.cpp.i
-.PHONY : gl_triangle_test.i
-
-# target to preprocess a source file
-gl_triangle_test.cpp.i:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/gl_triangle_test.dir/build.make src/CMakeFiles/gl_triangle_test.dir/gl_triangle_test.cpp.i
-.PHONY : gl_triangle_test.cpp.i
-
-gl_triangle_test.s: gl_triangle_test.cpp.s
-.PHONY : gl_triangle_test.s
-
-# target to generate assembly for a file
-gl_triangle_test.cpp.s:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/gl_triangle_test.dir/build.make src/CMakeFiles/gl_triangle_test.dir/gl_triangle_test.cpp.s
-.PHONY : gl_triangle_test.cpp.s
-
-simple_triangle.o: simple_triangle.cpp.o
-.PHONY : simple_triangle.o
-
-# target to build an object file
-simple_triangle.cpp.o:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/simple_triangle.dir/build.make src/CMakeFiles/simple_triangle.dir/simple_triangle.cpp.o
-.PHONY : simple_triangle.cpp.o
-
-simple_triangle.i: simple_triangle.cpp.i
-.PHONY : simple_triangle.i
+test_xyzrhw.i: test_xyzrhw.cpp.i
+.PHONY : test_xyzrhw.i
 
 # target to preprocess a source file
-simple_triangle.cpp.i:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/simple_triangle.dir/build.make src/CMakeFiles/simple_triangle.dir/simple_triangle.cpp.i
-.PHONY : simple_triangle.cpp.i
+test_xyzrhw.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_xyzrhw.dir/build.make src/CMakeFiles/test_xyzrhw.dir/test_xyzrhw.cpp.i
+.PHONY : test_xyzrhw.cpp.i
 
-simple_triangle.s: simple_triangle.cpp.s
-.PHONY : simple_triangle.s
+test_xyzrhw.s: test_xyzrhw.cpp.s
+.PHONY : test_xyzrhw.s
 
 # target to generate assembly for a file
-simple_triangle.cpp.s:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/simple_triangle.dir/build.make src/CMakeFiles/simple_triangle.dir/simple_triangle.cpp.s
-.PHONY : simple_triangle.cpp.s
+test_xyzrhw.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_xyzrhw.dir/build.make src/CMakeFiles/test_xyzrhw.dir/test_xyzrhw.cpp.s
+.PHONY : test_xyzrhw.cpp.s
 
 # Help Target
 help:
@@ -326,22 +288,18 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... dx8_ndc_test"
-	@echo "... dx8_single_frame"
-	@echo "... gl_triangle_test"
-	@echo "... simple_triangle"
-	@echo "... dx8_ndc_test.o"
-	@echo "... dx8_ndc_test.i"
-	@echo "... dx8_ndc_test.s"
-	@echo "... dx8_single_frame.o"
-	@echo "... dx8_single_frame.i"
-	@echo "... dx8_single_frame.s"
-	@echo "... gl_triangle_test.o"
-	@echo "... gl_triangle_test.i"
-	@echo "... gl_triangle_test.s"
-	@echo "... simple_triangle.o"
-	@echo "... simple_triangle.i"
-	@echo "... simple_triangle.s"
+	@echo "... test_indexed_xyzrhw"
+	@echo "... test_mixed_vertices"
+	@echo "... test_xyzrhw"
+	@echo "... test_indexed_xyzrhw.o"
+	@echo "... test_indexed_xyzrhw.i"
+	@echo "... test_indexed_xyzrhw.s"
+	@echo "... test_mixed_vertices.o"
+	@echo "... test_mixed_vertices.i"
+	@echo "... test_mixed_vertices.s"
+	@echo "... test_xyzrhw.o"
+	@echo "... test_xyzrhw.i"
+	@echo "... test_xyzrhw.s"
 .PHONY : help
 
 

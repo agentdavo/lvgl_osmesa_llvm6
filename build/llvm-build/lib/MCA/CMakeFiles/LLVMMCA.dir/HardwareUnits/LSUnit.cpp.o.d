@@ -237,5 +237,5 @@ lib/MCA/CMakeFiles/LLVMMCA.dir/HardwareUnits/LSUnit.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MC/MCRegister.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/HardwareUnits/HardwareUnit.h \
  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/MCA/Instruction.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Debug.h
+ /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Debug.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h

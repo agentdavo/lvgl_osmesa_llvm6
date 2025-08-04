@@ -163,6 +163,7 @@ lib/libLLVM.so.20.1: lib/libLLVMOrcDebugging.a
 lib/libLLVM.so.20.1: lib/libLLVMOrcShared.a
 lib/libLLVM.so.20.1: lib/libLLVMOrcTargetProcess.a
 lib/libLLVM.so.20.1: lib/libLLVMRuntimeDyld.a
+lib/libLLVM.so.20.1: lib/libLLVMPerfJITEvents.a
 lib/libLLVM.so.20.1: lib/libLLVMTarget.a
 lib/libLLVM.so.20.1: lib/libLLVMX86CodeGen.a
 lib/libLLVM.so.20.1: lib/libLLVMX86AsmParser.a
@@ -187,11 +188,9 @@ lib/libLLVM.so.20.1: lib/libLLVMWindowsDriver.a
 lib/libLLVM.so.20.1: lib/libLLVMWindowsManifest.a
 lib/libLLVM.so.20.1: lib/libLLVMDWARFLinker.a
 lib/libLLVM.so.20.1: lib/libLLVMExtensions.a
+lib/libLLVM.so.20.1: /usr/lib/x86_64-linux-gnu/libffi.so
 lib/libLLVM.so.20.1: lib/libLLVMOrcJIT.a
-lib/libLLVM.so.20.1: lib/libLLVMExecutionEngine.a
 lib/libLLVM.so.20.1: lib/libLLVMJITLink.a
-lib/libLLVM.so.20.1: lib/libLLVMOrcTargetProcess.a
-lib/libLLVM.so.20.1: lib/libLLVMRuntimeDyld.a
 lib/libLLVM.so.20.1: lib/libLLVMPasses.a
 lib/libLLVM.so.20.1: lib/libLLVMCoroutines.a
 lib/libLLVM.so.20.1: lib/libLLVMipo.a
@@ -203,7 +202,10 @@ lib/libLLVM.so.20.1: lib/libLLVMSandboxIR.a
 lib/libLLVM.so.20.1: lib/libLLVMLinker.a
 lib/libLLVM.so.20.1: lib/libLLVMHipStdPar.a
 lib/libLLVM.so.20.1: lib/libLLVMWindowsDriver.a
+lib/libLLVM.so.20.1: lib/libLLVMExecutionEngine.a
+lib/libLLVM.so.20.1: lib/libLLVMOrcTargetProcess.a
 lib/libLLVM.so.20.1: lib/libLLVMOrcShared.a
+lib/libLLVM.so.20.1: lib/libLLVMRuntimeDyld.a
 lib/libLLVM.so.20.1: lib/libLLVMIRPrinter.a
 lib/libLLVM.so.20.1: lib/libLLVMAsmPrinter.a
 lib/libLLVM.so.20.1: lib/libLLVMGlobalISel.a
@@ -245,7 +247,9 @@ lib/libLLVM.so.20.1: lib/libLLVMBinaryFormat.a
 lib/libLLVM.so.20.1: lib/libLLVMTargetParser.a
 lib/libLLVM.so.20.1: lib/libLLVMSupport.a
 lib/libLLVM.so.20.1: lib/libLLVMDemangle.a
+lib/libLLVM.so.20.1: /usr/lib/x86_64-linux-gnu/libz.so
 lib/libLLVM.so.20.1: /usr/lib/x86_64-linux-gnu/libzstd.so
+lib/libLLVM.so.20.1: /usr/lib/x86_64-linux-gnu/libxml2.so
 lib/libLLVM.so.20.1: tools/llvm-shlib/CMakeFiles/LLVM.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/llvm-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library ../../lib/libLLVM.so"
 	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-shlib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LLVM.dir/link.txt --verbose=$(VERBOSE)

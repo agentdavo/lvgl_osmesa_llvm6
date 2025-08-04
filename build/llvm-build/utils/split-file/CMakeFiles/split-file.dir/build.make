@@ -93,6 +93,7 @@ split__file_EXTERNAL_OBJECTS =
 bin/split-file: utils/split-file/CMakeFiles/split-file.dir/split-file.cpp.o
 bin/split-file: utils/split-file/CMakeFiles/split-file.dir/build.make
 bin/split-file: lib/libLLVMSupport.a
+bin/split-file: /usr/lib/x86_64-linux-gnu/libz.so
 bin/split-file: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/split-file: lib/libLLVMDemangle.a
 bin/split-file: utils/split-file/CMakeFiles/split-file.dir/link.txt

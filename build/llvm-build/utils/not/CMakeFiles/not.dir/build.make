@@ -93,6 +93,7 @@ not_EXTERNAL_OBJECTS =
 bin/not: utils/not/CMakeFiles/not.dir/not.cpp.o
 bin/not: utils/not/CMakeFiles/not.dir/build.make
 bin/not: lib/libLLVMSupport.a
+bin/not: /usr/lib/x86_64-linux-gnu/libz.so
 bin/not: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/not: lib/libLLVMDemangle.a
 bin/not: utils/not/CMakeFiles/not.dir/link.txt

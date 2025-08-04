@@ -157,16 +157,6 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/djs/lvgl_osmesa_llvm6/build/llvm-build/third-party/benchmark/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/djs/lvgl_osmesa_llvm6/build/llvm-build/benchmarks/cmake_install.cmake")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
   include("/home/djs/lvgl_osmesa_llvm6/build/llvm-build/utils/llvm-locstats/cmake_install.cmake")
 endif()
 

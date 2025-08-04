@@ -4,8 +4,45 @@
 #include <GL/osmesa.h>
 #include <GL/gl.h>
 #include <GL/glext.h>
+#include "logger.h"
 
 namespace dx8gl {
+
+// OpenGL error checking utility
+inline void check_gl_error(const char* operation) {
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR) {
+        const char* error_str = "UNKNOWN";
+        switch (error) {
+            case GL_INVALID_ENUM: error_str = "GL_INVALID_ENUM"; break;
+            case GL_INVALID_VALUE: error_str = "GL_INVALID_VALUE"; break;
+            case GL_INVALID_OPERATION: error_str = "GL_INVALID_OPERATION"; break;
+            case GL_OUT_OF_MEMORY: error_str = "GL_OUT_OF_MEMORY"; break;
+            case GL_INVALID_FRAMEBUFFER_OPERATION: error_str = "GL_INVALID_FRAMEBUFFER_OPERATION"; break;
+        }
+        DX8GL_ERROR("OpenGL error in %s: %s (0x%04x)", operation, error_str, error);
+    }
+}
+
+// OpenGL 3.3 Core compatible extension checking
+inline bool has_extension(const char* extension_name) {
+    GLint ext_count = 0;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &ext_count);
+    
+    for (GLint i = 0; i < ext_count; i++) {
+        const char* ext = (const char*)glGetStringi(GL_EXTENSIONS, i);
+        if (ext && strcmp(ext, extension_name) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+#ifdef DX8GL_DEBUG
+    #define CHECK_GL_ERROR(op) check_gl_error(op)
+#else
+    #define CHECK_GL_ERROR(op) ((void)0)
+#endif
 
 // Function pointer types
 extern PFNGLGENBUFFERSPROC gl_GenBuffers;

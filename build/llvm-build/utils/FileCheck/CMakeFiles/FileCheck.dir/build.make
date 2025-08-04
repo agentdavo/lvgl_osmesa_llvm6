@@ -94,6 +94,7 @@ bin/FileCheck: utils/FileCheck/CMakeFiles/FileCheck.dir/FileCheck.cpp.o
 bin/FileCheck: utils/FileCheck/CMakeFiles/FileCheck.dir/build.make
 bin/FileCheck: lib/libLLVMFileCheck.a
 bin/FileCheck: lib/libLLVMSupport.a
+bin/FileCheck: /usr/lib/x86_64-linux-gnu/libz.so
 bin/FileCheck: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/FileCheck: lib/libLLVMDemangle.a
 bin/FileCheck: utils/FileCheck/CMakeFiles/FileCheck.dir/link.txt

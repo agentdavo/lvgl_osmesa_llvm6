@@ -223,9 +223,5 @@ lib/MCA/CMakeFiles/LLVMMCA.dir/IncrementalSourceMgr.cpp.o: \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/StringRef.h \
- /usr/include/c++/13/deque /usr/include/c++/13/bits/stl_deque.h \
- /usr/include/c++/13/bits/deque.tcc \
- /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Format.h
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/13/deque \
+ /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc

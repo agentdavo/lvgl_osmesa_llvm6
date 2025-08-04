@@ -2154,7 +2154,6 @@ lib/MCA/CMakeFiles/LLVMMCA.dir/HardwareUnits/RetireControlUnit.cpp.o: /home/djs/
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/ErrorHandling.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/MathExtras.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/SwapByteOrder.h \
-  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/type_traits.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -2703,7 +2702,6 @@ lib/MCA/CMakeFiles/LLVMMCA.dir/IncrementalSourceMgr.cpp.o: /home/djs/lvgl_osmesa
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/STLForwardCompat.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/STLFunctionalExtras.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/SmallVector.h \
-  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/StringRef.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/bit.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/iterator.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/ADT/iterator_range.h \
@@ -2714,10 +2712,8 @@ lib/MCA/CMakeFiles/LLVMMCA.dir/IncrementalSourceMgr.cpp.o: /home/djs/lvgl_osmesa
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Compiler.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/DataTypes.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/ErrorHandling.h \
-  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/Format.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/MathExtras.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/SwapByteOrder.h \
-  /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/raw_ostream.h \
   /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include/llvm/Support/type_traits.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \

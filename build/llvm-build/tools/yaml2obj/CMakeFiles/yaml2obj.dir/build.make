@@ -108,6 +108,7 @@ bin/yaml2obj: lib/libLLVMMC.a
 bin/yaml2obj: lib/libLLVMBinaryFormat.a
 bin/yaml2obj: lib/libLLVMTargetParser.a
 bin/yaml2obj: lib/libLLVMSupport.a
+bin/yaml2obj: /usr/lib/x86_64-linux-gnu/libz.so
 bin/yaml2obj: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/yaml2obj: lib/libLLVMDemangle.a
 bin/yaml2obj: tools/yaml2obj/CMakeFiles/yaml2obj.dir/link.txt

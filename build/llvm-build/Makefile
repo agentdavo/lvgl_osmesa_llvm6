@@ -107,7 +107,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"LLVM\" \"LLVMAggressiveInstCombine\" \"LLVMAnalysis\" \"LLVMAsmParser\" \"LLVMAsmPrinter\" \"LLVMBinaryFormat\" \"LLVMBitReader\" \"LLVMBitWriter\" \"LLVMBitstreamReader\" \"LLVMCFGuard\" \"LLVMCFIVerify\" \"LLVMCGData\" \"LLVMCodeGen\" \"LLVMCodeGenTypes\" \"LLVMCore\" \"LLVMCoroutines\" \"LLVMCoverage\" \"LLVMDWARFLinker\" \"LLVMDWARFLinkerClassic\" \"LLVMDWARFLinkerParallel\" \"LLVMDWP\" \"LLVMDebugInfoBTF\" \"LLVMDebugInfoCodeView\" \"LLVMDebugInfoDWARF\" \"LLVMDebugInfoGSYM\" \"LLVMDebugInfoLogicalView\" \"LLVMDebugInfoMSF\" \"LLVMDebugInfoPDB\" \"LLVMDebuginfod\" \"LLVMDemangle\" \"LLVMDiff\" \"LLVMDlltoolDriver\" \"LLVMExecutionEngine\" \"LLVMExegesis\" \"LLVMExegesisX86\" \"LLVMExtensions\" \"LLVMFileCheck\" \"LLVMFrontendAtomic\" \"LLVMFrontendDriver\" \"LLVMFrontendHLSL\" \"LLVMFrontendOffloading\" \"LLVMFrontendOpenACC\" \"LLVMFrontendOpenMP\" \"LLVMFuzzMutate\" \"LLVMFuzzerCLI\" \"LLVMGlobalISel\" \"LLVMHipStdPar\" \"LLVMIRPrinter\" \"LLVMIRReader\" \"LLVMInstCombine\" \"LLVMInstrumentation\" \"LLVMInterfaceStub\" \"LLVMInterpreter\" \"LLVMJITLink\" \"LLVMLTO\" \"LLVMLibDriver\" \"LLVMLineEditor\" \"LLVMLinker\" \"LLVMMC\" \"LLVMMCA\" \"LLVMMCDisassembler\" \"LLVMMCJIT\" \"LLVMMCParser\" \"LLVMMIRParser\" \"LLVMObjCARCOpts\" \"LLVMObjCopy\" \"LLVMObject\" \"LLVMObjectYAML\" \"LLVMOptDriver\" \"LLVMOption\" \"LLVMOrcDebugging\" \"LLVMOrcJIT\" \"LLVMOrcShared\" \"LLVMOrcTargetProcess\" \"LLVMPasses\" \"LLVMProfileData\" \"LLVMRemarks\" \"LLVMRuntimeDyld\" \"LLVMSandboxIR\" \"LLVMScalarOpts\" \"LLVMSelectionDAG\" \"LLVMSupport\" \"LLVMSymbolize\" \"LLVMTableGen\" \"LLVMTableGenBasic\" \"LLVMTableGenCommon\" \"LLVMTarget\" \"LLVMTargetParser\" \"LLVMTelemetry\" \"LLVMTextAPI\" \"LLVMTextAPIBinaryReader\" \"LLVMTransformUtils\" \"LLVMVectorize\" \"LLVMWindowsDriver\" \"LLVMWindowsManifest\" \"LLVMX86AsmParser\" \"LLVMX86CodeGen\" \"LLVMX86Desc\" \"LLVMX86Disassembler\" \"LLVMX86Info\" \"LLVMX86TargetMCA\" \"LLVMXRay\" \"LLVMipo\" \"LTO\" \"Remarks\" \"bugpoint\" \"cmake-exports\" \"dsymutil\" \"llc\" \"lli\" \"llvm-addr2line\" \"llvm-ar\" \"llvm-as\" \"llvm-bcanalyzer\" \"llvm-bitcode-strip\" \"llvm-c-test\" \"llvm-cat\" \"llvm-cfi-verify\" \"llvm-cgdata\" \"llvm-config\" \"llvm-cov\" \"llvm-ctxprof-util\" \"llvm-cvtres\" \"llvm-cxxdump\" \"llvm-cxxfilt\" \"llvm-cxxmap\" \"llvm-debuginfo-analyzer\" \"llvm-debuginfod\" \"llvm-debuginfod-find\" \"llvm-diff\" \"llvm-dis\" \"llvm-dlltool\" \"llvm-dwarfdump\" \"llvm-dwarfutil\" \"llvm-dwp\" \"llvm-exegesis\" \"llvm-extract\" \"llvm-gsymutil\" \"llvm-headers\" \"llvm-ifs\" \"llvm-install-name-tool\" \"llvm-jitlink\" \"llvm-lib\" \"llvm-libtool-darwin\" \"llvm-link\" \"llvm-lipo\" \"llvm-lto\" \"llvm-lto2\" \"llvm-mc\" \"llvm-mca\" \"llvm-ml\" \"llvm-modextract\" \"llvm-mt\" \"llvm-nm\" \"llvm-objcopy\" \"llvm-objdump\" \"llvm-opt-report\" \"llvm-otool\" \"llvm-pdbutil\" \"llvm-profdata\" \"llvm-profgen\" \"llvm-ranlib\" \"llvm-rc\" \"llvm-readelf\" \"llvm-readobj\" \"llvm-readtapi\" \"llvm-reduce\" \"llvm-remarkutil\" \"llvm-rtdyld\" \"llvm-sim\" \"llvm-size\" \"llvm-split\" \"llvm-stress\" \"llvm-strings\" \"llvm-strip\" \"llvm-symbolizer\" \"llvm-tblgen\" \"llvm-tli-checker\" \"llvm-undname\" \"llvm-windres\" \"llvm-xray\" \"opt\" \"opt-viewer\" \"reduce-chunk-list\" \"sancov\" \"sanstats\" \"verify-uselistorder\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"FileCheck\" \"LLVM\" \"LLVMAggressiveInstCombine\" \"LLVMAnalysis\" \"LLVMAsmParser\" \"LLVMAsmPrinter\" \"LLVMBinaryFormat\" \"LLVMBitReader\" \"LLVMBitWriter\" \"LLVMBitstreamReader\" \"LLVMCFGuard\" \"LLVMCFIVerify\" \"LLVMCGData\" \"LLVMCodeGen\" \"LLVMCodeGenTypes\" \"LLVMCore\" \"LLVMCoroutines\" \"LLVMCoverage\" \"LLVMDWARFLinker\" \"LLVMDWARFLinkerClassic\" \"LLVMDWARFLinkerParallel\" \"LLVMDWP\" \"LLVMDebugInfoBTF\" \"LLVMDebugInfoCodeView\" \"LLVMDebugInfoDWARF\" \"LLVMDebugInfoGSYM\" \"LLVMDebugInfoLogicalView\" \"LLVMDebugInfoMSF\" \"LLVMDebugInfoPDB\" \"LLVMDebuginfod\" \"LLVMDemangle\" \"LLVMDiff\" \"LLVMDlltoolDriver\" \"LLVMExecutionEngine\" \"LLVMExegesis\" \"LLVMExegesisX86\" \"LLVMExtensions\" \"LLVMFileCheck\" \"LLVMFrontendAtomic\" \"LLVMFrontendDriver\" \"LLVMFrontendHLSL\" \"LLVMFrontendOffloading\" \"LLVMFrontendOpenACC\" \"LLVMFrontendOpenMP\" \"LLVMFuzzMutate\" \"LLVMFuzzerCLI\" \"LLVMGlobalISel\" \"LLVMHipStdPar\" \"LLVMIRPrinter\" \"LLVMIRReader\" \"LLVMInstCombine\" \"LLVMInstrumentation\" \"LLVMInterfaceStub\" \"LLVMInterpreter\" \"LLVMJITLink\" \"LLVMLTO\" \"LLVMLibDriver\" \"LLVMLineEditor\" \"LLVMLinker\" \"LLVMMC\" \"LLVMMCA\" \"LLVMMCDisassembler\" \"LLVMMCJIT\" \"LLVMMCParser\" \"LLVMMIRParser\" \"LLVMObjCARCOpts\" \"LLVMObjCopy\" \"LLVMObject\" \"LLVMObjectYAML\" \"LLVMOptDriver\" \"LLVMOption\" \"LLVMOrcDebugging\" \"LLVMOrcJIT\" \"LLVMOrcShared\" \"LLVMOrcTargetProcess\" \"LLVMPasses\" \"LLVMPerfJITEvents\" \"LLVMProfileData\" \"LLVMRemarks\" \"LLVMRuntimeDyld\" \"LLVMSandboxIR\" \"LLVMScalarOpts\" \"LLVMSelectionDAG\" \"LLVMSupport\" \"LLVMSymbolize\" \"LLVMTableGen\" \"LLVMTableGenBasic\" \"LLVMTableGenCommon\" \"LLVMTarget\" \"LLVMTargetParser\" \"LLVMTelemetry\" \"LLVMTextAPI\" \"LLVMTextAPIBinaryReader\" \"LLVMTransformUtils\" \"LLVMVectorize\" \"LLVMWindowsDriver\" \"LLVMWindowsManifest\" \"LLVMX86AsmParser\" \"LLVMX86CodeGen\" \"LLVMX86Desc\" \"LLVMX86Disassembler\" \"LLVMX86Info\" \"LLVMX86TargetMCA\" \"LLVMXRay\" \"LLVMipo\" \"LTO\" \"Remarks\" \"UnicodeNameMappingGenerator\" \"bugpoint\" \"cmake-exports\" \"count\" \"dsymutil\" \"llc\" \"lli\" \"lli-child-target\" \"llvm-PerfectShuffle\" \"llvm-addr2line\" \"llvm-ar\" \"llvm-as\" \"llvm-bcanalyzer\" \"llvm-bitcode-strip\" \"llvm-c-test\" \"llvm-cat\" \"llvm-cfi-verify\" \"llvm-cgdata\" \"llvm-config\" \"llvm-cov\" \"llvm-ctxprof-util\" \"llvm-cvtres\" \"llvm-cxxdump\" \"llvm-cxxfilt\" \"llvm-cxxmap\" \"llvm-debuginfo-analyzer\" \"llvm-debuginfod\" \"llvm-debuginfod-find\" \"llvm-diff\" \"llvm-dis\" \"llvm-dlltool\" \"llvm-dwarfdump\" \"llvm-dwarfutil\" \"llvm-dwp\" \"llvm-exegesis\" \"llvm-extract\" \"llvm-gsymutil\" \"llvm-headers\" \"llvm-ifs\" \"llvm-install-name-tool\" \"llvm-jitlink\" \"llvm-jitlink-executor\" \"llvm-lib\" \"llvm-libtool-darwin\" \"llvm-link\" \"llvm-lipo\" \"llvm-lto\" \"llvm-lto2\" \"llvm-mc\" \"llvm-mca\" \"llvm-ml\" \"llvm-modextract\" \"llvm-mt\" \"llvm-nm\" \"llvm-objcopy\" \"llvm-objdump\" \"llvm-opt-report\" \"llvm-otool\" \"llvm-pdbutil\" \"llvm-profdata\" \"llvm-profgen\" \"llvm-ranlib\" \"llvm-rc\" \"llvm-readelf\" \"llvm-readobj\" \"llvm-readtapi\" \"llvm-reduce\" \"llvm-remarkutil\" \"llvm-rtdyld\" \"llvm-sim\" \"llvm-size\" \"llvm-split\" \"llvm-stress\" \"llvm-strings\" \"llvm-strip\" \"llvm-symbolizer\" \"llvm-tblgen\" \"llvm-tli-checker\" \"llvm-undname\" \"llvm-windres\" \"llvm-xray\" \"not\" \"obj2yaml\" \"opt\" \"opt-viewer\" \"reduce-chunk-list\" \"sancov\" \"sanstats\" \"split-file\" \"verify-uselistorder\" \"yaml-bench\" \"yaml2obj\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -3510,6 +3510,45 @@ install-LLVMRuntimeDyld-stripped/fast:
 .PHONY : install-LLVMRuntimeDyld-stripped/fast
 
 #=============================================================================
+# Target rules for targets named LLVMPerfJITEvents
+
+# Build rule for target.
+LLVMPerfJITEvents: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 LLVMPerfJITEvents
+.PHONY : LLVMPerfJITEvents
+
+# fast build rule for target.
+LLVMPerfJITEvents/fast:
+	$(MAKE) $(MAKESILENT) -f lib/ExecutionEngine/PerfJITEvents/CMakeFiles/LLVMPerfJITEvents.dir/build.make lib/ExecutionEngine/PerfJITEvents/CMakeFiles/LLVMPerfJITEvents.dir/build
+.PHONY : LLVMPerfJITEvents/fast
+
+#=============================================================================
+# Target rules for targets named install-LLVMPerfJITEvents
+
+# Build rule for target.
+install-LLVMPerfJITEvents: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-LLVMPerfJITEvents
+.PHONY : install-LLVMPerfJITEvents
+
+# fast build rule for target.
+install-LLVMPerfJITEvents/fast:
+	$(MAKE) $(MAKESILENT) -f lib/ExecutionEngine/PerfJITEvents/CMakeFiles/install-LLVMPerfJITEvents.dir/build.make lib/ExecutionEngine/PerfJITEvents/CMakeFiles/install-LLVMPerfJITEvents.dir/build
+.PHONY : install-LLVMPerfJITEvents/fast
+
+#=============================================================================
+# Target rules for targets named install-LLVMPerfJITEvents-stripped
+
+# Build rule for target.
+install-LLVMPerfJITEvents-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-LLVMPerfJITEvents-stripped
+.PHONY : install-LLVMPerfJITEvents-stripped
+
+# fast build rule for target.
+install-LLVMPerfJITEvents-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f lib/ExecutionEngine/PerfJITEvents/CMakeFiles/install-LLVMPerfJITEvents-stripped.dir/build.make lib/ExecutionEngine/PerfJITEvents/CMakeFiles/install-LLVMPerfJITEvents-stripped.dir/build
+.PHONY : install-LLVMPerfJITEvents-stripped/fast
+
+#=============================================================================
 # Target rules for targets named LLVMTarget
 
 # Build rule for target.
@@ -4433,6 +4472,32 @@ FileCheck/fast:
 .PHONY : FileCheck/fast
 
 #=============================================================================
+# Target rules for targets named install-FileCheck
+
+# Build rule for target.
+install-FileCheck: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-FileCheck
+.PHONY : install-FileCheck
+
+# fast build rule for target.
+install-FileCheck/fast:
+	$(MAKE) $(MAKESILENT) -f utils/FileCheck/CMakeFiles/install-FileCheck.dir/build.make utils/FileCheck/CMakeFiles/install-FileCheck.dir/build
+.PHONY : install-FileCheck/fast
+
+#=============================================================================
+# Target rules for targets named install-FileCheck-stripped
+
+# Build rule for target.
+install-FileCheck-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-FileCheck-stripped
+.PHONY : install-FileCheck-stripped
+
+# fast build rule for target.
+install-FileCheck-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/build.make utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/build
+.PHONY : install-FileCheck-stripped/fast
+
+#=============================================================================
 # Target rules for targets named llvm-PerfectShuffle
 
 # Build rule for target.
@@ -4444,6 +4509,32 @@ llvm-PerfectShuffle: cmake_check_build_system
 llvm-PerfectShuffle/fast:
 	$(MAKE) $(MAKESILENT) -f utils/PerfectShuffle/CMakeFiles/llvm-PerfectShuffle.dir/build.make utils/PerfectShuffle/CMakeFiles/llvm-PerfectShuffle.dir/build
 .PHONY : llvm-PerfectShuffle/fast
+
+#=============================================================================
+# Target rules for targets named install-llvm-PerfectShuffle
+
+# Build rule for target.
+install-llvm-PerfectShuffle: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-llvm-PerfectShuffle
+.PHONY : install-llvm-PerfectShuffle
+
+# fast build rule for target.
+install-llvm-PerfectShuffle/fast:
+	$(MAKE) $(MAKESILENT) -f utils/PerfectShuffle/CMakeFiles/install-llvm-PerfectShuffle.dir/build.make utils/PerfectShuffle/CMakeFiles/install-llvm-PerfectShuffle.dir/build
+.PHONY : install-llvm-PerfectShuffle/fast
+
+#=============================================================================
+# Target rules for targets named install-llvm-PerfectShuffle-stripped
+
+# Build rule for target.
+install-llvm-PerfectShuffle-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-llvm-PerfectShuffle-stripped
+.PHONY : install-llvm-PerfectShuffle-stripped
+
+# fast build rule for target.
+install-llvm-PerfectShuffle-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/PerfectShuffle/CMakeFiles/install-llvm-PerfectShuffle-stripped.dir/build.make utils/PerfectShuffle/CMakeFiles/install-llvm-PerfectShuffle-stripped.dir/build
+.PHONY : install-llvm-PerfectShuffle-stripped/fast
 
 #=============================================================================
 # Target rules for targets named count
@@ -4459,6 +4550,32 @@ count/fast:
 .PHONY : count/fast
 
 #=============================================================================
+# Target rules for targets named install-count
+
+# Build rule for target.
+install-count: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-count
+.PHONY : install-count
+
+# fast build rule for target.
+install-count/fast:
+	$(MAKE) $(MAKESILENT) -f utils/count/CMakeFiles/install-count.dir/build.make utils/count/CMakeFiles/install-count.dir/build
+.PHONY : install-count/fast
+
+#=============================================================================
+# Target rules for targets named install-count-stripped
+
+# Build rule for target.
+install-count-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-count-stripped
+.PHONY : install-count-stripped
+
+# fast build rule for target.
+install-count-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/count/CMakeFiles/install-count-stripped.dir/build.make utils/count/CMakeFiles/install-count-stripped.dir/build
+.PHONY : install-count-stripped/fast
+
+#=============================================================================
 # Target rules for targets named not
 
 # Build rule for target.
@@ -4470,6 +4587,32 @@ not: cmake_check_build_system
 not/fast:
 	$(MAKE) $(MAKESILENT) -f utils/not/CMakeFiles/not.dir/build.make utils/not/CMakeFiles/not.dir/build
 .PHONY : not/fast
+
+#=============================================================================
+# Target rules for targets named install-not
+
+# Build rule for target.
+install-not: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-not
+.PHONY : install-not
+
+# fast build rule for target.
+install-not/fast:
+	$(MAKE) $(MAKESILENT) -f utils/not/CMakeFiles/install-not.dir/build.make utils/not/CMakeFiles/install-not.dir/build
+.PHONY : install-not/fast
+
+#=============================================================================
+# Target rules for targets named install-not-stripped
+
+# Build rule for target.
+install-not-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-not-stripped
+.PHONY : install-not-stripped
+
+# fast build rule for target.
+install-not-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/not/CMakeFiles/install-not-stripped.dir/build.make utils/not/CMakeFiles/install-not-stripped.dir/build
+.PHONY : install-not-stripped/fast
 
 #=============================================================================
 # Target rules for targets named UnicodeNameMappingGenerator
@@ -4485,6 +4628,32 @@ UnicodeNameMappingGenerator/fast:
 .PHONY : UnicodeNameMappingGenerator/fast
 
 #=============================================================================
+# Target rules for targets named install-UnicodeNameMappingGenerator
+
+# Build rule for target.
+install-UnicodeNameMappingGenerator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-UnicodeNameMappingGenerator
+.PHONY : install-UnicodeNameMappingGenerator
+
+# fast build rule for target.
+install-UnicodeNameMappingGenerator/fast:
+	$(MAKE) $(MAKESILENT) -f utils/UnicodeData/CMakeFiles/install-UnicodeNameMappingGenerator.dir/build.make utils/UnicodeData/CMakeFiles/install-UnicodeNameMappingGenerator.dir/build
+.PHONY : install-UnicodeNameMappingGenerator/fast
+
+#=============================================================================
+# Target rules for targets named install-UnicodeNameMappingGenerator-stripped
+
+# Build rule for target.
+install-UnicodeNameMappingGenerator-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-UnicodeNameMappingGenerator-stripped
+.PHONY : install-UnicodeNameMappingGenerator-stripped
+
+# fast build rule for target.
+install-UnicodeNameMappingGenerator-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/UnicodeData/CMakeFiles/install-UnicodeNameMappingGenerator-stripped.dir/build.make utils/UnicodeData/CMakeFiles/install-UnicodeNameMappingGenerator-stripped.dir/build
+.PHONY : install-UnicodeNameMappingGenerator-stripped/fast
+
+#=============================================================================
 # Target rules for targets named yaml-bench
 
 # Build rule for target.
@@ -4498,6 +4667,32 @@ yaml-bench/fast:
 .PHONY : yaml-bench/fast
 
 #=============================================================================
+# Target rules for targets named install-yaml-bench
+
+# Build rule for target.
+install-yaml-bench: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-yaml-bench
+.PHONY : install-yaml-bench
+
+# fast build rule for target.
+install-yaml-bench/fast:
+	$(MAKE) $(MAKESILENT) -f utils/yaml-bench/CMakeFiles/install-yaml-bench.dir/build.make utils/yaml-bench/CMakeFiles/install-yaml-bench.dir/build
+.PHONY : install-yaml-bench/fast
+
+#=============================================================================
+# Target rules for targets named install-yaml-bench-stripped
+
+# Build rule for target.
+install-yaml-bench-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-yaml-bench-stripped
+.PHONY : install-yaml-bench-stripped
+
+# fast build rule for target.
+install-yaml-bench-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/yaml-bench/CMakeFiles/install-yaml-bench-stripped.dir/build.make utils/yaml-bench/CMakeFiles/install-yaml-bench-stripped.dir/build
+.PHONY : install-yaml-bench-stripped/fast
+
+#=============================================================================
 # Target rules for targets named split-file
 
 # Build rule for target.
@@ -4509,6 +4704,32 @@ split-file: cmake_check_build_system
 split-file/fast:
 	$(MAKE) $(MAKESILENT) -f utils/split-file/CMakeFiles/split-file.dir/build.make utils/split-file/CMakeFiles/split-file.dir/build
 .PHONY : split-file/fast
+
+#=============================================================================
+# Target rules for targets named install-split-file
+
+# Build rule for target.
+install-split-file: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-split-file
+.PHONY : install-split-file
+
+# fast build rule for target.
+install-split-file/fast:
+	$(MAKE) $(MAKESILENT) -f utils/split-file/CMakeFiles/install-split-file.dir/build.make utils/split-file/CMakeFiles/install-split-file.dir/build
+.PHONY : install-split-file/fast
+
+#=============================================================================
+# Target rules for targets named install-split-file-stripped
+
+# Build rule for target.
+install-split-file-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-split-file-stripped
+.PHONY : install-split-file-stripped
+
+# fast build rule for target.
+install-split-file-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f utils/split-file/CMakeFiles/install-split-file-stripped.dir/build.make utils/split-file/CMakeFiles/install-split-file-stripped.dir/build
+.PHONY : install-split-file-stripped/fast
 
 #=============================================================================
 # Target rules for targets named LTO
@@ -5081,6 +5302,32 @@ lli-child-target: cmake_check_build_system
 lli-child-target/fast:
 	$(MAKE) $(MAKESILENT) -f tools/lli/ChildTarget/CMakeFiles/lli-child-target.dir/build.make tools/lli/ChildTarget/CMakeFiles/lli-child-target.dir/build
 .PHONY : lli-child-target/fast
+
+#=============================================================================
+# Target rules for targets named install-lli-child-target
+
+# Build rule for target.
+install-lli-child-target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-lli-child-target
+.PHONY : install-lli-child-target
+
+# fast build rule for target.
+install-lli-child-target/fast:
+	$(MAKE) $(MAKESILENT) -f tools/lli/ChildTarget/CMakeFiles/install-lli-child-target.dir/build.make tools/lli/ChildTarget/CMakeFiles/install-lli-child-target.dir/build
+.PHONY : install-lli-child-target/fast
+
+#=============================================================================
+# Target rules for targets named install-lli-child-target-stripped
+
+# Build rule for target.
+install-lli-child-target-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-lli-child-target-stripped
+.PHONY : install-lli-child-target-stripped
+
+# fast build rule for target.
+install-lli-child-target-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f tools/lli/ChildTarget/CMakeFiles/install-lli-child-target-stripped.dir/build.make tools/lli/ChildTarget/CMakeFiles/install-lli-child-target-stripped.dir/build
+.PHONY : install-lli-child-target-stripped/fast
 
 #=============================================================================
 # Target rules for targets named llvm-as
@@ -6342,6 +6589,32 @@ llvm-jitlink-executor: cmake_check_build_system
 llvm-jitlink-executor/fast:
 	$(MAKE) $(MAKESILENT) -f tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/llvm-jitlink-executor.dir/build.make tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/llvm-jitlink-executor.dir/build
 .PHONY : llvm-jitlink-executor/fast
+
+#=============================================================================
+# Target rules for targets named install-llvm-jitlink-executor
+
+# Build rule for target.
+install-llvm-jitlink-executor: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-llvm-jitlink-executor
+.PHONY : install-llvm-jitlink-executor
+
+# fast build rule for target.
+install-llvm-jitlink-executor/fast:
+	$(MAKE) $(MAKESILENT) -f tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/install-llvm-jitlink-executor.dir/build.make tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/install-llvm-jitlink-executor.dir/build
+.PHONY : install-llvm-jitlink-executor/fast
+
+#=============================================================================
+# Target rules for targets named install-llvm-jitlink-executor-stripped
+
+# Build rule for target.
+install-llvm-jitlink-executor-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-llvm-jitlink-executor-stripped
+.PHONY : install-llvm-jitlink-executor-stripped
+
+# fast build rule for target.
+install-llvm-jitlink-executor-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/install-llvm-jitlink-executor-stripped.dir/build.make tools/llvm-jitlink/llvm-jitlink-executor/CMakeFiles/install-llvm-jitlink-executor-stripped.dir/build
+.PHONY : install-llvm-jitlink-executor-stripped/fast
 
 #=============================================================================
 # Target rules for targets named LibtoolDarwinOptsTableGen
@@ -8164,6 +8437,32 @@ obj2yaml/fast:
 .PHONY : obj2yaml/fast
 
 #=============================================================================
+# Target rules for targets named install-obj2yaml
+
+# Build rule for target.
+install-obj2yaml: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-obj2yaml
+.PHONY : install-obj2yaml
+
+# fast build rule for target.
+install-obj2yaml/fast:
+	$(MAKE) $(MAKESILENT) -f tools/obj2yaml/CMakeFiles/install-obj2yaml.dir/build.make tools/obj2yaml/CMakeFiles/install-obj2yaml.dir/build
+.PHONY : install-obj2yaml/fast
+
+#=============================================================================
+# Target rules for targets named install-obj2yaml-stripped
+
+# Build rule for target.
+install-obj2yaml-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-obj2yaml-stripped
+.PHONY : install-obj2yaml-stripped
+
+# fast build rule for target.
+install-obj2yaml-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f tools/obj2yaml/CMakeFiles/install-obj2yaml-stripped.dir/build.make tools/obj2yaml/CMakeFiles/install-obj2yaml-stripped.dir/build
+.PHONY : install-obj2yaml-stripped/fast
+
+#=============================================================================
 # Target rules for targets named LLVMOptDriver
 
 # Build rule for target.
@@ -8502,6 +8801,32 @@ yaml2obj/fast:
 .PHONY : yaml2obj/fast
 
 #=============================================================================
+# Target rules for targets named install-yaml2obj
+
+# Build rule for target.
+install-yaml2obj: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-yaml2obj
+.PHONY : install-yaml2obj
+
+# fast build rule for target.
+install-yaml2obj/fast:
+	$(MAKE) $(MAKESILENT) -f tools/yaml2obj/CMakeFiles/install-yaml2obj.dir/build.make tools/yaml2obj/CMakeFiles/install-yaml2obj.dir/build
+.PHONY : install-yaml2obj/fast
+
+#=============================================================================
+# Target rules for targets named install-yaml2obj-stripped
+
+# Build rule for target.
+install-yaml2obj-stripped: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 install-yaml2obj-stripped
+.PHONY : install-yaml2obj-stripped
+
+# fast build rule for target.
+install-yaml2obj-stripped/fast:
+	$(MAKE) $(MAKESILENT) -f tools/yaml2obj/CMakeFiles/install-yaml2obj-stripped.dir/build.make tools/yaml2obj/CMakeFiles/install-yaml2obj-stripped.dir/build
+.PHONY : install-yaml2obj-stripped/fast
+
+#=============================================================================
 # Target rules for targets named cmake-exports
 
 # Build rule for target.
@@ -8539,110 +8864,6 @@ install-cmake-exports-stripped: cmake_check_build_system
 install-cmake-exports-stripped/fast:
 	$(MAKE) $(MAKESILENT) -f cmake/modules/CMakeFiles/install-cmake-exports-stripped.dir/build.make cmake/modules/CMakeFiles/install-cmake-exports-stripped.dir/build
 .PHONY : install-cmake-exports-stripped/fast
-
-#=============================================================================
-# Target rules for targets named benchmark
-
-# Build rule for target.
-benchmark: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 benchmark
-.PHONY : benchmark
-
-# fast build rule for target.
-benchmark/fast:
-	$(MAKE) $(MAKESILENT) -f third-party/benchmark/src/CMakeFiles/benchmark.dir/build.make third-party/benchmark/src/CMakeFiles/benchmark.dir/build
-.PHONY : benchmark/fast
-
-#=============================================================================
-# Target rules for targets named benchmark_main
-
-# Build rule for target.
-benchmark_main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 benchmark_main
-.PHONY : benchmark_main
-
-# fast build rule for target.
-benchmark_main/fast:
-	$(MAKE) $(MAKESILENT) -f third-party/benchmark/src/CMakeFiles/benchmark_main.dir/build.make third-party/benchmark/src/CMakeFiles/benchmark_main.dir/build
-.PHONY : benchmark_main/fast
-
-#=============================================================================
-# Target rules for targets named DummyYAML
-
-# Build rule for target.
-DummyYAML: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DummyYAML
-.PHONY : DummyYAML
-
-# fast build rule for target.
-DummyYAML/fast:
-	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/DummyYAML.dir/build.make benchmarks/CMakeFiles/DummyYAML.dir/build
-.PHONY : DummyYAML/fast
-
-#=============================================================================
-# Target rules for targets named xxhash
-
-# Build rule for target.
-xxhash: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 xxhash
-.PHONY : xxhash
-
-# fast build rule for target.
-xxhash/fast:
-	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/xxhash.dir/build.make benchmarks/CMakeFiles/xxhash.dir/build
-.PHONY : xxhash/fast
-
-#=============================================================================
-# Target rules for targets named GetIntrinsicForClangBuiltin
-
-# Build rule for target.
-GetIntrinsicForClangBuiltin: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GetIntrinsicForClangBuiltin
-.PHONY : GetIntrinsicForClangBuiltin
-
-# fast build rule for target.
-GetIntrinsicForClangBuiltin/fast:
-	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/GetIntrinsicForClangBuiltin.dir/build.make benchmarks/CMakeFiles/GetIntrinsicForClangBuiltin.dir/build
-.PHONY : GetIntrinsicForClangBuiltin/fast
-
-#=============================================================================
-# Target rules for targets named FormatVariadicBM
-
-# Build rule for target.
-FormatVariadicBM: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 FormatVariadicBM
-.PHONY : FormatVariadicBM
-
-# fast build rule for target.
-FormatVariadicBM/fast:
-	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/FormatVariadicBM.dir/build.make benchmarks/CMakeFiles/FormatVariadicBM.dir/build
-.PHONY : FormatVariadicBM/fast
-
-#=============================================================================
-# Target rules for targets named GetIntrinsicInfoTableEntriesBM
-
-# Build rule for target.
-GetIntrinsicInfoTableEntriesBM: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 GetIntrinsicInfoTableEntriesBM
-.PHONY : GetIntrinsicInfoTableEntriesBM
-
-# fast build rule for target.
-GetIntrinsicInfoTableEntriesBM/fast:
-	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/GetIntrinsicInfoTableEntriesBM.dir/build.make benchmarks/CMakeFiles/GetIntrinsicInfoTableEntriesBM.dir/build
-.PHONY : GetIntrinsicInfoTableEntriesBM/fast
-
-#=============================================================================
-# Target rules for targets named SandboxIRBench
-
-# Build rule for target.
-SandboxIRBench: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 SandboxIRBench
-.PHONY : SandboxIRBench
-
-# fast build rule for target.
-SandboxIRBench/fast:
-	$(MAKE) $(MAKESILENT) -f benchmarks/CMakeFiles/SandboxIRBench.dir/build.make benchmarks/CMakeFiles/SandboxIRBench.dir/build
-.PHONY : SandboxIRBench/fast
 
 #=============================================================================
 # Target rules for targets named llvm-locstats
@@ -8718,6 +8939,8 @@ help:
 	@echo "... all-targets"
 	@echo "... cmake-exports"
 	@echo "... distribution"
+	@echo "... install-FileCheck"
+	@echo "... install-FileCheck-stripped"
 	@echo "... install-LLVM"
 	@echo "... install-LLVM-stripped"
 	@echo "... install-LLVMAggressiveInstCombine"
@@ -8868,6 +9091,8 @@ help:
 	@echo "... install-LLVMOrcTargetProcess-stripped"
 	@echo "... install-LLVMPasses"
 	@echo "... install-LLVMPasses-stripped"
+	@echo "... install-LLVMPerfJITEvents"
+	@echo "... install-LLVMPerfJITEvents-stripped"
 	@echo "... install-LLVMProfileData"
 	@echo "... install-LLVMProfileData-stripped"
 	@echo "... install-LLVMRemarks"
@@ -8928,10 +9153,14 @@ help:
 	@echo "... install-LTO-stripped"
 	@echo "... install-Remarks"
 	@echo "... install-Remarks-stripped"
+	@echo "... install-UnicodeNameMappingGenerator"
+	@echo "... install-UnicodeNameMappingGenerator-stripped"
 	@echo "... install-bugpoint"
 	@echo "... install-bugpoint-stripped"
 	@echo "... install-cmake-exports"
 	@echo "... install-cmake-exports-stripped"
+	@echo "... install-count"
+	@echo "... install-count-stripped"
 	@echo "... install-distribution"
 	@echo "... install-distribution-stripped"
 	@echo "... install-dsymutil"
@@ -8939,7 +9168,11 @@ help:
 	@echo "... install-llc"
 	@echo "... install-llc-stripped"
 	@echo "... install-lli"
+	@echo "... install-lli-child-target"
+	@echo "... install-lli-child-target-stripped"
 	@echo "... install-lli-stripped"
+	@echo "... install-llvm-PerfectShuffle"
+	@echo "... install-llvm-PerfectShuffle-stripped"
 	@echo "... install-llvm-addr2line"
 	@echo "... install-llvm-addr2line-stripped"
 	@echo "... install-llvm-ar"
@@ -9003,6 +9236,8 @@ help:
 	@echo "... install-llvm-install-name-tool"
 	@echo "... install-llvm-install-name-tool-stripped"
 	@echo "... install-llvm-jitlink"
+	@echo "... install-llvm-jitlink-executor"
+	@echo "... install-llvm-jitlink-executor-stripped"
 	@echo "... install-llvm-jitlink-stripped"
 	@echo "... install-llvm-lib"
 	@echo "... install-llvm-lib-stripped"
@@ -9084,6 +9319,10 @@ help:
 	@echo "... install-llvm-windres-stripped"
 	@echo "... install-llvm-xray"
 	@echo "... install-llvm-xray-stripped"
+	@echo "... install-not"
+	@echo "... install-not-stripped"
+	@echo "... install-obj2yaml"
+	@echo "... install-obj2yaml-stripped"
 	@echo "... install-opt"
 	@echo "... install-opt-stripped"
 	@echo "... install-opt-viewer"
@@ -9094,8 +9333,14 @@ help:
 	@echo "... install-sancov-stripped"
 	@echo "... install-sanstats"
 	@echo "... install-sanstats-stripped"
+	@echo "... install-split-file"
+	@echo "... install-split-file-stripped"
 	@echo "... install-verify-uselistorder"
 	@echo "... install-verify-uselistorder-stripped"
+	@echo "... install-yaml-bench"
+	@echo "... install-yaml-bench-stripped"
+	@echo "... install-yaml2obj"
+	@echo "... install-yaml2obj-stripped"
 	@echo "... intrinsics_gen"
 	@echo "... llvm-addr2line"
 	@echo "... llvm-bitcode-strip"
@@ -9117,11 +9362,7 @@ help:
 	@echo "... opt-viewer"
 	@echo "... vt_gen"
 	@echo "... BugpointPasses"
-	@echo "... DummyYAML"
 	@echo "... FileCheck"
-	@echo "... FormatVariadicBM"
-	@echo "... GetIntrinsicForClangBuiltin"
-	@echo "... GetIntrinsicInfoTableEntriesBM"
 	@echo "... LLVM"
 	@echo "... LLVMAggressiveInstCombine"
 	@echo "... LLVMAnalysis"
@@ -9197,6 +9438,7 @@ help:
 	@echo "... LLVMOrcShared"
 	@echo "... LLVMOrcTargetProcess"
 	@echo "... LLVMPasses"
+	@echo "... LLVMPerfJITEvents"
 	@echo "... LLVMProfileData"
 	@echo "... LLVMRemarks"
 	@echo "... LLVMRuntimeDyld"
@@ -9228,10 +9470,7 @@ help:
 	@echo "... LLVMipo"
 	@echo "... LTO"
 	@echo "... Remarks"
-	@echo "... SandboxIRBench"
 	@echo "... UnicodeNameMappingGenerator"
-	@echo "... benchmark"
-	@echo "... benchmark_main"
 	@echo "... bugpoint"
 	@echo "... count"
 	@echo "... dsymutil"
@@ -9320,7 +9559,6 @@ help:
 	@echo "... sanstats"
 	@echo "... split-file"
 	@echo "... verify-uselistorder"
-	@echo "... xxhash"
 	@echo "... yaml-bench"
 	@echo "... yaml2obj"
 .PHONY : help

@@ -1,0 +1,118 @@
+// Sample DirectX 8 Vertex Shader 1.1 and Pixel Shader 1.4 for dx8_cube
+// These shaders can be added to test the shader translation pipeline
+
+// ========================================
+// VERTEX SHADER 1.1 - Simple Transform
+// ========================================
+vs.1.1
+
+; Input registers:
+; v0 = position (x,y,z)
+; v1 = normal (x,y,z) 
+; v2 = color (r,g,b,a)
+
+; Constants:
+; c0-c3 = world-view-projection matrix
+; c4 = light direction (normalized)
+; c5 = light color
+; c6 = ambient color
+
+dcl_position v0
+dcl_normal v1
+dcl_color v2
+
+; Transform position by MVP matrix
+m4x4 oPos, v0, c0
+
+; Simple directional lighting
+dp3 r0.x, v1, c4        ; N dot L
+max r0.x, r0.x, c7.x    ; clamp to 0 (c7.x = 0)
+mul r0.xyz, r0.x, c5    ; multiply by light color
+add r0.xyz, r0.xyz, c6  ; add ambient
+mul oD0, r0, v2         ; multiply by vertex color
+
+// ========================================
+// PIXEL SHADER 1.4 - Simple Color Output
+// ========================================
+ps.1.4
+
+; Just output the interpolated color from vertex shader
+mov r0, v0              ; v0 = interpolated diffuse color
+mov oC0, r0             ; output to color buffer
+
+// ========================================
+// Alternative: More Complex Vertex Shader
+// ========================================
+vs.1.1
+
+dcl_position v0
+dcl_normal v1
+dcl_texcoord v2
+
+; c0-c3 = MVP matrix
+; c4-c7 = world matrix
+; c8 = eye position
+; c9 = light position
+; c10 = light color
+; c11 = specular power
+
+; Transform position
+m4x4 oPos, v0, c0
+m4x4 r0, v0, c4         ; world position
+
+; Calculate light vector
+sub r1, c9, r0          ; light pos - vertex pos
+dp3 r2.w, r1, r1        ; distance squared
+rsq r2.w, r2.w          ; 1/distance
+mul r1, r1, r2.w        ; normalize light vector
+
+; Calculate view vector
+sub r2, c8, r0          ; eye pos - vertex pos
+dp3 r3.w, r2, r2
+rsq r3.w, r3.w
+mul r2, r2, r3.w        ; normalize view vector
+
+; Calculate half vector for specular
+add r3, r1, r2          ; L + V
+dp3 r4.w, r3, r3
+rsq r4.w, r4.w
+mul r3, r3, r4.w        ; normalize half vector
+
+; Diffuse lighting
+dp3 r4.x, v1, r1        ; N dot L
+max r4.x, r4.x, c7.x    ; clamp to 0
+
+; Specular lighting
+dp3 r4.y, v1, r3        ; N dot H
+max r4.y, r4.y, c7.x    ; clamp to 0
+pow r4.y, r4.y, c11.x   ; raise to specular power
+
+; Combine lighting
+mul r5.xyz, r4.x, c10   ; diffuse * light color
+mad oD0.xyz, r4.y, c10, r5  ; + specular * light color
+
+; Pass through texture coordinates
+mov oT0, v2
+
+// ========================================
+// Alternative: Texture Sampling Pixel Shader
+// ========================================
+ps.1.4
+
+tex t0                  ; sample texture 0
+mul r0, t0, v0         ; multiply by vertex color
+mov oC0, r0            ; output
+
+// ========================================
+// Notes for Implementation:
+// ========================================
+// 1. These shaders should be loaded using IDirect3DDevice8::CreateVertexShader()
+//    and IDirect3DDevice8::CreatePixelShader()
+// 2. The shader bytecode needs to be assembled first (D3DXAssembleShader)
+// 3. Constants are set using IDirect3DDevice8::SetVertexShaderConstant()
+// 4. The dx8gl shader translator should convert these to GLSL
+// 5. Test cases should verify:
+//    - Correct instruction translation
+//    - Register mapping (v0->attributes, c0->uniforms, r0->temps)
+//    - Output register mapping (oPos->gl_Position, oD0->vertex color)
+//    - Interpolation between vertex and pixel shaders

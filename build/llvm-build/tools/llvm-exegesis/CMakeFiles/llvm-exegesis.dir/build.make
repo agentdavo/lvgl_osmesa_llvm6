@@ -168,6 +168,7 @@ bin/llvm-exegesis: lib/libLLVMTargetParser.a
 bin/llvm-exegesis: lib/libLLVMRemarks.a
 bin/llvm-exegesis: lib/libLLVMBitstreamReader.a
 bin/llvm-exegesis: lib/libLLVMSupport.a
+bin/llvm-exegesis: /usr/lib/x86_64-linux-gnu/libz.so
 bin/llvm-exegesis: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/llvm-exegesis: lib/libLLVMDemangle.a
 bin/llvm-exegesis: tools/llvm-exegesis/CMakeFiles/llvm-exegesis.dir/link.txt

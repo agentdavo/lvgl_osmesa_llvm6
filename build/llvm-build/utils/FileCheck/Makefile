@@ -107,7 +107,7 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target list_install_components
 list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"LLVM\" \"LLVMAggressiveInstCombine\" \"LLVMAnalysis\" \"LLVMAsmParser\" \"LLVMAsmPrinter\" \"LLVMBinaryFormat\" \"LLVMBitReader\" \"LLVMBitWriter\" \"LLVMBitstreamReader\" \"LLVMCFGuard\" \"LLVMCFIVerify\" \"LLVMCGData\" \"LLVMCodeGen\" \"LLVMCodeGenTypes\" \"LLVMCore\" \"LLVMCoroutines\" \"LLVMCoverage\" \"LLVMDWARFLinker\" \"LLVMDWARFLinkerClassic\" \"LLVMDWARFLinkerParallel\" \"LLVMDWP\" \"LLVMDebugInfoBTF\" \"LLVMDebugInfoCodeView\" \"LLVMDebugInfoDWARF\" \"LLVMDebugInfoGSYM\" \"LLVMDebugInfoLogicalView\" \"LLVMDebugInfoMSF\" \"LLVMDebugInfoPDB\" \"LLVMDebuginfod\" \"LLVMDemangle\" \"LLVMDiff\" \"LLVMDlltoolDriver\" \"LLVMExecutionEngine\" \"LLVMExegesis\" \"LLVMExegesisX86\" \"LLVMExtensions\" \"LLVMFileCheck\" \"LLVMFrontendAtomic\" \"LLVMFrontendDriver\" \"LLVMFrontendHLSL\" \"LLVMFrontendOffloading\" \"LLVMFrontendOpenACC\" \"LLVMFrontendOpenMP\" \"LLVMFuzzMutate\" \"LLVMFuzzerCLI\" \"LLVMGlobalISel\" \"LLVMHipStdPar\" \"LLVMIRPrinter\" \"LLVMIRReader\" \"LLVMInstCombine\" \"LLVMInstrumentation\" \"LLVMInterfaceStub\" \"LLVMInterpreter\" \"LLVMJITLink\" \"LLVMLTO\" \"LLVMLibDriver\" \"LLVMLineEditor\" \"LLVMLinker\" \"LLVMMC\" \"LLVMMCA\" \"LLVMMCDisassembler\" \"LLVMMCJIT\" \"LLVMMCParser\" \"LLVMMIRParser\" \"LLVMObjCARCOpts\" \"LLVMObjCopy\" \"LLVMObject\" \"LLVMObjectYAML\" \"LLVMOptDriver\" \"LLVMOption\" \"LLVMOrcDebugging\" \"LLVMOrcJIT\" \"LLVMOrcShared\" \"LLVMOrcTargetProcess\" \"LLVMPasses\" \"LLVMProfileData\" \"LLVMRemarks\" \"LLVMRuntimeDyld\" \"LLVMSandboxIR\" \"LLVMScalarOpts\" \"LLVMSelectionDAG\" \"LLVMSupport\" \"LLVMSymbolize\" \"LLVMTableGen\" \"LLVMTableGenBasic\" \"LLVMTableGenCommon\" \"LLVMTarget\" \"LLVMTargetParser\" \"LLVMTelemetry\" \"LLVMTextAPI\" \"LLVMTextAPIBinaryReader\" \"LLVMTransformUtils\" \"LLVMVectorize\" \"LLVMWindowsDriver\" \"LLVMWindowsManifest\" \"LLVMX86AsmParser\" \"LLVMX86CodeGen\" \"LLVMX86Desc\" \"LLVMX86Disassembler\" \"LLVMX86Info\" \"LLVMX86TargetMCA\" \"LLVMXRay\" \"LLVMipo\" \"LTO\" \"Remarks\" \"bugpoint\" \"cmake-exports\" \"dsymutil\" \"llc\" \"lli\" \"llvm-addr2line\" \"llvm-ar\" \"llvm-as\" \"llvm-bcanalyzer\" \"llvm-bitcode-strip\" \"llvm-c-test\" \"llvm-cat\" \"llvm-cfi-verify\" \"llvm-cgdata\" \"llvm-config\" \"llvm-cov\" \"llvm-ctxprof-util\" \"llvm-cvtres\" \"llvm-cxxdump\" \"llvm-cxxfilt\" \"llvm-cxxmap\" \"llvm-debuginfo-analyzer\" \"llvm-debuginfod\" \"llvm-debuginfod-find\" \"llvm-diff\" \"llvm-dis\" \"llvm-dlltool\" \"llvm-dwarfdump\" \"llvm-dwarfutil\" \"llvm-dwp\" \"llvm-exegesis\" \"llvm-extract\" \"llvm-gsymutil\" \"llvm-headers\" \"llvm-ifs\" \"llvm-install-name-tool\" \"llvm-jitlink\" \"llvm-lib\" \"llvm-libtool-darwin\" \"llvm-link\" \"llvm-lipo\" \"llvm-lto\" \"llvm-lto2\" \"llvm-mc\" \"llvm-mca\" \"llvm-ml\" \"llvm-modextract\" \"llvm-mt\" \"llvm-nm\" \"llvm-objcopy\" \"llvm-objdump\" \"llvm-opt-report\" \"llvm-otool\" \"llvm-pdbutil\" \"llvm-profdata\" \"llvm-profgen\" \"llvm-ranlib\" \"llvm-rc\" \"llvm-readelf\" \"llvm-readobj\" \"llvm-readtapi\" \"llvm-reduce\" \"llvm-remarkutil\" \"llvm-rtdyld\" \"llvm-sim\" \"llvm-size\" \"llvm-split\" \"llvm-stress\" \"llvm-strings\" \"llvm-strip\" \"llvm-symbolizer\" \"llvm-tblgen\" \"llvm-tli-checker\" \"llvm-undname\" \"llvm-windres\" \"llvm-xray\" \"opt\" \"opt-viewer\" \"reduce-chunk-list\" \"sancov\" \"sanstats\" \"verify-uselistorder\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"FileCheck\" \"LLVM\" \"LLVMAggressiveInstCombine\" \"LLVMAnalysis\" \"LLVMAsmParser\" \"LLVMAsmPrinter\" \"LLVMBinaryFormat\" \"LLVMBitReader\" \"LLVMBitWriter\" \"LLVMBitstreamReader\" \"LLVMCFGuard\" \"LLVMCFIVerify\" \"LLVMCGData\" \"LLVMCodeGen\" \"LLVMCodeGenTypes\" \"LLVMCore\" \"LLVMCoroutines\" \"LLVMCoverage\" \"LLVMDWARFLinker\" \"LLVMDWARFLinkerClassic\" \"LLVMDWARFLinkerParallel\" \"LLVMDWP\" \"LLVMDebugInfoBTF\" \"LLVMDebugInfoCodeView\" \"LLVMDebugInfoDWARF\" \"LLVMDebugInfoGSYM\" \"LLVMDebugInfoLogicalView\" \"LLVMDebugInfoMSF\" \"LLVMDebugInfoPDB\" \"LLVMDebuginfod\" \"LLVMDemangle\" \"LLVMDiff\" \"LLVMDlltoolDriver\" \"LLVMExecutionEngine\" \"LLVMExegesis\" \"LLVMExegesisX86\" \"LLVMExtensions\" \"LLVMFileCheck\" \"LLVMFrontendAtomic\" \"LLVMFrontendDriver\" \"LLVMFrontendHLSL\" \"LLVMFrontendOffloading\" \"LLVMFrontendOpenACC\" \"LLVMFrontendOpenMP\" \"LLVMFuzzMutate\" \"LLVMFuzzerCLI\" \"LLVMGlobalISel\" \"LLVMHipStdPar\" \"LLVMIRPrinter\" \"LLVMIRReader\" \"LLVMInstCombine\" \"LLVMInstrumentation\" \"LLVMInterfaceStub\" \"LLVMInterpreter\" \"LLVMJITLink\" \"LLVMLTO\" \"LLVMLibDriver\" \"LLVMLineEditor\" \"LLVMLinker\" \"LLVMMC\" \"LLVMMCA\" \"LLVMMCDisassembler\" \"LLVMMCJIT\" \"LLVMMCParser\" \"LLVMMIRParser\" \"LLVMObjCARCOpts\" \"LLVMObjCopy\" \"LLVMObject\" \"LLVMObjectYAML\" \"LLVMOptDriver\" \"LLVMOption\" \"LLVMOrcDebugging\" \"LLVMOrcJIT\" \"LLVMOrcShared\" \"LLVMOrcTargetProcess\" \"LLVMPasses\" \"LLVMPerfJITEvents\" \"LLVMProfileData\" \"LLVMRemarks\" \"LLVMRuntimeDyld\" \"LLVMSandboxIR\" \"LLVMScalarOpts\" \"LLVMSelectionDAG\" \"LLVMSupport\" \"LLVMSymbolize\" \"LLVMTableGen\" \"LLVMTableGenBasic\" \"LLVMTableGenCommon\" \"LLVMTarget\" \"LLVMTargetParser\" \"LLVMTelemetry\" \"LLVMTextAPI\" \"LLVMTextAPIBinaryReader\" \"LLVMTransformUtils\" \"LLVMVectorize\" \"LLVMWindowsDriver\" \"LLVMWindowsManifest\" \"LLVMX86AsmParser\" \"LLVMX86CodeGen\" \"LLVMX86Desc\" \"LLVMX86Disassembler\" \"LLVMX86Info\" \"LLVMX86TargetMCA\" \"LLVMXRay\" \"LLVMipo\" \"LTO\" \"Remarks\" \"UnicodeNameMappingGenerator\" \"bugpoint\" \"cmake-exports\" \"count\" \"dsymutil\" \"llc\" \"lli\" \"lli-child-target\" \"llvm-PerfectShuffle\" \"llvm-addr2line\" \"llvm-ar\" \"llvm-as\" \"llvm-bcanalyzer\" \"llvm-bitcode-strip\" \"llvm-c-test\" \"llvm-cat\" \"llvm-cfi-verify\" \"llvm-cgdata\" \"llvm-config\" \"llvm-cov\" \"llvm-ctxprof-util\" \"llvm-cvtres\" \"llvm-cxxdump\" \"llvm-cxxfilt\" \"llvm-cxxmap\" \"llvm-debuginfo-analyzer\" \"llvm-debuginfod\" \"llvm-debuginfod-find\" \"llvm-diff\" \"llvm-dis\" \"llvm-dlltool\" \"llvm-dwarfdump\" \"llvm-dwarfutil\" \"llvm-dwp\" \"llvm-exegesis\" \"llvm-extract\" \"llvm-gsymutil\" \"llvm-headers\" \"llvm-ifs\" \"llvm-install-name-tool\" \"llvm-jitlink\" \"llvm-jitlink-executor\" \"llvm-lib\" \"llvm-libtool-darwin\" \"llvm-link\" \"llvm-lipo\" \"llvm-lto\" \"llvm-lto2\" \"llvm-mc\" \"llvm-mca\" \"llvm-ml\" \"llvm-modextract\" \"llvm-mt\" \"llvm-nm\" \"llvm-objcopy\" \"llvm-objdump\" \"llvm-opt-report\" \"llvm-otool\" \"llvm-pdbutil\" \"llvm-profdata\" \"llvm-profgen\" \"llvm-ranlib\" \"llvm-rc\" \"llvm-readelf\" \"llvm-readobj\" \"llvm-readtapi\" \"llvm-reduce\" \"llvm-remarkutil\" \"llvm-rtdyld\" \"llvm-sim\" \"llvm-size\" \"llvm-split\" \"llvm-stress\" \"llvm-strings\" \"llvm-strip\" \"llvm-symbolizer\" \"llvm-tblgen\" \"llvm-tli-checker\" \"llvm-undname\" \"llvm-windres\" \"llvm-xray\" \"not\" \"obj2yaml\" \"opt\" \"opt-viewer\" \"reduce-chunk-list\" \"sancov\" \"sanstats\" \"split-file\" \"verify-uselistorder\" \"yaml-bench\" \"yaml2obj\""
 .PHONY : list_install_components
 
 # Special rule for the target list_install_components
@@ -195,6 +195,34 @@ FileCheck/fast:
 	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build && $(MAKE) $(MAKESILENT) -f utils/FileCheck/CMakeFiles/FileCheck.dir/build.make utils/FileCheck/CMakeFiles/FileCheck.dir/build
 .PHONY : FileCheck/fast
 
+# Convenience name for target.
+utils/FileCheck/CMakeFiles/install-FileCheck.dir/rule:
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/FileCheck/CMakeFiles/install-FileCheck.dir/rule
+.PHONY : utils/FileCheck/CMakeFiles/install-FileCheck.dir/rule
+
+# Convenience name for target.
+install-FileCheck: utils/FileCheck/CMakeFiles/install-FileCheck.dir/rule
+.PHONY : install-FileCheck
+
+# fast build rule for target.
+install-FileCheck/fast:
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build && $(MAKE) $(MAKESILENT) -f utils/FileCheck/CMakeFiles/install-FileCheck.dir/build.make utils/FileCheck/CMakeFiles/install-FileCheck.dir/build
+.PHONY : install-FileCheck/fast
+
+# Convenience name for target.
+utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/rule:
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/rule
+.PHONY : utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/rule
+
+# Convenience name for target.
+install-FileCheck-stripped: utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/rule
+.PHONY : install-FileCheck-stripped
+
+# fast build rule for target.
+install-FileCheck-stripped/fast:
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build && $(MAKE) $(MAKESILENT) -f utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/build.make utils/FileCheck/CMakeFiles/install-FileCheck-stripped.dir/build
+.PHONY : install-FileCheck-stripped/fast
+
 FileCheck.o: FileCheck.cpp.o
 .PHONY : FileCheck.o
 
@@ -233,6 +261,8 @@ help:
 	@echo "... package"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... install-FileCheck"
+	@echo "... install-FileCheck-stripped"
 	@echo "... FileCheck"
 	@echo "... FileCheck.o"
 	@echo "... FileCheck.i"

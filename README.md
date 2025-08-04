@@ -20,18 +20,18 @@ git clone --recursive <repository-url>
 cd lvgl_osmesa_llvm6
 
 # Build everything (takes 30-45 minutes due to LLVM)
-./compile.sh all
+./scripts/compile.sh all
 
 # Or build components individually
-./compile.sh llvm      # Build LLVM first (required)
-./compile.sh mesa      # Then Mesa
-./compile.sh examples  # Finally, the examples
+./scripts/compile.sh llvm      # Build LLVM first (required)
+./scripts/compile.sh mesa      # Then Mesa
+./scripts/compile.sh examples  # Finally, the examples
 
-# Run examples from project root
-build/src/lvgl_hello/lvgl_hello              # Basic LVGL window
-build/src/lvgl_osmesa/lvgl_osmesa_example    # OpenGL triangle in LVGL
-build/src/dx8_cube/dx8_cube                  # DirectX 8 spinning cube
-build/src/osmesa_test/osmesa_test            # Creates test.ppm image
+# Run examples using convenience scripts (handles library paths)
+./scripts/run_lvgl_hello.sh              # Basic LVGL window
+./scripts/run_lvgl_osmesa.sh             # OpenGL triangle in LVGL
+./scripts/run_dx8_cube.sh                # DirectX 8 spinning cube (with logging)
+./scripts/run_osmesa_test.sh             # Creates test.ppm image
 ```
 
 ## Examples
@@ -88,15 +88,15 @@ Application Code (OpenGL/DirectX 8)
 
 ## Build System
 
-The project uses a unified build system with `compile.sh`:
+The project uses a unified build system with `scripts/compile.sh`:
 
 ```bash
-./compile.sh -h          # Show help
-./compile.sh status      # Check build status
-./compile.sh -c          # Clean build
-./compile.sh -C          # Clean everything
-./compile.sh -d all      # Debug build
-./compile.sh -j 4 all    # Use 4 parallel jobs
+./scripts/compile.sh -h          # Show help
+./scripts/compile.sh status      # Check build status
+./scripts/compile.sh -c          # Clean build
+./scripts/compile.sh -C          # Clean everything
+./scripts/compile.sh -d all      # Debug build
+./scripts/compile.sh -j 4 all    # Use 4 parallel jobs
 ```
 
 Build times (approximate):
@@ -150,6 +150,6 @@ This is a demonstration project. Feel free to fork and experiment!
 - **X11 errors**: Try SDL2 backend instead (better support)
 
 ### Development Tips
-- Use `./compile.sh status` to check what's built
+- Use `./scripts/compile.sh status` to check what's built
 - Build with `-v` flag for verbose output when debugging
 - Check `build/` directory for all outputs

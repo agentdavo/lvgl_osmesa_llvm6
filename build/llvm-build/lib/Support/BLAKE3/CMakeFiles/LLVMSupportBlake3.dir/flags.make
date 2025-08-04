@@ -3,17 +3,17 @@
 
 # compile ASM with /usr/bin/cc
 # compile C with /usr/bin/cc
-ASM_DEFINES = -DGTEST_HAS_RTTI=0 -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+ASM_DEFINES = -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 
 ASM_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib/Support/BLAKE3 -I/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/BLAKE3 -I/home/djs/lvgl_osmesa_llvm6/build/llvm-build/include -I/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include
 
 ASM_FLAGS =  -fPIC -Os -DNDEBUG
 
-C_DEFINES = -DGTEST_HAS_RTTI=0 -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
+C_DEFINES = -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS
 
 C_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib/Support/BLAKE3 -I/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/lib/Support/BLAKE3 -I/home/djs/lvgl_osmesa_llvm6/build/llvm-build/include -I/home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/include
 
-C_FLAGS = -O2 -fomit-frame-pointer -w -fPIC -fPIC -fno-semantic-interposition -Werror=date-time -fno-lifetime-dse -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wimplicit-fallthrough -ffunction-sections -fdata-sections -Os -fomit-frame-pointer -w -fPIC
+C_FLAGS =  -fPIC -fno-semantic-interposition -Werror=date-time -fno-lifetime-dse -Wall -Wextra -Wno-unused-parameter -Wwrite-strings -Wcast-qual -Wno-missing-field-initializers -pedantic -Wno-long-long -Wimplicit-fallthrough -Wno-comment -ffunction-sections -fdata-sections -Os -DNDEBUG
 
 # Custom flags: lib/Support/BLAKE3/CMakeFiles/LLVMSupportBlake3.dir/blake3.c.o_FLAGS =   
 

@@ -1,6 +1,7 @@
 #include "d3d8_surface.h"
 #include "d3d8_device.h"
 #include "d3d8_texture.h"
+#include "osmesa_gl_loader.h"
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glext.h>
@@ -124,9 +125,8 @@ bool Direct3DSurface8::initialize() {
     
     // Create appropriate OpenGL object based on usage
     if (is_depth_stencil()) {
-        // Check if renderbuffers are supported
-        const char* extensions = (const char*)glGetString(GL_EXTENSIONS);
-        bool has_renderbuffers = extensions && strstr(extensions, "GL_ARB_framebuffer_object");
+        // Check if renderbuffers are supported using modern method
+        bool has_renderbuffers = has_extension("GL_ARB_framebuffer_object");
         
         if (has_renderbuffers) {
             // Create renderbuffer for depth/stencil
@@ -189,9 +189,8 @@ bool Direct3DSurface8::initialize() {
     
     // Create framebuffer if this is a render target
     if (is_render_target() && texture_) {
-        // Check if framebuffer objects are supported
-        const char* extensions = (const char*)glGetString(GL_EXTENSIONS);
-        bool has_fbo = extensions && strstr(extensions, "GL_ARB_framebuffer_object");
+        // Check if framebuffer objects are supported using modern method
+        bool has_fbo = has_extension("GL_ARB_framebuffer_object");
         
         // Check if we're using OSMesa - if so, always use default framebuffer
         const char* renderer = (const char*)glGetString(GL_RENDERER);

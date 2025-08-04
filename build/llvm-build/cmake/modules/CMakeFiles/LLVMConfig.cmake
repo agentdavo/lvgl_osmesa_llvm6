@@ -24,7 +24,7 @@ set(LLVM_USE_SPLIT_DWARF OFF)
 
 set(LLVM_COMMON_DEPENDS )
 
-set(LLVM_AVAILABLE_LIBS LLVMDemangle;LLVMSupport;LLVMTableGen;LLVMTableGenBasic;LLVMTableGenCommon;LLVMCore;LLVMFuzzerCLI;LLVMFuzzMutate;LLVMFileCheck;LLVMInterfaceStub;LLVMIRPrinter;LLVMIRReader;LLVMCGData;LLVMCodeGen;LLVMSelectionDAG;LLVMAsmPrinter;LLVMMIRParser;LLVMGlobalISel;LLVMCodeGenTypes;LLVMBinaryFormat;LLVMBitReader;LLVMBitWriter;LLVMBitstreamReader;LLVMDWARFLinker;LLVMDWARFLinkerClassic;LLVMDWARFLinkerParallel;LLVMExtensions;LLVMFrontendAtomic;LLVMFrontendDriver;LLVMFrontendHLSL;LLVMFrontendOpenACC;LLVMFrontendOpenMP;LLVMFrontendOffloading;LLVMTransformUtils;LLVMInstrumentation;LLVMAggressiveInstCombine;LLVMInstCombine;LLVMScalarOpts;LLVMipo;LLVMVectorize;LLVMObjCARCOpts;LLVMCoroutines;LLVMCFGuard;LLVMHipStdPar;LLVMLinker;LLVMAnalysis;LLVMLTO;LLVMMC;LLVMMCParser;LLVMMCDisassembler;LLVMMCA;LLVMObjCopy;LLVMObject;LLVMObjectYAML;LLVMOption;LLVMRemarks;LLVMDebuginfod;LLVMDebugInfoDWARF;LLVMDebugInfoGSYM;LLVMDebugInfoLogicalView;LLVMDebugInfoMSF;LLVMDebugInfoCodeView;LLVMDebugInfoPDB;LLVMSymbolize;LLVMDebugInfoBTF;LLVMDWP;LLVMExecutionEngine;LLVMInterpreter;LLVMJITLink;LLVMMCJIT;LLVMOrcJIT;LLVMOrcDebugging;LLVMOrcShared;LLVMOrcTargetProcess;LLVMRuntimeDyld;LLVMTarget;LLVMX86CodeGen;LLVMX86AsmParser;LLVMX86Disassembler;LLVMX86TargetMCA;LLVMX86Desc;LLVMX86Info;LLVMSandboxIR;LLVMAsmParser;LLVMLineEditor;LLVMProfileData;LLVMCoverage;LLVMPasses;LLVMTargetParser;LLVMTextAPI;LLVMTextAPIBinaryReader;LLVMTelemetry;LLVMDlltoolDriver;LLVMLibDriver;LLVMXRay;LLVMWindowsDriver;LLVMWindowsManifest;LTO;LLVMCFIVerify;LLVMDiff;LLVMExegesisX86;LLVMExegesis;LLVM;LLVMOptDriver;Remarks)
+set(LLVM_AVAILABLE_LIBS LLVMDemangle;LLVMSupport;LLVMTableGen;LLVMTableGenBasic;LLVMTableGenCommon;LLVMCore;LLVMFuzzerCLI;LLVMFuzzMutate;LLVMFileCheck;LLVMInterfaceStub;LLVMIRPrinter;LLVMIRReader;LLVMCGData;LLVMCodeGen;LLVMSelectionDAG;LLVMAsmPrinter;LLVMMIRParser;LLVMGlobalISel;LLVMCodeGenTypes;LLVMBinaryFormat;LLVMBitReader;LLVMBitWriter;LLVMBitstreamReader;LLVMDWARFLinker;LLVMDWARFLinkerClassic;LLVMDWARFLinkerParallel;LLVMExtensions;LLVMFrontendAtomic;LLVMFrontendDriver;LLVMFrontendHLSL;LLVMFrontendOpenACC;LLVMFrontendOpenMP;LLVMFrontendOffloading;LLVMTransformUtils;LLVMInstrumentation;LLVMAggressiveInstCombine;LLVMInstCombine;LLVMScalarOpts;LLVMipo;LLVMVectorize;LLVMObjCARCOpts;LLVMCoroutines;LLVMCFGuard;LLVMHipStdPar;LLVMLinker;LLVMAnalysis;LLVMLTO;LLVMMC;LLVMMCParser;LLVMMCDisassembler;LLVMMCA;LLVMObjCopy;LLVMObject;LLVMObjectYAML;LLVMOption;LLVMRemarks;LLVMDebuginfod;LLVMDebugInfoDWARF;LLVMDebugInfoGSYM;LLVMDebugInfoLogicalView;LLVMDebugInfoMSF;LLVMDebugInfoCodeView;LLVMDebugInfoPDB;LLVMSymbolize;LLVMDebugInfoBTF;LLVMDWP;LLVMExecutionEngine;LLVMInterpreter;LLVMJITLink;LLVMMCJIT;LLVMOrcJIT;LLVMOrcDebugging;LLVMOrcShared;LLVMOrcTargetProcess;LLVMRuntimeDyld;LLVMPerfJITEvents;LLVMTarget;LLVMX86CodeGen;LLVMX86AsmParser;LLVMX86Disassembler;LLVMX86TargetMCA;LLVMX86Desc;LLVMX86Info;LLVMSandboxIR;LLVMAsmParser;LLVMLineEditor;LLVMProfileData;LLVMCoverage;LLVMPasses;LLVMTargetParser;LLVMTextAPI;LLVMTextAPIBinaryReader;LLVMTelemetry;LLVMDlltoolDriver;LLVMLibDriver;LLVMXRay;LLVMWindowsDriver;LLVMWindowsManifest;LTO;LLVMCFIVerify;LLVMDiff;LLVMExegesisX86;LLVMExegesis;LLVM;LLVMOptDriver;Remarks)
 
 set(LLVM_LINK_LLVM_DYLIB ON)
 
@@ -112,6 +112,7 @@ set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMOrcDebugging )
 set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMOrcShared )
 set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMOrcTargetProcess )
 set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMRuntimeDyld )
+set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMPerfJITEvents )
 set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMTarget )
 set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMX86CodeGen )
 set_property(GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_LLVMX86AsmParser )
@@ -157,12 +158,12 @@ set(LLVM_ENABLE_ASSERTIONS OFF)
 
 set(LLVM_ENABLE_EH OFF)
 
-set(LLVM_ENABLE_FFI OFF)
+set(LLVM_ENABLE_FFI TRUE)
 if(LLVM_ENABLE_FFI)
   find_package(FFI)
 endif()
 
-set(LLVM_ENABLE_RTTI OFF)
+set(LLVM_ENABLE_RTTI ON)
 
 set(LLVM_ENABLE_LIBEDIT FALSE)
 if(LLVM_ENABLE_LIBEDIT)
@@ -171,9 +172,9 @@ endif()
 
 set(LLVM_ENABLE_THREADS ON)
 
-set(LLVM_ENABLE_UNWIND_TABLES OFF)
+set(LLVM_ENABLE_UNWIND_TABLES ON)
 
-set(LLVM_ENABLE_ZLIB 0)
+set(LLVM_ENABLE_ZLIB 1)
 if(LLVM_ENABLE_ZLIB)
   set(ZLIB_ROOT )
   find_package(ZLIB)
@@ -184,7 +185,7 @@ if(LLVM_ENABLE_ZSTD)
   find_package(zstd)
 endif()
 
-set(LLVM_ENABLE_LIBXML2 OFF)
+set(LLVM_ENABLE_LIBXML2 1)
 if(LLVM_ENABLE_LIBXML2)
   find_package(LibXml2)
 endif()
@@ -248,8 +249,8 @@ set(LLVM_HAVE_OPT_VIEWER_MODULES 1)
 set(LLVM_CONFIGURATION_TYPES )
 set(LLVM_ENABLE_SHARED_LIBS OFF)
 
-set(LLVM_DEFAULT_EXTERNAL_LIT "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/./bin/llvm-lit")
-set(LLVM_LIT_ARGS "-sv")
+set(LLVM_DEFAULT_EXTERNAL_LIT "${LLVM_INSTALL_PREFIX}/bin/llvm-lit")
+set(LLVM_LIT_ARGS "" -sv --ignore-fail"")
 
 if(NOT TARGET LLVMSupport)
   include("${LLVM_CMAKE_DIR}/LLVMExports.cmake")

@@ -215,56 +215,43 @@ dx8gl/fast:
 .PHONY : dx8gl/fast
 
 #=============================================================================
-# Target rules for targets named simple_triangle
+# Target rules for targets named test_xyzrhw
 
 # Build rule for target.
-simple_triangle: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simple_triangle
-.PHONY : simple_triangle
+test_xyzrhw: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_xyzrhw
+.PHONY : test_xyzrhw
 
 # fast build rule for target.
-simple_triangle/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/simple_triangle.dir/build.make src/CMakeFiles/simple_triangle.dir/build
-.PHONY : simple_triangle/fast
+test_xyzrhw/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_xyzrhw.dir/build.make src/CMakeFiles/test_xyzrhw.dir/build
+.PHONY : test_xyzrhw/fast
 
 #=============================================================================
-# Target rules for targets named gl_triangle_test
+# Target rules for targets named test_mixed_vertices
 
 # Build rule for target.
-gl_triangle_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gl_triangle_test
-.PHONY : gl_triangle_test
+test_mixed_vertices: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_mixed_vertices
+.PHONY : test_mixed_vertices
 
 # fast build rule for target.
-gl_triangle_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/gl_triangle_test.dir/build.make src/CMakeFiles/gl_triangle_test.dir/build
-.PHONY : gl_triangle_test/fast
+test_mixed_vertices/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_mixed_vertices.dir/build.make src/CMakeFiles/test_mixed_vertices.dir/build
+.PHONY : test_mixed_vertices/fast
 
 #=============================================================================
-# Target rules for targets named dx8_single_frame
+# Target rules for targets named test_indexed_xyzrhw
 
 # Build rule for target.
-dx8_single_frame: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dx8_single_frame
-.PHONY : dx8_single_frame
+test_indexed_xyzrhw: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_indexed_xyzrhw
+.PHONY : test_indexed_xyzrhw
 
 # fast build rule for target.
-dx8_single_frame/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_single_frame.dir/build.make src/CMakeFiles/dx8_single_frame.dir/build
-.PHONY : dx8_single_frame/fast
-
-#=============================================================================
-# Target rules for targets named dx8_ndc_test
-
-# Build rule for target.
-dx8_ndc_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dx8_ndc_test
-.PHONY : dx8_ndc_test
-
-# fast build rule for target.
-dx8_ndc_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/dx8_ndc_test.dir/build.make src/CMakeFiles/dx8_ndc_test.dir/build
-.PHONY : dx8_ndc_test/fast
+test_indexed_xyzrhw/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/build
+.PHONY : test_indexed_xyzrhw/fast
 
 #=============================================================================
 # Target rules for targets named lvgl_platform
@@ -293,32 +280,6 @@ lvgl_osmesa/fast:
 .PHONY : lvgl_osmesa/fast
 
 #=============================================================================
-# Target rules for targets named osmesa_test
-
-# Build rule for target.
-osmesa_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 osmesa_test
-.PHONY : osmesa_test
-
-# fast build rule for target.
-osmesa_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/osmesa_test/CMakeFiles/osmesa_test.dir/build.make src/osmesa_test/CMakeFiles/osmesa_test.dir/build
-.PHONY : osmesa_test/fast
-
-#=============================================================================
-# Target rules for targets named lvgl_hello
-
-# Build rule for target.
-lvgl_hello: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lvgl_hello
-.PHONY : lvgl_hello
-
-# fast build rule for target.
-lvgl_hello/fast:
-	$(MAKE) $(MAKESILENT) -f src/lvgl_hello/CMakeFiles/lvgl_hello.dir/build.make src/lvgl_hello/CMakeFiles/lvgl_hello.dir/build
-.PHONY : lvgl_hello/fast
-
-#=============================================================================
 # Target rules for targets named dx8_cube
 
 # Build rule for target.
@@ -330,32 +291,6 @@ dx8_cube: cmake_check_build_system
 dx8_cube/fast:
 	$(MAKE) $(MAKESILENT) -f src/dx8_cube/CMakeFiles/dx8_cube.dir/build.make src/dx8_cube/CMakeFiles/dx8_cube.dir/build
 .PHONY : dx8_cube/fast
-
-#=============================================================================
-# Target rules for targets named dx8_triangle
-
-# Build rule for target.
-dx8_triangle: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dx8_triangle
-.PHONY : dx8_triangle
-
-# fast build rule for target.
-dx8_triangle/fast:
-	$(MAKE) $(MAKESILENT) -f src/dx8_triangle/CMakeFiles/dx8_triangle.dir/build.make src/dx8_triangle/CMakeFiles/dx8_triangle.dir/build
-.PHONY : dx8_triangle/fast
-
-#=============================================================================
-# Target rules for targets named dx8_simple_test
-
-# Build rule for target.
-dx8_simple_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dx8_simple_test
-.PHONY : dx8_simple_test
-
-# fast build rule for target.
-dx8_simple_test/fast:
-	$(MAKE) $(MAKESILENT) -f src/dx8_simple_test/CMakeFiles/dx8_simple_test.dir/build.make src/dx8_simple_test/CMakeFiles/dx8_simple_test.dir/build
-.PHONY : dx8_simple_test/fast
 
 ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o: ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o
 .PHONY : ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o
@@ -13812,18 +13747,13 @@ help:
 	@echo "... llvm_external"
 	@echo "... osmesa"
 	@echo "... dx8_cube"
-	@echo "... dx8_ndc_test"
-	@echo "... dx8_simple_test"
-	@echo "... dx8_single_frame"
-	@echo "... dx8_triangle"
 	@echo "... dx8gl"
-	@echo "... gl_triangle_test"
 	@echo "... lvgl"
-	@echo "... lvgl_hello"
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
-	@echo "... osmesa_test"
-	@echo "... simple_triangle"
+	@echo "... test_indexed_xyzrhw"
+	@echo "... test_mixed_vertices"
+	@echo "... test_xyzrhw"
 	@echo "... ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o"
 	@echo "... ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.i"
 	@echo "... ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.s"

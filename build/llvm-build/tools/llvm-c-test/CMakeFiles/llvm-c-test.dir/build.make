@@ -143,15 +143,15 @@ tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.o: tools/llvm-c-test/CMake
 tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp
 tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.o: tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/llvm-build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.o"
-	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-c-test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS)  -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-rtti -MD -MT tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.o -MF CMakeFiles/llvm-c-test.dir/echo.cpp.o.d -o CMakeFiles/llvm-c-test.dir/echo.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-c-test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS)  -fno-exceptions -funwind-tables -MD -MT tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.o -MF CMakeFiles/llvm-c-test.dir/echo.cpp.o.d -o CMakeFiles/llvm-c-test.dir/echo.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp
 
 tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/llvm-c-test.dir/echo.cpp.i"
-	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-c-test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS)  -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-rtti -E /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp > CMakeFiles/llvm-c-test.dir/echo.cpp.i
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-c-test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS)  -fno-exceptions -funwind-tables -E /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp > CMakeFiles/llvm-c-test.dir/echo.cpp.i
 
 tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/echo.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/llvm-c-test.dir/echo.cpp.s"
-	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-c-test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS)  -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-rtti -S /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp -o CMakeFiles/llvm-c-test.dir/echo.cpp.s
+	cd /home/djs/lvgl_osmesa_llvm6/build/llvm-build/tools/llvm-c-test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS)  -fno-exceptions -funwind-tables -S /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/echo.cpp -o CMakeFiles/llvm-c-test.dir/echo.cpp.s
 
 tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/helpers.c.o: tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/flags.make
 tools/llvm-c-test/CMakeFiles/llvm-c-test.dir/helpers.c.o: /home/djs/lvgl_osmesa_llvm6/ext/llvm-project/llvm/tools/llvm-c-test/helpers.c

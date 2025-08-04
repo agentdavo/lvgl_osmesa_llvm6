@@ -19,7 +19,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_cmake_targets_defined "")
 set(_cmake_targets_not_defined "")
 set(_cmake_expected_targets "")
-foreach(_cmake_expected_target IN ITEMS FileCheck llvm-PerfectShuffle count not UnicodeNameMappingGenerator yaml-bench split-file BugpointPasses lli-child-target llvm-jitlink-executor obj2yaml yaml2obj)
+foreach(_cmake_expected_target IN ITEMS BugpointPasses)
   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
   if(TARGET "${_cmake_expected_target}")
     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
@@ -46,85 +46,8 @@ unset(_cmake_targets_not_defined)
 unset(_cmake_expected_targets)
 
 
-# Create imported target FileCheck
-add_executable(FileCheck IMPORTED)
-
-# Create imported target llvm-PerfectShuffle
-add_executable(llvm-PerfectShuffle IMPORTED)
-
-# Create imported target count
-add_executable(count IMPORTED)
-
-# Create imported target not
-add_executable(not IMPORTED)
-
-# Create imported target UnicodeNameMappingGenerator
-add_executable(UnicodeNameMappingGenerator IMPORTED)
-
-# Create imported target yaml-bench
-add_executable(yaml-bench IMPORTED)
-
-# Create imported target split-file
-add_executable(split-file IMPORTED)
-
 # Create imported target BugpointPasses
 add_library(BugpointPasses MODULE IMPORTED)
-
-# Create imported target lli-child-target
-add_executable(lli-child-target IMPORTED)
-set_property(TARGET lli-child-target PROPERTY ENABLE_EXPORTS 1)
-
-# Create imported target llvm-jitlink-executor
-add_executable(llvm-jitlink-executor IMPORTED)
-set_property(TARGET llvm-jitlink-executor PROPERTY ENABLE_EXPORTS 1)
-
-# Create imported target obj2yaml
-add_executable(obj2yaml IMPORTED)
-
-# Create imported target yaml2obj
-add_executable(yaml2obj IMPORTED)
-
-# Import target "FileCheck" for configuration "MinSizeRel"
-set_property(TARGET FileCheck APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(FileCheck PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/FileCheck"
-  )
-
-# Import target "llvm-PerfectShuffle" for configuration "MinSizeRel"
-set_property(TARGET llvm-PerfectShuffle APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(llvm-PerfectShuffle PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/llvm-PerfectShuffle"
-  )
-
-# Import target "count" for configuration "MinSizeRel"
-set_property(TARGET count APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(count PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/count"
-  )
-
-# Import target "not" for configuration "MinSizeRel"
-set_property(TARGET not APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(not PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/not"
-  )
-
-# Import target "UnicodeNameMappingGenerator" for configuration "MinSizeRel"
-set_property(TARGET UnicodeNameMappingGenerator APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(UnicodeNameMappingGenerator PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/UnicodeNameMappingGenerator"
-  )
-
-# Import target "yaml-bench" for configuration "MinSizeRel"
-set_property(TARGET yaml-bench APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(yaml-bench PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/yaml-bench"
-  )
-
-# Import target "split-file" for configuration "MinSizeRel"
-set_property(TARGET split-file APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(split-file PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/split-file"
-  )
 
 # Import target "BugpointPasses" for configuration "MinSizeRel"
 set_property(TARGET BugpointPasses APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
@@ -132,30 +55,6 @@ set_target_properties(BugpointPasses PROPERTIES
   IMPORTED_COMMON_LANGUAGE_RUNTIME_MINSIZEREL ""
   IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib/BugpointPasses.so"
   IMPORTED_NO_SONAME_MINSIZEREL "TRUE"
-  )
-
-# Import target "lli-child-target" for configuration "MinSizeRel"
-set_property(TARGET lli-child-target APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(lli-child-target PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/lli-child-target"
-  )
-
-# Import target "llvm-jitlink-executor" for configuration "MinSizeRel"
-set_property(TARGET llvm-jitlink-executor APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(llvm-jitlink-executor PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/llvm-jitlink-executor"
-  )
-
-# Import target "obj2yaml" for configuration "MinSizeRel"
-set_property(TARGET obj2yaml APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(obj2yaml PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/obj2yaml"
-  )
-
-# Import target "yaml2obj" for configuration "MinSizeRel"
-set_property(TARGET yaml2obj APPEND PROPERTY IMPORTED_CONFIGURATIONS MINSIZEREL)
-set_target_properties(yaml2obj PROPERTIES
-  IMPORTED_LOCATION_MINSIZEREL "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/yaml2obj"
   )
 
 # This file does not depend on other imported targets which have

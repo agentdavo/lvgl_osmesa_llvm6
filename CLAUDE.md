@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## IMPORTANT: Task Management Requirements
+
+When working on this project, you MUST:
+1. **Always use the TodoWrite tool** to track tasks and progress
+2. **Update task status immediately** when starting work (mark as "in_progress") and when completing work (mark as "completed")
+3. **Add new tasks proactively** when discovering issues or identifying work that needs to be done
+4. **Check TASKS.md regularly** for the full task list and priorities
+5. **Never work on tasks without tracking them** in the todo list
+6. **Keep only one task "in_progress" at a time** to maintain focus
+
+The todo list is critical for project organization and helps track complex multi-step work. Use it liberally!
+
 ## Project Overview
 
 This project combines LLVM, Mesa (OSMesa), LVGL, and dx8gl to create GUI applications with software-based OpenGL rendering. It demonstrates:
@@ -14,7 +26,7 @@ This project combines LLVM, Mesa (OSMesa), LVGL, and dx8gl to create GUI applica
 ## Build Commands
 
 ### Build System Overview
-All building should be done using the `compile.sh` script from the project root directory. This ensures consistent build configuration and proper dependency management.
+All building should be done using the `scripts/compile.sh` script. This ensures consistent build configuration and proper dependency management. All build and run scripts are located in the `scripts/` directory to keep the project root clean.
 
 ### Initial Setup
 ```bash
@@ -22,58 +34,66 @@ All building should be done using the `compile.sh` script from the project root 
 git submodule update --init --recursive
 
 # Build everything (this takes 30-45 minutes due to LLVM)
-./compile.sh all
+./scripts/compile.sh all
 ```
 
 ### Individual Component Builds
 ```bash
 # Build only LLVM (takes 30+ minutes)
-./compile.sh llvm
+./scripts/compile.sh llvm
 
 # Build only Mesa/OSMesa (requires LLVM to be built first)
-./compile.sh mesa
+./scripts/compile.sh mesa
 
 # Build LVGL library
-./compile.sh lvgl
+./scripts/compile.sh lvgl
 
 # Build all examples
-./compile.sh examples
+./scripts/compile.sh examples
 
 # Build individual examples
-./compile.sh dx8_cube             # DirectX 8 spinning cube
-./compile.sh osmesa_test          # OSMesa test (outputs PPM)
-./compile.sh lvgl_hello           # Basic LVGL window
-./compile.sh lvgl_osmesa_example  # LVGL + OSMesa integration
+./scripts/compile.sh dx8_cube             # DirectX 8 spinning cube
+./scripts/compile.sh osmesa_test          # OSMesa test (outputs PPM)
+./scripts/compile.sh lvgl_hello           # Basic LVGL window
+./scripts/compile.sh lvgl_osmesa_example  # LVGL + OSMesa integration
 ```
 
 ### Build Options
 ```bash
 # Clean build directory
-./compile.sh -c
+./scripts/compile.sh -c
 
 # Clean everything including LLVM/Mesa builds
-./compile.sh -C
+./scripts/compile.sh -C
 
 # Debug build
-./compile.sh -d all
+./scripts/compile.sh -d all
 
 # Verbose output
-./compile.sh -v all
+./scripts/compile.sh -v all
 
 # Set parallel jobs (default: 8)
-./compile.sh -j 4 all
+./scripts/compile.sh -j 4 all
 
 # Check build status
-./compile.sh status
+./scripts/compile.sh status
 ```
 
 ### Running Examples
 ```bash
-# From project root:
-build/src/lvgl_osmesa/lvgl_osmesa_example    # Main demo
-build/src/osmesa_test/osmesa_test           # Generates test.ppm image
-build/src/lvgl_hello/lvgl_hello             # Basic LVGL window
-build/src/dx8_cube/dx8_cube                 # DirectX 8 cube demo
+# Use the convenience run scripts (handles library paths automatically):
+./scripts/run_dx8_cube.sh         # DirectX 8 cube demo with logging
+./scripts/run_osmesa_test.sh      # OSMesa test (generates test.ppm)
+./scripts/run_lvgl_hello.sh       # Basic LVGL window
+./scripts/run_lvgl_osmesa.sh      # LVGL + OSMesa integration demo
+
+# Or run manually with correct library paths:
+LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu \
+  build/src/dx8_cube/dx8_cube
+
+# For timeout-limited testing (useful during development):
+LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu \
+  timeout 5 build/src/dx8_cube/dx8_cube       # Run for 5 seconds only
 ```
 
 ## Architecture Overview
@@ -179,6 +199,13 @@ build/
 2. Check `test.ppm` output image for correct rendering
 3. LVGL canvas requires RGB565 format - verify color conversion
 4. Use `MESA_DEBUG=1` environment variable for Mesa debugging
+5. For runtime issues, ensure proper `LD_LIBRARY_PATH` is set to find custom LLVM/Mesa libraries
+
+### Runtime Environment
+Examples that use OpenGL/OSMesa require the correct library path:
+```bash
+export LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+```
 
 ### Color Format Conversion
 - OSMesa renders to RGBA float (32-bit per channel)

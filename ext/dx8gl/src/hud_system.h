@@ -71,7 +71,6 @@ public:
 private:
     IDirect3DDevice8* m_device;
     IDirect3DTexture8* m_fontTexture;
-    IDirect3DVertexBuffer8* m_vertexBuffer;
     
     uint32_t m_flags;
     HUDColors m_colors;
@@ -93,14 +92,13 @@ private:
     void RenderText(const std::string& text, int x, int y, D3DCOLOR color);
     void RenderBox(int x, int y, int width, int height, D3DCOLOR color);
     void CreateFontTexture();
-    void CreateVertexBuffer();
     
     // Font metrics (assuming 8x8 bitmap font)
-    static const int CHAR_WIDTH = 8;
-    static const int CHAR_HEIGHT = 8;
-    static const int CHAR_SPACING = 1;
-    static const int LINE_HEIGHT = 10;
-    static const int PADDING = 10;
+    static const int HUD_CHAR_WIDTH = 8;
+    static const int HUD_CHAR_HEIGHT = 8;
+    static const int HUD_CHAR_SPACING = 1;
+    static const int HUD_LINE_HEIGHT = 10;
+    static const int HUD_PADDING = 10;
 };
 
 // Global HUD instance helper

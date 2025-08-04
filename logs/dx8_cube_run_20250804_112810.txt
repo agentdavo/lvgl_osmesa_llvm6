@@ -1,0 +1,292 @@
+Initializing Direct3D...
+init_d3d() called
+Calling dx8gl_init...
+[INFO ] dx8gl.cpp:94 in dx8gl_init(): dx8gl initialized
+dx8gl_init succeeded
+[INFO ] d3d8_interface.cpp:43 in initialize(): Initializing Direct3D8 interface
+[INFO ] d3d8_interface.cpp:45 in initialize(): Using OSMesa-only software rendering (no EGL complexity)
+[INFO ] d3d8_interface.cpp:516 in enumerate_adapters(): Enumerating adapters for OSMesa mode
+[INFO ] d3d8_interface.cpp:517 in enumerate_adapters():   - OSMesa provides software rendering via llvmpipe
+[INFO ] d3d8_interface.cpp:518 in enumerate_adapters():   - Simulating 1 adapter (no actual hardware enumeration)
+[INFO ] d3d8_interface.cpp:519 in enumerate_adapters():   - Adapter 0: OSMesa Software Renderer
+[INFO ] d3d8_interface.cpp:520 in enumerate_adapters():   - Vendor: Mesa/llvmpipe (fake ATI VendorId 0x1002)
+[INFO ] d3d8_interface.cpp:521 in enumerate_adapters():   - Device: Software Rasterizer (fake Radeon 7500 DeviceId 0x5159)
+[INFO ] d3d8_interface.cpp:527 in enumerate_adapters(): OSMesa adapter enumeration complete - 1 software adapter available
+[INFO ] dx8gl.cpp:59 in Direct3DCreate8_CPP(): Created IDirect3D8 interface at 0x5e5012bf9f90
+[INFO ] d3d8_interface.cpp:459 in CreateDevice(): CreateDevice() called with parameters:
+[INFO ] d3d8_interface.cpp:460 in CreateDevice():   Adapter: 0 (OSMesa software adapter)
+[INFO ] d3d8_interface.cpp:461 in CreateDevice():   DeviceType: HAL
+[INFO ] d3d8_interface.cpp:462 in CreateDevice():   Focus Window: (nil)
+[INFO ] d3d8_interface.cpp:463 in CreateDevice():   Behavior Flags: 0x00000020
+[INFO ] d3d8_interface.cpp:465 in CreateDevice():     - SOFTWARE_VERTEXPROCESSING
+[INFO ] d3d8_interface.cpp:479 in CreateDevice():   Present Parameters:
+[INFO ] d3d8_interface.cpp:480 in CreateDevice():     BackBuffer Size: 640x480
+[INFO ] d3d8_interface.cpp:483 in CreateDevice():     BackBuffer Format: 0x00000016
+[INFO ] d3d8_interface.cpp:484 in CreateDevice():     BackBuffer Count: 0
+[INFO ] d3d8_interface.cpp:485 in CreateDevice():     MultiSample Type: 0
+[INFO ] d3d8_interface.cpp:486 in CreateDevice():     SwapEffect: 1
+[INFO ] d3d8_interface.cpp:487 in CreateDevice():     Windowed: Yes
+[INFO ] d3d8_interface.cpp:488 in CreateDevice():     EnableAutoDepthStencil: Yes
+[INFO ] d3d8_interface.cpp:490 in CreateDevice():     AutoDepthStencilFormat: 0x0000004B
+[INFO ] d3d8_interface.cpp:492 in CreateDevice():     FullScreen_RefreshRateInHz: 0
+[INFO ] d3d8_interface.cpp:493 in CreateDevice():     FullScreen_PresentationInterval: 0x00000000
+[INFO ] d3d8_interface.cpp:496 in CreateDevice(): Creating Direct3DDevice8 instance...
+[INFO ] thread_pool.cpp:24 in ThreadPool(): Creating thread pool with 8 threads
+[INFO ] d3d8_device.cpp:73 in Direct3DDevice8(): Direct3DDevice8 created: adapter=0, type=1, flags=0x00000020
+[INFO ] d3d8_interface.cpp:499 in CreateDevice(): Direct3DDevice8 instance created at 0x5e501304bc70
+[INFO ] d3d8_interface.cpp:501 in CreateDevice(): Initializing Direct3DDevice8...
+[INFO ] d3d8_device.cpp:131 in initialize(): Initializing Direct3DDevice8
+[INFO ] d3d8_device.cpp:143 in initialize(): Using OSMesa for software rendering
+[INFO ] osmesa_context.cpp:31 in initialize(): Initializing OSMesa context 640x480
+[INFO ] osmesa_context.cpp:34 in initialize(): Attempting to create OpenGL 4.5 Core context with OSMesaCreateContextAttribs
+[INFO ] osmesa_context.cpp:112 in initialize(): OSMesa version: 11.2.0
+[INFO ] osmesa_context.cpp:113 in initialize(): OSMesa context: 640x480 (max: 16384x16384)
+[INFO ] osmesa_context.cpp:114 in initialize(): Actual OpenGL context: version 4.5, profile mask=0x1
+[INFO ] osmesa_context.cpp:122 in initialize(): === OSMesa OpenGL Capabilities ===
+[INFO ] osmesa_context.cpp:123 in initialize(): OpenGL vendor: Mesa
+[INFO ] osmesa_context.cpp:124 in initialize(): OpenGL renderer: llvmpipe (LLVM 20.1.8, 256 bits)
+[INFO ] osmesa_context.cpp:125 in initialize(): OpenGL version: 4.5 (Core Profile) Mesa 25.0.4 (git-d0f8720019)
+[INFO ] osmesa_context.cpp:126 in initialize(): GLSL version: 4.50
+[INFO ] osmesa_context.cpp:143 in initialize(): === OpenGL Limits ===
+[INFO ] osmesa_context.cpp:144 in initialize(): Max texture size: 16384
+[INFO ] osmesa_context.cpp:145 in initialize(): Max texture units: 32
+[INFO ] osmesa_context.cpp:146 in initialize(): Max combined texture units: 192
+[INFO ] osmesa_context.cpp:147 in initialize(): Max vertex attributes: 16
+[INFO ] osmesa_context.cpp:148 in initialize(): Max vertex uniforms: 4096
+[INFO ] osmesa_context.cpp:149 in initialize(): Max fragment uniforms: 4096
+[INFO ] osmesa_context.cpp:150 in initialize(): Max varying vectors: 32
+[INFO ] osmesa_context.cpp:151 in initialize(): Max renderbuffer size: 16384
+[INFO ] osmesa_context.cpp:152 in initialize(): Max viewport: 16384x16384
+[INFO ] osmesa_context.cpp:156 in initialize(): === Enabling OpenGL Debug Output ===
+[INFO ] osmesa_context.cpp:203 in initialize(): OpenGL debug output enabled with filtering
+[INFO ] osmesa_context.cpp:209 in initialize(): === OpenGL Extensions ===
+[INFO ] osmesa_context.cpp:214 in initialize(): Extension count: 227
+[INFO ] osmesa_context.cpp:234 in initialize(): === Key Extensions for DirectX 8 Compatibility ===
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_framebuffer_object
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_vertex_buffer_object
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_pixel_buffer_object
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_texture_non_power_of_two
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_vertex_shader
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_fragment_shader
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_ARB_get_program_binary
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_EXT_framebuffer_object
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_EXT_blend_equation_separate
+[INFO ] osmesa_context.cpp:244 in initialize(): ✗ GL_EXT_blend_func_separate
+[INFO ] osmesa_context.cpp:244 in initialize(): ✓ GL_EXT_texture_compression_s3tc
+[INFO ] osmesa_context.cpp:248 in initialize(): === Sample Extensions (first 20) ===
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_3DFX_texture_compression_FXT1
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_conservative_depth
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_draw_buffers_blend
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_gpu_shader_int64
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_multi_draw_indirect
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_pinned_memory
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_query_buffer_object
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_seamless_cubemap_per_texture
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_shader_stencil_export
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_shader_trinary_minmax
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_texture_texture4
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_vertex_shader_layer
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_AMD_vertex_shader_viewport_index
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ANGLE_texture_compression_dxt3
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ANGLE_texture_compression_dxt5
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ARB_ES2_compatibility
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ARB_ES3_1_compatibility
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ARB_ES3_2_compatibility
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ARB_ES3_compatibility
+[INFO ] osmesa_context.cpp:253 in initialize():   GL_ARB_arrays_of_arrays
+[INFO ] osmesa_context.cpp:257 in initialize():   ... and 207 more extensions
+[INFO ] osmesa_context.cpp:263 in initialize(): === OSMesa Context Analysis Complete ===
+[INFO ] osmesa_context.cpp:266 in initialize(): Initializing OpenGL function pointers via OSMesaGetProcAddress
+[INFO ] osmesa_gl_loader.cpp:58 in InitializeOSMesaGL(): Initializing OSMesa GL function pointers
+[INFO ] osmesa_gl_loader.cpp:119 in InitializeOSMesaGL(): Successfully loaded all OSMesa GL function pointers
+[INFO ] d3d8_device.cpp:158 in initialize(): OSMesa context initialized successfully
+[INFO ] d3d8_device.cpp:170 in initialize(): Actual OpenGL version: 4.5 (Core Profile) Mesa 25.0.4 (git-d0f8720019)
+[INFO ] d3d8_device.cpp:177 in initialize(): Using OpenGL 4.5 Core Profile - VAO required
+[INFO ] state_manager.cpp:23 in initialize(): Initializing state manager
+[INFO ] state_manager.cpp:420 in apply_render_states(): Applying render states, z_enable=1
+[INFO ] state_manager.cpp:430 in apply_render_states(): Enabled GL_DEPTH_TEST (was disabled)
+[INFO ] state_manager.cpp:484 in apply_render_states(): GL_CULL_FACE already in correct state: enabled
+[INFO ] vertex_shader_manager.cpp:26 in initialize(): Initializing vertex shader manager
+[INFO ] pixel_shader_manager.cpp:26 in initialize(): Initializing pixel shader manager
+[INFO ] shader_program_manager.cpp:32 in initialize(): ShaderProgramManager initialized
+[INFO ] d3d8_device.cpp:250 in initialize(): Direct3DDevice8 initialized successfully
+[INFO ] d3d8_interface.cpp:507 in CreateDevice(): Direct3DDevice8 initialization successful
+[INFO ] d3d8_interface.cpp:510 in CreateDevice(): CreateDevice() successful - returning IDirect3DDevice8 at 0x5e501304bc70
+[INFO ] state_manager.cpp:123 in set_render_state(): Setting D3DRS_ZENABLE to 1
+[INFO ] state_manager.cpp:145 in set_render_state(): Setting D3DRS_CULLMODE to 3
+[INFO ] d3d8_device.cpp:1077 in CreateVertexBuffer(): CreateVertexBuffer: length=672, usage=0x00000008, fvf=0x00000052, pool=1
+[INFO ] d3d8_device.cpp:1077 in CreateVertexBuffer(): CreateVertexBuffer: length=112, usage=0x00000008, fvf=0x00000052, pool=1
+[DX8GL] Direct3DCreate8 called with SDK version 0x00000078 (expected 0x00000078)
+[DX8GL] Direct3DCreate8_CPP returned C++ interface at 0x5e5012bf9f90
+[DX8GL] Returning C++ interface directly (compiled with DX8GL_USE_CPP_INTERFACES)
+init_d3d() completed successfully
+Direct3D initialized successfully
+Creating UI...
+Creating animation timer...
+Creating display timer...
+Initial render...
+=== render_cube called, frame 0 ===
+FPS: 1.6 | Frame time: 624.57ms | Rotation: 0 deg
+[INFO ] d3d8_device.cpp:464 in Clear(): Clear: count=0, flags=0x00000003, color=0xff404080, z=1.00, stencil=0
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: WORLD matrix: [0.40,0.00,0.00,0.00] [0.00,0.40,0.00,0.00] [0.00,0.00,0.40,0.00] [0.00,0.00,0.00,1.00]
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: VIEW matrix: [-0.71,-0.35,-0.62,0.00] [0.00,0.87,-0.49,0.00] [0.71,-0.35,-0.62,0.00] [-0.00,-0.00,2.44,1.00]
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: PROJECTION matrix: [2.41,0.00,0.00,0.00] [0.00,2.41,0.00,0.00] [0.00,0.00,1.05,1.00] [0.00,0.00,-0.53,0.00]
+
+=== Matrix Debug Frame 0 ===
+Rotation: 0.00 radians
+Camera at (1.5, 1.2, 1.5) looking at origin, cube scaled to 40%
+Perspective projection: 45 degree FOV, near=0.5, far=10.0
+Projection matrix:
+  [2.41, 0.00, 0.00, 0.00]
+  [0.00, 2.41, 0.00, 0.00]
+  [0.00, 0.00, 1.05, 1.00]
+  [0.00, 0.00, -0.53, 0.00]
+[INFO ] d3d8_device.cpp:785 in SetVertexShader(): SetVertexShader: handle=0x00000052
+[INFO ] vertex_shader_manager.cpp:216 in set_vertex_shader(): Disabled vertex shader
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: WORLD matrix: [1.00,0.00,0.00,0.00] [0.00,1.00,0.00,0.00] [0.00,0.00,1.00,0.00] [0.00,0.00,0.00,1.00]
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: WORLD matrix: [0.40,0.00,0.00,0.00] [0.00,0.40,0.00,0.00] [0.00,0.00,0.40,0.00] [0.00,0.00,0.00,1.00]
+Drawing cube: 24 vertices, 12 triangles
+[INFO ] d3d8_device.cpp:834 in flush_command_buffer(): Flushing command buffer: 30 commands, 1340 bytes
+Saved command buffer to dx8gl_commands_frame_0000.txt
+[INFO ] fixed_function_shader.cpp:40 in FixedFunctionShader(): Created fixed function shader generator
+[INFO ] state_manager.cpp:123 in set_render_state(): Setting D3DRS_ZENABLE to 1
+[INFO ] state_manager.cpp:145 in set_render_state(): Setting D3DRS_CULLMODE to 3
+[INFO ] state_manager.cpp:420 in apply_render_states(): Applying render states, z_enable=1
+[INFO ] state_manager.cpp:437 in apply_render_states(): GL_DEPTH_TEST already in correct state: enabled
+[INFO ] state_manager.cpp:484 in apply_render_states(): GL_CULL_FACE already in correct state: enabled
+[INFO ] command_buffer.cpp:740 in execute(): DrawIndexedPrimitive Shader check: vertex_shader_mgr=0x5e50153cb990, using_vertex_shader=0, shader_program_mgr=0x5e5012ad2540
+[INFO ] command_buffer.cpp:755 in execute(): Using fixed function pipeline for DrawIndexedPrimitive
+[INFO ] command_buffer.cpp:759 in execute(): EXECUTE: DrawIndexedPrimitive texture_enabled[0]=true
+[INFO ] fixed_function_shader.cpp:65 in get_program(): Generated vertex shader for FVF 0x52:
+#version 330 core
+
+in vec3 a_position;  // XYZ - world coordinates
+in vec3 a_normal;
+in vec4 a_color;
+
+uniform mat4 u_world;
+uniform mat4 u_view;
+uniform mat4 u_projection;
+uniform mat4 u_worldViewProj;
+uniform mat3 u_normalMatrix;
+
+out vec4 v_color;
+out vec3 v_normal;
+out vec3 v_worldPos;
+
+void main() {
+    vec4 worldPos = u_world * vec4(a_position, 1.0);
+    gl_Position = u_worldViewProj * vec4(a_position, 1.0);
+    v_color = a_color;
+    v_normal = normalize(u_normalMatrix * a_normal);
+    v_worldPos = worldPos.xyz;
+}
+
+[INFO ] fixed_function_shader.cpp:66 in get_program(): Generated fragment shader:
+#version 330 core
+
+in vec4 v_color;
+in vec3 v_normal;
+in vec3 v_worldPos;
+
+uniform vec4 u_materialAmbient;
+uniform vec4 u_materialDiffuse;
+uniform vec4 u_materialSpecular;
+uniform vec4 u_materialEmissive;
+uniform float u_materialPower;
+uniform vec4 u_ambientLight;
+uniform vec3 u_lightPos0;
+uniform vec4 u_lightDiffuse0;
+uniform vec3 u_lightPos1;
+uniform vec4 u_lightDiffuse1;
+
+out vec4 fragColor;
+
+void main() {
+    vec4 color = vec4(1.0, 1.0, 1.0, 1.0);
+    color = v_color.bgra;
+    vec3 normal = normalize(v_normal);
+    vec3 lightColor = u_ambientLight.rgb * u_materialAmbient.rgb;
+    {
+        vec3 lightDir = normalize(u_lightPos0 - v_worldPos);
+        float diff = max(dot(normal, lightDir), 0.0);
+        lightColor += diff * u_lightDiffuse0.rgb * u_materialDiffuse.rgb;
+    }
+    {
+        vec3 lightDir = normalize(u_lightPos1 - v_worldPos);
+        float diff = max(dot(normal, lightDir), 0.0);
+        lightColor += diff * u_lightDiffuse1.rgb * u_materialDiffuse.rgb;
+    }
+    color.rgb *= lightColor;
+    fragColor = color;
+}
+
+[INFO ] fixed_function_shader.cpp:77 in get_program(): Saved vertex shader to dx8gl_shader_00.vert
+[INFO ] fixed_function_shader.cpp:85 in get_program(): Saved fragment shader to dx8gl_shader_00.frag
+[INFO ] fixed_function_shader.cpp:339 in compile_shader(): compile_shader called with type=0x8b31
+[INFO ] fixed_function_shader.cpp:339 in compile_shader(): compile_shader called with type=0x8b30
+[INFO ] fixed_function_shader.cpp:419 in link_program(): Binding attributes: position=0, normal=1, color=2, texcoord0=3, texcoord1=4
+[INFO ] fixed_function_shader.cpp:116 in get_program(): Created fixed function shader program 3 for state hash 0x000000000a402401
+[INFO ] command_buffer.cpp:792 in execute(): Got uniform locations for program 3
+[INFO ] command_buffer.cpp:811 in execute(): worldViewProj uniform location: 1
+[INFO ] command_buffer.cpp:816 in execute(): Setting worldViewProj matrix: [-1.71,-0.84,-0.65,-0.62] [0.00,2.10,-0.52,-0.49] [1.71,-0.84,-0.65,-0.62] [0.00,0.00,2.04,2.44]
+[INFO ] command_buffer.cpp:930 in execute(): Enabled position attribute at location 0, stride 28
+[INFO ] command_buffer.cpp:943 in execute(): Enabled color attribute at location 2, offset 24, stride 28
+[INFO ] command_buffer.cpp:983 in execute(): DrawElements: mode=GL_TRIANGLES, count=6, type=GL_UNSIGNED_SHORT, offset=0
+[INFO ] command_buffer.cpp:992 in execute():   Vertex buffer bound: 2
+[INFO ] command_buffer.cpp:997 in execute():   Index buffer bound: 3
+[INFO ] command_buffer.cpp:1003 in execute(): Calling glDrawElements: mode=GL_TRIANGLES, count=6, type=GL_UNSIGNED_SHORT, offset=0
+[INFO ] command_buffer.cpp:1022 in execute(): Draw successful - viewport: 0,0 640x480
+[INFO ] command_buffer.cpp:1028 in execute(): Current shader program: 3
+[INFO ] command_buffer.cpp:1033 in execute(): Framebuffer binding: 0
+[INFO ] command_buffer.cpp:1038 in execute(): Depth test enabled: yes
+[INFO ] command_buffer.cpp:1043 in execute(): Depth write mask: yes
+[INFO ] state_manager.cpp:416 in apply_render_states(): Render states not dirty, skipping apply
+[INFO ] command_buffer.cpp:740 in execute(): DrawIndexedPrimitive Shader check: vertex_shader_mgr=0x5e50153cb990, using_vertex_shader=0, shader_program_mgr=0x5e5012ad2540
+[INFO ] command_buffer.cpp:755 in execute(): Using fixed function pipeline for DrawIndexedPrimitive
+[INFO ] command_buffer.cpp:759 in execute(): EXECUTE: DrawIndexedPrimitive texture_enabled[0]=true
+[INFO ] command_buffer.cpp:792 in execute(): Got uniform locations for program 3
+[INFO ] command_buffer.cpp:811 in execute(): worldViewProj uniform location: 1
+[INFO ] command_buffer.cpp:816 in execute(): Setting worldViewProj matrix: [-0.68,-0.34,-0.26,-0.25] [0.00,0.84,-0.21,-0.20] [0.68,-0.34,-0.26,-0.25] [0.00,0.00,2.04,2.44]
+[INFO ] command_buffer.cpp:930 in execute(): Enabled position attribute at location 0, stride 28
+[INFO ] command_buffer.cpp:943 in execute(): Enabled color attribute at location 2, offset 24, stride 28
+[INFO ] command_buffer.cpp:983 in execute(): DrawElements: mode=GL_TRIANGLES, count=36, type=GL_UNSIGNED_SHORT, offset=0
+[INFO ] command_buffer.cpp:992 in execute():   Vertex buffer bound: 1
+[INFO ] command_buffer.cpp:997 in execute():   Index buffer bound: 4
+[INFO ] command_buffer.cpp:1003 in execute(): Calling glDrawElements: mode=GL_TRIANGLES, count=36, type=GL_UNSIGNED_SHORT, offset=0
+[INFO ] command_buffer.cpp:1022 in execute(): Draw successful - viewport: 0,0 640x480
+[INFO ] command_buffer.cpp:1028 in execute(): Current shader program: 3
+[INFO ] command_buffer.cpp:1033 in execute(): Framebuffer binding: 0
+[INFO ] command_buffer.cpp:1038 in execute(): Depth test enabled: yes
+[INFO ] command_buffer.cpp:1043 in execute(): Depth write mask: yes
+Entering main loop...
+Main loop iteration 0
+display_timer_cb called 0
+Update canvas - Frame 0: size=640x480
+  First pixel RGBA: 64,64,128,255
+  Center pixel RGBA: 64,64,128,255
+Saved dx8_cube_frame_00.ppm
+animation_timer_cb called 0
+=== render_cube called, frame 1 ===
+[INFO ] d3d8_device.cpp:464 in Clear(): Clear: count=0, flags=0x00000003, color=0xff404080, z=1.00, stencil=0
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: WORLD matrix: [0.40,0.00,-0.02,0.00] [0.00,0.40,0.00,0.00] [0.02,0.00,0.40,0.00] [0.00,0.00,0.00,1.00]
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: VIEW matrix: [-0.71,-0.35,-0.62,0.00] [0.00,0.87,-0.49,0.00] [0.71,-0.35,-0.62,0.00] [-0.00,-0.00,2.44,1.00]
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: PROJECTION matrix: [2.41,0.00,0.00,0.00] [0.00,2.41,0.00,0.00] [0.00,0.00,1.05,1.00] [0.00,0.00,-0.53,0.00]
+
+=== Matrix Debug Frame 1 ===
+Rotation: 0.05 radians
+Camera at (1.5, 1.2, 1.5) looking at origin, cube scaled to 40%
+Perspective projection: 45 degree FOV, near=0.5, far=10.0
+Projection matrix:
+  [2.41, 0.00, 0.00, 0.00]
+  [0.00, 2.41, 0.00, 0.00]
+  [0.00, 0.00, 1.05, 1.00]
+  [0.00, 0.00, -0.53, 0.00]
+[INFO ] d3d8_device.cpp:785 in SetVertexShader(): SetVertexShader: handle=0x00000052
+[INFO ] vertex_shader_manager.cpp:216 in set_vertex_shader(): Disabled vertex shader
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: WORLD matrix: [1.00,0.00,0.00,0.00] [0.00,1.00,0.00,0.00] [0.00,0.00,1.00,0.00] [0.00,0.00,0.00,1.00]
+[INFO ] d3d8_device.cpp:623 in SetTransform(): SetTransform: WORLD matrix: [0.40,0.00,-0.02,0.00] [0.00,0.40,0.00,0.00] [0.02,0.00,0.40,0.00] [0.00,0.00,0.00,1.00]
+Drawing cube: 24 vertices, 12 triangles
+[INFO ] d3d8_device.cpp:834 in flush_command_buffer(): Flushing command buffer: 12 commands, 576 bytes
+Saved command buffer to dx8gl_commands_frame_0001.txt
+timeout: the monitored command dumped core

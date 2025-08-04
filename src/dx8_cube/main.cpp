@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <cstring>
-#include <chrono>
+// #include <chrono>  // Not needed anymore, using frame count instead of timeout
 #include <iomanip>
 
 // LVGL headers
@@ -29,6 +29,17 @@ struct CUSTOMVERTEX {
 // Define the FVF for our vertex structure
 #define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE)
 
+// Floor vertex structure with texture coordinates and normals
+struct CUSTOMVERTEX_TEX {
+    float x, y, z;     // Position
+    float nx, ny, nz;  // Normal
+    DWORD color;       // Color
+    float tu, tv;      // Texture coordinates
+};
+
+// Define the FVF for textured vertex structure
+#define D3DFVF_CUSTOMVERTEX_TEX (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_DIFFUSE | D3DFVF_TEX1)
+
 // Global variables
 static IDirect3D8* g_pD3D = nullptr;
 static IDirect3DDevice8* g_pDevice = nullptr;
@@ -36,6 +47,7 @@ static IDirect3DVertexBuffer8* g_pVB = nullptr;
 static IDirect3DVertexBuffer8* g_pFloorVB = nullptr;
 static IDirect3DIndexBuffer8* g_pIB = nullptr;
 static IDirect3DIndexBuffer8* g_pFloorIB = nullptr;
+static IDirect3DTexture8* g_pFloorTexture = nullptr;
 static lv_obj_t* g_canvas = nullptr;
 static lv_color_t* g_canvas_buf = nullptr;
 static float g_rotation = 0.0f;
@@ -79,13 +91,13 @@ static const CUSTOMVERTEX g_cube_vertices[] = {
     {-0.5f,  0.5f, -0.5f,  -1.0f, 0.0f, 0.0f, 0xFF00FFFF},
 };
 
-// Floor vertices - a large plane below the cube
-static const CUSTOMVERTEX g_floor_vertices[] = {
-    // Floor at Y = -1.0, gray color, normal pointing up
-    {-3.0f, -1.0f, -3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
-    { 3.0f, -1.0f, -3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
-    { 3.0f, -1.0f,  3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
-    {-3.0f, -1.0f,  3.0f,  0.0f, 1.0f, 0.0f, 0xFF808080},
+// Floor vertices - a large plane below the cube with texture coordinates
+static const CUSTOMVERTEX_TEX g_floor_vertices[] = {
+    // Floor at Y = -1.5 (below the cube)
+    {-5.0f, -1.5f, -5.0f,  0.0f, 1.0f, 0.0f, 0xFFFFFFFF, 0.0f, 0.0f},  // Top-left
+    { 5.0f, -1.5f, -5.0f,  0.0f, 1.0f, 0.0f, 0xFFFFFFFF, 5.0f, 0.0f},  // Top-right
+    { 5.0f, -1.5f,  5.0f,  0.0f, 1.0f, 0.0f, 0xFFFFFFFF, 5.0f, 5.0f},  // Bottom-right
+    {-5.0f, -1.5f,  5.0f,  0.0f, 1.0f, 0.0f, 0xFFFFFFFF, 0.0f, 5.0f},  // Bottom-left
 };
 
 // Cube indices (two triangles per face)
@@ -110,13 +122,7 @@ static const WORD g_floor_indices[] = {
 };
 
 static bool init_d3d() {
-    // Initialize dx8gl
-    if (dx8gl_init(nullptr) != 0) {
-        std::cerr << "Failed to initialize dx8gl" << std::endl;
-        return false;
-    }
-    
-    // Create Direct3D8 object
+    // Create Direct3D8 object - this will initialize dx8gl automatically
     g_pD3D = Direct3DCreate8(D3D_SDK_VERSION);
     if (!g_pD3D) {
         std::cerr << "Failed to create Direct3D8 object" << std::endl;
@@ -252,7 +258,7 @@ static bool init_d3d() {
     hr = g_pDevice->CreateVertexBuffer(
         sizeof(g_floor_vertices),
         D3DUSAGE_WRITEONLY,
-        D3DFVF_CUSTOMVERTEX,
+        D3DFVF_CUSTOMVERTEX_TEX,
         D3DPOOL_MANAGED,
         &g_pFloorVB
     );
@@ -268,39 +274,65 @@ static bool init_d3d() {
         g_pFloorVB->Unlock();
     }
     
+    // Load floor texture
+    const char* texturePath = "wall01.tga";
+    hr = D3DXCreateTextureFromFile(g_pDevice, texturePath, &g_pFloorTexture);
+    if (FAILED(hr)) {
+        std::cerr << "Failed to load floor texture from " << texturePath << ": " << hr << std::endl;
+        // Continue without texture - not fatal
+    } else {
+        std::cout << "Successfully loaded floor texture" << std::endl;
+    }
+    
     return true;
 }
 
 static void cleanup_d3d() {
+    std::cout << "cleanup_d3d: Starting cleanup..." << std::endl;
+    
+    if (g_pFloorTexture) {
+        std::cout << "cleanup_d3d: Releasing floor texture..." << std::endl;
+        g_pFloorTexture->Release();
+        g_pFloorTexture = nullptr;
+    }
     if (g_pFloorIB) {
+        std::cout << "cleanup_d3d: Releasing floor index buffer..." << std::endl;
         g_pFloorIB->Release();
         g_pFloorIB = nullptr;
     }
     if (g_pIB) {
+        std::cout << "cleanup_d3d: Releasing cube index buffer..." << std::endl;
         g_pIB->Release();
         g_pIB = nullptr;
     }
     if (g_pFloorVB) {
+        std::cout << "cleanup_d3d: Releasing floor vertex buffer..." << std::endl;
         g_pFloorVB->Release();
         g_pFloorVB = nullptr;
     }
     if (g_pVB) {
+        std::cout << "cleanup_d3d: Releasing cube vertex buffer..." << std::endl;
         g_pVB->Release();
         g_pVB = nullptr;
     }
     if (g_pDevice) {
+        std::cout << "cleanup_d3d: Releasing device..." << std::endl;
         g_pDevice->Release();
         g_pDevice = nullptr;
     }
     if (g_pD3D) {
+        std::cout << "cleanup_d3d: Releasing Direct3D..." << std::endl;
         g_pD3D->Release();
         g_pD3D = nullptr;
     }
+    
+    std::cout << "cleanup_d3d: Calling dx8gl_shutdown..." << std::endl;
     dx8gl_shutdown();  // Clean up dx8gl resources
+    std::cout << "cleanup_d3d: Cleanup complete." << std::endl;
 }
 
 
-static void set_matrices() {
+static void set_matrices_for_cube() {
     static int matrix_debug = 0;
     bool debug_this_frame = (matrix_debug < 3);
     
@@ -319,8 +351,8 @@ static void set_matrices() {
     D3DXMatrixMultiply(&matWorld, &matScale, &matRotY);
     
     // Build view matrix using D3DXMatrixLookAtLH
-    D3DXVECTOR3 vEye(1.5f, 1.2f, 1.5f);    // Camera position - closer diagonal view
-    D3DXVECTOR3 vAt(0.0f, 0.0f, 0.0f);     // Look at origin
+    D3DXVECTOR3 vEye(3.0f, 3.0f, 3.0f);    // Camera position - higher and further
+    D3DXVECTOR3 vAt(0.0f, -0.5f, 0.0f);   // Look slightly below origin
     D3DXVECTOR3 vUp(0.0f, 1.0f, 0.0f);     // Up vector
     
     D3DMATRIX matView;
@@ -356,21 +388,45 @@ static void set_matrices() {
     }
 }
 
+static void set_matrices_for_floor() {
+    // Build world matrix for floor - NO rotation, just identity
+    D3DMATRIX matWorld;
+    D3DXMatrixIdentity(&matWorld);
+    
+    // Build view matrix using D3DXMatrixLookAtLH - same camera as cube
+    D3DXVECTOR3 vEye(3.0f, 3.0f, 3.0f);    // Camera position - higher and further (matching cube)
+    D3DXVECTOR3 vAt(0.0f, -0.5f, 0.0f);   // Look slightly below origin (matching cube)
+    D3DXVECTOR3 vUp(0.0f, 1.0f, 0.0f);     // Up vector
+    
+    D3DMATRIX matView;
+    D3DXMatrixLookAtLH(&matView, &vEye, &vAt, &vUp);
+    
+    // Build projection matrix - same as cube
+    D3DMATRIX matProj;
+    float fov = 45.0f * 3.14159f / 180.0f;    // Convert degrees to radians
+    D3DXMatrixPerspectiveFovLH(&matProj, fov, 1.0f, 0.5f, 10.0f);
+    
+    // Set the matrices
+    g_pDevice->SetTransform(D3DTS_WORLD, &matWorld);
+    g_pDevice->SetTransform(D3DTS_VIEW, &matView);
+    g_pDevice->SetTransform(D3DTS_PROJECTION, &matProj);
+}
+
 static bool g_frame_ready = false;
 static void* g_last_framebuffer = nullptr;
 static int g_last_fb_width = 0;
 static int g_last_fb_height = 0;
 
+static int g_render_count = 0;  // Global frame counter
+
 static void render_cube() {
     if (!g_pDevice) return;
     
-    static int render_count = 0;
-    
-    if (render_count < 3) {
-        std::cout << "=== render_cube called, frame " << render_count << " ===" << std::endl;
+    if (g_render_count < 3) {
+        std::cout << "=== render_cube called, frame " << g_render_count << " ===" << std::endl;
     }
     
-    render_count++;
+    g_render_count++;
     
     // Clear the render target and depth buffer
     g_pDevice->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 
@@ -378,12 +434,19 @@ static void render_cube() {
     
     // Begin the scene
     if (SUCCEEDED(g_pDevice->BeginScene())) {
-        // Set up transformations
-        set_matrices();
+        // First, render the floor with static matrices
+        set_matrices_for_floor();
+        g_pDevice->SetStreamSource(0, g_pFloorVB, sizeof(CUSTOMVERTEX_TEX));
+        g_pDevice->SetVertexShader(D3DFVF_CUSTOMVERTEX_TEX);
         
-        // First, render the floor
-        g_pDevice->SetStreamSource(0, g_pFloorVB, sizeof(CUSTOMVERTEX));
-        g_pDevice->SetVertexShader(D3DFVF_CUSTOMVERTEX);
+        // Set floor texture
+        if (g_pFloorTexture) {
+            g_pDevice->SetTexture(0, g_pFloorTexture);
+            g_pDevice->SetTextureStageState(0, D3DTSS_COLOROP, D3DTOP_MODULATE);
+            g_pDevice->SetTextureStageState(0, D3DTSS_COLORARG1, D3DTA_TEXTURE);
+            g_pDevice->SetTextureStageState(0, D3DTSS_COLORARG2, D3DTA_DIFFUSE);
+            g_pDevice->SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
+        }
         
         // Create and set index buffer for floor rendering
         if (!g_pFloorIB) {
@@ -409,8 +472,13 @@ static void render_cube() {
             g_pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLELIST, 0, 4, 0, 2);
         }
         
-        // Now render the cube
+        // Now render the cube with rotating matrices
+        set_matrices_for_cube();
         g_pDevice->SetStreamSource(0, g_pVB, sizeof(CUSTOMVERTEX));
+        g_pDevice->SetVertexShader(D3DFVF_CUSTOMVERTEX);
+        
+        // Disable texture for cube
+        g_pDevice->SetTexture(0, nullptr);
         
         // Create and set index buffer for cube rendering
         if (!g_pIB) {
@@ -491,9 +559,12 @@ static void update_canvas() {
         if (fp) {
             fprintf(fp, "P6\n%d %d\n255\n", fb_width, fb_height);
             uint8_t* src = (uint8_t*)framebuffer;
+            // Flip vertically when saving PPM since OpenGL has Y=0 at bottom
             for (int y = 0; y < fb_height; y++) {
                 for (int x = 0; x < fb_width; x++) {
-                    int idx = (y * fb_width + x) * 4;
+                    // Read from bottom row going up
+                    int src_y = fb_height - 1 - y;
+                    int idx = (src_y * fb_width + x) * 4;
                     uint8_t r = src[idx + 0];
                     uint8_t g = src[idx + 1];
                     uint8_t b = src[idx + 2];
@@ -629,20 +700,16 @@ int main(int argc, char* argv[]) {
     // Initial render
     render_cube();
     
-    // Run the main loop with 5 second timeout
-    auto start_time = std::chrono::steady_clock::now();
-    while (true) {
-        // Check for 5 second timeout
-        auto current_time = std::chrono::steady_clock::now();
-        auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count();
-        if (elapsed >= 20) {
-            std::cout << "20 second timeout reached, exiting..." << std::endl;
-            break;
-        }
-        
+    // Run the main loop for 100 frames
+    const int MAX_FRAMES = 100;
+    std::cout << "Running for " << MAX_FRAMES << " frames..." << std::endl;
+    
+    while (g_render_count < MAX_FRAMES) {
         LvglPlatform::poll_events();
         lv_timer_handler();  // Process LVGL timers and redraw
     }
+    
+    std::cout << "Rendered " << g_render_count << " frames, exiting gracefully." << std::endl;
     
     // Cleanup
     cleanup_d3d();

@@ -286,5 +286,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/state_manager.cpp.o: \
  /usr/include/c++/13/bits/quoted_string.h /usr/include/c++/13/format \
  /usr/include/c++/13/charconv /usr/include/c++/13/optional \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h \
+ /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h

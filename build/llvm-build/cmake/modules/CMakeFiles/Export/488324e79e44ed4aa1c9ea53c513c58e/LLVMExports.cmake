@@ -19,7 +19,7 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 set(_cmake_targets_defined "")
 set(_cmake_targets_not_defined "")
 set(_cmake_expected_targets "")
-foreach(_cmake_expected_target IN ITEMS LLVMDemangle LLVMSupport LLVMTableGen LLVMTableGenBasic LLVMTableGenCommon llvm-tblgen LLVMCore LLVMFuzzerCLI LLVMFuzzMutate LLVMFileCheck LLVMInterfaceStub LLVMIRPrinter LLVMIRReader LLVMCGData LLVMCodeGen LLVMSelectionDAG LLVMAsmPrinter LLVMMIRParser LLVMGlobalISel LLVMCodeGenTypes LLVMBinaryFormat LLVMBitReader LLVMBitWriter LLVMBitstreamReader LLVMDWARFLinker LLVMDWARFLinkerClassic LLVMDWARFLinkerParallel LLVMExtensions LLVMFrontendAtomic LLVMFrontendDriver LLVMFrontendHLSL LLVMFrontendOpenACC LLVMFrontendOpenMP LLVMFrontendOffloading LLVMTransformUtils LLVMInstrumentation LLVMAggressiveInstCombine LLVMInstCombine LLVMScalarOpts LLVMipo LLVMVectorize LLVMObjCARCOpts LLVMCoroutines LLVMCFGuard LLVMHipStdPar LLVMLinker LLVMAnalysis LLVMLTO LLVMMC LLVMMCParser LLVMMCDisassembler LLVMMCA LLVMObjCopy LLVMObject LLVMObjectYAML LLVMOption LLVMRemarks LLVMDebuginfod LLVMDebugInfoDWARF LLVMDebugInfoGSYM LLVMDebugInfoLogicalView LLVMDebugInfoMSF LLVMDebugInfoCodeView LLVMDebugInfoPDB LLVMSymbolize LLVMDebugInfoBTF LLVMDWP LLVMExecutionEngine LLVMInterpreter LLVMJITLink LLVMMCJIT LLVMOrcJIT LLVMOrcDebugging LLVMOrcShared LLVMOrcTargetProcess LLVMRuntimeDyld LLVMTarget LLVMX86CodeGen LLVMX86AsmParser LLVMX86Disassembler LLVMX86TargetMCA LLVMX86Desc LLVMX86Info LLVMSandboxIR LLVMAsmParser LLVMLineEditor LLVMProfileData LLVMCoverage LLVMPasses LLVMTargetParser LLVMTextAPI LLVMTextAPIBinaryReader LLVMTelemetry LLVMDlltoolDriver LLVMLibDriver LLVMXRay LLVMWindowsDriver LLVMWindowsManifest LTO llvm-ar llvm-config llvm-ctxprof-util llvm-lto llvm-profdata bugpoint dsymutil llc lli llvm-as llvm-bcanalyzer llvm-c-test llvm-cat llvm-cfi-verify LLVMCFIVerify llvm-cgdata llvm-cov llvm-cvtres llvm-cxxdump llvm-cxxfilt llvm-cxxmap llvm-debuginfo-analyzer llvm-debuginfod llvm-debuginfod-find llvm-diff LLVMDiff llvm-dis llvm-dwarfdump llvm-dwarfutil llvm-dwp LLVMExegesisX86 LLVMExegesis llvm-exegesis llvm-extract llvm-gsymutil llvm-ifs llvm-jitlink llvm-libtool-darwin llvm-link llvm-lipo llvm-lto2 llvm-mc llvm-mca llvm-ml llvm-modextract llvm-mt llvm-nm llvm-objcopy llvm-objdump llvm-opt-report llvm-pdbutil llvm-profgen llvm-rc llvm-readobj llvm-readtapi llvm-reduce llvm-remarkutil llvm-rtdyld LLVM llvm-sim llvm-size llvm-split llvm-stress llvm-strings llvm-symbolizer llvm-tli-checker llvm-undname llvm-xray LLVMOptDriver opt reduce-chunk-list Remarks sancov sanstats verify-uselistorder)
+foreach(_cmake_expected_target IN ITEMS LLVMDemangle LLVMSupport LLVMTableGen LLVMTableGenBasic LLVMTableGenCommon llvm-tblgen LLVMCore LLVMFuzzerCLI LLVMFuzzMutate LLVMFileCheck LLVMInterfaceStub LLVMIRPrinter LLVMIRReader LLVMCGData LLVMCodeGen LLVMSelectionDAG LLVMAsmPrinter LLVMMIRParser LLVMGlobalISel LLVMCodeGenTypes LLVMBinaryFormat LLVMBitReader LLVMBitWriter LLVMBitstreamReader LLVMDWARFLinker LLVMDWARFLinkerClassic LLVMDWARFLinkerParallel LLVMExtensions LLVMFrontendAtomic LLVMFrontendDriver LLVMFrontendHLSL LLVMFrontendOpenACC LLVMFrontendOpenMP LLVMFrontendOffloading LLVMTransformUtils LLVMInstrumentation LLVMAggressiveInstCombine LLVMInstCombine LLVMScalarOpts LLVMipo LLVMVectorize LLVMObjCARCOpts LLVMCoroutines LLVMCFGuard LLVMHipStdPar LLVMLinker LLVMAnalysis LLVMLTO LLVMMC LLVMMCParser LLVMMCDisassembler LLVMMCA LLVMObjCopy LLVMObject LLVMObjectYAML LLVMOption LLVMRemarks LLVMDebuginfod LLVMDebugInfoDWARF LLVMDebugInfoGSYM LLVMDebugInfoLogicalView LLVMDebugInfoMSF LLVMDebugInfoCodeView LLVMDebugInfoPDB LLVMSymbolize LLVMDebugInfoBTF LLVMDWP LLVMExecutionEngine LLVMInterpreter LLVMJITLink LLVMMCJIT LLVMOrcJIT LLVMOrcDebugging LLVMOrcShared LLVMOrcTargetProcess LLVMRuntimeDyld LLVMPerfJITEvents LLVMTarget LLVMX86CodeGen LLVMX86AsmParser LLVMX86Disassembler LLVMX86TargetMCA LLVMX86Desc LLVMX86Info LLVMSandboxIR LLVMAsmParser LLVMLineEditor LLVMProfileData LLVMCoverage LLVMPasses LLVMTargetParser LLVMTextAPI LLVMTextAPIBinaryReader LLVMTelemetry LLVMDlltoolDriver LLVMLibDriver LLVMXRay LLVMWindowsDriver LLVMWindowsManifest FileCheck llvm-PerfectShuffle count not UnicodeNameMappingGenerator yaml-bench split-file LTO llvm-ar llvm-config llvm-ctxprof-util llvm-lto llvm-profdata bugpoint dsymutil llc lli-child-target lli llvm-as llvm-bcanalyzer llvm-c-test llvm-cat llvm-cfi-verify LLVMCFIVerify llvm-cgdata llvm-cov llvm-cvtres llvm-cxxdump llvm-cxxfilt llvm-cxxmap llvm-debuginfo-analyzer llvm-debuginfod llvm-debuginfod-find llvm-diff LLVMDiff llvm-dis llvm-dwarfdump llvm-dwarfutil llvm-dwp LLVMExegesisX86 LLVMExegesis llvm-exegesis llvm-extract llvm-gsymutil llvm-ifs llvm-jitlink-executor llvm-jitlink llvm-libtool-darwin llvm-link llvm-lipo llvm-lto2 llvm-mc llvm-mca llvm-ml llvm-modextract llvm-mt llvm-nm llvm-objcopy llvm-objdump llvm-opt-report llvm-pdbutil llvm-profgen llvm-rc llvm-readobj llvm-readtapi llvm-reduce llvm-remarkutil llvm-rtdyld LLVM llvm-sim llvm-size llvm-split llvm-stress llvm-strings llvm-symbolizer llvm-tli-checker llvm-undname llvm-xray obj2yaml LLVMOptDriver opt reduce-chunk-list Remarks sancov sanstats verify-uselistorder yaml2obj)
   list(APPEND _cmake_expected_targets "${_cmake_expected_target}")
   if(TARGET "${_cmake_expected_target}")
     list(APPEND _cmake_targets_defined "${_cmake_expected_target}")
@@ -62,7 +62,7 @@ add_library(LLVMDemangle STATIC IMPORTED)
 add_library(LLVMSupport STATIC IMPORTED)
 
 set_target_properties(LLVMSupport PROPERTIES
-  INTERFACE_LINK_LIBRARIES "rt;dl;m;zstd::libzstd_shared;LLVMDemangle"
+  INTERFACE_LINK_LIBRARIES "rt;dl;m;ZLIB::ZLIB;zstd::libzstd_shared;LLVMDemangle"
 )
 
 # Create imported target LLVMTableGen
@@ -527,7 +527,7 @@ set_target_properties(LLVMExecutionEngine PROPERTIES
 add_library(LLVMInterpreter STATIC IMPORTED)
 
 set_target_properties(LLVMInterpreter PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMCodeGen;LLVMCore;LLVMExecutionEngine;LLVMSupport"
+  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:FFI::ffi>;LLVMCodeGen;LLVMCore;LLVMExecutionEngine;LLVMSupport"
 )
 
 # Create imported target LLVMJITLink
@@ -577,6 +577,13 @@ add_library(LLVMRuntimeDyld STATIC IMPORTED)
 
 set_target_properties(LLVMRuntimeDyld PROPERTIES
   INTERFACE_LINK_LIBRARIES "LLVMCore;LLVMMC;LLVMObject;LLVMSupport;LLVMTargetParser"
+)
+
+# Create imported target LLVMPerfJITEvents
+add_library(LLVMPerfJITEvents STATIC IMPORTED)
+
+set_target_properties(LLVMPerfJITEvents PROPERTIES
+  INTERFACE_LINK_LIBRARIES "LLVMCodeGen;LLVMCore;LLVMDebugInfoDWARF;LLVMExecutionEngine;LLVMObject;LLVMSupport"
 )
 
 # Create imported target LLVMTarget
@@ -730,8 +737,29 @@ set_target_properties(LLVMWindowsDriver PROPERTIES
 add_library(LLVMWindowsManifest STATIC IMPORTED)
 
 set_target_properties(LLVMWindowsManifest PROPERTIES
-  INTERFACE_LINK_LIBRARIES "LLVMSupport"
+  INTERFACE_LINK_LIBRARIES "LibXml2::LibXml2;LLVMSupport"
 )
+
+# Create imported target FileCheck
+add_executable(FileCheck IMPORTED)
+
+# Create imported target llvm-PerfectShuffle
+add_executable(llvm-PerfectShuffle IMPORTED)
+
+# Create imported target count
+add_executable(count IMPORTED)
+
+# Create imported target not
+add_executable(not IMPORTED)
+
+# Create imported target UnicodeNameMappingGenerator
+add_executable(UnicodeNameMappingGenerator IMPORTED)
+
+# Create imported target yaml-bench
+add_executable(yaml-bench IMPORTED)
+
+# Create imported target split-file
+add_executable(split-file IMPORTED)
 
 # Create imported target LTO
 add_library(LTO SHARED IMPORTED)
@@ -761,6 +789,10 @@ add_executable(dsymutil IMPORTED)
 # Create imported target llc
 add_executable(llc IMPORTED)
 set_property(TARGET llc PROPERTY ENABLE_EXPORTS 1)
+
+# Create imported target lli-child-target
+add_executable(lli-child-target IMPORTED)
+set_property(TARGET lli-child-target PROPERTY ENABLE_EXPORTS 1)
 
 # Create imported target lli
 add_executable(lli IMPORTED)
@@ -863,6 +895,10 @@ add_executable(llvm-gsymutil IMPORTED)
 # Create imported target llvm-ifs
 add_executable(llvm-ifs IMPORTED)
 
+# Create imported target llvm-jitlink-executor
+add_executable(llvm-jitlink-executor IMPORTED)
+set_property(TARGET llvm-jitlink-executor PROPERTY ENABLE_EXPORTS 1)
+
 # Create imported target llvm-jitlink
 add_executable(llvm-jitlink IMPORTED)
 set_property(TARGET llvm-jitlink PROPERTY ENABLE_EXPORTS 1)
@@ -961,6 +997,9 @@ add_executable(llvm-undname IMPORTED)
 # Create imported target llvm-xray
 add_executable(llvm-xray IMPORTED)
 
+# Create imported target obj2yaml
+add_executable(obj2yaml IMPORTED)
+
 # Create imported target LLVMOptDriver
 add_library(LLVMOptDriver STATIC IMPORTED)
 
@@ -986,6 +1025,9 @@ add_executable(sanstats IMPORTED)
 
 # Create imported target verify-uselistorder
 add_executable(verify-uselistorder IMPORTED)
+
+# Create imported target yaml2obj
+add_executable(yaml2obj IMPORTED)
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)
   message(FATAL_ERROR "This file relies on consumers using CMake 2.8.12 or greater.")

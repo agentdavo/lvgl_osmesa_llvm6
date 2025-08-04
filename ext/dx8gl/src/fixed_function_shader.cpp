@@ -137,7 +137,12 @@ std::string FixedFunctionShader::generate_vertex_shader(const FixedFunctionState
     }
     
     // Attributes based on FVF (modern GLSL uses 'in')
-    ss << "in vec3 a_position;\n";
+    bool has_rhw = (state.vertex_format & D3DFVF_XYZRHW) != 0;
+    if (has_rhw) {
+        ss << "in vec4 a_position;  // XYZRHW - pre-transformed screen coordinates\n";
+    } else {
+        ss << "in vec3 a_position;  // XYZ - world coordinates\n";
+    }
     
     if (state.vertex_format & D3DFVF_NORMAL) {
         ss << "in vec3 a_normal;\n";
@@ -159,6 +164,10 @@ std::string FixedFunctionShader::generate_vertex_shader(const FixedFunctionState
     ss << "uniform mat4 u_projection;\n";
     ss << "uniform mat4 u_worldViewProj;\n";
     
+    if (has_rhw) {
+        ss << "uniform vec2 u_viewport_size;  // Viewport width and height for screen-to-NDC conversion\n";
+    }
+    
     if (state.lighting_enabled && (state.vertex_format & D3DFVF_NORMAL)) {
         ss << "uniform mat3 u_normalMatrix;\n";
     }
@@ -179,15 +188,32 @@ std::string FixedFunctionShader::generate_vertex_shader(const FixedFunctionState
     
     // Main function
     ss << "\nvoid main() {\n";
-    ss << "    vec4 worldPos = u_world * vec4(a_position, 1.0);\n";
-    ss << "    gl_Position = u_worldViewProj * vec4(a_position, 1.0);\n";
+    
+    if (has_rhw) {
+        // XYZRHW vertices are pre-transformed screen coordinates
+        // Convert from screen coordinates to OpenGL NDC [-1,1]
+        ss << "    // Convert screen coordinates to NDC\n";
+        ss << "    float x_ndc = (a_position.x / u_viewport_size.x) * 2.0 - 1.0;\n";
+        ss << "    float y_ndc = 1.0 - (a_position.y / u_viewport_size.y) * 2.0;  // Flip Y\n";
+        ss << "    gl_Position = vec4(x_ndc, y_ndc, a_position.z, a_position.w);\n";
+        ss << "    vec4 worldPos = vec4(a_position.xyz, 1.0);  // Use as-is for lighting\n";
+    } else {
+        // XYZ vertices need standard matrix transformations
+        ss << "    vec4 worldPos = u_world * vec4(a_position, 1.0);\n";
+        ss << "    gl_Position = u_worldViewProj * vec4(a_position, 1.0);\n";
+    }
     
     if (state.vertex_format & D3DFVF_DIFFUSE) {
         ss << "    v_color = a_color;\n";
     }
     
     for (int i = 0; i < tex_count; i++) {
-        ss << "    v_texcoord" << i << " = a_texcoord" << i << ";\n";
+        if (has_rhw) {
+            // Flip U coordinate for XYZRHW vertices to fix mirrored text
+            ss << "    v_texcoord" << i << " = vec2(1.0 - a_texcoord" << i << ".x, a_texcoord" << i << ".y);\n";
+        } else {
+            ss << "    v_texcoord" << i << " = a_texcoord" << i << ";\n";
+        }
     }
     
     if (state.lighting_enabled && (state.vertex_format & D3DFVF_NORMAL)) {
@@ -432,6 +458,7 @@ void FixedFunctionShader::cache_uniform_locations(GLuint program) {
     uniforms.projection_matrix = glGetUniformLocation(program, "u_projection");
     uniforms.world_view_proj_matrix = glGetUniformLocation(program, "u_worldViewProj");
     uniforms.normal_matrix = glGetUniformLocation(program, "u_normalMatrix");
+    uniforms.viewport_size = glGetUniformLocation(program, "u_viewport_size");
     
     // Material uniforms
     uniforms.material_ambient = glGetUniformLocation(program, "u_materialAmbient");

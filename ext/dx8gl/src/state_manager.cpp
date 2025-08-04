@@ -1,4 +1,5 @@
 #include "state_manager.h"
+#include "osmesa_gl_loader.h"
 #include <cstring>
 #include <cmath>
 #include <algorithm>
@@ -985,10 +986,8 @@ void StateManager::apply_texture_states() {
         
         // Apply anisotropic filtering if supported
         if (render_state_.max_anisotropy[stage] > 1) {
-            // Check for anisotropic filtering extension
-            // This is a common extension but not part of core GL ES 2.0
-            const GLubyte* extensions = glGetString(GL_EXTENSIONS);
-            if (extensions && strstr((const char*)extensions, "GL_EXT_texture_filter_anisotropic")) {
+            // Check for anisotropic filtering extension using modern method
+            if (has_extension("GL_EXT_texture_filter_anisotropic")) {
                 GLfloat max_aniso = 1.0f;
                 glGetFloatv(0x84FF /* GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT */, &max_aniso);
                 GLfloat aniso = std::min((float)render_state_.max_anisotropy[stage], max_aniso);
@@ -1061,6 +1060,8 @@ void StateManager::clear(DWORD count, const D3DRECT* rects, DWORD flags, D3DCOLO
         // Clear entire viewport
         if (clear_mask) {
             glClear(clear_mask);
+            // Force synchronization to prevent Mesa fence crash
+            glFinish();
         }
     } else {
         // Clear specific rectangles using scissor test
@@ -1080,6 +1081,11 @@ void StateManager::clear(DWORD count, const D3DRECT* rects, DWORD flags, D3DCOLO
         
         if (!scissor_was_enabled) {
             glDisable(GL_SCISSOR_TEST);
+        }
+        
+        // Force synchronization to prevent Mesa fence crash
+        if (clear_mask) {
+            glFinish();
         }
     }
 }

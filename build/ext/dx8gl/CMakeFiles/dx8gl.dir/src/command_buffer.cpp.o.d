@@ -304,6 +304,10 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/pixel_shader_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/vao_manager.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h \
+ /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl_error_check.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/blue_screen.h \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
  /usr/include/c++/13/iostream \
@@ -502,6 +506,4 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/gtc/../gtc/../ext/vector_int1_sized.hpp \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/gtc/../gtc/../ext/vector_uint1.hpp \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/gtc/../gtc/../ext/vector_uint1_sized.hpp \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/gtc/type_ptr.inl \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/gtc/type_ptr.inl

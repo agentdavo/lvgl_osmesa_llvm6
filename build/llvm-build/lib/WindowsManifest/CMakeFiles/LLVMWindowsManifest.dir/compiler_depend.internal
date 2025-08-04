@@ -160,6 +160,7 @@ lib/WindowsManifest/CMakeFiles/LLVMWindowsManifest.dir/WindowsManifestMerger.cpp
  /usr/include/c++/13/pstl/glue_memory_defs.h
  /usr/include/c++/13/pstl/pstl_config.h
  /usr/include/c++/13/stdexcept
+ /usr/include/c++/13/stdlib.h
  /usr/include/c++/13/streambuf
  /usr/include/c++/13/string
  /usr/include/c++/13/string_view
@@ -175,7 +176,31 @@ lib/WindowsManifest/CMakeFiles/LLVMWindowsManifest.dir/WindowsManifestMerger.cpp
  /usr/include/errno.h
  /usr/include/features-time64.h
  /usr/include/features.h
+ /usr/include/iconv.h
  /usr/include/inttypes.h
+ /usr/include/libxml2/libxml/SAX2.h
+ /usr/include/libxml2/libxml/dict.h
+ /usr/include/libxml2/libxml/encoding.h
+ /usr/include/libxml2/libxml/entities.h
+ /usr/include/libxml2/libxml/globals.h
+ /usr/include/libxml2/libxml/hash.h
+ /usr/include/libxml2/libxml/list.h
+ /usr/include/libxml2/libxml/parser.h
+ /usr/include/libxml2/libxml/relaxng.h
+ /usr/include/libxml2/libxml/threads.h
+ /usr/include/libxml2/libxml/tree.h
+ /usr/include/libxml2/libxml/valid.h
+ /usr/include/libxml2/libxml/xlink.h
+ /usr/include/libxml2/libxml/xmlIO.h
+ /usr/include/libxml2/libxml/xmlautomata.h
+ /usr/include/libxml2/libxml/xmlerror.h
+ /usr/include/libxml2/libxml/xmlexports.h
+ /usr/include/libxml2/libxml/xmlmemory.h
+ /usr/include/libxml2/libxml/xmlreader.h
+ /usr/include/libxml2/libxml/xmlregexp.h
+ /usr/include/libxml2/libxml/xmlschemas.h
+ /usr/include/libxml2/libxml/xmlstring.h
+ /usr/include/libxml2/libxml/xmlversion.h
  /usr/include/limits.h
  /usr/include/linux/errno.h
  /usr/include/linux/limits.h
@@ -189,6 +214,22 @@ lib/WindowsManifest/CMakeFiles/LLVMWindowsManifest.dir/WindowsManifestMerger.cpp
  /usr/include/string.h
  /usr/include/strings.h
  /usr/include/time.h
+ /usr/include/unicode/localpointer.h
+ /usr/include/unicode/platform.h
+ /usr/include/unicode/ptypes.h
+ /usr/include/unicode/ucnv.h
+ /usr/include/unicode/ucnv_err.h
+ /usr/include/unicode/uconfig.h
+ /usr/include/unicode/uenum.h
+ /usr/include/unicode/umachine.h
+ /usr/include/unicode/urename.h
+ /usr/include/unicode/utf.h
+ /usr/include/unicode/utf16.h
+ /usr/include/unicode/utf8.h
+ /usr/include/unicode/utf_old.h
+ /usr/include/unicode/utypes.h
+ /usr/include/unicode/uvernum.h
+ /usr/include/unicode/uversion.h
  /usr/include/wchar.h
  /usr/include/x86_64-linux-gnu/asm/errno.h
  /usr/include/x86_64-linux-gnu/bits/atomic_wide_counter.h
@@ -280,8 +321,10 @@ lib/WindowsManifest/CMakeFiles/LLVMWindowsManifest.dir/WindowsManifestMerger.cpp
  /usr/include/x86_64-linux-gnu/sys/select.h
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h
  /usr/include/x86_64-linux-gnu/sys/types.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/float.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
  /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h

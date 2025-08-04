@@ -20,15 +20,15 @@
 #define LLVM_CPPFLAGS "-D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 #define LLVM_CFLAGS " -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 #define LLVM_LDFLAGS ""
-#define LLVM_CXXFLAGS "-std=c++17   -fno-exceptions -fno-unwind-tables -fno-asynchronous-unwind-tables -fno-rtti -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
+#define LLVM_CXXFLAGS "-std=c++17   -fno-exceptions -funwind-tables -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 #define LLVM_BUILDMODE "MinSizeRel"
 #define LLVM_LIBDIR_SUFFIX ""
 #define LLVM_INSTALL_INCLUDEDIR "include"
 #define LLVM_INSTALL_PACKAGE_DIR "lib/cmake/llvm"
 #define LLVM_TARGETS_BUILT "X86"
-#define LLVM_SYSTEM_LIBS "-lrt -ldl -lm -lzstd"
+#define LLVM_SYSTEM_LIBS "-lrt -ldl -lm -lz -lzstd -lxml2"
 #define LLVM_BUILD_SYSTEM "cmake"
-#define LLVM_HAS_RTTI 0
+#define LLVM_HAS_RTTI 1
 #define LLVM_ENABLE_DYLIB 1
 #define LLVM_LINK_DYLIB 1
 #define LLVM_ENABLE_SHARED 0

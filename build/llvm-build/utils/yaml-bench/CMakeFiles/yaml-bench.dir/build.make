@@ -93,6 +93,7 @@ yaml__bench_EXTERNAL_OBJECTS =
 bin/yaml-bench: utils/yaml-bench/CMakeFiles/yaml-bench.dir/YAMLBench.cpp.o
 bin/yaml-bench: utils/yaml-bench/CMakeFiles/yaml-bench.dir/build.make
 bin/yaml-bench: lib/libLLVMSupport.a
+bin/yaml-bench: /usr/lib/x86_64-linux-gnu/libz.so
 bin/yaml-bench: /usr/lib/x86_64-linux-gnu/libzstd.so
 bin/yaml-bench: lib/libLLVMDemangle.a
 bin/yaml-bench: utils/yaml-bench/CMakeFiles/yaml-bench.dir/link.txt

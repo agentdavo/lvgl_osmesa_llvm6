@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 3.28.3)
+cmake_minimum_required(VERSION 3.20)
 project(lvgl_osmesa_llvm C CXX)
 
-# Set CMP0116 policy to NEW to suppress deprecation warning
-cmake_policy(SET CMP0116 NEW)
+# Enforce C++ standard for compatibility
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(LLVM_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ext/llvm-project/llvm)
 set(LLVM_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/llvm-build)
@@ -24,45 +25,39 @@ option(LVGL_USE_LINUX_DRM "Enable LVGL DRM backend" OFF)
 option(LVGL_USE_LINUX_FBDEV "Enable LVGL FBDev backend" OFF)
 option(LVGL_USE_NUTTX "Enable LVGL NuttX backend" OFF)
 
+# Minimal LLVM build configuration for Mesa
+# Additional optimizations to reduce build time and size
+
 # LLVM External Project
 ExternalProject_Add(llvm_external
     SOURCE_DIR ${LLVM_SOURCE_DIR}
     BINARY_DIR ${LLVM_BINARY_DIR}
     CMAKE_ARGS
-        -DCMAKE_INSTALL_PREFIX=${LLVM_INSTALL_DIR}
         -DCMAKE_BUILD_TYPE=MinSizeRel
+		-DCMAKE_INSTALL_PREFIX=${LLVM_INSTALL_DIR}
         -DCMAKE_SKIP_INSTALL_RPATH=TRUE
+		-DLLVM_APPEND_VC_REV=OFF
         -DLLVM_TARGETS_TO_BUILD=X86
         -DLLVM_BUILD_LLVM_DYLIB=ON
         -DLLVM_LINK_LLVM_DYLIB=ON
-        -DBUILD_SHARED_LIBS=OFF
-        -DLLVM_BUILD_TOOLS=ON
-        -DLLVM_INCLUDE_TOOLS=ON
-        -DLLVM_BUILD_EXAMPLES=OFF
+		-DLLVM_DYLIB_COMPONENTS=all
+		-DLLVM_INSTALL_UTILS=ON
+		-DLLVM_ENABLE_RTTI=ON
+		-DLLVM_ENABLE_FFI=ON
+		-DLLVM_USE_PERF=ON
+		-DLLVM_INCLUDE_BENCHMARKS=OFF
         -DLLVM_INCLUDE_EXAMPLES=OFF
-        -DLLVM_BUILD_TESTS=OFF
-        -DLLVM_INCLUDE_TESTS=OFF
         -DLLVM_BUILD_DOCS=OFF
-        -DLLVM_INCLUDE_DOCS=OFF
-        -DLLVM_ENABLE_DOXYGEN=OFF
-        -DLLVM_ENABLE_SPHINX=OFF
-        -DLLVM_ENABLE_ASSERTIONS=OFF
-        -DLLVM_ENABLE_ZLIB=OFF
-        -DLLVM_ENABLE_LIBXML2=OFF
-        -DLLVM_ENABLE_FFI=OFF
-        -DLLVM_ENABLE_EH=OFF
-        -DLLVM_ENABLE_RTTI=OFF
-        -DLLVM_INSTALL_UTILS=OFF
-        -DLLVM_ENABLE_UNWIND_TABLES=OFF
-        -DLLVM_ENABLE_PIC=ON
-        -DLLVM_APPEND_VC_REV=OFF
-        -DLLVM_ENABLE_EXPENSIVE_CHECKS=OFF
-        -DLLVM_ENABLE_LTO=OFF
-        "-DCMAKE_C_FLAGS=-O2 -fomit-frame-pointer -w -fPIC"
-        "-DCMAKE_CXX_FLAGS=-O2 -fomit-frame-pointer -w -fPIC"
-        "-DCMAKE_C_FLAGS_MINSIZEREL=-Os -fomit-frame-pointer -w -fPIC"
-        "-DCMAKE_CXX_FLAGS_MINSIZEREL=-Os -fomit-frame-pointer -w -fPIC"
-        -DCMAKE_POLICY_DEFAULT_CMP0116=NEW
+		-DLLVM_INCLUDE_DOCS=OFF
+		-DLLVM_ENABLE_OCAMLDOC=OFF
+		-DLLVM_ENABLE_SPHINX=OFF
+		-DLLVM_ENABLE_BINDINGS=OFF
+		-DLLVM_ENABLE_DUMP=ON
+	    -DLLVM_INCLUDE_TESTS=OFF
+	    -DLLVM_BUILD_TOOLS=ON
+	    -DLLVM_OPTIMIZED_TABLEGEN=ON
+		-DLLVM_LIT_ARGS="${LITFLAGS} -sv --ignore-fail"
+		-Wno-dev
     BUILD_COMMAND ${CMAKE_COMMAND} --build ${LLVM_BINARY_DIR} -j10
     INSTALL_COMMAND ${CMAKE_COMMAND} --build ${LLVM_BINARY_DIR} --target install
     BUILD_ALWAYS OFF
@@ -74,31 +69,24 @@ if(NOT MESON_EXECUTABLE)
     message(FATAL_ERROR "Meson build system not found. Please install meson")
 endif()
 
-file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/mesa-native.ini
-"[binaries]
-llvm-config = '${LLVM_CONFIG}'
-[built-in options]
-c_args = ['-Os', '-g0', '-march=x86-64', '-mtune=generic', '-fomit-frame-pointer']
-cpp_args = ['-Os', '-g0', '-march=x86-64', '-mtune=generic', '-fomit-frame-pointer', '-fno-rtti']
-cpp_rtti = false
-")
-
 ExternalProject_Add(osmesa
     SOURCE_DIR ${MESA_SOURCE_DIR}
     BINARY_DIR ${MESA_BINARY_DIR}
     CONFIGURE_COMMAND
         ${CMAKE_COMMAND} -E env
-        "PATH=${LLVM_INSTALL_DIR}/bin:/usr/bin:/bin"
-        "PKG_CONFIG_PATH=${LLVM_INSTALL_DIR}/lib/pkgconfig"
+        "PATH=${LLVM_INSTALL_DIR}/bin:$ENV{PATH}"
+        "PKG_CONFIG_PATH=${LLVM_INSTALL_DIR}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}"
         "LLVM_CONFIG=${LLVM_CONFIG}"
-        "CMAKE_PREFIX_PATH="
+        "CMAKE_PREFIX_PATH=${LLVM_INSTALL_DIR}"
         ${MESON_EXECUTABLE} setup ${MESA_BINARY_DIR} ${MESA_SOURCE_DIR}
-        --prefix=${MESA_INSTALL_DIR}
-        --native-file=${CMAKE_CURRENT_BINARY_DIR}/mesa-native.ini
-        --buildtype=release
+        -D prefix=${MESA_INSTALL_DIR}
+		-D b_ndebug=true
+        -D b_lto=false
+        -D b_pie=true
+        -D buildtype=plain
         --default-library=static
+		--wrap-mode=nofallback
         -Dplatforms=
-        -Dosmesa=true
         -Dgallium-drivers=softpipe,llvmpipe
         -Dgallium-vdpau=disabled
         -Dgallium-va=disabled
@@ -106,20 +94,31 @@ ExternalProject_Add(osmesa
         -Dgallium-nine=false
         -Dgallium-opencl=disabled
         -Dvulkan-drivers=
-        -Dshared-glapi=enabled
         -Dgles1=disabled
         -Dgles2=disabled
+		-Dshared-glapi=enabled
+        -Dosmesa=true		
         -Dopengl=true
         -Dgbm=disabled
         -Dglvnd=disabled
         -Dglx=disabled
         -Degl=disabled
         -Dllvm=enabled
-        -Dshared-llvm=enabled
+        -Dshared-llvm=disabled
         -Dvalgrind=disabled
         -Dbuild-tests=false
-    BUILD_COMMAND ninja -C ${MESA_BINARY_DIR} -j10
-    INSTALL_COMMAND ninja -C ${MESA_BINARY_DIR} install
+    BUILD_COMMAND 
+        ${CMAKE_COMMAND} -E env
+        "PATH=${LLVM_INSTALL_DIR}/bin:$ENV{PATH}"
+        "PKG_CONFIG_PATH=${LLVM_INSTALL_DIR}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}"
+        "LLVM_CONFIG=${LLVM_CONFIG}"
+        ninja -C ${MESA_BINARY_DIR} -j10
+    INSTALL_COMMAND 
+        ${CMAKE_COMMAND} -E env
+        "PATH=${LLVM_INSTALL_DIR}/bin:$ENV{PATH}"
+        "PKG_CONFIG_PATH=${LLVM_INSTALL_DIR}/lib/pkgconfig:$ENV{PKG_CONFIG_PATH}"
+        "LLVM_CONFIG=${LLVM_CONFIG}"
+        ninja -C ${MESA_BINARY_DIR} install
     DEPENDS llvm_external
     BUILD_ALWAYS OFF
 )
