@@ -8,6 +8,7 @@
 #include "vertex_shader_manager.h"
 #include "pixel_shader_manager.h"
 #include "shader_program_manager.h"
+#include "render_backend.h"
 #include <memory>
 #include <vector>
 #include <unordered_map>
@@ -165,12 +166,85 @@ public:
     bool was_frame_presented() const { return frame_presented_; }
     void reset_frame_presented() { frame_presented_ = false; }
     class DX8OSMesaContext* get_osmesa_context() const;
+    
+    // Render backend access methods
+    void* get_framebuffer(int* width, int* height, int* format) const;
+    DX8RenderBackend* get_render_backend() const { return render_backend_.get(); }
+    
+    // State management
+    void InvalidateCachedRenderStates();
+    
+    // Statistics tracking
+    struct Statistics {
+        std::atomic<uint32_t> matrix_changes;
+        std::atomic<uint32_t> render_state_changes;
+        std::atomic<uint32_t> texture_state_changes;
+        std::atomic<uint32_t> texture_changes;
+        std::atomic<uint32_t> draw_calls;
+        std::atomic<uint32_t> triangles_drawn;
+        std::atomic<uint32_t> vertices_processed;
+        std::atomic<uint32_t> state_blocks_created;
+        std::atomic<uint32_t> clear_calls;
+        std::atomic<uint32_t> present_calls;
+        std::atomic<uint32_t> vertex_buffer_locks;
+        std::atomic<uint32_t> index_buffer_locks;
+        std::atomic<uint32_t> texture_locks;
+        std::atomic<uint32_t> shader_changes;
+        std::atomic<uint32_t> light_changes;
+        std::atomic<uint32_t> material_changes;
+        std::atomic<uint32_t> viewport_changes;
+        
+        void reset() {
+            matrix_changes = 0;
+            render_state_changes = 0;
+            texture_state_changes = 0;
+            texture_changes = 0;
+            draw_calls = 0;
+            triangles_drawn = 0;
+            vertices_processed = 0;
+            state_blocks_created = 0;
+            clear_calls = 0;
+            present_calls = 0;
+            vertex_buffer_locks = 0;
+            index_buffer_locks = 0;
+            texture_locks = 0;
+            shader_changes = 0;
+            light_changes = 0;
+            material_changes = 0;
+            viewport_changes = 0;
+        }
+    };
+    
+    void reset_statistics();
+    void begin_statistics();
+    void end_statistics();
+    
+    // Statistics getters
+    uint32_t get_matrix_changes() const { return current_stats_.matrix_changes.load(); }
+    uint32_t get_render_state_changes() const { return current_stats_.render_state_changes.load(); }
+    uint32_t get_texture_state_changes() const { return current_stats_.texture_state_changes.load(); }
+    uint32_t get_texture_changes() const { return current_stats_.texture_changes.load(); }
+    uint32_t get_draw_calls() const { return current_stats_.draw_calls.load(); }
+    uint32_t get_triangles_drawn() const { return current_stats_.triangles_drawn.load(); }
+    uint32_t get_vertices_processed() const { return current_stats_.vertices_processed.load(); }
+    uint32_t get_clear_calls() const { return current_stats_.clear_calls.load(); }
+    uint32_t get_present_calls() const { return current_stats_.present_calls.load(); }
+    uint32_t get_shader_changes() const { return current_stats_.shader_changes.load(); }
+    
+    // Resource tracking for device reset
+    void register_texture(Direct3DTexture8* texture);
+    void unregister_texture(Direct3DTexture8* texture);
+    void register_vertex_buffer(Direct3DVertexBuffer8* vb);
+    void unregister_vertex_buffer(Direct3DVertexBuffer8* vb);
+    void register_index_buffer(Direct3DIndexBuffer8* ib);
+    void unregister_index_buffer(Direct3DIndexBuffer8* ib);
 
 private:
     // Helper methods
     void flush_command_buffer();
     void execute_command_buffer_async();
     bool validate_present_params(D3DPRESENT_PARAMETERS* params);
+    void set_default_global_render_states();
     
     // Internal access for friend classes
     
@@ -191,7 +265,8 @@ private:
     std::unique_ptr<class EGLSurfacelessContext> egl_context_;
 #endif
 #ifdef DX8GL_HAS_OSMESA
-    std::unique_ptr<class DX8OSMesaContext> osmesa_context_;
+    std::unique_ptr<class DX8OSMesaContext> osmesa_context_;  // Legacy, to be replaced
+    std::unique_ptr<class DX8RenderBackend> render_backend_;  // New backend interface
     bool osmesa_deferred_init_ = false;  // Flag to defer OSMesa initialization
     int gl_version_major_ = 0;
     int gl_version_minor_ = 0;
@@ -219,6 +294,11 @@ private:
     IDirect3DIndexBuffer8* index_buffer_;
     UINT base_vertex_index_;
     
+    // Resource tracking for device reset (tracks ALL created resources)
+    std::vector<Direct3DTexture8*> all_textures_;
+    std::vector<Direct3DVertexBuffer8*> all_vertex_buffers_;
+    std::vector<Direct3DIndexBuffer8*> all_index_buffers_;
+    
     // Render targets
     IDirect3DSurface8* render_target_;
     IDirect3DSurface8* depth_stencil_;
@@ -238,6 +318,13 @@ private:
     // Synchronization
     mutable std::mutex mutex_;
     std::atomic<uint32_t> frame_count_;
+    
+    // Multithreaded device support
+    bool is_multithreaded_;
+    
+    // Statistics
+    Statistics current_stats_;
+    Statistics last_frame_stats_;
     
     // Helper methods
     HRESULT copy_rect_internal(IDirect3DSurface8* src, const RECT* src_rect,

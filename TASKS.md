@@ -12,7 +12,6 @@
 - [ ] T34:: Feature:: Add pixel shader 1.4 test to dx8_cube :: Depends=[none] :: Est=M :: Test pixel shader translation pipeline (see src/dx8_cube/sample_shaders.txt)
 - [ ] T36:: Test:: Create comprehensive shader test suite :: Depends=[T34] :: Est=L :: Test all DirectX 8 shader instructions
 - [ ] T51:: Fix:: Implement HUD font texture loading and rendering :: Depends=[none] :: Est=M :: Complete HUD text display functionality
-- [ ] T37:: Feature:: Implement shader binary caching :: Depends=[T36] :: Est=M :: Cache compiled GLSL shaders to disk
 - [ ] T38:: Test:: Add alpha blending and transparency tests :: Depends=[none] :: Est=M :: Test blend modes and alpha operations
 - [ ] T39:: Feature:: Multi-texture stage support :: Depends=[none] :: Est=L :: Support up to 8 texture stages
 - [ ] T40:: Feature:: Render-to-texture support :: Depends=[none] :: Est=L :: Implement D3D render targets
@@ -24,7 +23,7 @@
 - [ ] T46:: Feature:: Point sprite support :: Depends=[none] :: Est=M :: Implement D3DFVF_PSIZE and point sprites
 - [ ] T47:: Test:: Texture format conversion tests :: Depends=[none] :: Est=M :: Test all D3DFORMAT to GL conversions
 - [ ] T48:: Feature:: Vertex blending and skinning :: Depends=[none] :: Est=L :: Support D3DFVF_XYZBn formats
-- [ ] T49:: Documentation:: Create shader assembly reference :: Depends=[T36] :: Est=M :: Document supported vs1.1 and ps1.4 instructions
+- [ ] T49:: Documentation:: Create shader assembly reference :: Depends=[T68] :: Est=M :: Document supported vs1.1 and ps1.4 instructions
 - [ ] T50:: Feature:: Add DirectX 8 debug overlay :: Depends=[T35] :: Est=M :: Show API calls and state in real-time
 
 ## IN_PROGRESS
@@ -73,17 +72,37 @@
 - [x] T30:: Fix:: Complete color pipeline from DirectX ARGB to LVGL XRGB8888 :: Depends=[none] :: Est=L :: Full color correction ✅ ALL COLORS CORRECT
 - [x] T33:: Feature:: Add vertex shader 1.1 test to dx8_cube :: Depends=[none] :: Est=M :: Test DirectX 8 assembly shader translation ✅ COMPLETED
 - [x] T35:: Fix:: Resolve Mesa llvmpipe crash with XYZRHW vertices :: Depends=[none] :: Est=L :: Fix HUD rendering crash ✅ FIXED
+- [x] T60:: Feature:: Implement thread safety for D3DCREATE_MULTITHREADED flag :: Depends=[none] :: Est=M :: Add global mutex protection ✅ IMPLEMENTED
+- [x] T61:: Feature:: Implement bump mapping in shader generation :: Depends=[none] :: Est=M :: Add D3DTOP_BUMPENVMAP support ✅ COMPLETED
+- [x] T62:: Feature:: Implement proper device reset with resource management :: Depends=[none] :: Est=L :: Track and recreate D3DPOOL_DEFAULT resources ✅ WORKING
+- [x] T63:: Feature:: Add complete ps 1.4 opcode parsing :: Depends=[none] :: Est=L :: Support PHASE, TEXLD, BEM, CND, CMP ✅ IMPLEMENTED
+- [x] T64:: Feature:: Add vs 1.1 opcode parsing with address register :: Depends=[none] :: Est=L :: Support M4x4, SINCOS, LIT, a0 register ✅ COMPLETED
+- [x] T65:: Feature:: Update shader_bytecode_assembler for ps1.4/vs1.1 :: Depends=[T63,T64] :: Est=M :: Support new tokens and relative addressing ✅ DONE
+- [x] T66:: Feature:: Add DX8 bytecode hashing for shader cache :: Depends=[none] :: Est=M :: FNV-1a hash implementation ✅ WORKING
+- [x] T67:: Feature:: Integrate binary cache into shader managers :: Depends=[T66] :: Est=M :: Cache OpenGL program binaries ✅ INTEGRATED
+- [x] T68:: Test:: Create comprehensive shader translation tests :: Depends=[T63,T64] :: Est=M :: Test ps1.4/vs1.1 features and caching ✅ TESTS PASSING
+- [x] T69:: Documentation:: Update README with ps1.4/vs1.1 support :: Depends=[T68] :: Est=S :: Document new shader features ✅ DOCUMENTED
+- [x] T70:: Feature:: Add DX8RenderBackend interface :: Depends=[none] :: Est=M :: Create pluggable backend abstraction ✅ IMPLEMENTED
+- [x] T71:: Refactor:: Refactor OSMesa context to DX8RenderBackend :: Depends=[T70] :: Est=M :: Adapt existing code to interface ✅ COMPLETED
+- [x] T72:: Feature:: Add DX8EGLBackend for surfaceless rendering :: Depends=[T70] :: Est=L :: Implement EGL backend ✅ IMPLEMENTED
+- [x] T73:: Feature:: Enable runtime backend selection :: Depends=[T70,T71,T72] :: Est=M :: Support env var and config ✅ WORKING
+- [x] T74:: Feature:: Expose get_framebuffer() for LVGL copy :: Depends=[T70] :: Est=S :: Unified framebuffer access ✅ IMPLEMENTED
+- [x] T75:: Build:: Add EGL to build configuration :: Depends=[T72] :: Est=M :: CMake support for EGL ✅ CONFIGURED
+- [x] T76:: Scripts:: Add backend option to scripts :: Depends=[T73] :: Est=S :: Update run scripts ✅ UPDATED
+- [x] T77:: Test:: Create dual-backend regression tests :: Depends=[T70,T71,T72] :: Est=M :: Compare backend outputs ✅ CREATED
+- [x] T78:: Documentation:: Update documentation for backend selection :: Depends=[T77] :: Est=S :: Document backend usage ✅ DOCUMENTED
+- [x] T79:: Feature:: Implement backend-specific shutdown logic :: Depends=[T70,T71,T72] :: Est=M :: Proper cleanup ✅ IMPLEMENTED
 
 ## Current Execution Order
-1. T52 - Fix Mesa llvmpipe crash during Clear operation (in progress)
-2. T53 - Update documentation for scripts/ reorganization (in progress)
-3. T34 - Add pixel shader 1.4 test to dx8_cube (after crash fix)
-4. T51 - Implement HUD font texture loading and rendering
-5. T44 - Test FVF state management fix (blocked on build)
-6. T38 - Add alpha blending and transparency tests
-7. T36 - Create comprehensive shader test suite
-8. T31 - Clean up debug logging for production
-9. T32 - Document successful implementation
+1. T51 - Implement HUD font texture loading and rendering
+2. T44 - Test FVF state management fix (blocked on build)
+3. T38 - Add alpha blending and transparency tests
+4. T45 - Add fog effect support
+5. T46 - Point sprite support
+6. T47 - Texture format conversion tests
+7. T39 - Multi-texture stage support
+8. T40 - Render-to-texture support
+9. T31 - Clean up debug logging for production
 
 ## Build Scripts Location
 All build and run scripts have been moved to `scripts/` directory:
@@ -133,6 +152,16 @@ The DirectX 8 to OpenGL translation layer is **FULLY FUNCTIONAL** and successful
 - **Coordinate System**: Fixed Y-axis orientation for correct floor positioning
 - **Graceful Exit**: Program now renders exactly 100 frames and exits cleanly
 - **Memory Management**: Resolved double free error by fixing dx8gl initialization
+- **Thread Safety**: Implemented D3DCREATE_MULTITHREADED flag with global mutex protection
+- **Bump Mapping**: Full support for D3DTOP_BUMPENVMAP and D3DTOP_BUMPENVMAPLUMINANCE
+- **Device Reset**: Proper resource tracking and recreation for D3DPOOL_DEFAULT resources
+- **PS 1.4 Support**: Complete pixel shader 1.4 instruction set including PHASE, BEM, CND, CMP
+- **VS 1.1 Support**: Full vertex shader 1.1 with address register and relative addressing
+- **Shader Caching**: DX8 bytecode hashing with FNV-1a and OpenGL program binary caching
+- **Test Suite**: Comprehensive shader translation tests covering all new features
+- **Pluggable Backends**: Abstracted rendering backend interface supporting OSMesa and EGL
+- **Runtime Backend Selection**: Choose backend via environment variable, API, or command line
+- **Backend Regression Tests**: Automated testing to ensure consistent rendering across backends
 
 ### 📊 **Performance & Quality**
 - **Zero Memory Leaks**: Clean shutdown without double frees or leaks

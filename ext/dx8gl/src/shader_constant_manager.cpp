@@ -43,10 +43,13 @@ void ShaderConstantManager::ConstantData::clear_dirty() {
 // ShaderConstantManager implementation
 ShaderConstantManager::ShaderConstantManager() 
     : program_(0) {
-    // Pre-allocate storage for common sizes
-    float_constants_.float_data.reserve(96 * 4);  // 96 float4 constants
-    int_constants_.int_data.reserve(16 * 4);      // 16 int4 constants
-    bool_constants_.bool_data.reserve(16);        // 16 bool constants
+    // Pre-allocate storage for expanded ranges:
+    // - vs1.1: c0-c95 (96 constants)
+    // - ps1.4: c0-c31 (32 constants)
+    // We allocate for both vertex and pixel constants (offset by 256)
+    float_constants_.float_data.reserve((96 + 32) * 4);  // 96 vertex + 32 pixel float4 constants
+    int_constants_.int_data.reserve(32 * 4);             // 32 int4 constants
+    bool_constants_.bool_data.reserve(32);               // 32 bool constants
 }
 
 ShaderConstantManager::~ShaderConstantManager() {
@@ -78,17 +81,33 @@ void ShaderConstantManager::init(GLuint program) {
         info.location = location;
         info.dirty = true;
         
-        // Parse register from name (e.g., "c0", "c1_4" for array)
-        if (info.name.size() > 1 && info.name[0] == 'c') {
-            size_t underscore = info.name.find('_');
+        // Parse register from name (e.g., "c0", "ps_c0", "c1_4" for array)
+        bool is_pixel_constant = false;
+        std::string reg_name = info.name;
+        
+        // Check for pixel shader constant prefix
+        if (info.name.substr(0, 4) == "ps_c") {
+            is_pixel_constant = true;
+            reg_name = info.name.substr(3); // Remove "ps_" prefix
+        }
+        
+        if (reg_name.size() > 1 && reg_name[0] == 'c') {
+            size_t underscore = reg_name.find('_');
             if (underscore != std::string::npos) {
                 // Array constant like "c0_4"
-                info.start_register = std::stoi(info.name.substr(1, underscore - 1));
-                info.register_count = std::stoi(info.name.substr(underscore + 1));
+                info.start_register = std::stoi(reg_name.substr(1, underscore - 1));
+                int end_register = std::stoi(reg_name.substr(underscore + 1));
+                info.register_count = end_register - info.start_register + 1;
             } else {
-                // Single constant like "c0"
-                info.start_register = std::stoi(info.name.substr(1));
+                // Single constant like "c0" or "ps_c0"
+                info.start_register = std::stoi(reg_name.substr(1));
                 info.register_count = 1;
+            }
+            
+            // For pixel shader constants, offset the register to a separate range
+            // This allows both vertex and pixel constants to coexist
+            if (is_pixel_constant) {
+                info.start_register += 256; // Offset pixel shader constants
             }
         }
         

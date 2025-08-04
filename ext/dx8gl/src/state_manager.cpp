@@ -114,6 +114,54 @@ void StateManager::reset() {
     viewport_state_dirty_ = true;
 }
 
+void StateManager::invalidate_cached_render_states() {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    DX8GL_INFO("Invalidating all cached render states");
+    
+    // Mark all states as dirty to force reapplication
+    render_state_dirty_ = true;
+    transform_state_dirty_ = true;
+    texture_state_dirty_ = true;
+    light_state_dirty_ = true;
+    material_state_dirty_ = true;
+    viewport_state_dirty_ = true;
+    
+    // Reset GL state cache to force all OpenGL calls
+    gl_cache_ = GLStateCache();
+    
+    // Reset texture stage states to ensure proper texture unbinding
+    for (int i = 0; i < 8; i++) {
+        // Force texture operations to be reapplied
+        render_state_.color_op[i] = static_cast<DWORD>(-1);  // Invalid value to force update
+        render_state_.alpha_op[i] = static_cast<DWORD>(-1);
+        
+        // Reset texture coordinate and transform states
+        render_state_.texcoord_index[i] = static_cast<DWORD>(-1);
+        render_state_.texture_transform_flags[i] = static_cast<DWORD>(-1);
+        
+        // Force filtering states to be reapplied
+        render_state_.mag_filter[i] = static_cast<DWORD>(-1);
+        render_state_.min_filter[i] = static_cast<DWORD>(-1);
+        render_state_.mip_filter[i] = static_cast<DWORD>(-1);
+        
+        // Force addressing modes to be reapplied
+        render_state_.address_u[i] = static_cast<DWORD>(-1);
+        render_state_.address_v[i] = static_cast<DWORD>(-1);
+        render_state_.address_w[i] = static_cast<DWORD>(-1);
+    }
+    
+    // Reset transform dirty flags
+    transform_state_.world_view_dirty = true;
+    transform_state_.world_view_projection_dirty = true;
+    transform_state_.view_projection_dirty = true;
+    
+    // Note: We don't unbind textures here as that's handled by the device
+    // when SetTexture is called. This just ensures the states will be reapplied.
+    
+    DX8GL_INFO("State invalidation complete");
+}
+
 // Render state management
 void StateManager::set_render_state(D3DRENDERSTATETYPE state, DWORD value) {
     std::lock_guard<std::mutex> lock(state_mutex_);

@@ -90,6 +90,9 @@ private:
     bool constant_dirty_[MAX_VERTEX_SHADER_CONSTANTS];
     
     DX8ShaderTranslator translator_;
+    
+    // Cache support
+    std::string bytecode_hash_;
 };
 
 } // namespace dx8gl

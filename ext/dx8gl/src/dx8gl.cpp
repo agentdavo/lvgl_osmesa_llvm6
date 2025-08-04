@@ -3,6 +3,7 @@
 #include "d3d8_device.h"
 #include "logger.h"
 #include "osmesa_context.h"
+#include "render_backend.h"
 #include "blue_screen.h"
 #include "osmesa_gl_loader.h"
 #include <atomic>
@@ -16,6 +17,8 @@ namespace dx8gl {
 // Global state
 static std::atomic<bool> g_initialized{false};
 static std::mutex g_init_mutex;
+static std::unique_ptr<DX8RenderBackend> g_render_backend;
+static DX8BackendType g_selected_backend = DX8_BACKEND_OSMESA;
 
 // Thread-local error string
 static thread_local std::string g_last_error;
@@ -74,6 +77,18 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
     
     dx8gl::Logger::instance();  // Initialize logging
     
+    // Check command line arguments for backend selection
+    const char* args = std::getenv("DX8GL_ARGS");
+    if (args) {
+        if (std::strstr(args, "--backend=egl")) {
+            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_EGL;
+            DX8GL_INFO("Selected EGL backend from command line");
+        } else if (std::strstr(args, "--backend=osmesa")) {
+            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_OSMESA;
+            DX8GL_INFO("Selected OSMesa backend from command line");
+        }
+    }
+    
     // Apply configuration if provided
     if (config) {
         if (config->enable_logging) {
@@ -83,11 +98,32 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
         if (config->log_callback) {
             // TODO: Implement custom log callback support
         }
+        
+        // Backend selection from config
+        if (config->backend_type != DX8GL_BACKEND_DEFAULT) {
+            dx8gl::g_selected_backend = (config->backend_type == DX8GL_BACKEND_EGL) ? 
+                dx8gl::DX8_BACKEND_EGL : dx8gl::DX8_BACKEND_OSMESA;
+        }
     }
     
-    // Check for OSMesa mode before initializing SDL3
-    const char* use_osmesa = std::getenv("DX8GL_USE_OSMESA");
-    bool osmesa_mode = (use_osmesa && std::strcmp(use_osmesa, "1") == 0);
+    // Check for backend selection via environment variable
+    const char* backend_env = std::getenv("DX8GL_BACKEND");
+    if (backend_env) {
+        if (std::strcmp(backend_env, "egl") == 0 || std::strcmp(backend_env, "EGL") == 0) {
+            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_EGL;
+            DX8GL_INFO("Selected EGL backend from environment");
+        } else if (std::strcmp(backend_env, "osmesa") == 0 || std::strcmp(backend_env, "OSMESA") == 0) {
+            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_OSMESA;
+            DX8GL_INFO("Selected OSMesa backend from environment");
+        }
+    }
+    
+    // Create render backend
+    dx8gl::g_render_backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
+    if (!dx8gl::g_render_backend) {
+        dx8gl::set_error("Failed to create render backend");
+        return DX8GL_ERROR_INTERNAL;
+    }
     
     // OSMesa mode doesn't need SDL initialization
     
@@ -98,6 +134,11 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
 
 void dx8gl_shutdown(void) {
     std::lock_guard<std::mutex> lock(dx8gl::g_init_mutex);
+    
+    if (dx8gl::g_render_backend) {
+        dx8gl::g_render_backend->shutdown();
+        dx8gl::g_render_backend.reset();
+    }
     
     if (!dx8gl::g_initialized) {
         return;
@@ -195,6 +236,26 @@ void dx8gl_context_get_size(dx8gl_context* context, uint32_t* width, uint32_t* h
     auto ctx = reinterpret_cast<dx8gl::DX8OSMesaContext*>(context);
     *width = static_cast<uint32_t>(ctx->get_width());
     *height = static_cast<uint32_t>(ctx->get_height());
+}
+
+// Get framebuffer from device for display (dx8gl extension)
+void* dx8gl_get_framebuffer(IDirect3DDevice8* device, int* width, int* height) {
+    if (!device) {
+        // Try to use global backend if no device provided
+        if (!dx8gl::g_render_backend) {
+            return nullptr;
+        }
+        int w, h, format;
+        void* fb = dx8gl::g_render_backend->get_framebuffer(w, h, format);
+        if (width) *width = w;
+        if (height) *height = h;
+        return fb;
+    }
+    
+    // Use device's method
+    auto d3d8_device = static_cast<dx8gl::Direct3DDevice8*>(device);
+    int format;
+    return d3d8_device->get_framebuffer(width, height, &format);
 }
 
 // Shared framebuffer for integration

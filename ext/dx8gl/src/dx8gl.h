@@ -93,8 +93,18 @@ typedef struct dx8gl_caps {
     bool supports_volume_textures;
 } dx8gl_caps;
 
+/* Backend type enumeration */
+typedef enum dx8gl_backend_type {
+    DX8GL_BACKEND_DEFAULT = 0,  /* Auto-select best available */
+    DX8GL_BACKEND_OSMESA = 1,   /* OSMesa software rendering */
+    DX8GL_BACKEND_EGL = 2       /* EGL surfaceless context */
+} dx8gl_backend_type;
+
 /* Configuration */
 struct dx8gl_config {
+    /* Backend selection */
+    dx8gl_backend_type backend_type;
+    
     /* Rendering options */
     bool enable_multithreading;
     uint32_t worker_thread_count;

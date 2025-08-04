@@ -111,6 +111,9 @@ private:
     ProgramKey current_key_;
     ShaderProgram* current_program_;
     bool current_valid_;
+    
+    // Cache support
+    GLuint default_pixel_shader_;
 };
 
 } // namespace dx8gl

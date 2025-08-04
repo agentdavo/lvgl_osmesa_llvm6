@@ -9,6 +9,7 @@
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
 // OpenSSL and ZLIB removed - not needed for DirectX 8 to OpenGL ES translation
 
 namespace dx8gl {
@@ -399,6 +400,79 @@ std::string ShaderBinaryCache::compute_source_hash(const std::string& vertex_sou
     return ss.str();
 }
 
+std::string ShaderBinaryCache::compute_bytecode_hash(const std::vector<DWORD>& vertex_bytecode,
+                                                    const std::vector<DWORD>& pixel_bytecode) {
+    // Combine bytecodes for hashing
+    size_t total_size = vertex_bytecode.size() + pixel_bytecode.size();
+    
+    // Use FNV-1a hash for good distribution
+    const uint64_t FNV_prime = 1099511628211ULL;
+    const uint64_t FNV_offset_basis = 14695981039346656037ULL;
+    
+    uint64_t hash = FNV_offset_basis;
+    
+    // Hash vertex bytecode
+    for (DWORD dword : vertex_bytecode) {
+        const uint8_t* bytes = reinterpret_cast<const uint8_t*>(&dword);
+        for (int i = 0; i < 4; i++) {
+            hash ^= bytes[i];
+            hash *= FNV_prime;
+        }
+    }
+    
+    // Add separator
+    hash ^= 0xFF;
+    hash *= FNV_prime;
+    
+    // Hash pixel bytecode
+    for (DWORD dword : pixel_bytecode) {
+        const uint8_t* bytes = reinterpret_cast<const uint8_t*>(&dword);
+        for (int i = 0; i < 4; i++) {
+            hash ^= bytes[i];
+            hash *= FNV_prime;
+        }
+    }
+    
+    // Include shader version info in hash
+    hash ^= (vertex_bytecode.empty() ? 0 : vertex_bytecode[0]); // Version token
+    hash *= FNV_prime;
+    hash ^= (pixel_bytecode.empty() ? 0 : pixel_bytecode[0]); // Version token
+    hash *= FNV_prime;
+    
+    // Convert to string
+    std::stringstream ss;
+    ss << "dx8_" << std::hex << std::setfill('0') << std::setw(16) << hash;
+    return ss.str();
+}
+
+std::string ShaderBinaryCache::compute_bytecode_hash(const DWORD* bytecode, size_t dword_count) {
+    if (!bytecode || dword_count == 0) {
+        return "dx8_empty";
+    }
+    
+    // Use FNV-1a hash
+    const uint64_t FNV_prime = 1099511628211ULL;
+    const uint64_t FNV_offset_basis = 14695981039346656037ULL;
+    
+    uint64_t hash = FNV_offset_basis;
+    
+    for (size_t i = 0; i < dword_count; i++) {
+        const uint8_t* bytes = reinterpret_cast<const uint8_t*>(&bytecode[i]);
+        for (int j = 0; j < 4; j++) {
+            hash ^= bytes[j];
+            hash *= FNV_prime;
+        }
+    }
+    
+    // Include version token in hash
+    hash ^= bytecode[0]; // First DWORD is version
+    hash *= FNV_prime;
+    
+    std::stringstream ss;
+    ss << "dx8_" << std::hex << std::setfill('0') << std::setw(16) << hash;
+    return ss.str();
+}
+
 bool ShaderBinaryCache::is_binary_caching_supported() {
     return check_binary_format_support();
 }
@@ -618,12 +692,52 @@ void ShaderBinaryCache::update_lru(const std::string& hash) {
 }
 
 std::string ShaderBinaryCache::get_cache_filename(const std::string& hash) const {
-    // Use first 16 chars of hash for filename
-    return hash.substr(0, 16) + ".shbin";
+    // Create subdirectory structure for better organization
+    // dx8_xxxx... goes to dx8/xx/full_hash.shbin
+    // other hashes go to glsl/xx/full_hash.shbin
+    std::string prefix = hash.substr(0, 4);
+    if (prefix == "dx8_") {
+        // DirectX bytecode cache
+        std::string subdir = hash.length() > 5 ? hash.substr(4, 2) : "00";
+        return "dx8/" + subdir + "/" + hash + ".shbin";
+    } else {
+        // GLSL source cache
+        std::string subdir = hash.length() > 1 ? hash.substr(0, 2) : "00";
+        return "glsl/" + subdir + "/" + hash + ".shbin";
+    }
 }
 
 bool ShaderBinaryCache::create_cache_directory() {
-    return mkdir(config_.disk_cache_directory.c_str(), 0755) == 0 || errno == EEXIST;
+    // Create main cache directory
+    if (mkdir(config_.disk_cache_directory.c_str(), 0755) != 0 && errno != EEXIST) {
+        return false;
+    }
+    
+    // Create subdirectories for dx8 and glsl
+    std::string dx8_dir = config_.disk_cache_directory + "/dx8";
+    std::string glsl_dir = config_.disk_cache_directory + "/glsl";
+    
+    if (mkdir(dx8_dir.c_str(), 0755) != 0 && errno != EEXIST) {
+        return false;
+    }
+    if (mkdir(glsl_dir.c_str(), 0755) != 0 && errno != EEXIST) {
+        return false;
+    }
+    
+    // Create hex subdirectories (00-ff) for both
+    for (int i = 0; i < 256; i++) {
+        std::stringstream ss;
+        ss << std::hex << std::setfill('0') << std::setw(2) << i;
+        std::string hex = ss.str();
+        
+        std::string dx8_subdir = dx8_dir + "/" + hex;
+        std::string glsl_subdir = glsl_dir + "/" + hex;
+        
+        mkdir(dx8_subdir.c_str(), 0755); // Ignore errors
+        mkdir(glsl_subdir.c_str(), 0755); // Ignore errors
+    }
+    
+    return true;
 }
 
 void ShaderBinaryCache::load_disk_index() {

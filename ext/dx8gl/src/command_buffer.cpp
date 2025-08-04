@@ -34,6 +34,63 @@
 
 namespace dx8gl {
 
+// Helper function to populate FixedFunctionState with bump mapping information
+static void populate_fixed_function_state(FixedFunctionState& ff_state, const StateManager& state_manager, DWORD vertex_format) {
+    ff_state.lighting_enabled = state_manager.get_render_state(D3DRS_LIGHTING) != 0;
+    ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
+    ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
+    ff_state.vertex_format = vertex_format;
+    
+    // Count active lights for shader generation
+    ff_state.num_active_lights = 0;
+    if (ff_state.lighting_enabled) {
+        for (int i = 0; i < 8; i++) {
+            if (state_manager.is_light_enabled(i)) {
+                ff_state.num_active_lights++;
+            }
+        }
+    }
+    
+    // Initialize texture operations and bump mapping state
+    for (int i = 0; i < 8; i++) {
+        ff_state.texture_enabled[i] = state_manager.is_texture_enabled(i);
+        ff_state.color_op[i] = state_manager.get_texture_stage_state(i, D3DTSS_COLOROP);
+        ff_state.alpha_op[i] = state_manager.get_texture_stage_state(i, D3DTSS_ALPHAOP);
+        
+        // Copy bump mapping parameters from state manager
+        ff_state.bump_env_mat[i][0] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT00));
+        ff_state.bump_env_mat[i][1] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT01));
+        ff_state.bump_env_mat[i][2] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT10));
+        ff_state.bump_env_mat[i][3] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT11));
+        ff_state.bump_env_lscale[i] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLSCALE));
+        ff_state.bump_env_loffset[i] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLOFFSET));
+    }
+}
+
+// Helper function to set bump mapping uniforms
+static void set_bump_mapping_uniforms(const FixedFunctionShader::UniformLocations* uniforms, const StateManager& state_manager) {
+    for (int i = 0; i < 8; i++) {
+        if (uniforms->bump_env_mat[i] >= 0) {
+            // Get bump mapping parameters from state manager
+            float mat00 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT00));
+            float mat01 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT01));
+            float mat10 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT10));
+            float mat11 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT11));
+            glUniform4f(uniforms->bump_env_mat[i], mat00, mat01, mat10, mat11);
+        }
+        
+        if (uniforms->bump_env_lscale[i] >= 0) {
+            float lscale = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLSCALE));
+            glUniform1f(uniforms->bump_env_lscale[i], lscale);
+        }
+        
+        if (uniforms->bump_env_loffset[i] >= 0) {
+            float loffset = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLOFFSET));
+            glUniform1f(uniforms->bump_env_loffset[i], loffset);
+        }
+    }
+}
+
 CommandBuffer::CommandBuffer(size_t initial_size)
     : write_pos_(0)
     , command_count_(0) {
@@ -486,12 +543,7 @@ void CommandBuffer::execute(StateManager& state_manager,
                 } else {
                     // Use fixed function pipeline
                     FixedFunctionState ff_state;
-                    ff_state.lighting_enabled = state_manager.get_render_state(D3DRS_LIGHTING) != 0;
-                    // TODO: Track texture binding separately
-                    ff_state.texture_enabled[0] = false;
-                    ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
-                    ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
-                    ff_state.vertex_format = stream_sources[0].vb->get_fvf();
+                    populate_fixed_function_state(ff_state, state_manager, stream_sources[0].vb->get_fvf());
                     
                     program = ff_shader->get_program(ff_state);
                     if (!program) {
@@ -614,6 +666,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                                 if (num_active_lights >= 8) break;  // Max 8 lights in shader
                             }
                         }
+                        
+                        // Set bump mapping uniforms
+                        set_bump_mapping_uniforms(uniforms, state_manager);
                     }
                 } else {
                     // Vertex/pixel shader pipeline - uniforms are set by ShaderProgramManager
@@ -754,23 +809,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                     // Use fixed function pipeline
                     DX8GL_INFO("Using fixed function pipeline for DrawIndexedPrimitive");
                     FixedFunctionState ff_state;
-                    ff_state.lighting_enabled = state_manager.get_render_state(D3DRS_LIGHTING) != 0;
-                    ff_state.texture_enabled[0] = state_manager.is_texture_enabled(0);
+                    populate_fixed_function_state(ff_state, state_manager, stream_sources[0].vb->get_fvf());
                     DX8GL_INFO("EXECUTE: DrawIndexedPrimitive texture_enabled[0]=%s", 
                                ff_state.texture_enabled[0] ? "true" : "false");
-                    ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
-                    ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
-                    ff_state.vertex_format = stream_sources[0].vb->get_fvf();
-                    
-                    // Count active lights for shader generation
-                    ff_state.num_active_lights = 0;
-                    if (ff_state.lighting_enabled) {
-                        for (int i = 0; i < 8; i++) {
-                            if (state_manager.is_light_enabled(i)) {
-                                ff_state.num_active_lights++;
-                            }
-                        }
-                    }
                     
                     program = ff_shader->get_program(ff_state);
                     if (!program) {
@@ -905,6 +946,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                             if (num_active_lights >= 8) break;  // Max 8 lights in shader
                         }
                     }
+                    
+                    // Set bump mapping uniforms
+                    set_bump_mapping_uniforms(uniforms, state_manager);
                 }
                 } else {
                     // Vertex/pixel shader pipeline - uniforms are set by ShaderProgramManager
@@ -1143,11 +1187,15 @@ void CommandBuffer::execute(StateManager& state_manager,
                 state_manager.apply_render_states();
                 
                 // Get or create shader for current state
+                // Use FVF stored with the command (fixes HUD vertex format issue)
+                DWORD current_fvf = dpup_cmd->fvf;
+                if (current_fvf == 0) {
+                    // Fallback to position-only if no FVF is set
+                    current_fvf = D3DFVF_XYZ;
+                }
+                
                 FixedFunctionState ff_state;
-                ff_state.lighting_enabled = state_manager.get_render_state(D3DRS_LIGHTING) != 0;
-                ff_state.texture_enabled[0] = state_manager.is_texture_enabled(0);
-                ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
-                ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
+                populate_fixed_function_state(ff_state, state_manager, current_fvf);
                 
                 // Log render state for HUD debugging
                 DX8GL_INFO("  HUD Render State: lighting=%s texture0=%s alpha_test=%s fog=%s", 
@@ -1155,14 +1203,6 @@ void CommandBuffer::execute(StateManager& state_manager,
                            ff_state.texture_enabled[0] ? "ON" : "OFF", 
                            ff_state.alpha_test_enabled ? "ON" : "OFF",
                            ff_state.fog_enabled ? "ON" : "OFF");
-                
-                // Use FVF stored with the command (fixes HUD vertex format issue)
-                DWORD current_fvf = dpup_cmd->fvf;
-                if (current_fvf == 0) {
-                    // Fallback to position-only if no FVF is set
-                    current_fvf = D3DFVF_XYZ;
-                }
-                ff_state.vertex_format = current_fvf;
                 
                 DX8GL_INFO("DrawPrimitiveUP using FVF 0x%04X (XYZRHW=%s)", 
                            current_fvf, (current_fvf & D3DFVF_XYZRHW) ? "YES" : "NO");
@@ -1235,6 +1275,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                     );
                     glUniformMatrix3fv(uniforms->normal_matrix, 1, GL_FALSE, glm::value_ptr(normalMatrix));
                 }
+                
+                // Set bump mapping uniforms
+                set_bump_mapping_uniforms(uniforms, state_manager);
                 
                 // Get or create VAO for this immediate mode rendering
                 VAOManager& vao_mgr = get_vao_manager();
@@ -1348,12 +1391,6 @@ void CommandBuffer::execute(StateManager& state_manager,
                 state_manager.apply_render_states();
                 
                 // Get or create shader for current state
-                FixedFunctionState ff_state;
-                ff_state.lighting_enabled = state_manager.get_render_state(D3DRS_LIGHTING) != 0;
-                ff_state.texture_enabled[0] = state_manager.is_texture_enabled(0);
-                ff_state.alpha_test_enabled = state_manager.get_render_state(D3DRS_ALPHATESTENABLE) != 0;
-                ff_state.fog_enabled = state_manager.get_render_state(D3DRS_FOGENABLE) != 0;
-                
                 // Use FVF stored with the command (fixes vertex format timing issues)
                 DWORD current_fvf = dipup_cmd->fvf;
                 if (current_fvf == 0) {
@@ -1363,7 +1400,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                 
                 DX8GL_INFO("DrawIndexedPrimitiveUP using FVF 0x%04X (XYZRHW=%s)", 
                            current_fvf, (current_fvf & D3DFVF_XYZRHW) ? "YES" : "NO");
-                ff_state.vertex_format = current_fvf;
+                
+                FixedFunctionState ff_state;
+                populate_fixed_function_state(ff_state, state_manager, current_fvf);
                 
                 GLuint program = ff_shader->get_program(ff_state);
                 if (!program) {
@@ -1433,6 +1472,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                     );
                     glUniformMatrix3fv(uniforms->normal_matrix, 1, GL_FALSE, glm::value_ptr(normalMatrix));
                 }
+                
+                // Set bump mapping uniforms
+                set_bump_mapping_uniforms(uniforms, state_manager);
                 
                 // Set up vertex attributes based on FVF
                 FVFParser::setup_vertex_attributes(current_fvf, program, dipup_cmd->vertex_stride);

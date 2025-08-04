@@ -96,3 +96,9 @@ set(SAMPLE_APPS
 foreach(name ${SAMPLE_APPS})
     add_dx8gl_sample(${name} ${name}.cpp)
 endforeach()
+
+# Add device_reset sample
+add_subdirectory(device_reset)
+
+# Add shader_test sample
+add_subdirectory(shader_test)

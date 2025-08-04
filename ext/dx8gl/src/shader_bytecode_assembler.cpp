@@ -206,11 +206,17 @@ DWORD ShaderBytecodeAssembler::build_instruction_token(ShaderBytecode::Opcode op
 DWORD ShaderBytecodeAssembler::build_parameter_token(ShaderBytecode::RegisterType type, 
                                                      int reg_num, bool is_dest, 
                                                      DWORD mask_or_swizzle,
-                                                     ShaderBytecode::SourceModifier src_mod) {
+                                                     ShaderBytecode::SourceModifier src_mod,
+                                                     bool relative_addressing) {
     DWORD token = 0x80000000; // Parameter present bit
     
     // Register type
     token |= (type << 28);
+    
+    // Relative addressing flag (bit 27) - only for source registers
+    if (!is_dest && relative_addressing) {
+        token |= (1 << 27);
+    }
     
     // Register number
     token |= (reg_num & 0x7FF);
@@ -300,6 +306,76 @@ DWORD ShaderBytecodeAssembler::encode_write_mask(const std::string& mask) {
     }
     
     return result;
+}
+
+void ShaderBytecodeAssembler::add_dcl(int reg, ShaderBytecode::RegisterType type, DWORD usage) {
+    // DCL instruction format:
+    // Token 0: DCL opcode
+    // Token 1: Usage token
+    // Token 2: Destination register
+    
+    DWORD inst_token = build_instruction_token(ShaderBytecode::OP_DCL, 2, false);
+    bytecode_.push_back(inst_token);
+    
+    // Usage token contains the usage type and index
+    bytecode_.push_back(usage);
+    
+    // Destination register
+    DWORD dest_token = build_parameter_token(type, reg, true, ShaderBytecode::WRITEMASK_ALL);
+    bytecode_.push_back(dest_token);
+}
+
+void ShaderBytecodeAssembler::add_mova(int dest_reg, int src_reg, 
+                                       ShaderBytecode::RegisterType src_type,
+                                       DWORD src_swizzle, ShaderBytecode::SourceModifier src_mod) {
+    // MOVA instruction - move to address register with truncation
+    DWORD inst_token = build_instruction_token(ShaderBytecode::OP_MOVA, 2, pending_coissue_);
+    bytecode_.push_back(inst_token);
+    
+    // Destination is always address register
+    DWORD dest_token = build_parameter_token(ShaderBytecode::REG_ADDR, dest_reg, true,
+                                            ShaderBytecode::WRITEMASK_ALL);
+    bytecode_.push_back(dest_token);
+    
+    // Source
+    DWORD src_token = build_parameter_token(src_type, src_reg, false, src_swizzle, src_mod);
+    bytecode_.push_back(src_token);
+    
+    // Reset modifiers
+    pending_coissue_ = false;
+}
+
+void ShaderBytecodeAssembler::add_instruction_relative(ShaderBytecode::Opcode opcode,
+                                                      int dest_reg, ShaderBytecode::RegisterType dest_type,
+                                                      DWORD dest_mask, int src_reg,
+                                                      ShaderBytecode::RegisterType src_type,
+                                                      DWORD src_swizzle, int offset,
+                                                      ShaderBytecode::SourceModifier src_mod) {
+    DWORD inst_token = build_instruction_token(opcode, 2, pending_coissue_);
+    bytecode_.push_back(inst_token);
+    
+    // Destination
+    DWORD dest_token = build_dest_parameter(dest_type, dest_reg, dest_mask,
+                                           pending_result_mod_, pending_result_shift_);
+    bytecode_.push_back(dest_token);
+    
+    // Source with relative addressing
+    // The register number includes the offset for relative addressing
+    DWORD src_token = build_parameter_token(src_type, src_reg + offset, false, 
+                                           src_swizzle, src_mod, true);
+    bytecode_.push_back(src_token);
+    
+    // If relative addressing is used, we need an additional token for the address register
+    if (true) { // Always true for this method
+        DWORD addr_token = build_parameter_token(ShaderBytecode::REG_ADDR, 0, false,
+                                                encode_swizzle("x")); // a0.x
+        bytecode_.push_back(addr_token);
+    }
+    
+    // Reset modifiers
+    pending_result_mod_ = ShaderBytecode::RESMOD_NONE;
+    pending_result_shift_ = ShaderBytecode::RESSHIFT_NONE;
+    pending_coissue_ = false;
 }
 
 } // namespace dx8gl

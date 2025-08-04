@@ -33,6 +33,23 @@ uint64_t FixedFunctionState::get_hash() const {
     // Include vertex format in hash
     hash |= ((uint64_t)vertex_format & 0xFFFFFFFF) << 21;
     
+    // Include texture operations in hash for bump mapping
+    for (int i = 0; i < 8; i++) {
+        hash ^= (uint64_t)color_op[i] << (i * 4);
+        hash ^= (uint64_t)alpha_op[i] << (i * 4 + 32);
+        
+        // Check for bump mapping operations
+        if (color_op[i] == D3DTOP_BUMPENVMAP || color_op[i] == D3DTOP_BUMPENVMAPLUMINANCE) {
+            // Include bump mapping parameters in hash
+            hash ^= std::hash<float>()(bump_env_mat[i][0]) << (i + 1);
+            hash ^= std::hash<float>()(bump_env_mat[i][1]) << (i + 2);
+            hash ^= std::hash<float>()(bump_env_mat[i][2]) << (i + 3);
+            hash ^= std::hash<float>()(bump_env_mat[i][3]) << (i + 4);
+            hash ^= std::hash<float>()(bump_env_lscale[i]) << (i + 5);
+            hash ^= std::hash<float>()(bump_env_loffset[i]) << (i + 6);
+        }
+    }
+    
     return hash;
 }
 
@@ -280,6 +297,17 @@ std::string FixedFunctionShader::generate_fragment_shader(const FixedFunctionSta
         }
     }
     
+    // Bump mapping uniforms
+    for (int i = 0; i < tex_count; i++) {
+        if (state.color_op[i] == D3DTOP_BUMPENVMAP || state.color_op[i] == D3DTOP_BUMPENVMAPLUMINANCE) {
+            ss << "uniform vec4 u_bumpEnvMat" << i << ";\n";  // mat00, mat01, mat10, mat11
+            if (state.color_op[i] == D3DTOP_BUMPENVMAPLUMINANCE) {
+                ss << "uniform float u_bumpEnvLScale" << i << ";\n";
+                ss << "uniform float u_bumpEnvLOffset" << i << ";\n";
+            }
+        }
+    }
+    
     if (state.alpha_test_enabled) {
         ss << "uniform float u_alphaRef;\n";
     }
@@ -315,10 +343,50 @@ std::string FixedFunctionShader::generate_fragment_shader(const FixedFunctionSta
         ss << "    color.rgb *= lightColor;\n";
     }
     
-    // Apply textures
+    // Apply texture operations including bump mapping
+    ss << "    vec2 modifiedTexCoord[" << tex_count << "];\n";
+    
+    // Initialize texture coordinates
     for (int i = 0; i < tex_count; i++) {
-        if (state.texture_enabled[i]) {
-            ss << "    color *= texture(u_texture" << i << ", v_texcoord" << i << ");\n";
+        ss << "    modifiedTexCoord[" << i << "] = v_texcoord" << i << ";\n";
+    }
+    
+    // Process texture operations
+    for (int i = 0; i < tex_count; i++) {
+        if (!state.texture_enabled[i]) continue;
+        
+        if (state.color_op[i] == D3DTOP_BUMPENVMAP || state.color_op[i] == D3DTOP_BUMPENVMAPLUMINANCE) {
+            // Bump mapping operation
+            ss << "    {\n";
+            ss << "        // Bump mapping stage " << i << "\n";
+            ss << "        vec4 bumpSample = texture(u_texture" << i << ", v_texcoord" << i << ");\n";
+            ss << "        // Convert from [0,1] to [-1,1] range\n";
+            ss << "        vec2 bumpValue = bumpSample.xy * 2.0 - 1.0;\n";
+            ss << "        \n";
+            ss << "        // Apply bump environment matrix\n";
+            ss << "        vec2 du_dv;\n";
+            ss << "        du_dv.x = dot(bumpValue, u_bumpEnvMat" << i << ".xy);  // mat00 * du + mat01 * dv\n";
+            ss << "        du_dv.y = dot(bumpValue, u_bumpEnvMat" << i << ".zw);  // mat10 * du + mat11 * dv\n";
+            ss << "        \n";
+            
+            // Perturb texture coordinates for next stage
+            int next_stage = i + 1;
+            if (next_stage < tex_count && state.texture_enabled[next_stage]) {
+                ss << "        // Perturb texture coordinates for stage " << next_stage << "\n";
+                ss << "        modifiedTexCoord[" << next_stage << "] += du_dv;\n";
+            }
+            
+            if (state.color_op[i] == D3DTOP_BUMPENVMAPLUMINANCE) {
+                ss << "        \n";
+                ss << "        // Calculate luminance modulation\n";
+                ss << "        float luminance = dot(bumpSample.rgb, vec3(0.299, 0.587, 0.114));\n";
+                ss << "        float lumMod = luminance * u_bumpEnvLScale" << i << " + u_bumpEnvLOffset" << i << ";\n";
+                ss << "        color.rgb *= lumMod;\n";
+            }
+            ss << "    }\n";
+        } else {
+            // Regular texture operation
+            ss << "    color *= texture(u_texture" << i << ", modifiedTexCoord[" << i << "]);\n";
         }
     }
     
@@ -485,6 +553,19 @@ void FixedFunctionShader::cache_uniform_locations(GLuint program) {
         char name[32];
         snprintf(name, sizeof(name), "u_texture%d", i);
         uniforms.texture_sampler[i] = glGetUniformLocation(program, name);
+    }
+    
+    // Bump mapping uniforms
+    for (int i = 0; i < 8; i++) {
+        char name[32];
+        snprintf(name, sizeof(name), "u_bumpEnvMat%d", i);
+        uniforms.bump_env_mat[i] = glGetUniformLocation(program, name);
+        
+        snprintf(name, sizeof(name), "u_bumpEnvLScale%d", i);
+        uniforms.bump_env_lscale[i] = glGetUniformLocation(program, name);
+        
+        snprintf(name, sizeof(name), "u_bumpEnvLOffset%d", i);
+        uniforms.bump_env_loffset[i] = glGetUniformLocation(program, name);
     }
 }
 

@@ -1,0 +1,347 @@
+#include "egl_backend.h"
+#include "logger.h"
+#include <cstring>
+#include <cstdlib>
+
+#ifdef DX8GL_HAS_EGL
+#include <GL/gl.h>
+#include <GLES3/gl3.h>
+
+namespace dx8gl {
+
+DX8EGLBackend::DX8EGLBackend()
+    : display_(EGL_NO_DISPLAY)
+    , context_(EGL_NO_CONTEXT)
+    , config_(nullptr)
+    , framebuffer_id_(0)
+    , color_texture_id_(0)
+    , depth_renderbuffer_id_(0)
+    , framebuffer_data_(nullptr)
+    , width_(0)
+    , height_(0)
+    , initialized_(false) {
+    error_buffer_[0] = '\0';
+}
+
+DX8EGLBackend::~DX8EGLBackend() {
+    shutdown();
+}
+
+bool DX8EGLBackend::initialize(int width, int height) {
+    if (initialized_) {
+        return true;
+    }
+    
+    DX8GL_INFO("Initializing EGL backend %dx%d", width, height);
+    
+    // Get default display
+    display_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+    if (display_ == EGL_NO_DISPLAY) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to get EGL display");
+        DX8GL_ERROR("%s", error_buffer_);
+        return false;
+    }
+    
+    // Initialize EGL
+    EGLint major, minor;
+    if (!eglInitialize(display_, &major, &minor)) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to initialize EGL");
+        DX8GL_ERROR("%s", error_buffer_);
+        return false;
+    }
+    
+    DX8GL_INFO("EGL version: %d.%d", major, minor);
+    
+    // Check for surfaceless context extension
+    const char* extensions = eglQueryString(display_, EGL_EXTENSIONS);
+    if (!extensions || !strstr(extensions, "EGL_KHR_surfaceless_context")) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "EGL_KHR_surfaceless_context not supported");
+        DX8GL_ERROR("%s", error_buffer_);
+        eglTerminate(display_);
+        display_ = EGL_NO_DISPLAY;
+        return false;
+    }
+    
+    // Choose config
+    const EGLint config_attribs[] = {
+        EGL_SURFACE_TYPE, EGL_PBUFFER_BIT,  // We'll use surfaceless, but need a valid config
+        EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT,
+        EGL_RED_SIZE, 8,
+        EGL_GREEN_SIZE, 8,
+        EGL_BLUE_SIZE, 8,
+        EGL_ALPHA_SIZE, 8,
+        EGL_DEPTH_SIZE, 24,
+        EGL_STENCIL_SIZE, 8,
+        EGL_NONE
+    };
+    
+    EGLint num_configs;
+    if (!eglChooseConfig(display_, config_attribs, &config_, 1, &num_configs) || num_configs == 0) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to choose EGL config");
+        DX8GL_ERROR("%s", error_buffer_);
+        eglTerminate(display_);
+        display_ = EGL_NO_DISPLAY;
+        return false;
+    }
+    
+    // Create context
+    const EGLint context_attribs[] = {
+        EGL_CONTEXT_CLIENT_VERSION, 3,  // OpenGL ES 3.0
+        EGL_NONE
+    };
+    
+    context_ = eglCreateContext(display_, config_, EGL_NO_CONTEXT, context_attribs);
+    if (context_ == EGL_NO_CONTEXT) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to create EGL context");
+        DX8GL_ERROR("%s", error_buffer_);
+        eglTerminate(display_);
+        display_ = EGL_NO_DISPLAY;
+        return false;
+    }
+    
+    // Make context current with no surface (surfaceless)
+    if (!eglMakeCurrent(display_, EGL_NO_SURFACE, EGL_NO_SURFACE, context_)) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to make EGL context current");
+        DX8GL_ERROR("%s", error_buffer_);
+        eglDestroyContext(display_, context_);
+        context_ = EGL_NO_CONTEXT;
+        eglTerminate(display_);
+        display_ = EGL_NO_DISPLAY;
+        return false;
+    }
+    
+    // Create offscreen framebuffer
+    if (!create_offscreen_framebuffer(width, height)) {
+        eglMakeCurrent(display_, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+        eglDestroyContext(display_, context_);
+        context_ = EGL_NO_CONTEXT;
+        eglTerminate(display_);
+        display_ = EGL_NO_DISPLAY;
+        return false;
+    }
+    
+    // Query OpenGL info
+    const char* vendor = (const char*)glGetString(GL_VENDOR);
+    const char* renderer = (const char*)glGetString(GL_RENDERER);
+    const char* version = (const char*)glGetString(GL_VERSION);
+    const char* glsl_version = (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+    
+    DX8GL_INFO("=== EGL Backend OpenGL Capabilities ===");
+    DX8GL_INFO("OpenGL vendor: %s", vendor ? vendor : "Unknown");
+    DX8GL_INFO("OpenGL renderer: %s", renderer ? renderer : "Unknown");
+    DX8GL_INFO("OpenGL version: %s", version ? version : "Unknown");
+    DX8GL_INFO("GLSL version: %s", glsl_version ? glsl_version : "Unknown");
+    
+    width_ = width;
+    height_ = height;
+    initialized_ = true;
+    
+    return true;
+}
+
+bool DX8EGLBackend::create_offscreen_framebuffer(int width, int height) {
+    // Generate framebuffer
+    glGenFramebuffers(1, &framebuffer_id_);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer_id_);
+    
+    // Create color texture
+    glGenTextures(1, &color_texture_id_);
+    glBindTexture(GL_TEXTURE_2D, color_texture_id_);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, color_texture_id_, 0);
+    
+    // Create depth renderbuffer
+    glGenRenderbuffers(1, &depth_renderbuffer_id_);
+    glBindRenderbuffer(GL_RENDERBUFFER, depth_renderbuffer_id_);
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH24_STENCIL8, width, height);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_RENDERBUFFER, depth_renderbuffer_id_);
+    
+    // Check framebuffer completeness
+    GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    if (status != GL_FRAMEBUFFER_COMPLETE) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Framebuffer incomplete: 0x%x", status);
+        DX8GL_ERROR("%s", error_buffer_);
+        destroy_offscreen_framebuffer();
+        return false;
+    }
+    
+    // Allocate CPU-side buffer for readback
+    size_t buffer_size = width * height * 4; // RGBA
+    framebuffer_data_ = malloc(buffer_size);
+    if (!framebuffer_data_) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to allocate framebuffer data (%zu bytes)", buffer_size);
+        DX8GL_ERROR("%s", error_buffer_);
+        destroy_offscreen_framebuffer();
+        return false;
+    }
+    
+    // Clear to black
+    memset(framebuffer_data_, 0, buffer_size);
+    
+    DX8GL_INFO("Created offscreen framebuffer %dx%d", width, height);
+    return true;
+}
+
+void DX8EGLBackend::destroy_offscreen_framebuffer() {
+    if (framebuffer_id_) {
+        glDeleteFramebuffers(1, &framebuffer_id_);
+        framebuffer_id_ = 0;
+    }
+    
+    if (color_texture_id_) {
+        glDeleteTextures(1, &color_texture_id_);
+        color_texture_id_ = 0;
+    }
+    
+    if (depth_renderbuffer_id_) {
+        glDeleteRenderbuffers(1, &depth_renderbuffer_id_);
+        depth_renderbuffer_id_ = 0;
+    }
+    
+    if (framebuffer_data_) {
+        free(framebuffer_data_);
+        framebuffer_data_ = nullptr;
+    }
+}
+
+bool DX8EGLBackend::read_framebuffer_data() {
+    if (!framebuffer_id_ || !framebuffer_data_) {
+        return false;
+    }
+    
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer_id_);
+    glReadPixels(0, 0, width_, height_, GL_RGBA, GL_UNSIGNED_BYTE, framebuffer_data_);
+    
+    return true;
+}
+
+void DX8EGLBackend::shutdown() {
+    if (!initialized_) {
+        return;
+    }
+    
+    DX8GL_INFO("Shutting down EGL backend");
+    
+    if (display_ != EGL_NO_DISPLAY) {
+        eglMakeCurrent(display_, EGL_NO_SURFACE, EGL_NO_SURFACE, context_);
+        
+        destroy_offscreen_framebuffer();
+        
+        if (context_ != EGL_NO_CONTEXT) {
+            eglDestroyContext(display_, context_);
+            context_ = EGL_NO_CONTEXT;
+        }
+        
+        eglTerminate(display_);
+        display_ = EGL_NO_DISPLAY;
+    }
+    
+    width_ = 0;
+    height_ = 0;
+    initialized_ = false;
+}
+
+bool DX8EGLBackend::make_current() {
+    if (!initialized_ || display_ == EGL_NO_DISPLAY || context_ == EGL_NO_CONTEXT) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Context not initialized");
+        return false;
+    }
+    
+    if (!eglMakeCurrent(display_, EGL_NO_SURFACE, EGL_NO_SURFACE, context_)) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to make EGL context current");
+        DX8GL_ERROR("%s", error_buffer_);
+        return false;
+    }
+    
+    // Bind our framebuffer
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer_id_);
+    
+    return true;
+}
+
+void* DX8EGLBackend::get_framebuffer(int& width, int& height, int& format) {
+    width = width_;
+    height = height_;
+    format = GL_RGBA;
+    
+    // Read framebuffer data from GPU
+    if (initialized_ && framebuffer_data_) {
+        read_framebuffer_data();
+    }
+    
+    return framebuffer_data_;
+}
+
+bool DX8EGLBackend::resize(int width, int height) {
+    if (!initialized_) {
+        return false;
+    }
+    
+    if (width == width_ && height == height_) {
+        return true;
+    }
+    
+    DX8GL_INFO("Resizing EGL backend from %dx%d to %dx%d", 
+               width_, height_, width, height);
+    
+    // Make context current
+    if (!eglMakeCurrent(display_, EGL_NO_SURFACE, EGL_NO_SURFACE, context_)) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to make context current for resize");
+        DX8GL_ERROR("%s", error_buffer_);
+        return false;
+    }
+    
+    // Destroy old framebuffer
+    destroy_offscreen_framebuffer();
+    
+    // Create new framebuffer
+    if (!create_offscreen_framebuffer(width, height)) {
+        return false;
+    }
+    
+    width_ = width;
+    height_ = height;
+    
+    return true;
+}
+
+bool DX8EGLBackend::has_extension(const char* extension) const {
+    if (!initialized_ || !extension) {
+        return false;
+    }
+    
+    // Check EGL extensions
+    const char* egl_extensions = eglQueryString(display_, EGL_EXTENSIONS);
+    if (egl_extensions && strstr(egl_extensions, extension)) {
+        return true;
+    }
+    
+    // Check OpenGL extensions
+    const char* gl_extensions = (const char*)glGetString(GL_EXTENSIONS);
+    if (gl_extensions && strstr(gl_extensions, extension)) {
+        return true;
+    }
+    
+    return false;
+}
+
+const char* DX8EGLBackend::get_error() const {
+    return error_buffer_[0] ? error_buffer_ : "No error";
+}
+
+} // namespace dx8gl
+
+#endif // DX8GL_HAS_EGL

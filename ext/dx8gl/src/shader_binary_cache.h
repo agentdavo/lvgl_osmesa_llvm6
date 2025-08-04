@@ -10,6 +10,7 @@
 #include <list>
 #include "GL/gl.h"
 #include "GL/glext.h"
+#include "d3d8_types.h" // For DWORD
 
 namespace dx8gl {
 
@@ -125,6 +126,9 @@ public:
     // Utility functions
     static std::string compute_source_hash(const std::string& vertex_source,
                                           const std::string& fragment_source);
+    static std::string compute_bytecode_hash(const std::vector<DWORD>& vertex_bytecode,
+                                            const std::vector<DWORD>& pixel_bytecode);
+    static std::string compute_bytecode_hash(const DWORD* bytecode, size_t dword_count);
     static bool is_binary_caching_supported();
     static std::vector<ShaderBinaryFormat> get_supported_binary_formats();
     

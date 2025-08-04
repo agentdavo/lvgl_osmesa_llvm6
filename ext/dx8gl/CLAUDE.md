@@ -15,6 +15,14 @@ dx8gl is a DirectX 8.1 to OpenGL ES 3.0 / OpenGL 3.3 Core translation library un
 - Thread-safe design with shader compilation
 - Vertex Array Object (VAO) support for efficient rendering
 
+## Rendering Backends
+
+dx8gl supports multiple rendering backends:
+- **OSMesa Backend** (default): Software rendering, no display required
+- **EGL Backend** (optional): Hardware acceleration via EGL surfaceless context
+
+Select backend via environment variable (`DX8GL_BACKEND=osmesa|egl`) or API configuration.
+
 ## Architecture
 
 The dx8gl library acts as a shim between DirectX 8 applications and OpenGL ES 2.0:

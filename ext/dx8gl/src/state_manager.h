@@ -210,6 +210,9 @@ public:
     // Reset to default state
     void reset();
     
+    // Invalidate cached states (forces full state reapplication)
+    void invalidate_cached_render_states();
+    
     // FVF tracking
     void set_current_fvf(DWORD fvf) { current_fvf_ = fvf; }
     DWORD get_current_fvf() const { return current_fvf_; }

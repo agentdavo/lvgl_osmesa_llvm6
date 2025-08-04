@@ -35,6 +35,11 @@ Direct3DTexture8::Direct3DTexture8(Direct3DDevice8* device, UINT width, UINT hei
 Direct3DTexture8::~Direct3DTexture8() {
     DX8GL_DEBUG("Direct3DTexture8 destructor");
     
+    // Unregister from device tracking
+    if (device_) {
+        device_->unregister_texture(this);
+    }
+    
     // Release all surfaces
     for (auto surface : surfaces_) {
         if (surface) {

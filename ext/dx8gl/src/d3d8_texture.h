@@ -57,6 +57,7 @@ public:
     // Internal methods
     GLuint get_gl_texture() const { return gl_texture_; }
     void bind(UINT sampler) const;
+    D3DPOOL get_pool() const { return pool_; }
 
 private:
     std::atomic<LONG> ref_count_;

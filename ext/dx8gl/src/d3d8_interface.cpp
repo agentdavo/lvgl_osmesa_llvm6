@@ -155,9 +155,39 @@ UINT Direct3D8::GetAdapterModeCount(UINT Adapter) {
         return 0;
     }
     
-    // Return a reasonable number of display modes
-    DX8GL_INFO("GetAdapterModeCount(%u) called - returning 10 common display modes for OSMesa", Adapter);
-    return 10;  // We'll support 10 common modes
+    // In DX8, GetAdapterModeCount doesn't take a format parameter
+    // So we return total count of all modes for all formats
+    // We support multiple resolutions in multiple formats
+    const struct {
+        UINT width, height;
+    } resolutions[] = {
+        { 640, 480 },
+        { 800, 600 },
+        { 1024, 768 },
+        { 1280, 720 },
+        { 1280, 960 },
+        { 1280, 1024 },
+        { 1366, 768 },
+        { 1600, 900 },
+        { 1600, 1200 },
+        { 1920, 1080 },
+        { 2560, 1440 }
+    };
+    
+    const D3DFORMAT formats[] = {
+        D3DFMT_R5G6B5,      // 16-bit
+        D3DFMT_X1R5G5B5,    // 16-bit
+        D3DFMT_X8R8G8B8,    // 32-bit
+        D3DFMT_A8R8G8B8     // 32-bit with alpha
+    };
+    
+    // Total modes = resolutions * formats
+    UINT total_modes = (sizeof(resolutions) / sizeof(resolutions[0])) * 
+                      (sizeof(formats) / sizeof(formats[0]));
+    
+    DX8GL_INFO("GetAdapterModeCount(%u) called - returning %u display modes for OSMesa", 
+               Adapter, total_modes);
+    return total_modes;
 }
 
 HRESULT Direct3D8::EnumAdapterModes(UINT Adapter, UINT Mode, D3DDISPLAYMODE* pMode) {
@@ -172,33 +202,51 @@ HRESULT Direct3D8::EnumAdapterModes(UINT Adapter, UINT Mode, D3DDISPLAYMODE* pMo
         return D3DERR_INVALIDCALL;
     }
     
-    // Common display modes for OSMesa
+    // Define the resolutions and formats we support
     const struct {
         UINT width, height;
-        D3DFORMAT format;
-    } modes[] = {
-        { 640, 480, D3DFMT_X8R8G8B8 },
-        { 800, 600, D3DFMT_X8R8G8B8 },
-        { 1024, 768, D3DFMT_X8R8G8B8 },
-        { 1280, 960, D3DFMT_X8R8G8B8 },
-        { 1280, 1024, D3DFMT_X8R8G8B8 },
-        { 1366, 768, D3DFMT_X8R8G8B8 },
-        { 1600, 900, D3DFMT_X8R8G8B8 },
-        { 1600, 1200, D3DFMT_X8R8G8B8 },
-        { 1920, 1080, D3DFMT_X8R8G8B8 },
-        { 2560, 1440, D3DFMT_X8R8G8B8 }
+    } resolutions[] = {
+        { 640, 480 },
+        { 800, 600 },
+        { 1024, 768 },
+        { 1280, 720 },
+        { 1280, 960 },
+        { 1280, 1024 },
+        { 1366, 768 },
+        { 1600, 900 },
+        { 1600, 1200 },
+        { 1920, 1080 },
+        { 2560, 1440 }
     };
     
-    if (Mode >= 10) {
+    const struct {
+        D3DFORMAT format;
+        UINT refresh_rate;
+    } formats[] = {
+        { D3DFMT_R5G6B5, 60 },      // 16-bit
+        { D3DFMT_X1R5G5B5, 60 },    // 16-bit
+        { D3DFMT_X8R8G8B8, 60 },    // 32-bit
+        { D3DFMT_A8R8G8B8, 60 }     // 32-bit with alpha
+    };
+    
+    const UINT num_resolutions = sizeof(resolutions) / sizeof(resolutions[0]);
+    const UINT num_formats = sizeof(formats) / sizeof(formats[0]);
+    const UINT total_modes = num_resolutions * num_formats;
+    
+    if (Mode >= total_modes) {
         return D3DERR_INVALIDCALL;
     }
     
-    pMode->Width = modes[Mode].width;
-    pMode->Height = modes[Mode].height;
-    pMode->RefreshRate = 60;
-    pMode->Format = modes[Mode].format;
+    // Calculate which resolution and format this mode index corresponds to
+    UINT format_index = Mode / num_resolutions;
+    UINT resolution_index = Mode % num_resolutions;
     
-    DX8GL_TRACE("EnumAdapterModes(%u, %u) -> %ux%u@%uHz %d (OSMesa)", 
+    pMode->Width = resolutions[resolution_index].width;
+    pMode->Height = resolutions[resolution_index].height;
+    pMode->RefreshRate = formats[format_index].refresh_rate;
+    pMode->Format = formats[format_index].format;
+    
+    DX8GL_TRACE("EnumAdapterModes(%u, %u) -> %ux%u@%uHz format=0x%08X (OSMesa)", 
                 Adapter, Mode, pMode->Width, pMode->Height, 
                 pMode->RefreshRate, pMode->Format);
     return D3D_OK;
@@ -806,6 +854,221 @@ void Direct3D8::populate_device_caps(AdapterInfo& adapter) {
 D3DFORMAT Direct3D8::get_desktop_format() {
     // Default to 32-bit XRGB
     return D3DFMT_X8R8G8B8;
+}
+
+bool Direct3D8::find_color_mode(D3DFORMAT format, UINT width, UINT height, UINT* out_mode) {
+    DX8GL_INFO("find_color_mode: format=0x%08X, resolution=%ux%u", format, width, height);
+    
+    // Get the mode count for this specific format
+    UINT mode_count = GetAdapterModeCount(0);
+    if (mode_count == 0) {
+        DX8GL_WARN("find_color_mode: No modes available");
+        return false;
+    }
+    
+    // Look for exact match first
+    bool found = false;
+    UINT best_mode = 0;
+    UINT best_refresh = 0;
+    
+    for (UINT i = 0; i < mode_count; i++) {
+        D3DDISPLAYMODE mode;
+        if (SUCCEEDED(EnumAdapterModes(0, i, &mode))) {
+            // Check for exact resolution match with highest refresh rate
+            if (mode.Width == width && mode.Height == height && mode.Format == format) {
+                if (mode.RefreshRate >= best_refresh) {
+                    best_refresh = mode.RefreshRate;
+                    best_mode = i;
+                    found = true;
+                    DX8GL_DEBUG("find_color_mode: Found exact match at mode %u: %ux%u@%uHz", 
+                               i, mode.Width, mode.Height, mode.RefreshRate);
+                }
+            }
+        }
+    }
+    
+    // If no exact match, find the closest larger resolution
+    if (!found) {
+        UINT closest_width = UINT_MAX;
+        UINT closest_height = UINT_MAX;
+        
+        for (UINT i = 0; i < mode_count; i++) {
+            D3DDISPLAYMODE mode;
+            if (SUCCEEDED(EnumAdapterModes(0, i, &mode))) {
+                if (mode.Format == format && mode.Width >= width && mode.Height >= height) {
+                    // Check if this is closer than our current best
+                    if (mode.Width <= closest_width && mode.Height <= closest_height) {
+                        if (mode.Width < closest_width || mode.Height < closest_height ||
+                            mode.RefreshRate > best_refresh) {
+                            closest_width = mode.Width;
+                            closest_height = mode.Height;
+                            best_refresh = mode.RefreshRate;
+                            best_mode = i;
+                            found = true;
+                            DX8GL_DEBUG("find_color_mode: Found larger match at mode %u: %ux%u@%uHz", 
+                                       i, mode.Width, mode.Height, mode.RefreshRate);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    if (found && out_mode) {
+        *out_mode = best_mode;
+        DX8GL_INFO("find_color_mode: Selected mode %u", best_mode);
+    }
+    
+    return found;
+}
+
+bool Direct3D8::find_z_mode(D3DFORMAT color_format, D3DFORMAT backbuffer_format, D3DFORMAT* out_z_format) {
+    DX8GL_INFO("find_z_mode: color_format=0x%08X, backbuffer_format=0x%08X", 
+               color_format, backbuffer_format);
+    
+    // Test depth/stencil formats in order of preference (highest quality first)
+    // Prefer formats with stencil buffer
+    if (test_z_mode(color_format, backbuffer_format, D3DFMT_D24S8)) {
+        *out_z_format = D3DFMT_D24S8;
+        DX8GL_INFO("find_z_mode: Found D24S8 (24-bit depth, 8-bit stencil)");
+        return true;
+    }
+    
+    if (test_z_mode(color_format, backbuffer_format, D3DFMT_D32)) {
+        *out_z_format = D3DFMT_D32;
+        DX8GL_INFO("find_z_mode: Found D32 (32-bit depth, no stencil)");
+        return true;
+    }
+    
+    if (test_z_mode(color_format, backbuffer_format, D3DFMT_D24X8)) {
+        *out_z_format = D3DFMT_D24X8;
+        DX8GL_INFO("find_z_mode: Found D24X8 (24-bit depth, no stencil)");
+        return true;
+    }
+    
+    if (test_z_mode(color_format, backbuffer_format, D3DFMT_D24X4S4)) {
+        *out_z_format = D3DFMT_D24X4S4;
+        DX8GL_INFO("find_z_mode: Found D24X4S4 (24-bit depth, 4-bit stencil)");
+        return true;
+    }
+    
+    if (test_z_mode(color_format, backbuffer_format, D3DFMT_D16)) {
+        *out_z_format = D3DFMT_D16;
+        DX8GL_INFO("find_z_mode: Found D16 (16-bit depth, no stencil)");
+        return true;
+    }
+    
+    if (test_z_mode(color_format, backbuffer_format, D3DFMT_D15S1)) {
+        *out_z_format = D3DFMT_D15S1;
+        DX8GL_INFO("find_z_mode: Found D15S1 (15-bit depth, 1-bit stencil)");
+        return true;
+    }
+    
+    DX8GL_WARN("find_z_mode: No compatible depth/stencil format found");
+    return false;
+}
+
+bool Direct3D8::test_z_mode(D3DFORMAT color_format, D3DFORMAT backbuffer_format, D3DFORMAT z_format) {
+    // First check if the depth format is supported
+    HRESULT hr = CheckDeviceFormat(0, D3DDEVTYPE_HAL, color_format, 
+                                   D3DUSAGE_DEPTHSTENCIL, D3DRTYPE_SURFACE, z_format);
+    if (FAILED(hr)) {
+        DX8GL_DEBUG("test_z_mode: CheckDeviceFormat failed for z_format=0x%08X", z_format);
+        return false;
+    }
+    
+    // Then check if it's compatible with the render target format
+    hr = CheckDepthStencilMatch(0, D3DDEVTYPE_HAL, color_format, 
+                                backbuffer_format, z_format);
+    if (FAILED(hr)) {
+        DX8GL_DEBUG("test_z_mode: CheckDepthStencilMatch failed for z_format=0x%08X", z_format);
+        return false;
+    }
+    
+    DX8GL_DEBUG("test_z_mode: z_format=0x%08X is compatible", z_format);
+    return true;
+}
+
+bool Direct3D8::FindColorAndZMode(UINT width, UINT height, UINT bit_depth,
+                                 D3DFORMAT* out_color_format, D3DFORMAT* out_backbuffer_format,
+                                 D3DFORMAT* out_z_format) {
+    DX8GL_INFO("FindColorAndZMode: %ux%u %u-bit", width, height, bit_depth);
+    
+    // Format tables based on bit depth
+    static const D3DFORMAT formats16[] = {
+        D3DFMT_R5G6B5,
+        D3DFMT_X1R5G5B5,
+        D3DFMT_A1R5G5B5
+    };
+    
+    static const D3DFORMAT formats32[] = {
+        D3DFMT_X8R8G8B8,
+        D3DFMT_A8R8G8B8
+    };
+    
+    const D3DFORMAT* format_table;
+    int format_count;
+    
+    if (bit_depth == 16) {
+        format_table = formats16;
+        format_count = sizeof(formats16) / sizeof(formats16[0]);
+    } else if (bit_depth == 32) {
+        format_table = formats32;
+        format_count = sizeof(formats32) / sizeof(formats32[0]);
+    } else {
+        DX8GL_WARN("FindColorAndZMode: Unsupported bit depth %u", bit_depth);
+        return false;
+    }
+    
+    // Try to find a valid color mode
+    bool found = false;
+    UINT mode = 0;
+    int format_index;
+    
+    for (format_index = 0; format_index < format_count; format_index++) {
+        if (find_color_mode(format_table[format_index], width, height, &mode)) {
+            found = true;
+            break;
+        }
+    }
+    
+    if (!found) {
+        DX8GL_WARN("FindColorAndZMode: No suitable color mode found");
+        return false;
+    }
+    
+    // Set the color and backbuffer formats
+    if (out_color_format) {
+        *out_color_format = format_table[format_index];
+    }
+    if (out_backbuffer_format) {
+        *out_backbuffer_format = format_table[format_index];
+    }
+    
+    // Promote 32-bit X8R8G8B8 to A8R8G8B8 if supported
+    if (bit_depth == 32 && format_table[format_index] == D3DFMT_X8R8G8B8) {
+        HRESULT hr = CheckDeviceType(0, D3DDEVTYPE_HAL, D3DFMT_X8R8G8B8, 
+                                    D3DFMT_A8R8G8B8, TRUE);
+        if (SUCCEEDED(hr) && out_backbuffer_format) {
+            *out_backbuffer_format = D3DFMT_A8R8G8B8;
+            DX8GL_INFO("FindColorAndZMode: Promoted X8R8G8B8 to A8R8G8B8");
+        }
+    }
+    
+    // Find a compatible Z buffer format
+    D3DFORMAT color_fmt = out_color_format ? *out_color_format : format_table[format_index];
+    D3DFORMAT backbuffer_fmt = out_backbuffer_format ? *out_backbuffer_format : format_table[format_index];
+    
+    bool z_found = find_z_mode(color_fmt, backbuffer_fmt, out_z_format);
+    if (!z_found) {
+        DX8GL_WARN("FindColorAndZMode: No compatible Z buffer format found");
+        // Still return true since we found color formats
+    }
+    
+    DX8GL_INFO("FindColorAndZMode: Success - color=0x%08X, backbuffer=0x%08X, z=0x%08X",
+               color_fmt, backbuffer_fmt, out_z_format ? *out_z_format : 0);
+    
+    return true;
 }
 
 } // namespace dx8gl

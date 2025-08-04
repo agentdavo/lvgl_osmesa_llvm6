@@ -1,5 +1,13 @@
 #!/bin/bash
 # Script to debug dx8_cube with gdb
+# Usage: ./debug_dx8_cube.sh [--backend=osmesa|egl]
+
+# Source common backend script
+SCRIPT_DIR="$(dirname "$0")"
+source "$SCRIPT_DIR/common_backend.sh"
+
+# Parse backend option
+parse_backend_option "$@"
 
 echo "Debugging dx8_cube with gdb..."
 

@@ -2,6 +2,7 @@
 // Provides on-screen display of FPS, debug info, and controls
 
 #include "hud_system.h"
+#include "d3d8_device.h"
 #include <cstring>
 #include <algorithm>
 #include <sstream>
@@ -212,6 +213,11 @@ void HUDSystem::Update(float deltaTime) {
         m_frameCount = 0;
         m_fpsUpdateTimer = 0.0f;
     }
+    
+    // Update device statistics if stats are being shown
+    if (m_flags & HUD_SHOW_STATS) {
+        UpdateDeviceStatistics();
+    }
 }
 
 void HUDSystem::Render() {
@@ -376,6 +382,24 @@ void HUDSystem::SetStatValue(const std::string& name, const std::string& value) 
     } else {
         m_stats.push_back({name, value});
     }
+}
+
+void HUDSystem::UpdateDeviceStatistics() {
+    if (!m_device) return;
+    
+    // Cast to our Direct3DDevice8 implementation
+    Direct3DDevice8* dx8Device = static_cast<Direct3DDevice8*>(m_device);
+    
+    // Get statistics from device
+    SetStatValue("Matrix Changes", std::to_string(dx8Device->get_matrix_changes()));
+    SetStatValue("Render State Changes", std::to_string(dx8Device->get_render_state_changes()));
+    SetStatValue("Texture State Changes", std::to_string(dx8Device->get_texture_state_changes()));
+    SetStatValue("Texture Changes", std::to_string(dx8Device->get_texture_changes()));
+    SetStatValue("Draw Calls", std::to_string(dx8Device->get_draw_calls()));
+    SetStatValue("Triangles", std::to_string(dx8Device->get_triangles_drawn()));
+    SetStatValue("Vertices", std::to_string(dx8Device->get_vertices_processed()));
+    SetStatValue("Clear Calls", std::to_string(dx8Device->get_clear_calls()));
+    SetStatValue("Shader Changes", std::to_string(dx8Device->get_shader_changes()));
 }
 
 void HUDSystem::RenderText(const std::string& text, int x, int y, D3DCOLOR color) {

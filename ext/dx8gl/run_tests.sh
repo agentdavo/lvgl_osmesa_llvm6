@@ -25,7 +25,7 @@ cmake --build "$BUILD_DIR" --target dx8gl_clear_test dx8gl_triangle dx8gl_textur
     dx8gl_complex_vertex_shader_test dx8gl_shader_translation_test \
     dx8gl_pixel_shader_test dx8gl_shader_modifiers_test \
     dx8gl_bytecode_assembler_test dx8gl_constant_batching_test \
-    dx8gl_test_shader_features -j4
+    dx8gl_test_shader_features dx8gl_shader_test -j4
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Failed to build samples${NC}"
@@ -66,6 +66,21 @@ if [ -f "./dx8gl_test_shader_features" ]; then
     LD_LIBRARY_PATH="../:$LD_LIBRARY_PATH" ./dx8gl_test_shader_features
 else
     echo -e "${RED}Shader feature test not found${NC}"
+fi
+
+# Run shader translation and cache tests
+echo -e "\n${YELLOW}Running shader translation and cache tests...${NC}"
+if [ -f "$BUILD_DIR/ext/dx8gl/samples/shader_test/dx8gl_shader_test" ]; then
+    LD_LIBRARY_PATH="$BUILD_DIR/ext/dx8gl:$LD_LIBRARY_PATH" "$BUILD_DIR/ext/dx8gl/samples/shader_test/dx8gl_shader_test"
+    SHADER_TEST_RESULT=$?
+    if [ $SHADER_TEST_RESULT -eq 0 ]; then
+        echo -e "${GREEN}Shader translation tests PASSED${NC}"
+    else
+        echo -e "${RED}Shader translation tests FAILED${NC}"
+        TEST_RESULT=1
+    fi
+else
+    echo -e "${RED}Shader translation test not found${NC}"
 fi
 
 exit $TEST_RESULT

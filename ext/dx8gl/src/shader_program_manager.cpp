@@ -1,6 +1,7 @@
 #include "shader_program_manager.h"
 #include "vertex_shader_manager.h"
 #include "pixel_shader_manager.h"
+#include "shader_binary_cache.h"
 #include "logger.h"
 #include <cstring>
 #include <vector>
@@ -11,7 +12,8 @@ ShaderProgramManager::ShaderProgramManager()
     : vertex_shader_manager_(nullptr),
       pixel_shader_manager_(nullptr),
       current_program_(nullptr),
-      current_valid_(false) {
+      current_valid_(false),
+      default_pixel_shader_(0) {
     current_key_.vertex_shader_handle = 0;
     current_key_.pixel_shader_handle = 0;
 }
@@ -41,6 +43,12 @@ void ShaderProgramManager::cleanup() {
         }
     }
     program_cache_.clear();
+    
+    // Delete default pixel shader if created
+    if (default_pixel_shader_) {
+        glDeleteShader(default_pixel_shader_);
+        default_pixel_shader_ = 0;
+    }
     
     current_program_ = nullptr;
     current_valid_ = false;
@@ -186,6 +194,26 @@ GLuint ShaderProgramManager::link_shaders(GLuint vertex_shader, GLuint pixel_sha
     // Log shader objects being linked
     DX8GL_INFO("ShaderProgramManager: Linking vertex shader %u with pixel shader %u", vertex_shader, pixel_shader);
     
+    // Try to compute bytecode hash for cache lookup
+    std::string cache_hash;
+    if (g_shader_binary_cache && vertex_shader_manager_ && pixel_shader_manager_) {
+        auto* vs_info = vertex_shader_manager_->get_current_shader();
+        DWORD ps_handle = pixel_shader_manager_->get_current_shader_handle();
+        
+        if (vs_info && !vs_info->function_bytecode.empty()) {
+            // For now, if no pixel shader, use empty bytecode
+            if (ps_handle == 0) {
+                cache_hash = ShaderBinaryCache::compute_bytecode_hash(vs_info->function_bytecode, 
+                                                                     std::vector<DWORD>());
+            } else {
+                // TODO: Get pixel shader bytecode when pixel shader manager stores it
+                cache_hash = ShaderBinaryCache::compute_bytecode_hash(vs_info->function_bytecode,
+                                                                     std::vector<DWORD>());
+            }
+            DX8GL_INFO("Program cache hash: %s", cache_hash.c_str());
+        }
+    }
+    
     // Get and log vertex shader source for debugging
     GLint vs_length = 0;
     glGetShaderiv(vertex_shader, GL_SHADER_SOURCE_LENGTH, &vs_length);
@@ -220,30 +248,49 @@ GLuint ShaderProgramManager::link_shaders(GLuint vertex_shader, GLuint pixel_sha
         glAttachShader(program, pixel_shader);
     }
     
-    // Bind standard attribute locations before linking
-    glBindAttribLocation(program, 0, "a_position");
-    glBindAttribLocation(program, 1, "a_normal");
-    glBindAttribLocation(program, 2, "a_color");
-    glBindAttribLocation(program, 3, "a_texcoord0");
-    glBindAttribLocation(program, 4, "a_texcoord1");
-    glBindAttribLocation(program, 5, "a_texcoord2");
-    glBindAttribLocation(program, 6, "a_texcoord3");
-    
-    // Link the program
-    glLinkProgram(program);
-    
-    // Check link status
-    GLint link_status;
-    glGetProgramiv(program, GL_LINK_STATUS, &link_status);
-    if (!link_status) {
-        char info_log[1024];
-        glGetProgramInfoLog(program, sizeof(info_log), nullptr, info_log);
-        DX8GL_ERROR("ShaderProgramManager: Program link failed: %s", info_log);
-        glDeleteProgram(program);
-        return 0;
+    // Try to load from cache first
+    bool loaded_from_cache = false;
+    if (g_shader_binary_cache && !cache_hash.empty()) {
+        loaded_from_cache = g_shader_binary_cache->load_shader_binary(program, cache_hash);
+        if (loaded_from_cache) {
+            DX8GL_INFO("ShaderProgramManager: Loaded program from cache (hash: %s)", cache_hash.c_str());
+        }
     }
     
-    DX8GL_INFO("ShaderProgramManager: Successfully linked program %u", program);
+    if (!loaded_from_cache) {
+        // Bind standard attribute locations before linking
+        glBindAttribLocation(program, 0, "a_position");
+        glBindAttribLocation(program, 1, "a_normal");
+        glBindAttribLocation(program, 2, "a_color");
+        glBindAttribLocation(program, 3, "a_texcoord0");
+        glBindAttribLocation(program, 4, "a_texcoord1");
+        glBindAttribLocation(program, 5, "a_texcoord2");
+        glBindAttribLocation(program, 6, "a_texcoord3");
+        
+        // Link the program
+        glLinkProgram(program);
+        
+        // Check link status
+        GLint link_status;
+        glGetProgramiv(program, GL_LINK_STATUS, &link_status);
+        if (!link_status) {
+            char info_log[1024];
+            glGetProgramInfoLog(program, sizeof(info_log), nullptr, info_log);
+            DX8GL_ERROR("ShaderProgramManager: Program link failed: %s", info_log);
+            glDeleteProgram(program);
+            return 0;
+        }
+        
+        DX8GL_INFO("ShaderProgramManager: Successfully linked program %u", program);
+        
+        // Save to cache for next time
+        if (g_shader_binary_cache && !cache_hash.empty()) {
+            if (g_shader_binary_cache->save_shader_binary(program, cache_hash)) {
+                DX8GL_INFO("ShaderProgramManager: Saved program to cache (hash: %s)", cache_hash.c_str());
+            }
+        }
+    }
+    
     return program;
 }
 

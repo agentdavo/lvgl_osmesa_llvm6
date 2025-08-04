@@ -1,5 +1,6 @@
 #include "vertex_shader_manager.h"
 #include "dx8_shader_translator.h"
+#include "shader_binary_cache.h"
 #include "d3d8.h"
 #include "logger.h"
 #include <sstream>
@@ -74,9 +75,10 @@ HRESULT VertexShaderManager::create_vertex_shader(const DWORD* pDeclaration, con
         return D3DERR_INVALIDCALL;
     }
     
-    // Store function bytecode
+    // Store function bytecode (including version token)
     const DWORD* func_ptr = pFunction;
     if (*func_ptr == 0xFFFE0101) { // vs_1_1 version token
+        shader_info->function_bytecode.push_back(*func_ptr); // Include version token
         func_ptr++;
         while (*func_ptr != 0x0000FFFF) { // End token
             shader_info->function_bytecode.push_back(*func_ptr);
@@ -86,6 +88,13 @@ HRESULT VertexShaderManager::create_vertex_shader(const DWORD* pDeclaration, con
     } else {
         DX8GL_ERROR("Unsupported vertex shader version");
         return D3DERR_INVALIDCALL;
+    }
+    
+    // Compute bytecode hash for caching
+    if (g_shader_binary_cache) {
+        bytecode_hash_ = ShaderBinaryCache::compute_bytecode_hash(shader_info->function_bytecode.data(),
+                                                                  shader_info->function_bytecode.size());
+        DX8GL_INFO("Vertex shader bytecode hash: %s", bytecode_hash_.c_str());
     }
     
     // Try to disassemble bytecode and use the translator if we can

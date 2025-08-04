@@ -25,15 +25,70 @@ dx8gl is a complete DirectX 8.1 to OpenGL ES 2.0 translation library that enable
 
 ### Shader System
 - ✅ **Fixed-function to GLSL** - Automatic shader generation based on render states
-- ✅ **Vertex shader 1.1 support** - Assembly to GLSL translation
+- ✅ **Vertex shader 1.1 support** - Complete assembly to GLSL translation
+  - All vs1.1 opcodes (mov, add, mul, dp3, dp4, m3x2, m3x3, m3x4, m4x3, m4x4, sincos, lit, dst)
+  - Address register (a0) and relative addressing support
+  - DCL semantic declarations for vertex attributes
+  - DEF constant definitions (c0-c95)
 - ✅ **Pixel shader 1.4 support** - Full instruction set implementation
-- ✅ **Shader caching** - Binary and source caching for performance
+  - All ps1.4 opcodes including PHASE, TEXLD, BEM, CND, CMP
+  - Bump environment mapping with texture matrices
+  - Extended constant registers (c0-c31)
+  - GLSL #version 450 core generation for desktop
+- ✅ **Shader binary caching** - DX8 bytecode hashing and compiled GLSL caching
+  - FNV-1a hash-based cache keys from DX8 bytecode
+  - OpenGL program binary storage
+  - Persistent disk cache for fast startup
+
+## Rendering Backends
+
+dx8gl supports multiple rendering backends for flexibility:
+
+### OSMesa Backend (Default)
+- Software rendering using Mesa's OSMesa library
+- No display or GPU required
+- Cross-platform compatibility
+- Ideal for headless systems and CI/CD
+
+### EGL Backend (Optional)
+- Hardware-accelerated rendering via EGL surfaceless context
+- Requires EGL_KHR_surfaceless_context extension
+- Better performance on systems with GPU
+- Useful for embedded systems
+
+### Backend Selection
+
+Select backend at runtime via:
+
+1. **Environment Variable**:
+```bash
+export DX8GL_BACKEND=osmesa  # or 'egl'
+./your_app
+```
+
+2. **Configuration API**:
+```cpp
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_EGL;  // or DX8GL_BACKEND_OSMESA
+dx8gl_init(&config);
+```
+
+3. **Command Line** (if using provided scripts):
+```bash
+./scripts/run_dx8_cube.sh --backend=egl
+```
 
 ## Building
 
 ### Desktop (Linux/Windows/macOS)
 ```bash
 cmake -S . -B build
+cmake --build build -j
+```
+
+### With EGL Backend Support
+```bash
+cmake -S . -B build -DDX8GL_ENABLE_EGL=ON
 cmake --build build -j
 ```
 
@@ -52,11 +107,14 @@ cmake --build build-emscripten -j
 
 ## Sample Applications
 
-Three sample applications demonstrate dx8gl functionality:
+Several sample applications demonstrate dx8gl functionality:
 
 1. **minimal_dx8gl_test** - Basic initialization and screen clearing
 2. **spinning_triangle** - Vertex buffer usage with transformations
 3. **textured_cube** - Advanced features including texturing and index buffers
+4. **shader_effects_cube** - DirectX shader assembly parsing
+5. **device_reset** - Device reset handling with resource recreation
+6. **shader_test** - Comprehensive ps1.4/vs1.1 shader translation and cache tests
 
 ### Running Samples
 
@@ -73,6 +131,44 @@ Three sample applications demonstrate dx8gl functionality:
 # Open browser to http://localhost:8000
 # Navigate to build-emscripten/Release/
 ```
+
+### Running Tests
+
+dx8gl includes comprehensive tests for shader translation and caching:
+
+```bash
+# Run all tests using the test script
+./run_tests.sh
+
+# Or run individual tests
+./build/samples/dx8gl_shader_test
+
+# Run tests with CTest
+cd build
+ctest --output-on-failure
+```
+
+The shader tests verify:
+- VS 1.1 instruction parsing (SINCOS, address register, relative addressing)
+- PS 1.4 instruction parsing (BEM, PHASE, CND/CMP)
+- GLSL generation correctness
+- Binary cache functionality
+- Bytecode hashing algorithm
+
+### Backend Testing
+
+Test both backends and compare outputs:
+
+```bash
+# Run backend regression test
+./scripts/run_backend_test.sh
+```
+
+This test:
+- Renders the same scene with both OSMesa and EGL backends
+- Saves output as PPM files for comparison
+- Reports any rendering differences
+- Requires EGL backend to be enabled at build time
 
 ## Integration Guide
 

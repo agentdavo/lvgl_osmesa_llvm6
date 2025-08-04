@@ -21,6 +21,15 @@ struct FixedFunctionState {
     D3DCMPFUNC alpha_func = D3DCMP_ALWAYS;
     DWORD vertex_format = 0;  // FVF flags
     
+    // Texture operations for each stage
+    DWORD color_op[8] = {D3DTOP_DISABLE};
+    DWORD alpha_op[8] = {D3DTOP_DISABLE};
+    
+    // Bump mapping parameters
+    float bump_env_mat[8][4] = {};    // BUMPENVMAT00, 01, 10, 11 for each stage
+    float bump_env_lscale[8] = {0.0f}; // BUMPENVLSCALE for each stage  
+    float bump_env_loffset[8] = {0.0f}; // BUMPENVLOFFSET for each stage
+    
     // Generate a hash key for shader caching
     uint64_t get_hash() const;
 };
@@ -67,6 +76,11 @@ public:
         
         GLint texture_sampler[8] = {-1};
         GLint texture_matrix[8] = {-1};
+        
+        // Bump mapping uniforms
+        GLint bump_env_mat[8] = {-1};      // 2x2 matrix as vec4
+        GLint bump_env_lscale[8] = {-1};   // Luminance scale
+        GLint bump_env_loffset[8] = {-1};  // Luminance offset
     };
     
     const UniformLocations* get_uniform_locations(GLuint program) const;

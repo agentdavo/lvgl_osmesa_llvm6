@@ -6,6 +6,7 @@
 #include "d3d8_surface.h"
 #include "logger.h"
 #include "osmesa_context.h"
+#include "render_backend.h"
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
@@ -23,10 +24,38 @@
 #include <GL/glext.h>
 #endif
 
+// Check if a value is a valid FVF (not a vertex shader handle)
+#define FVF_IS_VALID_FVF(x) ((x) < 0x100)
+
+// Multithreaded synchronization macros
+#define MULTITHREADED_LOCK() \
+    std::unique_lock<std::mutex> _mt_lock(is_multithreaded_ ? g_multithreaded_mutex : mutex_, std::defer_lock); \
+    if (is_multithreaded_) _mt_lock.lock()
+
+// FPU preservation macros
+#ifdef _MSC_VER
+#include <float.h>
+#define FPU_PRESERVE_DECL unsigned int _fpu_cw
+#define FPU_PRESERVE_SAVE() if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) { _fpu_cw = _control87(0, 0); }
+#define FPU_PRESERVE_RESTORE() if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) { _control87(_fpu_cw, 0xFFFFFFFF); }
+#elif defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+#define FPU_PRESERVE_DECL unsigned short _fpu_cw
+#define FPU_PRESERVE_SAVE() if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) { __asm__ __volatile__ ("fnstcw %0" : "=m" (_fpu_cw)); }
+#define FPU_PRESERVE_RESTORE() if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) { __asm__ __volatile__ ("fldcw %0" : : "m" (_fpu_cw)); }
+#else
+// No FPU preservation on other platforms
+#define FPU_PRESERVE_DECL
+#define FPU_PRESERVE_SAVE()
+#define FPU_PRESERVE_RESTORE()
+#endif
+
 namespace dx8gl {
 
 // Global device instance for dx8gl_get_shared_framebuffer
 static Direct3DDevice8* g_global_device = nullptr;
+
+// Global mutex for multithreaded device protection
+static std::mutex g_multithreaded_mutex;
 
 Direct3DDevice8* get_global_device() {
     return g_global_device;
@@ -50,7 +79,8 @@ Direct3DDevice8::Direct3DDevice8(Direct3D8* d3d8, UINT adapter, D3DDEVTYPE devic
     , current_fvf_(0)
     , device_lost_(false)
     , can_reset_device_(false)
-    , frame_count_(0) {
+    , frame_count_(0)
+    , is_multithreaded_(behavior_flags & D3DCREATE_MULTITHREADED) {
     
     // Set global device instance for framebuffer access
     g_global_device = this;
@@ -70,8 +100,13 @@ Direct3DDevice8::Direct3DDevice8(Direct3D8* d3d8, UINT adapter, D3DDEVTYPE devic
     // Get thread pool
     thread_pool_ = &get_global_thread_pool();
     
-    DX8GL_INFO("Direct3DDevice8 created: adapter=%u, type=%d, flags=0x%08x", 
-               adapter, device_type, behavior_flags);
+    // Initialize statistics
+    current_stats_.reset();
+    last_frame_stats_.reset();
+    
+    DX8GL_INFO("Direct3DDevice8 created: adapter=%u, type=%d, flags=0x%08x%s", 
+               adapter, device_type, behavior_flags,
+               is_multithreaded_ ? " (MULTITHREADED)" : "");
 }
 
 Direct3DDevice8::~Direct3DDevice8() {
@@ -125,6 +160,43 @@ Direct3DDevice8::~Direct3DDevice8() {
     if (parent_d3d_) {
         parent_d3d_->Release();
     }
+}
+
+void Direct3DDevice8::set_default_global_render_states() {
+    DX8GL_INFO("Setting default global render states");
+    
+    // Fog-related states (matching reference wrapper)
+    // Note: We check caps for range fog support
+    D3DCAPS8 caps;
+    parent_d3d_->GetDeviceCaps(adapter_, device_type_, &caps);
+    
+    state_manager_->set_render_state(D3DRS_RANGEFOGENABLE, 
+        (caps.RasterCaps & D3DPRASTERCAPS_FOGRANGE) ? TRUE : FALSE);
+    state_manager_->set_render_state(D3DRS_FOGTABLEMODE, D3DFOG_NONE);
+    state_manager_->set_render_state(D3DRS_FOGVERTEXMODE, D3DFOG_LINEAR);
+    
+    // Material color source states
+    state_manager_->set_render_state(D3DRS_SPECULARMATERIALSOURCE, D3DMCS_MATERIAL);
+    state_manager_->set_render_state(D3DRS_COLORVERTEX, TRUE);
+    
+    // Z-bias (depth bias)
+    state_manager_->set_render_state(D3DRS_ZBIAS, 0);
+    
+    // Bump mapping environment parameters
+    // These are texture stage states for bump mapping
+    auto F2DW = [](float f) -> DWORD { return *reinterpret_cast<DWORD*>(&f); };
+    
+    // Bump environment luminance scale and offset for stage 1
+    state_manager_->set_texture_stage_state(1, D3DTSS_BUMPENVLSCALE, F2DW(1.0f));
+    state_manager_->set_texture_stage_state(1, D3DTSS_BUMPENVLOFFSET, F2DW(0.0f));
+    
+    // Bump environment matrix for stage 0 (identity matrix)
+    state_manager_->set_texture_stage_state(0, D3DTSS_BUMPENVMAT00, F2DW(1.0f));
+    state_manager_->set_texture_stage_state(0, D3DTSS_BUMPENVMAT01, F2DW(0.0f));
+    state_manager_->set_texture_stage_state(0, D3DTSS_BUMPENVMAT10, F2DW(0.0f));
+    state_manager_->set_texture_stage_state(0, D3DTSS_BUMPENVMAT11, F2DW(1.0f));
+    
+    DX8GL_INFO("Default global render states set");
 }
 
 bool Direct3DDevice8::initialize() {
@@ -194,6 +266,9 @@ bool Direct3DDevice8::initialize() {
         DX8GL_ERROR("Failed to initialize state manager");
         return false;
     }
+    
+    // Set default global render states
+    set_default_global_render_states();
 
     // Create shader managers
     vertex_shader_manager_ = std::make_unique<VertexShaderManager>();
@@ -283,6 +358,9 @@ bool Direct3DDevice8::complete_deferred_osmesa_init() {
         DX8GL_ERROR("Failed to initialize state manager");
         return false;
     }
+    
+    // Set default global render states
+    set_default_global_render_states();
 
     // Create shader managers
     vertex_shader_manager_ = std::make_unique<VertexShaderManager>();
@@ -420,7 +498,9 @@ HRESULT Direct3DDevice8::GetCreationParameters(D3DDEVICE_CREATION_PARAMETERS* pP
 
 // Scene management
 HRESULT Direct3DDevice8::BeginScene() {
-    std::lock_guard<std::mutex> lock(mutex_);
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    FPU_PRESERVE_SAVE();
     
     // Check if we need to complete deferred OSMesa initialization
     if (osmesa_deferred_init_) {
@@ -429,24 +509,39 @@ HRESULT Direct3DDevice8::BeginScene() {
             DX8GL_INFO("BeginScene: Completing deferred OSMesa initialization");
             if (!complete_deferred_osmesa_init()) {
                 DX8GL_ERROR("Failed to complete deferred OSMesa initialization");
+                FPU_PRESERVE_RESTORE();
                 return D3DERR_DEVICELOST;
             }
         }
     }
     
     if (in_scene_) {
+        FPU_PRESERVE_RESTORE();
         return D3DERR_INVALIDCALL;
     }
     
     DX8GL_TRACE("BeginScene");
     in_scene_ = true;
+    
+    // Begin statistics collection for this frame
+    begin_statistics();
+    
+    FPU_PRESERVE_RESTORE();
     return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::EndScene() {
-    std::lock_guard<std::mutex> lock(mutex_);
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_SAVE();
+    }
     
     if (!in_scene_) {
+        if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+            FPU_PRESERVE_RESTORE();
+        }
         return D3DERR_INVALIDCALL;
     }
     
@@ -456,13 +551,27 @@ HRESULT Direct3DDevice8::EndScene() {
     // Flush command buffer at end of scene
     flush_command_buffer();
     
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_RESTORE();
+    }
+    
     return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::Clear(DWORD Count, const D3DRECT* pRects, DWORD Flags, 
                               D3DCOLOR Color, float Z, DWORD Stencil) {
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_SAVE();
+    }
+    
     DX8GL_INFO("Clear: count=%u, flags=0x%08x, color=0x%08x, z=%.2f, stencil=%u",
                Count, Flags, Color, Z, Stencil);
+    
+    // Update statistics
+    current_stats_.clear_calls++;
     
     // Check if we need to complete deferred OSMesa initialization
     if (osmesa_deferred_init_) {
@@ -471,6 +580,9 @@ HRESULT Direct3DDevice8::Clear(DWORD Count, const D3DRECT* pRects, DWORD Flags,
             DX8GL_INFO("Clear: Completing deferred OSMesa initialization");
             if (!complete_deferred_osmesa_init()) {
                 DX8GL_ERROR("Failed to complete deferred OSMesa initialization");
+                if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+                    FPU_PRESERVE_RESTORE();
+                }
                 return D3DERR_DEVICELOST;
             }
         }
@@ -492,12 +604,23 @@ HRESULT Direct3DDevice8::Clear(DWORD Count, const D3DRECT* pRects, DWORD Flags,
         memcpy(rect_data, pRects, Count * sizeof(D3DRECT));
     }
     
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_RESTORE();
+    }
+    
     return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
                                 HWND hDestWindowOverride, const RGNDATA* pDirtyRegion) {
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    FPU_PRESERVE_SAVE();
+    
     DX8GL_TRACE("Present: frame=%u", frame_count_.load());
+    
+    // Update statistics
+    current_stats_.present_calls++;
     
     // Flush any pending commands before presenting
     flush_command_buffer();
@@ -533,6 +656,7 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
         // But we call swapBuffers to read the framebuffer and finish rendering
         if (!egl_context_->swapBuffers()) {
             DX8GL_ERROR("EGL swapBuffers failed");
+            FPU_PRESERVE_RESTORE();
             return D3DERR_DRIVERINTERNALERROR;
         }
         
@@ -580,12 +704,23 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
     // - GPU reset
     // For now, assume device is always OK
     
+    FPU_PRESERVE_RESTORE();
     return D3D_OK;
 }
 
 // State setting methods
 HRESULT Direct3DDevice8::SetRenderState(D3DRENDERSTATETYPE State, DWORD Value) {
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_SAVE();
+    }
+    
     DX8GL_TRACE("SetRenderState: state=%d, value=%u", State, Value);
+    
+    // Update statistics
+    current_stats_.render_state_changes++;
     
     // Update state manager immediately
     state_manager_->set_render_state(State, Value);
@@ -595,10 +730,15 @@ HRESULT Direct3DDevice8::SetRenderState(D3DRENDERSTATETYPE State, DWORD Value) {
     cmd->state = State;
     cmd->value = Value;
     
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_RESTORE();
+    }
+    
     return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetRenderState(D3DRENDERSTATETYPE State, DWORD* pValue) {
+    MULTITHREADED_LOCK();
     if (!pValue) {
         return D3DERR_INVALIDCALL;
     }
@@ -608,6 +748,7 @@ HRESULT Direct3DDevice8::GetRenderState(D3DRENDERSTATETYPE State, DWORD* pValue)
 }
 
 HRESULT Direct3DDevice8::SetTransform(D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix) {
+    MULTITHREADED_LOCK();
     if (!pMatrix) {
         return D3DERR_INVALIDCALL;
     }
@@ -627,6 +768,9 @@ HRESULT Direct3DDevice8::SetTransform(D3DTRANSFORMSTATETYPE State, const D3DMATR
                pMatrix->_31, pMatrix->_32, pMatrix->_33, pMatrix->_34,
                pMatrix->_41, pMatrix->_42, pMatrix->_43, pMatrix->_44);
     
+    // Update statistics
+    current_stats_.matrix_changes++;
+    
     auto cmd = current_command_buffer_->allocate_command<SetTransformCmd>();
     cmd->state = State;
     cmd->matrix = *pMatrix;
@@ -635,6 +779,7 @@ HRESULT Direct3DDevice8::SetTransform(D3DTRANSFORMSTATETYPE State, const D3DMATR
 }
 
 HRESULT Direct3DDevice8::GetTransform(D3DTRANSFORMSTATETYPE State, D3DMATRIX* pMatrix) {
+    MULTITHREADED_LOCK();
     if (!pMatrix) {
         return D3DERR_INVALIDCALL;
     }
@@ -645,11 +790,15 @@ HRESULT Direct3DDevice8::GetTransform(D3DTRANSFORMSTATETYPE State, D3DMATRIX* pM
 
 // Texture management
 HRESULT Direct3DDevice8::SetTexture(DWORD Stage, IDirect3DBaseTexture8* pTexture) {
+    MULTITHREADED_LOCK();
     if (Stage >= 8) {
         return D3DERR_INVALIDCALL;
     }
     
     DX8GL_TRACE("SetTexture: stage=%u, texture=%p", Stage, pTexture);
+    
+    // Update statistics
+    current_stats_.texture_changes++;
     
     auto cmd = current_command_buffer_->allocate_command<SetTextureCmd>();
     cmd->stage = Stage;
@@ -672,6 +821,7 @@ HRESULT Direct3DDevice8::SetTexture(DWORD Stage, IDirect3DBaseTexture8* pTexture
 }
 
 HRESULT Direct3DDevice8::GetTexture(DWORD Stage, IDirect3DBaseTexture8** ppTexture) {
+    MULTITHREADED_LOCK();
     if (!ppTexture || Stage >= 8) {
         return D3DERR_INVALIDCALL;
     }
@@ -692,6 +842,7 @@ HRESULT Direct3DDevice8::GetTexture(DWORD Stage, IDirect3DBaseTexture8** ppTextu
 // Vertex buffer management
 HRESULT Direct3DDevice8::SetStreamSource(UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData,
                                         UINT Stride) {
+    MULTITHREADED_LOCK();
     if (StreamNumber >= 16) {
         return D3DERR_INVALIDCALL;
     }
@@ -721,6 +872,7 @@ HRESULT Direct3DDevice8::SetStreamSource(UINT StreamNumber, IDirect3DVertexBuffe
 }
 
 HRESULT Direct3DDevice8::SetIndices(IDirect3DIndexBuffer8* pIndexData, UINT BaseVertexIndex) {
+    MULTITHREADED_LOCK();
     DX8GL_TRACE("SetIndices: ib=%p, base=%u", pIndexData, BaseVertexIndex);
     
     auto cmd = current_command_buffer_->allocate_command<SetIndicesCmd>();
@@ -745,17 +897,60 @@ HRESULT Direct3DDevice8::SetIndices(IDirect3DIndexBuffer8* pIndexData, UINT Base
 // Drawing methods
 HRESULT Direct3DDevice8::DrawPrimitive(D3DPRIMITIVETYPE PrimitiveType, 
                                       UINT StartVertex, UINT PrimitiveCount) {
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_SAVE();
+    }
+    
     if (!in_scene_) {
+        if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+            FPU_PRESERVE_RESTORE();
+        }
         return D3DERR_INVALIDCALL;
     }
     
     DX8GL_TRACE("DrawPrimitive: type=%d, start=%u, count=%u", 
                 PrimitiveType, StartVertex, PrimitiveCount);
     
+    // Update statistics
+    current_stats_.draw_calls++;
+    
+    // Calculate vertices and triangles based on primitive type
+    uint32_t vertices = 0;
+    uint32_t triangles = 0;
+    switch (PrimitiveType) {
+        case D3DPT_TRIANGLELIST:
+            vertices = PrimitiveCount * 3;
+            triangles = PrimitiveCount;
+            break;
+        case D3DPT_TRIANGLESTRIP:
+        case D3DPT_TRIANGLEFAN:
+            vertices = PrimitiveCount + 2;
+            triangles = PrimitiveCount;
+            break;
+        case D3DPT_LINELIST:
+            vertices = PrimitiveCount * 2;
+            break;
+        case D3DPT_LINESTRIP:
+            vertices = PrimitiveCount + 1;
+            break;
+        case D3DPT_POINTLIST:
+            vertices = PrimitiveCount;
+            break;
+    }
+    current_stats_.vertices_processed += vertices;
+    current_stats_.triangles_drawn += triangles;
+    
     auto cmd = current_command_buffer_->allocate_command<DrawPrimitiveCmd>();
     cmd->primitive_type = PrimitiveType;
     cmd->start_vertex = StartVertex;
     cmd->primitive_count = PrimitiveCount;
+    
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_RESTORE();
+    }
     
     return D3D_OK;
 }
@@ -763,7 +958,17 @@ HRESULT Direct3DDevice8::DrawPrimitive(D3DPRIMITIVETYPE PrimitiveType,
 HRESULT Direct3DDevice8::DrawIndexedPrimitive(D3DPRIMITIVETYPE PrimitiveType,
                                              UINT MinIndex, UINT NumVertices,
                                              UINT StartIndex, UINT PrimitiveCount) {
+    MULTITHREADED_LOCK();
+    FPU_PRESERVE_DECL;
+    
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_SAVE();
+    }
+    
     if (!in_scene_) {
+        if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+            FPU_PRESERVE_RESTORE();
+        }
         return D3DERR_INVALIDCALL;
     }
     
@@ -777,12 +982,19 @@ HRESULT Direct3DDevice8::DrawIndexedPrimitive(D3DPRIMITIVETYPE PrimitiveType,
     cmd->start_index = StartIndex;
     cmd->primitive_count = PrimitiveCount;
     
+    if (behavior_flags_ & D3DCREATE_FPU_PRESERVE) {
+        FPU_PRESERVE_RESTORE();
+    }
+    
     return D3D_OK;
 }
 
 // Fixed function vertex processing
 HRESULT Direct3DDevice8::SetVertexShader(DWORD Handle) {
     DX8GL_INFO("SetVertexShader: handle=0x%08x", Handle);
+    
+    // Update statistics
+    current_stats_.shader_changes++;
     
     // Check if this is an FVF or a vertex shader handle
     // Try to set it as a vertex shader first
@@ -1006,6 +1218,44 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     // Reset state manager
     state_manager_->reset();
     
+    // Invalidate cached render states to force reapplication
+    InvalidateCachedRenderStates();
+    
+    // Set default global render states after reset
+    set_default_global_render_states();
+    
+    // Recreate non-managed resources
+    // According to DirectX 8 documentation, resources in D3DPOOL_DEFAULT must be recreated after reset
+    std::vector<Direct3DTexture8*> textures_to_recreate;
+    
+    // Find all textures in D3DPOOL_DEFAULT
+    for (auto* texture : all_textures_) {
+        if (texture && texture->get_pool() == D3DPOOL_DEFAULT) {
+            textures_to_recreate.push_back(texture);
+        }
+    }
+    
+    // Notify textures about device reset so they can recreate their GL resources
+    for (auto* texture : textures_to_recreate) {
+        DX8GL_INFO("Recreating texture %p in D3DPOOL_DEFAULT", texture);
+        // TODO: Add a method to Direct3DTexture8 to recreate GL resources
+        // For now, textures in D3DPOOL_DEFAULT will need to be manually recreated by the application
+    }
+    
+    // Vertex buffers in D3DPOOL_DEFAULT also need recreation
+    std::vector<Direct3DVertexBuffer8*> vbs_to_recreate;
+    for (auto* vb : all_vertex_buffers_) {
+        // TODO: Check if vertex buffer is in D3DPOOL_DEFAULT once we add pool tracking to VBs
+        // For now, assume managed VBs handle themselves
+    }
+    
+    // Index buffers in D3DPOOL_DEFAULT also need recreation
+    std::vector<Direct3DIndexBuffer8*> ibs_to_recreate;
+    for (auto* ib : all_index_buffers_) {
+        // TODO: Check if index buffer is in D3DPOOL_DEFAULT once we add pool tracking to IBs
+        // For now, assume managed IBs handle themselves
+    }
+    
     // Reset viewport to full window
     D3DVIEWPORT8 viewport;
     viewport.X = 0;
@@ -1099,6 +1349,9 @@ HRESULT Direct3DDevice8::CreateTexture(UINT Width, UINT Height, UINT Levels, DWO
         texture->Release();
         return D3DERR_NOTAVAILABLE;
     }
+    
+    // Register texture for device reset tracking
+    register_texture(texture);
     
     *ppTexture = texture;
     return D3D_OK;
@@ -1452,6 +1705,9 @@ HRESULT Direct3DDevice8::SetViewport(const D3DVIEWPORT8* pViewport) {
         return D3DERR_INVALIDCALL;
     }
     
+    // Update statistics
+    current_stats_.viewport_changes++;
+    
     state_manager_->set_viewport(pViewport);
     return D3D_OK;
 }
@@ -1469,6 +1725,9 @@ HRESULT Direct3DDevice8::SetMaterial(const D3DMATERIAL8* pMaterial) {
     if (!pMaterial) {
         return D3DERR_INVALIDCALL;
     }
+    
+    // Update statistics
+    current_stats_.material_changes++;
     
     // Update state manager immediately
     state_manager_->set_material(pMaterial);
@@ -1493,6 +1752,9 @@ HRESULT Direct3DDevice8::SetLight(DWORD Index, const D3DLIGHT8* pLight) {
     if (!pLight) {
         return D3DERR_INVALIDCALL;
     }
+    
+    // Update statistics
+    current_stats_.light_changes++;
     
     // Update state manager immediately
     state_manager_->set_light(Index, pLight);
@@ -1603,6 +1865,9 @@ HRESULT Direct3DDevice8::GetTextureStageState(DWORD Stage, D3DTEXTURESTAGESTATET
 
 HRESULT Direct3DDevice8::SetTextureStageState(DWORD Stage, D3DTEXTURESTAGESTATETYPE Type,
                                              DWORD Value) {
+    // Update statistics
+    current_stats_.texture_state_changes++;
+    
     state_manager_->set_texture_stage_state(Stage, Type, Value);
     return D3D_OK;
 }
@@ -1612,7 +1877,139 @@ HRESULT Direct3DDevice8::ValidateDevice(DWORD* pNumPasses) {
         return D3DERR_INVALIDCALL;
     }
     
+    DX8GL_INFO("ValidateDevice called");
+    
+    // Initialize to 1 pass (we don't support multi-pass rendering yet)
     *pNumPasses = 1;
+    
+    // Check if we have a valid state manager
+    if (!state_manager_) {
+        DX8GL_WARN("ValidateDevice: No state manager");
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Validate texture stage states
+    for (DWORD stage = 0; stage < 8; stage++) {
+        // Check if texture stage is enabled
+        DWORD color_op = state_manager_->get_texture_stage_state(stage, D3DTSS_COLOROP);
+        if (color_op == D3DTOP_DISABLE) {
+            continue; // Stage is disabled, skip validation
+        }
+        
+        // Check if we need a texture for this stage
+        bool needs_texture = false;
+        DWORD color_arg1 = state_manager_->get_texture_stage_state(stage, D3DTSS_COLORARG1);
+        DWORD color_arg2 = state_manager_->get_texture_stage_state(stage, D3DTSS_COLORARG2);
+        DWORD alpha_arg1 = state_manager_->get_texture_stage_state(stage, D3DTSS_ALPHAARG1);
+        DWORD alpha_arg2 = state_manager_->get_texture_stage_state(stage, D3DTSS_ALPHAARG2);
+        
+        if ((color_arg1 & D3DTA_SELECTMASK) == D3DTA_TEXTURE ||
+            (color_arg2 & D3DTA_SELECTMASK) == D3DTA_TEXTURE ||
+            (alpha_arg1 & D3DTA_SELECTMASK) == D3DTA_TEXTURE ||
+            (alpha_arg2 & D3DTA_SELECTMASK) == D3DTA_TEXTURE) {
+            needs_texture = true;
+        }
+        
+        // Check if texture is bound when needed
+        if (needs_texture) {
+            auto it = textures_.find(stage);
+            if (it == textures_.end() || it->second == nullptr) {
+                DX8GL_WARN("ValidateDevice: Texture stage %u requires texture but none is bound", stage);
+                return D3DERR_INVALIDCALL; // Texture not set when required
+            }
+        }
+        
+        // Validate texture filtering
+        DWORD min_filter = state_manager_->get_texture_stage_state(stage, D3DTSS_MINFILTER);
+        DWORD mag_filter = state_manager_->get_texture_stage_state(stage, D3DTSS_MAGFILTER);
+        DWORD mip_filter = state_manager_->get_texture_stage_state(stage, D3DTSS_MIPFILTER);
+        
+        // Check for anisotropic filtering without support
+        if ((min_filter == D3DTEXF_ANISOTROPIC || mag_filter == D3DTEXF_ANISOTROPIC) &&
+            state_manager_->get_texture_stage_state(stage, D3DTSS_MAXANISOTROPY) > 1) {
+            // For now, we support anisotropic filtering through OpenGL extensions
+            // But we could return an error if the extension is not available
+            DX8GL_DEBUG("ValidateDevice: Anisotropic filtering requested on stage %u", stage);
+        }
+        
+        // Check for unsupported filter combinations
+        if (mip_filter == D3DTEXF_GAUSSIANCUBIC) { // Unsupported filter type
+            DX8GL_WARN("ValidateDevice: Unsupported mipmap filter %u on stage %u", mip_filter, stage);
+            return D3DERR_NOTAVAILABLE; // Unsupported texture filter
+        }
+    }
+    
+    // Validate render states
+    DWORD z_enable = state_manager_->get_render_state(D3DRS_ZENABLE);
+    DWORD z_write_enable = state_manager_->get_render_state(D3DRS_ZWRITEENABLE);
+    DWORD stencil_enable = state_manager_->get_render_state(D3DRS_STENCILENABLE);
+    
+    // Check for depth buffer requirement
+    if ((z_enable || stencil_enable) && !depth_stencil_) {
+        DX8GL_WARN("ValidateDevice: Z-buffer or stencil enabled but no depth buffer");
+        return D3DERR_INVALIDCALL; // Z buffer required but not available
+    }
+    
+    // Check alpha blending state
+    DWORD alpha_blend_enable = state_manager_->get_render_state(D3DRS_ALPHABLENDENABLE);
+    if (alpha_blend_enable) {
+        DWORD src_blend = state_manager_->get_render_state(D3DRS_SRCBLEND);
+        DWORD dest_blend = state_manager_->get_render_state(D3DRS_DESTBLEND);
+        
+        // Check for unsupported blend modes
+        if (src_blend == D3DBLEND_BOTHSRCALPHA || src_blend == D3DBLEND_BOTHINVSRCALPHA ||
+            dest_blend == D3DBLEND_BOTHSRCALPHA || dest_blend == D3DBLEND_BOTHINVSRCALPHA) {
+            DX8GL_WARN("ValidateDevice: BOTHSRCALPHA blend modes not supported");
+            return D3DERR_INVALIDCALL; // Z buffer required but not available
+        }
+    }
+    
+    // Validate vertex shader if one is set
+    DWORD vertex_shader = current_fvf_;
+    if (vertex_shader != 0 && !FVF_IS_VALID_FVF(vertex_shader)) {
+        // It's a vertex shader handle, validate it exists
+        if (vertex_shader_manager_) {
+            // Check if this is a valid shader handle (simplified check)
+            if (vertex_shader > 0xFFFF0000) {
+                DX8GL_WARN("ValidateDevice: Invalid vertex shader handle 0x%08X", vertex_shader);
+                return D3DERR_INVALIDCALL; // Invalid shader handle
+            }
+        }
+    }
+    
+    // Note: Pixel shader validation would go here if we had a way to track current pixel shader
+    // For now we assume pixel shaders are valid if set
+    
+    // Check for conflicting fog modes
+    DWORD fog_enable = state_manager_->get_render_state(D3DRS_FOGENABLE);
+    if (fog_enable) {
+        DWORD fog_vertex_mode = state_manager_->get_render_state(D3DRS_FOGVERTEXMODE);
+        DWORD fog_table_mode = state_manager_->get_render_state(D3DRS_FOGTABLEMODE);
+        
+        // Can't have both vertex and table fog
+        if (fog_vertex_mode != D3DFOG_NONE && fog_table_mode != D3DFOG_NONE) {
+            DX8GL_WARN("ValidateDevice: Both vertex and table fog enabled");
+            return D3DERR_INVALIDCALL; // Z buffer required but not available
+        }
+    }
+    
+    // Validate point sprite states
+    DWORD point_sprite_enable = state_manager_->get_render_state(D3DRS_POINTSPRITEENABLE);
+    if (point_sprite_enable) {
+        DWORD point_scale_enable = state_manager_->get_render_state(D3DRS_POINTSCALEENABLE);
+        if (point_scale_enable) {
+            // Point sprites with scaling require vertex shader or specific FVF
+            if (vertex_shader == 0 || FVF_IS_VALID_FVF(vertex_shader)) {
+                DWORD fvf = FVF_IS_VALID_FVF(vertex_shader) ? vertex_shader : current_fvf_;
+                if (!(fvf & D3DFVF_PSIZE)) {
+                    DX8GL_WARN("ValidateDevice: Point sprites with scaling require D3DFVF_PSIZE");
+                    return D3DERR_INVALIDCALL; // Z buffer required but not available
+                }
+            }
+        }
+    }
+    
+    DX8GL_INFO("ValidateDevice: Pipeline is valid, returning %u passes", *pNumPasses);
     return D3D_OK;
 }
 
@@ -2023,6 +2420,149 @@ DX8OSMesaContext* Direct3DDevice8::get_osmesa_context() const {
 #else
     return nullptr;
 #endif
+}
+
+void* Direct3DDevice8::get_framebuffer(int* width, int* height, int* format) const {
+    if (render_backend_) {
+        int w, h, fmt;
+        void* fb = render_backend_->get_framebuffer(w, h, fmt);
+        if (width) *width = w;
+        if (height) *height = h;
+        if (format) *format = fmt;
+        return fb;
+    } else if (osmesa_context_) {
+        // Fallback to legacy OSMesa context
+        int w, h;
+        get_osmesa_dimensions(&w, &h);
+        if (width) *width = w;
+        if (height) *height = h;
+        if (format) *format = GL_RGBA;
+        return get_osmesa_framebuffer();
+    }
+    return nullptr;
+}
+
+void Direct3DDevice8::InvalidateCachedRenderStates() {
+    DX8GL_INFO("InvalidateCachedRenderStates called");
+    
+    if (!state_manager_) {
+        DX8GL_WARN("InvalidateCachedRenderStates: State manager not initialized");
+        return;
+    }
+    
+    // Invalidate all cached states in the state manager
+    state_manager_->invalidate_cached_render_states();
+    
+    // Also unbind all textures to ensure clean state
+    for (DWORD stage = 0; stage < 8; stage++) {
+        auto it = textures_.find(stage);
+        if (it != textures_.end() && it->second) {
+            // Release the texture reference
+            it->second->Release();
+            textures_.erase(it);
+            
+            // Ensure OpenGL texture is unbound
+            auto* cmd = current_command_buffer_->allocate_command<SetTextureCmd>();
+            cmd->stage = stage;
+            cmd->texture = 0;  // nullptr
+        }
+    }
+    
+    // Force a command buffer flush to apply texture unbinding
+    flush_command_buffer();
+    
+    DX8GL_INFO("InvalidateCachedRenderStates complete - all states and textures cleared");
+}
+
+void Direct3DDevice8::reset_statistics() {
+    current_stats_.reset();
+    last_frame_stats_.reset();
+}
+
+void Direct3DDevice8::begin_statistics() {
+    // Save current stats as last frame stats
+    last_frame_stats_.matrix_changes = current_stats_.matrix_changes.load();
+    last_frame_stats_.render_state_changes = current_stats_.render_state_changes.load();
+    last_frame_stats_.texture_state_changes = current_stats_.texture_state_changes.load();
+    last_frame_stats_.texture_changes = current_stats_.texture_changes.load();
+    last_frame_stats_.draw_calls = current_stats_.draw_calls.load();
+    last_frame_stats_.triangles_drawn = current_stats_.triangles_drawn.load();
+    last_frame_stats_.vertices_processed = current_stats_.vertices_processed.load();
+    last_frame_stats_.state_blocks_created = current_stats_.state_blocks_created.load();
+    last_frame_stats_.clear_calls = current_stats_.clear_calls.load();
+    last_frame_stats_.present_calls = current_stats_.present_calls.load();
+    last_frame_stats_.vertex_buffer_locks = current_stats_.vertex_buffer_locks.load();
+    last_frame_stats_.index_buffer_locks = current_stats_.index_buffer_locks.load();
+    last_frame_stats_.texture_locks = current_stats_.texture_locks.load();
+    last_frame_stats_.shader_changes = current_stats_.shader_changes.load();
+    last_frame_stats_.light_changes = current_stats_.light_changes.load();
+    last_frame_stats_.material_changes = current_stats_.material_changes.load();
+    last_frame_stats_.viewport_changes = current_stats_.viewport_changes.load();
+    
+    // Reset current stats for new frame
+    current_stats_.reset();
+}
+
+void Direct3DDevice8::end_statistics() {
+    // Statistics collection ends - data is now available in current_stats_
+    // This could be used to compute frame deltas or averages
+}
+
+void Direct3DDevice8::register_texture(Direct3DTexture8* texture) {
+    if (!texture) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    all_textures_.push_back(texture);
+    DX8GL_TRACE("Registered texture %p, total textures: %zu", texture, all_textures_.size());
+}
+
+void Direct3DDevice8::unregister_texture(Direct3DTexture8* texture) {
+    if (!texture) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    auto it = std::find(all_textures_.begin(), all_textures_.end(), texture);
+    if (it != all_textures_.end()) {
+        all_textures_.erase(it);
+        DX8GL_TRACE("Unregistered texture %p, remaining textures: %zu", texture, all_textures_.size());
+    }
+}
+
+void Direct3DDevice8::register_vertex_buffer(Direct3DVertexBuffer8* vb) {
+    if (!vb) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    all_vertex_buffers_.push_back(vb);
+    DX8GL_TRACE("Registered vertex buffer %p, total VBs: %zu", vb, all_vertex_buffers_.size());
+}
+
+void Direct3DDevice8::unregister_vertex_buffer(Direct3DVertexBuffer8* vb) {
+    if (!vb) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    auto it = std::find(all_vertex_buffers_.begin(), all_vertex_buffers_.end(), vb);
+    if (it != all_vertex_buffers_.end()) {
+        all_vertex_buffers_.erase(it);
+        DX8GL_TRACE("Unregistered vertex buffer %p, remaining VBs: %zu", vb, all_vertex_buffers_.size());
+    }
+}
+
+void Direct3DDevice8::register_index_buffer(Direct3DIndexBuffer8* ib) {
+    if (!ib) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    all_index_buffers_.push_back(ib);
+    DX8GL_TRACE("Registered index buffer %p, total IBs: %zu", ib, all_index_buffers_.size());
+}
+
+void Direct3DDevice8::unregister_index_buffer(Direct3DIndexBuffer8* ib) {
+    if (!ib) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    auto it = std::find(all_index_buffers_.begin(), all_index_buffers_.end(), ib);
+    if (it != all_index_buffers_.end()) {
+        all_index_buffers_.erase(it);
+        DX8GL_TRACE("Unregistered index buffer %p, remaining IBs: %zu", ib, all_index_buffers_.size());
+    }
 }
 
 } // namespace dx8gl

@@ -19,3 +19,6 @@ target_include_directories(test_mixed_vertices PRIVATE ${CMAKE_SOURCE_DIR}/ext/d
 add_executable(test_indexed_xyzrhw test_indexed_xyzrhw.cpp)
 target_link_libraries(test_indexed_xyzrhw PRIVATE dx8gl lvgl lvgl_platform OSMesa m pthread ${CMAKE_DL_LIBS})
 target_include_directories(test_indexed_xyzrhw PRIVATE ${CMAKE_SOURCE_DIR}/ext/dx8gl/src)
+
+# Backend regression test
+add_subdirectory(dx8_backend_test)

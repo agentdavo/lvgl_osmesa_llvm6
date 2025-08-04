@@ -65,6 +65,9 @@ public:
     void SetStatValue(const std::string& name, const std::string& value);
     void ClearStats() { m_stats.clear(); }
     
+    // Update statistics from device
+    void UpdateDeviceStatistics();
+    
     // Customize colors
     void SetColors(const HUDColors& colors) { m_colors = colors; }
     

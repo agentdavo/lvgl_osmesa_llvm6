@@ -471,11 +471,41 @@ bool DX8ShaderTranslator::parse_register(const std::string& token, ShaderInstruc
     } else if (tok.substr(0, 2) == "c[") {
         reg.type = D3DSPR_CONST;
         size_t end = tok.find(']');
-        reg.index = std::stoi(tok.substr(2, end - 2));
+        std::string index_expr = tok.substr(2, end - 2);
+        
+        // Check for relative addressing (e.g., c[a0.x + 5])
+        if (index_expr.find("a0") != std::string::npos) {
+            // Parse relative addressing
+            size_t plus_pos = index_expr.find('+');
+            if (plus_pos != std::string::npos) {
+                std::string offset_str = index_expr.substr(plus_pos + 1);
+                // Trim whitespace
+                offset_str.erase(0, offset_str.find_first_not_of(" \t"));
+                offset_str.erase(offset_str.find_last_not_of(" \t") + 1);
+                reg.index = std::stoi(offset_str);
+                // Mark this as using relative addressing (we'll need to add a flag for this)
+                // For now, we'll encode it in the upper bits
+                reg.index |= 0x8000; // Set bit 15 to indicate relative addressing
+            } else {
+                // Just a0 with no offset
+                reg.index = 0x8000;
+            }
+        } else {
+            // Simple constant index
+            reg.index = std::stoi(index_expr);
+        }
     } else if (tok[0] == 'c' && std::isdigit(tok[1])) {
         // Handle simple constant format like c0, c1, etc.
         reg.type = D3DSPR_CONST;
         reg.index = std::stoi(tok.substr(1));
+    } else if (tok == "a0") {
+        // Address register (vertex shader only)
+        if (shader_type_ != SHADER_TYPE_VERTEX) {
+            DX8GL_ERROR("Address register a0 not valid in pixel shader");
+            return false;
+        }
+        reg.type = D3DSPR_ADDR;
+        reg.index = 0;
     } else if (tok[0] == 't' && std::isdigit(tok[1])) {
         // Handle texture coordinate registers in pixel shaders (t0, t1, etc.)
         if (shader_type_ == SHADER_TYPE_PIXEL) {
@@ -601,7 +631,7 @@ std::string DX8ShaderTranslator::generate_glsl() {
 std::string DX8ShaderTranslator::generate_vertex_glsl() {
     std::ostringstream glsl;
     
-    // Target OpenGL ES 3.0 / OpenGL 3.3 Core
+    // Target OpenGL 4.5 Core as requested
     const char* version_str = (const char*)glGetString(GL_VERSION);
     bool is_es = version_str && strstr(version_str, "ES") != nullptr;
     
@@ -609,7 +639,7 @@ std::string DX8ShaderTranslator::generate_vertex_glsl() {
         glsl << "#version 300 es\n";
         glsl << "precision highp float;\n\n";
     } else {
-        glsl << "#version 330 core\n\n";
+        glsl << "#version 450 core\n\n";
     }
     
     // Attributes (inputs)
@@ -651,40 +681,57 @@ std::string DX8ShaderTranslator::generate_vertex_glsl() {
     glsl << "// Shader constants\n";
     std::unordered_map<int, std::string> const_names;
     
-    // Declare constants used in the shader (analyze instructions to find which ones are used)
+    // Check if relative addressing is used
+    bool uses_relative_addressing = false;
     std::set<int> constants_used;
+    
     for (const auto& inst : instructions_) {
         if (inst.dest.type == D3DSPR_CONST) {
-            constants_used.insert(inst.dest.index);
+            int index = inst.dest.index & 0x7FFF;
+            if (inst.dest.index & 0x8000) {
+                uses_relative_addressing = true;
+            } else {
+                constants_used.insert(index);
+            }
         }
         for (const auto& src : inst.sources) {
             if (src.type == D3DSPR_CONST) {
-                constants_used.insert(src.index);
-                
-                // For matrix operations, add the additional constant indices
-                if (inst.opcode == D3DSIO_M4x4) {
-                    // m4x4 uses 4 consecutive constants starting from the source index
-                    for (int i = 0; i < 4; i++) {
-                        constants_used.insert(src.index + i);
-                    }
-                } else if (inst.opcode == D3DSIO_M4x3) {
-                    // m4x3 uses 3 consecutive constants starting from the source index  
-                    for (int i = 0; i < 3; i++) {
-                        constants_used.insert(src.index + i);
-                    }
-                } else if (inst.opcode == D3DSIO_M3x3) {
-                    // m3x3 uses 3 consecutive constants starting from the source index
-                    for (int i = 0; i < 3; i++) {
-                        constants_used.insert(src.index + i);
+                int index = src.index & 0x7FFF;
+                if (src.index & 0x8000) {
+                    uses_relative_addressing = true;
+                } else {
+                    constants_used.insert(index);
+                    
+                    // For matrix operations, add the additional constant indices
+                    if (inst.opcode == D3DSIO_M4x4) {
+                        // m4x4 uses 4 consecutive constants starting from the source index
+                        for (int i = 0; i < 4; i++) {
+                            constants_used.insert(index + i);
+                        }
+                    } else if (inst.opcode == D3DSIO_M4x3) {
+                        // m4x3 uses 3 consecutive constants starting from the source index  
+                        for (int i = 0; i < 3; i++) {
+                            constants_used.insert(index + i);
+                        }
+                    } else if (inst.opcode == D3DSIO_M3x3) {
+                        // m3x3 uses 3 consecutive constants starting from the source index
+                        for (int i = 0; i < 3; i++) {
+                            constants_used.insert(index + i);
+                        }
                     }
                 }
             }
         }
     }
     
-    // Declare all used constants as vec4 uniforms
-    for (int const_index : constants_used) {
-        glsl << "uniform vec4 c" << const_index << ";\n";
+    if (uses_relative_addressing) {
+        // If relative addressing is used, declare all constants as an array
+        glsl << "uniform vec4 c[96];\n";
+    } else {
+        // Declare all used constants as vec4 uniforms
+        for (int const_index : constants_used) {
+            glsl << "uniform vec4 c" << const_index << ";\n";
+        }
     }
     
     // Also handle any constants defined in the constants_ collection
@@ -719,24 +766,39 @@ std::string DX8ShaderTranslator::generate_vertex_glsl() {
     // Main function
     glsl << "void main() {\n";
     
-    // Temporary registers
+    // Temporary registers and address register
     std::unordered_map<int, bool> temp_registers_used;
+    bool uses_address_register = false;
+    
     for (const auto& inst : instructions_) {
         if (inst.dest.type == D3DSPR_TEMP) {
             temp_registers_used[inst.dest.index] = true;
+        } else if (inst.dest.type == D3DSPR_ADDR) {
+            uses_address_register = true;
         }
+        
         for (const auto& src : inst.sources) {
             if (src.type == D3DSPR_TEMP) {
                 temp_registers_used[src.index] = true;
+            } else if (src.type == D3DSPR_ADDR) {
+                uses_address_register = true;
+            } else if (src.type == D3DSPR_CONST && (src.index & 0x8000)) {
+                // Relative addressing detected
+                uses_address_register = true;
             }
         }
+    }
+    
+    // Declare address register if used
+    if (uses_address_register) {
+        glsl << "    ivec4 a0 = ivec4(0);\n";
     }
     
     // Declare temp registers
     for (const auto& temp : temp_registers_used) {
         glsl << "    vec4 r" << temp.first << ";\n";
     }
-    if (!temp_registers_used.empty()) {
+    if (!temp_registers_used.empty() || uses_address_register) {
         glsl << "\n";
     }
     
@@ -822,21 +884,35 @@ std::string DX8ShaderTranslator::register_to_glsl(const ShaderInstruction::Regis
             }
             break;
         case D3DSPR_CONST:
-            // Check if this is part of a matrix
-            for (const auto& constant : constants_) {
-                if (reg.index >= constant.index && reg.index < constant.index + constant.count && constant.count > 1) {
-                    // It's a matrix constant - we need to handle matrix row access
-                    int row = reg.index - constant.index;
-                    result += "c" + std::to_string(constant.index) + "_" + std::to_string(constant.index + constant.count - 1) + "[" + std::to_string(row) + "]";
-                    return result;
+            // Check for relative addressing (bit 15 set)
+            if (reg.index & 0x8000) {
+                // Relative addressing with a0
+                int offset = reg.index & 0x7FFF;
+                if (offset > 0) {
+                    result += "c[int(a0.x) + " + std::to_string(offset) + "]";
+                } else {
+                    result += "c[int(a0.x)]";
+                }
+            } else {
+                // Check if this is part of a matrix
+                for (const auto& constant : constants_) {
+                    if (reg.index >= constant.index && reg.index < constant.index + constant.count && constant.count > 1) {
+                        // It's a matrix constant - we need to handle matrix row access
+                        int row = reg.index - constant.index;
+                        result += "c" + std::to_string(constant.index) + "_" + std::to_string(constant.index + constant.count - 1) + "[" + std::to_string(row) + "]";
+                        return result;
+                    }
+                }
+                // Use ps_ prefix for pixel shader constants
+                if (shader_type_ == SHADER_TYPE_PIXEL) {
+                    result += "ps_c" + std::to_string(reg.index);
+                } else {
+                    result += "c" + std::to_string(reg.index);
                 }
             }
-            // Use ps_ prefix for pixel shader constants
-            if (shader_type_ == SHADER_TYPE_PIXEL) {
-                result += "ps_c" + std::to_string(reg.index);
-            } else {
-                result += "c" + std::to_string(reg.index);
-            }
+            break;
+        case D3DSPR_ADDR:
+            result += "a0";
             break;
         case D3DSPR_RASTOUT:
             if (reg.index == 0) result += "gl_Position";
@@ -879,7 +955,12 @@ std::string DX8ShaderTranslator::instruction_to_glsl(const ShaderInstruction& in
     
     switch (inst.opcode) {
         case D3DSIO_MOV:
-            result = dest + " = " + register_to_glsl(inst.sources[0]) + ";";
+            if (inst.dest.type == D3DSPR_ADDR) {
+                // Moving to address register - convert float to int
+                result = dest + " = ivec4(" + register_to_glsl(inst.sources[0]) + ");";
+            } else {
+                result = dest + " = " + register_to_glsl(inst.sources[0]) + ";";
+            }
             break;
             
         case D3DSIO_ADD:
@@ -1056,7 +1137,7 @@ std::string DX8ShaderTranslator::instruction_to_glsl(const ShaderInstruction& in
 std::string DX8ShaderTranslator::generate_pixel_glsl() {
     std::ostringstream glsl;
     
-    // Target OpenGL ES 3.0 / OpenGL 3.3 Core
+    // Target OpenGL 4.5 Core as requested
     const char* version_str = (const char*)glGetString(GL_VERSION);
     bool is_es = version_str && strstr(version_str, "ES") != nullptr;
     
@@ -1064,12 +1145,13 @@ std::string DX8ShaderTranslator::generate_pixel_glsl() {
         glsl << "#version 300 es\n";
         glsl << "precision highp float;\n\n";
     } else {
-        glsl << "#version 330 core\n\n";
+        glsl << "#version 450 core\n\n";
     }
     
-    // Uniforms (constants) - pixel shaders have c0-c7
+    // Uniforms (constants) - ps 1.4 supports c0-c31
     glsl << "// Shader constants\n";
-    for (int i = 0; i < 8; i++) {
+    int max_constants = (major_version_ == 1 && minor_version_ == 4) ? 32 : 8;
+    for (int i = 0; i < max_constants; i++) {
         glsl << "uniform vec4 ps_c" << i << ";\n";
     }
     glsl << "\n";
@@ -1093,6 +1175,23 @@ std::string DX8ShaderTranslator::generate_pixel_glsl() {
         glsl << "uniform sampler2D s" << i << ";\n";
     }
     glsl << "\n";
+    
+    // Bump mapping uniforms (check if BEM instruction is used)
+    bool uses_bump_mapping = false;
+    for (const auto& inst : instructions_) {
+        if (inst.opcode == D3DSIO_BEM) {
+            uses_bump_mapping = true;
+            break;
+        }
+    }
+    
+    if (uses_bump_mapping) {
+        glsl << "// Bump environment mapping matrices\n";
+        for (int i = 0; i < 4; i++) {
+            glsl << "uniform mat2 u_bumpEnvMat" << i << ";\n";
+        }
+        glsl << "\n";
+    }
     
     // Varyings (inputs from vertex shader)
     glsl << "// Inputs from vertex shader\n";
@@ -1222,13 +1321,25 @@ std::string DX8ShaderTranslator::pixel_instruction_to_glsl(const ShaderInstructi
         case D3DSIO_DP4:
             return dest + " = vec4(dot(" + pixel_register_to_glsl(inst.sources[0]) + ", " + pixel_register_to_glsl(inst.sources[1]) + "));";
             
-        case D3DSIO_TEX:
+        case D3DSIO_TEX: {
             // tex instruction (ps.1.1-1.3) or texld instruction (ps.1.4) - sample texture
-            if (inst.sources.size() >= 1 && inst.dest.type == D3DSPR_TEMP) {
-                int tex_unit = inst.dest.index; // Destination register determines texture unit
-                return dest + " = texture2D(s" + std::to_string(tex_unit) + ", " + pixel_register_to_glsl(inst.sources[0]) + ".xy);";
+            if (major_version_ == 1 && minor_version_ <= 3) {
+                // ps.1.1-1.3: tex tn implicitly samples texture n using tn coordinates
+                if (inst.dest.type == D3DSPR_TEXTURE) {
+                    int tex_unit = inst.dest.index;
+                    return dest + " = texture2D(s" + std::to_string(tex_unit) + ", t" + std::to_string(tex_unit) + ".xy);";
+                }
+            } else if (major_version_ == 1 && minor_version_ == 4) {
+                // ps.1.4: texld rn, tn samples texture n using coordinates from tn, stores in rn
+                if (inst.sources.size() >= 1 && inst.dest.type == D3DSPR_TEMP) {
+                    // Determine texture unit from source register
+                    int tex_unit = inst.sources[0].index;
+                    std::string coords = pixel_register_to_glsl(inst.sources[0]);
+                    return dest + " = texture2D(s" + std::to_string(tex_unit) + ", " + coords + ".xy);";
+                }
             }
             return "// Invalid tex/texld instruction";
+        }
             
         case D3DSIO_TEXCOORD:
             // texcoord instruction - pass through texture coordinates
@@ -1270,14 +1381,24 @@ std::string DX8ShaderTranslator::pixel_instruction_to_glsl(const ShaderInstructi
             // Maximum of two values
             return dest + " = max(" + pixel_register_to_glsl(inst.sources[0]) + ", " + pixel_register_to_glsl(inst.sources[1]) + ");";
             
-        case D3DSIO_BEM:
+        case D3DSIO_BEM: {
             // Bump environment mapping: dest = src0 + [bumpmatrix] * src1
-            // This is a complex operation that needs matrix from texture stage state
-            return dest + " = " + pixel_register_to_glsl(inst.sources[0]) + " + /* BEM matrix */ vec4(0.0);";
+            // BEM uses a 2x2 matrix from texture stage state
+            // For now, we'll use uniform variables for the bump matrix
+            int stage = inst.dest.index; // The destination register index indicates the texture stage
+            std::string matrix_uniform = "u_bumpEnvMat" + std::to_string(stage);
+            std::string src0 = pixel_register_to_glsl(inst.sources[0]);
+            std::string src1 = pixel_register_to_glsl(inst.sources[1]);
+            
+            // BEM performs: dest.xy = src0.xy + mat2x2 * src1.xy
+            // Where mat2x2 is the bump environment matrix for this stage
+            return dest + ".xy = " + src0 + ".xy + " + matrix_uniform + " * " + src1 + ".xy;";
+        }
             
         case D3DSIO_PHASE:
-            // Phase instruction separates texture and arithmetic instructions
-            return "// phase";
+            // Phase instruction separates texture and arithmetic instructions in ps 1.4
+            // In ps 1.4, phase marks the transition from texture addressing to color blending
+            return "// --- PHASE: End of texture addressing, beginning of color blending ---";
             
         case D3DSIO_NOP:
             return "// nop";

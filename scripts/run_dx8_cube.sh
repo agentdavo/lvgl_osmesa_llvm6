@@ -1,5 +1,13 @@
 #!/bin/bash
 # Script to run dx8_cube with proper environment and save logs
+# Usage: ./run_dx8_cube.sh [--backend=osmesa|egl]
+
+# Source common backend script
+SCRIPT_DIR="$(dirname "$0")"
+source "$SCRIPT_DIR/common_backend.sh"
+
+# Parse backend option
+parse_backend_option "$@"
 
 # Create logs directory if it doesn't exist
 mkdir -p logs

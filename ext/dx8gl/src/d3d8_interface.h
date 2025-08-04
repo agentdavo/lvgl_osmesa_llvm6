@@ -69,11 +69,21 @@ public:
                                           D3DPRESENT_PARAMETERS* pPresentationParameters,
                                           IDirect3DDevice8** ppReturnedDeviceInterface) override;
 
+    // Public helper methods for display configuration
+    bool FindColorAndZMode(UINT width, UINT height, UINT bit_depth,
+                          D3DFORMAT* out_color_format, D3DFORMAT* out_backbuffer_format,
+                          D3DFORMAT* out_z_format);
+
 private:
     void enumerate_adapters();
     void populate_display_modes(AdapterInfo& adapter);
     void populate_device_caps(AdapterInfo& adapter);
     D3DFORMAT get_desktop_format();
+    
+    // Helper functions for mode enumeration
+    bool find_color_mode(D3DFORMAT format, UINT width, UINT height, UINT* out_mode);
+    bool find_z_mode(D3DFORMAT color_format, D3DFORMAT backbuffer_format, D3DFORMAT* out_z_format);
+    bool test_z_mode(D3DFORMAT color_format, D3DFORMAT backbuffer_format, D3DFORMAT z_format);
 
     std::atomic<LONG> ref_count_;
     std::vector<AdapterInfo> adapters_;  // Not used in OSMesa mode

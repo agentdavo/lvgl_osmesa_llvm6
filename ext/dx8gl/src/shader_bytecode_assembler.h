@@ -259,6 +259,19 @@ public:
     // Add phase instruction (ps.1.4)
     void add_phase();
     
+    // Add DCL instruction (vertex shader declarations)
+    void add_dcl(int reg, ShaderBytecode::RegisterType type, DWORD usage);
+    
+    // Add MOV to address register (with truncation)
+    void add_mova(int dest_reg, int src_reg, ShaderBytecode::RegisterType src_type, 
+                  DWORD src_swizzle, ShaderBytecode::SourceModifier src_mod = ShaderBytecode::SRCMOD_NONE);
+    
+    // Add instruction with relative addressing
+    void add_instruction_relative(ShaderBytecode::Opcode opcode,
+                                 int dest_reg, ShaderBytecode::RegisterType dest_type, DWORD dest_mask,
+                                 int src_reg, ShaderBytecode::RegisterType src_type, DWORD src_swizzle,
+                                 int offset = 0, ShaderBytecode::SourceModifier src_mod = ShaderBytecode::SRCMOD_NONE);
+    
     // Add comment
     void add_comment(const std::string& comment);
     
@@ -280,7 +293,8 @@ private:
     // Build parameter token
     DWORD build_parameter_token(ShaderBytecode::RegisterType type, int reg_num,
                                bool is_dest, DWORD mask_or_swizzle,
-                               ShaderBytecode::SourceModifier src_mod = ShaderBytecode::SRCMOD_NONE);
+                               ShaderBytecode::SourceModifier src_mod = ShaderBytecode::SRCMOD_NONE,
+                               bool relative_addressing = false);
     
     // Build destination parameter with modifiers
     DWORD build_dest_parameter(ShaderBytecode::RegisterType type, int reg_num,

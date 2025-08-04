@@ -28,6 +28,26 @@ if(NOT EMSCRIPTEN)
     set(GL_INCLUDE_DIRS "")
     add_compile_definitions(DX8GL_USE_DESKTOP_GL)
     
+    # Optional EGL support
+    option(DX8GL_ENABLE_EGL "Enable EGL backend support" OFF)
+    if(DX8GL_ENABLE_EGL)
+        find_package(PkgConfig QUIET)
+        if(PkgConfig_FOUND)
+            pkg_check_modules(EGL egl)
+            pkg_check_modules(GLES3 glesv2)
+        endif()
+        
+        if(EGL_FOUND AND GLES3_FOUND)
+            message(STATUS "EGL backend support enabled")
+            add_compile_definitions(DX8GL_HAS_EGL)
+            set(EGL_LIBRARIES ${EGL_LIBRARIES} ${GLES3_LIBRARIES})
+            set(EGL_INCLUDE_DIRS ${EGL_INCLUDE_DIRS} ${GLES3_INCLUDE_DIRS})
+        else()
+            message(WARNING "EGL or GLESv2 not found, EGL backend disabled")
+            set(DX8GL_ENABLE_EGL OFF)
+        endif()
+    endif()
+    
     # Always use OSMesa from parent project
     if(TARGET OSMesa)
         message(STATUS "Using OSMesa from parent project")
@@ -88,11 +108,18 @@ set(DX8GL_SOURCES
     src/private_data.cpp
     src/shader_program_manager.cpp
     src/d3d8_missing_stubs.cpp
+    src/render_backend.cpp
 )
 
 # Always add OSMesa context implementation
 list(APPEND DX8GL_SOURCES src/osmesa_context.cpp)
 list(APPEND DX8GL_SOURCES src/osmesa_gl_loader.cpp)
+list(APPEND DX8GL_SOURCES src/osmesa_backend.cpp)
+
+# Conditionally add EGL backend
+if(DX8GL_ENABLE_EGL)
+    list(APPEND DX8GL_SOURCES src/egl_backend.cpp)
+endif()
 
 # dx8gl now uses OSMesa-only for software rendering (no EGL complexity)
 message(STATUS "dx8gl configured for OSMesa-only software rendering")
@@ -110,6 +137,11 @@ target_include_directories(dx8gl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/glm
 )
 
+# Add EGL include directories if enabled
+if(DX8GL_ENABLE_EGL)
+    target_include_directories(dx8gl PRIVATE ${EGL_INCLUDE_DIRS})
+endif()
+
 # Add OSMesa include directory
 target_include_directories(dx8gl PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../osmesa/include")
 
@@ -126,7 +158,10 @@ if(NOT EMSCRIPTEN)
         target_link_libraries(dx8gl PUBLIC ${OSMESA_LIBRARY})
     endif()
     
-    # dx8gl uses OSMesa-only (no EGL linking needed)
+    # Add EGL libraries if enabled
+    if(DX8GL_ENABLE_EGL)
+        target_link_libraries(dx8gl PUBLIC ${EGL_LIBRARIES})
+    endif()
 else()
     # Emscripten only needs GLES2
     target_link_libraries(dx8gl PUBLIC ${GL_LIBRARIES})
