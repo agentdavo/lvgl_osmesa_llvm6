@@ -17,7 +17,7 @@ namespace dx8gl {
 // Global state
 static std::atomic<bool> g_initialized{false};
 static std::mutex g_init_mutex;
-static std::unique_ptr<DX8RenderBackend> g_render_backend;
+std::unique_ptr<DX8RenderBackend> g_render_backend;  // Not static - needs to be accessible from d3d8_device.cpp
 static DX8BackendType g_selected_backend = DX8_BACKEND_OSMESA;
 
 // Thread-local error string
@@ -41,16 +41,14 @@ extern "C" IDirect3D8* Direct3DCreate8_CPP(UINT SDKVersion) {
     
     // Initialize dx8gl if needed
     if (!dx8gl::g_initialized) {
-        std::lock_guard<std::mutex> lock(dx8gl::g_init_mutex);
-        if (!dx8gl::g_initialized) {
-            dx8gl::Logger::instance();  // Initialize logging
-            DX8GL_INFO("Direct3DCreate8 called with SDK version %u", SDKVersion);
-            
-            DX8GL_INFO("dx8gl configured for OSMesa-only software rendering (no EGL overhead)");
-            
-            dx8gl::g_initialized = true;
+        dx8gl_error result = dx8gl_init(nullptr);
+        if (result != DX8GL_SUCCESS) {
+            DX8GL_ERROR("Failed to initialize dx8gl: %d", result);
+            return nullptr;
         }
     }
+    
+    DX8GL_INFO("Direct3DCreate8 called with SDK version %u", SDKVersion);
     
     // Create and return IDirect3D8 interface
     auto d3d8 = new dx8gl::Direct3D8();
@@ -119,11 +117,13 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
     }
     
     // Create render backend
-    dx8gl::g_render_backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
-    if (!dx8gl::g_render_backend) {
-        dx8gl::set_error("Failed to create render backend");
-        return DX8GL_ERROR_INTERNAL;
-    }
+    // TODO: Properly integrate backend with d3d8_device to avoid duplicate contexts
+    // For now, let d3d8_device create its own context
+    // dx8gl::g_render_backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
+    // if (!dx8gl::g_render_backend) {
+    //     dx8gl::set_error("Failed to create render backend");
+    //     return DX8GL_ERROR_INTERNAL;
+    // }
     
     // OSMesa mode doesn't need SDL initialization
     
@@ -135,10 +135,10 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
 void dx8gl_shutdown(void) {
     std::lock_guard<std::mutex> lock(dx8gl::g_init_mutex);
     
-    if (dx8gl::g_render_backend) {
-        dx8gl::g_render_backend->shutdown();
-        dx8gl::g_render_backend.reset();
-    }
+    // if (dx8gl::g_render_backend) {
+    //     dx8gl::g_render_backend->shutdown();
+    //     dx8gl::g_render_backend.reset();
+    // }
     
     if (!dx8gl::g_initialized) {
         return;

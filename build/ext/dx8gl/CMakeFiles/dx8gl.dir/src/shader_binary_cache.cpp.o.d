@@ -245,6 +245,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_types.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
  /usr/include/c++/13/cstdarg /usr/include/c++/13/cstring \
  /usr/include/string.h /usr/include/strings.h \

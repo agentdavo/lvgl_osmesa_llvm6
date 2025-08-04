@@ -292,6 +292,19 @@ dx8_cube/fast:
 	$(MAKE) $(MAKESILENT) -f src/dx8_cube/CMakeFiles/dx8_cube.dir/build.make src/dx8_cube/CMakeFiles/dx8_cube.dir/build
 .PHONY : dx8_cube/fast
 
+#=============================================================================
+# Target rules for targets named dx8_backend_test
+
+# Build rule for target.
+dx8_backend_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dx8_backend_test
+.PHONY : dx8_backend_test
+
+# fast build rule for target.
+dx8_backend_test/fast:
+	$(MAKE) $(MAKESILENT) -f src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build.make src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build
+.PHONY : dx8_backend_test/fast
+
 ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o: ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o
 .PHONY : ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.o
 
@@ -13746,6 +13759,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... llvm_external"
 	@echo "... osmesa"
+	@echo "... dx8_backend_test"
 	@echo "... dx8_cube"
 	@echo "... dx8gl"
 	@echo "... lvgl"

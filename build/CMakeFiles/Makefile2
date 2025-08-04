@@ -108,12 +108,14 @@ src/all: src/CMakeFiles/test_indexed_xyzrhw.dir/all
 src/all: src/lvgl_platform/all
 src/all: src/lvgl_osmesa/all
 src/all: src/dx8_cube/all
+src/all: src/dx8_backend_test/all
 .PHONY : src/all
 
 # Recursive "preinstall" directory target.
 src/preinstall: src/lvgl_platform/preinstall
 src/preinstall: src/lvgl_osmesa/preinstall
 src/preinstall: src/dx8_cube/preinstall
+src/preinstall: src/dx8_backend_test/preinstall
 .PHONY : src/preinstall
 
 # Recursive "clean" directory target.
@@ -123,7 +125,23 @@ src/clean: src/CMakeFiles/test_indexed_xyzrhw.dir/clean
 src/clean: src/lvgl_platform/clean
 src/clean: src/lvgl_osmesa/clean
 src/clean: src/dx8_cube/clean
+src/clean: src/dx8_backend_test/clean
 .PHONY : src/clean
+
+#=============================================================================
+# Directory level rules for directory src/dx8_backend_test
+
+# Recursive "all" directory target.
+src/dx8_backend_test/all: src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all
+.PHONY : src/dx8_backend_test/all
+
+# Recursive "preinstall" directory target.
+src/dx8_backend_test/preinstall:
+.PHONY : src/dx8_backend_test/preinstall
+
+# Recursive "clean" directory target.
+src/dx8_backend_test/clean: src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/clean
+.PHONY : src/dx8_backend_test/clean
 
 #=============================================================================
 # Directory level rules for directory src/dx8_cube
@@ -443,6 +461,34 @@ dx8_cube: src/dx8_cube/CMakeFiles/dx8_cube.dir/rule
 src/dx8_cube/CMakeFiles/dx8_cube.dir/clean:
 	$(MAKE) $(MAKESILENT) -f src/dx8_cube/CMakeFiles/dx8_cube.dir/build.make src/dx8_cube/CMakeFiles/dx8_cube.dir/clean
 .PHONY : src/dx8_cube/CMakeFiles/dx8_cube.dir/clean
+
+#=============================================================================
+# Target rules for target src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir
+
+# All Build rule for target.
+src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all: CMakeFiles/osmesa.dir/all
+src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all: CMakeFiles/lvgl.dir/all
+src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
+	$(MAKE) $(MAKESILENT) -f src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build.make src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/depend
+	$(MAKE) $(MAKESILENT) -f src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build.make src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target dx8_backend_test"
+.PHONY : src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all
+
+# Build rule for subdir invocation for target.
+src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 99
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/rule
+
+# Convenience name for target.
+dx8_backend_test: src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/rule
+.PHONY : dx8_backend_test
+
+# clean rule for target.
+src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/clean:
+	$(MAKE) $(MAKESILENT) -f src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/build.make src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/clean
+.PHONY : src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

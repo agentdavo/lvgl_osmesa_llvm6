@@ -17,6 +17,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "osmesa-prefix/tmp/osmesa-mkdirs.cmake"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/CMakeLists.txt"
+  "/home/djs/lvgl_osmesa_llvm6/src/dx8_backend_test/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/dx8_cube/CMakeLists.txt"
   "/home/djs/lvgl_osmesa_llvm6/src/dx8_cube/wall01.tga"
   "/home/djs/lvgl_osmesa_llvm6/src/lvgl_osmesa/CMakeLists.txt"
@@ -90,6 +91,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "src/lvgl_osmesa/CMakeFiles/CMakeDirectoryInformation.cmake"
   "src/dx8_cube/wall01.tga"
   "src/dx8_cube/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "src/dx8_backend_test/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -104,4 +106,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "src/lvgl_platform/CMakeFiles/lvgl_platform.dir/DependInfo.cmake"
   "src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/DependInfo.cmake"
   "src/dx8_cube/CMakeFiles/dx8_cube.dir/DependInfo.cmake"
+  "src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/DependInfo.cmake"
   )

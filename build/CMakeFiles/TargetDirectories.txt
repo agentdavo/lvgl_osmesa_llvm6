@@ -44,3 +44,10 @@
 /home/djs/lvgl_osmesa_llvm6/build/src/dx8_cube/CMakeFiles/install.dir
 /home/djs/lvgl_osmesa_llvm6/build/src/dx8_cube/CMakeFiles/install/local.dir
 /home/djs/lvgl_osmesa_llvm6/build/src/dx8_cube/CMakeFiles/install/strip.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/edit_cache.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/rebuild_cache.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/list_install_components.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/install.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/install/local.dir
+/home/djs/lvgl_osmesa_llvm6/build/src/dx8_backend_test/CMakeFiles/install/strip.dir

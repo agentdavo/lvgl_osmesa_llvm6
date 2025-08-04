@@ -11,6 +11,11 @@
 #include <cstring>
 #include <cstdlib>
 
+// External render backend from dx8gl.cpp
+namespace dx8gl {
+    extern std::unique_ptr<DX8RenderBackend> g_render_backend;
+}
+
 // Include OpenGL headers - order is important!
 #ifdef DX8GL_HAS_OSMESA
 #include <GL/gl.h>

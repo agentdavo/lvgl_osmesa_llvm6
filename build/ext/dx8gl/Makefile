@@ -632,6 +632,30 @@ src/logger.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
+src/osmesa_backend.o: src/osmesa_backend.cpp.o
+.PHONY : src/osmesa_backend.o
+
+# target to build an object file
+src/osmesa_backend.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o
+.PHONY : src/osmesa_backend.cpp.o
+
+src/osmesa_backend.i: src/osmesa_backend.cpp.i
+.PHONY : src/osmesa_backend.i
+
+# target to preprocess a source file
+src/osmesa_backend.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.i
+.PHONY : src/osmesa_backend.cpp.i
+
+src/osmesa_backend.s: src/osmesa_backend.cpp.s
+.PHONY : src/osmesa_backend.s
+
+# target to generate assembly for a file
+src/osmesa_backend.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.s
+.PHONY : src/osmesa_backend.cpp.s
+
 src/osmesa_context.o: src/osmesa_context.cpp.o
 .PHONY : src/osmesa_context.o
 
@@ -727,6 +751,30 @@ src/private_data.s: src/private_data.cpp.s
 src/private_data.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.s
 .PHONY : src/private_data.cpp.s
+
+src/render_backend.o: src/render_backend.cpp.o
+.PHONY : src/render_backend.o
+
+# target to build an object file
+src/render_backend.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o
+.PHONY : src/render_backend.cpp.o
+
+src/render_backend.i: src/render_backend.cpp.i
+.PHONY : src/render_backend.i
+
+# target to preprocess a source file
+src/render_backend.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.i
+.PHONY : src/render_backend.cpp.i
+
+src/render_backend.s: src/render_backend.cpp.s
+.PHONY : src/render_backend.s
+
+# target to generate assembly for a file
+src/render_backend.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.s
+.PHONY : src/render_backend.cpp.s
 
 src/shader_binary_cache.o: src/shader_binary_cache.cpp.o
 .PHONY : src/shader_binary_cache.o
@@ -1086,6 +1134,9 @@ help:
 	@echo "... src/logger.o"
 	@echo "... src/logger.i"
 	@echo "... src/logger.s"
+	@echo "... src/osmesa_backend.o"
+	@echo "... src/osmesa_backend.i"
+	@echo "... src/osmesa_backend.s"
 	@echo "... src/osmesa_context.o"
 	@echo "... src/osmesa_context.i"
 	@echo "... src/osmesa_context.s"
@@ -1098,6 +1149,9 @@ help:
 	@echo "... src/private_data.o"
 	@echo "... src/private_data.i"
 	@echo "... src/private_data.s"
+	@echo "... src/render_backend.o"
+	@echo "... src/render_backend.i"
+	@echo "... src/render_backend.s"
 	@echo "... src/shader_binary_cache.o"
 	@echo "... src/shader_binary_cache.i"
 	@echo "... src/shader_binary_cache.s"

@@ -58,12 +58,19 @@ static void populate_fixed_function_state(FixedFunctionState& ff_state, const St
         ff_state.alpha_op[i] = state_manager.get_texture_stage_state(i, D3DTSS_ALPHAOP);
         
         // Copy bump mapping parameters from state manager
-        ff_state.bump_env_mat[i][0] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT00));
-        ff_state.bump_env_mat[i][1] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT01));
-        ff_state.bump_env_mat[i][2] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT10));
-        ff_state.bump_env_mat[i][3] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT11));
-        ff_state.bump_env_lscale[i] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLSCALE));
-        ff_state.bump_env_loffset[i] = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLOFFSET));
+        DWORD mat00 = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT00);
+        DWORD mat01 = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT01);
+        DWORD mat10 = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT10);
+        DWORD mat11 = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT11);
+        DWORD lscale = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLSCALE);
+        DWORD loffset = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLOFFSET);
+        
+        ff_state.bump_env_mat[i][0] = *reinterpret_cast<const float*>(&mat00);
+        ff_state.bump_env_mat[i][1] = *reinterpret_cast<const float*>(&mat01);
+        ff_state.bump_env_mat[i][2] = *reinterpret_cast<const float*>(&mat10);
+        ff_state.bump_env_mat[i][3] = *reinterpret_cast<const float*>(&mat11);
+        ff_state.bump_env_lscale[i] = *reinterpret_cast<const float*>(&lscale);
+        ff_state.bump_env_loffset[i] = *reinterpret_cast<const float*>(&loffset);
     }
 }
 
@@ -72,20 +79,26 @@ static void set_bump_mapping_uniforms(const FixedFunctionShader::UniformLocation
     for (int i = 0; i < 8; i++) {
         if (uniforms->bump_env_mat[i] >= 0) {
             // Get bump mapping parameters from state manager
-            float mat00 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT00));
-            float mat01 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT01));
-            float mat10 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT10));
-            float mat11 = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT11));
+            DWORD mat00_dw = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT00);
+            DWORD mat01_dw = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT01);
+            DWORD mat10_dw = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT10);
+            DWORD mat11_dw = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVMAT11);
+            float mat00 = *reinterpret_cast<const float*>(&mat00_dw);
+            float mat01 = *reinterpret_cast<const float*>(&mat01_dw);
+            float mat10 = *reinterpret_cast<const float*>(&mat10_dw);
+            float mat11 = *reinterpret_cast<const float*>(&mat11_dw);
             glUniform4f(uniforms->bump_env_mat[i], mat00, mat01, mat10, mat11);
         }
         
         if (uniforms->bump_env_lscale[i] >= 0) {
-            float lscale = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLSCALE));
+            DWORD lscale_dw = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLSCALE);
+            float lscale = *reinterpret_cast<const float*>(&lscale_dw);
             glUniform1f(uniforms->bump_env_lscale[i], lscale);
         }
         
         if (uniforms->bump_env_loffset[i] >= 0) {
-            float loffset = *reinterpret_cast<const float*>(&state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLOFFSET));
+            DWORD loffset_dw = state_manager.get_texture_stage_state(i, D3DTSS_BUMPENVLOFFSET);
+            float loffset = *reinterpret_cast<const float*>(&loffset_dw);
             glUniform1f(uniforms->bump_env_loffset[i], loffset);
         }
     }

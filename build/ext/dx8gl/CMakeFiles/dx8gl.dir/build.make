@@ -531,10 +531,24 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_missing_stubs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dx8gl.dir/src/d3d8_missing_stubs.cpp.s"
 	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_missing_stubs.cpp -o CMakeFiles/dx8gl.dir/src/d3d8_missing_stubs.cpp.s
 
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/flags.make
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.cpp
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o"
+	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o -MF CMakeFiles/dx8gl.dir/src/render_backend.cpp.o.d -o CMakeFiles/dx8gl.dir/src/render_backend.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.cpp
+
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dx8gl.dir/src/render_backend.cpp.i"
+	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.cpp > CMakeFiles/dx8gl.dir/src/render_backend.cpp.i
+
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dx8gl.dir/src/render_backend.cpp.s"
+	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.cpp -o CMakeFiles/dx8gl.dir/src/render_backend.cpp.s
+
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/flags.make
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.cpp
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o"
 	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o -MF CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o.d -o CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.cpp
 
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.i: cmake_force
@@ -548,7 +562,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.s: cmake_force
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/flags.make
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.cpp
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o"
 	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o -MF CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o.d -o CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.cpp
 
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.i: cmake_force
@@ -558,6 +572,20 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.i: cmake_force
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.s"
 	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.cpp -o CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.s
+
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/flags.make
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_backend.cpp
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o: ext/dx8gl/CMakeFiles/dx8gl.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o"
+	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o -MF CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o.d -o CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_backend.cpp
+
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.i"
+	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_backend.cpp > CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.i
+
+ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.s"
+	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_backend.cpp -o CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.s
 
 # Object files for target dx8gl
 dx8gl_OBJECTS = \
@@ -594,8 +622,10 @@ dx8gl_OBJECTS = \
 "CMakeFiles/dx8gl.dir/src/private_data.cpp.o" \
 "CMakeFiles/dx8gl.dir/src/shader_program_manager.cpp.o" \
 "CMakeFiles/dx8gl.dir/src/d3d8_missing_stubs.cpp.o" \
+"CMakeFiles/dx8gl.dir/src/render_backend.cpp.o" \
 "CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o" \
-"CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o"
+"CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o" \
+"CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o"
 
 # External object files for target dx8gl
 dx8gl_EXTERNAL_OBJECTS =
@@ -633,11 +663,13 @@ ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/fvf_utils.cpp.o
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_program_manager.cpp.o
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_missing_stubs.cpp.o
+ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o
+ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/build.make
 ext/dx8gl/libdx8gl.a: ext/dx8gl/CMakeFiles/dx8gl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Linking CXX static library libdx8gl.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Linking CXX static library libdx8gl.a"
 	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && $(CMAKE_COMMAND) -P CMakeFiles/dx8gl.dir/cmake_clean_target.cmake
 	cd /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dx8gl.dir/link.txt --verbose=$(VERBOSE)
 
