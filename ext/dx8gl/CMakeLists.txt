@@ -48,6 +48,13 @@ if(NOT EMSCRIPTEN)
         endif()
     endif()
     
+    # Optional WebGPU support
+    option(DX8GL_ENABLE_WEBGPU "Enable WebGPU backend support" OFF)
+    if(DX8GL_ENABLE_WEBGPU)
+        message(STATUS "WebGPU backend support enabled")
+        add_compile_definitions(DX8GL_HAS_WEBGPU)
+    endif()
+    
     # Always use OSMesa from parent project
     if(TARGET OSMesa)
         message(STATUS "Using OSMesa from parent project")
@@ -111,6 +118,7 @@ set(DX8GL_SOURCES
     src/shader_program_manager.cpp
     src/d3d8_missing_stubs.cpp
     src/render_backend.cpp
+    src/offscreen_framebuffer.cpp
 )
 
 # Always add OSMesa context implementation
@@ -121,6 +129,13 @@ list(APPEND DX8GL_SOURCES src/osmesa_backend.cpp)
 # Conditionally add EGL backend
 if(DX8GL_ENABLE_EGL)
     list(APPEND DX8GL_SOURCES src/egl_backend.cpp)
+endif()
+
+# Conditionally add WebGPU backend
+if(DX8GL_ENABLE_WEBGPU)
+    list(APPEND DX8GL_SOURCES src/webgpu_backend.cpp)
+    list(APPEND DX8GL_SOURCES lib/lib_webgpu/lib_webgpu.cpp)
+    list(APPEND DX8GL_SOURCES lib/lib_webgpu/offscreen_canvas.c)
 endif()
 
 # dx8gl now uses OSMesa-only for software rendering (no EGL complexity)
@@ -142,6 +157,11 @@ target_include_directories(dx8gl PRIVATE
 # Add EGL include directories if enabled
 if(DX8GL_ENABLE_EGL)
     target_include_directories(dx8gl PRIVATE ${EGL_INCLUDE_DIRS})
+endif()
+
+# Add WebGPU include directories if enabled
+if(DX8GL_ENABLE_WEBGPU)
+    target_include_directories(dx8gl PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/lib/lib_webgpu)
 endif()
 
 # Add OSMesa include directory

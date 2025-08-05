@@ -365,6 +365,97 @@ test_stream_source_stride/fast:
 .PHONY : test_stream_source_stride/fast
 
 #=============================================================================
+# Target rules for targets named test_shader_program_cache
+
+# Build rule for target.
+test_shader_program_cache: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_program_cache
+.PHONY : test_shader_program_cache
+
+# fast build rule for target.
+test_shader_program_cache/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/build
+.PHONY : test_shader_program_cache/fast
+
+#=============================================================================
+# Target rules for targets named test_shader_cache_resize
+
+# Build rule for target.
+test_shader_cache_resize: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_cache_resize
+.PHONY : test_shader_cache_resize
+
+# fast build rule for target.
+test_shader_cache_resize/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/build
+.PHONY : test_shader_cache_resize/fast
+
+#=============================================================================
+# Target rules for targets named test_vertex_shader_disassembly
+
+# Build rule for target.
+test_vertex_shader_disassembly: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_vertex_shader_disassembly
+.PHONY : test_vertex_shader_disassembly
+
+# fast build rule for target.
+test_vertex_shader_disassembly/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/build.make ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/build
+.PHONY : test_vertex_shader_disassembly/fast
+
+#=============================================================================
+# Target rules for targets named test_dx8gl_core_api
+
+# Build rule for target.
+test_dx8gl_core_api: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_dx8gl_core_api
+.PHONY : test_dx8gl_core_api
+
+# fast build rule for target.
+test_dx8gl_core_api/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/build.make ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/build
+.PHONY : test_dx8gl_core_api/fast
+
+#=============================================================================
+# Target rules for targets named test_d3dx_surface_loading
+
+# Build rule for target.
+test_d3dx_surface_loading: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_d3dx_surface_loading
+.PHONY : test_d3dx_surface_loading
+
+# fast build rule for target.
+test_d3dx_surface_loading/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/build.make ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/build
+.PHONY : test_d3dx_surface_loading/fast
+
+#=============================================================================
+# Target rules for targets named test_swapchain_presentation
+
+# Build rule for target.
+test_swapchain_presentation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_swapchain_presentation
+.PHONY : test_swapchain_presentation
+
+# fast build rule for target.
+test_swapchain_presentation/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/build.make ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/build
+.PHONY : test_swapchain_presentation/fast
+
+#=============================================================================
+# Target rules for targets named test_state_manager_validation
+
+# Build rule for target.
+test_state_manager_validation: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_state_manager_validation
+.PHONY : test_state_manager_validation
+
+# fast build rule for target.
+test_state_manager_validation/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/build.make ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/build
+.PHONY : test_state_manager_validation/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -11980,7 +12071,9 @@ help:
 	@echo "... test_async_simple"
 	@echo "... test_command_buffer_async"
 	@echo "... test_cube_texture"
+	@echo "... test_d3dx_surface_loading"
 	@echo "... test_device_reset"
+	@echo "... test_dx8gl_core_api"
 	@echo "... test_indexed_xyzrhw"
 	@echo "... test_loading_screen"
 	@echo "... test_lod_dirty_logic"
@@ -11988,11 +12081,16 @@ help:
 	@echo "... test_lvgl_platform"
 	@echo "... test_mixed_vertices"
 	@echo "... test_multi_texcoords"
+	@echo "... test_shader_cache_resize"
+	@echo "... test_shader_program_cache"
 	@echo "... test_shader_translator"
+	@echo "... test_state_manager_validation"
 	@echo "... test_static_canvas"
 	@echo "... test_stream_source_stride"
 	@echo "... test_surface_format"
+	@echo "... test_swapchain_presentation"
 	@echo "... test_texture_simple"
+	@echo "... test_vertex_shader_disassembly"
 	@echo "... test_xyzrhw"
 	@echo "... ext/lvgl/src/core/lv_group.o"
 	@echo "... ext/lvgl/src/core/lv_group.i"

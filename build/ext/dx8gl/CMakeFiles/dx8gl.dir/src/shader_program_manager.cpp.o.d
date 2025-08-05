@@ -21,10 +21,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_program_manager.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
- /usr/include/c++/13/unordered_map \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \

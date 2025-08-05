@@ -55,6 +55,13 @@ git submodule update --init --recursive
 # Build all examples
 ./scripts/compile.sh examples
 
+# Build with EGL backend support
+./scripts/compile.sh -e all
+
+# Build with WebGPU backend support (requires -DDX8GL_ENABLE_WEBGPU=ON)
+cmake -S . -B build -DDX8GL_ENABLE_WEBGPU=ON
+cmake --build build -j
+
 # Build individual examples
 ./scripts/compile.sh dx8_cube             # DirectX 8 spinning cube
 ./scripts/compile.sh osmesa_test          # OSMesa test (outputs PPM)
@@ -202,22 +209,33 @@ dx8gl_init(&config);
    - Consistent behavior across all systems
    - Ideal for testing and CI/CD environments
 
-2. **EGL Backend** (Optional)
+2. **EGL Backend** (Optional)  
    - Hardware-accelerated rendering via EGL surfaceless context
    - Requires EGL 1.5+ with surfaceless context extension
    - Significantly better performance when GPU is available
    - Falls back gracefully if not available
 
+3. **WebGPU Backend** (Experimental)
+   - Modern GPU API for next-generation rendering
+   - Cross-platform support (web browsers and native)
+   - Future-proof rendering pipeline
+   - Requires WebGPU-enabled browser or native implementation
+
 ### Backend Selection Methods
 ```bash
 # Environment variable
-export DX8GL_BACKEND=egl
+export DX8GL_BACKEND=egl  # or osmesa, webgpu, auto
 
-# Command line argument
+# Command line argument  
 export DX8GL_ARGS="--backend=egl"
 
-# API configuration (shown above)
+# API configuration
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_DEFAULT;  # auto-select with fallback
+dx8gl_init(&config);
 ```
+
+The "auto" backend selection uses a fallback chain: WebGPU → EGL → OSMesa
 
 ## Known Issues and Solutions
 

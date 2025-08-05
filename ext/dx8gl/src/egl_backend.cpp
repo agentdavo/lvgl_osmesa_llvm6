@@ -17,7 +17,6 @@ DX8EGLBackend::DX8EGLBackend()
     , framebuffer_id_(0)
     , color_texture_id_(0)
     , depth_renderbuffer_id_(0)
-    , framebuffer_data_(nullptr)
     , width_(0)
     , height_(0)
     , initialized_(false) {
@@ -244,19 +243,11 @@ bool DX8EGLBackend::create_offscreen_framebuffer(int width, int height) {
         return false;
     }
     
-    // Allocate CPU-side buffer for readback
-    size_t buffer_size = width * height * 4; // RGBA
-    framebuffer_data_ = malloc(buffer_size);
-    if (!framebuffer_data_) {
-        snprintf(error_buffer_, sizeof(error_buffer_), 
-                 "Failed to allocate framebuffer data (%zu bytes)", buffer_size);
-        DX8GL_ERROR("%s", error_buffer_);
-        destroy_offscreen_framebuffer();
-        return false;
-    }
+    // Create CPU-side framebuffer helper
+    framebuffer_ = std::make_unique<OffscreenFramebuffer>(width, height, PixelFormat::RGBA8, true);
     
     // Clear to black
-    memset(framebuffer_data_, 0, buffer_size);
+    framebuffer_->clear(0.0f, 0.0f, 0.0f, 1.0f);
     
     DX8GL_INFO("Created offscreen framebuffer %dx%d", width, height);
     return true;
@@ -278,21 +269,21 @@ void DX8EGLBackend::destroy_offscreen_framebuffer() {
         depth_renderbuffer_id_ = 0;
     }
     
-    if (framebuffer_data_) {
-        free(framebuffer_data_);
-        framebuffer_data_ = nullptr;
-    }
+    // Framebuffer cleanup is handled by unique_ptr
+    framebuffer_.reset();
 }
 
 bool DX8EGLBackend::read_framebuffer_data() {
-    if (!framebuffer_id_ || !framebuffer_data_) {
+    if (!framebuffer_id_ || !framebuffer_) {
         return false;
     }
     
-    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer_id_);
-    glReadPixels(0, 0, width_, height_, GL_RGBA, GL_UNSIGNED_BYTE, framebuffer_data_);
-    
-    return true;
+    // Use the framebuffer helper's read_from_gpu method
+    return framebuffer_->read_from_gpu([this](void* dest, size_t size) {
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer_id_);
+        glReadPixels(0, 0, width_, height_, GL_RGBA, GL_UNSIGNED_BYTE, dest);
+        return glGetError() == GL_NO_ERROR;
+    });
 }
 
 void DX8EGLBackend::shutdown() {
@@ -349,14 +340,14 @@ bool DX8EGLBackend::make_current() {
 void* DX8EGLBackend::get_framebuffer(int& width, int& height, int& format) {
     width = width_;
     height = height_;
-    format = GL_RGBA;
+    format = framebuffer_ ? framebuffer_->get_gl_format() : GL_RGBA;
     
     // Read framebuffer data from GPU
-    if (initialized_ && framebuffer_data_) {
+    if (initialized_ && framebuffer_) {
         read_framebuffer_data();
     }
     
-    return framebuffer_data_;
+    return framebuffer_ ? framebuffer_->get_data() : nullptr;
 }
 
 bool DX8EGLBackend::resize(int width, int height) {
@@ -379,10 +370,18 @@ bool DX8EGLBackend::resize(int width, int height) {
         return false;
     }
     
-    // Destroy old framebuffer
+    // Resize the CPU-side framebuffer
+    if (framebuffer_ && !framebuffer_->resize(width, height)) {
+        snprintf(error_buffer_, sizeof(error_buffer_), 
+                 "Failed to resize framebuffer helper");
+        DX8GL_ERROR("%s", error_buffer_);
+        return false;
+    }
+    
+    // Destroy old GPU framebuffer
     destroy_offscreen_framebuffer();
     
-    // Create new framebuffer
+    // Create new GPU framebuffer
     if (!create_offscreen_framebuffer(width, height)) {
         return false;
     }

@@ -55,6 +55,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o"
   "CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o.d"
+  "CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o"
+  "CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/shader_constant_manager.cpp.o"
   "CMakeFiles/dx8gl.dir/src/shader_constant_manager.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/shader_debugger.cpp.o"

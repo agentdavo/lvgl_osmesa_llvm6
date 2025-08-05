@@ -2,6 +2,7 @@
 #define DX8GL_EGL_BACKEND_H
 
 #include "render_backend.h"
+#include "offscreen_framebuffer.h"
 #include <cstdint>
 #include <memory>
 
@@ -28,7 +29,7 @@ public:
     void* get_framebuffer(int& width, int& height, int& format) override;
     bool resize(int width, int height) override;
     void shutdown() override;
-    DX8BackendType get_type() const override { return DX8_BACKEND_EGL; }
+    DX8BackendType get_type() const override { return DX8GL_BACKEND_EGL; }
     bool has_extension(const char* extension) const override;
     
     // EGL-specific methods
@@ -45,8 +46,8 @@ private:
     unsigned int color_texture_id_;
     unsigned int depth_renderbuffer_id_;
     
-    // CPU-side buffer for framebuffer readback
-    void* framebuffer_data_;
+    // CPU-side framebuffer helper
+    std::unique_ptr<OffscreenFramebuffer> framebuffer_;
     int width_;
     int height_;
     bool initialized_;
@@ -77,7 +78,7 @@ public:
     }
     bool resize(int width, int height) override { return false; }
     void shutdown() override {}
-    DX8BackendType get_type() const override { return DX8_BACKEND_EGL; }
+    DX8BackendType get_type() const override { return DX8GL_BACKEND_EGL; }
     bool has_extension(const char* extension) const override { return false; }
     const char* get_error() const { return "EGL not compiled in"; }
 };

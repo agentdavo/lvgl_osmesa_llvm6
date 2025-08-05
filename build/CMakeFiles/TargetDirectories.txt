@@ -28,6 +28,13 @@
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_device_reset.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_cube_texture.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/package.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/package_source.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/edit_cache.dir

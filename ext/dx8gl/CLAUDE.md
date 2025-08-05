@@ -30,20 +30,29 @@ dx8gl supports multiple rendering backends through a flexible abstraction layer:
   - Significant performance improvement when GPU is available
   - Transparent fallback to OSMesa if unavailable
 
+- **WebGPU Backend** (experimental): Modern GPU API for web and native
+  - Future-proof rendering pipeline using WebGPU API
+  - Works in browsers with WebGPU support (Chrome 113+, Edge 113+)
+  - Native implementations via Dawn or wgpu-native
+  - Unified API across web and desktop platforms
+
 ### Backend Selection
 Select backend via multiple methods:
 ```bash
 # Environment variable
-export DX8GL_BACKEND=osmesa  # or 'egl'
+export DX8GL_BACKEND=osmesa  # or 'egl', 'webgpu', 'auto'
 
 # Command line argument
 export DX8GL_ARGS="--backend=egl"
 
 # API configuration
 dx8gl_config config = {};
-config.backend_type = DX8GL_BACKEND_EGL;
+config.backend_type = DX8GL_BACKEND_EGL;  // or DX8GL_BACKEND_OSMESA, DX8GL_BACKEND_WEBGPU, DX8GL_BACKEND_DEFAULT
 dx8gl_init(&config);
 ```
+
+The "auto" backend (DX8GL_BACKEND_DEFAULT) enables automatic selection with fallback chain:
+WebGPU → EGL → OSMesa
 
 ### Backend Architecture
 The backend abstraction provides:
@@ -128,6 +137,7 @@ cmake --build build-emscripten -j
 - Links against local SDL3 source (lib/SDL/)
 - OpenGL ES 2.0 support via system libraries or WebGL
 - Optional features: shader hot reload, binary caching, debug overlays
+- Optional backends: EGL (`-DDX8GL_ENABLE_EGL=ON`), WebGPU (`-DDX8GL_ENABLE_WEBGPU=ON`)
 
 ## Current Status (January 2025)
 
@@ -327,3 +337,4 @@ Since OpenGL 3.3 Core / ES 3.0 has no fixed-function pipeline, dx8gl must genera
 - The library maintains DirectX 8 semantics while leveraging modern OpenGL
 - Vertex Array Objects (VAOs) are used for efficient vertex attribute management
 - Shader generation produces GLSL 3.30 core / ES 3.00 shaders
+- WebGPU backend provides future-proof rendering path for modern platforms

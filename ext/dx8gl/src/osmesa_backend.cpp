@@ -12,7 +12,6 @@ namespace dx8gl {
 
 DX8OSMesaBackend::DX8OSMesaBackend()
     : context_(nullptr)
-    , framebuffer_(nullptr)
     , width_(0)
     , height_(0)
     , initialized_(false) {
@@ -63,28 +62,18 @@ bool DX8OSMesaBackend::initialize(int width, int height) {
         }
     }
     
-    // Allocate framebuffer - use GL_UNSIGNED_BYTE format (standard for OSMesa)
-    size_t buffer_size = width * height * 4 * sizeof(GLubyte); // RGBA bytes
-    framebuffer_ = malloc(buffer_size);
-    if (!framebuffer_) {
-        snprintf(error_buffer_, sizeof(error_buffer_), 
-                 "Failed to allocate framebuffer (%zu bytes)", buffer_size);
-        DX8GL_ERROR("%s", error_buffer_);
-        OSMesaDestroyContext(context_);
-        context_ = nullptr;
-        return false;
-    }
+    // Create framebuffer using the helper class
+    framebuffer_ = std::make_unique<OffscreenFramebuffer>(width, height, PixelFormat::RGBA8, true);
     
     // Clear to black
-    memset(framebuffer_, 0, buffer_size);
+    framebuffer_->clear(0.0f, 0.0f, 0.0f, 1.0f);
     
     // Make context current with our framebuffer - use GL_UNSIGNED_BYTE format
-    if (!OSMesaMakeCurrent(context_, framebuffer_, GL_UNSIGNED_BYTE, width, height)) {
+    if (!OSMesaMakeCurrent(context_, framebuffer_->get_data(), GL_UNSIGNED_BYTE, width, height)) {
         snprintf(error_buffer_, sizeof(error_buffer_), 
                  "Failed to make OSMesa context current");
         DX8GL_ERROR("%s", error_buffer_);
-        free(framebuffer_);
-        framebuffer_ = nullptr;
+        framebuffer_.reset();
         OSMesaDestroyContext(context_);
         context_ = nullptr;
         return false;
@@ -149,10 +138,8 @@ void DX8OSMesaBackend::shutdown() {
         context_ = nullptr;
     }
     
-    if (framebuffer_) {
-        free(framebuffer_);
-        framebuffer_ = nullptr;
-    }
+    // Framebuffer cleanup is handled by unique_ptr
+    framebuffer_.reset();
     
     width_ = 0;
     height_ = 0;
@@ -166,7 +153,7 @@ bool DX8OSMesaBackend::make_current() {
         return false;
     }
     
-    if (!OSMesaMakeCurrent(context_, framebuffer_, GL_UNSIGNED_BYTE, width_, height_)) {
+    if (!OSMesaMakeCurrent(context_, framebuffer_->get_data(), GL_UNSIGNED_BYTE, width_, height_)) {
         snprintf(error_buffer_, sizeof(error_buffer_), 
                  "Failed to make OSMesa context current");
         DX8GL_ERROR("%s", error_buffer_);
@@ -179,8 +166,8 @@ bool DX8OSMesaBackend::make_current() {
 void* DX8OSMesaBackend::get_framebuffer(int& width, int& height, int& format) {
     width = width_;
     height = height_;
-    format = GL_RGBA;  // OSMesa uses RGBA format
-    return framebuffer_;
+    format = framebuffer_ ? framebuffer_->get_gl_format() : GL_RGBA;
+    return framebuffer_ ? framebuffer_->get_data() : nullptr;
 }
 
 bool DX8OSMesaBackend::resize(int width, int height) {
@@ -195,25 +182,17 @@ bool DX8OSMesaBackend::resize(int width, int height) {
     DX8GL_INFO("Resizing OSMesa backend from %dx%d to %dx%d", 
                width_, height_, width, height);
     
-    // Allocate new framebuffer - use GL_UNSIGNED_BYTE format
-    size_t buffer_size = width * height * 4 * sizeof(GLubyte); // RGBA bytes
-    void* new_framebuffer = malloc(buffer_size);
-    if (!new_framebuffer) {
+    // Resize the framebuffer helper
+    if (!framebuffer_->resize(width, height)) {
         snprintf(error_buffer_, sizeof(error_buffer_), 
-                 "Failed to allocate new framebuffer (%zu bytes)", buffer_size);
+                 "Failed to resize framebuffer");
         DX8GL_ERROR("%s", error_buffer_);
         return false;
     }
     
     // Clear to black
-    memset(new_framebuffer, 0, buffer_size);
+    framebuffer_->clear(0.0f, 0.0f, 0.0f, 1.0f);
     
-    // Free old framebuffer
-    if (framebuffer_) {
-        free(framebuffer_);
-    }
-    
-    framebuffer_ = new_framebuffer;
     width_ = width;
     height_ = height;
     
@@ -252,7 +231,7 @@ void DX8OSMesaBackend::show_blue_screen(const char* error_msg) {
     DX8GL_ERROR("Showing blue screen due to error: %s", error_msg ? error_msg : "Unknown error");
     
     // Fill framebuffer with blue screen
-    BlueScreen::fill_framebuffer(framebuffer_, width_, height_, error_msg);
+    BlueScreen::fill_framebuffer(framebuffer_->get_data(), width_, height_, error_msg);
     
     // Make sure the blue screen is visible by flushing GL commands
     if (context_ && OSMesaGetCurrentContext() == context_) {

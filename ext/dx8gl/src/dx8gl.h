@@ -97,7 +97,8 @@ typedef struct dx8gl_caps {
 typedef enum dx8gl_backend_type {
     DX8GL_BACKEND_DEFAULT = 0,  /* Auto-select best available */
     DX8GL_BACKEND_OSMESA = 1,   /* OSMesa software rendering */
-    DX8GL_BACKEND_EGL = 2       /* EGL surfaceless context */
+    DX8GL_BACKEND_EGL = 2,      /* EGL surfaceless context */
+    DX8GL_BACKEND_WEBGPU = 3    /* WebGPU offscreen canvas */
 } dx8gl_backend_type;
 
 /* Configuration */

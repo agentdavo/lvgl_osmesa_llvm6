@@ -1561,7 +1561,24 @@ HRESULT Direct3DDevice8::CreateDepthStencilSurface(UINT Width, UINT Height, D3DF
 
 HRESULT Direct3DDevice8::CreateImageSurface(UINT Width, UINT Height, D3DFORMAT Format,
                                           IDirect3DSurface8** ppSurface) {
-    return D3DERR_NOTAVAILABLE;
+    if (!ppSurface) {
+        DX8GL_ERROR("CreateImageSurface: ppSurface is null");
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DX8GL_INFO("CreateImageSurface: %ux%u format=%d", Width, Height, Format);
+    
+    // Image surfaces are plain surfaces (no special usage flags)
+    auto surface = new Direct3DSurface8(this, Width, Height, Format, 0);
+    if (!surface->initialize()) {
+        DX8GL_ERROR("CreateImageSurface: surface->initialize() failed");
+        surface->Release();
+        return D3DERR_NOTAVAILABLE;
+    }
+    
+    DX8GL_INFO("CreateImageSurface: success, surface at %p", surface);
+    *ppSurface = surface;
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::CopyRects(IDirect3DSurface8* pSourceSurface, const RECT* pSourceRectsArray,

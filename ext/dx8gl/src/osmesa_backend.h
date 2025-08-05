@@ -2,6 +2,7 @@
 #define DX8GL_OSMESA_BACKEND_H
 
 #include "render_backend.h"
+#include "offscreen_framebuffer.h"
 #include <cstdint>
 #include <memory>
 
@@ -27,7 +28,7 @@ public:
     void* get_framebuffer(int& width, int& height, int& format) override;
     bool resize(int width, int height) override;
     void shutdown() override;
-    DX8BackendType get_type() const override { return DX8_BACKEND_OSMESA; }
+    DX8BackendType get_type() const override { return DX8GL_BACKEND_OSMESA; }
     bool has_extension(const char* extension) const override;
     
     // OSMesa-specific methods
@@ -36,7 +37,7 @@ public:
 
 private:
     OSMesaContext context_;  // OSMesa context handle
-    void* framebuffer_;
+    std::unique_ptr<OffscreenFramebuffer> framebuffer_;
     int width_;
     int height_;
     bool initialized_;
@@ -62,7 +63,7 @@ public:
     }
     bool resize(int width, int height) override { return false; }
     void shutdown() override {}
-    DX8BackendType get_type() const override { return DX8_BACKEND_OSMESA; }
+    DX8BackendType get_type() const override { return DX8GL_BACKEND_OSMESA; }
     bool has_extension(const char* extension) const override { return false; }
     const char* get_error() const { return "OSMesa not compiled in"; }
 };

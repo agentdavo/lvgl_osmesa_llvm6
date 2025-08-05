@@ -313,6 +313,8 @@ HRESULT D3DXFillTexture(IDirect3DTexture8* pTexture, void* pFunction, void* pDat
 HRESULT D3DXComputeNormalMap(IDirect3DTexture8* pTexture, IDirect3DTexture8* pSrcTexture, void* pSrcPalette, DWORD Flags, DWORD Channel, float Amplitude);
 
 /* Surface utilities */
+DX8GL_API HRESULT WINAPI D3DXLoadSurfaceFromFile(IDirect3DSurface8* pDestSurface, const PALETTEENTRY* pDestPalette, const RECT* pDestRect, const char* pSrcFile, const RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey, void* pSrcInfo);
+DX8GL_API HRESULT WINAPI D3DXLoadSurfaceFromMemory(IDirect3DSurface8* pDestSurface, const PALETTEENTRY* pDestPalette, const RECT* pDestRect, const void* pSrcMemory, D3DFORMAT SrcFormat, UINT SrcPitch, const PALETTEENTRY* pSrcPalette, const RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey);
 DX8GL_API HRESULT D3DXLoadSurfaceFromSurface(IDirect3DSurface8* pDestSurface, CONST PALETTEENTRY* pDestPalette, CONST RECT* pDestRect, IDirect3DSurface8* pSrcSurface, CONST PALETTEENTRY* pSrcPalette, CONST RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey);
 
 /* Shader compilation functions */

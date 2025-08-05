@@ -868,6 +868,30 @@ src/shader_bytecode_assembler.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.s
 .PHONY : src/shader_bytecode_assembler.cpp.s
 
+src/shader_bytecode_disassembler.o: src/shader_bytecode_disassembler.cpp.o
+.PHONY : src/shader_bytecode_disassembler.o
+
+# target to build an object file
+src/shader_bytecode_disassembler.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o
+.PHONY : src/shader_bytecode_disassembler.cpp.o
+
+src/shader_bytecode_disassembler.i: src/shader_bytecode_disassembler.cpp.i
+.PHONY : src/shader_bytecode_disassembler.i
+
+# target to preprocess a source file
+src/shader_bytecode_disassembler.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.i
+.PHONY : src/shader_bytecode_disassembler.cpp.i
+
+src/shader_bytecode_disassembler.s: src/shader_bytecode_disassembler.cpp.s
+.PHONY : src/shader_bytecode_disassembler.s
+
+# target to generate assembly for a file
+src/shader_bytecode_disassembler.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.s
+.PHONY : src/shader_bytecode_disassembler.cpp.s
+
 src/shader_constant_manager.o: src/shader_constant_manager.cpp.o
 .PHONY : src/shader_constant_manager.o
 
@@ -1207,6 +1231,9 @@ help:
 	@echo "... src/shader_bytecode_assembler.o"
 	@echo "... src/shader_bytecode_assembler.i"
 	@echo "... src/shader_bytecode_assembler.s"
+	@echo "... src/shader_bytecode_disassembler.o"
+	@echo "... src/shader_bytecode_disassembler.i"
+	@echo "... src/shader_bytecode_disassembler.s"
 	@echo "... src/shader_constant_manager.o"
 	@echo "... src/shader_constant_manager.i"
 	@echo "... src/shader_constant_manager.s"

@@ -42,6 +42,18 @@ public:
     }
     void enable_timestamps(bool enable) { timestamps_enabled_ = enable; }
     void enable_thread_ids(bool enable) { thread_ids_enabled_ = enable; }
+    
+    // Set custom log callback
+    void set_callback(void (*callback)(const char* message)) {
+        std::lock_guard<std::mutex> lock(mutex_);
+        log_callback_ = callback;
+    }
+    
+    // Clear custom log callback
+    void clear_callback() {
+        std::lock_guard<std::mutex> lock(mutex_);
+        log_callback_ = nullptr;
+    }
 
     void log(LogLevel level, const char* file, int line, const char* func, const char* fmt, ...) {
         if (level < min_level_) return;
@@ -101,11 +113,34 @@ public:
 
 private:
     Logger() : log_file_(stderr), min_level_(LogLevel::INFO), 
-               timestamps_enabled_(false), thread_ids_enabled_(false) {}
+               timestamps_enabled_(false), thread_ids_enabled_(false),
+               log_callback_(nullptr) {}
 
     void log_impl(LogLevel level, const char* file, int line, const char* func, 
                   const char* fmt, va_list args) {
         std::lock_guard<std::mutex> lock(mutex_);
+        
+        // Build complete log message for callback if one is set
+        if (log_callback_) {
+            char message_buffer[2048];
+            char formatted_msg[1024];
+            
+            // Format the actual message
+            vsnprintf(formatted_msg, sizeof(formatted_msg), fmt, args);
+            
+            // Build complete log message with level and location
+            const char* basename = strrchr(file, '/');
+            if (!basename) basename = strrchr(file, '\\');
+            if (!basename) basename = file;
+            else basename++;
+            
+            snprintf(message_buffer, sizeof(message_buffer), "[%s] %s:%d in %s(): %s", 
+                     level_to_string(level), basename, line, func, formatted_msg);
+            
+            // Call the custom callback
+            log_callback_(message_buffer);
+            return; // Skip normal logging if callback is set
+        }
         
 #ifdef __EMSCRIPTEN__
         // For Emscripten, output to JavaScript console
@@ -202,6 +237,7 @@ private:
     std::atomic<LogLevel> min_level_;
     std::atomic<bool> timestamps_enabled_;
     std::atomic<bool> thread_ids_enabled_;
+    void (*log_callback_)(const char* message);
 };
 
 // Convenience macros

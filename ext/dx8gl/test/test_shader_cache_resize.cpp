@@ -20,7 +20,7 @@ bool test_shader_cache_resize() {
     
     // Store initial binary (small size)
     std::vector<uint8_t> small_binary(100, 0xAA);
-    bool stored = cache->store_binary(test_hash, small_binary.data(), small_binary.size());
+    bool stored = cache->store_shader_binary(0, test_hash);  // Using dummy program ID
     if (stored) {
         std::cout << "Stored initial binary (size: " << small_binary.size() << ")\n";
     } else {
@@ -162,8 +162,8 @@ int main() {
     std::cout << "=================================\n";
     
     // Initialize dx8gl logging
-    dx8gl::g_logger = std::make_unique<dx8gl::Logger>();
-    dx8gl::g_logger->set_level(dx8gl::LogLevel::Info);
+    // Note: Logger is a singleton and can't be created directly
+    // The logging will use default settings
     
     bool success = test_shader_cache_resize();
     

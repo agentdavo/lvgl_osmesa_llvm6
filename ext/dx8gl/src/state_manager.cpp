@@ -69,6 +69,15 @@ void StateManager::init_default_states() {
     
     material_state_.material.Power = 0.0f;
     
+    // Initialize default texture stage states
+    // Stage 0 should be enabled by default, stages 1-7 should be disabled
+    render_state_.color_op[0] = D3DTOP_MODULATE;
+    render_state_.alpha_op[0] = D3DTOP_SELECTARG1;
+    for (int i = 1; i < 8; i++) {
+        render_state_.color_op[i] = D3DTOP_DISABLE;
+        render_state_.alpha_op[i] = D3DTOP_DISABLE;
+    }
+    
     // Initialize default lights
     for (auto& light : lights_) {
         light.properties.Type = D3DLIGHT_DIRECTIONAL;
@@ -909,13 +918,388 @@ void StateManager::get_clip_plane(DWORD index, float* plane) const {
 }
 
 bool StateManager::validate_state() const {
-    // TODO: Implement state validation
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    DX8GL_DEBUG("Validating render and texture state");
+    
+    // Validate render states
+    if (!validate_render_states()) {
+        DX8GL_ERROR("Render state validation failed");
+        return false;
+    }
+    
+    // Validate texture states
+    if (!validate_texture_states()) {
+        DX8GL_ERROR("Texture state validation failed");
+        return false;
+    }
+    
+    // Validate transform states
+    if (!validate_transform_states()) {
+        DX8GL_ERROR("Transform state validation failed");
+        return false;
+    }
+    
+    // Validate light states
+    if (!validate_light_states()) {
+        DX8GL_ERROR("Light state validation failed");
+        return false;
+    }
+    
+    DX8GL_DEBUG("State validation passed");
     return true;
 }
 
-// Placeholder implementations for shader-dependent methods
+bool StateManager::validate_render_states() const {
+    // Validate blend states consistency
+    if (render_state_.alpha_blend_enable) {
+        // Ensure blend factors are valid
+        if (render_state_.src_blend > D3DBLEND_SRCALPHASAT) {
+            DX8GL_ERROR("Invalid source blend factor: %d", render_state_.src_blend);
+            return false;
+        }
+        if (render_state_.dest_blend > D3DBLEND_SRCALPHASAT) {
+            DX8GL_ERROR("Invalid destination blend factor: %d", render_state_.dest_blend);
+            return false;
+        }
+        
+        // Warn about potentially problematic blend combinations
+        if (render_state_.src_blend == D3DBLEND_ONE && render_state_.dest_blend == D3DBLEND_ONE) {
+            DX8GL_WARN("Additive blending (ONE, ONE) may cause brightness overflow");
+        }
+    }
+    
+    // Validate depth states
+    if (render_state_.z_enable) {
+        if (render_state_.z_func < D3DCMP_NEVER || render_state_.z_func > D3DCMP_ALWAYS) {
+            DX8GL_ERROR("Invalid depth comparison function: %d", render_state_.z_func);
+            return false;
+        }
+    } else if (render_state_.z_write_enable) {
+        DX8GL_WARN("Z-write enabled but Z-test disabled - depth writes will be ignored");
+    }
+    
+    // Validate alpha test states
+    if (render_state_.alpha_test_enable) {
+        if (render_state_.alpha_func < D3DCMP_NEVER || render_state_.alpha_func > D3DCMP_ALWAYS) {
+            DX8GL_ERROR("Invalid alpha comparison function: %d", render_state_.alpha_func);
+            return false;
+        }
+        if (render_state_.alpha_ref > 255) {
+            DX8GL_ERROR("Alpha reference value out of range: %d (should be 0-255)", render_state_.alpha_ref);
+            return false;
+        }
+    }
+    
+    // Validate stencil states
+    if (render_state_.stencil_enable) {
+        if (render_state_.stencil_func < D3DCMP_NEVER || render_state_.stencil_func > D3DCMP_ALWAYS) {
+            DX8GL_ERROR("Invalid stencil comparison function: %d", render_state_.stencil_func);
+            return false;
+        }
+        if (render_state_.stencil_ref > 255) {
+            DX8GL_ERROR("Stencil reference value out of range: %d (should be 0-255)", render_state_.stencil_ref);
+            return false;
+        }
+        
+        // Validate stencil operations
+        auto validate_stencil_op = [](DWORD op, const char* name) -> bool {
+            if (op < D3DSTENCILOP_KEEP || op > D3DSTENCILOP_DECR) {
+                DX8GL_ERROR("Invalid stencil operation %s: %d", name, op);
+                return false;
+            }
+            return true;
+        };
+        
+        if (!validate_stencil_op(render_state_.stencil_fail, "fail") ||
+            !validate_stencil_op(render_state_.stencil_zfail, "zfail") ||
+            !validate_stencil_op(render_state_.stencil_pass, "pass")) {
+            return false;
+        }
+    }
+    
+    // Validate cull mode
+    if (render_state_.cull_mode < D3DCULL_NONE || render_state_.cull_mode > D3DCULL_CCW) {
+        DX8GL_ERROR("Invalid cull mode: %d", render_state_.cull_mode);
+        return false;
+    }
+    
+    // Validate fog states
+    if (render_state_.fog_enable) {
+        if (render_state_.fog_table_mode < D3DFOG_NONE || render_state_.fog_table_mode > D3DFOG_EXP2) {
+            DX8GL_ERROR("Invalid fog table mode: %d", render_state_.fog_table_mode);
+            return false;
+        }
+        if (render_state_.fog_start > render_state_.fog_end) {
+            DX8GL_WARN("Fog start (%f) > fog end (%f) - may cause unexpected results", 
+                      render_state_.fog_start, render_state_.fog_end);
+        }
+        if (render_state_.fog_density < 0.0f) {
+            DX8GL_ERROR("Invalid fog density: %f (should be >= 0)", render_state_.fog_density);
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+bool StateManager::validate_texture_states() const {
+    int active_stages = 0;
+    
+    for (int stage = 0; stage < 8; stage++) {
+        // Check if stage is active
+        if (render_state_.color_op[stage] == D3DTOP_DISABLE) {
+            // All subsequent stages should also be disabled
+            for (int next_stage = stage + 1; next_stage < 8; next_stage++) {
+                if (render_state_.color_op[next_stage] != D3DTOP_DISABLE) {
+                    DX8GL_ERROR("Texture stage %d disabled but stage %d is active", stage, next_stage);
+                    return false;
+                }
+            }
+            break;
+        }
+        
+        active_stages++;
+        
+        // Validate color operation
+        if (render_state_.color_op[stage] < D3DTOP_DISABLE || render_state_.color_op[stage] > D3DTOP_MULTIPLYADD) {
+            DX8GL_ERROR("Invalid color operation for stage %d: %d", stage, render_state_.color_op[stage]);
+            return false;
+        }
+        
+        // Validate alpha operation
+        if (render_state_.alpha_op[stage] < D3DTOP_DISABLE || render_state_.alpha_op[stage] > D3DTOP_MULTIPLYADD) {
+            DX8GL_ERROR("Invalid alpha operation for stage %d: %d", stage, render_state_.alpha_op[stage]);
+            return false;
+        }
+        
+        // Validate texture coordinate index
+        if (render_state_.texcoord_index[stage] >= 8) {
+            DX8GL_ERROR("Invalid texture coordinate index for stage %d: %d", stage, render_state_.texcoord_index[stage]);
+            return false;
+        }
+        
+        // Validate filtering modes
+        auto validate_filter = [](DWORD filter, const char* type, int stage) -> bool {
+            if (filter < D3DTEXF_NONE || filter > D3DTEXF_ANISOTROPIC) {
+                DX8GL_ERROR("Invalid %s filter for stage %d: %d", type, stage, filter);
+                return false;
+            }
+            return true;
+        };
+        
+        if (!validate_filter(render_state_.mag_filter[stage], "magnification", stage) ||
+            !validate_filter(render_state_.min_filter[stage], "minification", stage) ||
+            !validate_filter(render_state_.mip_filter[stage], "mipmap", stage)) {
+            return false;
+        }
+        
+        // Validate addressing modes
+        auto validate_address = [](DWORD address, const char* axis, int stage) -> bool {
+            if (address < D3DTADDRESS_WRAP || address > D3DTADDRESS_MIRRORONCE) {
+                DX8GL_ERROR("Invalid %s address mode for stage %d: %d", axis, stage, address);
+                return false;
+            }
+            return true;
+        };
+        
+        if (!validate_address(render_state_.address_u[stage], "U", stage) ||
+            !validate_address(render_state_.address_v[stage], "V", stage) ||
+            !validate_address(render_state_.address_w[stage], "W", stage)) {
+            return false;
+        }
+        
+        // Validate anisotropy level
+        if (render_state_.max_anisotropy[stage] < 1 || render_state_.max_anisotropy[stage] > 16) {
+            DX8GL_WARN("Anisotropy level for stage %d may be out of range: %d", stage, render_state_.max_anisotropy[stage]);
+        }
+        
+        // Check for incompatible filter/anisotropy combinations
+        if (render_state_.max_anisotropy[stage] > 1 && 
+            render_state_.mag_filter[stage] != D3DTEXF_ANISOTROPIC &&
+            render_state_.min_filter[stage] != D3DTEXF_ANISOTROPIC) {
+            DX8GL_WARN("Anisotropy set but filters not set to ANISOTROPIC for stage %d", stage);
+        }
+    }
+    
+    if (active_stages > 4) {
+        DX8GL_WARN("More than 4 active texture stages (%d) - performance may be impacted", active_stages);
+    }
+    
+    return true;
+}
+
+bool StateManager::validate_transform_states() const {
+    // Validate that matrices are not degenerate
+    auto is_matrix_valid = [](const D3DMATRIX& matrix, const char* name) -> bool {
+        // Check for NaN or infinity values
+        for (int i = 0; i < 16; i++) {
+            float value = reinterpret_cast<const float*>(&matrix)[i];
+            if (!std::isfinite(value)) {
+                DX8GL_ERROR("%s matrix contains invalid value: %f at position %d", name, value, i);
+                return false;
+            }
+        }
+        
+        // Check for zero determinant (degenerate matrix)
+        // For 4x4 matrix, we'll do a simplified check
+        float det = matrix._11 * matrix._22 * matrix._33 * matrix._44;
+        if (std::abs(det) < 1e-6f) {
+            DX8GL_WARN("%s matrix may be degenerate (very small determinant: %e)", name, det);
+        }
+        
+        return true;
+    };
+    
+    if (!is_matrix_valid(transform_state_.world, "World") ||
+        !is_matrix_valid(transform_state_.view, "View") ||
+        !is_matrix_valid(transform_state_.projection, "Projection")) {
+        return false;
+    }
+    
+    // Validate texture matrices
+    for (int i = 0; i < 8; i++) {
+        if (render_state_.texture_transform_flags[i] != D3DTTFF_DISABLE) {
+            if (!is_matrix_valid(transform_state_.texture[i], "Texture")) {
+                return false;
+            }
+        }
+    }
+    
+    return true;
+}
+
+bool StateManager::validate_light_states() const {
+    int enabled_lights = 0;
+    
+    for (DWORD i = 0; i < MAX_LIGHTS; i++) {
+        if (!lights_[i].enabled) continue;
+        
+        enabled_lights++;
+        const D3DLIGHT8& light = lights_[i].properties;
+        
+        // Validate light type
+        if (light.Type < D3DLIGHT_POINT || light.Type > D3DLIGHT_DIRECTIONAL) {
+            DX8GL_ERROR("Invalid light type for light %d: %d", i, light.Type);
+            return false;
+        }
+        
+        // Validate color values (should be 0-1 range typically)
+        auto validate_color = [](const D3DCOLORVALUE& color, const char* type, DWORD index) -> bool {
+            if (color.r < 0.0f || color.g < 0.0f || color.b < 0.0f || color.a < 0.0f) {
+                DX8GL_WARN("Negative color component in %s for light %d", type, index);
+            }
+            if (color.r > 10.0f || color.g > 10.0f || color.b > 10.0f) {
+                DX8GL_WARN("Very high color component in %s for light %d (may cause overbrightness)", type, index);
+            }
+            return true;
+        };
+        
+        validate_color(light.Diffuse, "diffuse", i);
+        validate_color(light.Specular, "specular", i);
+        validate_color(light.Ambient, "ambient", i);
+        
+        // Validate light-specific parameters
+        switch (light.Type) {
+            case D3DLIGHT_POINT:
+                if (light.Range <= 0.0f) {
+                    DX8GL_ERROR("Point light %d has invalid range: %f", i, light.Range);
+                    return false;
+                }
+                if (light.Attenuation0 < 0.0f || light.Attenuation1 < 0.0f || light.Attenuation2 < 0.0f) {
+                    DX8GL_ERROR("Point light %d has negative attenuation values", i);
+                    return false;
+                }
+                break;
+                
+            case D3DLIGHT_SPOT:
+                if (light.Range <= 0.0f) {
+                    DX8GL_ERROR("Spot light %d has invalid range: %f", i, light.Range);
+                    return false;
+                }
+                if (light.Theta < 0.0f || light.Phi < 0.0f || light.Theta > light.Phi) {
+                    DX8GL_ERROR("Spot light %d has invalid cone angles: theta=%f, phi=%f", i, light.Theta, light.Phi);
+                    return false;
+                }
+                if (light.Falloff < 0.0f) {
+                    DX8GL_ERROR("Spot light %d has invalid falloff: %f", i, light.Falloff);
+                    return false;
+                }
+                break;
+                
+            case D3DLIGHT_DIRECTIONAL:
+                // Check that direction vector is normalized
+                float dir_length = std::sqrt(light.Direction.x * light.Direction.x + 
+                                           light.Direction.y * light.Direction.y + 
+                                           light.Direction.z * light.Direction.z);
+                if (dir_length < 0.9f || dir_length > 1.1f) {
+                    DX8GL_WARN("Directional light %d direction vector not normalized (length=%f)", i, dir_length);
+                }
+                break;
+        }
+    }
+    
+    if (enabled_lights > 8) {
+        DX8GL_WARN("More than 8 lights enabled (%d) - only first 8 will be used", enabled_lights);
+    }
+    
+    return true;
+}
+
 void StateManager::apply_transform_states(ShaderProgram* shader) {
-    // Will be implemented when ShaderProgram is created
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (!transform_state_dirty_ || !shader) {
+        return;
+    }
+    
+    DX8GL_DEBUG("Applying transform states to shader program %u", shader->program);
+    
+    // Use the shader program
+    glUseProgram(shader->program);
+    
+    // Apply standard transform matrices
+    if (shader->u_world_matrix != -1) {
+        glUniformMatrix4fv(shader->u_world_matrix, 1, GL_FALSE, 
+                          reinterpret_cast<const GLfloat*>(&transform_state_.world));
+        DX8GL_DEBUG("Applied world matrix to uniform location %d", shader->u_world_matrix);
+    }
+    
+    if (shader->u_view_matrix != -1) {
+        glUniformMatrix4fv(shader->u_view_matrix, 1, GL_FALSE,
+                          reinterpret_cast<const GLfloat*>(&transform_state_.view));
+        DX8GL_DEBUG("Applied view matrix to uniform location %d", shader->u_view_matrix);
+    }
+    
+    if (shader->u_projection_matrix != -1) {
+        glUniformMatrix4fv(shader->u_projection_matrix, 1, GL_FALSE,
+                          reinterpret_cast<const GLfloat*>(&transform_state_.projection));
+        DX8GL_DEBUG("Applied projection matrix to uniform location %d", shader->u_projection_matrix);
+    }
+    
+    // Apply combined world-view-projection matrix if requested
+    if (shader->u_world_view_proj_matrix != -1) {
+        const D3DMATRIX* wvp_matrix = const_cast<StateManager*>(this)->get_world_view_projection_matrix();
+        glUniformMatrix4fv(shader->u_world_view_proj_matrix, 1, GL_FALSE,
+                          reinterpret_cast<const GLfloat*>(wvp_matrix));
+        DX8GL_DEBUG("Applied world-view-projection matrix to uniform location %d", shader->u_world_view_proj_matrix);
+    }
+    
+    // Apply texture matrices for active texture stages
+    for (int stage = 0; stage < 8; stage++) {
+        if (render_state_.texture_transform_flags[stage] != D3DTTFF_DISABLE) {
+            // Look for texture matrix uniform
+            std::string uniform_name = "u_texture_matrix[" + std::to_string(stage) + "]";
+            auto it = shader->uniform_locations.find(uniform_name);
+            if (it != shader->uniform_locations.end() && it->second != -1) {
+                glUniformMatrix4fv(it->second, 1, GL_FALSE,
+                                  reinterpret_cast<const GLfloat*>(&transform_state_.texture[stage]));
+                DX8GL_DEBUG("Applied texture matrix %d to uniform location %d", stage, it->second);
+            }
+        }
+    }
+    
+    transform_state_dirty_ = false;
 }
 
 void StateManager::apply_texture_states() {
@@ -1054,15 +1438,228 @@ void StateManager::apply_texture_states() {
 }
 
 void StateManager::apply_light_states(ShaderProgram* shader) {
-    // Will be implemented when ShaderProgram is created
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (!light_state_dirty_ || !shader || !render_state_.lighting) {
+        return;
+    }
+    
+    DX8GL_DEBUG("Applying light states to shader program %u", shader->program);
+    
+    // Use the shader program
+    glUseProgram(shader->program);
+    
+    // Apply global ambient light
+    auto it = shader->uniform_locations.find("u_ambient_light");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        float ambient[4] = {
+            ((render_state_.ambient >> 16) & 0xFF) / 255.0f,  // R
+            ((render_state_.ambient >> 8) & 0xFF) / 255.0f,   // G
+            (render_state_.ambient & 0xFF) / 255.0f,          // B
+            ((render_state_.ambient >> 24) & 0xFF) / 255.0f   // A
+        };
+        glUniform4fv(it->second, 1, ambient);
+        DX8GL_DEBUG("Applied ambient light to uniform location %d", it->second);
+    }
+    
+    // Apply individual lights
+    int active_lights = 0;
+    for (DWORD i = 0; i < MAX_LIGHTS && active_lights < 8; i++) {
+        if (!lights_[i].enabled) continue;
+        
+        const D3DLIGHT8& light = lights_[i].properties;
+        std::string prefix = "u_lights[" + std::to_string(active_lights) + "].";
+        
+        // Light type
+        it = shader->uniform_locations.find(prefix + "type");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform1i(it->second, static_cast<GLint>(light.Type));
+        }
+        
+        // Light position
+        it = shader->uniform_locations.find(prefix + "position");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform3f(it->second, light.Position.x, light.Position.y, light.Position.z);
+        }
+        
+        // Light direction
+        it = shader->uniform_locations.find(prefix + "direction");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform3f(it->second, light.Direction.x, light.Direction.y, light.Direction.z);
+        }
+        
+        // Light colors
+        it = shader->uniform_locations.find(prefix + "diffuse");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform4f(it->second, light.Diffuse.r, light.Diffuse.g, light.Diffuse.b, light.Diffuse.a);
+        }
+        
+        it = shader->uniform_locations.find(prefix + "specular");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform4f(it->second, light.Specular.r, light.Specular.g, light.Specular.b, light.Specular.a);
+        }
+        
+        it = shader->uniform_locations.find(prefix + "ambient");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform4f(it->second, light.Ambient.r, light.Ambient.g, light.Ambient.b, light.Ambient.a);
+        }
+        
+        // Light attenuation (for point and spot lights)
+        if (light.Type == D3DLIGHT_POINT || light.Type == D3DLIGHT_SPOT) {
+            it = shader->uniform_locations.find(prefix + "range");
+            if (it != shader->uniform_locations.end() && it->second != -1) {
+                glUniform1f(it->second, light.Range);
+            }
+            
+            it = shader->uniform_locations.find(prefix + "attenuation");
+            if (it != shader->uniform_locations.end() && it->second != -1) {
+                glUniform3f(it->second, light.Attenuation0, light.Attenuation1, light.Attenuation2);
+            }
+        }
+        
+        // Spot light parameters
+        if (light.Type == D3DLIGHT_SPOT) {
+            it = shader->uniform_locations.find(prefix + "spot_inner");
+            if (it != shader->uniform_locations.end() && it->second != -1) {
+                glUniform1f(it->second, light.Theta);
+            }
+            
+            it = shader->uniform_locations.find(prefix + "spot_outer");
+            if (it != shader->uniform_locations.end() && it->second != -1) {
+                glUniform1f(it->second, light.Phi);
+            }
+            
+            it = shader->uniform_locations.find(prefix + "spot_falloff");
+            if (it != shader->uniform_locations.end() && it->second != -1) {
+                glUniform1f(it->second, light.Falloff);
+            }
+        }
+        
+        active_lights++;
+    }
+    
+    // Set number of active lights
+    it = shader->uniform_locations.find("u_num_lights");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform1i(it->second, active_lights);
+        DX8GL_DEBUG("Set number of active lights to %d", active_lights);
+    }
+    
+    light_state_dirty_ = false;
 }
 
 void StateManager::apply_material_state(ShaderProgram* shader) {
-    // Will be implemented when ShaderProgram is created
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (!material_state_dirty_ || !shader || !material_state_.valid) {
+        return;
+    }
+    
+    DX8GL_DEBUG("Applying material state to shader program %u", shader->program);
+    
+    // Use the shader program
+    glUseProgram(shader->program);
+    
+    const D3DMATERIAL8& material = material_state_.material;
+    
+    // Apply material diffuse color
+    auto it = shader->uniform_locations.find("u_material_diffuse");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform4f(it->second, material.Diffuse.r, material.Diffuse.g, 
+                   material.Diffuse.b, material.Diffuse.a);
+        DX8GL_DEBUG("Applied material diffuse to uniform location %d", it->second);
+    }
+    
+    // Apply material ambient color
+    it = shader->uniform_locations.find("u_material_ambient");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform4f(it->second, material.Ambient.r, material.Ambient.g,
+                   material.Ambient.b, material.Ambient.a);
+        DX8GL_DEBUG("Applied material ambient to uniform location %d", it->second);
+    }
+    
+    // Apply material specular color
+    it = shader->uniform_locations.find("u_material_specular");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform4f(it->second, material.Specular.r, material.Specular.g,
+                   material.Specular.b, material.Specular.a);
+        DX8GL_DEBUG("Applied material specular to uniform location %d", it->second);
+    }
+    
+    // Apply material emissive color
+    it = shader->uniform_locations.find("u_material_emissive");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform4f(it->second, material.Emissive.r, material.Emissive.g,
+                   material.Emissive.b, material.Emissive.a);
+        DX8GL_DEBUG("Applied material emissive to uniform location %d", it->second);
+    }
+    
+    // Apply material power (shininess)
+    it = shader->uniform_locations.find("u_material_power");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform1f(it->second, material.Power);
+        DX8GL_DEBUG("Applied material power (%f) to uniform location %d", material.Power, it->second);
+    }
+    
+    material_state_dirty_ = false;
 }
 
 void StateManager::apply_fog_state(ShaderProgram* shader) {
-    // Will be implemented when ShaderProgram is created
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (!shader) {
+        return;
+    }
+    
+    DX8GL_DEBUG("Applying fog state to shader program %u", shader->program);
+    
+    // Use the shader program
+    glUseProgram(shader->program);
+    
+    // Apply fog enable flag
+    auto it = shader->uniform_locations.find("u_fog_enable");
+    if (it != shader->uniform_locations.end() && it->second != -1) {
+        glUniform1i(it->second, render_state_.fog_enable ? 1 : 0);
+        DX8GL_DEBUG("Applied fog enable (%d) to uniform location %d", render_state_.fog_enable, it->second);
+    }
+    
+    if (render_state_.fog_enable) {
+        // Apply fog color
+        it = shader->uniform_locations.find("u_fog_color");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            float fog_color[4] = {
+                ((render_state_.fog_color >> 16) & 0xFF) / 255.0f,  // R
+                ((render_state_.fog_color >> 8) & 0xFF) / 255.0f,   // G
+                (render_state_.fog_color & 0xFF) / 255.0f,          // B
+                ((render_state_.fog_color >> 24) & 0xFF) / 255.0f   // A
+            };
+            glUniform4fv(it->second, 1, fog_color);
+            DX8GL_DEBUG("Applied fog color to uniform location %d", it->second);
+        }
+        
+        // Apply fog parameters
+        it = shader->uniform_locations.find("u_fog_start");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform1f(it->second, render_state_.fog_start);
+        }
+        
+        it = shader->uniform_locations.find("u_fog_end");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform1f(it->second, render_state_.fog_end);
+        }
+        
+        it = shader->uniform_locations.find("u_fog_density");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform1f(it->second, render_state_.fog_density);
+        }
+        
+        // Apply fog mode
+        it = shader->uniform_locations.find("u_fog_mode");
+        if (it != shader->uniform_locations.end() && it->second != -1) {
+            glUniform1i(it->second, static_cast<GLint>(render_state_.fog_table_mode));
+            DX8GL_DEBUG("Applied fog mode (%d) to uniform location %d", render_state_.fog_table_mode, it->second);
+        }
+    }
 }
 
 void StateManager::set_scissor_rect(const RECT& rect, BOOL enable) {
@@ -1159,7 +1756,9 @@ bool StateManager::is_texture_enabled(DWORD stage) const {
 void StateManager::apply_shader_state() {
     // Apply all state changes needed before drawing
     apply_render_states();
-    apply_transform_states(nullptr);  // TODO: Pass actual shader program
+    // Note: apply_transform_states, apply_light_states, apply_material_state, and apply_fog_state
+    // now require a ShaderProgram parameter and should be called from the rendering pipeline
+    // with the current active shader program
     apply_texture_states();
 }
 

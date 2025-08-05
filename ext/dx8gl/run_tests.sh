@@ -25,7 +25,8 @@ cmake --build "$BUILD_DIR" --target dx8gl_clear_test dx8gl_triangle dx8gl_textur
     dx8gl_complex_vertex_shader_test dx8gl_shader_translation_test \
     dx8gl_pixel_shader_test dx8gl_shader_modifiers_test \
     dx8gl_bytecode_assembler_test dx8gl_constant_batching_test \
-    dx8gl_test_shader_features dx8gl_shader_test -j4
+    dx8gl_test_shader_features dx8gl_shader_test \
+    test_backend_selection test_framebuffer_correctness -j4
 
 if [ $? -ne 0 ]; then
     echo -e "${RED}Failed to build samples${NC}"
@@ -81,6 +82,38 @@ if [ -f "$BUILD_DIR/ext/dx8gl/samples/shader_test/dx8gl_shader_test" ]; then
     fi
 else
     echo -e "${RED}Shader translation test not found${NC}"
+fi
+
+# Run backend selection tests
+echo -e "\n${YELLOW}Running backend selection tests...${NC}"
+if [ -f "$BUILD_DIR/ext/dx8gl/test/test_backend_selection" ]; then
+    LD_LIBRARY_PATH="$BUILD_DIR/ext/dx8gl:$BUILD_DIR/llvm-install/lib:$BUILD_DIR/mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH" \
+    "$BUILD_DIR/ext/dx8gl/test/test_backend_selection"
+    BACKEND_TEST_RESULT=$?
+    if [ $BACKEND_TEST_RESULT -eq 0 ]; then
+        echo -e "${GREEN}Backend selection tests PASSED${NC}"
+    else
+        echo -e "${RED}Backend selection tests FAILED${NC}"
+        TEST_RESULT=1
+    fi
+else
+    echo -e "${RED}Backend selection test not found${NC}"
+fi
+
+# Run framebuffer correctness tests
+echo -e "\n${YELLOW}Running framebuffer correctness tests...${NC}"
+if [ -f "$BUILD_DIR/ext/dx8gl/test/test_framebuffer_correctness" ]; then
+    LD_LIBRARY_PATH="$BUILD_DIR/ext/dx8gl:$BUILD_DIR/llvm-install/lib:$BUILD_DIR/mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH" \
+    "$BUILD_DIR/ext/dx8gl/test/test_framebuffer_correctness"
+    FRAMEBUFFER_TEST_RESULT=$?
+    if [ $FRAMEBUFFER_TEST_RESULT -eq 0 ]; then
+        echo -e "${GREEN}Framebuffer correctness tests PASSED${NC}"
+    else
+        echo -e "${RED}Framebuffer correctness tests FAILED${NC}"
+        TEST_RESULT=1
+    fi
+else
+    echo -e "${RED}Framebuffer correctness test not found${NC}"
 fi
 
 exit $TEST_RESULT

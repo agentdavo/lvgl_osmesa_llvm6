@@ -45,6 +45,7 @@ enum ImageFormat {
     FORMAT_JPG
 };
 
+
 static ImageFormat detect_image_format(const uint8_t* data, size_t size) {
     if (size < 4) return FORMAT_UNKNOWN;
     
@@ -517,37 +518,10 @@ HRESULT WINAPI D3DXFilterTexture(
     return D3D_OK;
 }
 
-HRESULT WINAPI D3DXLoadSurfaceFromFile(
-    IDirect3DSurface8* pDestSurface,
-    const PALETTEENTRY* pDestPalette,
-    const RECT* pDestRect,
-    const char* pSrcFile,
-    const RECT* pSrcRect,
-    DWORD Filter,
-    D3DCOLOR ColorKey,
-    void* pSrcInfo)
-{
-    if (!pDestSurface || !pSrcFile) {
-        return D3DERR_INVALIDCALL;
-    }
-    
-    // Read file
-    std::ifstream file(pSrcFile, std::ios::binary | std::ios::ate);
-    if (!file.is_open()) {
-        return D3DERR_NOTFOUND;
-    }
-    
-    size_t file_size = file.tellg();
-    file.seekg(0, std::ios::beg);
-    
-    std::vector<uint8_t> file_data(file_size);
-    file.read(reinterpret_cast<char*>(file_data.data()), file_size);
-    file.close();
-    
-    // For now, return not implemented
-    // TODO: Implement D3DXLoadSurfaceFromMemory
-    return E_NOTIMPL;
-}
+// Forward declarations for helper functions
+static UINT get_bytes_per_pixel(D3DFORMAT format);
+static uint32_t convert_pixel(uint32_t src_pixel, D3DFORMAT src_format, D3DFORMAT dst_format);
+static bool matches_color_key(uint32_t pixel, D3DCOLOR color_key, D3DFORMAT format);
 
 HRESULT WINAPI D3DXLoadSurfaceFromMemory(
     IDirect3DSurface8* pDestSurface,
@@ -565,13 +539,29 @@ HRESULT WINAPI D3DXLoadSurfaceFromMemory(
         return D3DERR_INVALIDCALL;
     }
     
-    DX8GL_INFO("D3DXLoadSurfaceFromMemory");
+    DX8GL_INFO("D3DXLoadSurfaceFromMemory: SrcFormat=%d, Filter=0x%08x, ColorKey=0x%08x", 
+               SrcFormat, Filter, ColorKey);
     
     // Get surface description
     D3DSURFACE_DESC desc;
     HRESULT hr = pDestSurface->GetDesc(&desc);
     if (FAILED(hr)) {
         return hr;
+    }
+    
+    // Determine source and destination rectangles
+    RECT src_rect = { 0, 0, (LONG)(SrcPitch / get_bytes_per_pixel(SrcFormat)), 0 };
+    if (pSrcRect) {
+        src_rect = *pSrcRect;
+    } else {
+        // Try to infer source height from pitch and format
+        src_rect.right = SrcPitch / get_bytes_per_pixel(SrcFormat);
+        src_rect.bottom = desc.Height; // Assume same height as destination
+    }
+    
+    RECT dest_rect = { 0, 0, (LONG)desc.Width, (LONG)desc.Height };
+    if (pDestRect) {
+        dest_rect = *pDestRect;
     }
     
     // Lock destination surface
@@ -581,23 +571,239 @@ HRESULT WINAPI D3DXLoadSurfaceFromMemory(
         return hr;
     }
     
-    // Simple copy for now (assuming matching formats)
-    if (SrcFormat == desc.Format && !pSrcRect && !pDestRect) {
-        // Direct copy
-        const uint8_t* src = static_cast<const uint8_t*>(pSrcMemory);
-        uint8_t* dst = static_cast<uint8_t*>(locked_rect.pBits);
-        
-        UINT copy_pitch = std::min<UINT>(SrcPitch, locked_rect.Pitch);
-        for (UINT y = 0; y < desc.Height; y++) {
-            memcpy(dst + y * locked_rect.Pitch,
-                   src + y * SrcPitch,
-                   copy_pitch);
+    const uint8_t* src = static_cast<const uint8_t*>(pSrcMemory);
+    uint8_t* dst = static_cast<uint8_t*>(locked_rect.pBits);
+    
+    UINT src_bpp = get_bytes_per_pixel(SrcFormat);
+    UINT dst_bpp = get_bytes_per_pixel(desc.Format);
+    
+    UINT src_width = src_rect.right - src_rect.left;
+    UINT src_height = src_rect.bottom - src_rect.top;
+    UINT dst_width = dest_rect.right - dest_rect.left;
+    UINT dst_height = dest_rect.bottom - dest_rect.top;
+    
+    // Copy/convert pixels
+    for (UINT dst_y = 0; dst_y < dst_height; dst_y++) {
+        for (UINT dst_x = 0; dst_x < dst_width; dst_x++) {
+            // Calculate source coordinates (with scaling)
+            UINT src_x = (dst_x * src_width) / dst_width;
+            UINT src_y = (dst_y * src_height) / dst_height;
+            
+            // Bounds check
+            if (src_x >= src_width || src_y >= src_height) continue;
+            
+            // Read source pixel
+            const uint8_t* src_pixel_ptr = src + (src_rect.top + src_y) * SrcPitch + 
+                                          (src_rect.left + src_x) * src_bpp;
+            
+            uint32_t src_pixel = 0;
+            if (src_bpp == 4) {
+                src_pixel = *reinterpret_cast<const uint32_t*>(src_pixel_ptr);
+            } else if (src_bpp == 2) {
+                src_pixel = *reinterpret_cast<const uint16_t*>(src_pixel_ptr);
+            } else if (src_bpp == 3) {
+                src_pixel = src_pixel_ptr[0] | (src_pixel_ptr[1] << 8) | (src_pixel_ptr[2] << 16);
+            } else if (src_bpp == 1) {
+                src_pixel = src_pixel_ptr[0];
+            }
+            
+            // Check color key
+            if (ColorKey && matches_color_key(src_pixel, ColorKey, SrcFormat)) {
+                continue; // Skip transparent pixels
+            }
+            
+            // Convert pixel format
+            uint32_t dst_pixel = convert_pixel(src_pixel, SrcFormat, desc.Format);
+            
+            // Write destination pixel
+            uint8_t* dst_pixel_ptr = dst + dst_y * locked_rect.Pitch + dst_x * dst_bpp;
+            
+            if (dst_bpp == 4) {
+                *reinterpret_cast<uint32_t*>(dst_pixel_ptr) = dst_pixel;
+            } else if (dst_bpp == 2) {
+                *reinterpret_cast<uint16_t*>(dst_pixel_ptr) = static_cast<uint16_t>(dst_pixel);
+            } else if (dst_bpp == 3) {
+                dst_pixel_ptr[0] = static_cast<uint8_t>(dst_pixel);
+                dst_pixel_ptr[1] = static_cast<uint8_t>(dst_pixel >> 8);
+                dst_pixel_ptr[2] = static_cast<uint8_t>(dst_pixel >> 16);
+            } else if (dst_bpp == 1) {
+                dst_pixel_ptr[0] = static_cast<uint8_t>(dst_pixel);
+            }
         }
     }
     
     pDestSurface->UnlockRect();
+    
+    DX8GL_INFO("D3DXLoadSurfaceFromMemory completed: %ux%u -> %ux%u", 
+               src_width, src_height, dst_width, dst_height);
+    
     return D3D_OK;
 }
+
+HRESULT WINAPI D3DXLoadSurfaceFromFile(
+    IDirect3DSurface8* pDestSurface,
+    const PALETTEENTRY* pDestPalette,
+    const RECT* pDestRect,
+    const char* pSrcFile,
+    const RECT* pSrcRect,
+    DWORD Filter,
+    D3DCOLOR ColorKey,
+    void* pSrcInfo)
+{
+    if (!pDestSurface || !pSrcFile) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DX8GL_INFO("D3DXLoadSurfaceFromFile: %s", pSrcFile);
+    
+    // Read file
+    std::ifstream file(pSrcFile, std::ios::binary | std::ios::ate);
+    if (!file.is_open()) {
+        DX8GL_ERROR("Failed to open file: %s", pSrcFile);
+        return D3DERR_NOTFOUND;
+    }
+    
+    size_t file_size = file.tellg();
+    file.seekg(0, std::ios::beg);
+    
+    std::vector<uint8_t> file_data(file_size);
+    file.read(reinterpret_cast<char*>(file_data.data()), file_size);
+    file.close();
+    
+    // Detect image format
+    ImageFormat img_format = detect_image_format(file_data.data(), file_size);
+    
+    std::vector<uint8_t> pixels;
+    UINT img_width = 0, img_height = 0;
+    D3DFORMAT img_format_d3d = D3DFMT_UNKNOWN;
+    
+    // Load image based on format
+    bool loaded = false;
+    switch (img_format) {
+        case FORMAT_BMP:
+            loaded = load_bmp(file_data.data(), file_size, pixels, img_width, img_height, img_format_d3d);
+            break;
+        case FORMAT_TGA:
+            loaded = load_tga(file_data.data(), file_size, pixels, img_width, img_height, img_format_d3d);
+            break;
+        case FORMAT_DDS:
+            DX8GL_WARNING("DDS format not yet supported");
+            return D3DERR_NOTFOUND;
+        case FORMAT_PNG:
+            DX8GL_WARNING("PNG format not yet supported");
+            return D3DERR_NOTFOUND;
+        case FORMAT_JPG:
+            DX8GL_WARNING("JPEG format not yet supported");
+            return D3DERR_NOTFOUND;
+        default:
+            DX8GL_ERROR("Unknown image format");
+            return D3DERR_NOTFOUND;
+    }
+    
+    if (!loaded) {
+        DX8GL_ERROR("Failed to load image: %s", pSrcFile);
+        return D3DERR_NOTFOUND;
+    }
+    
+    // Fill source info if requested
+    if (pSrcInfo) {
+        D3DXIMAGE_INFO* info = static_cast<D3DXIMAGE_INFO*>(pSrcInfo);
+        info->Width = img_width;
+        info->Height = img_height;
+        info->Depth = 1;
+        info->MipLevels = 1;
+        info->Format = img_format_d3d;
+        info->ResourceType = D3DRTYPE_SURFACE;
+        info->ImageFileFormat = (img_format == FORMAT_BMP) ? D3DXIFF_BMP : D3DXIFF_TGA;
+    }
+    
+    // Now load the decoded image data into the surface
+    return D3DXLoadSurfaceFromMemory(pDestSurface, pDestPalette, pDestRect,
+                                     pixels.data(), img_format_d3d, img_width * 4,
+                                     nullptr, pSrcRect, Filter, ColorKey);
+}
+
+// Helper function to get bytes per pixel for a format
+static UINT get_bytes_per_pixel(D3DFORMAT format) {
+    switch (format) {
+        case D3DFMT_A8R8G8B8:
+        case D3DFMT_X8R8G8B8:
+        // case D3DFMT_A8B8G8R8:  // Not available in D3D8
+        // case D3DFMT_X8B8G8R8:  // Not available in D3D8
+            return 4;
+        case D3DFMT_R5G6B5:
+        case D3DFMT_X1R5G5B5:
+        case D3DFMT_A1R5G5B5:
+        case D3DFMT_A4R4G4B4:
+        case D3DFMT_X4R4G4B4:
+            return 2;
+        case D3DFMT_R8G8B8:
+            return 3;
+        case D3DFMT_A8:
+        case D3DFMT_L8:
+            return 1;
+        default:
+            return 4; // Default to 32-bit
+    }
+}
+
+// Helper function to convert pixel from one format to another
+static uint32_t convert_pixel(uint32_t src_pixel, D3DFORMAT src_format, D3DFORMAT dst_format) {
+    // Extract ARGB components from source
+    uint32_t src_a, src_r, src_g, src_b;
+    
+    switch (src_format) {
+        case D3DFMT_A8R8G8B8:
+            src_a = (src_pixel >> 24) & 0xFF;
+            src_r = (src_pixel >> 16) & 0xFF;
+            src_g = (src_pixel >> 8) & 0xFF;
+            src_b = src_pixel & 0xFF;
+            break;
+        case D3DFMT_X8R8G8B8:
+            src_a = 0xFF;
+            src_r = (src_pixel >> 16) & 0xFF;
+            src_g = (src_pixel >> 8) & 0xFF;
+            src_b = src_pixel & 0xFF;
+            break;
+        case D3DFMT_R5G6B5:
+            src_a = 0xFF;
+            src_r = ((src_pixel >> 11) & 0x1F) * 255 / 31;
+            src_g = ((src_pixel >> 5) & 0x3F) * 255 / 63;
+            src_b = (src_pixel & 0x1F) * 255 / 31;
+            break;
+        default:
+            // Default: assume ARGB8888
+            src_a = (src_pixel >> 24) & 0xFF;
+            src_r = (src_pixel >> 16) & 0xFF;
+            src_g = (src_pixel >> 8) & 0xFF;
+            src_b = src_pixel & 0xFF;
+            break;
+    }
+    
+    // Convert to destination format
+    switch (dst_format) {
+        case D3DFMT_A8R8G8B8:
+            return (src_a << 24) | (src_r << 16) | (src_g << 8) | src_b;
+        case D3DFMT_X8R8G8B8:
+            return (0xFF << 24) | (src_r << 16) | (src_g << 8) | src_b;
+        case D3DFMT_R5G6B5:
+            return ((src_r * 31 / 255) << 11) | ((src_g * 63 / 255) << 5) | (src_b * 31 / 255);
+        default:
+            return (src_a << 24) | (src_r << 16) | (src_g << 8) | src_b;
+    }
+}
+
+// Helper function to check if pixel matches color key
+static bool matches_color_key(uint32_t pixel, D3DCOLOR color_key, D3DFORMAT format) {
+    if (color_key == 0) return false; // No color key
+    
+    // Convert pixel to ARGB for comparison (ignoring alpha for color key)
+    uint32_t pixel_rgb = convert_pixel(pixel, format, D3DFMT_X8R8G8B8) & 0x00FFFFFF;
+    uint32_t key_rgb = color_key & 0x00FFFFFF;
+    
+    return pixel_rgb == key_rgb;
+}
+
 
 HRESULT WINAPI D3DXLoadSurfaceFromSurface(
     IDirect3DSurface8* pDestSurface,

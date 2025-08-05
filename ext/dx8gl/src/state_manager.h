@@ -12,7 +12,37 @@
 namespace dx8gl {
 
 // Forward declarations
-class ShaderProgram;
+class ShaderProgramManager;
+
+// ShaderProgram struct from shader_program_manager.h
+struct ShaderProgram {
+    GLuint program;
+    
+    // Cached uniform locations
+    std::unordered_map<std::string, GLint> uniform_locations;
+    
+    // Standard uniforms
+    GLint u_world_matrix;
+    GLint u_view_matrix;
+    GLint u_projection_matrix;
+    GLint u_world_view_proj_matrix;
+    
+    // Vertex shader constants (c0-c95)
+    GLint u_vs_constants[96];
+    
+    // Pixel shader constants (c0-c7)
+    GLint u_ps_constants[8];
+    
+    // Texture samplers
+    GLint u_textures[8];
+    
+    ShaderProgram() : program(0), u_world_matrix(-1), u_view_matrix(-1),
+                     u_projection_matrix(-1), u_world_view_proj_matrix(-1) {
+        std::fill(std::begin(u_vs_constants), std::end(u_vs_constants), -1);
+        std::fill(std::begin(u_ps_constants), std::end(u_ps_constants), -1);
+        std::fill(std::begin(u_textures), std::end(u_textures), -1);
+    }
+};
 
 // Render state tracking
 struct RenderState {
@@ -233,6 +263,12 @@ private:
     static GLenum convert_cull_mode(D3DCULL mode);
     static void multiply_matrices(D3DMATRIX* out, const D3DMATRIX* a, const D3DMATRIX* b);
     static void transpose_matrix(D3DMATRIX* out, const D3DMATRIX* in);
+    
+    // State validation methods
+    bool validate_render_states() const;
+    bool validate_texture_states() const;
+    bool validate_transform_states() const;
+    bool validate_light_states() const;
     
     // Initialize default states
     void init_default_states();

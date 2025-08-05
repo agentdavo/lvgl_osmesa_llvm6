@@ -3,16 +3,12 @@
 
 #include <cstdint>
 #include <memory>
+#include "dx8gl.h"  // For dx8gl_backend_type
 
 namespace dx8gl {
 
-/**
- * Backend type enumeration for different rendering implementations
- */
-enum DX8BackendType {
-    DX8_BACKEND_OSMESA,    // OSMesa software rendering backend
-    DX8_BACKEND_EGL        // EGL surfaceless context backend
-};
+// Use the public backend type enum throughout internal code
+typedef dx8gl_backend_type DX8BackendType;
 
 /**
  * Abstract interface for rendering backends in dx8gl

@@ -11,10 +11,10 @@ bool ShaderBytecodeDisassembler::disassemble(const std::vector<DWORD>& bytecode,
     
     std::ostringstream out;
     size_t pos = 0;
+    bool is_vertex_shader = false;
     
     // Check for version token
     DWORD version = bytecode[pos++];
-    bool is_vertex_shader = false;
     
     switch (version) {
         case ShaderBytecode::VS_1_1:
@@ -66,10 +66,10 @@ bool ShaderBytecodeDisassembler::disassemble(const std::vector<DWORD>& bytecode,
                 int reg_num = get_register_number(dest_token);
                 
                 // The next 4 DWORDs are float values
-                float* x = reinterpret_cast<float*>(&bytecode[pos + 2]);
-                float* y = reinterpret_cast<float*>(&bytecode[pos + 3]);
-                float* z = reinterpret_cast<float*>(&bytecode[pos + 4]);
-                float* w = reinterpret_cast<float*>(&bytecode[pos + 5]);
+                const float* x = reinterpret_cast<const float*>(&bytecode[pos + 2]);
+                const float* y = reinterpret_cast<const float*>(&bytecode[pos + 3]);
+                const float* z = reinterpret_cast<const float*>(&bytecode[pos + 4]);
+                const float* w = reinterpret_cast<const float*>(&bytecode[pos + 5]);
                 
                 out << "    def c" << reg_num << ", " 
                     << *x << ", " << *y << ", " << *z << ", " << *w << "\n";
@@ -281,16 +281,25 @@ std::string ShaderBytecodeDisassembler::decode_swizzle(DWORD swizzle) {
 std::string ShaderBytecodeDisassembler::decode_write_mask(DWORD mask) {
     std::string result = ".";
     
-    if (mask & ShaderBytecode::WRITEMASK_X) result += "x";
-    if (mask & ShaderBytecode::WRITEMASK_Y) result += "y";
-    if (mask & ShaderBytecode::WRITEMASK_Z) result += "z";
-    if (mask & ShaderBytecode::WRITEMASK_W) result += "w";
+    // For destination registers, the mask is just the lower 4 bits
+    if ((mask & 0x1) == 0) result += "x";  // Bit 0 clear = write X
+    if ((mask & 0x2) == 0) result += "y";  // Bit 1 clear = write Y
+    if ((mask & 0x4) == 0) result += "z";  // Bit 2 clear = write Z
+    if ((mask & 0x8) == 0) result += "w";  // Bit 3 clear = write W
+    
+    // If all components are written, omit the mask
+    if (result == ".xyzw") {
+        return "";
+    }
     
     return result;
 }
 
 int ShaderBytecodeDisassembler::get_instruction_length(DWORD inst_token) {
-    return (inst_token >> 24) & 0xF;
+    // Instruction length is in bits [24:28] and includes the instruction token itself
+    int length = (inst_token >> 24) & 0xF;
+    // If length is 0, it usually means 1 (just the instruction token)
+    return length == 0 ? 1 : length;
 }
 
 ShaderBytecode::Opcode ShaderBytecodeDisassembler::get_opcode(DWORD inst_token) {

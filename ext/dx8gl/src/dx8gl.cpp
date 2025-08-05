@@ -9,8 +9,23 @@
 #include <atomic>
 #include <memory>
 #include <mutex>
+#include <vector>
+#include <algorithm>
 #include <cstring>
 #include <cstdlib>
+
+// Device structure definition (in global namespace to match header)
+struct dx8gl_device {
+    std::unique_ptr<dx8gl::DX8RenderBackend> backend;
+    dx8gl_stats stats;
+    std::string last_error;
+    bool initialized;
+    
+    dx8gl_device() : initialized(false) {
+        // Initialize stats
+        std::memset(&stats, 0, sizeof(stats));
+    }
+};
 
 namespace dx8gl {
 
@@ -18,7 +33,13 @@ namespace dx8gl {
 static std::atomic<bool> g_initialized{false};
 static std::mutex g_init_mutex;
 static std::unique_ptr<DX8RenderBackend> g_render_backend;
-static DX8BackendType g_selected_backend = DX8_BACKEND_OSMESA;
+static DX8BackendType g_selected_backend = DX8GL_BACKEND_OSMESA;
+static std::vector<std::unique_ptr<::dx8gl_device>> g_devices;
+static std::mutex g_devices_mutex;
+
+// Context tracking
+static thread_local dx8gl_context* g_current_context = nullptr;
+static std::mutex g_context_mutex;
 
 // Accessor for render backend
 DX8RenderBackend* get_render_backend() {
@@ -84,11 +105,17 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
     const char* args = std::getenv("DX8GL_ARGS");
     if (args) {
         if (std::strstr(args, "--backend=egl")) {
-            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_EGL;
+            dx8gl::g_selected_backend = DX8GL_BACKEND_EGL;
             DX8GL_INFO("Selected EGL backend from command line");
         } else if (std::strstr(args, "--backend=osmesa")) {
-            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_OSMESA;
+            dx8gl::g_selected_backend = DX8GL_BACKEND_OSMESA;
             DX8GL_INFO("Selected OSMesa backend from command line");
+        } else if (std::strstr(args, "--backend=webgpu")) {
+            dx8gl::g_selected_backend = DX8GL_BACKEND_WEBGPU;
+            DX8GL_INFO("Selected WebGPU backend from command line");
+        } else if (std::strstr(args, "--backend=auto")) {
+            dx8gl::g_selected_backend = DX8GL_BACKEND_DEFAULT;
+            DX8GL_INFO("Selected auto backend from command line");
         }
     }
     
@@ -99,13 +126,14 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
         }
         
         if (config->log_callback) {
-            // TODO: Implement custom log callback support
+            dx8gl::Logger::instance().set_callback(config->log_callback);
+            DX8GL_INFO("Custom log callback registered");
         }
         
         // Backend selection from config
         if (config->backend_type != DX8GL_BACKEND_DEFAULT) {
-            dx8gl::g_selected_backend = (config->backend_type == DX8GL_BACKEND_EGL) ? 
-                dx8gl::DX8_BACKEND_EGL : dx8gl::DX8_BACKEND_OSMESA;
+            dx8gl::g_selected_backend = config->backend_type;
+            DX8GL_INFO("Selected backend %d from config", config->backend_type);
         }
     }
     
@@ -113,26 +141,58 @@ dx8gl_error dx8gl_init(const dx8gl_config* config) {
     const char* backend_env = std::getenv("DX8GL_BACKEND");
     if (backend_env) {
         if (std::strcmp(backend_env, "egl") == 0 || std::strcmp(backend_env, "EGL") == 0) {
-            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_EGL;
+            dx8gl::g_selected_backend = DX8GL_BACKEND_EGL;
             DX8GL_INFO("Selected EGL backend from environment");
         } else if (std::strcmp(backend_env, "osmesa") == 0 || std::strcmp(backend_env, "OSMESA") == 0) {
-            dx8gl::g_selected_backend = dx8gl::DX8_BACKEND_OSMESA;
+            dx8gl::g_selected_backend = DX8GL_BACKEND_OSMESA;
             DX8GL_INFO("Selected OSMesa backend from environment");
+        } else if (std::strcmp(backend_env, "webgpu") == 0 || std::strcmp(backend_env, "WEBGPU") == 0) {
+            dx8gl::g_selected_backend = DX8GL_BACKEND_WEBGPU;
+            DX8GL_INFO("Selected WebGPU backend from environment");
+        } else if (std::strcmp(backend_env, "auto") == 0 || std::strcmp(backend_env, "AUTO") == 0) {
+            dx8gl::g_selected_backend = DX8GL_BACKEND_DEFAULT;
+            DX8GL_INFO("Selected auto backend from environment");
+        } else {
+            DX8GL_WARNING("Unknown backend in DX8GL_BACKEND: %s", backend_env);
         }
     }
     
-    // Create render backend
+    // Create render backend with fallback support
     dx8gl::g_render_backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
     if (!dx8gl::g_render_backend) {
-        dx8gl::set_error("Failed to create render backend");
-        return DX8GL_ERROR_INTERNAL;
+        // If specific backend failed and it wasn't DEFAULT, try fallback
+        if (dx8gl::g_selected_backend != DX8GL_BACKEND_DEFAULT && 
+            dx8gl::g_selected_backend != DX8GL_BACKEND_OSMESA) {
+            DX8GL_WARNING("Failed to create requested backend %d, trying fallback chain", dx8gl::g_selected_backend);
+            dx8gl::g_render_backend = dx8gl::create_render_backend(DX8GL_BACKEND_DEFAULT);
+        }
+        
+        if (!dx8gl::g_render_backend) {
+            dx8gl::set_error("Failed to create any render backend");
+            return DX8GL_ERROR_INTERNAL;
+        }
     }
     
     // Initialize the backend with default size (will be resized by device)
     if (!dx8gl::g_render_backend->initialize(800, 600)) {
-        dx8gl::set_error("Failed to initialize render backend");
-        dx8gl::g_render_backend.reset();
-        return DX8GL_ERROR_INTERNAL;
+        // Try fallback if initialization fails
+        if (dx8gl::g_selected_backend != DX8GL_BACKEND_DEFAULT && 
+            dx8gl::g_selected_backend != DX8GL_BACKEND_OSMESA) {
+            DX8GL_WARNING("Failed to initialize backend %d, trying fallback", dx8gl::g_selected_backend);
+            dx8gl::g_render_backend = dx8gl::create_render_backend(DX8GL_BACKEND_DEFAULT);
+            
+            if (dx8gl::g_render_backend && dx8gl::g_render_backend->initialize(800, 600)) {
+                DX8GL_INFO("Successfully initialized fallback backend");
+            } else {
+                dx8gl::set_error("Failed to initialize any render backend");
+                dx8gl::g_render_backend.reset();
+                return DX8GL_ERROR_INTERNAL;
+            }
+        } else {
+            dx8gl::set_error("Failed to initialize render backend");
+            dx8gl::g_render_backend.reset();
+            return DX8GL_ERROR_INTERNAL;
+        }
     }
     
     // OSMesa mode doesn't need SDL initialization
@@ -165,12 +225,58 @@ dx8gl_error dx8gl_create_device(dx8gl_device** device) {
         return DX8GL_ERROR_INVALID_PARAMETER;
     }
     
-    // TODO: Implement device creation
-    return DX8GL_ERROR_NOT_SUPPORTED;
+    if (!dx8gl::g_initialized) {
+        dx8gl::set_error("dx8gl not initialized");
+        return DX8GL_ERROR_NOT_INITIALIZED;
+    }
+    
+    // Create new device
+    auto new_device = std::make_unique<::dx8gl_device>();
+    
+    // Create backend for this device
+    new_device->backend = dx8gl::create_render_backend(dx8gl::g_selected_backend);
+    if (!new_device->backend) {
+        dx8gl::set_error("Failed to create render backend for device");
+        return DX8GL_ERROR_INTERNAL;
+    }
+    
+    // Initialize the backend with default size
+    if (!new_device->backend->initialize(800, 600)) {
+        dx8gl::set_error("Failed to initialize render backend for device");
+        return DX8GL_ERROR_INTERNAL;
+    }
+    
+    new_device->initialized = true;
+    
+    // Store device in global list
+    {
+        std::lock_guard<std::mutex> lock(dx8gl::g_devices_mutex);
+        dx8gl::g_devices.push_back(std::move(new_device));
+        *device = dx8gl::g_devices.back().get();
+    }
+    
+    DX8GL_INFO("Created dx8gl device at %p", *device);
+    return DX8GL_SUCCESS;
 }
 
 void dx8gl_destroy_device(dx8gl_device* device) {
-    // TODO: Implement device destruction
+    if (!device) {
+        return;
+    }
+    
+    DX8GL_INFO("Destroying dx8gl device at %p", device);
+    
+    // Find and remove device from global list
+    {
+        std::lock_guard<std::mutex> lock(dx8gl::g_devices_mutex);
+        dx8gl::g_devices.erase(
+            std::remove_if(dx8gl::g_devices.begin(), dx8gl::g_devices.end(),
+                [device](const std::unique_ptr<::dx8gl_device>& ptr) {
+                    return ptr.get() == device;
+                }),
+            dx8gl::g_devices.end()
+        );
+    }
 }
 
 dx8gl_error dx8gl_get_caps(dx8gl_device* device, dx8gl_caps* caps) {
@@ -178,19 +284,113 @@ dx8gl_error dx8gl_get_caps(dx8gl_device* device, dx8gl_caps* caps) {
         return DX8GL_ERROR_INVALID_PARAMETER;
     }
     
-    // TODO: Query actual OpenGL ES capabilities
-    caps->max_texture_size = 4096;
-    caps->max_texture_units = 8;
+    if (!device->initialized || !device->backend) {
+        dx8gl::set_error("Device not initialized");
+        return DX8GL_ERROR_NOT_INITIALIZED;
+    }
+    
+    // Make backend context current to query OpenGL capabilities
+    if (!device->backend->make_current()) {
+        dx8gl::set_error("Failed to make backend context current");
+        return DX8GL_ERROR_INTERNAL;
+    }
+    
+    // Query actual OpenGL capabilities
+    GLint max_texture_size = 0;
+    GLint max_texture_units = 0;
+    GLint max_vertex_attribs = 0;
+    GLint max_vertex_uniform_components = 0;
+    GLint max_fragment_uniform_components = 0;
+    GLint max_renderbuffer_size = 0;
+    GLint max_color_attachments = 0;
+    
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
+    glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &max_texture_units);
+    glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &max_vertex_attribs);
+    glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &max_vertex_uniform_components);
+    glGetIntegerv(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS, &max_fragment_uniform_components);
+    glGetIntegerv(GL_MAX_RENDERBUFFER_SIZE, &max_renderbuffer_size);
+    glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &max_color_attachments);
+    
+    // Check for any OpenGL errors
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR) {
+        DX8GL_WARNING("OpenGL error while querying capabilities: 0x%04x", error);
+        // Continue with reasonable defaults
+    }
+    
+    // Fill in capabilities structure
+    caps->max_texture_size = static_cast<uint32_t>(std::max(max_texture_size, 1024));
+    caps->max_texture_units = static_cast<uint32_t>(std::max(max_texture_units, 4));
+    caps->max_anisotropy = 1; // Software rendering typically doesn't support anisotropic filtering
+    
+    // DirectX 8 shader versions (dx8gl supports up to these)
     caps->max_vertex_shader_version = 0x0101;  // vs_1_1
     caps->max_pixel_shader_version = 0x0104;   // ps_1_4
-    caps->max_vertex_shader_constants = 96;
-    caps->max_pixel_shader_constants = 8;
+    
+    // Calculate shader constants based on uniform components
+    // DirectX 8 vs_1_1 supports up to 96 constants (float4), ps_1_4 supports 8
+    caps->max_vertex_shader_constants = std::min(96u, static_cast<uint32_t>(max_vertex_uniform_components / 4));
+    caps->max_pixel_shader_constants = std::min(8u, static_cast<uint32_t>(max_fragment_uniform_components / 4));
+    
+    // Rendering limits
+    caps->max_primitives_per_call = 65535; // Reasonable limit for software rendering
+    caps->max_vertex_index = 65535;        // 16-bit indices for compatibility
+    caps->max_render_targets = std::min(static_cast<uint32_t>(max_color_attachments), 4u);
+    
+    // Feature support (check OpenGL extensions)
+    const char* gl_version = reinterpret_cast<const char*>(glGetString(GL_VERSION));
+    const char* gl_extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
+    
+    // Modern OpenGL (3.3+) supports these by default
     caps->supports_npot_textures = true;
-    caps->supports_compressed_textures = true;
     caps->supports_cubemaps = true;
-    caps->supports_volume_textures = false;
+    
+    // Check for compressed texture support
+    caps->supports_compressed_textures = (gl_extensions && 
+        (strstr(gl_extensions, "GL_EXT_texture_compression_s3tc") != nullptr ||
+         strstr(gl_extensions, "GL_ARB_texture_compression") != nullptr));
+    
+    // Volume textures are less common in OpenGL ES, conservative default
+    caps->supports_volume_textures = (gl_extensions && 
+        strstr(gl_extensions, "GL_OES_texture_3D") != nullptr);
+    
+    DX8GL_INFO("Queried OpenGL capabilities:");
+    DX8GL_INFO("  Max texture size: %u", caps->max_texture_size);
+    DX8GL_INFO("  Max texture units: %u", caps->max_texture_units);
+    DX8GL_INFO("  Max vertex constants: %u", caps->max_vertex_shader_constants);
+    DX8GL_INFO("  Max pixel constants: %u", caps->max_pixel_shader_constants);
+    DX8GL_INFO("  NPOT textures: %s", caps->supports_npot_textures ? "yes" : "no");
+    DX8GL_INFO("  Compressed textures: %s", caps->supports_compressed_textures ? "yes" : "no");
+    DX8GL_INFO("  Cube maps: %s", caps->supports_cubemaps ? "yes" : "no");
+    DX8GL_INFO("  Volume textures: %s", caps->supports_volume_textures ? "yes" : "no");
     
     return DX8GL_SUCCESS;
+}
+
+dx8gl_error dx8gl_get_stats(dx8gl_device* device, dx8gl_stats* stats) {
+    if (!device || !stats) {
+        return DX8GL_ERROR_INVALID_PARAMETER;
+    }
+    
+    if (!device->initialized) {
+        dx8gl::set_error("Device not initialized");
+        return DX8GL_ERROR_NOT_INITIALIZED;
+    }
+    
+    // Copy current stats
+    *stats = device->stats;
+    return DX8GL_SUCCESS;
+}
+
+void dx8gl_reset_stats(dx8gl_device* device) {
+    if (!device || !device->initialized) {
+        return;
+    }
+    
+    // Reset all statistics counters
+    std::memset(&device->stats, 0, sizeof(device->stats));
+    DX8GL_DEBUG("Reset statistics for device %p", device);
 }
 
 const char* dx8gl_get_error_string(void) {
@@ -226,16 +426,25 @@ void dx8gl_context_destroy(dx8gl_context* context) {
 
 bool dx8gl_context_make_current(dx8gl_context* context) {
     if (!context) {
-        return false;
+        // Allow setting current context to null
+        dx8gl::g_current_context = nullptr;
+        return true;
     }
     
     auto ctx = reinterpret_cast<dx8gl::DX8OSMesaContext*>(context);
-    return ctx->make_current();
+    if (!ctx->make_current()) {
+        return false;
+    }
+    
+    // Update current context tracking
+    dx8gl::g_current_context = context;
+    
+    DX8GL_DEBUG("Made context %p current", context);
+    return true;
 }
 
 dx8gl_context* dx8gl_context_get_current(void) {
-    // TODO: Implement current context tracking
-    return nullptr;
+    return dx8gl::g_current_context;
 }
 
 void dx8gl_context_get_size(dx8gl_context* context, uint32_t* width, uint32_t* height) {

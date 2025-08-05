@@ -241,10 +241,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o: \
  /usr/include/c++/13/variant /usr/include/c++/13/mutex \
  /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/atomic \
  /usr/include/c++/13/list /usr/include/c++/13/bits/stl_list.h \
- /usr/include/c++/13/bits/list.tcc \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
+ /usr/include/c++/13/bits/list.tcc /usr/include/GL/gl.h \
+ /usr/include/GL/glext.h /usr/include/KHR/khrplatform.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_types.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
@@ -259,8 +257,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o: \
  /usr/include/c++/13/bits/this_thread_sleep.h \
  /usr/include/x86_64-linux-gnu/sys/time.h /usr/include/semaphore.h \
  /usr/include/x86_64-linux-gnu/bits/semaphore.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
  /usr/include/c++/13/fstream \
  /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \

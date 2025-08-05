@@ -56,22 +56,30 @@ dx8gl supports multiple rendering backends for flexibility:
 - Better performance on systems with GPU
 - Useful for embedded systems
 
+### WebGPU Backend (Experimental)
+- Modern GPU API for web and native platforms
+- Future-proof rendering pipeline
+- Works in web browsers with WebGPU support
+- Native WebGPU implementations (Dawn, wgpu-native)
+
 ### Backend Selection
 
 Select backend at runtime via:
 
 1. **Environment Variable**:
 ```bash
-export DX8GL_BACKEND=osmesa  # or 'egl'
+export DX8GL_BACKEND=osmesa  # or 'egl' or 'webgpu' or 'auto'
 ./your_app
 ```
 
 2. **Configuration API**:
 ```cpp
 dx8gl_config config = {};
-config.backend_type = DX8GL_BACKEND_EGL;  // or DX8GL_BACKEND_OSMESA
+config.backend_type = DX8GL_BACKEND_EGL;  // or DX8GL_BACKEND_OSMESA, DX8GL_BACKEND_WEBGPU, DX8GL_BACKEND_DEFAULT
 dx8gl_init(&config);
 ```
+
+Note: `DX8GL_BACKEND_DEFAULT` (or "auto") enables automatic backend selection with fallback chain: WebGPU → EGL → OSMesa
 
 3. **Command Line** (if using provided scripts):
 ```bash
@@ -89,6 +97,18 @@ cmake --build build -j
 ### With EGL Backend Support
 ```bash
 cmake -S . -B build -DDX8GL_ENABLE_EGL=ON
+cmake --build build -j
+```
+
+### With WebGPU Backend Support
+```bash
+cmake -S . -B build -DDX8GL_ENABLE_WEBGPU=ON
+cmake --build build -j
+```
+
+### With All Backends
+```bash
+cmake -S . -B build -DDX8GL_ENABLE_EGL=ON -DDX8GL_ENABLE_WEBGPU=ON
 cmake --build build -j
 ```
 

@@ -145,6 +145,116 @@ else()
     set_target_properties(test_stream_source_stride PROPERTIES EXCLUDE_FROM_ALL TRUE)
 endif()
 
+# Shader program cache test
+add_executable(test_shader_program_cache 
+    test_shader_program_cache.cpp
+)
+
+target_include_directories(test_shader_program_cache PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_shader_program_cache PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_shader_program_cache")
+    set_target_properties(test_shader_program_cache PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Shader cache resize test
+add_executable(test_shader_cache_resize 
+    test_shader_cache_resize_simple.cpp
+    ../src/shader_binary_cache.cpp
+    ../src/logger.cpp
+)
+
+target_include_directories(test_shader_cache_resize PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL for GL constants
+target_link_libraries(test_shader_cache_resize PRIVATE OpenGL::GL)
+
+# Vertex shader disassembly test
+add_executable(test_vertex_shader_disassembly 
+    test_vertex_shader_disassembly.cpp
+)
+
+target_include_directories(test_vertex_shader_disassembly PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_vertex_shader_disassembly PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_vertex_shader_disassembly")
+    set_target_properties(test_vertex_shader_disassembly PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Core API test
+add_executable(test_dx8gl_core_api 
+    test_dx8gl_core_api.cpp
+)
+
+target_include_directories(test_dx8gl_core_api PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_dx8gl_core_api PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_dx8gl_core_api")
+    set_target_properties(test_dx8gl_core_api PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# D3DX Surface Loading test
+add_executable(test_d3dx_surface_loading 
+    test_d3dx_surface_loading.cpp
+)
+
+target_include_directories(test_d3dx_surface_loading PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_d3dx_surface_loading PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_d3dx_surface_loading")
+    set_target_properties(test_d3dx_surface_loading PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Swap Chain Presentation test
+add_executable(test_swapchain_presentation 
+    test_swapchain_presentation.cpp
+)
+
+target_include_directories(test_swapchain_presentation PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_swapchain_presentation PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_swapchain_presentation")
+    set_target_properties(test_swapchain_presentation PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# State Manager Validation test
+add_executable(test_state_manager_validation 
+    test_state_manager_validation.cpp
+    ../src/state_manager.cpp
+    ../src/logger.cpp
+    gl_stubs.cpp
+)
+
+target_include_directories(test_state_manager_validation PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL for GL constants
+find_package(OpenGL REQUIRED)
+target_link_libraries(test_state_manager_validation PRIVATE OpenGL::GL)
+
 # Enable testing
 enable_testing()
 add_test(NAME ShaderTranslatorTest COMMAND test_shader_translator)
@@ -157,4 +267,48 @@ if(TARGET dx8gl)
     add_test(NAME DeviceResetTest COMMAND test_device_reset)
     add_test(NAME CubeTextureTest COMMAND test_cube_texture)
     add_test(NAME StreamSourceStrideTest COMMAND test_stream_source_stride)
+    add_test(NAME ShaderProgramCacheTest COMMAND test_shader_program_cache)
+    add_test(NAME VertexShaderDisassemblyTest COMMAND test_vertex_shader_disassembly)
+    add_test(NAME CoreAPITest COMMAND test_dx8gl_core_api)
+    add_test(NAME D3DXSurfaceLoadingTest COMMAND test_d3dx_surface_loading)
+    add_test(NAME SwapChainPresentationTest COMMAND test_swapchain_presentation)
 endif()
+add_test(NAME ShaderCacheResizeTest COMMAND test_shader_cache_resize)
+add_test(NAME StateManagerValidationTest COMMAND test_state_manager_validation)
+
+# Backend selection test
+add_executable(test_backend_selection 
+    test_backend_selection.cpp
+)
+
+target_include_directories(test_backend_selection PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_backend_selection PRIVATE dx8gl)
+    add_test(NAME BackendSelectionTest COMMAND test_backend_selection)
+else()
+    message(WARNING "dx8gl target not available, skipping test_backend_selection")
+    set_target_properties(test_backend_selection PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Framebuffer correctness test
+add_executable(test_framebuffer_correctness 
+    test_framebuffer_correctness.cpp
+    ../src/offscreen_framebuffer.cpp
+    ../src/logger.cpp
+)
+
+target_include_directories(test_framebuffer_correctness PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL for GL constants
+target_link_libraries(test_framebuffer_correctness PRIVATE OpenGL::GL)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_framebuffer_correctness PRIVATE dx8gl)
+endif()
+
+add_test(NAME FramebufferCorrectnessTest COMMAND test_framebuffer_correctness)

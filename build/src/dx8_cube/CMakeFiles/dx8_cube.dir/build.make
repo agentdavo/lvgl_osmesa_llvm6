@@ -101,8 +101,8 @@ src/dx8_cube/dx8_cube: /usr/lib/x86_64-linux-gnu/libICE.so
 src/dx8_cube/dx8_cube: /usr/lib/x86_64-linux-gnu/libX11.so
 src/dx8_cube/dx8_cube: /usr/lib/x86_64-linux-gnu/libXext.so
 src/dx8_cube/dx8_cube: /usr/lib/x86_64-linux-gnu/libSDL2.so
-src/dx8_cube/dx8_cube: mesa-install/lib/x86_64-linux-gnu/libOSMesa.so
 src/dx8_cube/dx8_cube: llvm-install/lib/libLLVM-20.so
+src/dx8_cube/dx8_cube: mesa-install/lib/x86_64-linux-gnu/libOSMesa.so
 src/dx8_cube/dx8_cube: src/dx8_cube/CMakeFiles/dx8_cube.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable dx8_cube"
 	cd /home/djs/lvgl_osmesa_llvm6/build/src/dx8_cube && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dx8_cube.dir/link.txt --verbose=$(VERBOSE)

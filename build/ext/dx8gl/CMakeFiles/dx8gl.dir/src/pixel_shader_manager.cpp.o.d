@@ -111,10 +111,9 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/pixel_shader_manager.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8_core.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_game.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
- /usr/include/c++/13/memory /usr/include/c++/13/bits/memoryfwd.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h /usr/include/c++/13/memory \
+ /usr/include/c++/13/bits/memoryfwd.h \
  /usr/include/c++/13/bits/allocator.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++allocator.h \
  /usr/include/c++/13/bits/new_allocator.h \

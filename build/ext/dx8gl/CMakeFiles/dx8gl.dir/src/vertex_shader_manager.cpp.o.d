@@ -21,9 +21,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8_shader_translator.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -227,13 +226,16 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: \
  /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_bytecode_disassembler.h \
+ /usr/include/c++/13/sstream /usr/include/c++/13/istream \
+ /usr/include/c++/13/bits/istream.tcc \
+ /usr/include/c++/13/bits/sstream.tcc \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_bytecode_assembler.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_binary_cache.h \
  /usr/include/c++/13/chrono /usr/include/c++/13/bits/chrono.h \
  /usr/include/c++/13/ratio /usr/include/c++/13/limits \
  /usr/include/c++/13/ctime /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/sstream /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc \
- /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/stl_algo.h \
  /usr/include/c++/13/bits/algorithmfwd.h \
  /usr/include/c++/13/bits/stl_heap.h \
  /usr/include/c++/13/bits/uniform_int_dist.h \

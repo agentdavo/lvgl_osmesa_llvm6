@@ -205,11 +205,9 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: \
  /usr/include/c++/13/bits/ranges_uninitialized.h \
  /usr/include/c++/13/bits/ranges_algobase.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
- /usr/include/c++/13/pstl/execution_defs.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
- /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/GL/osmesa.h \
+ /usr/include/GL/gl.h /usr/include/GL/glext.h \
+ /usr/include/KHR/khrplatform.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
  /usr/include/c++/13/cstdarg /usr/include/c++/13/cstring \
  /usr/include/string.h /usr/include/strings.h \

@@ -114,6 +114,13 @@ ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_async_simple.dir/all
 ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_device_reset.dir/all
 ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_cube_texture.dir/all
 ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/all
+ext/dx8gl/test/all: ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/all
 .PHONY : ext/dx8gl/test/all
 
 # Recursive "preinstall" directory target.
@@ -131,6 +138,13 @@ ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_async_simple.dir/clean
 ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_device_reset.dir/clean
 ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_cube_texture.dir/clean
 ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/clean
+ext/dx8gl/test/clean: ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/clean
 .PHONY : ext/dx8gl/test/clean
 
 #=============================================================================
@@ -312,7 +326,7 @@ CMakeFiles/llvm_external.dir/clean:
 CMakeFiles/osmesa.dir/all: CMakeFiles/llvm_external.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/osmesa.dir/build.make CMakeFiles/osmesa.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/osmesa.dir/build.make CMakeFiles/osmesa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=92 "Built target osmesa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=89 "Built target osmesa"
 .PHONY : CMakeFiles/osmesa.dir/all
 
 # Build rule for subdir invocation for target.
@@ -338,12 +352,12 @@ CMakeFiles/osmesa.dir/clean:
 CMakeFiles/lvgl.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lvgl.dir/build.make CMakeFiles/lvgl.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lvgl.dir/build.make CMakeFiles/lvgl.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90 "Built target lvgl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87 "Built target lvgl"
 .PHONY : CMakeFiles/lvgl.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/lvgl.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 82
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 79
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lvgl.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : CMakeFiles/lvgl.dir/rule
@@ -390,12 +404,12 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/clean:
 ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/all:
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=97 "Built target test_shader_translator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_shader_translator"
 .PHONY : ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/all
 
 # Build rule for subdir invocation for target.
 ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/rule
@@ -468,7 +482,7 @@ ext/dx8gl/test/CMakeFiles/test_lod_dirty_logic.dir/clean:
 ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/all:
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/build.make ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/build.make ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=96 "Built target test_multi_texcoords"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=94 "Built target test_multi_texcoords"
 .PHONY : ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/all
 
 # Build rule for subdir invocation for target.
@@ -521,7 +535,7 @@ ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/all: CMakeFiles/osmesa.d
 ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/build.make ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/build.make ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=93 "Built target test_command_buffer_async"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=90 "Built target test_command_buffer_async"
 .PHONY : ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/all
 
 # Build rule for subdir invocation for target.
@@ -575,12 +589,12 @@ ext/dx8gl/test/CMakeFiles/test_device_reset.dir/all: CMakeFiles/osmesa.dir/all
 ext/dx8gl/test/CMakeFiles/test_device_reset.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_device_reset.dir/build.make ext/dx8gl/test/CMakeFiles/test_device_reset.dir/depend
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_device_reset.dir/build.make ext/dx8gl/test/CMakeFiles/test_device_reset.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_device_reset"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=91 "Built target test_device_reset"
 .PHONY : ext/dx8gl/test/CMakeFiles/test_device_reset.dir/all
 
 # Build rule for subdir invocation for target.
 ext/dx8gl/test/CMakeFiles/test_device_reset.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_device_reset.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : ext/dx8gl/test/CMakeFiles/test_device_reset.dir/rule
@@ -649,6 +663,193 @@ ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir/clean:
 .PHONY : ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir/clean
 
 #=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/all: CMakeFiles/osmesa.dir/all
+ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=95 "Built target test_shader_program_cache"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/rule
+
+# Convenience name for target.
+test_shader_program_cache: ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/rule
+.PHONY : test_shader_program_cache
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_shader_program_cache.dir/clean
+
+#=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/all:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_shader_cache_resize"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/rule
+
+# Convenience name for target.
+test_shader_cache_resize: ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/rule
+.PHONY : test_shader_cache_resize
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_shader_cache_resize.dir/clean
+
+#=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/all: CMakeFiles/osmesa.dir/all
+ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/build.make ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/build.make ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_vertex_shader_disassembly"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/rule
+
+# Convenience name for target.
+test_vertex_shader_disassembly: ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/rule
+.PHONY : test_vertex_shader_disassembly
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/build.make ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_vertex_shader_disassembly.dir/clean
+
+#=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/all: CMakeFiles/osmesa.dir/all
+ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/build.make ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/build.make ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_dx8gl_core_api"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/rule
+
+# Convenience name for target.
+test_dx8gl_core_api: ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/rule
+.PHONY : test_dx8gl_core_api
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/build.make ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_dx8gl_core_api.dir/clean
+
+#=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/all: CMakeFiles/osmesa.dir/all
+ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/build.make ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/build.make ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_d3dx_surface_loading"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/rule
+
+# Convenience name for target.
+test_d3dx_surface_loading: ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/rule
+.PHONY : test_d3dx_surface_loading
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/build.make ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/clean
+
+#=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/all: CMakeFiles/osmesa.dir/all
+ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/build.make ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/build.make ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_swapchain_presentation"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/rule
+
+# Convenience name for target.
+test_swapchain_presentation: ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/rule
+.PHONY : test_swapchain_presentation
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/build.make ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/clean
+
+#=============================================================================
+# Target rules for target ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir
+
+# All Build rule for target.
+ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/all:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/build.make ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/depend
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/build.make ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=96 "Built target test_state_manager_validation"
+.PHONY : ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/all
+
+# Build rule for subdir invocation for target.
+ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
+.PHONY : ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/rule
+
+# Convenience name for target.
+test_state_manager_validation: ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/rule
+.PHONY : test_state_manager_validation
+
+# clean rule for target.
+ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/clean:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/build.make ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/clean
+.PHONY : ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/clean
+
+#=============================================================================
 # Target rules for target src/CMakeFiles/test_xyzrhw.dir
 
 # All Build rule for target.
@@ -663,7 +864,7 @@ src/CMakeFiles/test_xyzrhw.dir/all: src/lvgl_platform/CMakeFiles/lvgl_platform.d
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/test_xyzrhw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 93
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 90
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_xyzrhw.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/test_xyzrhw.dir/rule
@@ -692,7 +893,7 @@ src/CMakeFiles/test_mixed_vertices.dir/all: src/lvgl_platform/CMakeFiles/lvgl_pl
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/test_mixed_vertices.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 92
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 89
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_mixed_vertices.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/test_mixed_vertices.dir/rule
@@ -716,12 +917,12 @@ src/CMakeFiles/test_indexed_xyzrhw.dir/all: ext/dx8gl/CMakeFiles/dx8gl.dir/all
 src/CMakeFiles/test_indexed_xyzrhw.dir/all: src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_indexed_xyzrhw.dir/build.make src/CMakeFiles/test_indexed_xyzrhw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=94 "Built target test_indexed_xyzrhw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_indexed_xyzrhw"
 .PHONY : src/CMakeFiles/test_indexed_xyzrhw.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/test_indexed_xyzrhw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 93
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 89
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_indexed_xyzrhw.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/test_indexed_xyzrhw.dir/rule
@@ -742,12 +943,12 @@ src/CMakeFiles/test_indexed_xyzrhw.dir/clean:
 src/CMakeFiles/test_loading_screen.dir/all: CMakeFiles/lvgl.dir/all
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/test_loading_screen.dir/build.make src/CMakeFiles/test_loading_screen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_loading_screen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=92 "Built target test_loading_screen"
 .PHONY : src/CMakeFiles/test_loading_screen.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/test_loading_screen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 82
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/test_loading_screen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/test_loading_screen.dir/rule
@@ -768,12 +969,12 @@ src/CMakeFiles/test_loading_screen.dir/clean:
 src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all: CMakeFiles/lvgl.dir/all
 	$(MAKE) $(MAKESILENT) -f src/lvgl_platform/CMakeFiles/lvgl_platform.dir/build.make src/lvgl_platform/CMakeFiles/lvgl_platform.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/lvgl_platform/CMakeFiles/lvgl_platform.dir/build.make src/lvgl_platform/CMakeFiles/lvgl_platform.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=91 "Built target lvgl_platform"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=88 "Built target lvgl_platform"
 .PHONY : src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all
 
 # Build rule for subdir invocation for target.
 src/lvgl_platform/CMakeFiles/lvgl_platform.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 83
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/lvgl_platform/CMakeFiles/lvgl_platform.dir/rule
@@ -801,7 +1002,7 @@ src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/all: src/lvgl_platform/CMakeFiles/lvg
 
 # Build rule for subdir invocation for target.
 src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 85
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 82
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/rule
@@ -830,7 +1031,7 @@ src/dx8_cube/CMakeFiles/dx8_cube.dir/all: src/lvgl_platform/CMakeFiles/lvgl_plat
 
 # Build rule for subdir invocation for target.
 src/dx8_cube/CMakeFiles/dx8_cube.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 92
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 89
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dx8_cube/CMakeFiles/dx8_cube.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/dx8_cube/CMakeFiles/dx8_cube.dir/rule
@@ -858,7 +1059,7 @@ src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all: ext/dx8gl/CMakeFiles/d
 
 # Build rule for subdir invocation for target.
 src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 91
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 88
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/dx8_backend_test/CMakeFiles/dx8_backend_test.dir/rule
@@ -880,12 +1081,12 @@ src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/all: CMakeFiles/lvgl.di
 src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/all: src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all
 	$(MAKE) $(MAKESILENT) -f src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/build.make src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/build.make src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_lvgl_platform"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=93 "Built target test_lvgl_platform"
 .PHONY : src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/all
 
 # Build rule for subdir invocation for target.
 src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 83
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/test_lvgl_platform/CMakeFiles/test_lvgl_platform.dir/rule
@@ -907,12 +1108,12 @@ src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/all: CMakeFiles/lvgl.dir/al
 src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/all: src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all
 	$(MAKE) $(MAKESILENT) -f src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/build.make src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/build.make src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=95 "Built target test_lvgl_canvas"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_lvgl_canvas"
 .PHONY : src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/all
 
 # Build rule for subdir invocation for target.
 src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 84
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 80
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/test_lvgl_canvas/CMakeFiles/test_lvgl_canvas.dir/rule
@@ -934,12 +1135,12 @@ src/test_static_canvas/CMakeFiles/test_static_canvas.dir/all: CMakeFiles/lvgl.di
 src/test_static_canvas/CMakeFiles/test_static_canvas.dir/all: src/lvgl_platform/CMakeFiles/lvgl_platform.dir/all
 	$(MAKE) $(MAKESILENT) -f src/test_static_canvas/CMakeFiles/test_static_canvas.dir/build.make src/test_static_canvas/CMakeFiles/test_static_canvas.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/test_static_canvas/CMakeFiles/test_static_canvas.dir/build.make src/test_static_canvas/CMakeFiles/test_static_canvas.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num= "Built target test_static_canvas"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=97 "Built target test_static_canvas"
 .PHONY : src/test_static_canvas/CMakeFiles/test_static_canvas.dir/all
 
 # Build rule for subdir invocation for target.
 src/test_static_canvas/CMakeFiles/test_static_canvas.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 83
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 81
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/test_static_canvas/CMakeFiles/test_static_canvas.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/djs/lvgl_osmesa_llvm6/build/CMakeFiles 0
 .PHONY : src/test_static_canvas/CMakeFiles/test_static_canvas.dir/rule
