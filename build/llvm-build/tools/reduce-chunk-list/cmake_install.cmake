@@ -47,15 +47,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "reduce-chunk-list" OR NOT CMAKE_INSTALL_COM
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/reduce-chunk-list")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/reduce-chunk-list"
-         RPATH "")
+         RPATH "\$ORIGIN/../lib")
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/reduce-chunk-list")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/reduce-chunk-list" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/reduce-chunk-list")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/reduce-chunk-list"
-         OLD_RPATH "\$ORIGIN/../lib:/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib:"
-         NEW_RPATH "")
+         OLD_RPATH "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib:"
+         NEW_RPATH "\$ORIGIN/../lib")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/reduce-chunk-list")
     endif()

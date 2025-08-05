@@ -1,0 +1,14 @@
+#!/bin/bash
+# Auto-generated environment setup for relocatable build
+
+# Get the directory where this script is located (the build directory)
+BUILD_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$BUILD_DIR/.." && pwd)"
+
+# Set up library paths
+export LD_LIBRARY_PATH="$BUILD_DIR/llvm-install/lib:$BUILD_DIR/mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH"
+export PATH="$BUILD_DIR/llvm-install/bin:$PATH"
+
+echo "Environment configured for relocatable build at: $BUILD_DIR"
+echo "You can now run examples directly:"
+echo "  $BUILD_DIR/src/dx8_cube/dx8_cube"

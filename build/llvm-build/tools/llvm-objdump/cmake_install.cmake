@@ -47,15 +47,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "llvm-objdump" OR NOT CMAKE_INSTALL_COMPONEN
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-objdump")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-objdump"
-         RPATH "")
+         RPATH "\$ORIGIN/../lib")
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/llvm-objdump")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-objdump" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-objdump")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-objdump"
-         OLD_RPATH "\$ORIGIN/../lib:/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib:"
-         NEW_RPATH "")
+         OLD_RPATH "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib:"
+         NEW_RPATH "\$ORIGIN/../lib")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-objdump")
     endif()

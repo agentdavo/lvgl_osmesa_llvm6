@@ -65,6 +65,26 @@ CMAKE_BINARY_DIR = /home/djs/lvgl_osmesa_llvm6/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target package
+package: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool..."
+	cd /home/djs/lvgl_osmesa_llvm6/build && /usr/bin/cpack --config ./CPackConfig.cmake
+.PHONY : package
+
+# Special rule for the target package
+package/fast: package
+.PHONY : package/fast
+
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Run CPack packaging tool for source..."
+	cd /home/djs/lvgl_osmesa_llvm6/build && /usr/bin/cpack --config ./CPackSourceConfig.cmake /home/djs/lvgl_osmesa_llvm6/build/CPackSourceConfig.cmake
+.PHONY : package_source
+
+# Special rule for the target package_source
+package_source/fast: package_source
+.PHONY : package_source/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -535,30 +555,6 @@ src/dx8gl.s: src/dx8gl.cpp.s
 src/dx8gl.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/dx8gl.cpp.s
 .PHONY : src/dx8gl.cpp.s
-
-src/egl_backend.o: src/egl_backend.cpp.o
-.PHONY : src/egl_backend.o
-
-# target to build an object file
-src/egl_backend.cpp.o:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/egl_backend.cpp.o
-.PHONY : src/egl_backend.cpp.o
-
-src/egl_backend.i: src/egl_backend.cpp.i
-.PHONY : src/egl_backend.i
-
-# target to preprocess a source file
-src/egl_backend.cpp.i:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/egl_backend.cpp.i
-.PHONY : src/egl_backend.cpp.i
-
-src/egl_backend.s: src/egl_backend.cpp.s
-.PHONY : src/egl_backend.s
-
-# target to generate assembly for a file
-src/egl_backend.cpp.s:
-	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/egl_backend.cpp.s
-.PHONY : src/egl_backend.cpp.s
 
 src/fixed_function_shader.o: src/fixed_function_shader.cpp.o
 .PHONY : src/fixed_function_shader.o
@@ -1099,6 +1095,8 @@ help:
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... package"
+	@echo "... package_source"
 	@echo "... rebuild_cache"
 	@echo "... dx8gl"
 	@echo "... src/command_buffer.o"
@@ -1146,9 +1144,6 @@ help:
 	@echo "... src/dx8gl.o"
 	@echo "... src/dx8gl.i"
 	@echo "... src/dx8gl.s"
-	@echo "... src/egl_backend.o"
-	@echo "... src/egl_backend.i"
-	@echo "... src/egl_backend.s"
 	@echo "... src/fixed_function_shader.o"
 	@echo "... src/fixed_function_shader.i"
 	@echo "... src/fixed_function_shader.s"

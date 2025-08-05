@@ -47,15 +47,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "llvm-jitlink-executor" OR NOT CMAKE_INSTALL
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-jitlink-executor")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-jitlink-executor"
-         RPATH "")
+         RPATH "\$ORIGIN/../lib")
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/llvm-jitlink-executor")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-jitlink-executor" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-jitlink-executor")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-jitlink-executor"
-         OLD_RPATH "\$ORIGIN/../lib:"
-         NEW_RPATH "")
+         OLD_RPATH "::::::::::::::"
+         NEW_RPATH "\$ORIGIN/../lib")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-jitlink-executor")
     endif()

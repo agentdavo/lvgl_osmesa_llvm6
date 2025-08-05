@@ -201,6 +201,9 @@ CMAKE_INSTALL_PACKAGEDIR:PATH=lib/cmake
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/home/djs/lvgl_osmesa_llvm6/build/llvm-install
 
+//No help, variable specified on the command line.
+CMAKE_INSTALL_RPATH:UNINITIALIZED=$ORIGIN/../lib
+
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
 
@@ -300,7 +303,7 @@ CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //If set, runtime paths are not added when installing shared libraries,
 // but are added when building.
-CMAKE_SKIP_INSTALL_RPATH:BOOL=TRUE
+CMAKE_SKIP_INSTALL_RPATH:BOOL=NO
 
 //If set, runtime paths are not added when using shared libraries.
 CMAKE_SKIP_RPATH:BOOL=NO

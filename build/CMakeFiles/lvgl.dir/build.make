@@ -69,1172 +69,10 @@ include CMakeFiles/lvgl.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lvgl.dir/flags.make
 
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/lv_demo_benchmark.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/lv_demo_benchmark.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/lv_demo_benchmark.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/benchmark/lv_demo_benchmark.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/lv_demos.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/lv_demos.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/lv_demos.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/lv_demos.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_list.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_list.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_list.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_list.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_main.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_main.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_main.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/music/lv_demo_music_main.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_arc_bg.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_arc_bg.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_arc_bg.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_arc_bg.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/lv_demo_render.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/lv_demo_render.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/lv_demo_render.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/render/lv_demo_render.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/stress/lv_demo_stress.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/stress/lv_demo_stress.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/stress/lv_demo_stress.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/stress/lv_demo_stress.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_clothes.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_clothes.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_clothes.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_clothes.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_components.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_components.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_components.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_components.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.s
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o: CMakeFiles/lvgl.dir/flags.make
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c > CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.i
-
-CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/djs/lvgl_osmesa_llvm6/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c -o CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.s
-
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_group.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_group.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.i: cmake_force
@@ -1248,7 +86,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.i: cmake_force
@@ -1262,7 +100,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_class.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_class.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.i: cmake_force
@@ -1276,7 +114,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_draw.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_draw.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.i: cmake_force
@@ -1290,7 +128,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_draw.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_event.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_event.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.i: cmake_force
@@ -1304,7 +142,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_event.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_id_builtin.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_id_builtin.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.i: cmake_force
@@ -1318,7 +156,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_id_builtin.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_pos.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_pos.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.i: cmake_force
@@ -1332,7 +170,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_pos.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_property.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_property.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.i: cmake_force
@@ -1346,7 +184,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_property.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_scroll.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_scroll.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.i: cmake_force
@@ -1360,7 +198,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_scroll.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_style.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_style.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.i: cmake_force
@@ -1374,7 +212,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_style_gen.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_style_gen.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.i: cmake_force
@@ -1388,7 +226,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_style_gen.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_tree.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_obj_tree.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.i: cmake_force
@@ -1402,7 +240,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_tree.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_refr.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/core/lv_refr.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.i: cmake_force
@@ -1416,7 +254,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_refr.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/display/lv_display.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/display/lv_display.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.i: cmake_force
@@ -1430,7 +268,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/display/lv_display.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.i: cmake_force
@@ -1444,7 +282,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.i: cmake_force
@@ -1458,7 +296,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_fill.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.i: cmake_force
@@ -1472,7 +310,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/dma2d/lv_draw_dma2d_img.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.i: cmake_force
@@ -1486,7 +324,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.i: cmake_force
@@ -1500,7 +338,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_buf.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.i: cmake_force
@@ -1514,7 +352,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_fill.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.i: cmake_force
@@ -1528,7 +366,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/espressif/ppa/lv_draw_ppa_img.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.i: cmake_force
@@ -1542,7 +380,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_3d.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_3d.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.i: cmake_force
@@ -1556,7 +394,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_3d.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.i: cmake_force
@@ -1570,7 +408,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_arc.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_buf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_buf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.i: cmake_force
@@ -1584,7 +422,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_buf.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_image.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_image.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.i: cmake_force
@@ -1598,7 +436,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_image.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_label.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_label.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.i: cmake_force
@@ -1612,7 +450,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_label.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.i: cmake_force
@@ -1626,7 +464,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_line.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_mask.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_mask.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.i: cmake_force
@@ -1640,7 +478,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_mask.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_rect.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_rect.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.i: cmake_force
@@ -1654,7 +492,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_rect.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_triangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_triangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.i: cmake_force
@@ -1668,7 +506,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_triangle.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_vector.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_draw_vector.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.i: cmake_force
@@ -1682,7 +520,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_draw_vector.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_image_decoder.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/lv_image_decoder.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.i: cmake_force
@@ -1696,7 +534,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/lv_image_decoder.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.i: cmake_force
@@ -1710,7 +548,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.i: cmake_force
@@ -1724,7 +562,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_arc.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.i: cmake_force
@@ -1738,7 +576,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_border.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.i: cmake_force
@@ -1752,7 +590,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_fill.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.i: cmake_force
@@ -1766,7 +604,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_img.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.i: cmake_force
@@ -1780,7 +618,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_label.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.i: cmake_force
@@ -1794,7 +632,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_layer.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.i: cmake_force
@@ -1808,7 +646,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_line.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.i: cmake_force
@@ -1822,7 +660,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_stm32_hal.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.i: cmake_force
@@ -1836,7 +674,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_triangle.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.i: cmake_force
@@ -1850,7 +688,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_draw_nema_gfx_utils.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.i: cmake_force
@@ -1864,7 +702,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nema_gfx/lv_nema_gfx_path.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.i: cmake_force
@@ -1878,7 +716,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_buf_g2d.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.i: cmake_force
@@ -1892,7 +730,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.i: cmake_force
@@ -1906,7 +744,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_fill.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.i: cmake_force
@@ -1920,7 +758,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_draw_g2d_img.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.i: cmake_force
@@ -1934,7 +772,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_buf_map.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.i: cmake_force
@@ -1948,7 +786,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/g2d/lv_g2d_utils.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.i: cmake_force
@@ -1962,7 +800,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_buf_pxp.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.i: cmake_force
@@ -1976,7 +814,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.i: cmake_force
@@ -1990,7 +828,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_fill.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.i: cmake_force
@@ -2004,7 +842,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_img.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.i: cmake_force
@@ -2018,7 +856,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_draw_pxp_layer.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.i: cmake_force
@@ -2032,7 +870,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_cfg.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.i: cmake_force
@@ -2046,7 +884,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_osa.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.i: cmake_force
@@ -2060,7 +898,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/pxp/lv_pxp_utils.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.i: cmake_force
@@ -2074,7 +912,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_buf_vglite.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.i: cmake_force
@@ -2088,7 +926,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.i: cmake_force
@@ -2102,7 +940,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_arc.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.i: cmake_force
@@ -2116,7 +954,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_border.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.i: cmake_force
@@ -2130,7 +968,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_fill.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.i: cmake_force
@@ -2144,7 +982,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_img.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.i: cmake_force
@@ -2158,7 +996,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_label.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.i: cmake_force
@@ -2172,7 +1010,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_layer.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.i: cmake_force
@@ -2186,7 +1024,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_line.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.i: cmake_force
@@ -2200,7 +1038,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_draw_vglite_triangle.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.i: cmake_force
@@ -2214,7 +1052,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_buf.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.i: cmake_force
@@ -2228,7 +1066,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_matrix.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.i: cmake_force
@@ -2242,7 +1080,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_path.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.i: cmake_force
@@ -2256,7 +1094,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/nxp/vglite/lv_vglite_utils.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/opengles/lv_draw_opengles.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/opengles/lv_draw_opengles.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.i: cmake_force
@@ -2270,7 +1108,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/opengles/lv_draw_opengles.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.i: cmake_force
@@ -2284,7 +1122,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.i: cmake_force
@@ -2298,7 +1136,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_arc.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.i: cmake_force
@@ -2312,7 +1150,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_border.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.i: cmake_force
@@ -2326,7 +1164,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_fill.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.i: cmake_force
@@ -2340,7 +1178,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_image.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.i: cmake_force
@@ -2354,7 +1192,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_label.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.i: cmake_force
@@ -2368,7 +1206,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_line.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectangle.c.i: cmake_force
@@ -2382,7 +1220,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_mask_rectang
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.i: cmake_force
@@ -2396,7 +1234,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_triangle.c.s
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.i: cmake_force
@@ -2410,7 +1248,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/renesas/dave2d/lv_draw_dave2d_utils.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.i: cmake_force
@@ -2424,7 +1262,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.i: cmake_force
@@ -2438,7 +1276,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_al88.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.i: cmake_force
@@ -2452,7 +1290,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888.c.s:
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_premultiplied.c.i: cmake_force
@@ -2466,7 +1304,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_argb8888_prem
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.i: cmake_force
@@ -2480,7 +1318,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_i1.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.i: cmake_force
@@ -2494,7 +1332,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_l8.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.i: cmake_force
@@ -2508,7 +1346,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swapped.c.i: cmake_force
@@ -2522,7 +1360,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb565_swappe
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.i: cmake_force
@@ -2536,7 +1374,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/blend/lv_draw_sw_blend_to_rgb888.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.i: cmake_force
@@ -2550,7 +1388,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.i: cmake_force
@@ -2564,7 +1402,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_arc.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_border.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_border.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.i: cmake_force
@@ -2578,7 +1416,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_border.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.i: cmake_force
@@ -2592,7 +1430,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_box_shadow.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.i: cmake_force
@@ -2606,7 +1444,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_fill.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.i: cmake_force
@@ -2620,7 +1458,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_grad.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.i: cmake_force
@@ -2634,7 +1472,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_img.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.i: cmake_force
@@ -2648,7 +1486,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_letter.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.i: cmake_force
@@ -2662,7 +1500,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_line.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.i: cmake_force
@@ -2676,7 +1514,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.i: cmake_force
@@ -2690,7 +1528,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_mask_rect.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.i: cmake_force
@@ -2704,7 +1542,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_transform.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_189) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.i: cmake_force
@@ -2718,7 +1556,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_triangle.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_190) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.i: cmake_force
@@ -2732,7 +1570,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_utils.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_191) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.i: cmake_force
@@ -2746,7 +1584,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/sw/lv_draw_sw_vector.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_192) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.i: cmake_force
@@ -2760,7 +1598,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_buf_vg_lite.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_193) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.i: cmake_force
@@ -2774,7 +1612,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_194) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.i: cmake_force
@@ -2788,7 +1626,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_arc.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_195) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.i: cmake_force
@@ -2802,7 +1640,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_border.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_196) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.i: cmake_force
@@ -2816,7 +1654,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_box_shadow.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_197) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.i: cmake_force
@@ -2830,7 +1668,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_fill.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_198) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.i: cmake_force
@@ -2844,7 +1682,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_img.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_199) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.i: cmake_force
@@ -2858,7 +1696,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_label.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_200) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.i: cmake_force
@@ -2872,7 +1710,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_layer.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_201) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.i: cmake_force
@@ -2886,7 +1724,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_line.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_202) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.i: cmake_force
@@ -2900,7 +1738,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_mask_rect.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_203) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.i: cmake_force
@@ -2914,7 +1752,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_triangle.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_204) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.i: cmake_force
@@ -2928,7 +1766,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_draw_vg_lite_vector.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_205) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.i: cmake_force
@@ -2942,7 +1780,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_decoder.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_206) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.i: cmake_force
@@ -2956,7 +1794,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_grad.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_207) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.i: cmake_force
@@ -2970,7 +1808,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_math.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_208) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.i: cmake_force
@@ -2984,7 +1822,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_path.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_209) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.i: cmake_force
@@ -2998,7 +1836,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_pending.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_210) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.i: cmake_force
@@ -3012,7 +1850,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_stroke.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_211) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.i: cmake_force
@@ -3026,7 +1864,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/draw/vg_lite/lv_vg_lite_utils.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_212) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.i: cmake_force
@@ -3040,7 +1878,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/drm/lv_linux_drm.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_213) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.i: cmake_force
@@ -3054,7 +1892,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/fb/lv_linux_fbdev.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_214) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.i: cmake_force
@@ -3068,7 +1906,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ft81x/lv_ft81x.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_215) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.i: cmake_force
@@ -3082,7 +1920,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/ili9341/lv_ili9341.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_216) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.i: cmake_force
@@ -3096,7 +1934,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/lcd/lv_lcd_generic_mipi.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_217) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.i: cmake_force
@@ -3110,7 +1948,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/nxp_elcdif/lv_nxp_elcdif.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_218) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.c.i: cmake_force
@@ -3124,7 +1962,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/renesas_glcdc/lv_renesas_glcdc.
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st7735/lv_st7735.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_219) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st7735/lv_st7735.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.i: cmake_force
@@ -3138,7 +1976,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7735/lv_st7735.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st7789/lv_st7789.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_220) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st7789/lv_st7789.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.i: cmake_force
@@ -3152,7 +1990,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7789/lv_st7789.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st7796/lv_st7796.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_221) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st7796/lv_st7796.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.i: cmake_force
@@ -3166,7 +2004,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st7796/lv_st7796.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_222) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.i: cmake_force
@@ -3180,7 +2018,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/st_ltdc/lv_st_ltdc.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_223) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.i: cmake_force
@@ -3194,7 +2032,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/display/tft_espi/lv_tft_espi.cpp.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/evdev/lv_evdev.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_224) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/evdev/lv_evdev.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.i: cmake_force
@@ -3208,7 +2046,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/evdev/lv_evdev.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_glfw_window.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_225) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_glfw_window.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.i: cmake_force
@@ -3222,7 +2060,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_glfw_window.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_226) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.i: cmake_force
@@ -3236,7 +2074,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_debug.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_227) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.i: cmake_force
@@ -3250,7 +2088,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_driver.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_228) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.i: cmake_force
@@ -3264,7 +2102,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/glfw/lv_opengles_texture.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/libinput/lv_libinput.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_229) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/libinput/lv_libinput.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.i: cmake_force
@@ -3278,7 +2116,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_libinput.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/libinput/lv_xkb.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_230) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/libinput/lv_xkb.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.i: cmake_force
@@ -3292,7 +2130,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/libinput/lv_xkb.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_231) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.i: cmake_force
@@ -3306,7 +2144,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_cache.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_232) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.i: cmake_force
@@ -3320,7 +2158,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_entry.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_233) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.i: cmake_force
@@ -3334,7 +2172,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_fbdev.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_234) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.i: cmake_force
@@ -3348,7 +2186,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_image_cache.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_235) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.i: cmake_force
@@ -3362,7 +2200,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_lcd.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_236) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.i: cmake_force
@@ -3376,7 +2214,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_libuv.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_237) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.i: cmake_force
@@ -3390,7 +2228,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_mouse.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_238) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.i: cmake_force
@@ -3404,7 +2242,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_profiler.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_239) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.i: cmake_force
@@ -3418,7 +2256,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/nuttx/lv_nuttx_touchscreen.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/qnx/lv_qnx.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_240) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/qnx/lv_qnx.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.i: cmake_force
@@ -3432,7 +2270,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/qnx/lv_qnx.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_context.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_241) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_context.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.i: cmake_force
@@ -3446,7 +2284,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_context.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_display.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_242) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_display.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.i: cmake_force
@@ -3460,7 +2298,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_display.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_243) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.i: cmake_force
@@ -3474,7 +2312,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_keyboard.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_244) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.i: cmake_force
@@ -3488,7 +2326,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_pointer.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_245) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.i: cmake_force
@@ -3502,7 +2340,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_indev_touch.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_private.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_246) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/uefi/lv_uefi_private.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.i: cmake_force
@@ -3516,7 +2354,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/uefi/lv_uefi_private.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wayland.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_247) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wayland.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.i: cmake_force
@@ -3530,7 +2368,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_248) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.i: cmake_force
@@ -3544,7 +2382,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wayland_smm.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_cache.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_249) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_cache.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.i: cmake_force
@@ -3558,7 +2396,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_cache.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_250) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.i: cmake_force
@@ -3572,7 +2410,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_dmabuf.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_251) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.i: cmake_force
@@ -3586,7 +2424,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_keyboard.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_252) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.i: cmake_force
@@ -3600,7 +2438,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_253) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.i: cmake_force
@@ -3614,7 +2452,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_pointer_axis.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_seat.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_254) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_seat.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.i: cmake_force
@@ -3628,7 +2466,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_seat.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_shell.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_255) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_shell.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.i: cmake_force
@@ -3642,7 +2480,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shell.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_shm.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_256) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_shm.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.i: cmake_force
@@ -3656,7 +2494,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_shm.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_touch.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_257) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_touch.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.i: cmake_force
@@ -3670,7 +2508,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_touch.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_window.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_258) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_window.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.i: cmake_force
@@ -3684,7 +2522,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_259) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.i: cmake_force
@@ -3698,7 +2536,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_window_decorations.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_260) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.i: cmake_force
@@ -3712,7 +2550,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/wayland/lv_wl_xdg_shell.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/windows/lv_windows_context.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_261) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/windows/lv_windows_context.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.i: cmake_force
@@ -3726,7 +2564,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_context.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/windows/lv_windows_display.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_262) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/windows/lv_windows_display.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.i: cmake_force
@@ -3740,7 +2578,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_display.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/windows/lv_windows_input.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_263) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/windows/lv_windows_input.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.i: cmake_force
@@ -3754,7 +2592,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/windows/lv_windows_input.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/x11/lv_x11_display.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_264) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/x11/lv_x11_display.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.i: cmake_force
@@ -3768,7 +2606,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_display.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/x11/lv_x11_input.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_265) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/x11/lv_x11_input.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.i: cmake_force
@@ -3782,7 +2620,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/x11/lv_x11_input.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_binfont_loader.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_266) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_binfont_loader.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.i: cmake_force
@@ -3796,7 +2634,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_binfont_loader.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_267) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.i: cmake_force
@@ -3810,7 +2648,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_268) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.i: cmake_force
@@ -3824,7 +2662,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_dejavu_16_persian_hebrew.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_fmt_txt.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_269) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_fmt_txt.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.i: cmake_force
@@ -3838,7 +2676,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_fmt_txt.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_10.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_270) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_10.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.i: cmake_force
@@ -3852,7 +2690,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_10.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_12.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_271) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_12.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.i: cmake_force
@@ -3866,7 +2704,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_12.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_14.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_272) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_189) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_14.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.i: cmake_force
@@ -3880,7 +2718,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_273) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_190) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.i: cmake_force
@@ -3894,7 +2732,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_14_aligned.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_16.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_274) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_191) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_16.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.i: cmake_force
@@ -3908,7 +2746,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_16.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_18.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_275) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_192) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_18.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.i: cmake_force
@@ -3922,7 +2760,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_18.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_20.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_276) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_193) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_20.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.i: cmake_force
@@ -3936,7 +2774,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_20.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_22.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_277) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_194) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_22.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.i: cmake_force
@@ -3950,7 +2788,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_22.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_24.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_278) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_195) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_24.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.i: cmake_force
@@ -3964,7 +2802,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_24.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_26.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_279) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_196) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_26.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.i: cmake_force
@@ -3978,7 +2816,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_26.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_28.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_280) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_197) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_28.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.i: cmake_force
@@ -3992,7 +2830,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_281) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_198) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.i: cmake_force
@@ -4006,7 +2844,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_28_compressed.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_30.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_282) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_199) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_30.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.i: cmake_force
@@ -4020,7 +2858,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_30.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_32.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_283) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_200) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_32.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.i: cmake_force
@@ -4034,7 +2872,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_32.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_34.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_284) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_201) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_34.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.i: cmake_force
@@ -4048,7 +2886,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_34.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_36.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_285) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_202) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_36.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.i: cmake_force
@@ -4062,7 +2900,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_36.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_38.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_286) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_203) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_38.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.i: cmake_force
@@ -4076,7 +2914,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_38.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_40.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_287) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_204) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_40.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.i: cmake_force
@@ -4090,7 +2928,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_40.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_42.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_288) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_205) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_42.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.i: cmake_force
@@ -4104,7 +2942,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_42.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_44.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_289) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_206) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_44.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.i: cmake_force
@@ -4118,7 +2956,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_44.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_46.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_290) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_207) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_46.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.i: cmake_force
@@ -4132,7 +2970,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_46.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_48.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_291) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_208) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_48.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.i: cmake_force
@@ -4146,7 +2984,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_48.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_8.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_292) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_209) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_montserrat_8.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.i: cmake_force
@@ -4160,7 +2998,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_montserrat_8.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_293) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_210) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.i: cmake_force
@@ -4174,7 +3012,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_14_cjk.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_294) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_211) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.i: cmake_force
@@ -4188,7 +3026,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_source_han_sans_sc_16_cjk.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_unscii_16.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_295) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_212) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_unscii_16.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.i: cmake_force
@@ -4202,7 +3040,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_16.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_unscii_8.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_296) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_213) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/font/lv_font_unscii_8.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.i: cmake_force
@@ -4216,7 +3054,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/font/lv_font_unscii_8.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/indev/lv_indev.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_297) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_214) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/indev/lv_indev.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.i: cmake_force
@@ -4230,7 +3068,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/indev/lv_indev_gesture.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_298) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_215) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/indev/lv_indev_gesture.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.i: cmake_force
@@ -4244,7 +3082,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_gesture.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/indev/lv_indev_scroll.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_299) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_216) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/indev/lv_indev_scroll.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.i: cmake_force
@@ -4258,7 +3096,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/indev/lv_indev_scroll.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/layouts/flex/lv_flex.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_300) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_217) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/layouts/flex/lv_flex.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.i: cmake_force
@@ -4272,7 +3110,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/flex/lv_flex.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/layouts/grid/lv_grid.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_301) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_218) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/layouts/grid/lv_grid.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.i: cmake_force
@@ -4286,7 +3124,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/grid/lv_grid.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/layouts/lv_layout.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_302) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_219) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/layouts/lv_layout.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.i: cmake_force
@@ -4300,7 +3138,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/layouts/lv_layout.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/barcode/code128.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_303) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_220) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/barcode/code128.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.i: cmake_force
@@ -4314,7 +3152,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/code128.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/barcode/lv_barcode.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_304) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_221) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/barcode/lv_barcode.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.i: cmake_force
@@ -4328,7 +3166,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/barcode/lv_barcode.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_305) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_222) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.i: cmake_force
@@ -4342,7 +3180,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bin_decoder/lv_bin_decoder.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/bmp/lv_bmp.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_306) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_223) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/bmp/lv_bmp.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.i: cmake_force
@@ -4356,7 +3194,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/bmp/lv_bmp.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmlparse.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_307) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_224) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmlparse.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.i: cmake_force
@@ -4370,7 +3208,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlparse.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmlrole.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_308) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_225) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmlrole.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.i: cmake_force
@@ -4384,7 +3222,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmlrole.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmltok.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_309) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_226) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmltok.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.i: cmake_force
@@ -4398,7 +3236,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmltok_impl.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_310) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_227) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmltok_impl.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.i: cmake_force
@@ -4412,7 +3250,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_impl.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmltok_ns.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_311) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_228) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/expat/xmltok_ns.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.i: cmake_force
@@ -4426,7 +3264,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/expat/xmltok_ns.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_312) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_229) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.i: cmake_force
@@ -4440,7 +3278,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/ffmpeg/lv_ffmpeg.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_313) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_230) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.i: cmake_force
@@ -4454,7 +3292,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_314) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_231) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.i: cmake_force
@@ -4468,7 +3306,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_glyph.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype_image.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_315) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_232) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype_image.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.i: cmake_force
@@ -4482,7 +3320,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_image.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype_outline.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_316) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_233) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_freetype_outline.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.i: cmake_force
@@ -4496,7 +3334,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_freetype_outline.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_ftsystem.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_317) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_234) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/freetype/lv_ftsystem.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.i: cmake_force
@@ -4510,7 +3348,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/freetype/lv_ftsystem.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_318) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_235) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.i: cmake_force
@@ -4524,7 +3362,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_esp_littlefs.cpp.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_319) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_236) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.i: cmake_force
@@ -4538,7 +3376,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_arduino_sd.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_320) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_237) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.i: cmake_force
@@ -4552,7 +3390,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_cbfs.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_321) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_238) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.i: cmake_force
@@ -4566,7 +3404,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_fatfs.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_322) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_239) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.i: cmake_force
@@ -4580,7 +3418,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_littlefs.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_323) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_240) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.i: cmake_force
@@ -4594,7 +3432,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_memfs.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_324) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_241) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.i: cmake_force
@@ -4608,7 +3446,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_posix.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_325) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_242) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.i: cmake_force
@@ -4622,7 +3460,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_stdio.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_326) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_243) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.i: cmake_force
@@ -4636,7 +3474,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_uefi.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_327) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_244) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.i: cmake_force
@@ -4650,7 +3488,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/fsdrv/lv_fs_win32.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/gif/gifdec.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_328) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_245) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/gif/gifdec.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.i: cmake_force
@@ -4664,7 +3502,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/gifdec.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/gif/lv_gif.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_329) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_246) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/gif/lv_gif.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.i: cmake_force
@@ -4678,7 +3516,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/gif/lv_gif.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_330) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_247) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.i: cmake_force
@@ -4692,7 +3530,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/libpng/lv_libpng.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_331) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_248) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/libpng/lv_libpng.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.i: cmake_force
@@ -4706,7 +3544,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/libpng/lv_libpng.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/lodepng/lodepng.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_332) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_249) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/lodepng/lodepng.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.i: cmake_force
@@ -4720,7 +3558,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lodepng.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/lodepng/lv_lodepng.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_333) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_250) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/lodepng/lv_lodepng.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.i: cmake_force
@@ -4734,7 +3572,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lodepng/lv_lodepng.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/lz4/lz4.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_334) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_251) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/lz4/lz4.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.i: cmake_force
@@ -4748,7 +3586,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/lz4/lz4.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/qrcode/lv_qrcode.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_335) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_252) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/qrcode/lv_qrcode.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.i: cmake_force
@@ -4762,7 +3600,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/lv_qrcode.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/qrcode/qrcodegen.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_336) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_253) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/qrcode/qrcodegen.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.i: cmake_force
@@ -4776,7 +3614,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/qrcode/qrcodegen.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/rle/lv_rle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_337) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_254) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/rle/lv_rle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.i: cmake_force
@@ -4790,7 +3628,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rle/lv_rle.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/rlottie/lv_rlottie.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_338) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_255) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/rlottie/lv_rlottie.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.i: cmake_force
@@ -4804,7 +3642,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/rlottie/lv_rlottie.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_339) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_256) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.i: cmake_force
@@ -4818,7 +3656,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_decoder.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_340) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_257) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_decoder.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.i: cmake_force
@@ -4832,7 +3670,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_decoder.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_341) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_258) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.i: cmake_force
@@ -4846,7 +3684,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_parser.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_render.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_342) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_259) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_render.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.i: cmake_force
@@ -4860,7 +3698,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_render.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_token.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_343) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_260) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/svg/lv_svg_token.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.i: cmake_force
@@ -4874,7 +3712,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/svg/lv_svg_token.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_344) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_261) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.i: cmake_force
@@ -4888,7 +3726,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAccessor.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_345) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_262) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.i: cmake_force
@@ -4902,7 +3740,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgAnimation.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_346) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_263) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.i: cmake_force
@@ -4916,7 +3754,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCanvas.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgCapi.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_347) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_264) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgCapi.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.i: cmake_force
@@ -4930,7 +3768,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCapi.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_348) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_265) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.i: cmake_force
@@ -4944,7 +3782,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgCompressor.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgFill.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_349) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_266) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgFill.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.i: cmake_force
@@ -4958,7 +3796,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgFill.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_350) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_267) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.i: cmake_force
@@ -4972,7 +3810,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgGlCanvas.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_351) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_268) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.i: cmake_force
@@ -4986,7 +3824,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgInitializer.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLoader.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_352) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_269) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLoader.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.i: cmake_force
@@ -5000,7 +3838,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLoader.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_353) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_270) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.i: cmake_force
@@ -5014,7 +3852,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieAnimation.cpp.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_354) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_271) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.i: cmake_force
@@ -5028,7 +3866,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieBuilder.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_355) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_272) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.i: cmake_force
@@ -5042,7 +3880,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieExpressions.cpp.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_356) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_273) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.i: cmake_force
@@ -5056,7 +3894,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieInterpolator.cpp.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_357) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_274) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.i: cmake_force
@@ -5070,7 +3908,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieLoader.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_358) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_275) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.i: cmake_force
@@ -5084,7 +3922,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModel.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_359) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_276) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.i: cmake_force
@@ -5098,7 +3936,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieModifier.cpp.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_360) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_277) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.i: cmake_force
@@ -5112,7 +3950,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParser.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_361) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_278) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.i: cmake_force
@@ -5126,7 +3964,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgLottieParserHandler.cpp.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgMath.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_362) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_279) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgMath.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.i: cmake_force
@@ -5140,7 +3978,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgMath.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgPaint.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_363) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_280) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgPaint.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.i: cmake_force
@@ -5154,7 +3992,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPaint.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgPicture.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_364) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_281) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgPicture.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.i: cmake_force
@@ -5168,7 +4006,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgPicture.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_365) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_282) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.i: cmake_force
@@ -5182,7 +4020,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRawLoader.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgRender.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_366) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_283) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgRender.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.i: cmake_force
@@ -5196,7 +4034,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgRender.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSaver.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_367) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_284) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSaver.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.i: cmake_force
@@ -5210,7 +4048,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSaver.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgScene.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_368) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_285) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgScene.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.i: cmake_force
@@ -5224,7 +4062,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgScene.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgShape.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_369) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_286) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgShape.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.i: cmake_force
@@ -5238,7 +4076,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgShape.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgStr.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_370) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_287) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgStr.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.i: cmake_force
@@ -5252,7 +4090,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgStr.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_371) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_288) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.i: cmake_force
@@ -5266,7 +4104,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgCssStyle.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_372) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_289) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.i: cmake_force
@@ -5280,7 +4118,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgLoader.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_373) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_290) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.i: cmake_force
@@ -5294,7 +4132,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgPath.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_374) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_291) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.i: cmake_force
@@ -5308,7 +4146,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgSceneBuilder.cpp.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_375) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_292) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.i: cmake_force
@@ -5322,7 +4160,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSvgUtil.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_376) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_293) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.i: cmake_force
@@ -5336,7 +4174,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwCanvas.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_377) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_294) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.i: cmake_force
@@ -5350,7 +4188,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwFill.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_378) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_295) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.i: cmake_force
@@ -5364,7 +4202,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwImage.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_379) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_296) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.i: cmake_force
@@ -5378,7 +4216,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMath.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_380) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_297) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.i: cmake_force
@@ -5392,7 +4230,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwMemPool.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_381) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_298) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.i: cmake_force
@@ -5406,7 +4244,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwPostEffect.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_382) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_299) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.i: cmake_force
@@ -5420,7 +4258,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRaster.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_383) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_300) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.i: cmake_force
@@ -5434,7 +4272,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRenderer.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_384) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_301) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.i: cmake_force
@@ -5448,7 +4286,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwRle.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_385) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_302) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.i: cmake_force
@@ -5462,7 +4300,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwShape.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_386) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_303) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.i: cmake_force
@@ -5476,7 +4314,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgSwStroke.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_387) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_304) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.i: cmake_force
@@ -5490,7 +4328,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgTaskScheduler.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgText.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_388) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_305) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgText.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.i: cmake_force
@@ -5504,7 +4342,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgText.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_389) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_306) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.i: cmake_force
@@ -5518,7 +4356,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgWgCanvas.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_390) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_307) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.i: cmake_force
@@ -5532,7 +4370,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/thorvg/tvgXmlParser.cpp.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_391) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_308) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.i: cmake_force
@@ -5546,7 +4384,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tiny_ttf/lv_tiny_ttf.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_392) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_309) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.i: cmake_force
@@ -5560,7 +4398,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/lv_tjpgd.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/tjpgd/tjpgd.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_393) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_310) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/libs/tjpgd/tjpgd.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.i: cmake_force
@@ -5574,7 +4412,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/libs/tjpgd/tjpgd.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/lv_init.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_394) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_311) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/lv_init.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.i: cmake_force
@@ -5588,7 +4426,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/lv_init.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_395) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_312) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.i: cmake_force
@@ -5602,7 +4440,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_ll.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_396) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_313) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.i: cmake_force
@@ -5616,7 +4454,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_lru_rb.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_397) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_314) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.i: cmake_force
@@ -5630,7 +4468,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/class/lv_cache_sc_da.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/instance/lv_image_cache.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_398) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_315) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/instance/lv_image_cache.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.i: cmake_force
@@ -5644,7 +4482,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_cache.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_399) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_316) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.i: cmake_force
@@ -5658,7 +4496,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/instance/lv_image_header_cache.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/lv_cache.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_400) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_317) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/lv_cache.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.i: cmake_force
@@ -5672,7 +4510,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/lv_cache_entry.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_401) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_318) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/cache/lv_cache_entry.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.i: cmake_force
@@ -5686,7 +4524,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/cache/lv_cache_entry.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_anim.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_402) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_319) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_anim.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.i: cmake_force
@@ -5700,7 +4538,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_anim_timeline.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_403) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_320) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_anim_timeline.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.i: cmake_force
@@ -5714,7 +4552,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_anim_timeline.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_area.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_404) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_321) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_area.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.i: cmake_force
@@ -5728,7 +4566,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_area.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_array.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_405) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_322) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_array.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.i: cmake_force
@@ -5742,7 +4580,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_array.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_assert.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_406) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_323) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_assert.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.i: cmake_force
@@ -5756,7 +4594,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_assert.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_async.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_407) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_324) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_async.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.i: cmake_force
@@ -5770,7 +4608,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_async.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_bidi.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_408) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_325) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_bidi.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.i: cmake_force
@@ -5784,7 +4622,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_bidi.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_circle_buf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_409) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_326) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_circle_buf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.i: cmake_force
@@ -5798,7 +4636,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_circle_buf.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_color.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_410) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_327) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_color.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.i: cmake_force
@@ -5812,7 +4650,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_color_op.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_411) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_328) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_color_op.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.i: cmake_force
@@ -5826,7 +4664,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_color_op.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_event.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_412) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_329) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_event.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.i: cmake_force
@@ -5840,7 +4678,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_event.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_fs.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_413) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_330) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_fs.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.i: cmake_force
@@ -5854,7 +4692,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_fs.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_grad.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_414) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_331) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_grad.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.i: cmake_force
@@ -5868,7 +4706,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_grad.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_iter.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_415) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_332) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_iter.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.i: cmake_force
@@ -5882,7 +4720,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_iter.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_ll.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_416) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_333) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_ll.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.i: cmake_force
@@ -5896,7 +4734,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_ll.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_log.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_417) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_334) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_log.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.i: cmake_force
@@ -5910,7 +4748,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_log.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_lru.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_418) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_335) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_lru.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.i: cmake_force
@@ -5924,7 +4762,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_lru.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_math.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_419) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_336) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_math.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.i: cmake_force
@@ -5938,7 +4776,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_math.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_matrix.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_420) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_337) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_matrix.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.i: cmake_force
@@ -5952,7 +4790,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_matrix.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_palette.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_421) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_338) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_palette.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.i: cmake_force
@@ -5966,7 +4804,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_palette.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_profiler_builtin.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_422) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_339) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_profiler_builtin.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.i: cmake_force
@@ -5980,7 +4818,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_profiler_builtin.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_rb.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_423) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_340) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_rb.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.i: cmake_force
@@ -5994,7 +4832,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_rb.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_style.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_424) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_341) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_style.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.i: cmake_force
@@ -6008,7 +4846,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_style_gen.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_425) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_342) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_style_gen.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.i: cmake_force
@@ -6022,7 +4860,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_style_gen.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_templ.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_426) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_343) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_templ.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.i: cmake_force
@@ -6036,7 +4874,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_templ.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_text.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_427) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_344) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_text.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.i: cmake_force
@@ -6050,7 +4888,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_text_ap.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_428) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_345) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_text_ap.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.i: cmake_force
@@ -6064,7 +4902,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_text_ap.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_timer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_429) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_346) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_timer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.i: cmake_force
@@ -6078,7 +4916,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_timer.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_tree.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_430) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_347) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_tree.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.i: cmake_force
@@ -6092,7 +4930,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_tree.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_431) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_348) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/misc/lv_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.i: cmake_force
@@ -6106,7 +4944,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/misc/lv_utils.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_cmsis_rtos2.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_432) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_349) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_cmsis_rtos2.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.i: cmake_force
@@ -6120,7 +4958,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_cmsis_rtos2.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_freertos.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_433) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_350) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_freertos.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.i: cmake_force
@@ -6134,7 +4972,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_freertos.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_linux.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_434) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_351) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_linux.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.i: cmake_force
@@ -6148,7 +4986,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_linux.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_mqx.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_435) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_352) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_mqx.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.i: cmake_force
@@ -6162,7 +5000,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_mqx.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_os.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_436) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_353) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_os.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.i: cmake_force
@@ -6176,7 +5014,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_os_none.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_437) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_354) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_os_none.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.i: cmake_force
@@ -6190,7 +5028,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_os_none.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_pthread.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_438) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_355) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_pthread.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.i: cmake_force
@@ -6204,7 +5042,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_pthread.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_rtthread.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_439) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_356) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_rtthread.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.i: cmake_force
@@ -6218,7 +5056,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_rtthread.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_windows.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_440) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_357) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/osal/lv_windows.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.i: cmake_force
@@ -6232,7 +5070,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/osal/lv_windows.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/file_explorer/lv_file_explorer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_441) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_358) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/file_explorer/lv_file_explorer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.i: cmake_force
@@ -6246,7 +5084,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/file_explorer/lv_file_explorer.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/font_manager/lv_font_manager.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_442) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_359) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/font_manager/lv_font_manager.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.i: cmake_force
@@ -6260,7 +5098,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_443) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_360) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.i: cmake_force
@@ -6274,7 +5112,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/font_manager/lv_font_manager_recycle.c.s
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/fragment/lv_fragment.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_444) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_361) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/fragment/lv_fragment.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.i: cmake_force
@@ -6288,7 +5126,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/fragment/lv_fragment_manager.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_445) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_362) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/fragment/lv_fragment_manager.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.i: cmake_force
@@ -6302,7 +5140,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/fragment/lv_fragment_manager.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/gridnav/lv_gridnav.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_446) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_363) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/gridnav/lv_gridnav.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.i: cmake_force
@@ -6316,7 +5154,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/gridnav/lv_gridnav.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/ime/lv_ime_pinyin.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_447) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_364) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/ime/lv_ime_pinyin.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.i: cmake_force
@@ -6330,7 +5168,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/ime/lv_ime_pinyin.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/imgfont/lv_imgfont.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_448) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_365) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/imgfont/lv_imgfont.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.i: cmake_force
@@ -6344,7 +5182,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/imgfont/lv_imgfont.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/monkey/lv_monkey.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_449) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_366) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/monkey/lv_monkey.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.i: cmake_force
@@ -6358,7 +5196,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/monkey/lv_monkey.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/observer/lv_observer.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_450) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_367) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/observer/lv_observer.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.i: cmake_force
@@ -6372,7 +5210,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/observer/lv_observer.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/snapshot/lv_snapshot.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_451) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_368) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/snapshot/lv_snapshot.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.i: cmake_force
@@ -6386,7 +5224,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/snapshot/lv_snapshot.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/sysmon/lv_sysmon.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_452) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_369) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/sysmon/lv_sysmon.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.i: cmake_force
@@ -6400,7 +5238,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/sysmon/lv_sysmon.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_display.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_453) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_370) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_display.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.i: cmake_force
@@ -6414,7 +5252,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_display.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_helpers.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_454) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_371) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_helpers.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.i: cmake_force
@@ -6428,7 +5266,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_helpers.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_indev.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_455) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_372) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_indev.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.i: cmake_force
@@ -6442,7 +5280,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_indev_gesture.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_456) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_373) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_indev_gesture.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.i: cmake_force
@@ -6456,7 +5294,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_indev_gesture.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_screenshot_compare.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_457) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_374) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/test/lv_test_screenshot_compare.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.i: cmake_force
@@ -6470,7 +5308,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/test/lv_test_screenshot_compare.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/translation/lv_translation.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_458) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_375) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/translation/lv_translation.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.i: cmake_force
@@ -6484,7 +5322,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/translation/lv_translation.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_459) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_376) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.i: cmake_force
@@ -6498,7 +5336,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_matrix.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_460) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_377) "Building CXX object CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.i: cmake_force
@@ -6512,7 +5350,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/vg_lite_tvg/vg_lite_tvg.cpp.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_461) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_378) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.i: cmake_force
@@ -6526,7 +5364,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_base_types.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_462) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_379) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_base_types.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.i: cmake_force
@@ -6540,7 +5378,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_base_types.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_component.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_463) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_380) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_component.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.i: cmake_force
@@ -6554,7 +5392,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_component.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_464) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_381) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.i: cmake_force
@@ -6568,7 +5406,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_parser.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_style.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_465) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_382) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_style.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.i: cmake_force
@@ -6582,7 +5420,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_style.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_test.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_466) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_383) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_test.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.i: cmake_force
@@ -6596,7 +5434,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_test.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_translation.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_467) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_384) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_translation.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.i: cmake_force
@@ -6610,7 +5448,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_translation.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_update.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_468) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_385) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_update.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.i: cmake_force
@@ -6624,7 +5462,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_update.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_utils.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_469) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_386) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_utils.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.i: cmake_force
@@ -6638,7 +5476,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_utils.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_widget.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_470) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_387) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/lv_xml_widget.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.i: cmake_force
@@ -6652,7 +5490,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/lv_xml_widget.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_471) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_388) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.i: cmake_force
@@ -6666,7 +5504,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_arc_parser.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_472) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_389) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.i: cmake_force
@@ -6680,7 +5518,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_bar_parser.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_473) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_390) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.i: cmake_force
@@ -6694,7 +5532,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_button_parser.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_474) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_391) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c.i: cmake_force
@@ -6708,7 +5546,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_buttonmatrix_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_475) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_392) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.i: cmake_force
@@ -6722,7 +5560,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_calendar_parser.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_476) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_393) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.i: cmake_force
@@ -6736,7 +5574,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_canvas_parser.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_477) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_394) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.i: cmake_force
@@ -6750,7 +5588,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_chart_parser.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_478) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_395) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.i: cmake_force
@@ -6764,7 +5602,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_checkbox_parser.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_479) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_396) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.i: cmake_force
@@ -6778,7 +5616,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_dropdown_parser.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_480) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_397) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.i: cmake_force
@@ -6792,7 +5630,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_image_parser.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_481) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_398) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.i: cmake_force
@@ -6806,7 +5644,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_keyboard_parser.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_482) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_399) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.i: cmake_force
@@ -6820,7 +5658,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_label_parser.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_483) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_400) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.i: cmake_force
@@ -6834,7 +5672,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_obj_parser.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_484) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_401) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.i: cmake_force
@@ -6848,7 +5686,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_roller_parser.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_485) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_402) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.i: cmake_force
@@ -6862,7 +5700,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_scale_parser.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_486) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_403) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.i: cmake_force
@@ -6876,7 +5714,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_slider_parser.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_487) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_404) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.i: cmake_force
@@ -6890,7 +5728,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_spangroup_parser.c.s:
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_488) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_405) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.i: cmake_force
@@ -6904,7 +5742,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_table_parser.c.s: cma
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_489) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_406) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.i: cmake_force
@@ -6918,7 +5756,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_tabview_parser.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_490) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_407) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.i: cmake_force
@@ -6932,7 +5770,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/others/xml/parsers/lv_xml_textarea_parser.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_491) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_408) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.i: cmake_force
@@ -6946,7 +5784,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_mem_core_builtin.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_492) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_409) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.i: cmake_force
@@ -6960,7 +5798,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_sprintf_builtin.c.s: cmake_fo
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_493) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_410) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.i: cmake_force
@@ -6974,7 +5812,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_string_builtin.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_tlsf.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_494) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_411) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/builtin/lv_tlsf.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.i: cmake_force
@@ -6988,7 +5826,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/builtin/lv_tlsf.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_495) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_412) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.i: cmake_force
@@ -7002,7 +5840,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_mem_core_clib.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_496) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_413) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.i: cmake_force
@@ -7016,7 +5854,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_sprintf_clib.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/clib/lv_string_clib.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_497) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_414) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/clib/lv_string_clib.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.i: cmake_force
@@ -7030,7 +5868,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/clib/lv_string_clib.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/lv_mem.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_498) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_415) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/lv_mem.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.i: cmake_force
@@ -7044,7 +5882,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/lv_mem.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_499) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_416) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.i: cmake_force
@@ -7058,7 +5896,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/micropython/lv_mem_core_micropython.c.s:
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_500) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_417) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.i: cmake_force
@@ -7072,7 +5910,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_mem_core_rtthread.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_501) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_418) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.i: cmake_force
@@ -7086,7 +5924,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_sprintf_rtthread.c.s: cmake_
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_502) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_419) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.i: cmake_force
@@ -7100,7 +5938,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/rtthread/lv_string_rtthread.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_503) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_420) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.i: cmake_force
@@ -7114,7 +5952,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/stdlib/uefi/lv_mem_core_uefi.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/default/lv_theme_default.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_504) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_421) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/default/lv_theme_default.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.i: cmake_force
@@ -7128,7 +5966,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/themes/default/lv_theme_default.c.s: cmake_forc
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/lv_theme.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_505) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_422) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/lv_theme.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.i: cmake_force
@@ -7142,7 +5980,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/themes/lv_theme.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/mono/lv_theme_mono.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_506) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_423) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/mono/lv_theme_mono.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.i: cmake_force
@@ -7156,7 +5994,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/themes/mono/lv_theme_mono.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/simple/lv_theme_simple.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_507) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_424) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/themes/simple/lv_theme_simple.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.i: cmake_force
@@ -7170,7 +6008,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/themes/simple/lv_theme_simple.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/tick/lv_tick.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_508) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_425) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/tick/lv_tick.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.i: cmake_force
@@ -7184,7 +6022,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/tick/lv_tick.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_509) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_426) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.i: cmake_force
@@ -7198,7 +6036,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/3dtexture/lv_3dtexture.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/animimage/lv_animimage.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_510) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_427) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/animimage/lv_animimage.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.i: cmake_force
@@ -7212,7 +6050,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/animimage/lv_animimage.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/arc/lv_arc.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_511) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_428) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/arc/lv_arc.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.i: cmake_force
@@ -7226,7 +6064,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arc/lv_arc.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/arclabel/lv_arclabel.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_512) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_429) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/arclabel/lv_arclabel.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.i: cmake_force
@@ -7240,7 +6078,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/arclabel/lv_arclabel.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/bar/lv_bar.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_513) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_430) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/bar/lv_bar.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.i: cmake_force
@@ -7254,7 +6092,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/bar/lv_bar.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/button/lv_button.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_514) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_431) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/button/lv_button.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.i: cmake_force
@@ -7268,7 +6106,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/button/lv_button.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_515) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_432) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.i: cmake_force
@@ -7282,7 +6120,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/buttonmatrix/lv_buttonmatrix.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_516) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_433) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.i: cmake_force
@@ -7296,7 +6134,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_517) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_434) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.i: cmake_force
@@ -7310,7 +6148,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_chinese.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_518) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_435) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.i: cmake_force
@@ -7324,7 +6162,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_arrow.c.s: 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_519) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_436) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.i: cmake_force
@@ -7338,7 +6176,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/calendar/lv_calendar_header_dropdown.c.
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/canvas/lv_canvas.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_520) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_437) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/canvas/lv_canvas.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.i: cmake_force
@@ -7352,7 +6190,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/canvas/lv_canvas.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/chart/lv_chart.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_521) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_438) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/chart/lv_chart.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.i: cmake_force
@@ -7366,7 +6204,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/chart/lv_chart.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/checkbox/lv_checkbox.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_522) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_439) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/checkbox/lv_checkbox.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.i: cmake_force
@@ -7380,7 +6218,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/checkbox/lv_checkbox.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/dropdown/lv_dropdown.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_523) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_440) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/dropdown/lv_dropdown.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.i: cmake_force
@@ -7394,7 +6232,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/dropdown/lv_dropdown.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/image/lv_image.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_524) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_441) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/image/lv_image.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.i: cmake_force
@@ -7408,7 +6246,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/image/lv_image.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_525) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_442) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.i: cmake_force
@@ -7422,7 +6260,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/imagebutton/lv_imagebutton.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/keyboard/lv_keyboard.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_526) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_443) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/keyboard/lv_keyboard.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.i: cmake_force
@@ -7436,7 +6274,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/keyboard/lv_keyboard.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/label/lv_label.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_527) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_444) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/label/lv_label.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.i: cmake_force
@@ -7450,7 +6288,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/label/lv_label.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/led/lv_led.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_528) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_445) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/led/lv_led.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.i: cmake_force
@@ -7464,7 +6302,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/led/lv_led.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/line/lv_line.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_529) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_446) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/line/lv_line.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.i: cmake_force
@@ -7478,7 +6316,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/line/lv_line.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/list/lv_list.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_530) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_447) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/list/lv_list.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.i: cmake_force
@@ -7492,7 +6330,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/list/lv_list.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/lottie/lv_lottie.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_531) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_448) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/lottie/lv_lottie.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.i: cmake_force
@@ -7506,7 +6344,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/lottie/lv_lottie.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/menu/lv_menu.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_532) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_449) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/menu/lv_menu.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.i: cmake_force
@@ -7520,7 +6358,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/menu/lv_menu.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/msgbox/lv_msgbox.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_533) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_450) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/msgbox/lv_msgbox.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.i: cmake_force
@@ -7534,7 +6372,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/msgbox/lv_msgbox.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_534) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_451) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.i: cmake_force
@@ -7548,7 +6386,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/objx_templ/lv_objx_templ.c.s: cmake_for
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_animimage_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_535) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_452) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_animimage_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.i: cmake_force
@@ -7562,7 +6400,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_animimage_properties.c.s: c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_dropdown_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_536) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_453) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_dropdown_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.i: cmake_force
@@ -7576,7 +6414,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_dropdown_properties.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_image_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_537) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_454) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_image_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.i: cmake_force
@@ -7590,7 +6428,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_image_properties.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_keyboard_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_538) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_455) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_keyboard_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.i: cmake_force
@@ -7604,7 +6442,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_keyboard_properties.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_label_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_539) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_456) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_label_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.i: cmake_force
@@ -7618,7 +6456,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_label_properties.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_obj_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_540) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_457) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_obj_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.i: cmake_force
@@ -7632,7 +6470,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_obj_properties.c.s: cmake_f
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_roller_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_541) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_458) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_roller_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.i: cmake_force
@@ -7646,7 +6484,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_roller_properties.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_slider_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_542) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_459) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_slider_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.i: cmake_force
@@ -7660,7 +6498,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_slider_properties.c.s: cmak
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_style_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_543) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_460) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_style_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.i: cmake_force
@@ -7674,7 +6512,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_style_properties.c.s: cmake
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_textarea_properties.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_544) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_461) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/property/lv_textarea_properties.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.i: cmake_force
@@ -7688,7 +6526,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/property/lv_textarea_properties.c.s: cm
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/roller/lv_roller.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_545) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_462) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/roller/lv_roller.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.i: cmake_force
@@ -7702,7 +6540,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/roller/lv_roller.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/scale/lv_scale.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_546) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_463) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/scale/lv_scale.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.i: cmake_force
@@ -7716,7 +6554,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/scale/lv_scale.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/slider/lv_slider.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_547) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_464) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/slider/lv_slider.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.i: cmake_force
@@ -7730,7 +6568,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/slider/lv_slider.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/span/lv_span.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_548) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_465) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/span/lv_span.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.i: cmake_force
@@ -7744,7 +6582,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/span/lv_span.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/spinbox/lv_spinbox.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_549) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_466) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/spinbox/lv_spinbox.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.i: cmake_force
@@ -7758,7 +6596,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinbox/lv_spinbox.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/spinner/lv_spinner.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_550) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_467) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/spinner/lv_spinner.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.i: cmake_force
@@ -7772,7 +6610,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/spinner/lv_spinner.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/switch/lv_switch.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_551) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_468) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/switch/lv_switch.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.i: cmake_force
@@ -7786,7 +6624,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/switch/lv_switch.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/table/lv_table.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_552) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_469) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/table/lv_table.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.i: cmake_force
@@ -7800,7 +6638,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/table/lv_table.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/tabview/lv_tabview.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_553) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_470) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/tabview/lv_tabview.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.i: cmake_force
@@ -7814,7 +6652,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tabview/lv_tabview.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/textarea/lv_textarea.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_554) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_471) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/textarea/lv_textarea.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.i: cmake_force
@@ -7828,7 +6666,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/textarea/lv_textarea.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/tileview/lv_tileview.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_555) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_472) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/tileview/lv_tileview.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.i: cmake_force
@@ -7842,7 +6680,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/tileview/lv_tileview.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/win/lv_win.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_556) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_473) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/widgets/win/lv_win.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.i: cmake_force
@@ -7856,7 +6694,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/widgets/win/lv_win.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_557) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_474) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.i: cmake_force
@@ -7870,7 +6708,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_keyboard.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_558) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_475) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.i: cmake_force
@@ -7884,7 +6722,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mouse.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_559) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_476) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.i: cmake_force
@@ -7898,7 +6736,7 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.s: cmake_force
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o: CMakeFiles/lvgl.dir/flags.make
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o: /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_window.c
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o: CMakeFiles/lvgl.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_560) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_477) "Building C object CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o -MF CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o.d -o CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o -c /home/djs/lvgl_osmesa_llvm6/ext/lvgl/src/drivers/sdl/lv_sdl_window.c
 
 CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.i: cmake_force
@@ -7911,89 +6749,6 @@ CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.s: cmake_force
 
 # Object files for target lvgl
 lvgl_OBJECTS = \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o" \
-"CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o" \
 "CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o" \
 "CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o" \
 "CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o" \
@@ -8475,89 +7230,6 @@ lvgl_OBJECTS = \
 # External object files for target lvgl
 lvgl_EXTERNAL_OBJECTS =
 
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_avatar.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_argb.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/img_benchmark_lvgl_logo_rgb.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_12_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_14_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_16_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_18_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_20_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_24_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/assets/lv_font_benchmark_montserrat_26_aligned.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/benchmark/lv_demo_benchmark.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/keypad_encoder/lv_demo_keypad_encoder.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/lv_demos.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_corner_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_pause_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_list_play_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_loop_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_next_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_pause_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_play_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_prev_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_btn_rnd_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_left_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_corner_right_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_1_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_2_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_cover_3_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_1_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_2_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_3_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_icon_4_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_list_border_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_logo.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_slider_knob_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_bottom_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/assets/img_lv_demo_music_wave_top_large.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_list.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/music/lv_demo_music_main.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_arc_bg.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_argb8888_premultiplied.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_i1.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_l8.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565_swapped.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb565a8.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_rgb888.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/assets/img_render_lvgl_logo_xrgb8888.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/render/lv_demo_render.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/stress/lv_demo_stress.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/assets/img_demo_vector_avatar.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/vector_graphic/lv_demo_vector_graphic.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_clothes.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_avatar.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_demo_widgets_needle.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/assets/img_lvgl_logo.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_analytics.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_components.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_profile.c.o
-liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/demos/widgets/lv_demo_widgets_shop.c.o
 liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_group.c.o
 liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj.c.o
 liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/src/core/lv_obj_class.c.o
@@ -9037,7 +7709,7 @@ liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_mousewheel.c.o
 liblvgl.a: CMakeFiles/lvgl.dir/ext/lvgl/src/drivers/sdl/lv_sdl_window.c.o
 liblvgl.a: CMakeFiles/lvgl.dir/build.make
 liblvgl.a: CMakeFiles/lvgl.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_561) "Linking CXX static library liblvgl.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_478) "Linking CXX static library liblvgl.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/lvgl.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lvgl.dir/link.txt --verbose=$(VERBOSE)
 

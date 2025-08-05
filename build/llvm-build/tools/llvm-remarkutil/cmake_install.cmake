@@ -47,15 +47,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "llvm-remarkutil" OR NOT CMAKE_INSTALL_COMPO
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-remarkutil")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-remarkutil"
-         RPATH "")
+         RPATH "\$ORIGIN/../lib")
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/bin/llvm-remarkutil")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-remarkutil" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-remarkutil")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-remarkutil"
-         OLD_RPATH "\$ORIGIN/../lib:/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib:"
-         NEW_RPATH "")
+         OLD_RPATH "/home/djs/lvgl_osmesa_llvm6/build/llvm-build/lib:"
+         NEW_RPATH "\$ORIGIN/../lib")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/llvm-remarkutil")
     endif()
