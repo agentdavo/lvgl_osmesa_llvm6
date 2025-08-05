@@ -31,10 +31,12 @@ lv_display_t* create_window(int width, int height, const char* backend) {
     if (auto_detect || strcmp(backend, "x11") == 0) {
         // Check if X11 display is available
         if (getenv("DISPLAY") != nullptr) {
+            printf("Creating X11 window: %dx%d\n", width, height);
             lv_display_t* disp = lv_x11_window_create("DirectX 8 Demo", width, height);
             if (disp) {
                 // Create input devices
                 lv_x11_inputs_create(disp, nullptr);
+                printf("X11 window created successfully\n");
                 if (auto_detect) {
                     printf("Using X11 backend\n");
                 }

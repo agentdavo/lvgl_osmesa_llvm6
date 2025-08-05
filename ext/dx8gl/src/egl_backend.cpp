@@ -193,8 +193,22 @@ bool DX8EGLBackend::initialize(int width, int height) {
 }
 
 bool DX8EGLBackend::create_offscreen_framebuffer(int width, int height) {
+    DX8GL_INFO("Creating offscreen framebuffer %dx%d", width, height);
+    
+    // Check for GL errors before we start
+    GLenum err = glGetError();
+    if (err != GL_NO_ERROR) {
+        DX8GL_WARNING("GL error before framebuffer creation: 0x%x", err);
+    }
+    
     // Generate framebuffer
     glGenFramebuffers(1, &framebuffer_id_);
+    err = glGetError();
+    if (err != GL_NO_ERROR) {
+        DX8GL_ERROR("glGenFramebuffers failed with error: 0x%x", err);
+        return false;
+    }
+    
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer_id_);
     
     // Create color texture
@@ -215,8 +229,16 @@ bool DX8EGLBackend::create_offscreen_framebuffer(int width, int height) {
     // Check framebuffer completeness
     GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     if (status != GL_FRAMEBUFFER_COMPLETE) {
+        const char* status_str = "Unknown";
+        switch(status) {
+            case 0: status_str = "Invalid enum (GL function not loaded?)"; break;
+            case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT: status_str = "Incomplete attachment"; break;
+            case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: status_str = "Missing attachment"; break;
+            case GL_FRAMEBUFFER_UNSUPPORTED: status_str = "Unsupported"; break;
+            default: break;
+        }
         snprintf(error_buffer_, sizeof(error_buffer_), 
-                 "Framebuffer incomplete: 0x%x", status);
+                 "Framebuffer incomplete: 0x%x (%s)", status, status_str);
         DX8GL_ERROR("%s", error_buffer_);
         destroy_offscreen_framebuffer();
         return false;

@@ -667,12 +667,16 @@ int main(int argc, char* argv[]) {
     (void)argc;
     (void)argv;
     
-    // Initialize LVGL platform
-    lv_display_t* disp = LvglPlatform::create_window(WINDOW_WIDTH, WINDOW_HEIGHT, "sdl");
+    std::cout << "Starting dx8_cube..." << std::endl;
+    
+    // Initialize LVGL platform - use X11 for WSL2
+    std::cout << "Initializing LVGL platform with X11..." << std::endl;
+    lv_display_t* disp = LvglPlatform::create_window(WINDOW_WIDTH, WINDOW_HEIGHT, "x11");
     if (!disp) {
         std::cerr << "Failed to initialize LVGL platform" << std::endl;
         return 1;
     }
+    std::cout << "LVGL platform initialized successfully" << std::endl;
     
     // Allocate canvas buffer
     g_canvas_buf = (lv_color_t*)malloc(CANVAS_WIDTH * CANVAS_HEIGHT * sizeof(lv_color_t));
@@ -682,11 +686,13 @@ int main(int argc, char* argv[]) {
     }
     
     // Initialize Direct3D
+    std::cout << "Initializing Direct3D..." << std::endl;
     if (!init_d3d()) {
         std::cerr << "Failed to initialize Direct3D" << std::endl;
         free(g_canvas_buf);
         return 1;
     }
+    std::cout << "Direct3D initialized successfully" << std::endl;
     
     // Create the UI
     create_ui();

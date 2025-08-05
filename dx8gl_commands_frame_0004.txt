@@ -1,0 +1,56 @@
+=== DX8GL Command Buffer Frame 4 ===
+Buffer size: 676 bytes, Command count: 14
+
+[000] CLEAR: flags=0x00000003 color=0xFF404080 z=1.000 stencil=0
+      → glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+[001] SET_TRANSFORM: WORLD
+      → glUniformMatrix4fv(u_WORLD)
+        Matrix: [1.000 0.000 0.000 0.000]
+                [0.000 1.000 0.000 0.000]
+                [0.000 0.000 1.000 0.000]
+                [0.000 0.000 0.000 1.000]
+[002] SET_TRANSFORM: VIEW
+      → glUniformMatrix4fv(u_VIEW)
+        Matrix: [-0.707 -0.450 -0.545 0.000]
+                [0.000 0.771 -0.636 0.000]
+                [0.707 -0.450 -0.545 0.000]
+                [-0.000 0.386 5.182 1.000]
+[003] SET_TRANSFORM: PROJECTION
+      → glUniformMatrix4fv(u_PROJECTION)
+        Matrix: [2.414 0.000 0.000 0.000]
+                [0.000 2.414 0.000 0.000]
+                [0.000 0.000 1.053 1.000]
+                [0.000 0.000 -0.526 0.000]
+[004] SET_STREAM_SOURCE: stream=0 buffer=0x5784CC2C0B20 stride=36
+      → glBindBuffer(GL_ARRAY_BUFFER, ...)
+[005] SET_INDICES: buffer=0x5784CA4BAEC0 base_vertex=0
+      → glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ...)
+[006] DRAW_INDEXED_PRIMITIVE: type=4 min_idx=0 num_verts=4 start_idx=0 prim_count=2
+      → glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, ...)
+[007] SET_TRANSFORM: WORLD
+      → glUniformMatrix4fv(u_WORLD)
+        Matrix: [0.392 0.000 -0.079 0.000]
+                [0.000 0.400 0.000 0.000]
+                [0.079 0.000 0.392 0.000]
+                [0.000 0.000 0.000 1.000]
+[008] SET_TRANSFORM: VIEW
+      → glUniformMatrix4fv(u_VIEW)
+        Matrix: [-0.707 -0.450 -0.545 0.000]
+                [0.000 0.771 -0.636 0.000]
+                [0.707 -0.450 -0.545 0.000]
+                [-0.000 0.386 5.182 1.000]
+[009] SET_TRANSFORM: PROJECTION
+      → glUniformMatrix4fv(u_PROJECTION)
+        Matrix: [2.414 0.000 0.000 0.000]
+                [0.000 2.414 0.000 0.000]
+                [0.000 0.000 1.053 1.000]
+                [0.000 0.000 -0.526 0.000]
+[010] SET_STREAM_SOURCE: stream=0 buffer=0x5784CC2C06D0 stride=28
+      → glBindBuffer(GL_ARRAY_BUFFER, ...)
+[011] CommandType 7 (size=24)
+[012] SET_INDICES: buffer=0x5784CC3FF530 base_vertex=0
+      → glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ...)
+[013] DRAW_INDEXED_PRIMITIVE: type=4 min_idx=0 num_verts=24 start_idx=0 prim_count=12
+      → glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, ...)
+
+=== End of Command Buffer ===

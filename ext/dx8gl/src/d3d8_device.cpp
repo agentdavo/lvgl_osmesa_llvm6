@@ -170,11 +170,14 @@ void Direct3DDevice8::set_default_global_render_states() {
     
     // Fog-related states (matching reference wrapper)
     // Note: We check caps for range fog support
-    D3DCAPS8 caps;
-    parent_d3d_->GetDeviceCaps(adapter_, device_type_, &caps);
+    // FIXME: GetDeviceCaps seems to hang, skip for now
+    //D3DCAPS8 caps;
+    //DX8GL_INFO("Getting device caps...");
+    //parent_d3d_->GetDeviceCaps(adapter_, device_type_, &caps);
+    //DX8GL_INFO("Got device caps");
     
-    state_manager_->set_render_state(D3DRS_RANGEFOGENABLE, 
-        (caps.RasterCaps & D3DPRASTERCAPS_FOGRANGE) ? TRUE : FALSE);
+    state_manager_->set_render_state(D3DRS_RANGEFOGENABLE, FALSE); // Default to false for now
+        //(caps.RasterCaps & D3DPRASTERCAPS_FOGRANGE) ? TRUE : FALSE);
     state_manager_->set_render_state(D3DRS_FOGTABLEMODE, D3DFOG_NONE);
     state_manager_->set_render_state(D3DRS_FOGVERTEXMODE, D3DFOG_LINEAR);
     

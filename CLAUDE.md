@@ -2,17 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## IMPORTANT: Task Management Requirements
+## IMPORTANT: Task Management Process
 
-When working on this project, you MUST:
-1. **Always use the TodoWrite tool** to track tasks and progress
+When working on this project, you MUST follow this development process:
+1. **Always track tasks and progress** through proper task management
 2. **Update task status immediately** when starting work (mark as "in_progress") and when completing work (mark as "completed")
 3. **Add new tasks proactively** when discovering issues or identifying work that needs to be done
 4. **Check TASKS.md regularly** for the full task list and priorities
-5. **Never work on tasks without tracking them** in the todo list
+5. **Never work on tasks without tracking them** in the task list
 6. **Keep only one task "in_progress" at a time** to maintain focus
 
-The todo list is critical for project organization and helps track complex multi-step work. Use it liberally!
+The task tracking process is critical for project organization and helps manage complex multi-step work. Follow this development process consistently!
 
 ## Project Overview
 

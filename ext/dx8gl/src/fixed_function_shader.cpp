@@ -344,11 +344,13 @@ std::string FixedFunctionShader::generate_fragment_shader(const FixedFunctionSta
     }
     
     // Apply texture operations including bump mapping
-    ss << "    vec2 modifiedTexCoord[" << tex_count << "];\n";
-    
-    // Initialize texture coordinates
-    for (int i = 0; i < tex_count; i++) {
-        ss << "    modifiedTexCoord[" << i << "] = v_texcoord" << i << ";\n";
+    if (tex_count > 0) {
+        ss << "    vec2 modifiedTexCoord[" << tex_count << "];\n";
+        
+        // Initialize texture coordinates
+        for (int i = 0; i < tex_count; i++) {
+            ss << "    modifiedTexCoord[" << i << "] = v_texcoord" << i << ";\n";
+        }
     }
     
     // Process texture operations
