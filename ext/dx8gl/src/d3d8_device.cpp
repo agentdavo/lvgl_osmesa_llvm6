@@ -3,6 +3,7 @@
 #include "d3d8_vertexbuffer.h"
 #include "d3d8_indexbuffer.h"
 #include "d3d8_texture.h"
+#include "d3d8_cubetexture.h"
 #include "d3d8_surface.h"
 #include "logger.h"
 #include "osmesa_context.h"
@@ -11,6 +12,7 @@
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
+#include <chrono>
 
 // No need for extern declaration - we use get_render_backend() function
 
@@ -123,6 +125,9 @@ Direct3DDevice8::~Direct3DDevice8() {
     // Flush any pending commands
     flush_command_buffer();
     
+    // Wait for all async operations to complete
+    wait_for_pending_commands();
+    
     // Release resources
     for (auto& tex : textures_) {
         if (tex.second) {
@@ -132,8 +137,8 @@ Direct3DDevice8::~Direct3DDevice8() {
     textures_.clear();
     
     for (auto& stream : stream_sources_) {
-        if (stream.second) {
-            stream.second->Release();
+        if (stream.second.vertex_buffer) {
+            stream.second.vertex_buffer->Release();
         }
     }
     stream_sources_.clear();
@@ -640,6 +645,9 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
     // Flush any pending commands before presenting
     flush_command_buffer();
     
+    // Wait for all async command buffers to complete before presenting
+    wait_for_pending_commands();
+    
     // Handle partial present if source/dest rectangles are specified
     if (pSourceRect || pDestRect) {
         DX8GL_DEBUG("Partial present: src=%s, dst=%s", 
@@ -872,13 +880,13 @@ HRESULT Direct3DDevice8::SetStreamSource(UINT StreamNumber, IDirect3DVertexBuffe
     
     // Update reference counting
     auto it = stream_sources_.find(StreamNumber);
-    if (it != stream_sources_.end() && it->second) {
-        it->second->Release();
+    if (it != stream_sources_.end() && it->second.vertex_buffer) {
+        it->second.vertex_buffer->Release();
     }
     
     if (pStreamData) {
         pStreamData->AddRef();
-        stream_sources_[StreamNumber] = pStreamData;
+        stream_sources_[StreamNumber] = {pStreamData, Stride};
     } else {
         stream_sources_.erase(StreamNumber);
     }
@@ -1062,28 +1070,92 @@ void Direct3DDevice8::flush_command_buffer() {
                current_command_buffer_->get_command_count(),
                current_command_buffer_->size());
     
-    // Execute commands synchronously for now
-    // TODO: Make this asynchronous with thread pool
+    // Move current buffer to a local variable for async execution
+    auto buffer_to_execute = std::move(current_command_buffer_);
     
-    // Ensure OSMesa context is current before executing OpenGL commands
-#ifdef DX8GL_HAS_OSMESA
-    if (render_backend_ && !render_backend_->make_current()) {
-        DX8GL_ERROR("Failed to make render backend context current for command buffer execution");
-        return;
-    }
-#endif
-    
-    current_command_buffer_->execute(*state_manager_,
-                                   vertex_shader_manager_.get(),
-                                   pixel_shader_manager_.get(),
-                                   shader_program_manager_.get());
-    
-    // Force OpenGL to process all commands before continuing
-    // This helps prevent Mesa fence synchronization crashes
-    glFlush();
-    
-    // Get new buffer from pool
+    // Get new buffer from pool immediately to allow recording new commands
     current_command_buffer_ = command_buffer_pool_.acquire();
+    
+    // Capture necessary pointers for the lambda
+    auto* state_manager = state_manager_.get();
+    auto* vertex_shader_mgr = vertex_shader_manager_.get();
+    auto* pixel_shader_mgr = pixel_shader_manager_.get();
+    auto* shader_program_mgr = shader_program_manager_.get();
+    auto* render_backend = render_backend_;  // raw pointer, no .get()
+    
+    // Submit command buffer execution to thread pool
+    if (thread_pool_) {
+        auto future = thread_pool_->submit([buffer_to_execute = std::move(buffer_to_execute),
+                                           state_manager,
+                                           vertex_shader_mgr,
+                                           pixel_shader_mgr,
+                                           shader_program_mgr,
+                                           render_backend]() mutable {
+            // Ensure OpenGL context is current in worker thread
+#ifdef DX8GL_HAS_OSMESA
+            if (render_backend && !render_backend->make_current()) {
+                DX8GL_ERROR("Failed to make render backend context current in worker thread");
+                return;
+            }
+#endif
+            
+            // Execute the command buffer
+            buffer_to_execute->execute(*state_manager,
+                                     vertex_shader_mgr,
+                                     pixel_shader_mgr,
+                                     shader_program_mgr);
+            
+            // Force OpenGL to process all commands
+            glFlush();
+            
+            // Buffer will be automatically returned to pool when it goes out of scope
+        });
+        
+        // Store the future for asynchronous execution
+        // Clean up completed futures while we're at it
+        pending_futures_.erase(
+            std::remove_if(pending_futures_.begin(), pending_futures_.end(),
+                          [](const std::future<void>& f) {
+                              return f.wait_for(std::chrono::seconds(0)) == std::future_status::ready;
+                          }),
+            pending_futures_.end());
+        
+        // Add the new future
+        pending_futures_.push_back(std::move(future));
+    } else {
+        // Fallback to synchronous execution if no thread pool
+        DX8GL_WARN("No thread pool available, executing command buffer synchronously");
+        
+#ifdef DX8GL_HAS_OSMESA
+        if (render_backend_ && !render_backend_->make_current()) {
+            DX8GL_ERROR("Failed to make render backend context current for command buffer execution");
+            return;
+        }
+#endif
+        
+        buffer_to_execute->execute(*state_manager_,
+                                 vertex_shader_manager_.get(),
+                                 pixel_shader_manager_.get(),
+                                 shader_program_manager_.get());
+        
+        glFlush();
+    }
+}
+
+void Direct3DDevice8::wait_for_pending_commands() {
+    DX8GL_INFO("Waiting for %zu pending command buffers", pending_futures_.size());
+    
+    // Wait for all pending command buffers to complete
+    for (auto& future : pending_futures_) {
+        if (future.valid()) {
+            future.wait();
+        }
+    }
+    
+    // Clear the list
+    pending_futures_.clear();
+    
+    DX8GL_INFO("All pending command buffers completed");
 }
 
 bool Direct3DDevice8::validate_present_params(D3DPRESENT_PARAMETERS* params) {
@@ -1253,22 +1325,44 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     // Notify textures about device reset so they can recreate their GL resources
     for (auto* texture : textures_to_recreate) {
         DX8GL_INFO("Recreating texture %p in D3DPOOL_DEFAULT", texture);
-        // TODO: Add a method to Direct3DTexture8 to recreate GL resources
-        // For now, textures in D3DPOOL_DEFAULT will need to be manually recreated by the application
+        if (!texture->recreate_gl_resources()) {
+            DX8GL_ERROR("Failed to recreate texture %p", texture);
+            // Continue with other resources even if one fails
+        }
     }
     
     // Vertex buffers in D3DPOOL_DEFAULT also need recreation
     std::vector<Direct3DVertexBuffer8*> vbs_to_recreate;
     for (auto* vb : all_vertex_buffers_) {
-        // TODO: Check if vertex buffer is in D3DPOOL_DEFAULT once we add pool tracking to VBs
-        // For now, assume managed VBs handle themselves
+        if (vb && vb->get_pool() == D3DPOOL_DEFAULT) {
+            vbs_to_recreate.push_back(vb);
+        }
+    }
+    
+    // Recreate vertex buffers
+    for (auto* vb : vbs_to_recreate) {
+        DX8GL_INFO("Recreating vertex buffer %p in D3DPOOL_DEFAULT", vb);
+        if (!vb->recreate_gl_resources()) {
+            DX8GL_ERROR("Failed to recreate vertex buffer %p", vb);
+            // Continue with other resources even if one fails
+        }
     }
     
     // Index buffers in D3DPOOL_DEFAULT also need recreation
     std::vector<Direct3DIndexBuffer8*> ibs_to_recreate;
     for (auto* ib : all_index_buffers_) {
-        // TODO: Check if index buffer is in D3DPOOL_DEFAULT once we add pool tracking to IBs
-        // For now, assume managed IBs handle themselves
+        if (ib && ib->get_pool() == D3DPOOL_DEFAULT) {
+            ibs_to_recreate.push_back(ib);
+        }
+    }
+    
+    // Recreate index buffers
+    for (auto* ib : ibs_to_recreate) {
+        DX8GL_INFO("Recreating index buffer %p in D3DPOOL_DEFAULT", ib);
+        if (!ib->recreate_gl_resources()) {
+            DX8GL_ERROR("Failed to recreate index buffer %p", ib);
+            // Continue with other resources even if one fails
+        }
     }
     
     // Reset viewport to full window
@@ -1348,6 +1442,9 @@ HRESULT Direct3DDevice8::CreateVertexBuffer(UINT Length, DWORD Usage, DWORD FVF,
         return D3DERR_OUTOFVIDEOMEMORY;
     }
     
+    // Register vertex buffer for device reset tracking
+    register_vertex_buffer(vb);
+    
     *ppVertexBuffer = vb;
     return D3D_OK;
 }
@@ -1384,6 +1481,9 @@ HRESULT Direct3DDevice8::CreateIndexBuffer(UINT Length, DWORD Usage, D3DFORMAT F
         return D3DERR_NOTAVAILABLE;
     }
     
+    // Register index buffer for device reset tracking
+    register_index_buffer(buffer);
+    
     *ppIndexBuffer = buffer;
     return D3D_OK;
 }
@@ -1399,7 +1499,30 @@ HRESULT Direct3DDevice8::CreateVolumeTexture(UINT Width, UINT Height, UINT Depth
 HRESULT Direct3DDevice8::CreateCubeTexture(UINT EdgeLength, UINT Levels, DWORD Usage,
                                          D3DFORMAT Format, D3DPOOL Pool,
                                          IDirect3DCubeTexture8** ppCubeTexture) {
-    return D3DERR_NOTAVAILABLE;
+    if (!ppCubeTexture) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DX8GL_INFO("CreateCubeTexture: edge=%u, levels=%u, usage=0x%08x, format=0x%08x, pool=%d",
+               EdgeLength, Levels, Usage, Format, Pool);
+    
+    // Validate edge length (must be power of 2)
+    if (EdgeLength == 0 || (EdgeLength & (EdgeLength - 1)) != 0) {
+        DX8GL_ERROR("Invalid cube texture edge length: %u (must be power of 2)", EdgeLength);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    auto texture = new Direct3DCubeTexture8(this, EdgeLength, Levels, Usage, Format, Pool);
+    if (!texture->initialize()) {
+        texture->Release();
+        return D3DERR_NOTAVAILABLE;
+    }
+    
+    // TODO: Register cube texture for device reset tracking
+    // register_cube_texture(texture);
+    
+    *ppCubeTexture = texture;
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::CreateRenderTarget(UINT Width, UINT Height, D3DFORMAT Format,
@@ -1544,10 +1667,50 @@ HRESULT Direct3DDevice8::UpdateTexture(IDirect3DBaseTexture8* pSourceTexture,
         }
         
         case D3DRTYPE_CUBETEXTURE: {
-            // Cube texture support not implemented yet
-            // TODO: Implement IDirect3DCubeTexture8 interface
-            DX8GL_WARNING("UpdateTexture: Cube textures not implemented");
-            return D3DERR_NOTAVAILABLE;
+            // Cube texture update
+            auto* src_cube = static_cast<IDirect3DCubeTexture8*>(pSourceTexture);
+            auto* dst_cube = static_cast<IDirect3DCubeTexture8*>(pDestinationTexture);
+            
+            // Get level counts
+            DWORD src_levels = src_cube->GetLevelCount();
+            DWORD dst_levels = dst_cube->GetLevelCount();
+            DWORD levels_to_copy = std::min(src_levels, dst_levels);
+            
+            // Copy each face and mip level
+            for (int face = 0; face < 6; face++) {
+                D3DCUBEMAP_FACES face_type = static_cast<D3DCUBEMAP_FACES>(face);
+                
+                for (DWORD level = 0; level < levels_to_copy; level++) {
+                    IDirect3DSurface8* src_surface = nullptr;
+                    IDirect3DSurface8* dst_surface = nullptr;
+                    
+                    HRESULT hr = src_cube->GetCubeMapSurface(face_type, level, &src_surface);
+                    if (FAILED(hr)) {
+                        DX8GL_WARNING("Failed to get source cube surface face %d level %u", face, level);
+                        continue;
+                    }
+                    
+                    hr = dst_cube->GetCubeMapSurface(face_type, level, &dst_surface);
+                    if (FAILED(hr)) {
+                        src_surface->Release();
+                        DX8GL_WARNING("Failed to get dest cube surface face %d level %u", face, level);
+                        continue;
+                    }
+                    
+                    // Copy the surface
+                    hr = CopyRects(src_surface, nullptr, 0, dst_surface, nullptr);
+                    
+                    src_surface->Release();
+                    dst_surface->Release();
+                    
+                    if (FAILED(hr)) {
+                        DX8GL_WARNING("Failed to copy cube face %d level %u", face, level);
+                        return hr;
+                    }
+                }
+            }
+            
+            return D3D_OK;
         }
         
         case D3DRTYPE_VOLUMETEXTURE: {
@@ -2235,12 +2398,11 @@ HRESULT Direct3DDevice8::GetStreamSource(UINT StreamNumber, IDirect3DVertexBuffe
     
     auto it = stream_sources_.find(StreamNumber);
     if (it != stream_sources_.end()) {
-        *ppStreamData = it->second;
+        *ppStreamData = it->second.vertex_buffer;
         if (*ppStreamData) {
             (*ppStreamData)->AddRef();
         }
-        // TODO: Store and retrieve stride
-        *pStride = 0;
+        *pStride = it->second.stride;
     } else {
         *ppStreamData = nullptr;
         *pStride = 0;

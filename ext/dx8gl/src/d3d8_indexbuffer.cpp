@@ -61,6 +61,11 @@ Direct3DIndexBuffer8::Direct3DIndexBuffer8(Direct3DDevice8* device, UINT length,
 Direct3DIndexBuffer8::~Direct3DIndexBuffer8() {
     DX8GL_DEBUG("Direct3DIndexBuffer8 destructor");
     
+    // Unregister from device
+    if (device_) {
+        device_->unregister_index_buffer(this);
+    }
+    
     // Clean up OpenGL resources
     if (ibo_ && gl_DeleteBuffers) {
         gl_DeleteBuffers(1, &ibo_);
@@ -345,6 +350,60 @@ void Direct3DIndexBuffer8::bind() const {
     if (ibo_ && gl_BindBuffer) {
         gl_BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_);
     }
+}
+
+void Direct3DIndexBuffer8::release_gl_resources() {
+    DX8GL_DEBUG("Releasing GL resources for index buffer %u (pool=%d)", ibo_, pool_);
+    
+    if (ibo_) {
+        glDeleteBuffers(1, &ibo_);
+        ibo_ = 0;
+    }
+}
+
+bool Direct3DIndexBuffer8::recreate_gl_resources() {
+    DX8GL_DEBUG("Recreating GL resources for index buffer (pool=%d, size=%u, usage=0x%x)", 
+                pool_, length_, usage_);
+    
+    // Only D3DPOOL_DEFAULT resources need recreation
+    if (pool_ != D3DPOOL_DEFAULT) {
+        DX8GL_WARN("Attempted to recreate non-default pool index buffer");
+        return true; // Not an error, just not needed
+    }
+    
+    // Release old resources first
+    release_gl_resources();
+    
+    // Determine buffer usage
+    GLenum gl_usage = GL_STATIC_DRAW;
+    if (usage_ & D3DUSAGE_DYNAMIC) {
+        gl_usage = GL_DYNAMIC_DRAW;
+    } else if (usage_ & D3DUSAGE_WRITEONLY) {
+        gl_usage = GL_STREAM_DRAW;
+    }
+    
+    // Create new IBO
+    glGenBuffers(1, &ibo_);
+    if (!ibo_) {
+        DX8GL_ERROR("Failed to generate index buffer");
+        return false;
+    }
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, length_, nullptr, gl_usage);
+    
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR) {
+        DX8GL_ERROR("OpenGL error creating index buffer: 0x%04x", error);
+        glDeleteBuffers(1, &ibo_);
+        ibo_ = 0;
+        return false;
+    }
+    
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    
+    DX8GL_DEBUG("Successfully recreated index buffer %u", ibo_);
+    return true;
 }
 
 } // namespace dx8gl

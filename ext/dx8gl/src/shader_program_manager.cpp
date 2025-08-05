@@ -201,16 +201,18 @@ GLuint ShaderProgramManager::link_shaders(GLuint vertex_shader, GLuint pixel_sha
         DWORD ps_handle = pixel_shader_manager_->get_current_shader_handle();
         
         if (vs_info && !vs_info->function_bytecode.empty()) {
-            // For now, if no pixel shader, use empty bytecode
-            if (ps_handle == 0) {
-                cache_hash = ShaderBinaryCache::compute_bytecode_hash(vs_info->function_bytecode, 
-                                                                     std::vector<DWORD>());
-            } else {
-                // TODO: Get pixel shader bytecode when pixel shader manager stores it
-                cache_hash = ShaderBinaryCache::compute_bytecode_hash(vs_info->function_bytecode,
-                                                                     std::vector<DWORD>());
+            std::vector<DWORD> ps_bytecode;
+            
+            // Get pixel shader bytecode if a pixel shader is set
+            if (ps_handle != 0) {
+                pixel_shader_manager_->get_pixel_shader_bytecode(ps_handle, ps_bytecode);
             }
-            DX8GL_INFO("Program cache hash: %s", cache_hash.c_str());
+            
+            // Compute hash with both vertex and pixel shader bytecode
+            cache_hash = ShaderBinaryCache::compute_bytecode_hash(vs_info->function_bytecode, 
+                                                                 ps_bytecode);
+            DX8GL_INFO("Program cache hash: %s (VS size: %zu, PS size: %zu)", 
+                      cache_hash.c_str(), vs_info->function_bytecode.size(), ps_bytecode.size());
         }
     }
     

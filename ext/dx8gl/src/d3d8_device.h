@@ -14,6 +14,7 @@
 #include <unordered_map>
 #include <mutex>
 #include <atomic>
+#include <future>
 
 namespace dx8gl {
 
@@ -242,6 +243,7 @@ public:
 private:
     // Helper methods
     void flush_command_buffer();
+    void wait_for_pending_commands();
     void execute_command_buffer_async();
     bool validate_present_params(D3DPRESENT_PARAMETERS* params);
     void set_default_global_render_states();
@@ -288,9 +290,18 @@ private:
     // Thread pool for parallel command execution
     ThreadPool* thread_pool_;
     
+    // Pending command buffer execution futures
+    std::vector<std::future<void>> pending_futures_;
+    
+    // Stream source information
+    struct StreamSource {
+        IDirect3DVertexBuffer8* vertex_buffer;
+        UINT stride;
+    };
+    
     // Resource tracking
     std::unordered_map<DWORD, IDirect3DBaseTexture8*> textures_;
-    std::unordered_map<UINT, IDirect3DVertexBuffer8*> stream_sources_;
+    std::unordered_map<UINT, StreamSource> stream_sources_;
     IDirect3DIndexBuffer8* index_buffer_;
     UINT base_vertex_index_;
     

@@ -60,6 +60,11 @@ public:
     UINT get_vertex_count() const { 
         return stride_ > 0 ? length_ / stride_ : 0; 
     }
+    
+    // Device reset support
+    D3DPOOL get_pool() const { return pool_; }
+    void release_gl_resources();
+    bool recreate_gl_resources();
 
 private:
     // Calculate stride from FVF

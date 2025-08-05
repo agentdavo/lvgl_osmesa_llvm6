@@ -56,6 +56,11 @@ public:
     
     // Bind this buffer to OpenGL
     void bind() const;
+    
+    // Device reset support
+    D3DPOOL get_pool() const { return pool_; }
+    void release_gl_resources();
+    bool recreate_gl_resources();
 
 private:
     std::atomic<LONG> ref_count_;

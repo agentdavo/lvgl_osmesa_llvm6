@@ -294,4 +294,14 @@ std::string PixelShaderManager::generate_simple_pixel_shader(const PixelShaderIn
     return frag.str();
 }
 
+bool PixelShaderManager::get_pixel_shader_bytecode(DWORD Handle, std::vector<DWORD>& bytecode) const {
+    auto it = shaders_.find(Handle);
+    if (it == shaders_.end()) {
+        return false;
+    }
+    
+    bytecode = it->second->function_bytecode;
+    return true;
+}
+
 } // namespace dx8gl

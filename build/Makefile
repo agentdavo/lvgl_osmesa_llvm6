@@ -235,6 +235,136 @@ dx8gl/fast:
 .PHONY : dx8gl/fast
 
 #=============================================================================
+# Target rules for targets named test_shader_translator
+
+# Build rule for target.
+test_shader_translator: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_translator
+.PHONY : test_shader_translator
+
+# fast build rule for target.
+test_shader_translator/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_translator.dir/build
+.PHONY : test_shader_translator/fast
+
+#=============================================================================
+# Target rules for targets named test_texture_simple
+
+# Build rule for target.
+test_texture_simple: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_texture_simple
+.PHONY : test_texture_simple
+
+# fast build rule for target.
+test_texture_simple/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_texture_simple.dir/build.make ext/dx8gl/test/CMakeFiles/test_texture_simple.dir/build
+.PHONY : test_texture_simple/fast
+
+#=============================================================================
+# Target rules for targets named test_lod_dirty_logic
+
+# Build rule for target.
+test_lod_dirty_logic: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_lod_dirty_logic
+.PHONY : test_lod_dirty_logic
+
+# fast build rule for target.
+test_lod_dirty_logic/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_lod_dirty_logic.dir/build.make ext/dx8gl/test/CMakeFiles/test_lod_dirty_logic.dir/build
+.PHONY : test_lod_dirty_logic/fast
+
+#=============================================================================
+# Target rules for targets named test_multi_texcoords
+
+# Build rule for target.
+test_multi_texcoords: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_multi_texcoords
+.PHONY : test_multi_texcoords
+
+# fast build rule for target.
+test_multi_texcoords/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/build.make ext/dx8gl/test/CMakeFiles/test_multi_texcoords.dir/build
+.PHONY : test_multi_texcoords/fast
+
+#=============================================================================
+# Target rules for targets named test_surface_format
+
+# Build rule for target.
+test_surface_format: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_surface_format
+.PHONY : test_surface_format
+
+# fast build rule for target.
+test_surface_format/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_surface_format.dir/build.make ext/dx8gl/test/CMakeFiles/test_surface_format.dir/build
+.PHONY : test_surface_format/fast
+
+#=============================================================================
+# Target rules for targets named test_command_buffer_async
+
+# Build rule for target.
+test_command_buffer_async: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_command_buffer_async
+.PHONY : test_command_buffer_async
+
+# fast build rule for target.
+test_command_buffer_async/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/build.make ext/dx8gl/test/CMakeFiles/test_command_buffer_async.dir/build
+.PHONY : test_command_buffer_async/fast
+
+#=============================================================================
+# Target rules for targets named test_async_simple
+
+# Build rule for target.
+test_async_simple: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_async_simple
+.PHONY : test_async_simple
+
+# fast build rule for target.
+test_async_simple/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_async_simple.dir/build.make ext/dx8gl/test/CMakeFiles/test_async_simple.dir/build
+.PHONY : test_async_simple/fast
+
+#=============================================================================
+# Target rules for targets named test_device_reset
+
+# Build rule for target.
+test_device_reset: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_device_reset
+.PHONY : test_device_reset
+
+# fast build rule for target.
+test_device_reset/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_device_reset.dir/build.make ext/dx8gl/test/CMakeFiles/test_device_reset.dir/build
+.PHONY : test_device_reset/fast
+
+#=============================================================================
+# Target rules for targets named test_cube_texture
+
+# Build rule for target.
+test_cube_texture: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_cube_texture
+.PHONY : test_cube_texture
+
+# fast build rule for target.
+test_cube_texture/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_cube_texture.dir/build.make ext/dx8gl/test/CMakeFiles/test_cube_texture.dir/build
+.PHONY : test_cube_texture/fast
+
+#=============================================================================
+# Target rules for targets named test_stream_source_stride
+
+# Build rule for target.
+test_stream_source_stride: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_stream_source_stride
+.PHONY : test_stream_source_stride
+
+# fast build rule for target.
+test_stream_source_stride/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir/build.make ext/dx8gl/test/CMakeFiles/test_stream_source_stride.dir/build
+.PHONY : test_stream_source_stride/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -11847,12 +11977,22 @@ help:
 	@echo "... lvgl"
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
+	@echo "... test_async_simple"
+	@echo "... test_command_buffer_async"
+	@echo "... test_cube_texture"
+	@echo "... test_device_reset"
 	@echo "... test_indexed_xyzrhw"
 	@echo "... test_loading_screen"
+	@echo "... test_lod_dirty_logic"
 	@echo "... test_lvgl_canvas"
 	@echo "... test_lvgl_platform"
 	@echo "... test_mixed_vertices"
+	@echo "... test_multi_texcoords"
+	@echo "... test_shader_translator"
 	@echo "... test_static_canvas"
+	@echo "... test_stream_source_stride"
+	@echo "... test_surface_format"
+	@echo "... test_texture_simple"
 	@echo "... test_xyzrhw"
 	@echo "... ext/lvgl/src/core/lv_group.o"
 	@echo "... ext/lvgl/src/core/lv_group.i"

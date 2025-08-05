@@ -80,19 +80,36 @@ void VAOManager::setup_vertex_attributes(DWORD fvf, GLuint program, UINT stride)
     GLint position_loc = glGetAttribLocation(program, "a_position");
     GLint normal_loc = glGetAttribLocation(program, "a_normal");
     GLint color_loc = glGetAttribLocation(program, "a_color");
-    GLint texcoord0_loc = glGetAttribLocation(program, "a_texcoord0");
-    GLint texcoord1_loc = glGetAttribLocation(program, "a_texcoord1");
     
-    DX8GL_INFO("VAO setup for FVF 0x%x: position_loc=%d, normal_loc=%d, color_loc=%d, texcoord0_loc=%d",
-               fvf, position_loc, normal_loc, color_loc, texcoord0_loc);
+    // Get texture coordinate locations for all 8 possible sets
+    GLint texcoord_locs[8];
+    const char* texcoord_names[8] = {
+        "a_texcoord0", "a_texcoord1", "a_texcoord2", "a_texcoord3",
+        "a_texcoord4", "a_texcoord5", "a_texcoord6", "a_texcoord7"
+    };
+    for (int i = 0; i < 8; i++) {
+        texcoord_locs[i] = glGetAttribLocation(program, texcoord_names[i]);
+    }
+    
+    DX8GL_INFO("VAO setup for FVF 0x%x: position_loc=%d, normal_loc=%d, color_loc=%d",
+               fvf, position_loc, normal_loc, color_loc);
+    
+    // Log texture coordinate locations that are actually used
+    int tex_count = FVFParser::get_texcoord_count(fvf);
+    for (int i = 0; i < tex_count && i < 8; i++) {
+        DX8GL_INFO("  texcoord%d_loc=%d", i, texcoord_locs[i]);
+    }
     
     // IMPORTANT: Disable all possible attributes first to prevent Mesa crash
     // This ensures attributes from previous VAOs don't remain enabled
     if (position_loc >= 0) glDisableVertexAttribArray(position_loc);
     if (normal_loc >= 0) glDisableVertexAttribArray(normal_loc);
     if (color_loc >= 0) glDisableVertexAttribArray(color_loc);
-    if (texcoord0_loc >= 0) glDisableVertexAttribArray(texcoord0_loc);
-    if (texcoord1_loc >= 0) glDisableVertexAttribArray(texcoord1_loc);
+    
+    // Disable all texture coordinate attributes
+    for (int i = 0; i < 8; i++) {
+        if (texcoord_locs[i] >= 0) glDisableVertexAttribArray(texcoord_locs[i]);
+    }
     
     UINT offset = 0;
     
@@ -170,23 +187,17 @@ void VAOManager::setup_vertex_attributes(DWORD fvf, GLuint program, UINT stride)
         offset += sizeof(DWORD);
     }
     
-    // Texture coordinates
-    int tex_count = FVFParser::get_texcoord_count(fvf);
-    for (int i = 0; i < tex_count; i++) {
+    // Texture coordinates - support all 8 texture coordinate sets
+    // tex_count already declared above, just use it
+    for (int i = 0; i < tex_count && i < 8; i++) {
         int coord_size = FVFParser::get_texcoord_size(fvf, i);
         
-        GLint texcoord_loc = -1;
-        if (i == 0) {
-            texcoord_loc = texcoord0_loc;
-        } else if (i == 1) {
-            texcoord_loc = texcoord1_loc;
-        }
-        // TODO: Support more texture coordinates
-        
-        if (texcoord_loc >= 0) {
-            glEnableVertexAttribArray(texcoord_loc);
-            glVertexAttribPointer(texcoord_loc, coord_size, GL_FLOAT, GL_FALSE, stride, 
+        if (texcoord_locs[i] >= 0) {
+            glEnableVertexAttribArray(texcoord_locs[i]);
+            glVertexAttribPointer(texcoord_locs[i], coord_size, GL_FLOAT, GL_FALSE, stride, 
                                 reinterpret_cast<const void*>(offset));
+            DX8GL_DEBUG("Enabled texture coordinate set %d with %d components at offset %u", 
+                        i, coord_size, offset);
         }
         
         offset += coord_size * sizeof(float);

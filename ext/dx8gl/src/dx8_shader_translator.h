@@ -165,6 +165,10 @@ private:
     bool uses_normal_;
     std::set<int> texture_coords_used_;
     std::set<int> output_textures_used_;
+    
+    // Track varying usage between vertex and pixel shaders
+    std::set<int> varying_colors_used_;      // v_color0, v_color1
+    std::set<int> varying_texcoords_used_;   // v_texcoord0-7
 };
 
 } // namespace dx8gl

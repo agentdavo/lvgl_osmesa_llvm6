@@ -1,0 +1,160 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Test executable for shader translator
+add_executable(test_shader_translator 
+    test_shader_translator.cpp
+    ../src/dx8_shader_translator.cpp
+    ../src/logger.cpp
+)
+
+target_include_directories(test_shader_translator PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL for GL constants
+find_package(OpenGL REQUIRED)
+target_link_libraries(test_shader_translator PRIVATE OpenGL::GL)
+
+# Test executable for texture LOD and dirty regions (simple version)
+add_executable(test_texture_simple 
+    test_texture_simple.cpp
+    ../src/d3d8_texture.cpp
+    ../src/d3d8_surface.cpp
+    ../src/logger.cpp
+    ../src/private_data.cpp
+)
+
+target_include_directories(test_texture_simple PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL
+find_package(OpenGL REQUIRED)
+target_link_libraries(test_texture_simple PRIVATE OpenGL::GL)
+
+# Test executable for LOD and dirty region logic (no dependencies)
+add_executable(test_lod_dirty_logic test_lod_dirty_logic.cpp)
+
+# Test executable for multiple texture coordinates
+add_executable(test_multi_texcoords 
+    test_multi_texcoords.cpp
+    ../src/fvf_utils.cpp
+    ../src/logger.cpp
+)
+
+target_include_directories(test_multi_texcoords PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL for GL constants
+target_link_libraries(test_multi_texcoords PRIVATE OpenGL::GL)
+
+# Test executable for surface format conversions
+add_executable(test_surface_format 
+    test_surface_format.cpp
+    ../src/d3d8_surface.cpp
+    ../src/logger.cpp
+)
+
+target_include_directories(test_surface_format PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against OpenGL for GL constants
+target_link_libraries(test_surface_format PRIVATE OpenGL::GL)
+
+# Test executable for command buffer async execution
+# This test requires the full dx8gl library
+add_executable(test_command_buffer_async 
+    test_command_buffer_async.cpp
+)
+
+target_include_directories(test_command_buffer_async PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+# Link against the parent dx8gl library (if available)
+if(TARGET dx8gl)
+    target_link_libraries(test_command_buffer_async PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_command_buffer_async")
+    set_target_properties(test_command_buffer_async PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Simple async test
+add_executable(test_async_simple 
+    test_async_simple.cpp
+)
+
+target_include_directories(test_async_simple PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_async_simple PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_async_simple")
+    set_target_properties(test_async_simple PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Device reset test
+add_executable(test_device_reset 
+    test_device_reset.cpp
+)
+
+target_include_directories(test_device_reset PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_device_reset PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_device_reset")
+    set_target_properties(test_device_reset PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Cube texture test
+add_executable(test_cube_texture 
+    test_cube_texture.cpp
+)
+
+target_include_directories(test_cube_texture PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_cube_texture PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_cube_texture")
+    set_target_properties(test_cube_texture PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Stream source stride test
+add_executable(test_stream_source_stride 
+    test_stream_source_stride.cpp
+)
+
+target_include_directories(test_stream_source_stride PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_stream_source_stride PRIVATE dx8gl)
+else()
+    message(WARNING "dx8gl target not available, skipping test_stream_source_stride")
+    set_target_properties(test_stream_source_stride PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Enable testing
+enable_testing()
+add_test(NAME ShaderTranslatorTest COMMAND test_shader_translator)
+add_test(NAME TextureSimpleTest COMMAND test_texture_simple)
+add_test(NAME LODDirtyLogicTest COMMAND test_lod_dirty_logic)
+add_test(NAME MultiTexCoordsTest COMMAND test_multi_texcoords)
+add_test(NAME SurfaceFormatTest COMMAND test_surface_format)
+if(TARGET dx8gl)
+    add_test(NAME CommandBufferAsyncTest COMMAND test_command_buffer_async)
+    add_test(NAME DeviceResetTest COMMAND test_device_reset)
+    add_test(NAME CubeTextureTest COMMAND test_cube_texture)
+    add_test(NAME StreamSourceStrideTest COMMAND test_stream_source_stride)
+endif()

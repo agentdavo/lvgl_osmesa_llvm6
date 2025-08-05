@@ -40,6 +40,9 @@ public:
     // Current shader info
     DWORD get_current_shader_handle() const;
     GLuint get_current_gl_shader() const;
+    
+    // Get shader bytecode for caching purposes
+    bool get_pixel_shader_bytecode(DWORD Handle, std::vector<DWORD>& bytecode) const;
 
 private:
     static const int MAX_PIXEL_SHADER_CONSTANTS = 8; // DirectX 8 pixel shader constant limit

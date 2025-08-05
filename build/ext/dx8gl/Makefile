@@ -244,6 +244,30 @@ src/d3d8_com_wrapper.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.s
 .PHONY : src/d3d8_com_wrapper.cpp.s
 
+src/d3d8_cubetexture.o: src/d3d8_cubetexture.cpp.o
+.PHONY : src/d3d8_cubetexture.o
+
+# target to build an object file
+src/d3d8_cubetexture.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o
+.PHONY : src/d3d8_cubetexture.cpp.o
+
+src/d3d8_cubetexture.i: src/d3d8_cubetexture.cpp.i
+.PHONY : src/d3d8_cubetexture.i
+
+# target to preprocess a source file
+src/d3d8_cubetexture.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.i
+.PHONY : src/d3d8_cubetexture.cpp.i
+
+src/d3d8_cubetexture.s: src/d3d8_cubetexture.cpp.s
+.PHONY : src/d3d8_cubetexture.s
+
+# target to generate assembly for a file
+src/d3d8_cubetexture.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.s
+.PHONY : src/d3d8_cubetexture.cpp.s
+
 src/d3d8_device.o: src/d3d8_device.cpp.o
 .PHONY : src/d3d8_device.o
 
@@ -1105,6 +1129,9 @@ help:
 	@echo "... src/d3d8_com_wrapper.o"
 	@echo "... src/d3d8_com_wrapper.i"
 	@echo "... src/d3d8_com_wrapper.s"
+	@echo "... src/d3d8_cubetexture.o"
+	@echo "... src/d3d8_cubetexture.i"
+	@echo "... src/d3d8_cubetexture.s"
 	@echo "... src/d3d8_device.o"
 	@echo "... src/d3d8_device.i"
 	@echo "... src/d3d8_device.s"

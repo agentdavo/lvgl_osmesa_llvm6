@@ -67,11 +67,15 @@ public:
     // Convert D3D format to GL format
     static bool get_gl_format(D3DFORMAT d3d_format, GLenum& internal_format,
                              GLenum& format, GLenum& type);
-
-private:
+    
+    // Convert between pixel formats
+    static bool convert_format(const void* src, void* dst, D3DFORMAT src_format,
+                              D3DFORMAT dst_format, UINT pixel_count);
     
     // Calculate bytes per pixel
     static UINT get_format_size(D3DFORMAT format);
+
+private:
 
     std::atomic<LONG> ref_count_;
     Direct3DDevice8* device_;

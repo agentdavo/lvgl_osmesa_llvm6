@@ -79,6 +79,7 @@ set(DX8GL_SOURCES
     src/d3d8_interface.cpp
     src/d3d8_device.cpp
     src/d3d8_texture.cpp
+    src/d3d8_cubetexture.cpp
     src/d3d8_vertexbuffer.cpp
     src/d3d8_indexbuffer.cpp
     src/d3d8_surface.cpp
@@ -97,6 +98,7 @@ set(DX8GL_SOURCES
     src/vertex_shader_manager.cpp
     src/pixel_shader_manager.cpp
     src/shader_bytecode_assembler.cpp
+    src/shader_bytecode_disassembler.cpp
     src/shader_constant_manager.cpp
     src/shader_debugger.cpp
     src/shader_binary_cache.cpp
@@ -211,4 +213,8 @@ if(BUILD_DX8GL_SAMPLES)
     add_subdirectory(samples)
 endif()
 
-# Test executable disabled for OSMesa-only build
+# Tests
+option(BUILD_DX8GL_TESTS "Build dx8gl unit tests" ON)
+if(BUILD_DX8GL_TESTS)
+    add_subdirectory(test)
+endif()

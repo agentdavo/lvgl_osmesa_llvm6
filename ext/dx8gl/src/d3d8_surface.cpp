@@ -525,10 +525,20 @@ bool Direct3DSurface8::copy_from(Direct3DSurface8* source, const RECT* src_rect,
         return false;
     }
     
+    DX8GL_INFO("copy_from: source format=%d, dest format=%d", source->format_, format_);
+    
     // Determine source rectangle
     RECT src;
     if (src_rect) {
         src = *src_rect;
+        // Validate source rect
+        if (src.left < 0 || src.top < 0 ||
+            src.right > static_cast<LONG>(source->width_) || 
+            src.bottom > static_cast<LONG>(source->height_) ||
+            src.left >= src.right || src.top >= src.bottom) {
+            DX8GL_ERROR("Invalid source rectangle");
+            return false;
+        }
     } else {
         src.left = 0;
         src.top = 0;
@@ -549,47 +559,143 @@ bool Direct3DSurface8::copy_from(Direct3DSurface8* source, const RECT* src_rect,
     UINT copy_height = src.bottom - src.top;
     
     // Validate destination
-    if (dest.x + copy_width > width_ || dest.y + copy_height > height_) {
+    if (dest.x < 0 || dest.y < 0 ||
+        dest.x + copy_width > width_ || dest.y + copy_height > height_) {
+        DX8GL_ERROR("Copy would exceed destination bounds");
         return false;
     }
     
-    // Perform copy using FBO blit
-    GLuint src_fbo = 0, dst_fbo = 0;
-    glGenFramebuffers(1, &src_fbo);
-    glGenFramebuffers(1, &dst_fbo);
+    // Check if this is a depth/stencil copy
+    bool is_depth_copy = is_depth_stencil() && source->is_depth_stencil();
     
-    // ES 2.0 doesn't support separate read/draw framebuffers
-    // Use GL_FRAMEBUFFER for both operations
-    glBindFramebuffer(GL_FRAMEBUFFER, src_fbo);
-    if (source->texture_) {
+    // ES 2.0-compatible implementation using glReadPixels + glTexSubImage2D
+    if (!is_depth_copy && (source->texture_ || source->parent_texture_) && 
+        (texture_ || parent_texture_)) {
+        
+        // Get source GL texture
+        GLuint src_texture = source->texture_;
+        if (!src_texture && source->parent_texture_) {
+            src_texture = source->parent_texture_->get_gl_texture();
+        }
+        
+        // Get destination GL texture
+        GLuint dst_texture = texture_;
+        if (!dst_texture && parent_texture_) {
+            dst_texture = parent_texture_->get_gl_texture();
+        }
+        
+        if (!src_texture || !dst_texture) {
+            DX8GL_ERROR("Missing texture for surface copy");
+            return false;
+        }
+        
+        // Allocate temporary buffer for pixel data
+        UINT pixel_size = get_format_size(source->format_);
+        UINT buffer_size = copy_width * copy_height * pixel_size;
+        void* temp_buffer = malloc(buffer_size);
+        if (!temp_buffer) {
+            DX8GL_ERROR("Failed to allocate temporary buffer for copy");
+            return false;
+        }
+        
+        // Create FBO for reading from source
+        GLuint read_fbo = 0;
+        glGenFramebuffers(1, &read_fbo);
+        glBindFramebuffer(GL_FRAMEBUFFER, read_fbo);
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                              GL_TEXTURE_2D, source->texture_, 0);
-    } else if (source->renderbuffer_) {
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
-                                 GL_RENDERBUFFER, source->renderbuffer_);
+                              GL_TEXTURE_2D, src_texture, source->level_);
+        
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+            DX8GL_ERROR("Failed to create read framebuffer");
+            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            glDeleteFramebuffers(1, &read_fbo);
+            free(temp_buffer);
+            return false;
+        }
+        
+        // Read pixels from source
+        GLenum src_internal_format, src_format, src_type;
+        get_gl_format(source->format_, src_internal_format, src_format, src_type);
+        
+        glReadPixels(src.left, src.top, copy_width, copy_height,
+                     src_format, src_type, temp_buffer);
+        
+        GLenum error = glGetError();
+        if (error != GL_NO_ERROR) {
+            DX8GL_ERROR("glReadPixels failed: 0x%04x", error);
+            glBindFramebuffer(GL_FRAMEBUFFER, 0);
+            glDeleteFramebuffers(1, &read_fbo);
+            free(temp_buffer);
+            return false;
+        }
+        
+        // Cleanup read FBO
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glDeleteFramebuffers(1, &read_fbo);
+        
+        // Handle format conversion if needed
+        void* write_buffer = temp_buffer;
+        void* converted_buffer = nullptr;
+        
+        if (source->format_ != format_) {
+            // Need format conversion
+            converted_buffer = malloc(buffer_size);
+            if (converted_buffer) {
+                if (!convert_format(temp_buffer, converted_buffer, 
+                                   source->format_, format_, 
+                                   copy_width * copy_height)) {
+                    DX8GL_WARNING("Format conversion failed, using source format");
+                    free(converted_buffer);
+                    converted_buffer = nullptr;
+                } else {
+                    write_buffer = converted_buffer;
+                }
+            }
+        }
+        
+        // Write pixels to destination
+        GLenum dst_internal_format, dst_format, dst_type;
+        get_gl_format(format_, dst_internal_format, dst_format, dst_type);
+        
+        glBindTexture(GL_TEXTURE_2D, dst_texture);
+        glTexSubImage2D(GL_TEXTURE_2D, level_, dest.x, dest.y,
+                       copy_width, copy_height, dst_format, dst_type, write_buffer);
+        
+        error = glGetError();
+        if (error != GL_NO_ERROR) {
+            DX8GL_ERROR("glTexSubImage2D failed: 0x%04x", error);
+        }
+        
+        glBindTexture(GL_TEXTURE_2D, 0);
+        
+        // Cleanup
+        free(temp_buffer);
+        if (converted_buffer) {
+            free(converted_buffer);
+        }
+        
+        // Mark destination as dirty if it's a managed texture
+        if (parent_texture_ && parent_texture_->get_pool() == D3DPOOL_MANAGED) {
+            RECT dirty_rect = { dest.x, dest.y, 
+                               dest.x + static_cast<LONG>(copy_width), 
+                               dest.y + static_cast<LONG>(copy_height) };
+            parent_texture_->mark_level_dirty(level_, &dirty_rect);
+        }
+        
+        DX8GL_DEBUG("Surface copy completed: %ux%u from (%d,%d) to (%d,%d)",
+                    copy_width, copy_height, src.left, src.top, dest.x, dest.y);
+        
+        return true;
     }
     
-    // For ES 2.0 compatibility, we'll need to read pixels and write them
-    // instead of using glBlitFramebuffer
-    glBindFramebuffer(GL_FRAMEBUFFER, dst_fbo);
-    if (texture_) {
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                              GL_TEXTURE_2D, texture_, 0);
-    } else if (renderbuffer_) {
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
-                                 GL_RENDERBUFFER, renderbuffer_);
+    // Depth/stencil copies are not supported in ES 2.0
+    if (is_depth_copy) {
+        DX8GL_WARNING("Depth/stencil surface copies not supported in ES 2.0");
+        return false;
     }
     
-    // ES 2.0 doesn't have glBlitFramebuffer, so we skip the operation for now
-    // TODO: Implement using glReadPixels + glTexSubImage2D for color copies
-    bool success = true;  // Pretend it worked for now
-    
-    // Cleanup
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glDeleteFramebuffers(1, &src_fbo);
-    glDeleteFramebuffers(1, &dst_fbo);
-    
-    return success;
+    DX8GL_ERROR("Unsupported surface copy configuration");
+    return false;
 }
 
 // Static helper methods
@@ -716,6 +822,100 @@ UINT Direct3DSurface8::get_format_size(D3DFORMAT format) {
         default:
             return 4;  // Default to 4 bytes
     }
+}
+
+bool Direct3DSurface8::convert_format(const void* src, void* dst, D3DFORMAT src_format,
+                                     D3DFORMAT dst_format, UINT pixel_count) {
+    if (!src || !dst || src_format == dst_format) {
+        return false;
+    }
+    
+    const BYTE* src_bytes = static_cast<const BYTE*>(src);
+    BYTE* dst_bytes = static_cast<BYTE*>(dst);
+    
+    // Handle common conversions
+    if (src_format == D3DFMT_A8R8G8B8 && dst_format == D3DFMT_X8R8G8B8) {
+        // ARGB to XRGB - just set alpha to 255
+        const DWORD* src_pixels = reinterpret_cast<const DWORD*>(src_bytes);
+        DWORD* dst_pixels = reinterpret_cast<DWORD*>(dst_bytes);
+        for (UINT i = 0; i < pixel_count; i++) {
+            dst_pixels[i] = src_pixels[i] | 0xFF000000;
+        }
+        return true;
+    }
+    else if (src_format == D3DFMT_X8R8G8B8 && dst_format == D3DFMT_A8R8G8B8) {
+        // XRGB to ARGB - alpha is already 255 in X format
+        memcpy(dst_bytes, src_bytes, pixel_count * 4);
+        return true;
+    }
+    else if (src_format == D3DFMT_A8R8G8B8 && dst_format == D3DFMT_R5G6B5) {
+        // ARGB32 to RGB565
+        const DWORD* src_pixels = reinterpret_cast<const DWORD*>(src_bytes);
+        WORD* dst_pixels = reinterpret_cast<WORD*>(dst_bytes);
+        for (UINT i = 0; i < pixel_count; i++) {
+            DWORD pixel = src_pixels[i];
+            BYTE r = (pixel >> 16) & 0xFF;
+            BYTE g = (pixel >> 8) & 0xFF;
+            BYTE b = pixel & 0xFF;
+            dst_pixels[i] = ((r >> 3) << 11) | ((g >> 2) << 5) | (b >> 3);
+        }
+        return true;
+    }
+    else if (src_format == D3DFMT_R5G6B5 && dst_format == D3DFMT_A8R8G8B8) {
+        // RGB565 to ARGB32
+        const WORD* src_pixels = reinterpret_cast<const WORD*>(src_bytes);
+        DWORD* dst_pixels = reinterpret_cast<DWORD*>(dst_bytes);
+        for (UINT i = 0; i < pixel_count; i++) {
+            WORD pixel = src_pixels[i];
+            BYTE r = ((pixel >> 11) & 0x1F) << 3;
+            BYTE g = ((pixel >> 5) & 0x3F) << 2;
+            BYTE b = (pixel & 0x1F) << 3;
+            // Replicate high bits to low bits for better color accuracy
+            r |= r >> 5;
+            g |= g >> 6;
+            b |= b >> 5;
+            dst_pixels[i] = 0xFF000000 | (r << 16) | (g << 8) | b;
+        }
+        return true;
+    }
+    else if (src_format == D3DFMT_R5G6B5 && dst_format == D3DFMT_X8R8G8B8) {
+        // RGB565 to XRGB32 - same as above
+        const WORD* src_pixels = reinterpret_cast<const WORD*>(src_bytes);
+        DWORD* dst_pixels = reinterpret_cast<DWORD*>(dst_bytes);
+        for (UINT i = 0; i < pixel_count; i++) {
+            WORD pixel = src_pixels[i];
+            BYTE r = ((pixel >> 11) & 0x1F) << 3;
+            BYTE g = ((pixel >> 5) & 0x3F) << 2;
+            BYTE b = (pixel & 0x1F) << 3;
+            r |= r >> 5;
+            g |= g >> 6;
+            b |= b >> 5;
+            dst_pixels[i] = 0xFF000000 | (r << 16) | (g << 8) | b;
+        }
+        return true;
+    }
+    else if (src_format == D3DFMT_L8 && dst_format == D3DFMT_A8R8G8B8) {
+        // Luminance to ARGB - replicate luminance to RGB
+        for (UINT i = 0; i < pixel_count; i++) {
+            BYTE l = src_bytes[i];
+            DWORD* dst_pixel = reinterpret_cast<DWORD*>(dst_bytes + i * 4);
+            *dst_pixel = 0xFF000000 | (l << 16) | (l << 8) | l;
+        }
+        return true;
+    }
+    else if (src_format == D3DFMT_A8L8 && dst_format == D3DFMT_A8R8G8B8) {
+        // Alpha-luminance to ARGB
+        for (UINT i = 0; i < pixel_count; i++) {
+            BYTE l = src_bytes[i * 2];
+            BYTE a = src_bytes[i * 2 + 1];
+            DWORD* dst_pixel = reinterpret_cast<DWORD*>(dst_bytes + i * 4);
+            *dst_pixel = (a << 24) | (l << 16) | (l << 8) | l;
+        }
+        return true;
+    }
+    
+    DX8GL_WARNING("Unsupported format conversion: %d to %d", src_format, dst_format);
+    return false;
 }
 
 } // namespace dx8gl

@@ -1,5 +1,6 @@
 #include "vertex_shader_manager.h"
 #include "dx8_shader_translator.h"
+#include "shader_bytecode_disassembler.h"
 #include "shader_binary_cache.h"
 #include "d3d8.h"
 #include "logger.h"
@@ -97,34 +98,30 @@ HRESULT VertexShaderManager::create_vertex_shader(const DWORD* pDeclaration, con
         DX8GL_INFO("Vertex shader bytecode hash: %s", bytecode_hash_.c_str());
     }
     
-    // Try to disassemble bytecode and use the translator if we can
-    // For now, we'll create a simple pass-through GLSL shader
-    // TODO: Implement proper bytecode disassembly or store original assembly
-    
-    // Check if this is a simple shader we can handle
+    // Try to disassemble bytecode and use the translator
     bool can_translate = false;
     std::string assembly_source;
     
-    // For testing purposes, check if we recognize common shader patterns
-    // This is a hack - in a real implementation we'd disassemble the bytecode
+    // Disassemble the bytecode to DirectX assembly
     if (shader_info->function_bytecode.size() > 0) {
-        // Try to use the shader translator with a simple test case
-        DX8ShaderTranslator translator;
-        
-        // For now, generate a basic shader based on the declaration
-        std::ostringstream test_asm;
-        test_asm << "vs.1.1\n";
-        test_asm << "m4x4 oPos, v0, c0\n";
-        test_asm << "mov oD0, v1\n";
-        test_asm << "mov oT0, v2\n";
-        
-        std::string error_msg;
-        if (translator.parse_shader(test_asm.str(), error_msg)) {
-            shader_info->glsl_source = translator.generate_glsl();
-            can_translate = true;
-            DX8GL_INFO("Successfully translated vertex shader using DX8ShaderTranslator");
+        // First, try to disassemble the bytecode
+        if (ShaderBytecodeDisassembler::disassemble(shader_info->function_bytecode, assembly_source)) {
+            DX8GL_INFO("Successfully disassembled vertex shader bytecode");
+            DX8GL_DEBUG("Disassembled shader:\n%s", assembly_source.c_str());
+            
+            // Now translate the assembly to GLSL
+            DX8ShaderTranslator translator;
+            std::string error_msg;
+            
+            if (translator.parse_shader(assembly_source, error_msg)) {
+                shader_info->glsl_source = translator.generate_glsl();
+                can_translate = true;
+                DX8GL_INFO("Successfully translated vertex shader to GLSL");
+            } else {
+                DX8GL_WARNING("Shader translation failed: %s", error_msg.c_str());
+            }
         } else {
-            DX8GL_WARNING("Shader translator failed: %s", error_msg.c_str());
+            DX8GL_WARNING("Failed to disassemble vertex shader bytecode");
         }
     }
     

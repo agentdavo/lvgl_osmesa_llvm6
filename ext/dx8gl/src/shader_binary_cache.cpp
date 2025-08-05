@@ -967,7 +967,17 @@ bool MemoryMappedShaderCache::store_binary(const std::string& hash,
     
     if (it != entry_map_.end()) {
         entry = it->second;
-        // TODO: Handle size change
+        
+        // Check if size has changed
+        if (entry->size != size) {
+            DX8GL_WARNING("Shader binary size changed for hash %s: old=%zu, new=%zu", 
+                         hash.c_str(), entry->size, size);
+            
+            // For now, we'll refuse to update entries with different sizes
+            // A more sophisticated implementation could implement defragmentation
+            // or maintain a free list for reallocation
+            return false;
+        }
     } else {
         // Add new entry
         entry = reinterpret_cast<CacheEntry*>(

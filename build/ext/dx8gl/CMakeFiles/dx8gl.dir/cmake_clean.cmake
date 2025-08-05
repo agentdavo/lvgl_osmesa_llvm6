@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o"
   "CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o.d"
+  "CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o"
+  "CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o"
   "CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/d3d8_indexbuffer.cpp.o"

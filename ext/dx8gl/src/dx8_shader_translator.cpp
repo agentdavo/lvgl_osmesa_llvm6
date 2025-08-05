@@ -31,6 +31,8 @@ bool DX8ShaderTranslator::parse_shader(const std::string& source, std::string& e
     bytecode_.clear();
     texture_coords_used_.clear();
     output_textures_used_.clear();
+    varying_colors_used_.clear();
+    varying_texcoords_used_.clear();
     
     // Don't add version token yet - we need to determine shader type first
     
@@ -380,8 +382,25 @@ DWORD DX8ShaderTranslator::encode_register(const ShaderInstruction::Register& re
     }
     
     // Encode swizzle for source registers (bits 16-23)
+    // Each component uses 2 bits: 00=x, 01=y, 10=z, 11=w
     if (!reg.swizzle.empty() && reg.swizzle != "xyzw") {
-        // TODO: Implement swizzle encoding
+        DWORD swizzle_bits = 0;
+        for (int i = 0; i < 4; i++) {
+            char component = (i < reg.swizzle.length()) ? reg.swizzle[i] : reg.swizzle.back();
+            DWORD comp_bits = 0;
+            switch (component) {
+                case 'x': comp_bits = 0; break;
+                case 'y': comp_bits = 1; break;
+                case 'z': comp_bits = 2; break;
+                case 'w': comp_bits = 3; break;
+                default: comp_bits = 0; break;
+            }
+            swizzle_bits |= (comp_bits << (i * 2));
+        }
+        token |= (swizzle_bits << 16);
+    } else {
+        // Default swizzle: .xyzw = 0x00010203 (00=x, 01=y, 10=z, 11=w)
+        token |= (0xE4 << 16); // 11100100 = wzyx in binary
     }
     
     // Source modifier bit 13
@@ -751,14 +770,42 @@ std::string DX8ShaderTranslator::generate_vertex_glsl() {
     // Varyings (outputs) - only declare what's actually used
     glsl << "// Outputs to fragment shader\n";
     
-    // Always declare v_color0 for now since many shaders implicitly use it
-    // TODO: Implement proper varying usage tracking
-    glsl << "varying vec4 v_color0;\n";
-    for (int tex : output_textures_used_) {
-        if (tex == 0 || tex == 3) {
-            glsl << "varying vec4 v_texcoord" << tex << ";\n";
+    // Declare color varyings that are actually written to
+    for (int color_idx : varying_colors_used_) {
+        glsl << "varying vec4 v_color" << color_idx << ";\n";
+    }
+    
+    // If no colors were explicitly used but we write to oD0, declare v_color0
+    if (varying_colors_used_.empty()) {
+        bool writes_to_od0 = false;
+        for (const auto& inst : instructions_) {
+            if (inst.dest.type == D3DSPR_ATTROUT && inst.dest.index == 0) {
+                writes_to_od0 = true;
+                break;
+            }
+        }
+        if (writes_to_od0) {
+            glsl << "varying vec4 v_color0;\n";
+        }
+    }
+    
+    // Declare texture coordinate varyings
+    for (int tex_idx : varying_texcoords_used_) {
+        if (tex_idx == 0 || tex_idx == 3) {
+            glsl << "varying vec4 v_texcoord" << tex_idx << ";\n";
         } else {
-            glsl << "varying vec2 v_texcoord" << tex << ";\n";
+            glsl << "varying vec2 v_texcoord" << tex_idx << ";\n";
+        }
+    }
+    
+    // Also check output_textures_used_ for backward compatibility
+    for (int tex : output_textures_used_) {
+        if (varying_texcoords_used_.find(tex) == varying_texcoords_used_.end()) {
+            if (tex == 0 || tex == 3) {
+                glsl << "varying vec4 v_texcoord" << tex << ";\n";
+            } else {
+                glsl << "varying vec2 v_texcoord" << tex << ";\n";
+            }
         }
     }
     glsl << "\n";
@@ -918,9 +965,19 @@ std::string DX8ShaderTranslator::register_to_glsl(const ShaderInstruction::Regis
             if (reg.index == 0) result += "gl_Position";
             break;
         case D3DSPR_ATTROUT:
-            if (reg.index == 0) result += "v_color0";
-            else if (reg.index == 1) result += "v_color1";
-            else if (reg.index >= 8) result += "v_texcoord" + std::to_string(reg.index - 8);
+            if (reg.index == 0) {
+                result += "v_color0";
+                varying_colors_used_.insert(0);
+            }
+            else if (reg.index == 1) {
+                result += "v_color1";
+                varying_colors_used_.insert(1);
+            }
+            else if (reg.index >= 8) {
+                int tex_idx = reg.index - 8;
+                result += "v_texcoord" + std::to_string(tex_idx);
+                varying_texcoords_used_.insert(tex_idx);
+            }
             break;
     }
     
@@ -1195,8 +1252,28 @@ std::string DX8ShaderTranslator::generate_pixel_glsl() {
     
     // Varyings (inputs from vertex shader)
     glsl << "// Inputs from vertex shader\n";
-    glsl << "varying vec4 v_color0;\n";
-    // Note: Only declare v_color1 if it's actually used (rarely in DirectX 8)
+    
+    // Only declare color varyings that are actually used
+    for (int color_idx : varying_colors_used_) {
+        glsl << "varying vec4 v_color" << color_idx << ";\n";
+    }
+    
+    // If no colors tracked but v0 register is used, ensure v_color0 is declared
+    if (varying_colors_used_.empty()) {
+        bool uses_v0 = false;
+        for (const auto& inst : instructions_) {
+            for (const auto& src : inst.sources) {
+                if (src.type == D3DSPR_INPUT && src.index == 4) {
+                    uses_v0 = true;
+                    break;
+                }
+            }
+            if (uses_v0) break;
+        }
+        if (uses_v0) {
+            glsl << "varying vec4 v_color0;\n";
+        }
+    }
     
     // Determine which texture registers are used to know which varyings to declare
     std::unordered_map<int, bool> texture_registers_used;
@@ -1211,15 +1288,22 @@ std::string DX8ShaderTranslator::generate_pixel_glsl() {
         }
     }
     
-    // Declare texture coordinate inputs (only the ones actually used)
-    // This should match what the vertex shader outputs
+    // Declare texture coordinate varyings that are actually used
+    for (int tex_idx : varying_texcoords_used_) {
+        if (tex_idx == 0 || tex_idx == 3) {
+            glsl << "varying vec4 v_texcoord" << tex_idx << ";\n";
+        } else {
+            glsl << "varying vec2 v_texcoord" << tex_idx << ";\n";
+        }
+    }
+    
+    // Also check texture_registers_used for compatibility
     for (const auto& tex : texture_registers_used) {
-        glsl << "varying vec4 v_texcoord" << tex.first << ";\n";
+        if (varying_texcoords_used_.find(tex.first) == varying_texcoords_used_.end()) {
+            glsl << "varying vec4 v_texcoord" << tex.first << ";\n";
+        }
     }
-    // If no texture registers detected, default to texcoord0 for compatibility
-    if (texture_registers_used.empty()) {
-        glsl << "varying vec4 v_texcoord0;\n";
-    }
+    
     glsl << "\n";
     
     // Main function
@@ -1430,10 +1514,14 @@ std::string DX8ShaderTranslator::pixel_register_to_glsl(const ShaderInstruction:
             // Pixel shader inputs: t0-t3 are texture coordinates, v0-v1 are colors
             if (reg.index < 4) {
                 result += "t" + std::to_string(reg.index);
+                // Track that we need this texture coordinate varying
+                varying_texcoords_used_.insert(reg.index);
             } else if (reg.index == 4) {
                 result += "v_color0";
+                varying_colors_used_.insert(0);
             } else if (reg.index == 5) {
                 result += "v_color1";
+                varying_colors_used_.insert(1);
             }
             break;
             

@@ -58,6 +58,11 @@ Direct3DVertexBuffer8::Direct3DVertexBuffer8(Direct3DDevice8* device, UINT lengt
 Direct3DVertexBuffer8::~Direct3DVertexBuffer8() {
     DX8GL_DEBUG("Direct3DVertexBuffer8 destructor");
     
+    // Unregister from device
+    if (device_) {
+        device_->unregister_vertex_buffer(this);
+    }
+    
     // Clean up OpenGL resources
     if (vbo_ && gl_DeleteBuffers) {
         gl_DeleteBuffers(1, &vbo_);
@@ -598,6 +603,98 @@ void Direct3DVertexBuffer8::parse_fvf_attributes() {
         attributes_.push_back({size, GL_FLOAT, GL_FALSE, static_cast<GLsizei>(offset)});
         offset += size * sizeof(float);
     }
+}
+
+void Direct3DVertexBuffer8::release_gl_resources() {
+    DX8GL_DEBUG("Releasing GL resources for vertex buffer %u (pool=%d)", vbo_, pool_);
+    
+    if (vbo_) {
+        glDeleteBuffers(1, &vbo_);
+        vbo_ = 0;
+    }
+    
+    // Release all buffer versions for dynamic buffers
+    for (auto& version : buffer_versions_) {
+        if (version.vbo) {
+            glDeleteBuffers(1, &version.vbo);
+            version.vbo = 0;
+        }
+    }
+    buffer_versions_.clear();
+    current_buffer_version_ = 0;
+}
+
+bool Direct3DVertexBuffer8::recreate_gl_resources() {
+    DX8GL_DEBUG("Recreating GL resources for vertex buffer (pool=%d, size=%u, usage=0x%x)", 
+                pool_, length_, usage_);
+    
+    // Only D3DPOOL_DEFAULT resources need recreation
+    if (pool_ != D3DPOOL_DEFAULT) {
+        DX8GL_WARN("Attempted to recreate non-default pool vertex buffer");
+        return true; // Not an error, just not needed
+    }
+    
+    // Release old resources first
+    release_gl_resources();
+    
+    // Determine buffer usage
+    GLenum gl_usage = GL_STATIC_DRAW;
+    if (usage_ & D3DUSAGE_DYNAMIC) {
+        gl_usage = GL_DYNAMIC_DRAW;
+    } else if (usage_ & D3DUSAGE_WRITEONLY) {
+        gl_usage = GL_STREAM_DRAW;
+    }
+    
+    // For dynamic buffers, create multiple versions for orphaning
+    if (usage_ & D3DUSAGE_DYNAMIC) {
+        buffer_versions_.resize(MAX_BUFFER_VERSIONS);
+        for (int i = 0; i < MAX_BUFFER_VERSIONS; i++) {
+            glGenBuffers(1, &buffer_versions_[i].vbo);
+            if (!buffer_versions_[i].vbo) {
+                DX8GL_ERROR("Failed to generate dynamic vertex buffer version %d", i);
+                release_gl_resources();
+                return false;
+            }
+            
+            glBindBuffer(GL_ARRAY_BUFFER, buffer_versions_[i].vbo);
+            glBufferData(GL_ARRAY_BUFFER, length_, nullptr, gl_usage);
+            
+            GLenum error = glGetError();
+            if (error != GL_NO_ERROR) {
+                DX8GL_ERROR("OpenGL error creating dynamic buffer version %d: 0x%04x", i, error);
+                release_gl_resources();
+                return false;
+            }
+            
+            buffer_versions_[i].in_use = false;
+        }
+        vbo_ = buffer_versions_[0].vbo;
+        current_buffer_version_ = 0;
+        DX8GL_DEBUG("Created %d versions of dynamic vertex buffer", MAX_BUFFER_VERSIONS);
+    } else {
+        // Create single VBO for static buffer
+        glGenBuffers(1, &vbo_);
+        if (!vbo_) {
+            DX8GL_ERROR("Failed to generate vertex buffer");
+            return false;
+        }
+        
+        glBindBuffer(GL_ARRAY_BUFFER, vbo_);
+        glBufferData(GL_ARRAY_BUFFER, length_, nullptr, gl_usage);
+        
+        GLenum error = glGetError();
+        if (error != GL_NO_ERROR) {
+            DX8GL_ERROR("OpenGL error creating vertex buffer: 0x%04x", error);
+            glDeleteBuffers(1, &vbo_);
+            vbo_ = 0;
+            return false;
+        }
+    }
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    
+    DX8GL_DEBUG("Successfully recreated vertex buffer %u", vbo_);
+    return true;
 }
 
 } // namespace dx8gl

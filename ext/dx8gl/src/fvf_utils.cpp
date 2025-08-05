@@ -121,6 +121,7 @@ std::vector<VertexAttribute> FVFParser::parse_fvf(DWORD fvf) {
     }
     
     // Texture coordinates - typically start at location 3
+    // DirectX 8 supports up to 8 texture coordinate sets
     int tex_count = get_texcoord_count(fvf);
     for (int i = 0; i < tex_count; i++) {
         int coord_size = get_texcoord_size(fvf, i);
@@ -137,7 +138,16 @@ void FVFParser::setup_vertex_attributes(DWORD fvf, GLuint program,
     GLint position_loc = glGetAttribLocation(program, "a_position");
     GLint normal_loc = glGetAttribLocation(program, "a_normal");
     GLint color_loc = glGetAttribLocation(program, "a_color");
-    GLint texcoord_loc = glGetAttribLocation(program, "a_texcoord0");
+    
+    // Get texture coordinate locations for all 8 possible sets
+    GLint texcoord_locs[8];
+    const char* texcoord_names[8] = {
+        "a_texcoord0", "a_texcoord1", "a_texcoord2", "a_texcoord3",
+        "a_texcoord4", "a_texcoord5", "a_texcoord6", "a_texcoord7"
+    };
+    for (int i = 0; i < 8; i++) {
+        texcoord_locs[i] = glGetAttribLocation(program, texcoord_names[i]);
+    }
     
     UINT offset = 0;
     const uint8_t* base = static_cast<const uint8_t*>(base_offset);
@@ -213,16 +223,17 @@ void FVFParser::setup_vertex_attributes(DWORD fvf, GLuint program,
         offset += sizeof(DWORD);
     }
     
-    // Texture coordinates
+    // Texture coordinates - support all 8 texture coordinate sets
     int tex_count = get_texcoord_count(fvf);
-    for (int i = 0; i < tex_count; i++) {
+    for (int i = 0; i < tex_count && i < 8; i++) {
         int coord_size = get_texcoord_size(fvf, i);
         
-        if (i == 0 && texcoord_loc >= 0) {
-            glEnableVertexAttribArray(texcoord_loc);
-            glVertexAttribPointer(texcoord_loc, coord_size, GL_FLOAT, GL_FALSE, stride, base + offset);
+        if (texcoord_locs[i] >= 0) {
+            glEnableVertexAttribArray(texcoord_locs[i]);
+            glVertexAttribPointer(texcoord_locs[i], coord_size, GL_FLOAT, GL_FALSE, stride, base + offset);
+            DX8GL_DEBUG("Enabled texture coordinate set %d with %d components at offset %u", 
+                        i, coord_size, offset);
         }
-        // TODO: Support multiple texture coordinates
         
         offset += coord_size * sizeof(float);
     }

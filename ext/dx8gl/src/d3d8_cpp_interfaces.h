@@ -39,6 +39,9 @@ extern const IID IID_IDirect3DTexture8;
 extern const IID IID_IDirect3DVertexBuffer8;
 extern const IID IID_IDirect3DIndexBuffer8;
 extern const IID IID_IDirect3DSwapChain8;
+extern const IID IID_IDirect3DResource8;
+extern const IID IID_IDirect3DBaseTexture8;
+extern const IID IID_IDirect3DCubeTexture8;
 
 // DirectX 8 structure definitions
 

@@ -58,6 +58,12 @@ public:
     GLuint get_gl_texture() const { return gl_texture_; }
     void bind(UINT sampler) const;
     D3DPOOL get_pool() const { return pool_; }
+    void mark_level_dirty(UINT level, const RECT* dirty_rect = nullptr);
+    void commit_dirty_regions() { upload_dirty_regions(); }
+    
+    // Device reset support
+    void release_gl_resources();
+    bool recreate_gl_resources();
 
 private:
     std::atomic<LONG> ref_count_;
@@ -83,9 +89,19 @@ private:
     UINT calculate_mip_levels(UINT width, UINT height) const;
     static bool get_gl_format(D3DFORMAT d3d_format, GLenum& internal_format,
                              GLenum& format, GLenum& type);
+    void apply_lod_settings();
+    void upload_dirty_regions();
     
     // Private data storage
     PrivateDataManager private_data_manager_;
+    
+    // Dirty region tracking for managed textures
+    struct DirtyRect {
+        RECT rect;
+        UINT level;
+    };
+    std::vector<DirtyRect> dirty_regions_;
+    bool has_dirty_regions_;
 };
 
 } // namespace dx8gl
