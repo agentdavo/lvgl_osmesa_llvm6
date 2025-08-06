@@ -307,4 +307,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/hud_system.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
  /usr/include/c++/13/algorithm /usr/include/c++/13/bits/ranges_algo.h \
- /usr/include/c++/13/pstl/glue_algorithm_defs.h
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/fstream \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc

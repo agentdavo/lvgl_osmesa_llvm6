@@ -482,6 +482,45 @@ test_framebuffer_correctness/fast:
 .PHONY : test_framebuffer_correctness/fast
 
 #=============================================================================
+# Target rules for targets named test_hud_font
+
+# Build rule for target.
+test_hud_font: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_hud_font
+.PHONY : test_hud_font
+
+# fast build rule for target.
+test_hud_font/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_hud_font.dir/build.make ext/dx8gl/test/CMakeFiles/test_hud_font.dir/build
+.PHONY : test_hud_font/fast
+
+#=============================================================================
+# Target rules for targets named test_alpha_blending
+
+# Build rule for target.
+test_alpha_blending: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_alpha_blending
+.PHONY : test_alpha_blending
+
+# fast build rule for target.
+test_alpha_blending/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_alpha_blending.dir/build.make ext/dx8gl/test/CMakeFiles/test_alpha_blending.dir/build
+.PHONY : test_alpha_blending/fast
+
+#=============================================================================
+# Target rules for targets named test_render_states
+
+# Build rule for target.
+test_render_states: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_render_states
+.PHONY : test_render_states
+
+# fast build rule for target.
+test_render_states/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_render_states.dir/build.make ext/dx8gl/test/CMakeFiles/test_render_states.dir/build
+.PHONY : test_render_states/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -12094,6 +12133,7 @@ help:
 	@echo "... lvgl"
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
+	@echo "... test_alpha_blending"
 	@echo "... test_async_simple"
 	@echo "... test_backend_selection"
 	@echo "... test_command_buffer_async"
@@ -12102,6 +12142,7 @@ help:
 	@echo "... test_device_reset"
 	@echo "... test_dx8gl_core_api"
 	@echo "... test_framebuffer_correctness"
+	@echo "... test_hud_font"
 	@echo "... test_indexed_xyzrhw"
 	@echo "... test_loading_screen"
 	@echo "... test_lod_dirty_logic"
@@ -12109,6 +12150,7 @@ help:
 	@echo "... test_lvgl_platform"
 	@echo "... test_mixed_vertices"
 	@echo "... test_multi_texcoords"
+	@echo "... test_render_states"
 	@echo "... test_shader_cache_resize"
 	@echo "... test_shader_program_cache"
 	@echo "... test_shader_translator"

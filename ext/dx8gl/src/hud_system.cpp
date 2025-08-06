@@ -3,10 +3,12 @@
 
 #include "hud_system.h"
 #include "d3d8_device.h"
+#include "d3dx_compat.h"
 #include <cstring>
 #include <algorithm>
 #include <sstream>
 #include <iomanip>
+#include <fstream>
 
 namespace dx8gl {
 
@@ -183,7 +185,13 @@ HUDSystem::~HUDSystem() {
 }
 
 bool HUDSystem::Initialize() {
-    CreateFontTexture();
+    // Try to load external font texture first
+    if (!LoadFontTexture("assets/fonts/hud_font.tga") &&
+        !LoadFontTexture("assets/fonts/hud_font.bmp") &&
+        !LoadFontTexture("assets/fonts/hud_font.png")) {
+        // Fall back to built-in font
+        CreateFontTexture();
+    }
     
     // Set default control text
     std::vector<std::string> defaultControls = {
@@ -280,25 +288,25 @@ void HUDSystem::Render() {
             fpsColor = m_colors.fps_medium;
         }
         
-        int textWidth = ss.str().length() * (HUD_CHAR_WIDTH + HUD_CHAR_SPACING);
-        RenderBox(HUD_PADDING - 5, yOffset - 2, textWidth + 10, HUD_LINE_HEIGHT + 4, m_colors.background);
+        int textWidth = ss.str().length() * (m_charWidth + m_charSpacing);
+        RenderBox(HUD_PADDING - 5, yOffset - 2, textWidth + 10, m_lineHeight + 4, m_colors.background);
         RenderText(ss.str(), HUD_PADDING, yOffset, fpsColor);
-        yOffset += HUD_LINE_HEIGHT + 5;
+        yOffset += m_lineHeight + 5;
     }
     
     // Render Debug Info
     if (m_flags & HUD_SHOW_DEBUG && (!m_debugText.empty() || !m_debugLines.empty())) {
         RenderText("DEBUG INFO:", HUD_PADDING, yOffset, m_colors.header);
-        yOffset += HUD_LINE_HEIGHT;
+        yOffset += m_lineHeight;
         
         if (!m_debugText.empty()) {
             RenderText(m_debugText, HUD_PADDING, yOffset, m_colors.text);
-            yOffset += HUD_LINE_HEIGHT;
+            yOffset += m_lineHeight;
         }
         
         for (const auto& line : m_debugLines) {
             RenderText(line, HUD_PADDING, yOffset, m_colors.text);
-            yOffset += HUD_LINE_HEIGHT;
+            yOffset += m_lineHeight;
         }
         yOffset += 5;
     }
@@ -306,12 +314,12 @@ void HUDSystem::Render() {
     // Render Stats
     if (m_flags & HUD_SHOW_STATS && !m_stats.empty()) {
         RenderText("STATISTICS:", HUD_PADDING, yOffset, m_colors.header);
-        yOffset += HUD_LINE_HEIGHT;
+        yOffset += m_lineHeight;
         
         for (const auto& stat : m_stats) {
             std::string statLine = stat.first + ": " + stat.second;
             RenderText(statLine, HUD_PADDING, yOffset, m_colors.text);
-            yOffset += HUD_LINE_HEIGHT;
+            yOffset += m_lineHeight;
         }
         yOffset += 5;
     }
@@ -323,22 +331,22 @@ void HUDSystem::Render() {
         
         int maxWidth = 0;
         for (const auto& control : m_controlText) {
-            int width = control.length() * (HUD_CHAR_WIDTH + HUD_CHAR_SPACING);
+            int width = control.length() * (m_charWidth + m_charSpacing);
             maxWidth = std::max(maxWidth, width);
         }
         
         int xPos = viewport.Width - maxWidth - HUD_PADDING;
-        int yPos = viewport.Height - (m_controlText.size() * HUD_LINE_HEIGHT) - HUD_PADDING - HUD_LINE_HEIGHT;
+        int yPos = viewport.Height - (m_controlText.size() * m_lineHeight) - HUD_PADDING - m_lineHeight;
         
         RenderBox(xPos - 5, yPos - 2, maxWidth + 10, 
-                  (m_controlText.size() + 1) * HUD_LINE_HEIGHT + 4, m_colors.background);
+                  (m_controlText.size() + 1) * m_lineHeight + 4, m_colors.background);
         
         RenderText("CONTROLS:", xPos, yPos, m_colors.header);
-        yPos += HUD_LINE_HEIGHT;
+        yPos += m_lineHeight;
         
         for (const auto& control : m_controlText) {
             RenderText(control, xPos, yPos, m_colors.text);
-            yPos += HUD_LINE_HEIGHT;
+            yPos += m_lineHeight;
         }
     }
     
@@ -405,23 +413,23 @@ void HUDSystem::UpdateDeviceStatistics() {
 void HUDSystem::RenderText(const std::string& text, int x, int y, D3DCOLOR color) {
     for (size_t i = 0; i < text.length(); ++i) {
         int charIndex = (unsigned char)text[i] - 32;
-        if (charIndex < 0 || charIndex >= 95) continue;
+        if (charIndex < 0 || charIndex >= (m_charsPerRow * m_charRows)) continue;
         
-        float u1 = (charIndex % 16) * (1.0f / 16.0f);
-        float v1 = (charIndex / 16) * (1.0f / 6.0f);
-        float u2 = u1 + (1.0f / 16.0f);
-        float v2 = v1 + (1.0f / 6.0f);
+        float u1 = (charIndex % m_charsPerRow) * (1.0f / m_charsPerRow);
+        float v1 = (charIndex / m_charsPerRow) * (1.0f / m_charRows);
+        float u2 = u1 + (1.0f / m_charsPerRow);
+        float v2 = v1 + (1.0f / m_charRows);
         
         HUDVertex vertices[4];
         vertices[0] = { (float)x, (float)y, 0.5f, 1.0f, color, u1, v1 };
-        vertices[1] = { (float)(x + HUD_CHAR_WIDTH), (float)y, 0.5f, 1.0f, color, u2, v1 };
-        vertices[2] = { (float)x, (float)(y + HUD_CHAR_HEIGHT), 0.5f, 1.0f, color, u1, v2 };
-        vertices[3] = { (float)(x + HUD_CHAR_WIDTH), (float)(y + HUD_CHAR_HEIGHT), 0.5f, 1.0f, color, u2, v2 };
+        vertices[1] = { (float)(x + m_charWidth), (float)y, 0.5f, 1.0f, color, u2, v1 };
+        vertices[2] = { (float)x, (float)(y + m_charHeight), 0.5f, 1.0f, color, u1, v2 };
+        vertices[3] = { (float)(x + m_charWidth), (float)(y + m_charHeight), 0.5f, 1.0f, color, u2, v2 };
         
         // Use DrawPrimitiveUP to go through the command buffer system
         m_device->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(HUDVertex));
         
-        x += HUD_CHAR_WIDTH + HUD_CHAR_SPACING;
+        x += m_charWidth + m_charSpacing;
     }
 }
 
@@ -438,6 +446,85 @@ void HUDSystem::RenderBox(int x, int y, int width, int height, D3DCOLOR color) {
     m_device->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP, 2, vertices, sizeof(HUDVertex));
     
     m_device->SetTexture(0, m_fontTexture);
+}
+
+bool HUDSystem::LoadFontTexture(const std::string& filename) {
+    // Check if file exists
+    std::ifstream file(filename, std::ios::binary);
+    if (!file.good()) {
+        return false;
+    }
+    file.close();
+    
+    // Try to load texture using D3DX function
+    if (CreateFontTextureFromFile(filename)) {
+        // Analyze the texture to determine font metrics
+        // For now, we'll assume standard layouts:
+        // - 256x128: 16x16 chars of 16x16 pixels each
+        // - 128x128: 16x16 chars of 8x8 pixels each  
+        // - 128x48: 16x6 chars of 8x8 pixels each (default)
+        
+        D3DSURFACE_DESC desc;
+        if (m_fontTexture && SUCCEEDED(m_fontTexture->GetLevelDesc(0, &desc))) {
+            if (desc.Width == 256 && desc.Height == 128) {
+                // 16x16 font
+                m_charWidth = 16;
+                m_charHeight = 16;
+                m_charSpacing = 2;
+                m_lineHeight = 18;
+                m_charsPerRow = 16;
+                m_charRows = 8;
+            } else if (desc.Width == 128 && desc.Height == 128) {
+                // 8x8 font with full ASCII
+                m_charWidth = 8;
+                m_charHeight = 8;
+                m_charSpacing = 1;
+                m_lineHeight = 10;
+                m_charsPerRow = 16;
+                m_charRows = 16;
+            } else if (desc.Width == 512 && desc.Height == 512) {
+                // 32x32 font
+                m_charWidth = 32;
+                m_charHeight = 32;
+                m_charSpacing = 4;
+                m_lineHeight = 36;
+                m_charsPerRow = 16;
+                m_charRows = 16;
+            }
+            // Otherwise keep default metrics
+        }
+        
+        return true;
+    }
+    
+    return false;
+}
+
+bool HUDSystem::CreateFontTextureFromFile(const std::string& filename) {
+    if (m_fontTexture) {
+        m_fontTexture->Release();
+        m_fontTexture = nullptr;
+    }
+    
+    // Use D3DXCreateTextureFromFileEx for more control
+    HRESULT hr = D3DXCreateTextureFromFileEx(
+        m_device,
+        filename.c_str(),
+        D3DX_DEFAULT,     // Width
+        D3DX_DEFAULT,     // Height
+        1,                // MipLevels
+        0,                // Usage
+        D3DFMT_A8R8G8B8,  // Format
+        D3DPOOL_MANAGED,  // Pool
+        D3DX_DEFAULT,     // Filter
+        D3DX_DEFAULT,     // MipFilter
+        0,                // ColorKey (0 = no color key)
+        nullptr,          // SrcInfo
+        nullptr,          // Palette
+        &m_fontTexture
+    );
+    
+    return SUCCEEDED(hr);
 }
 
 void HUDSystem::CreateFontTexture() {
@@ -478,6 +565,14 @@ void HUDSystem::CreateFontTexture() {
         }
         
         m_fontTexture->UnlockRect(0);
+        
+        // Set default metrics for built-in font
+        m_charWidth = 8;
+        m_charHeight = 8;
+        m_charSpacing = 1;
+        m_lineHeight = 10;
+        m_charsPerRow = 16;
+        m_charRows = 6;
     }
 }
 

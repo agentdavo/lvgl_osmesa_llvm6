@@ -25,6 +25,24 @@ typedef float FLOAT;
 typedef char* LPSTR;
 #endif
 
+#ifndef LPCSTR
+typedef const char* LPCSTR;
+#endif
+
+/* D3DX Image file formats */
+typedef enum _D3DXIMAGE_FILEFORMAT {
+    D3DXIFF_BMP = 0,
+    D3DXIFF_JPG = 1,
+    D3DXIFF_TGA = 2,
+    D3DXIFF_PNG = 3,
+    D3DXIFF_DDS = 4,
+    D3DXIFF_PPM = 5,
+    D3DXIFF_DIB = 6,
+    D3DXIFF_HDR = 7,
+    D3DXIFF_PFM = 8,
+    D3DXIFF_FORCE_DWORD = 0x7fffffff
+} D3DXIMAGE_FILEFORMAT;
+
 /* D3DXMATRIX is D3DMATRIX with C++ operators in the official SDK */
 #ifdef __cplusplus
 struct D3DXMATRIX : public D3DMATRIX
@@ -316,6 +334,7 @@ HRESULT D3DXComputeNormalMap(IDirect3DTexture8* pTexture, IDirect3DTexture8* pSr
 DX8GL_API HRESULT WINAPI D3DXLoadSurfaceFromFile(IDirect3DSurface8* pDestSurface, const PALETTEENTRY* pDestPalette, const RECT* pDestRect, const char* pSrcFile, const RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey, void* pSrcInfo);
 DX8GL_API HRESULT WINAPI D3DXLoadSurfaceFromMemory(IDirect3DSurface8* pDestSurface, const PALETTEENTRY* pDestPalette, const RECT* pDestRect, const void* pSrcMemory, D3DFORMAT SrcFormat, UINT SrcPitch, const PALETTEENTRY* pSrcPalette, const RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey);
 DX8GL_API HRESULT D3DXLoadSurfaceFromSurface(IDirect3DSurface8* pDestSurface, CONST PALETTEENTRY* pDestPalette, CONST RECT* pDestRect, IDirect3DSurface8* pSrcSurface, CONST PALETTEENTRY* pSrcPalette, CONST RECT* pSrcRect, DWORD Filter, D3DCOLOR ColorKey);
+DX8GL_API HRESULT WINAPI D3DXSaveSurfaceToFile(LPCSTR pDestFile, D3DXIMAGE_FILEFORMAT DestFormat, IDirect3DSurface8* pSrcSurface, const PALETTEENTRY* pSrcPalette, const RECT* pSrcRect);
 
 /* Shader compilation functions */
 DX8GL_API HRESULT D3DXAssembleShader(const char* pSrcData, DWORD SrcDataLen, DWORD Flags, ID3DXBuffer** ppConstants, ID3DXBuffer** ppCompiledShader, ID3DXBuffer** ppCompilationErrors);

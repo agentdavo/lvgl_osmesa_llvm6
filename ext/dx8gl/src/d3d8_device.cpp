@@ -2319,8 +2319,39 @@ HRESULT Direct3DDevice8::ValidateDevice(DWORD* pNumPasses) {
         // Can't have both vertex and table fog
         if (fog_vertex_mode != D3DFOG_NONE && fog_table_mode != D3DFOG_NONE) {
             DX8GL_WARN("ValidateDevice: Both vertex and table fog enabled");
-            return D3DERR_INVALIDCALL; // Z buffer required but not available
+            return D3DERR_INVALIDCALL;
         }
+        
+        // Validate range fog setting
+        DWORD range_fog = state_manager_->get_render_state(D3DRS_RANGEFOGENABLE);
+        if (range_fog && fog_table_mode != D3DFOG_NONE) {
+            // Range-based fog is typically only supported with vertex fog
+            DX8GL_WARN("ValidateDevice: Range fog with table fog may not be supported");
+            // This is a warning, not an error - some hardware might support it
+        }
+    }
+    
+    // Validate color vertex and material settings
+    DWORD color_vertex = state_manager_->get_render_state(D3DRS_COLORVERTEX);
+    DWORD lighting = state_manager_->get_render_state(D3DRS_LIGHTING);
+    if (color_vertex && !lighting) {
+        // Color vertex requires lighting to be enabled for proper material processing
+        DX8GL_DEBUG("ValidateDevice: Color vertex enabled without lighting");
+    }
+    
+    // Validate specular material source
+    DWORD specular_source = state_manager_->get_render_state(D3DRS_SPECULARMATERIALSOURCE);
+    if (specular_source > D3DMCS_COLOR2) {
+        DX8GL_WARN("ValidateDevice: Invalid specular material source %u", specular_source);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Validate Z-bias setting
+    DWORD z_bias = state_manager_->get_render_state(D3DRS_ZBIAS);
+    if (z_bias > 16) {
+        // D3D Z-bias typically ranges from 0-16
+        DX8GL_WARN("ValidateDevice: Z-bias value %u exceeds typical range (0-16)", z_bias);
+        // This is a warning, not an error - allow it but warn
     }
     
     // Validate point sprite states

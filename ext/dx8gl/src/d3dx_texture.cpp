@@ -22,19 +22,6 @@ typedef struct _D3DXIMAGE_INFO {
     DWORD ImageFileFormat;
 } D3DXIMAGE_INFO;
 
-typedef enum _D3DXIMAGE_FILEFORMAT {
-    D3DXIFF_BMP = 0,
-    D3DXIFF_JPG = 1,
-    D3DXIFF_TGA = 2,
-    D3DXIFF_PNG = 3,
-    D3DXIFF_DDS = 4,
-    D3DXIFF_PPM = 5,
-    D3DXIFF_DIB = 6,
-    D3DXIFF_HDR = 7,
-    D3DXIFF_PFM = 8,
-    D3DXIFF_FORCE_DWORD = 0x7fffffff
-} D3DXIMAGE_FILEFORMAT;
-
 // Simple image format detection
 enum ImageFormat {
     FORMAT_UNKNOWN,
@@ -981,8 +968,8 @@ static bool save_tga(const char* filename, const uint8_t* pixels, UINT width, UI
 }
 
 HRESULT WINAPI D3DXSaveSurfaceToFile(
-    const char* pDestFile,
-    DWORD DestFormat,
+    LPCSTR pDestFile,
+    D3DXIMAGE_FILEFORMAT DestFormat,
     IDirect3DSurface8* pSrcSurface,
     const PALETTEENTRY* pSrcPalette,
     const RECT* pSrcRect)

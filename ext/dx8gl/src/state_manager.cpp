@@ -286,6 +286,21 @@ void StateManager::set_render_state(D3DRENDERSTATETYPE state, DWORD value) {
         case D3DRS_TEXTUREFACTOR:
             render_state_.texture_factor = value;
             break;
+        case D3DRS_ZBIAS:
+            render_state_.z_bias = value;
+            break;
+        case D3DRS_RANGEFOGENABLE:
+            render_state_.range_fog_enable = value;
+            break;
+        case D3DRS_FOGVERTEXMODE:
+            render_state_.fog_vertex_mode = static_cast<D3DFOGMODE>(value);
+            break;
+        case D3DRS_SPECULARMATERIALSOURCE:
+            render_state_.specular_material_source = value;
+            break;
+        case D3DRS_COLORVERTEX:
+            render_state_.color_vertex = value;
+            break;
         default:
             DX8GL_WARN("Unhandled render state: %d", state);
             break;
@@ -333,6 +348,12 @@ DWORD StateManager::get_render_state(D3DRENDERSTATETYPE state) const {
         case D3DRS_LOCALVIEWER: return render_state_.local_viewer;
         case D3DRS_SCISSORTESTENABLE: return render_state_.scissor_test_enable;
         case D3DRS_BLENDOP: return render_state_.blend_op;
+        case D3DRS_TEXTUREFACTOR: return render_state_.texture_factor;
+        case D3DRS_ZBIAS: return render_state_.z_bias;
+        case D3DRS_RANGEFOGENABLE: return render_state_.range_fog_enable;
+        case D3DRS_FOGVERTEXMODE: return render_state_.fog_vertex_mode;
+        case D3DRS_SPECULARMATERIALSOURCE: return render_state_.specular_material_source;
+        case D3DRS_COLORVERTEX: return render_state_.color_vertex;
         default:
             DX8GL_WARN("Unhandled render state query: %d", state);
             return 0;
@@ -561,6 +582,20 @@ void StateManager::apply_render_states() {
             glDisable(GL_SCISSOR_TEST);
         }
         gl_cache_.scissor_enabled = render_state_.scissor_test_enable;
+    }
+    
+    // Polygon offset (Z-bias) - D3DRS_ZBIAS maps to glPolygonOffset
+    // D3D Z-bias is in the range [0, 16] typically, where 0 means no bias
+    // We'll map this to OpenGL polygon offset factor
+    if (render_state_.z_bias != 0) {
+        glEnable(GL_POLYGON_OFFSET_FILL);
+        // Convert D3D z-bias to OpenGL polygon offset
+        // D3D uses a range of 0-16, we'll scale to a reasonable OpenGL range
+        float factor = static_cast<float>(render_state_.z_bias) * -0.0001f;
+        float units = static_cast<float>(render_state_.z_bias) * -1.0f;
+        glPolygonOffset(factor, units);
+    } else {
+        glDisable(GL_POLYGON_OFFSET_FILL);
     }
     
     // Stencil test

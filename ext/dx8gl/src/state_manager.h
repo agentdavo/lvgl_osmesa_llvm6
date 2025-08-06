@@ -105,6 +105,7 @@ struct RenderState {
     DWORD z_enable = TRUE;
     DWORD z_write_enable = TRUE;
     D3DCMPFUNC z_func = D3DCMP_LESSEQUAL;
+    DWORD z_bias = 0;  // D3DRS_ZBIAS - maps to polygon offset
     
     // Alpha blending states
     DWORD alpha_blend_enable = FALSE;
@@ -135,6 +136,7 @@ struct RenderState {
     float fog_start = 0.0f;
     float fog_end = 1.0f;
     float fog_density = 1.0f;
+    DWORD range_fog_enable = FALSE;  // D3DRS_RANGEFOGENABLE
     
     // Lighting states
     DWORD lighting = TRUE;
@@ -142,6 +144,8 @@ struct RenderState {
     DWORD normalize_normals = FALSE;
     DWORD local_viewer = FALSE;
     DWORD specular_enable = FALSE;
+    DWORD specular_material_source = D3DMCS_MATERIAL;  // D3DRS_SPECULARMATERIALSOURCE
+    DWORD color_vertex = TRUE;  // D3DRS_COLORVERTEX
     
     // Texture states
     DWORD color_op[8] = {D3DTOP_MODULATE};

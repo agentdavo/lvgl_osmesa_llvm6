@@ -340,3 +340,54 @@ else()
 endif()
 
 add_test(NAME FramebufferCorrectnessTest COMMAND test_framebuffer_correctness)
+
+# HUD font test
+add_executable(test_hud_font 
+    test_hud_font.cpp
+)
+
+target_include_directories(test_hud_font PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_hud_font PRIVATE dx8gl)
+    add_test(NAME HUDFontTest COMMAND test_hud_font)
+else()
+    message(WARNING "dx8gl target not available, skipping test_hud_font")
+    set_target_properties(test_hud_font PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Alpha blending test
+add_executable(test_alpha_blending 
+    test_alpha_blending.cpp
+)
+
+target_include_directories(test_alpha_blending PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_alpha_blending PRIVATE dx8gl)
+    add_test(NAME AlphaBlendingTest COMMAND test_alpha_blending)
+else()
+    message(WARNING "dx8gl target not available, skipping test_alpha_blending")
+    set_target_properties(test_alpha_blending PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Render states test
+add_executable(test_render_states 
+    test_render_states.cpp
+)
+
+target_include_directories(test_render_states PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_render_states PRIVATE dx8gl)
+    add_test(NAME RenderStatesTest COMMAND test_render_states)
+else()
+    message(WARNING "dx8gl target not available, skipping test_render_states")
+    set_target_properties(test_render_states PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
