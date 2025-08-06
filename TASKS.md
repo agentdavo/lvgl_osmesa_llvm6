@@ -32,6 +32,11 @@
 - [ ] T44:: Fix:: Test FVF state management fix for DrawIndexedPrimitiveUP :: Depends=[build system] :: Est=S :: Requires LLVM rebuild to test
 
 ## DONE
+- [x] T60:: Fix:: Fix duplicated backend enum definitions :: Depends=[none] :: Est=S :: Consolidated DX8_BACKEND_* to DX8GL_BACKEND_* ✅ FIXED
+- [x] T61:: Feature:: Create OffscreenFramebuffer helper class :: Depends=[none] :: Est=M :: Unified framebuffer management for all backends ✅ IMPLEMENTED
+- [x] T62:: Feature:: Add WebGPU backend support :: Depends=[none] :: Est=L :: Experimental WebGPU rendering backend ✅ ADDED
+- [x] T63:: Test:: Create backend selection tests :: Depends=[T60] :: Est=M :: Verify runtime backend switching ✅ CREATED
+- [x] T64:: Fix:: Fix Mesa library linking for tests :: Depends=[none] :: Est=M :: Tests use local Mesa 25.0.7 instead of system ✅ RESOLVED
 - [x] T54:: Feature:: Implement texture loading from TGA files :: Depends=[none] :: Est=L :: D3DXCreateTextureFromFileEx implementation ✅ WORKING
 - [x] T55:: Fix:: Fix vertex attribute binding for texture coordinates :: Depends=[T54] :: Est=M :: Enable texcoord0 attribute in command buffer ✅ FIXED
 - [x] T56:: Feature:: Add textured floor to dx8_cube demo :: Depends=[T54,T55] :: Est=M :: Demonstrate texture mapping ✅ RENDERING
@@ -159,9 +164,13 @@ The DirectX 8 to OpenGL translation layer is **FULLY FUNCTIONAL** and successful
 - **VS 1.1 Support**: Full vertex shader 1.1 with address register and relative addressing
 - **Shader Caching**: DX8 bytecode hashing with FNV-1a and OpenGL program binary caching
 - **Test Suite**: Comprehensive shader translation tests covering all new features
-- **Pluggable Backends**: Abstracted rendering backend interface supporting OSMesa and EGL
+- **Pluggable Backends**: Abstracted rendering backend interface supporting OSMesa, EGL, and WebGPU
 - **Runtime Backend Selection**: Choose backend via environment variable, API, or command line
 - **Backend Regression Tests**: Automated testing to ensure consistent rendering across backends
+- **Mesa Library Fix**: Tests now correctly link against locally built Mesa 25.0.7 instead of system libraries
+- **WebGPU Backend**: Added experimental WebGPU backend support with build system integration
+- **OffscreenFramebuffer**: Created unified framebuffer management class with format conversion utilities
+- **Build System**: Mesa now builds shared libraries for better compatibility
 
 ### 📊 **Performance & Quality**
 - **Zero Memory Leaks**: Clean shutdown without double frees or leaks

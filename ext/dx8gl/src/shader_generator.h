@@ -20,75 +20,6 @@ enum ShaderFeatures {
     SHADER_FEATURE_MULTI_TEXTURE = (1 << 6),
 };
 
-// Shader program handle
-struct ShaderProgram {
-    GLuint program;
-    GLuint vertex_shader;
-    GLuint fragment_shader;
-    
-    // Uniform locations (cached)
-    GLint u_mvp_matrix;
-    GLint u_world_matrix;
-    GLint u_view_matrix;
-    GLint u_projection_matrix;
-    GLint u_normal_matrix;
-    
-    // Lighting uniforms
-    GLint u_light_enabled[8];
-    GLint u_light_position[8];
-    GLint u_light_direction[8];
-    GLint u_light_diffuse[8];
-    GLint u_light_specular[8];
-    GLint u_light_ambient[8];
-    
-    // Material uniforms
-    GLint u_material_diffuse;
-    GLint u_material_ambient;
-    GLint u_material_specular;
-    GLint u_material_emissive;
-    GLint u_material_power;
-    
-    // Fog uniforms
-    GLint u_fog_color;
-    GLint u_fog_start;
-    GLint u_fog_end;
-    GLint u_fog_density;
-    
-    // Texture uniforms
-    GLint u_texture[8];
-    
-    // Alpha test uniforms
-    GLint u_alpha_ref;
-    
-    ShaderProgram() : program(0), vertex_shader(0), fragment_shader(0) {
-        // Initialize all uniform locations to -1
-        u_mvp_matrix = -1;
-        u_world_matrix = -1;
-        u_view_matrix = -1;
-        u_projection_matrix = -1;
-        u_normal_matrix = -1;
-        u_material_diffuse = -1;
-        u_material_ambient = -1;
-        u_material_specular = -1;
-        u_material_emissive = -1;
-        u_material_power = -1;
-        u_fog_color = -1;
-        u_fog_start = -1;
-        u_fog_end = -1;
-        u_fog_density = -1;
-        u_alpha_ref = -1;
-        
-        for (int i = 0; i < 8; i++) {
-            u_light_enabled[i] = -1;
-            u_light_position[i] = -1;
-            u_light_direction[i] = -1;
-            u_light_diffuse[i] = -1;
-            u_light_specular[i] = -1;
-            u_light_ambient[i] = -1;
-            u_texture[i] = -1;
-        }
-    }
-};
 
 class ShaderGenerator {
 public:
@@ -124,12 +55,38 @@ private:
         D3DFOGMODE fog_mode;
         int num_textures;
         
+        // Texture stage operations for each active texture
+        struct TextureStageOps {
+            DWORD color_op;
+            DWORD color_arg1;
+            DWORD color_arg2;
+            DWORD alpha_op;
+            DWORD alpha_arg1;
+            DWORD alpha_arg2;
+        } tex_stages[8];
+        
         bool operator==(const ShaderKey& other) const {
-            return features == other.features &&
-                   fvf == other.fvf &&
-                   alpha_func == other.alpha_func &&
-                   fog_mode == other.fog_mode &&
-                   num_textures == other.num_textures;
+            if (features != other.features ||
+                fvf != other.fvf ||
+                alpha_func != other.alpha_func ||
+                fog_mode != other.fog_mode ||
+                num_textures != other.num_textures) {
+                return false;
+            }
+            
+            // Compare texture stage operations for active textures
+            for (int i = 0; i < num_textures; i++) {
+                if (tex_stages[i].color_op != other.tex_stages[i].color_op ||
+                    tex_stages[i].color_arg1 != other.tex_stages[i].color_arg1 ||
+                    tex_stages[i].color_arg2 != other.tex_stages[i].color_arg2 ||
+                    tex_stages[i].alpha_op != other.tex_stages[i].alpha_op ||
+                    tex_stages[i].alpha_arg1 != other.tex_stages[i].alpha_arg1 ||
+                    tex_stages[i].alpha_arg2 != other.tex_stages[i].alpha_arg2) {
+                    return false;
+                }
+            }
+            
+            return true;
         }
     };
     
@@ -140,7 +97,20 @@ private:
             size_t h3 = std::hash<int>()(key.alpha_func);
             size_t h4 = std::hash<int>()(key.fog_mode);
             size_t h5 = std::hash<int>()(key.num_textures);
-            return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3) ^ (h5 << 4);
+            size_t result = h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3) ^ (h5 << 4);
+            
+            // Hash texture stage operations
+            for (int i = 0; i < key.num_textures; i++) {
+                size_t stage_hash = std::hash<DWORD>()(key.tex_stages[i].color_op) ^
+                                   (std::hash<DWORD>()(key.tex_stages[i].color_arg1) << 1) ^
+                                   (std::hash<DWORD>()(key.tex_stages[i].color_arg2) << 2) ^
+                                   (std::hash<DWORD>()(key.tex_stages[i].alpha_op) << 3) ^
+                                   (std::hash<DWORD>()(key.tex_stages[i].alpha_arg1) << 4) ^
+                                   (std::hash<DWORD>()(key.tex_stages[i].alpha_arg2) << 5);
+                result ^= (stage_hash << ((i + 5) * 4));
+            }
+            
+            return result;
         }
     };
     

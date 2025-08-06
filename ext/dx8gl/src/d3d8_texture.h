@@ -102,6 +102,13 @@ private:
     };
     std::vector<DirtyRect> dirty_regions_;
     bool has_dirty_regions_;
+    
+    // Optimized dirty region tracking
+    std::vector<bool> level_fully_dirty_;  // Track if entire level is dirty
+    std::vector<RECT> level_dirty_bounds_; // Bounding box of all dirty regions per level
+    
+    void optimize_dirty_regions();
+    void merge_dirty_rect(UINT level, const RECT& new_rect);
 };
 
 } // namespace dx8gl

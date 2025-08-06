@@ -68,6 +68,8 @@ public:
     GLuint get_gl_texture() const { return gl_texture_; }
     void bind(UINT sampler) const;
     D3DPOOL get_pool() const { return pool_; }
+    void mark_face_level_dirty(D3DCUBEMAP_FACES face, UINT level, const RECT* dirty_rect = nullptr);
+    void commit_dirty_regions() { upload_dirty_regions(); }
     
     // Device reset support
     void release_gl_resources();
@@ -101,9 +103,24 @@ private:
     // Private data storage
     PrivateDataManager private_data_manager_;
     
+    // Dirty region tracking for managed textures
+    struct DirtyRect {
+        RECT rect;
+        D3DCUBEMAP_FACES face;
+        UINT level;
+    };
+    std::vector<DirtyRect> dirty_regions_;
+    bool has_dirty_regions_;
+    
+    // Optimized dirty tracking - one per face per level
+    std::vector<std::vector<bool>> face_level_fully_dirty_;  // [face][level]
+    
     // Helper methods
     static GLenum get_cube_face_target(D3DCUBEMAP_FACES face);
     bool get_gl_format(D3DFORMAT format, GLenum& internal_format, GLenum& format_out, GLenum& type);
+    void upload_dirty_regions();
+    void merge_dirty_rect(D3DCUBEMAP_FACES face, UINT level, const RECT& new_rect);
+    void optimize_dirty_regions();
 };
 
 } // namespace dx8gl

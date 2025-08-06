@@ -22,7 +22,8 @@ namespace dx8gl {
 
 // Constructor for standalone surface
 Direct3DSurface8::Direct3DSurface8(Direct3DDevice8* device, UINT width, UINT height,
-                                   D3DFORMAT format, DWORD usage)
+                                   D3DFORMAT format, DWORD usage, D3DPOOL pool,
+                                   D3DMULTISAMPLE_TYPE multisample)
     : ref_count_(1)
     , device_(device)
     , parent_texture_(nullptr)
@@ -31,6 +32,8 @@ Direct3DSurface8::Direct3DSurface8(Direct3DDevice8* device, UINT width, UINT hei
     , format_(format)
     , usage_(usage)
     , level_(0)
+    , pool_(pool)
+    , multisample_type_(multisample)
     , texture_(0)
     , renderbuffer_(0)
     , framebuffer_(0)
@@ -52,7 +55,7 @@ Direct3DSurface8::Direct3DSurface8(Direct3DDevice8* device, UINT width, UINT hei
 
 // Constructor for texture surface
 Direct3DSurface8::Direct3DSurface8(Direct3DTexture8* texture, UINT level, UINT width, 
-                                   UINT height, D3DFORMAT format, DWORD usage)
+                                   UINT height, D3DFORMAT format, DWORD usage, D3DPOOL pool)
     : ref_count_(1)
     , device_(nullptr)
     , parent_texture_(texture)
@@ -61,6 +64,8 @@ Direct3DSurface8::Direct3DSurface8(Direct3DTexture8* texture, UINT level, UINT w
     , format_(format)
     , usage_(usage)
     , level_(level)
+    , pool_(pool)
+    , multisample_type_(D3DMULTISAMPLE_NONE)  // Textures don't have multisampling
     , texture_(0)
     , renderbuffer_(0)
     , framebuffer_(0)
@@ -314,9 +319,9 @@ HRESULT Direct3DSurface8::GetDesc(D3DSURFACE_DESC* pDesc) {
     pDesc->Format = format_;
     pDesc->Type = D3DRTYPE_SURFACE;
     pDesc->Usage = usage_;
-    pDesc->Pool = parent_texture_ ? D3DPOOL_DEFAULT : D3DPOOL_DEFAULT;  // TODO: Get from parent
+    pDesc->Pool = pool_;
     pDesc->Size = pitch_ * height_;
-    pDesc->MultiSampleType = D3DMULTISAMPLE_NONE;  // TODO: Support multisampling
+    pDesc->MultiSampleType = multisample_type_;
     pDesc->Width = width_;
     pDesc->Height = height_;
     
@@ -329,6 +334,12 @@ HRESULT Direct3DSurface8::LockRect(D3DLOCKED_RECT* pLockedRect, const RECT* pRec
     
     if (!pLockedRect) {
         return D3DERR_INVALIDCALL;
+    }
+    
+    // Update device statistics for texture locks
+    // Note: This includes all surface locks from textures, render targets, etc.
+    if (device_) {
+        device_->current_stats_.texture_locks++;
     }
     
     std::lock_guard<std::mutex> lock(lock_mutex_);

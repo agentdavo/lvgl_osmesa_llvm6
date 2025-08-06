@@ -29,6 +29,10 @@ Direct3DTexture8::Direct3DTexture8(Direct3DDevice8* device, UINT width, UINT hei
         levels_ = calculate_mip_levels(width_, height_);
     }
     
+    // Initialize dirty region tracking
+    level_fully_dirty_.resize(levels_, false);
+    level_dirty_bounds_.resize(levels_);
+    
     DX8GL_DEBUG("Direct3DTexture8 created: %ux%u, levels=%u, format=%d, pool=%d",
                 width, height, levels_, format, pool);
 }
@@ -97,7 +101,7 @@ bool Direct3DTexture8::initialize() {
     for (UINT level = 0; level < levels_; level++) {
         // Create surface
         auto surface = new Direct3DSurface8(this, level, mip_width, mip_height,
-                                          format_, usage_);
+                                          format_, usage_, pool_);
         if (!surface->initialize()) {
             surface->Release();
             return false;
@@ -342,38 +346,57 @@ void Direct3DTexture8::mark_level_dirty(UINT level, const RECT* dirty_rect) {
         return;
     }
     
-    DirtyRect dirty;
-    dirty.level = level;
-    
     // Get the dimensions of this mip level
     UINT level_width = std::max(1u, width_ >> level);
     UINT level_height = std::max(1u, height_ >> level);
     
+    RECT rect_to_add;
     if (dirty_rect) {
         // Clamp the dirty rect to level dimensions
-        dirty.rect.left = std::max(static_cast<LONG>(0), dirty_rect->left);
-        dirty.rect.top = std::max(static_cast<LONG>(0), dirty_rect->top);
-        dirty.rect.right = std::min(static_cast<LONG>(level_width), dirty_rect->right);
-        dirty.rect.bottom = std::min(static_cast<LONG>(level_height), dirty_rect->bottom);
+        rect_to_add.left = std::max(static_cast<LONG>(0), dirty_rect->left);
+        rect_to_add.top = std::max(static_cast<LONG>(0), dirty_rect->top);
+        rect_to_add.right = std::min(static_cast<LONG>(level_width), dirty_rect->right);
+        rect_to_add.bottom = std::min(static_cast<LONG>(level_height), dirty_rect->bottom);
         
         // Validate the rect
-        if (dirty.rect.left >= dirty.rect.right || dirty.rect.top >= dirty.rect.bottom) {
+        if (rect_to_add.left >= rect_to_add.right || rect_to_add.top >= rect_to_add.bottom) {
             return;
         }
     } else {
         // NULL means entire level is dirty
-        dirty.rect.left = 0;
-        dirty.rect.top = 0;
-        dirty.rect.right = level_width;
-        dirty.rect.bottom = level_height;
+        rect_to_add.left = 0;
+        rect_to_add.top = 0;
+        rect_to_add.right = level_width;
+        rect_to_add.bottom = level_height;
+        level_fully_dirty_[level] = true;
     }
     
-    // TODO: Merge overlapping dirty regions for efficiency
-    dirty_regions_.push_back(dirty);
+    // If the level is already fully dirty, no need to track individual regions
+    if (level_fully_dirty_[level]) {
+        has_dirty_regions_ = true;
+        return;
+    }
+    
+    // Check if this rect makes the entire level dirty
+    if (rect_to_add.left == 0 && rect_to_add.top == 0 && 
+        rect_to_add.right == static_cast<LONG>(level_width) && 
+        rect_to_add.bottom == static_cast<LONG>(level_height)) {
+        level_fully_dirty_[level] = true;
+        // Remove any existing dirty rects for this level
+        dirty_regions_.erase(
+            std::remove_if(dirty_regions_.begin(), dirty_regions_.end(),
+                          [level](const DirtyRect& dr) { return dr.level == level; }),
+            dirty_regions_.end()
+        );
+    } else {
+        // Merge with existing dirty regions
+        merge_dirty_rect(level, rect_to_add);
+    }
+    
     has_dirty_regions_ = true;
     
     DX8GL_DEBUG("mark_level_dirty: level=%u, rect=(%ld,%ld,%ld,%ld)", 
-                level, dirty.rect.left, dirty.rect.top, dirty.rect.right, dirty.rect.bottom);
+                level, rect_to_add.left, rect_to_add.top, rect_to_add.right, rect_to_add.bottom);
 }
 
 UINT Direct3DTexture8::calculate_mip_levels(UINT width, UINT height) const {
@@ -434,14 +457,60 @@ void Direct3DTexture8::apply_lod_settings() {
 }
 
 void Direct3DTexture8::upload_dirty_regions() {
-    if (!has_dirty_regions_ || dirty_regions_.empty()) {
+    if (!has_dirty_regions_) {
         return;
     }
     
     // Bind the texture
     glBindTexture(GL_TEXTURE_2D, gl_texture_);
     
-    // Process each dirty region
+    // First, handle fully dirty levels
+    for (UINT level = 0; level < levels_; ++level) {
+        if (!level_fully_dirty_[level]) {
+            continue;
+        }
+        
+        // Get the surface for this level
+        if (level >= surfaces_.size() || !surfaces_[level]) {
+            continue;
+        }
+        
+        Direct3DSurface8* surface = surfaces_[level];
+        
+        // Lock the entire surface
+        D3DLOCKED_RECT locked_rect;
+        HRESULT hr = surface->LockRect(&locked_rect, nullptr, D3DLOCK_READONLY);
+        if (FAILED(hr)) {
+            DX8GL_ERROR("Failed to lock surface for full level upload");
+            continue;
+        }
+        
+        // Get format information
+        GLenum internal_format, format, type;
+        if (!get_gl_format(format_, internal_format, format, type)) {
+            surface->UnlockRect();
+            continue;
+        }
+        
+        // Upload the entire level
+        UINT level_width = std::max(1u, width_ >> level);
+        UINT level_height = std::max(1u, height_ >> level);
+        
+        glTexSubImage2D(GL_TEXTURE_2D, level, 0, 0,
+                        level_width, level_height,
+                        format, type, locked_rect.pBits);
+        
+        GLenum error = glGetError();
+        if (error != GL_NO_ERROR) {
+            DX8GL_ERROR("glTexSubImage2D failed for full level upload: 0x%04x", error);
+        }
+        
+        surface->UnlockRect();
+        
+        DX8GL_DEBUG("Uploaded full level %u (%ux%u)", level, level_width, level_height);
+    }
+    
+    // Process individual dirty regions
     for (const auto& dirty : dirty_regions_) {
         // Get the surface for this level
         if (dirty.level >= surfaces_.size() || !surfaces_[dirty.level]) {
@@ -491,6 +560,7 @@ void Direct3DTexture8::upload_dirty_regions() {
     // Clear dirty regions
     dirty_regions_.clear();
     has_dirty_regions_ = false;
+    std::fill(level_fully_dirty_.begin(), level_fully_dirty_.end(), false);
     
     glBindTexture(GL_TEXTURE_2D, 0);
 }
@@ -586,6 +656,112 @@ bool Direct3DTexture8::recreate_gl_resources() {
     
     DX8GL_DEBUG("Successfully recreated texture %u", gl_texture_);
     return true;
+}
+
+void Direct3DTexture8::merge_dirty_rect(UINT level, const RECT& new_rect) {
+    // Check if we can merge with existing dirty regions
+    bool merged = false;
+    
+    for (auto& dirty : dirty_regions_) {
+        if (dirty.level != level) {
+            continue;
+        }
+        
+        // Check if rectangles overlap or are adjacent
+        if (!(new_rect.right < dirty.rect.left || new_rect.left > dirty.rect.right ||
+              new_rect.bottom < dirty.rect.top || new_rect.top > dirty.rect.bottom)) {
+            // Merge by expanding the existing rect
+            dirty.rect.left = std::min(dirty.rect.left, new_rect.left);
+            dirty.rect.top = std::min(dirty.rect.top, new_rect.top);
+            dirty.rect.right = std::max(dirty.rect.right, new_rect.right);
+            dirty.rect.bottom = std::max(dirty.rect.bottom, new_rect.bottom);
+            merged = true;
+            
+            // Check if the merged rect now covers the entire level
+            UINT level_width = std::max(1u, width_ >> level);
+            UINT level_height = std::max(1u, height_ >> level);
+            if (dirty.rect.left == 0 && dirty.rect.top == 0 &&
+                dirty.rect.right == static_cast<LONG>(level_width) &&
+                dirty.rect.bottom == static_cast<LONG>(level_height)) {
+                level_fully_dirty_[level] = true;
+                // Remove this rect since the whole level is dirty
+                dirty_regions_.erase(
+                    std::remove_if(dirty_regions_.begin(), dirty_regions_.end(),
+                                  [level](const DirtyRect& dr) { return dr.level == level; }),
+                    dirty_regions_.end()
+                );
+            }
+            break;
+        }
+    }
+    
+    // If not merged, add as a new dirty region
+    if (!merged) {
+        DirtyRect dirty;
+        dirty.level = level;
+        dirty.rect = new_rect;
+        dirty_regions_.push_back(dirty);
+    }
+    
+    // Optimize if we have too many dirty regions
+    if (dirty_regions_.size() > 16) {
+        optimize_dirty_regions();
+    }
+}
+
+void Direct3DTexture8::optimize_dirty_regions() {
+    // Group dirty regions by level
+    std::vector<std::vector<RECT>> rects_by_level(levels_);
+    
+    for (const auto& dirty : dirty_regions_) {
+        if (!level_fully_dirty_[dirty.level]) {
+            rects_by_level[dirty.level].push_back(dirty.rect);
+        }
+    }
+    
+    // Clear existing regions
+    dirty_regions_.clear();
+    
+    // For each level, try to merge overlapping regions
+    for (UINT level = 0; level < levels_; ++level) {
+        if (level_fully_dirty_[level]) {
+            continue;
+        }
+        
+        auto& rects = rects_by_level[level];
+        if (rects.empty()) {
+            continue;
+        }
+        
+        // Simple optimization: if we have many small rects, just mark the whole level as dirty
+        UINT level_width = std::max(1u, width_ >> level);
+        UINT level_height = std::max(1u, height_ >> level);
+        UINT level_area = level_width * level_height;
+        UINT dirty_area = 0;
+        
+        for (const auto& rect : rects) {
+            dirty_area += (rect.right - rect.left) * (rect.bottom - rect.top);
+        }
+        
+        // If more than 75% of the level is dirty, mark the whole level
+        if (dirty_area > (level_area * 3 / 4)) {
+            level_fully_dirty_[level] = true;
+        } else {
+            // Otherwise, compute the bounding box of all dirty regions
+            RECT bounds = rects[0];
+            for (size_t i = 1; i < rects.size(); ++i) {
+                bounds.left = std::min(bounds.left, rects[i].left);
+                bounds.top = std::min(bounds.top, rects[i].top);
+                bounds.right = std::max(bounds.right, rects[i].right);
+                bounds.bottom = std::max(bounds.bottom, rects[i].bottom);
+            }
+            
+            DirtyRect dirty;
+            dirty.level = level;
+            dirty.rect = bounds;
+            dirty_regions_.push_back(dirty);
+        }
+    }
 }
 
 } // namespace dx8gl

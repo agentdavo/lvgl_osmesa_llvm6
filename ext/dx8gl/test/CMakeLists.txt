@@ -22,11 +22,11 @@ endif()
 # Test executable for texture LOD and dirty regions (simple version)
 add_executable(test_texture_simple 
     test_texture_simple.cpp
-    ../src/d3d8_texture.cpp
-    ../src/d3d8_surface.cpp
     ../src/logger.cpp
-    ../src/private_data.cpp
 )
+
+# Link against dx8gl library which contains all needed symbols
+target_link_libraries(test_texture_simple PRIVATE dx8gl)
 
 target_include_directories(test_texture_simple PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../src
@@ -64,9 +64,11 @@ endif()
 # Test executable for surface format conversions
 add_executable(test_surface_format 
     test_surface_format.cpp
-    ../src/d3d8_surface.cpp
     ../src/logger.cpp
 )
+
+# Link against dx8gl library
+target_link_libraries(test_surface_format PRIVATE dx8gl)
 
 target_include_directories(test_surface_format PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../src

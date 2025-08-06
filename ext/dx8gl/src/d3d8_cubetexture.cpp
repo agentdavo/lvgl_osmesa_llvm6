@@ -30,7 +30,8 @@ Direct3DCubeTexture8::Direct3DCubeTexture8(Direct3DDevice8* device, UINT edge_le
     , pool_(pool)
     , priority_(0)
     , lod_(0)
-    , gl_texture_(0) {
+    , gl_texture_(0)
+    , has_dirty_regions_(false) {
     
     // If levels is 0, calculate number of mip levels
     if (levels_ == 0) {
@@ -50,8 +51,17 @@ Direct3DCubeTexture8::Direct3DCubeTexture8(Direct3DDevice8* device, UINT edge_le
         faces_[face].lock_flags.resize(levels_, 0);
     }
     
+    // Initialize dirty region tracking
+    face_level_fully_dirty_.resize(6);
+    for (int face = 0; face < 6; face++) {
+        face_level_fully_dirty_[face].resize(levels_, false);
+    }
+    
     // Add reference to device
     device_->AddRef();
+    
+    // Register with device for proper cleanup on device reset
+    device_->register_cube_texture(this);
     
     DX8GL_DEBUG("Direct3DCubeTexture8 created: edge=%u, levels=%u, format=0x%08x, pool=%d",
                 edge_length, levels_, format, pool);
@@ -62,8 +72,7 @@ Direct3DCubeTexture8::~Direct3DCubeTexture8() {
     
     // Unregister from device
     if (device_) {
-        // TODO: Add cube texture tracking to device
-        // device_->unregister_cube_texture(this);
+        device_->unregister_cube_texture(this);
     }
     
     // Release all surfaces
@@ -319,7 +328,7 @@ HRESULT Direct3DCubeTexture8::GetCubeMapSurface(D3DCUBEMAP_FACES FaceType, UINT 
         // Create surface for cube texture face
         // Note: We pass nullptr for texture since this is a cube texture, not a regular texture
         auto surface = new Direct3DSurface8(device_, mip_size, mip_size, 
-                                          format_, usage_);
+                                          format_, usage_, pool_);
         if (!surface->initialize()) {
             surface->Release();
             return D3DERR_OUTOFVIDEOMEMORY;
@@ -485,18 +494,24 @@ HRESULT Direct3DCubeTexture8::UnlockRect(D3DCUBEMAP_FACES FaceType, UINT Level) 
 HRESULT Direct3DCubeTexture8::AddDirtyRect(D3DCUBEMAP_FACES FaceType, const RECT* pDirtyRect) {
     // Track dirty regions for managed textures
     if (pool_ == D3DPOOL_MANAGED) {
-        // TODO: Implement dirty region tracking
-        DX8GL_TRACE("AddDirtyRect called for cube face %d", FaceType);
+        mark_face_level_dirty(FaceType, 0, pDirtyRect);
     }
     return D3D_OK;
 }
 
 // Internal methods
 void Direct3DCubeTexture8::bind(UINT sampler) const {
-    if (gl_texture_) {
-        glActiveTexture(GL_TEXTURE0 + sampler);
-        glBindTexture(GL_TEXTURE_CUBE_MAP, gl_texture_);
+    if (!gl_texture_) {
+        return;
     }
+    
+    // Upload any dirty regions before binding (const_cast is needed here)
+    if (has_dirty_regions_ && pool_ == D3DPOOL_MANAGED) {
+        const_cast<Direct3DCubeTexture8*>(this)->upload_dirty_regions();
+    }
+    
+    glActiveTexture(GL_TEXTURE0 + sampler);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, gl_texture_);
 }
 
 void Direct3DCubeTexture8::release_gl_resources() {
@@ -603,6 +618,304 @@ bool Direct3DCubeTexture8::get_gl_format(D3DFORMAT format, GLenum& internal_form
         default:
             DX8GL_ERROR("Unsupported cube texture format: 0x%08x", format);
             return false;
+    }
+}
+
+void Direct3DCubeTexture8::mark_face_level_dirty(D3DCUBEMAP_FACES face, UINT level, const RECT* dirty_rect) {
+    // Only track dirty regions for managed textures
+    if (pool_ != D3DPOOL_MANAGED || level >= levels_ || 
+        face < D3DCUBEMAP_FACE_POSITIVE_X || face > D3DCUBEMAP_FACE_NEGATIVE_Z) {
+        return;
+    }
+    
+    int face_index = face - D3DCUBEMAP_FACE_POSITIVE_X;
+    
+    // Get the dimensions of this mip level
+    UINT level_size = std::max(1u, edge_length_ >> level);
+    
+    RECT rect_to_add;
+    if (dirty_rect) {
+        // Clamp the dirty rect to level dimensions
+        rect_to_add.left = std::max(static_cast<LONG>(0), dirty_rect->left);
+        rect_to_add.top = std::max(static_cast<LONG>(0), dirty_rect->top);
+        rect_to_add.right = std::min(static_cast<LONG>(level_size), dirty_rect->right);
+        rect_to_add.bottom = std::min(static_cast<LONG>(level_size), dirty_rect->bottom);
+        
+        // Validate the rect
+        if (rect_to_add.left >= rect_to_add.right || rect_to_add.top >= rect_to_add.bottom) {
+            return;
+        }
+    } else {
+        // Entire face level is dirty
+        rect_to_add.left = 0;
+        rect_to_add.top = 0;
+        rect_to_add.right = level_size;
+        rect_to_add.bottom = level_size;
+        face_level_fully_dirty_[face_index][level] = true;
+    }
+    
+    // If the face level is already fully dirty, no need to track individual regions
+    if (face_level_fully_dirty_[face_index][level]) {
+        has_dirty_regions_ = true;
+        return;
+    }
+    
+    // Check if this rect makes the entire face level dirty
+    if (rect_to_add.left == 0 && rect_to_add.top == 0 && 
+        rect_to_add.right == static_cast<LONG>(level_size) && 
+        rect_to_add.bottom == static_cast<LONG>(level_size)) {
+        face_level_fully_dirty_[face_index][level] = true;
+        // Remove any existing dirty rects for this face level
+        dirty_regions_.erase(
+            std::remove_if(dirty_regions_.begin(), dirty_regions_.end(),
+                          [face, level](const DirtyRect& dr) { 
+                              return dr.face == face && dr.level == level; 
+                          }),
+            dirty_regions_.end()
+        );
+    } else {
+        // Merge with existing dirty regions
+        merge_dirty_rect(face, level, rect_to_add);
+    }
+    
+    has_dirty_regions_ = true;
+    
+    DX8GL_DEBUG("mark_face_level_dirty: face=%d, level=%u, rect=(%ld,%ld,%ld,%ld)", 
+                face, level, rect_to_add.left, rect_to_add.top, rect_to_add.right, rect_to_add.bottom);
+}
+
+void Direct3DCubeTexture8::upload_dirty_regions() {
+    if (!has_dirty_regions_) {
+        return;
+    }
+    
+    // Bind the cube texture
+    glBindTexture(GL_TEXTURE_CUBE_MAP, gl_texture_);
+    
+    // First, handle fully dirty face levels
+    for (int face_idx = 0; face_idx < 6; ++face_idx) {
+        D3DCUBEMAP_FACES face = static_cast<D3DCUBEMAP_FACES>(D3DCUBEMAP_FACE_POSITIVE_X + face_idx);
+        GLenum target = get_cube_face_target(face);
+        
+        for (UINT level = 0; level < levels_; ++level) {
+            if (!face_level_fully_dirty_[face_idx][level]) {
+                continue;
+            }
+            
+            // Get the surface for this face level
+            if (!faces_[face_idx].surfaces[level]) {
+                continue;
+            }
+            
+            Direct3DSurface8* surface = faces_[face_idx].surfaces[level];
+            
+            // Lock the entire surface
+            D3DLOCKED_RECT locked_rect;
+            HRESULT hr = surface->LockRect(&locked_rect, nullptr, D3DLOCK_READONLY);
+            if (FAILED(hr)) {
+                DX8GL_ERROR("Failed to lock cube surface for full face level upload");
+                continue;
+            }
+            
+            // Get format information
+            GLenum internal_format, format, type;
+            if (!get_gl_format(format_, internal_format, format, type)) {
+                surface->UnlockRect();
+                continue;
+            }
+            
+            // Upload the entire face level
+            UINT level_size = std::max(1u, edge_length_ >> level);
+            
+            glTexSubImage2D(target, level, 0, 0,
+                            level_size, level_size,
+                            format, type, locked_rect.pBits);
+            
+            GLenum error = glGetError();
+            if (error != GL_NO_ERROR) {
+                DX8GL_ERROR("glTexSubImage2D failed for full cube face level upload: 0x%04x", error);
+            }
+            
+            surface->UnlockRect();
+            
+            DX8GL_DEBUG("Uploaded full cube face %d level %u (%ux%u)", face_idx, level, level_size, level_size);
+        }
+    }
+    
+    // Process individual dirty regions
+    for (const auto& dirty : dirty_regions_) {
+        int face_idx = dirty.face - D3DCUBEMAP_FACE_POSITIVE_X;
+        GLenum target = get_cube_face_target(dirty.face);
+        
+        // Get the surface for this face level
+        if (!faces_[face_idx].surfaces[dirty.level]) {
+            continue;
+        }
+        
+        Direct3DSurface8* surface = faces_[face_idx].surfaces[dirty.level];
+        
+        // Lock the dirty region
+        D3DLOCKED_RECT locked_rect;
+        HRESULT hr = surface->LockRect(&locked_rect, &dirty.rect, D3DLOCK_READONLY);
+        if (FAILED(hr)) {
+            DX8GL_ERROR("Failed to lock cube surface for dirty region upload");
+            continue;
+        }
+        
+        // Get format information
+        GLenum internal_format, format, type;
+        if (!get_gl_format(format_, internal_format, format, type)) {
+            surface->UnlockRect();
+            continue;
+        }
+        
+        // Calculate region dimensions
+        LONG width = dirty.rect.right - dirty.rect.left;
+        LONG height = dirty.rect.bottom - dirty.rect.top;
+        
+        // Upload the dirty region
+        glTexSubImage2D(target, dirty.level,
+                        dirty.rect.left, dirty.rect.top,
+                        width, height,
+                        format, type, locked_rect.pBits);
+        
+        GLenum error = glGetError();
+        if (error != GL_NO_ERROR) {
+            DX8GL_ERROR("glTexSubImage2D failed for cube dirty region: 0x%04x", error);
+        }
+        
+        // Unlock the surface
+        surface->UnlockRect();
+        
+        DX8GL_DEBUG("Uploaded cube dirty region: face=%d, level=%u, rect=(%ld,%ld,%ld,%ld)",
+                    dirty.face, dirty.level, dirty.rect.left, dirty.rect.top, 
+                    dirty.rect.right, dirty.rect.bottom);
+    }
+    
+    // Clear dirty regions
+    dirty_regions_.clear();
+    has_dirty_regions_ = false;
+    for (auto& face_dirty : face_level_fully_dirty_) {
+        std::fill(face_dirty.begin(), face_dirty.end(), false);
+    }
+    
+    glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
+}
+
+void Direct3DCubeTexture8::merge_dirty_rect(D3DCUBEMAP_FACES face, UINT level, const RECT& new_rect) {
+    // Check if we can merge with existing dirty regions
+    bool merged = false;
+    
+    for (auto& dirty : dirty_regions_) {
+        if (dirty.face != face || dirty.level != level) {
+            continue;
+        }
+        
+        // Check if rectangles overlap or are adjacent
+        if (!(new_rect.right < dirty.rect.left || new_rect.left > dirty.rect.right ||
+              new_rect.bottom < dirty.rect.top || new_rect.top > dirty.rect.bottom)) {
+            // Merge by expanding the existing rect
+            dirty.rect.left = std::min(dirty.rect.left, new_rect.left);
+            dirty.rect.top = std::min(dirty.rect.top, new_rect.top);
+            dirty.rect.right = std::max(dirty.rect.right, new_rect.right);
+            dirty.rect.bottom = std::max(dirty.rect.bottom, new_rect.bottom);
+            merged = true;
+            
+            // Check if the merged rect now covers the entire face level
+            UINT level_size = std::max(1u, edge_length_ >> level);
+            if (dirty.rect.left == 0 && dirty.rect.top == 0 &&
+                dirty.rect.right == static_cast<LONG>(level_size) &&
+                dirty.rect.bottom == static_cast<LONG>(level_size)) {
+                int face_idx = face - D3DCUBEMAP_FACE_POSITIVE_X;
+                face_level_fully_dirty_[face_idx][level] = true;
+                // Remove this rect since the whole face level is dirty
+                dirty_regions_.erase(
+                    std::remove_if(dirty_regions_.begin(), dirty_regions_.end(),
+                                  [face, level](const DirtyRect& dr) { 
+                                      return dr.face == face && dr.level == level; 
+                                  }),
+                    dirty_regions_.end()
+                );
+            }
+            break;
+        }
+    }
+    
+    // If not merged, add as a new dirty region
+    if (!merged) {
+        DirtyRect dirty;
+        dirty.face = face;
+        dirty.level = level;
+        dirty.rect = new_rect;
+        dirty_regions_.push_back(dirty);
+    }
+    
+    // Optimize if we have too many dirty regions
+    if (dirty_regions_.size() > 32) {  // More regions for cube map (6 faces)
+        optimize_dirty_regions();
+    }
+}
+
+void Direct3DCubeTexture8::optimize_dirty_regions() {
+    // Group dirty regions by face and level
+    std::vector<std::vector<std::vector<RECT>>> rects_by_face_level(6);
+    for (auto& face_rects : rects_by_face_level) {
+        face_rects.resize(levels_);
+    }
+    
+    for (const auto& dirty : dirty_regions_) {
+        int face_idx = dirty.face - D3DCUBEMAP_FACE_POSITIVE_X;
+        if (!face_level_fully_dirty_[face_idx][dirty.level]) {
+            rects_by_face_level[face_idx][dirty.level].push_back(dirty.rect);
+        }
+    }
+    
+    // Clear existing regions
+    dirty_regions_.clear();
+    
+    // For each face and level, try to merge overlapping regions
+    for (int face_idx = 0; face_idx < 6; ++face_idx) {
+        D3DCUBEMAP_FACES face = static_cast<D3DCUBEMAP_FACES>(D3DCUBEMAP_FACE_POSITIVE_X + face_idx);
+        
+        for (UINT level = 0; level < levels_; ++level) {
+            if (face_level_fully_dirty_[face_idx][level]) {
+                continue;
+            }
+            
+            auto& rects = rects_by_face_level[face_idx][level];
+            if (rects.empty()) {
+                continue;
+            }
+            
+            // Simple optimization: if we have many small rects, just mark the whole face level as dirty
+            UINT level_size = std::max(1u, edge_length_ >> level);
+            UINT level_area = level_size * level_size;
+            UINT dirty_area = 0;
+            
+            for (const auto& rect : rects) {
+                dirty_area += (rect.right - rect.left) * (rect.bottom - rect.top);
+            }
+            
+            // If more than 75% of the face level is dirty, mark the whole face level
+            if (dirty_area > (level_area * 3 / 4)) {
+                face_level_fully_dirty_[face_idx][level] = true;
+            } else {
+                // Otherwise, compute the bounding box of all dirty regions
+                RECT bounds = rects[0];
+                for (size_t i = 1; i < rects.size(); ++i) {
+                    bounds.left = std::min(bounds.left, rects[i].left);
+                    bounds.top = std::min(bounds.top, rects[i].top);
+                    bounds.right = std::max(bounds.right, rects[i].right);
+                    bounds.bottom = std::max(bounds.bottom, rects[i].bottom);
+                }
+                
+                DirtyRect dirty;
+                dirty.face = face;
+                dirty.level = level;
+                dirty.rect = bounds;
+                dirty_regions_.push_back(dirty);
+            }
+        }
     }
 }
 

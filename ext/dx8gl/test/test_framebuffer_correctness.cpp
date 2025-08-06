@@ -5,9 +5,43 @@
 #include <vector>
 #include "../src/dx8gl.h"
 #include "../src/d3d8.h"
+#include "../src/d3dx_compat.h"
 #include "../src/render_backend.h"
 #include "../src/offscreen_framebuffer.h"
 #include "../src/logger.h"
+#include <fstream>
+
+// D3DX image file formats
+typedef enum _D3DXIMAGE_FILEFORMAT {
+    D3DXIFF_BMP = 0,
+    D3DXIFF_JPG = 1,
+    D3DXIFF_TGA = 2,
+    D3DXIFF_PNG = 3,
+    D3DXIFF_DDS = 4,
+    D3DXIFF_PPM = 5,
+    D3DXIFF_DIB = 6,
+    D3DXIFF_HDR = 7,
+    D3DXIFF_PFM = 8,
+    D3DXIFF_FORCE_DWORD = 0x7fffffff
+} D3DXIMAGE_FILEFORMAT;
+
+// OpenGL constants
+#ifndef GL_RGBA
+#define GL_RGBA 0x1908
+#endif
+
+// Function declaration
+extern "C" HRESULT WINAPI D3DXSaveSurfaceToFile(
+    const char* pDestFile,
+    DWORD DestFormat,
+    IDirect3DSurface8* pSrcSurface,
+    const PALETTEENTRY* pSrcPalette,
+    const RECT* pSrcRect);
+
+// Backend access function
+namespace dx8gl {
+    extern DX8RenderBackend* get_render_backend();
+}
 
 using namespace dx8gl;
 
@@ -203,14 +237,12 @@ bool test_format_conversion_rgb565_to_rgba8() {
 bool test_backend_framebuffer_integration() {
     // Initialize with OSMesa backend
     dx8gl_config config = {};
-    config.width = 64;
-    config.height = 64;
     config.backend_type = DX8GL_BACKEND_OSMESA;
     
     TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize");
     
     // Get the backend
-    auto* backend = dx8gl::g_render_backend;
+    auto* backend = dx8gl::get_render_backend();
     TEST_ASSERT(backend != nullptr, "Backend is null");
     
     // Get framebuffer
@@ -300,6 +332,113 @@ bool test_multiple_conversions() {
     return true;
 }
 
+// Test 9: D3DXSaveSurfaceToFile functionality
+bool test_save_surface_to_file() {
+    // Initialize dx8gl
+    dx8gl_config config = {};
+    config.backend_type = DX8GL_BACKEND_OSMESA;
+    
+    TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize dx8gl");
+    
+    // Create Direct3D8 interface
+    IDirect3D8* d3d8 = Direct3DCreate8(D3D_SDK_VERSION);
+    TEST_ASSERT(d3d8 != nullptr, "Failed to create Direct3D8");
+    
+    // Create device
+    D3DPRESENT_PARAMETERS pp = {};
+    pp.Windowed = TRUE;
+    pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+    pp.BackBufferFormat = D3DFMT_X8R8G8B8;
+    pp.BackBufferWidth = 32;
+    pp.BackBufferHeight = 32;
+    
+    IDirect3DDevice8* device = nullptr;
+    HRESULT hr = d3d8->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, nullptr,
+                                    D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+                                    &pp, &device);
+    TEST_ASSERT(SUCCEEDED(hr) && device != nullptr, "Failed to create device");
+    
+    // Create a surface
+    IDirect3DSurface8* surface = nullptr;
+    hr = device->CreateRenderTarget(32, 32, D3DFMT_A8R8G8B8, D3DMULTISAMPLE_NONE, FALSE, &surface);
+    TEST_ASSERT(SUCCEEDED(hr) && surface != nullptr, "Failed to create render target surface");
+    
+    // Lock and fill the surface with test pattern
+    D3DLOCKED_RECT locked_rect;
+    hr = surface->LockRect(&locked_rect, nullptr, 0);
+    TEST_ASSERT(SUCCEEDED(hr), "Failed to lock surface");
+    
+    uint32_t* pixels = static_cast<uint32_t*>(locked_rect.pBits);
+    for (int y = 0; y < 32; y++) {
+        for (int x = 0; x < 32; x++) {
+            // Create a simple gradient pattern
+            uint8_t r = (x * 255) / 31;
+            uint8_t g = (y * 255) / 31;
+            uint8_t b = 128;
+            uint8_t a = 255;
+            pixels[y * (locked_rect.Pitch / 4) + x] = (a << 24) | (r << 16) | (g << 8) | b;
+        }
+    }
+    
+    surface->UnlockRect();
+    
+    // Test saving as BMP
+    const char* bmp_filename = "test_surface.bmp";
+    hr = D3DXSaveSurfaceToFile(bmp_filename, D3DXIFF_BMP, surface, nullptr, nullptr);
+    TEST_ASSERT(SUCCEEDED(hr), "Failed to save surface as BMP");
+    
+    // Verify BMP file exists
+    {
+        std::ifstream file(bmp_filename, std::ios::binary);
+        TEST_ASSERT(file.is_open(), "BMP file was not created");
+        
+        // Check BMP header
+        char header[2];
+        file.read(header, 2);
+        TEST_ASSERT(header[0] == 'B' && header[1] == 'M', "Invalid BMP file header");
+        file.close();
+        
+        // Clean up
+        std::remove(bmp_filename);
+    }
+    
+    // Test saving as TGA
+    const char* tga_filename = "test_surface.tga";
+    hr = D3DXSaveSurfaceToFile(tga_filename, D3DXIFF_TGA, surface, nullptr, nullptr);
+    TEST_ASSERT(SUCCEEDED(hr), "Failed to save surface as TGA");
+    
+    // Verify TGA file exists
+    {
+        std::ifstream file(tga_filename, std::ios::binary);
+        TEST_ASSERT(file.is_open(), "TGA file was not created");
+        file.close();
+        
+        // Clean up
+        std::remove(tga_filename);
+    }
+    
+    // Test saving with a source rectangle
+    RECT src_rect = { 8, 8, 24, 24 }; // 16x16 region
+    hr = D3DXSaveSurfaceToFile("test_surface_rect.bmp", D3DXIFF_BMP, surface, nullptr, &src_rect);
+    TEST_ASSERT(SUCCEEDED(hr), "Failed to save surface region as BMP");
+    std::remove("test_surface_rect.bmp");
+    
+    // Test error cases
+    hr = D3DXSaveSurfaceToFile(nullptr, D3DXIFF_BMP, surface, nullptr, nullptr);
+    TEST_ASSERT(FAILED(hr), "Should fail with null filename");
+    
+    hr = D3DXSaveSurfaceToFile("test.png", D3DXIFF_PNG, surface, nullptr, nullptr);
+    TEST_ASSERT(FAILED(hr), "Should fail with unsupported format");
+    
+    // Clean up
+    surface->Release();
+    device->Release();
+    d3d8->Release();
+    dx8gl_shutdown();
+    
+    return true;
+}
+
 int main() {
     std::cout << "=== dx8gl Framebuffer Correctness Tests ===" << std::endl;
     
@@ -314,6 +453,7 @@ int main() {
     RUN_TEST(test_backend_framebuffer_integration);
     RUN_TEST(test_float_rgba_conversion);
     RUN_TEST(test_multiple_conversions);
+    RUN_TEST(test_save_surface_to_file);
     
     // Summary
     std::cout << "\n=== Test Summary ===" << std::endl;

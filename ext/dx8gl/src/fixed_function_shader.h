@@ -76,6 +76,7 @@ public:
         
         GLint texture_sampler[8] = {-1};
         GLint texture_matrix[8] = {-1};
+        GLint texture_factor = -1;  // For D3DTA_TFACTOR
         
         // Bump mapping uniforms
         GLint bump_env_mat[8] = {-1};      // 2x2 matrix as vec4

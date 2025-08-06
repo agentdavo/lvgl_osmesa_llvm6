@@ -57,7 +57,7 @@ bool test_shader_program_cache() {
     
     // Enable shader cache
     g_shader_binary_cache = std::make_unique<ShaderBinaryCache>();
-    g_shader_binary_cache->initialize("test_shader_cache", 1024 * 1024); // 1MB cache
+    g_shader_binary_cache->initialize(); // Use default initialization
     
     // Create Direct3D8 interface
     IDirect3D8* d3d8 = Direct3DCreate8(D3D_SDK_VERSION);

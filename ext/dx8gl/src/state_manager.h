@@ -17,6 +17,8 @@ class ShaderProgramManager;
 // ShaderProgram struct from shader_program_manager.h
 struct ShaderProgram {
     GLuint program;
+    GLuint vertex_shader;
+    GLuint fragment_shader;
     
     // Cached uniform locations
     std::unordered_map<std::string, GLint> uniform_locations;
@@ -27,6 +29,10 @@ struct ShaderProgram {
     GLint u_projection_matrix;
     GLint u_world_view_proj_matrix;
     
+    // Additional matrix uniforms for fixed-function
+    GLint u_mvp_matrix;
+    GLint u_normal_matrix;
+    
     // Vertex shader constants (c0-c95)
     GLint u_vs_constants[96];
     
@@ -35,12 +41,54 @@ struct ShaderProgram {
     
     // Texture samplers
     GLint u_textures[8];
+    GLint u_texture[8]; // Alias for fixed-function compatibility
     
-    ShaderProgram() : program(0), u_world_matrix(-1), u_view_matrix(-1),
-                     u_projection_matrix(-1), u_world_view_proj_matrix(-1) {
+    // Lighting uniforms for fixed-function
+    GLint u_light_enabled[8];
+    GLint u_light_position[8];
+    GLint u_light_direction[8];
+    GLint u_light_diffuse[8];
+    GLint u_light_specular[8];
+    GLint u_light_ambient[8];
+    
+    // Material uniforms for fixed-function
+    GLint u_material_diffuse;
+    GLint u_material_ambient;
+    GLint u_material_specular;
+    GLint u_material_emissive;
+    GLint u_material_power;
+    
+    // Fog uniforms for fixed-function
+    GLint u_fog_color;
+    GLint u_fog_start;
+    GLint u_fog_end;
+    GLint u_fog_density;
+    
+    // Alpha test uniform
+    GLint u_alpha_ref;
+    
+    // Texture factor uniform for D3DTA_TFACTOR
+    GLint u_texture_factor;
+    
+    ShaderProgram() : program(0), vertex_shader(0), fragment_shader(0),
+                     u_world_matrix(-1), u_view_matrix(-1),
+                     u_projection_matrix(-1), u_world_view_proj_matrix(-1),
+                     u_mvp_matrix(-1), u_normal_matrix(-1),
+                     u_material_diffuse(-1), u_material_ambient(-1),
+                     u_material_specular(-1), u_material_emissive(-1),
+                     u_material_power(-1), u_fog_color(-1), u_fog_start(-1),
+                     u_fog_end(-1), u_fog_density(-1), u_alpha_ref(-1),
+                     u_texture_factor(-1) {
         std::fill(std::begin(u_vs_constants), std::end(u_vs_constants), -1);
         std::fill(std::begin(u_ps_constants), std::end(u_ps_constants), -1);
         std::fill(std::begin(u_textures), std::end(u_textures), -1);
+        std::fill(std::begin(u_texture), std::end(u_texture), -1);
+        std::fill(std::begin(u_light_enabled), std::end(u_light_enabled), -1);
+        std::fill(std::begin(u_light_position), std::end(u_light_position), -1);
+        std::fill(std::begin(u_light_direction), std::end(u_light_direction), -1);
+        std::fill(std::begin(u_light_diffuse), std::end(u_light_diffuse), -1);
+        std::fill(std::begin(u_light_specular), std::end(u_light_specular), -1);
+        std::fill(std::begin(u_light_ambient), std::end(u_light_ambient), -1);
     }
 };
 
@@ -136,6 +184,9 @@ struct RenderState {
     DWORD last_pixel = TRUE;
     DWORD multisample_antialias = FALSE;
     DWORD scissor_test_enable = FALSE;
+    
+    // Texture factor for D3DTA_TFACTOR
+    D3DCOLOR texture_factor = 0xFFFFFFFF;
 };
 
 // Transform state tracking

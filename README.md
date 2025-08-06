@@ -8,7 +8,7 @@ This project showcases:
 - **LVGL GUI Applications** with software-rendered 3D graphics
 - **OSMesa** (Off-Screen Mesa) for CPU-based OpenGL rendering without GPU
 - **DirectX 8 API** support through the dx8gl translation layer
-- **Flexible Rendering Backends** - Switch between OSMesa (software) and EGL (hardware) at runtime
+- **Flexible Rendering Backends** - Switch between OSMesa (software), EGL (hardware), and WebGPU (experimental) at runtime
 - **Loading Screen** - Professional 1-second loading animation before rendering starts
 - **Error Handling** - Graceful fallback screens when initialization fails
 - **Texture loading** from TGA files with full mipmap generation
@@ -91,6 +91,7 @@ Software Render  Hardware GPU
 The dx8gl library now supports multiple rendering backends:
 - **OSMesa Backend**: Pure software rendering using Mesa's llvmpipe driver
 - **EGL Backend**: Hardware-accelerated rendering via EGL surfaceless context
+- **WebGPU Backend**: Experimental modern GPU API for web and native platforms
 - **Runtime Selection**: Choose backend via environment variable, API, or command line
 
 ## Dependencies
@@ -127,6 +128,13 @@ Build times (approximate):
 - LLVM: 30-45 minutes
 - Mesa: 5-10 minutes  
 - Examples: < 1 minute each
+
+### Recent Updates
+- Mesa now builds with shared libraries instead of static for better compatibility
+- Tests properly link against locally built Mesa 25.0.7 instead of system libraries
+- Added WebGPU backend support (experimental)
+- Fixed backend selection enum naming issues
+- Created OffscreenFramebuffer helper class for unified framebuffer management
 
 ## System Requirements
 

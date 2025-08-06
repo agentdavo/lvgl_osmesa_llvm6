@@ -25,6 +25,7 @@ class Direct3DDevice8;
 // Global device accessor for internal use
 Direct3DDevice8* get_global_device();
 class Direct3DTexture8;
+class Direct3DCubeTexture8;
 class Direct3DVertexBuffer8;
 class Direct3DIndexBuffer8;
 class Direct3DSurface8;
@@ -232,9 +233,14 @@ public:
     uint32_t get_present_calls() const { return current_stats_.present_calls.load(); }
     uint32_t get_shader_changes() const { return current_stats_.shader_changes.load(); }
     
+    // Get formatted statistics string
+    std::string get_statistics_string() const;
+    
     // Resource tracking for device reset
     void register_texture(Direct3DTexture8* texture);
     void unregister_texture(Direct3DTexture8* texture);
+    void register_cube_texture(Direct3DCubeTexture8* cube_texture);
+    void unregister_cube_texture(Direct3DCubeTexture8* cube_texture);
     void register_vertex_buffer(Direct3DVertexBuffer8* vb);
     void unregister_vertex_buffer(Direct3DVertexBuffer8* vb);
     void register_index_buffer(Direct3DIndexBuffer8* ib);
@@ -307,6 +313,7 @@ private:
     
     // Resource tracking for device reset (tracks ALL created resources)
     std::vector<Direct3DTexture8*> all_textures_;
+    std::vector<Direct3DCubeTexture8*> all_cube_textures_;
     std::vector<Direct3DVertexBuffer8*> all_vertex_buffers_;
     std::vector<Direct3DIndexBuffer8*> all_index_buffers_;
     

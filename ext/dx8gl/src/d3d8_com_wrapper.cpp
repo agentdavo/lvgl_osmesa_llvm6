@@ -46,6 +46,11 @@ struct Direct3DTexture8_COM_Wrapper {
     ULONG refCount;
 };
 
+// Forward declaration of vtables
+extern IDirect3D8Vtbl g_Direct3D8_Vtbl;
+extern IDirect3DDevice8Vtbl g_Direct3DDevice8_Vtbl;
+extern IDirect3DTexture8Vtbl g_Direct3DTexture8_Vtbl;
+
 // Forward declarations for vtable functions
 static HRESULT STDMETHODCALLTYPE Direct3D8_QueryInterface(IDirect3D8* This, REFIID riid, void** ppvObj);
 static ULONG STDMETHODCALLTYPE Direct3D8_AddRef(IDirect3D8* This);
@@ -65,7 +70,7 @@ static HMONITOR STDMETHODCALLTYPE Direct3D8_GetAdapterMonitor(IDirect3D8* This, 
 static HRESULT STDMETHODCALLTYPE Direct3D8_CreateDevice(IDirect3D8* This, UINT Adapter, D3DDEVTYPE DeviceType, HWND hFocusWindow, DWORD BehaviorFlags, D3DPRESENT_PARAMETERS* pPresentationParameters, IDirect3DDevice8** ppReturnedDeviceInterface);
 
 // Static vtable for IDirect3D8
-static IDirect3D8Vtbl g_Direct3D8_Vtbl = {
+IDirect3D8Vtbl g_Direct3D8_Vtbl = {
     Direct3D8_QueryInterface,
     Direct3D8_AddRef,
     Direct3D8_Release,
@@ -330,7 +335,7 @@ HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePatch(IDirect3DDevice8* This, UI
 }
 
 // Static vtable for IDirect3DDevice8
-static IDirect3DDevice8Vtbl g_Direct3DDevice8_Vtbl = {
+IDirect3DDevice8Vtbl g_Direct3DDevice8_Vtbl = {
     Direct3DDevice8_QueryInterface,
     Direct3DDevice8_AddRef,
     Direct3DDevice8_Release,
@@ -477,8 +482,26 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ResourceManagerDiscardBytes(IDi
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetDirect3D(IDirect3DDevice8* This, IDirect3D8** ppD3D8) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
-    // TODO: Need to wrap the returned IDirect3D8 interface
-    return E_NOTIMPL;
+    
+    ::IDirect3D8* pCppD3D8 = nullptr;
+    HRESULT hr = wrapper->pCppInterface->GetDirect3D(&pCppD3D8);
+    
+    if (SUCCEEDED(hr) && pCppD3D8) {
+        // Create a COM wrapper for the returned Direct3D8 interface
+        Direct3D8_COM_Wrapper* d3d8_wrapper = (Direct3D8_COM_Wrapper*)malloc(sizeof(Direct3D8_COM_Wrapper));
+        if (!d3d8_wrapper) {
+            pCppD3D8->Release();
+            return E_OUTOFMEMORY;
+        }
+        
+        d3d8_wrapper->lpVtbl = &g_Direct3D8_Vtbl;
+        d3d8_wrapper->pCppInterface = pCppD3D8;
+        d3d8_wrapper->refCount = 1;
+        
+        *ppD3D8 = (IDirect3D8*)d3d8_wrapper;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetDeviceCaps(IDirect3DDevice8* This, D3DCAPS8* pCaps) {
@@ -494,8 +517,11 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetCreationParameters(IDirect3D
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetCursorProperties(IDirect3DDevice8* This, UINT XHotSpot, UINT YHotSpot, IDirect3DSurface8* pCursorBitmap) {
-    // TODO: Need to unwrap the surface interface
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper surface unwrapping when surface wrappers are implemented
+    // For now, assume pCursorBitmap is already a C++ interface
+    return wrapper->pCppInterface->SetCursorProperties(XHotSpot, YHotSpot, (::IDirect3DSurface8*)pCursorBitmap);
 }
 
 static void STDMETHODCALLTYPE Direct3DDevice8_SetCursorPosition(IDirect3DDevice8* This, int X, int Y, DWORD Flags) {
@@ -508,8 +534,11 @@ static BOOL STDMETHODCALLTYPE Direct3DDevice8_ShowCursor(IDirect3DDevice8* This,
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateAdditionalSwapChain(IDirect3DDevice8* This, D3DPRESENT_PARAMETERS* pPresentationParameters, IDirect3DSwapChain8** ppSwapChain) {
-    // TODO: Need to wrap the returned swap chain
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper swap chain wrapping when swap chain wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateAdditionalSwapChain(pPresentationParameters, (::IDirect3DSwapChain8**)ppSwapChain);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_Reset(IDirect3DDevice8* This, D3DPRESENT_PARAMETERS* pPresentationParameters) {
@@ -521,8 +550,11 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_Present(IDirect3DDevice8* This,
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetBackBuffer(IDirect3DDevice8* This, UINT BackBuffer, D3DBACKBUFFER_TYPE Type, IDirect3DSurface8** ppBackBuffer) {
-    // TODO: Need to wrap the returned surface
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper surface wrapping when surface wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->GetBackBuffer(BackBuffer, Type, (::IDirect3DSurface8**)ppBackBuffer);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRasterStatus(IDirect3DDevice8* This, D3DRASTER_STATUS* pRasterStatus) {
@@ -557,38 +589,59 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateTexture(IDirect3DDevice8*
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVolumeTexture(IDirect3DDevice8* This, UINT Width, UINT Height, UINT Depth, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DVolumeTexture8** ppVolumeTexture) {
-    // TODO: Need to wrap the returned texture
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper volume texture wrapping when volume texture wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateVolumeTexture(Width, Height, Depth, Levels, Usage, Format, Pool, (::IDirect3DVolumeTexture8**)ppVolumeTexture);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateCubeTexture(IDirect3DDevice8* This, UINT EdgeLength, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DCubeTexture8** ppCubeTexture) {
-    // TODO: Need to wrap the returned texture
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper cube texture wrapping when cube texture wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateCubeTexture(EdgeLength, Levels, Usage, Format, Pool, (::IDirect3DCubeTexture8**)ppCubeTexture);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVertexBuffer(IDirect3DDevice8* This, UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8** ppVertexBuffer) {
-    // TODO: Need to wrap the returned buffer
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper vertex buffer wrapping when buffer wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateVertexBuffer(Length, Usage, FVF, Pool, (::IDirect3DVertexBuffer8**)ppVertexBuffer);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateIndexBuffer(IDirect3DDevice8* This, UINT Length, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DIndexBuffer8** ppIndexBuffer) {
-    // TODO: Need to wrap the returned buffer
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper index buffer wrapping when buffer wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateIndexBuffer(Length, Usage, Format, Pool, (::IDirect3DIndexBuffer8**)ppIndexBuffer);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateRenderTarget(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, BOOL Lockable, IDirect3DSurface8** ppSurface) {
-    // TODO: Need to wrap the returned surface
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper surface wrapping when surface wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateRenderTarget(Width, Height, Format, MultiSample, Lockable, (::IDirect3DSurface8**)ppSurface);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateDepthStencilSurface(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, IDirect3DSurface8** ppSurface) {
-    // TODO: Need to wrap the returned surface
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper surface wrapping when surface wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateDepthStencilSurface(Width, Height, Format, MultiSample, (::IDirect3DSurface8**)ppSurface);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateImageSurface(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, IDirect3DSurface8** ppSurface) {
-    // TODO: Need to wrap the returned surface
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper surface wrapping when surface wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->CreateImageSurface(Width, Height, Format, (::IDirect3DSurface8**)ppSurface);
 }
 
 // Continue with minimal implementations for the rest...
@@ -623,13 +676,49 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRenderState(IDirect3DDevice8
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetTexture(IDirect3DDevice8* This, DWORD Stage, IDirect3DBaseTexture8* pTexture) {
-    // TODO: Need to unwrap the texture interface
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    // If pTexture is a COM wrapper, unwrap it to get the C++ interface
+    ::IDirect3DBaseTexture8* pCppTexture = nullptr;
+    if (pTexture) {
+        // Check if it's a texture wrapper by trying to cast to our wrapper type
+        Direct3DTexture8_COM_Wrapper* textureWrapper = (Direct3DTexture8_COM_Wrapper*)pTexture;
+        if (textureWrapper && textureWrapper->lpVtbl == &g_Direct3DTexture8_Vtbl) {
+            pCppTexture = (::IDirect3DBaseTexture8*)textureWrapper->pCppInterface;
+        } else {
+            // Assume it's already a C++ interface
+            pCppTexture = (::IDirect3DBaseTexture8*)pTexture;
+        }
+    }
+    
+    return wrapper->pCppInterface->SetTexture(Stage, pCppTexture);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetTexture(IDirect3DDevice8* This, DWORD Stage, IDirect3DBaseTexture8** ppTexture) {
-    // TODO: Need to wrap the returned texture
-    return E_NOTIMPL;
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    
+    ::IDirect3DBaseTexture8* pCppTexture = nullptr;
+    HRESULT hr = wrapper->pCppInterface->GetTexture(Stage, &pCppTexture);
+    
+    if (SUCCEEDED(hr) && pCppTexture) {
+        // Check the type of texture and create appropriate wrapper
+        D3DRESOURCETYPE type = pCppTexture->GetType();
+        
+        if (type == D3DRTYPE_TEXTURE) {
+            // Create texture wrapper
+            *ppTexture = (IDirect3DBaseTexture8*)CreateTexture8_COM_Wrapper((::IDirect3DTexture8*)pCppTexture);
+        } else {
+            // For now, just return the C++ interface for other texture types
+            *ppTexture = (IDirect3DBaseTexture8*)pCppTexture;
+        }
+        
+        if (!*ppTexture) {
+            pCppTexture->Release();
+            return E_OUTOFMEMORY;
+        }
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetTextureStageState(IDirect3DDevice8* This, DWORD Stage, D3DTEXTURESTAGESTATETYPE Type, DWORD Value) {
@@ -736,7 +825,7 @@ static HRESULT STDMETHODCALLTYPE Direct3DTexture8_UnlockRect(IDirect3DTexture8* 
 static HRESULT STDMETHODCALLTYPE Direct3DTexture8_AddDirtyRect(IDirect3DTexture8* This, const RECT* pDirtyRect);
 
 // Static vtable for IDirect3DTexture8
-static IDirect3DTexture8Vtbl g_Direct3DTexture8_Vtbl = {
+IDirect3DTexture8Vtbl g_Direct3DTexture8_Vtbl = {
     // IUnknown methods
     Direct3DTexture8_QueryInterface,
     Direct3DTexture8_AddRef,
@@ -786,8 +875,21 @@ static ULONG STDMETHODCALLTYPE Direct3DTexture8_Release(IDirect3DTexture8* This)
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DTexture8_GetDevice(IDirect3DTexture8* This, IDirect3DDevice8** ppDevice) {
-    // TODO: Need to wrap the returned device
-    return E_NOTIMPL;
+    Direct3DTexture8_COM_Wrapper* wrapper = (Direct3DTexture8_COM_Wrapper*)This;
+    
+    ::IDirect3DDevice8* pCppDevice = nullptr;
+    HRESULT hr = wrapper->pCppInterface->GetDevice(&pCppDevice);
+    
+    if (SUCCEEDED(hr) && pCppDevice) {
+        // Create a device wrapper
+        *ppDevice = CreateDevice8_COM_Wrapper(pCppDevice);
+        if (!*ppDevice) {
+            pCppDevice->Release();
+            return E_OUTOFMEMORY;
+        }
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DTexture8_SetPrivateData(IDirect3DTexture8* This, REFGUID refguid, const void* pData, DWORD SizeOfData, DWORD Flags) {
@@ -846,8 +948,11 @@ static HRESULT STDMETHODCALLTYPE Direct3DTexture8_GetLevelDesc(IDirect3DTexture8
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DTexture8_GetSurfaceLevel(IDirect3DTexture8* This, UINT Level, IDirect3DSurface8** ppSurfaceLevel) {
-    // TODO: Need to wrap the returned surface
-    return E_NOTIMPL;
+    Direct3DTexture8_COM_Wrapper* wrapper = (Direct3DTexture8_COM_Wrapper*)This;
+    
+    // TODO: Implement proper surface wrapping when surface wrappers are implemented
+    // For now, pass through to C++ implementation
+    return wrapper->pCppInterface->GetSurfaceLevel(Level, (::IDirect3DSurface8**)ppSurfaceLevel);
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DTexture8_LockRect(IDirect3DTexture8* This, UINT Level, D3DLOCKED_RECT* pLockedRect, const RECT* pRect, DWORD Flags) {

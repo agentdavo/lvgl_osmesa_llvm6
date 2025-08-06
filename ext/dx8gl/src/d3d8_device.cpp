@@ -13,6 +13,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <chrono>
+#include <sstream>
 
 // No need for extern declaration - we use get_render_backend() function
 
@@ -311,7 +312,8 @@ bool Direct3DDevice8::initialize() {
     for (UINT i = 0; i < present_params_.BackBufferCount; ++i) {
         auto surface = new Direct3DSurface8(this, width, height, 
                                           present_params_.BackBufferFormat,
-                                          D3DUSAGE_RENDERTARGET);
+                                          D3DUSAGE_RENDERTARGET, D3DPOOL_DEFAULT,
+                                          present_params_.MultiSampleType);
         if (!surface->initialize()) {
             surface->Release();
             return false;
@@ -329,7 +331,8 @@ bool Direct3DDevice8::initialize() {
     if (present_params_.EnableAutoDepthStencil) {
         auto ds = new Direct3DSurface8(this, width, height,
                                       present_params_.AutoDepthStencilFormat,
-                                      D3DUSAGE_DEPTHSTENCIL);
+                                      D3DUSAGE_DEPTHSTENCIL, D3DPOOL_DEFAULT,
+                                      present_params_.MultiSampleType);
         if (!ds->initialize()) {
             ds->Release();
             return false;
@@ -683,8 +686,51 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
             return D3DERR_DRIVERINTERNALERROR;
         }
         
-        // TODO: Copy EGL framebuffer to display or shared memory
-        // The framebuffer data is available via egl_context_->getFramebuffer()
+        // Copy the framebuffer from EGL to the back buffer surface
+        if (!back_buffers_.empty() && egl_context_->getFramebuffer()) {
+            // Get the primary back buffer
+            IDirect3DSurface8* back_buffer = back_buffers_[0];
+            
+            // Lock the back buffer to write the framebuffer data
+            D3DLOCKED_RECT locked_rect;
+            HRESULT hr = back_buffer->LockRect(&locked_rect, nullptr, 0);
+            
+            if (SUCCEEDED(hr)) {
+                // Get surface description to know the format
+                D3DSURFACE_DESC desc;
+                back_buffer->GetDesc(&desc);
+                
+                // EGL renders to RGBA8 format
+                unsigned char* src_pixels = static_cast<unsigned char*>(egl_context_->getFramebuffer());
+                int fb_width = egl_context_->getWidth();
+                int fb_height = egl_context_->getHeight();
+                
+                for (UINT y = 0; y < desc.Height && y < static_cast<UINT>(fb_height); y++) {
+                    BYTE* dst_row = static_cast<BYTE*>(locked_rect.pBits) + y * locked_rect.Pitch;
+                    
+                    for (UINT x = 0; x < desc.Width && x < static_cast<UINT>(fb_width); x++) {
+                        // Read RGBA8 values
+                        BYTE r = src_pixels[(y * fb_width + x) * 4 + 0];
+                        BYTE g = src_pixels[(y * fb_width + x) * 4 + 1];
+                        BYTE b = src_pixels[(y * fb_width + x) * 4 + 2];
+                        BYTE a = src_pixels[(y * fb_width + x) * 4 + 3];
+                        
+                        // Write to destination based on format
+                        if (desc.Format == D3DFMT_A8R8G8B8 || desc.Format == D3DFMT_X8R8G8B8) {
+                            DWORD* dst_pixel = reinterpret_cast<DWORD*>(dst_row) + x;
+                            *dst_pixel = (a << 24) | (r << 16) | (g << 8) | b;
+                        } else if (desc.Format == D3DFMT_R5G6B5) {
+                            WORD* dst_pixel = reinterpret_cast<WORD*>(dst_row) + x;
+                            *dst_pixel = ((r >> 3) << 11) | ((g >> 2) << 5) | (b >> 3);
+                        }
+                    }
+                }
+                
+                back_buffer->UnlockRect();
+                
+                DX8GL_TRACE("Copied EGL framebuffer to back buffer (%dx%d)", fb_width, fb_height);
+            }
+        }
         
         // Handle vsync based on presentation interval
         if (present_params_.FullScreen_PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE) {
@@ -697,7 +743,72 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
     
     // Backend doesn't have buffer swapping - rendering is done to memory
     if (render_backend_) {
-        // TODO: Copy backend framebuffer to display or shared memory
+        // Copy the framebuffer from OpenGL to the back buffer surface
+        // This allows applications to read back the rendered content
+        if (!back_buffers_.empty()) {
+            // Get the framebuffer data from the backend
+            int fb_width, fb_height, fb_format;
+            void* fb_data = render_backend_->get_framebuffer(fb_width, fb_height, fb_format);
+            
+            if (fb_data) {
+                // Get the primary back buffer
+                IDirect3DSurface8* back_buffer = back_buffers_[0];
+                
+                // Lock the back buffer to write the framebuffer data
+                D3DLOCKED_RECT locked_rect;
+                HRESULT hr = back_buffer->LockRect(&locked_rect, nullptr, 0);
+                
+                if (SUCCEEDED(hr)) {
+                    // Get surface description to know the format
+                    D3DSURFACE_DESC desc;
+                    back_buffer->GetDesc(&desc);
+                    
+                    // Copy framebuffer data to the back buffer
+                    // OSMesa typically renders to RGBA float format
+                    if (fb_format == GL_RGBA || fb_format == 0x1908) {
+                        // Convert from RGBA float to the back buffer format
+                        float* src_pixels = static_cast<float*>(fb_data);
+                        
+                        for (UINT y = 0; y < desc.Height && y < static_cast<UINT>(fb_height); y++) {
+                            BYTE* dst_row = static_cast<BYTE*>(locked_rect.pBits) + y * locked_rect.Pitch;
+                            
+                            for (UINT x = 0; x < desc.Width && x < static_cast<UINT>(fb_width); x++) {
+                                // Read RGBA float values
+                                float r = src_pixels[(y * fb_width + x) * 4 + 0];
+                                float g = src_pixels[(y * fb_width + x) * 4 + 1];
+                                float b = src_pixels[(y * fb_width + x) * 4 + 2];
+                                float a = src_pixels[(y * fb_width + x) * 4 + 3];
+                                
+                                // Clamp to [0,1] range
+                                r = std::max(0.0f, std::min(1.0f, r));
+                                g = std::max(0.0f, std::min(1.0f, g));
+                                b = std::max(0.0f, std::min(1.0f, b));
+                                a = std::max(0.0f, std::min(1.0f, a));
+                                
+                                // Convert to 8-bit values
+                                BYTE r8 = static_cast<BYTE>(r * 255.0f);
+                                BYTE g8 = static_cast<BYTE>(g * 255.0f);
+                                BYTE b8 = static_cast<BYTE>(b * 255.0f);
+                                BYTE a8 = static_cast<BYTE>(a * 255.0f);
+                                
+                                // Write to destination based on format
+                                if (desc.Format == D3DFMT_A8R8G8B8 || desc.Format == D3DFMT_X8R8G8B8) {
+                                    DWORD* dst_pixel = reinterpret_cast<DWORD*>(dst_row) + x;
+                                    *dst_pixel = (a8 << 24) | (r8 << 16) | (g8 << 8) | b8;
+                                } else if (desc.Format == D3DFMT_R5G6B5) {
+                                    WORD* dst_pixel = reinterpret_cast<WORD*>(dst_row) + x;
+                                    *dst_pixel = ((r8 >> 3) << 11) | ((g8 >> 2) << 5) | (b8 >> 3);
+                                }
+                            }
+                        }
+                    }
+                    
+                    back_buffer->UnlockRect();
+                    
+                    DX8GL_TRACE("Copied framebuffer to back buffer (%dx%d)", fb_width, fb_height);
+                }
+            }
+        }
         
         // Handle vsync based on presentation interval
         if (present_params_.FullScreen_PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE) {
@@ -1276,7 +1387,8 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     for (UINT i = 0; i < present_params_.BackBufferCount; ++i) {
         auto surface = new Direct3DSurface8(this, width, height, 
                                           present_params_.BackBufferFormat,
-                                          D3DUSAGE_RENDERTARGET);
+                                          D3DUSAGE_RENDERTARGET, D3DPOOL_DEFAULT,
+                                          present_params_.MultiSampleType);
         if (!surface->initialize()) {
             surface->Release();
             return D3DERR_OUTOFVIDEOMEMORY;
@@ -1294,7 +1406,8 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     if (present_params_.EnableAutoDepthStencil) {
         auto ds = new Direct3DSurface8(this, width, height,
                                       present_params_.AutoDepthStencilFormat,
-                                      D3DUSAGE_DEPTHSTENCIL);
+                                      D3DUSAGE_DEPTHSTENCIL, D3DPOOL_DEFAULT,
+                                      present_params_.MultiSampleType);
         if (!ds->initialize()) {
             ds->Release();
             return D3DERR_OUTOFVIDEOMEMORY;
@@ -1361,6 +1474,23 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
         DX8GL_INFO("Recreating index buffer %p in D3DPOOL_DEFAULT", ib);
         if (!ib->recreate_gl_resources()) {
             DX8GL_ERROR("Failed to recreate index buffer %p", ib);
+            // Continue with other resources even if one fails
+        }
+    }
+    
+    // Cube textures in D3DPOOL_DEFAULT also need recreation
+    std::vector<Direct3DCubeTexture8*> cube_textures_to_recreate;
+    for (auto* cube_texture : all_cube_textures_) {
+        if (cube_texture && cube_texture->get_pool() == D3DPOOL_DEFAULT) {
+            cube_textures_to_recreate.push_back(cube_texture);
+        }
+    }
+    
+    // Recreate cube textures
+    for (auto* cube_texture : cube_textures_to_recreate) {
+        DX8GL_INFO("Recreating cube texture %p in D3DPOOL_DEFAULT", cube_texture);
+        if (!cube_texture->recreate_gl_resources()) {
+            DX8GL_ERROR("Failed to recreate cube texture %p", cube_texture);
             // Continue with other resources even if one fails
         }
     }
@@ -1532,7 +1662,8 @@ HRESULT Direct3DDevice8::CreateRenderTarget(UINT Width, UINT Height, D3DFORMAT F
         return D3DERR_INVALIDCALL;
     }
     
-    auto surface = new Direct3DSurface8(this, Width, Height, Format, D3DUSAGE_RENDERTARGET);
+    auto surface = new Direct3DSurface8(this, Width, Height, Format, D3DUSAGE_RENDERTARGET,
+                                      D3DPOOL_DEFAULT, MultiSample);
     if (!surface->initialize()) {
         surface->Release();
         return D3DERR_NOTAVAILABLE;
@@ -1549,7 +1680,8 @@ HRESULT Direct3DDevice8::CreateDepthStencilSurface(UINT Width, UINT Height, D3DF
         return D3DERR_INVALIDCALL;
     }
     
-    auto surface = new Direct3DSurface8(this, Width, Height, Format, D3DUSAGE_DEPTHSTENCIL);
+    auto surface = new Direct3DSurface8(this, Width, Height, Format, D3DUSAGE_DEPTHSTENCIL,
+                                      D3DPOOL_DEFAULT, MultiSample);
     if (!surface->initialize()) {
         surface->Release();
         return D3DERR_NOTAVAILABLE;
@@ -1569,7 +1701,7 @@ HRESULT Direct3DDevice8::CreateImageSurface(UINT Width, UINT Height, D3DFORMAT F
     DX8GL_INFO("CreateImageSurface: %ux%u format=%d", Width, Height, Format);
     
     // Image surfaces are plain surfaces (no special usage flags)
-    auto surface = new Direct3DSurface8(this, Width, Height, Format, 0);
+    auto surface = new Direct3DSurface8(this, Width, Height, Format, 0, D3DPOOL_SYSTEMMEM);
     if (!surface->initialize()) {
         DX8GL_ERROR("CreateImageSurface: surface->initialize() failed");
         surface->Release();
@@ -1973,6 +2105,9 @@ HRESULT Direct3DDevice8::GetLight(DWORD Index, D3DLIGHT8* pLight) {
 }
 
 HRESULT Direct3DDevice8::LightEnable(DWORD Index, BOOL Enable) {
+    // Update statistics
+    current_stats_.light_changes++;
+    
     // Update state manager immediately
     state_manager_->light_enable(Index, Enable);
     
@@ -2693,6 +2828,30 @@ void Direct3DDevice8::end_statistics() {
     // This could be used to compute frame deltas or averages
 }
 
+std::string Direct3DDevice8::get_statistics_string() const {
+    std::stringstream ss;
+    ss << "=== dx8gl Device Statistics ===\n";
+    ss << "Matrix changes: " << current_stats_.matrix_changes.load() << "\n";
+    ss << "Render state changes: " << current_stats_.render_state_changes.load() << "\n";
+    ss << "Texture state changes: " << current_stats_.texture_state_changes.load() << "\n";
+    ss << "Texture changes: " << current_stats_.texture_changes.load() << "\n";
+    ss << "Draw calls: " << current_stats_.draw_calls.load() << "\n";
+    ss << "Triangles drawn: " << current_stats_.triangles_drawn.load() << "\n";
+    ss << "Vertices processed: " << current_stats_.vertices_processed.load() << "\n";
+    ss << "Clear calls: " << current_stats_.clear_calls.load() << "\n";
+    ss << "Present calls: " << current_stats_.present_calls.load() << "\n";
+    ss << "Shader changes: " << current_stats_.shader_changes.load() << "\n";
+    ss << "Light changes: " << current_stats_.light_changes.load() << "\n";
+    ss << "Material changes: " << current_stats_.material_changes.load() << "\n";
+    ss << "Viewport changes: " << current_stats_.viewport_changes.load() << "\n";
+    ss << "Vertex buffer locks: " << current_stats_.vertex_buffer_locks.load() << "\n";
+    ss << "Index buffer locks: " << current_stats_.index_buffer_locks.load() << "\n";
+    ss << "Texture locks: " << current_stats_.texture_locks.load() << "\n";
+    ss << "State blocks created: " << current_stats_.state_blocks_created.load() << "\n";
+    ss << "==============================\n";
+    return ss.str();
+}
+
 void Direct3DDevice8::register_texture(Direct3DTexture8* texture) {
     if (!texture) return;
     
@@ -2747,6 +2906,25 @@ void Direct3DDevice8::unregister_index_buffer(Direct3DIndexBuffer8* ib) {
     if (it != all_index_buffers_.end()) {
         all_index_buffers_.erase(it);
         DX8GL_TRACE("Unregistered index buffer %p, remaining IBs: %zu", ib, all_index_buffers_.size());
+    }
+}
+
+void Direct3DDevice8::register_cube_texture(Direct3DCubeTexture8* cube_texture) {
+    if (!cube_texture) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    all_cube_textures_.push_back(cube_texture);
+    DX8GL_TRACE("Registered cube texture %p, total cube textures: %zu", cube_texture, all_cube_textures_.size());
+}
+
+void Direct3DDevice8::unregister_cube_texture(Direct3DCubeTexture8* cube_texture) {
+    if (!cube_texture) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    auto it = std::find(all_cube_textures_.begin(), all_cube_textures_.end(), cube_texture);
+    if (it != all_cube_textures_.end()) {
+        all_cube_textures_.erase(it);
+        DX8GL_TRACE("Unregistered cube texture %p, remaining cube textures: %zu", cube_texture, all_cube_textures_.size());
     }
 }
 

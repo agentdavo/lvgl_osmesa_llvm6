@@ -187,8 +187,9 @@ build/
 - OSMesa-only build (no hardware drivers)
 - LLVM llvmpipe driver for software rendering
 - Uses custom Meson native file with Fedora security flags
-- Static library build for easier distribution
+- Shared library build (changed from static for better compatibility)
 - No Vulkan, VA-API, VDPAU, or other acceleration APIs
+- Version 25.0.7 with LLVM 20.1.8 backend
 
 ## Rendering Backend System
 
@@ -257,6 +258,9 @@ The "auto" backend selection uses a fallback chain: WebGPU → EGL → OSMesa
 - **Texture Coordinate Crash**: Fixed by properly enabling texcoord0 attribute in command buffer
 - **Double Free Error**: Fixed by removing redundant dx8gl_init() call
 - **Floor Position**: Fixed Y-axis orientation when saving PPM files
+- **Mesa Library Linking**: Fixed tests linking to system Mesa instead of locally built version
+- **Backend Enum Naming**: Fixed duplicated backend enum definitions (DX8_BACKEND_* vs DX8GL_BACKEND_*)
+- **Build Configuration**: Changed Mesa from static to shared libraries for better compatibility
 
 ## Development Workflow
 
@@ -318,3 +322,32 @@ Each implemented method needs:
 3. Resource lifetime tests
 4. Error condition tests
 5. Performance benchmarks
+
+## Recent Completed Tasks
+
+### Task 1: Backend Enum Fixes
+- Fixed duplicated backend enum definitions in dx8gl headers
+- Consolidated DX8_BACKEND_* and DX8GL_BACKEND_* to use only DX8GL_BACKEND_*
+- Added proper backend selection logic in dx8gl initialization
+
+### Task 2: OffscreenFramebuffer Helper Class
+- Created unified framebuffer management class for all backends
+- Supports multiple pixel formats (RGBA8, RGB565, FLOAT_RGBA, etc.)
+- Includes format conversion utilities
+- Provides CPU/GPU buffer synchronization
+
+### Task 3: WebGPU Backend Support
+- Added WebGPU backend compilation flags to build system
+- Created WebGPU backend interface following the DX8RenderBackend pattern
+- Added build documentation for WebGPU compilation
+
+### Task 4: Test Suite Improvements
+- Created backend selection tests to verify runtime backend switching
+- Added framebuffer correctness tests for the new helper class
+- Fixed test CMakeLists.txt to properly link against OSMesa target
+
+### Task 5: Mesa Library Linking Fix
+- Changed Mesa build from static to shared libraries in CMakeLists.txt
+- Updated CMake configuration to detect both static and shared Mesa libraries
+- Fixed test linking to use locally built Mesa 25.0.7 instead of system libraries
+- Verified all dx8gl tests pass with the correct Mesa version

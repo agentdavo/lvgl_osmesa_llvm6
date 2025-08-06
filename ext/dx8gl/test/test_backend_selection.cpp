@@ -8,7 +8,7 @@
 #include "../src/logger.h"
 
 namespace dx8gl {
-    extern DX8RenderBackend* g_render_backend;
+    extern DX8RenderBackend* get_render_backend();
     extern dx8gl_backend_type g_selected_backend;
 }
 
@@ -75,13 +75,11 @@ bool test_env_var_selection() {
         EnvVarGuard env_guard("DX8GL_BACKEND", "osmesa");
         
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize with OSMesa backend");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to initialize with OSMesa backend");
         
         // Verify we got OSMesa backend
-        auto* backend = dx8gl::g_render_backend;
+        auto* backend = dx8gl::get_render_backend();
         TEST_ASSERT(backend != nullptr, "Backend is null");
         TEST_ASSERT(backend->get_type() == DX8GL_BACKEND_OSMESA, "Expected OSMesa backend");
         
@@ -93,13 +91,11 @@ bool test_env_var_selection() {
         EnvVarGuard env_guard("DX8GL_BACKEND", "egl");
         
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         
         // EGL might not be available, so we just check initialization doesn't crash
         bool init_result = dx8gl_init(&config);
         if (init_result) {
-            auto* backend = dx8gl::g_render_backend;
+            auto* backend = dx8gl::get_render_backend();
             TEST_ASSERT(backend != nullptr, "Backend is null");
             // If EGL is available, verify we got it
             if (backend->get_type() == DX8GL_BACKEND_EGL) {
@@ -117,13 +113,11 @@ bool test_env_var_selection() {
         EnvVarGuard env_guard("DX8GL_BACKEND", "auto");
         
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize with auto backend");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to initialize with auto backend");
         
         // Should get some backend
-        auto* backend = dx8gl::g_render_backend;
+        auto* backend = dx8gl::get_render_backend();
         TEST_ASSERT(backend != nullptr, "Backend is null");
         std::cout << "(Auto selected: " << 
             (backend->get_type() == DX8GL_BACKEND_OSMESA ? "OSMesa" :
@@ -141,13 +135,11 @@ bool test_config_api_selection() {
     // Test explicit OSMesa selection
     {
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         config.backend_type = DX8GL_BACKEND_OSMESA;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize with OSMesa backend via config");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to initialize with OSMesa backend via config");
         
-        auto* backend = dx8gl::g_render_backend;
+        auto* backend = dx8gl::get_render_backend();
         TEST_ASSERT(backend != nullptr, "Backend is null");
         TEST_ASSERT(backend->get_type() == DX8GL_BACKEND_OSMESA, "Expected OSMesa backend from config");
         
@@ -157,13 +149,11 @@ bool test_config_api_selection() {
     // Test default selection
     {
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         config.backend_type = DX8GL_BACKEND_DEFAULT;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize with default backend");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to initialize with default backend");
         
-        auto* backend = dx8gl::g_render_backend;
+        auto* backend = dx8gl::get_render_backend();
         TEST_ASSERT(backend != nullptr, "Backend is null");
         // Should get some valid backend
         TEST_ASSERT(backend->get_type() == DX8GL_BACKEND_OSMESA ||
@@ -182,15 +172,13 @@ bool test_backend_fallback() {
     // Test requesting unavailable backend falls back gracefully
     {
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         // Request WebGPU which likely isn't available
         config.backend_type = DX8GL_BACKEND_WEBGPU;
         
         // Should still initialize (with fallback)
         bool init_result = dx8gl_init(&config);
         if (init_result) {
-            auto* backend = dx8gl::g_render_backend;
+            auto* backend = dx8gl::get_render_backend();
             TEST_ASSERT(backend != nullptr, "Backend is null after fallback");
             std::cout << "(Fallback to: " << 
                 (backend->get_type() == DX8GL_BACKEND_OSMESA ? "OSMesa" :
@@ -208,24 +196,20 @@ bool test_backend_reinit() {
     // Initialize with one backend
     {
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         config.backend_type = DX8GL_BACKEND_OSMESA;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize first time");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to initialize first time");
         dx8gl_shutdown();
     }
     
     // Reinitialize with different settings
     {
         dx8gl_config config = {};
-        config.width = 800;
-        config.height = 600;
         config.backend_type = DX8GL_BACKEND_DEFAULT;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to reinitialize");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to reinitialize");
         
-        auto* backend = dx8gl::g_render_backend;
+        auto* backend = dx8gl::get_render_backend();
         TEST_ASSERT(backend != nullptr, "Backend is null after reinit");
         
         dx8gl_shutdown();
@@ -241,12 +225,10 @@ bool test_command_line_parsing() {
         EnvVarGuard env_guard("DX8GL_ARGS", "--backend=osmesa");
         
         dx8gl_config config = {};
-        config.width = 640;
-        config.height = 480;
         
-        TEST_ASSERT(dx8gl_init(&config) == true, "Failed to initialize with command line args");
+        TEST_ASSERT(dx8gl_init(&config) == DX8GL_SUCCESS, "Failed to initialize with command line args");
         
-        auto* backend = dx8gl::g_render_backend;
+        auto* backend = dx8gl::get_render_backend();
         TEST_ASSERT(backend != nullptr, "Backend is null");
         TEST_ASSERT(backend->get_type() == DX8GL_BACKEND_OSMESA, "Expected OSMesa from command line");
         

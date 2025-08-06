@@ -283,6 +283,9 @@ void StateManager::set_render_state(D3DRENDERSTATETYPE state, DWORD value) {
         case D3DRS_BLENDOP:
             render_state_.blend_op = static_cast<D3DBLENDOP>(value);
             break;
+        case D3DRS_TEXTUREFACTOR:
+            render_state_.texture_factor = value;
+            break;
         default:
             DX8GL_WARN("Unhandled render state: %d", state);
             break;

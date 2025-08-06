@@ -19,11 +19,12 @@ class Direct3DSurface8 : public IDirect3DSurface8 {
 public:
     // Constructor for standalone surface
     Direct3DSurface8(Direct3DDevice8* device, UINT width, UINT height,
-                     D3DFORMAT format, DWORD usage);
+                     D3DFORMAT format, DWORD usage, D3DPOOL pool = D3DPOOL_DEFAULT,
+                     D3DMULTISAMPLE_TYPE multisample = D3DMULTISAMPLE_NONE);
     
     // Constructor for texture surface
     Direct3DSurface8(Direct3DTexture8* texture, UINT level, UINT width, UINT height,
-                     D3DFORMAT format, DWORD usage);
+                     D3DFORMAT format, DWORD usage, D3DPOOL pool);
     
     virtual ~Direct3DSurface8();
 
@@ -87,6 +88,8 @@ private:
     D3DFORMAT format_;
     DWORD usage_;
     UINT level_;
+    D3DPOOL pool_;
+    D3DMULTISAMPLE_TYPE multisample_type_;
     
     // OpenGL resources
     GLuint texture_;         // For color surfaces

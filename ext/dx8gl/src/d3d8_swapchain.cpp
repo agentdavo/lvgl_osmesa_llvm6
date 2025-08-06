@@ -45,7 +45,8 @@ bool Direct3DSwapChain8::initialize() {
     for (UINT i = 0; i < present_params_.BackBufferCount; ++i) {
         auto surface = new Direct3DSurface8(device_, width, height,
                                           present_params_.BackBufferFormat,
-                                          D3DUSAGE_RENDERTARGET);
+                                          D3DUSAGE_RENDERTARGET, D3DPOOL_DEFAULT,
+                                          present_params_.MultiSampleType);
         if (!surface->initialize()) {
             surface->Release();
             return false;

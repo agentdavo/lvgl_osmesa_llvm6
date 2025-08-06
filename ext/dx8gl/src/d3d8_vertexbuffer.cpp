@@ -350,6 +350,9 @@ HRESULT Direct3DVertexBuffer8::Lock(UINT OffsetToLock, UINT SizeToLock,
     DX8GL_TRACE("Lock VB: offset=%u, size=%u, flags=0x%08x", 
                 OffsetToLock, SizeToLock, Flags);
     
+    // Update device statistics
+    device_->current_stats_.vertex_buffer_locks++;
+    
     // For system memory buffers, return direct pointer
     if (pool_ == D3DPOOL_SYSTEMMEM || pool_ == D3DPOOL_SCRATCH) {
         *ppbData = static_cast<BYTE*>(lock_buffer_) + OffsetToLock;

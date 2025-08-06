@@ -862,6 +862,124 @@ HRESULT WINAPI D3DXLoadSurfaceFromSurface(
     return D3D_OK;
 }
 
+// Helper function to write BMP file
+static bool save_bmp(const char* filename, const uint8_t* pixels, UINT width, UINT height, D3DFORMAT format) {
+    std::ofstream file(filename, std::ios::binary);
+    if (!file.is_open()) {
+        return false;
+    }
+    
+    // BMP file header
+    uint16_t bfType = 0x4D42; // "BM"
+    uint32_t bfSize = 54 + width * height * 3; // File header + DIB header + pixel data
+    uint16_t bfReserved1 = 0;
+    uint16_t bfReserved2 = 0;
+    uint32_t bfOffBits = 54;
+    
+    file.write(reinterpret_cast<const char*>(&bfType), 2);
+    file.write(reinterpret_cast<const char*>(&bfSize), 4);
+    file.write(reinterpret_cast<const char*>(&bfReserved1), 2);
+    file.write(reinterpret_cast<const char*>(&bfReserved2), 2);
+    file.write(reinterpret_cast<const char*>(&bfOffBits), 4);
+    
+    // DIB header (BITMAPINFOHEADER)
+    uint32_t biSize = 40;
+    int32_t biWidth = width;
+    int32_t biHeight = height; // Positive = bottom-up
+    uint16_t biPlanes = 1;
+    uint16_t biBitCount = 24;
+    uint32_t biCompression = 0; // BI_RGB
+    uint32_t biSizeImage = 0;
+    int32_t biXPelsPerMeter = 2835; // 72 DPI
+    int32_t biYPelsPerMeter = 2835;
+    uint32_t biClrUsed = 0;
+    uint32_t biClrImportant = 0;
+    
+    file.write(reinterpret_cast<const char*>(&biSize), 4);
+    file.write(reinterpret_cast<const char*>(&biWidth), 4);
+    file.write(reinterpret_cast<const char*>(&biHeight), 4);
+    file.write(reinterpret_cast<const char*>(&biPlanes), 2);
+    file.write(reinterpret_cast<const char*>(&biBitCount), 2);
+    file.write(reinterpret_cast<const char*>(&biCompression), 4);
+    file.write(reinterpret_cast<const char*>(&biSizeImage), 4);
+    file.write(reinterpret_cast<const char*>(&biXPelsPerMeter), 4);
+    file.write(reinterpret_cast<const char*>(&biYPelsPerMeter), 4);
+    file.write(reinterpret_cast<const char*>(&biClrUsed), 4);
+    file.write(reinterpret_cast<const char*>(&biClrImportant), 4);
+    
+    // Write pixel data (bottom-up, BGR format)
+    uint32_t row_stride = ((width * 3 + 3) / 4) * 4; // Align to 4 bytes
+    std::vector<uint8_t> row_buffer(row_stride, 0);
+    
+    for (int y = height - 1; y >= 0; y--) {
+        const uint8_t* src_row = pixels + y * width * 4;
+        uint8_t* dst = row_buffer.data();
+        
+        for (UINT x = 0; x < width; x++) {
+            // Convert ARGB to BGR
+            dst[x * 3 + 0] = src_row[x * 4 + 0]; // B
+            dst[x * 3 + 1] = src_row[x * 4 + 1]; // G
+            dst[x * 3 + 2] = src_row[x * 4 + 2]; // R
+        }
+        
+        file.write(reinterpret_cast<const char*>(row_buffer.data()), row_stride);
+    }
+    
+    file.close();
+    return true;
+}
+
+// Helper function to write TGA file
+static bool save_tga(const char* filename, const uint8_t* pixels, UINT width, UINT height, D3DFORMAT format) {
+    std::ofstream file(filename, std::ios::binary);
+    if (!file.is_open()) {
+        return false;
+    }
+    
+    // TGA header
+    uint8_t id_length = 0;
+    uint8_t color_map_type = 0;
+    uint8_t image_type = 2; // Uncompressed true-color
+    uint16_t color_map_first = 0;
+    uint16_t color_map_length = 0;
+    uint8_t color_map_entry_size = 0;
+    uint16_t x_origin = 0;
+    uint16_t y_origin = 0;
+    uint16_t tga_width = width;
+    uint16_t tga_height = height;
+    uint8_t pixel_depth = 32; // Always save as 32-bit
+    uint8_t image_descriptor = 0x20; // Top-to-bottom
+    
+    file.write(reinterpret_cast<const char*>(&id_length), 1);
+    file.write(reinterpret_cast<const char*>(&color_map_type), 1);
+    file.write(reinterpret_cast<const char*>(&image_type), 1);
+    file.write(reinterpret_cast<const char*>(&color_map_first), 2);
+    file.write(reinterpret_cast<const char*>(&color_map_length), 2);
+    file.write(reinterpret_cast<const char*>(&color_map_entry_size), 1);
+    file.write(reinterpret_cast<const char*>(&x_origin), 2);
+    file.write(reinterpret_cast<const char*>(&y_origin), 2);
+    file.write(reinterpret_cast<const char*>(&tga_width), 2);
+    file.write(reinterpret_cast<const char*>(&tga_height), 2);
+    file.write(reinterpret_cast<const char*>(&pixel_depth), 1);
+    file.write(reinterpret_cast<const char*>(&image_descriptor), 1);
+    
+    // Write pixel data (top-to-bottom, BGRA format)
+    for (UINT y = 0; y < height; y++) {
+        const uint8_t* src_row = pixels + y * width * 4;
+        
+        for (UINT x = 0; x < width; x++) {
+            // Write as BGRA
+            file.write(reinterpret_cast<const char*>(&src_row[x * 4 + 0]), 1); // B
+            file.write(reinterpret_cast<const char*>(&src_row[x * 4 + 1]), 1); // G
+            file.write(reinterpret_cast<const char*>(&src_row[x * 4 + 2]), 1); // R
+            file.write(reinterpret_cast<const char*>(&src_row[x * 4 + 3]), 1); // A
+        }
+    }
+    
+    file.close();
+    return true;
+}
+
 HRESULT WINAPI D3DXSaveSurfaceToFile(
     const char* pDestFile,
     DWORD DestFormat,
@@ -873,8 +991,91 @@ HRESULT WINAPI D3DXSaveSurfaceToFile(
         return D3DERR_INVALIDCALL;
     }
     
-    DX8GL_WARNING("D3DXSaveSurfaceToFile not implemented");
-    return E_NOTIMPL;
+    DX8GL_INFO("D3DXSaveSurfaceToFile: %s, format=%d", pDestFile, DestFormat);
+    
+    // Get surface description
+    D3DSURFACE_DESC desc;
+    HRESULT hr = pSrcSurface->GetDesc(&desc);
+    if (FAILED(hr)) {
+        return hr;
+    }
+    
+    // Determine source rectangle
+    RECT src_rect = { 0, 0, static_cast<LONG>(desc.Width), static_cast<LONG>(desc.Height) };
+    if (pSrcRect) {
+        src_rect = *pSrcRect;
+    }
+    
+    UINT width = src_rect.right - src_rect.left;
+    UINT height = src_rect.bottom - src_rect.top;
+    
+    // Lock the surface
+    D3DLOCKED_RECT locked_rect;
+    hr = pSrcSurface->LockRect(&locked_rect, pSrcRect, D3DLOCK_READONLY);
+    if (FAILED(hr)) {
+        return hr;
+    }
+    
+    // Allocate temporary buffer for pixel data (always convert to ARGB8888)
+    std::vector<uint8_t> pixels(width * height * 4);
+    
+    // Copy and convert pixels to ARGB8888
+    const uint8_t* src = static_cast<const uint8_t*>(locked_rect.pBits);
+    uint8_t* dst = pixels.data();
+    
+    for (UINT y = 0; y < height; y++) {
+        const uint8_t* src_row = src + y * locked_rect.Pitch;
+        uint8_t* dst_row = dst + y * width * 4;
+        
+        for (UINT x = 0; x < width; x++) {
+            uint32_t pixel = convert_pixel(
+                *reinterpret_cast<const uint32_t*>(src_row + x * get_bytes_per_pixel(desc.Format)),
+                desc.Format,
+                D3DFMT_A8R8G8B8
+            );
+            
+            // Store as BGRA (little-endian ARGB)
+            dst_row[x * 4 + 0] = (pixel >> 0) & 0xFF;  // B
+            dst_row[x * 4 + 1] = (pixel >> 8) & 0xFF;  // G
+            dst_row[x * 4 + 2] = (pixel >> 16) & 0xFF; // R
+            dst_row[x * 4 + 3] = (pixel >> 24) & 0xFF; // A
+        }
+    }
+    
+    pSrcSurface->UnlockRect();
+    
+    // Save based on format
+    bool saved = false;
+    D3DXIMAGE_FILEFORMAT format = static_cast<D3DXIMAGE_FILEFORMAT>(DestFormat);
+    
+    switch (format) {
+        case D3DXIFF_BMP:
+            saved = save_bmp(pDestFile, pixels.data(), width, height, D3DFMT_A8R8G8B8);
+            break;
+        case D3DXIFF_TGA:
+            saved = save_tga(pDestFile, pixels.data(), width, height, D3DFMT_A8R8G8B8);
+            break;
+        case D3DXIFF_PNG:
+            DX8GL_WARNING("PNG format not supported for saving");
+            return D3DERR_INVALIDCALL;
+        case D3DXIFF_JPG:
+            DX8GL_WARNING("JPEG format not supported for saving");
+            return D3DERR_INVALIDCALL;
+        case D3DXIFF_DDS:
+            DX8GL_WARNING("DDS format not supported for saving");
+            return D3DERR_INVALIDCALL;
+        default:
+            DX8GL_ERROR("Unknown image format: %d", format);
+            return D3DERR_INVALIDCALL;
+    }
+    
+    if (!saved) {
+        DX8GL_ERROR("Failed to save surface to file: %s", pDestFile);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DX8GL_INFO("Successfully saved surface to %s", pDestFile);
+    return D3D_OK;
 }
 
 // ANSI versions - just aliases to the Unicode versions

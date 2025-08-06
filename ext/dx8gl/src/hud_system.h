@@ -39,6 +39,9 @@ public:
     // Initialize HUD resources
     bool Initialize();
     
+    // Load font texture from file (optional, falls back to built-in font)
+    bool LoadFontTexture(const std::string& filename);
+    
     // Update HUD data (call once per frame)
     void Update(float deltaTime);
     
@@ -95,12 +98,16 @@ private:
     void RenderText(const std::string& text, int x, int y, D3DCOLOR color);
     void RenderBox(int x, int y, int width, int height, D3DCOLOR color);
     void CreateFontTexture();
+    bool CreateFontTextureFromFile(const std::string& filename);
     
-    // Font metrics (assuming 8x8 bitmap font)
-    static const int HUD_CHAR_WIDTH = 8;
-    static const int HUD_CHAR_HEIGHT = 8;
-    static const int HUD_CHAR_SPACING = 1;
-    static const int HUD_LINE_HEIGHT = 10;
+    // Font metrics (default 8x8 bitmap font, can be changed with custom font)
+    int m_charWidth = 8;
+    int m_charHeight = 8;
+    int m_charSpacing = 1;
+    int m_lineHeight = 10;
+    int m_charsPerRow = 16;  // Characters per row in font texture
+    int m_charRows = 6;       // Number of character rows in font texture
+    
     static const int HUD_PADDING = 10;
 };
 

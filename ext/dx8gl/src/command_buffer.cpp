@@ -75,6 +75,25 @@ static void populate_fixed_function_state(FixedFunctionState& ff_state, const St
 }
 
 // Helper function to set bump mapping uniforms
+static void set_texture_uniforms(const FixedFunctionShader::UniformLocations* uniforms, const StateManager& state_manager) {
+    // Set texture factor uniform for D3DTA_TFACTOR
+    if (uniforms->texture_factor >= 0) {
+        DWORD texture_factor = state_manager.get_render_state(D3DRS_TEXTUREFACTOR);
+        float r = ((texture_factor >> 16) & 0xFF) / 255.0f;
+        float g = ((texture_factor >> 8) & 0xFF) / 255.0f;
+        float b = (texture_factor & 0xFF) / 255.0f;
+        float a = ((texture_factor >> 24) & 0xFF) / 255.0f;
+        glUniform4f(uniforms->texture_factor, r, g, b, a);
+    }
+    
+    // Set texture sampler uniforms
+    for (int i = 0; i < 8; i++) {
+        if (uniforms->texture_sampler[i] >= 0) {
+            glUniform1i(uniforms->texture_sampler[i], i);
+        }
+    }
+}
+
 static void set_bump_mapping_uniforms(const FixedFunctionShader::UniformLocations* uniforms, const StateManager& state_manager) {
     for (int i = 0; i < 8; i++) {
         if (uniforms->bump_env_mat[i] >= 0) {
@@ -679,6 +698,9 @@ void CommandBuffer::execute(StateManager& state_manager,
                                 if (num_active_lights >= 8) break;  // Max 8 lights in shader
                             }
                         }
+                        
+                        // Set texture uniforms
+                        set_texture_uniforms(uniforms, state_manager);
                         
                         // Set bump mapping uniforms
                         set_bump_mapping_uniforms(uniforms, state_manager);

@@ -297,6 +297,21 @@ std::string FixedFunctionShader::generate_fragment_shader(const FixedFunctionSta
         }
     }
     
+    // Texture factor for D3DTA_TFACTOR
+    bool needs_texture_factor = false;
+    for (int i = 0; i < tex_count; i++) {
+        if (state.color_op[i] != D3DTOP_DISABLE) {
+            // Check if any texture stage uses D3DTA_TFACTOR
+            // Note: In the actual implementation we'd need access to color_arg1/2/0 and alpha_arg1/2/0
+            // For now, always include it when textures are enabled
+            needs_texture_factor = true;
+            break;
+        }
+    }
+    if (needs_texture_factor) {
+        ss << "uniform vec4 u_textureFactor;\n";
+    }
+    
     // Bump mapping uniforms
     for (int i = 0; i < tex_count; i++) {
         if (state.color_op[i] == D3DTOP_BUMPENVMAP || state.color_op[i] == D3DTOP_BUMPENVMAPLUMINANCE) {
@@ -556,6 +571,9 @@ void FixedFunctionShader::cache_uniform_locations(GLuint program) {
         snprintf(name, sizeof(name), "u_texture%d", i);
         uniforms.texture_sampler[i] = glGetUniformLocation(program, name);
     }
+    
+    // Texture factor for D3DTA_TFACTOR
+    uniforms.texture_factor = glGetUniformLocation(program, "u_textureFactor");
     
     // Bump mapping uniforms
     for (int i = 0; i < 8; i++) {

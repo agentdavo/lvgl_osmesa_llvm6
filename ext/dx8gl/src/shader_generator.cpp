@@ -50,6 +50,16 @@ ShaderProgram* ShaderGenerator::get_shader_for_state(const RenderState& render_s
     key.fog_mode = render_state.fog_vertex_mode;
     key.num_textures = active_textures;
     
+    // Copy texture stage operations
+    for (int i = 0; i < 8; i++) {
+        key.tex_stages[i].color_op = render_state.color_op[i];
+        key.tex_stages[i].color_arg1 = render_state.color_arg1[i];
+        key.tex_stages[i].color_arg2 = render_state.color_arg2[i];
+        key.tex_stages[i].alpha_op = render_state.alpha_op[i];
+        key.tex_stages[i].alpha_arg1 = render_state.alpha_arg1[i];
+        key.tex_stages[i].alpha_arg2 = render_state.alpha_arg2[i];
+    }
+    
     // Check cache
     auto it = shader_cache_.find(key);
     if (it != shader_cache_.end()) {
@@ -139,6 +149,10 @@ std::string ShaderGenerator::generate_vertex_shader(uint32_t features, DWORD fvf
     }
     
     int tex_count = (fvf & D3DFVF_TEXCOUNT_MASK) >> D3DFVF_TEXCOUNT_SHIFT;
+    if (tex_count == 0 && (features & SHADER_FEATURE_TEXTURE)) {
+        // If texture is enabled but no texcoords in FVF, assume at least one
+        tex_count = 1;
+    }
     for (int i = 0; i < tex_count; i++) {
         ss << "in vec2 a_texcoord" << i << ";\n";
     }
@@ -187,6 +201,108 @@ std::string ShaderGenerator::generate_vertex_shader(uint32_t features, DWORD fvf
     return ss.str();
 }
 
+// Helper function to generate texture argument code
+static std::string generate_texture_arg(DWORD arg, const std::string& texture_sample, 
+                                      const std::string& current_color, 
+                                      const std::string& diffuse_color,
+                                      const std::string& specular_color,
+                                      const std::string& temp_color,
+                                      bool is_alpha) {
+    DWORD base_arg = arg & D3DTA_SELECTMASK;
+    bool complement = (arg & D3DTA_COMPLEMENT) != 0;
+    bool alpha_replicate = (arg & D3DTA_ALPHAREPLICATE) != 0;
+    
+    std::string result;
+    switch (base_arg) {
+        case D3DTA_DIFFUSE:
+            result = diffuse_color;
+            break;
+        case D3DTA_CURRENT:
+            result = current_color;
+            break;
+        case D3DTA_TEXTURE:
+            result = texture_sample;
+            break;
+        case D3DTA_TFACTOR:
+            result = "u_texture_factor";
+            break;
+        case D3DTA_SPECULAR:
+            result = specular_color;
+            break;
+        case D3DTA_TEMP:
+            result = temp_color;
+            break;
+        default:
+            result = "vec4(1.0)";
+            break;
+    }
+    
+    if (complement) {
+        result = "(vec4(1.0) - " + result + ")";
+    }
+    
+    if (alpha_replicate && !is_alpha) {
+        result = "vec4(" + result + ".a)";
+    }
+    
+    return is_alpha ? (result + ".a") : (result + ".rgb");
+}
+
+// Helper function to generate texture operation code
+static std::string generate_texture_op(DWORD op, const std::string& arg1, 
+                                     const std::string& arg2, 
+                                     const std::string& arg0 = "") {
+    switch (op) {
+        case D3DTOP_DISABLE:
+            return "";
+        case D3DTOP_SELECTARG1:
+            return arg1;
+        case D3DTOP_SELECTARG2:
+            return arg2;
+        case D3DTOP_MODULATE:
+            return arg1 + " * " + arg2;
+        case D3DTOP_MODULATE2X:
+            return "(" + arg1 + " * " + arg2 + " * 2.0)";
+        case D3DTOP_MODULATE4X:
+            return "(" + arg1 + " * " + arg2 + " * 4.0)";
+        case D3DTOP_ADD:
+            return "(" + arg1 + " + " + arg2 + ")";
+        case D3DTOP_ADDSIGNED:
+            return "(" + arg1 + " + " + arg2 + " - 0.5)";
+        case D3DTOP_ADDSIGNED2X:
+            return "((" + arg1 + " + " + arg2 + " - 0.5) * 2.0)";
+        case D3DTOP_SUBTRACT:
+            return "(" + arg1 + " - " + arg2 + ")";
+        case D3DTOP_ADDSMOOTH:
+            return "(" + arg1 + " + " + arg2 + " - " + arg1 + " * " + arg2 + ")";
+        case D3DTOP_BLENDDIFFUSEALPHA:
+            return "mix(" + arg2 + ", " + arg1 + ", diffuse.a)";
+        case D3DTOP_BLENDTEXTUREALPHA:
+            return "mix(" + arg2 + ", " + arg1 + ", texture_sample.a)";
+        case D3DTOP_BLENDFACTORALPHA:
+            return "mix(" + arg2 + ", " + arg1 + ", u_texture_factor.a)";
+        case D3DTOP_BLENDCURRENTALPHA:
+            return "mix(" + arg2 + ", " + arg1 + ", current.a)";
+        case D3DTOP_PREMODULATE:
+            // This should use the result from the previous stage
+            return arg1;
+        case D3DTOP_MODULATEALPHA_ADDCOLOR:
+            return "(" + arg1 + " + " + arg2 + ".a * " + arg2 + ")";
+        case D3DTOP_MODULATECOLOR_ADDALPHA:
+            return "vec3(" + arg1 + " * " + arg2 + "), (" + arg1 + ".a + " + arg2 + ".a)";
+        case D3DTOP_MODULATEINVALPHA_ADDCOLOR:
+            return "(" + arg1 + " + (1.0 - " + arg2 + ".a) * " + arg2 + ")";
+        case D3DTOP_MODULATEINVCOLOR_ADDALPHA:
+            return "vec3(" + arg1 + " * (vec3(1.0) - " + arg2 + ")), (" + arg1 + ".a + " + arg2 + ".a)";
+        case D3DTOP_DOTPRODUCT3:
+            return "vec3(dot(" + arg1 + ", " + arg2 + "))";
+        case D3DTOP_MULTIPLYADD:
+            return "(" + arg1 + " * " + arg2 + " + " + arg0 + ")";
+        default:
+            return arg1;
+    }
+}
+
 std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const RenderState& state) {
     std::ostringstream ss;
     
@@ -211,9 +327,21 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
         ss << "in vec4 v_color;\n";
     }
     
+    if (features & SHADER_FEATURE_SPECULAR) {
+        ss << "in vec4 v_specular;\n";
+    }
+    
     int num_textures = 0;
     if (features & SHADER_FEATURE_TEXTURE) {
-        num_textures = (features & SHADER_FEATURE_MULTI_TEXTURE) ? 2 : 1;
+        num_textures = (features & SHADER_FEATURE_MULTI_TEXTURE) ? 8 : 1;
+        // Count actual active textures based on color_op
+        for (int i = 0; i < 8; i++) {
+            if (state.color_op[i] == D3DTOP_DISABLE) {
+                num_textures = i;
+                break;
+            }
+        }
+        
         for (int i = 0; i < num_textures; i++) {
             ss << "in vec2 v_texcoord" << i << ";\n";
         }
@@ -227,6 +355,7 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
         for (int i = 0; i < num_textures; i++) {
             ss << "uniform sampler2D u_texture" << i << ";\n";
         }
+        ss << "uniform vec4 u_texture_factor;\n"; // For D3DTA_TFACTOR
     }
     
     if (features & SHADER_FEATURE_ALPHA_TEST) {
@@ -236,21 +365,73 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
     // Main function
     ss << "\nvoid main() {\n";
     
-    // Base color
-    ss << "    vec4 color = vec4(1.0);\n";
+    // Initialize variables
+    ss << "    vec4 diffuse = vec4(1.0);\n";
+    ss << "    vec4 specular = vec4(0.0);\n";
+    ss << "    vec4 current = vec4(1.0);\n";
+    ss << "    vec4 temp = vec4(0.0);\n";
+    ss << "    vec4 texture_sample;\n\n";
     
     // Vertex color
     if (features & SHADER_FEATURE_VERTEX_COLOR) {
-        ss << "    color *= v_color;\n";
+        ss << "    diffuse = v_color;\n";
+        ss << "    current = diffuse;\n";
     }
     
-    // Texture sampling - use 'texture' instead of 'texture2D'
+    if (features & SHADER_FEATURE_SPECULAR) {
+        ss << "    specular = v_specular;\n";
+    }
+    
+    // Texture sampling with proper stage operations
     if (features & SHADER_FEATURE_TEXTURE) {
-        ss << "    color *= texture(u_texture0, v_texcoord0);\n";
-        
-        if (features & SHADER_FEATURE_MULTI_TEXTURE) {
-            // TODO: Implement proper texture stage operations
-            ss << "    color *= texture(u_texture1, v_texcoord1);\n";
+        for (int i = 0; i < num_textures; i++) {
+            if (state.color_op[i] == D3DTOP_DISABLE) {
+                break;
+            }
+            
+            ss << "\n    // Texture stage " << i << "\n";
+            ss << "    texture_sample = texture(u_texture" << i << ", v_texcoord" << i << ");\n";
+            
+            // Generate color operation
+            if (state.color_op[i] != D3DTOP_DISABLE) {
+                std::string color_arg1 = generate_texture_arg(state.color_arg1[i], "texture_sample", 
+                                                             "current", "diffuse", "specular", "temp", false);
+                std::string color_arg2 = generate_texture_arg(state.color_arg2[i], "texture_sample", 
+                                                             "current", "diffuse", "specular", "temp", false);
+                std::string color_arg0 = "";
+                if (state.color_op[i] == D3DTOP_MULTIPLYADD) {
+                    color_arg0 = generate_texture_arg(state.color_arg0[i], "texture_sample", 
+                                                     "current", "diffuse", "specular", "temp", false);
+                }
+                
+                std::string color_result = generate_texture_op(state.color_op[i], color_arg1, color_arg2, color_arg0);
+                if (!color_result.empty()) {
+                    ss << "    current.rgb = " << color_result << ";\n";
+                }
+            }
+            
+            // Generate alpha operation
+            if (state.alpha_op[i] != D3DTOP_DISABLE) {
+                std::string alpha_arg1 = generate_texture_arg(state.alpha_arg1[i], "texture_sample", 
+                                                             "current", "diffuse", "specular", "temp", true);
+                std::string alpha_arg2 = generate_texture_arg(state.alpha_arg2[i], "texture_sample", 
+                                                             "current", "diffuse", "specular", "temp", true);
+                std::string alpha_arg0 = "";
+                if (state.alpha_op[i] == D3DTOP_MULTIPLYADD) {
+                    alpha_arg0 = generate_texture_arg(state.alpha_arg0[i], "texture_sample", 
+                                                     "current", "diffuse", "specular", "temp", true);
+                }
+                
+                std::string alpha_result = generate_texture_op(state.alpha_op[i], alpha_arg1, alpha_arg2, alpha_arg0);
+                if (!alpha_result.empty()) {
+                    ss << "    current.a = " << alpha_result << ";\n";
+                }
+            }
+            
+            // Handle result argument (D3DTA_TEMP)
+            if (state.result_arg[i] == D3DTA_TEMP) {
+                ss << "    temp = current;\n";
+            }
         }
     }
     
@@ -261,22 +442,22 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
                 ss << "    discard;\n";
                 break;
             case D3DCMP_LESS:
-                ss << "    if (color.a >= u_alpha_ref) discard;\n";
+                ss << "    if (current.a >= u_alpha_ref) discard;\n";
                 break;
             case D3DCMP_EQUAL:
-                ss << "    if (color.a != u_alpha_ref) discard;\n";
+                ss << "    if (current.a != u_alpha_ref) discard;\n";
                 break;
             case D3DCMP_LESSEQUAL:
-                ss << "    if (color.a > u_alpha_ref) discard;\n";
+                ss << "    if (current.a > u_alpha_ref) discard;\n";
                 break;
             case D3DCMP_GREATER:
-                ss << "    if (color.a <= u_alpha_ref) discard;\n";
+                ss << "    if (current.a <= u_alpha_ref) discard;\n";
                 break;
             case D3DCMP_NOTEQUAL:
-                ss << "    if (color.a == u_alpha_ref) discard;\n";
+                ss << "    if (current.a == u_alpha_ref) discard;\n";
                 break;
             case D3DCMP_GREATEREQUAL:
-                ss << "    if (color.a < u_alpha_ref) discard;\n";
+                ss << "    if (current.a < u_alpha_ref) discard;\n";
                 break;
             case D3DCMP_ALWAYS:
             default:
@@ -284,7 +465,7 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
         }
     }
     
-    ss << "    FragColor = color;\n";
+    ss << "    FragColor = current;\n";
     ss << "}\n";
     
     return ss.str();
@@ -362,6 +543,9 @@ void ShaderGenerator::cache_uniform_locations(ShaderProgram* program) {
     
     // Alpha test uniform
     program->u_alpha_ref = glGetUniformLocation(program->program, "u_alpha_ref");
+    
+    // Texture factor uniform
+    program->u_texture_factor = glGetUniformLocation(program->program, "u_texture_factor");
     
     // Texture uniforms
     char name[32];
