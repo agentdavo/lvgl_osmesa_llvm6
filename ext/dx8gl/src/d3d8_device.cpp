@@ -682,10 +682,34 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
             FPU_PRESERVE_RESTORE();
             return D3DERR_DRIVERINTERNALERROR;
         }
-        
-        // TODO: Copy EGL framebuffer to display or shared memory
-        // The framebuffer data is available via egl_context_->getFramebuffer()
-        
+
+        // Copy EGL framebuffer into back buffer surfaces or shared memory
+        void* fb_data = egl_context_->getFramebuffer();
+        int fb_width = egl_context_->getWidth();
+        int fb_height = egl_context_->getHeight();
+        if (fb_data && !back_buffers_.empty()) {
+            const uint8_t* src = static_cast<const uint8_t*>(fb_data);
+            for (auto* surface : back_buffers_) {
+                if (!surface) continue;
+                D3DLOCKED_RECT locked = {};
+                if (SUCCEEDED(surface->LockRect(&locked, nullptr, 0))) {
+                    for (int y = 0; y < fb_height; ++y) {
+                        const uint8_t* src_row = src + y * fb_width * 4;
+                        uint32_t* dst_row = reinterpret_cast<uint32_t*>(
+                            static_cast<uint8_t*>(locked.pBits) + y * locked.Pitch);
+                        for (int x = 0; x < fb_width; ++x) {
+                            uint8_t r = src_row[x * 4 + 0];
+                            uint8_t g = src_row[x * 4 + 1];
+                            uint8_t b = src_row[x * 4 + 2];
+                            uint8_t a = src_row[x * 4 + 3];
+                            dst_row[x] = (a << 24) | (r << 16) | (g << 8) | b;
+                        }
+                    }
+                    surface->UnlockRect();
+                }
+            }
+        }
+
         // Handle vsync based on presentation interval
         if (present_params_.FullScreen_PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE) {
             // No vsync
@@ -694,11 +718,68 @@ HRESULT Direct3DDevice8::Present(const RECT* pSourceRect, const RECT* pDestRect,
         }
     }
 #endif
-    
+
     // Backend doesn't have buffer swapping - rendering is done to memory
     if (render_backend_) {
-        // TODO: Copy backend framebuffer to display or shared memory
-        
+        // Copy backend framebuffer (e.g., OSMesa) to back buffer surfaces or shared memory
+#ifdef DX8GL_HAS_OSMESA
+        if (render_backend_->get_type() == DX8_BACKEND_OSMESA) {
+            OSMesaContext ctx = OSMesaGetCurrentContext();
+            GLint buf_width = 0, buf_height = 0, buf_format = 0;
+            void* buffer = nullptr;
+            if (ctx && OSMesaGetColorBuffer(ctx, &buf_width, &buf_height,
+                                            &buf_format, &buffer) && buffer) {
+                const uint8_t* src = static_cast<const uint8_t*>(buffer);
+                for (auto* surface : back_buffers_) {
+                    if (!surface) continue;
+                    D3DLOCKED_RECT locked = {};
+                    if (SUCCEEDED(surface->LockRect(&locked, nullptr, 0))) {
+                        for (int y = 0; y < buf_height; ++y) {
+                            const uint8_t* src_row = src + y * buf_width * 4;
+                            uint32_t* dst_row = reinterpret_cast<uint32_t*>(
+                                static_cast<uint8_t*>(locked.pBits) + y * locked.Pitch);
+                            for (int x = 0; x < buf_width; ++x) {
+                                uint8_t r = src_row[x * 4 + 0];
+                                uint8_t g = src_row[x * 4 + 1];
+                                uint8_t b = src_row[x * 4 + 2];
+                                uint8_t a = src_row[x * 4 + 3];
+                                dst_row[x] = (a << 24) | (r << 16) | (g << 8) | b;
+                            }
+                        }
+                        surface->UnlockRect();
+                    }
+                }
+            }
+        } else
+#endif
+        {
+            // Generic backend copy using get_framebuffer
+            int w = 0, h = 0, fmt = 0;
+            void* buffer = render_backend_->get_framebuffer(w, h, fmt);
+            if (buffer && !back_buffers_.empty()) {
+                const uint8_t* src = static_cast<const uint8_t*>(buffer);
+                for (auto* surface : back_buffers_) {
+                    if (!surface) continue;
+                    D3DLOCKED_RECT locked = {};
+                    if (SUCCEEDED(surface->LockRect(&locked, nullptr, 0))) {
+                        for (int y = 0; y < h; ++y) {
+                            const uint8_t* src_row = src + y * w * 4;
+                            uint32_t* dst_row = reinterpret_cast<uint32_t*>(
+                                static_cast<uint8_t*>(locked.pBits) + y * locked.Pitch);
+                            for (int x = 0; x < w; ++x) {
+                                uint8_t r = src_row[x * 4 + 0];
+                                uint8_t g = src_row[x * 4 + 1];
+                                uint8_t b = src_row[x * 4 + 2];
+                                uint8_t a = src_row[x * 4 + 3];
+                                dst_row[x] = (a << 24) | (r << 16) | (g << 8) | b;
+                            }
+                        }
+                        surface->UnlockRect();
+                    }
+                }
+            }
+        }
+
         // Handle vsync based on presentation interval
         if (present_params_.FullScreen_PresentationInterval == D3DPRESENT_INTERVAL_IMMEDIATE) {
             // No vsync - already handled by SDL swap interval

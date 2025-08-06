@@ -267,6 +267,61 @@ bool test_partial_presentation() {
     return true;
 }
 
+bool test_present_populates_surface() {
+    cout << "\n=== Test: Present Populates Surface ===" << endl;
+
+    dx8gl_error result = dx8gl_init(nullptr);
+    TEST_ASSERT(result == DX8GL_SUCCESS, "Initialization should succeed");
+
+    IDirect3D8* d3d8 = Direct3DCreate8(120);
+    TEST_ASSERT(d3d8 != nullptr, "Direct3DCreate8 should succeed");
+
+    D3DPRESENT_PARAMETERS pp = {};
+    pp.BackBufferWidth = 64;
+    pp.BackBufferHeight = 64;
+    pp.BackBufferFormat = D3DFMT_A8R8G8B8;
+    pp.BackBufferCount = 1;
+    pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+    pp.Windowed = TRUE;
+
+    IDirect3DDevice8* device = nullptr;
+    HRESULT hr = d3d8->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, nullptr,
+                                   D3DCREATE_SOFTWARE_VERTEXPROCESSING, &pp, &device);
+    TEST_ASSERT(SUCCEEDED(hr), "Device creation should succeed");
+
+    hr = device->BeginScene();
+    TEST_ASSERT(SUCCEEDED(hr), "BeginScene should succeed");
+
+    DWORD clear_color = 0xFF112233;
+    hr = device->Clear(0, nullptr, D3DCLEAR_TARGET, clear_color, 1.0f, 0);
+    TEST_ASSERT(SUCCEEDED(hr), "Clear should succeed");
+
+    hr = device->EndScene();
+    TEST_ASSERT(SUCCEEDED(hr), "EndScene should succeed");
+
+    hr = device->Present(nullptr, nullptr, nullptr, nullptr);
+    TEST_ASSERT(SUCCEEDED(hr), "Present should succeed");
+
+    IDirect3DSurface8* back = nullptr;
+    hr = device->GetBackBuffer(0, D3DBACKBUFFER_TYPE_MONO, &back);
+    TEST_ASSERT(SUCCEEDED(hr), "GetBackBuffer should succeed");
+
+    D3DLOCKED_RECT locked = {};
+    hr = back->LockRect(&locked, nullptr, D3DLOCK_READONLY);
+    TEST_ASSERT(SUCCEEDED(hr), "LockRect should succeed");
+
+    DWORD pixel = *reinterpret_cast<DWORD*>(locked.pBits);
+    back->UnlockRect();
+    TEST_ASSERT(pixel == clear_color, "Back buffer should contain clear color");
+
+    back->Release();
+    device->Release();
+    delete static_cast<dx8gl::Direct3D8*>(d3d8);
+    dx8gl_shutdown();
+
+    return true;
+}
+
 bool run_all_tests() {
     cout << "Running Swap Chain Presentation Tests" << endl;
     cout << "=====================================" << endl;
@@ -277,6 +332,7 @@ bool run_all_tests() {
     all_passed &= test_swapchain_presentation();
     all_passed &= test_swapchain_render_target_sync();
     all_passed &= test_partial_presentation();
+    all_passed &= test_present_populates_surface();
     
     return all_passed;
 }
