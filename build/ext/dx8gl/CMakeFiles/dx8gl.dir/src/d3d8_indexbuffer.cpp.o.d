@@ -309,6 +309,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_indexbuffer.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/pixel_shader_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.h \
  /usr/include/GL/osmesa.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h

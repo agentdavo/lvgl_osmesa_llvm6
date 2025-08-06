@@ -36,7 +36,18 @@ set(LLVM_CONFIG ${LLVM_INSTALL_DIR}/bin/llvm-config)
 set(MESA_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ext/mesa)
 set(MESA_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/mesa-build)
 set(MESA_INSTALL_DIR ${CMAKE_CURRENT_BINARY_DIR}/mesa-install)
-set(OSMESA_LIB "${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libOSMesa.so")
+# Check for static or shared OSMesa library
+if(EXISTS "${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libOSMesa.a")
+    set(OSMESA_LIB "${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libOSMesa.a")
+    set(OSMESA_IS_STATIC TRUE)
+elseif(EXISTS "${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libOSMesa.so")
+    set(OSMESA_LIB "${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libOSMesa.so")
+    set(OSMESA_IS_STATIC FALSE)
+else()
+    # Fallback to shared library after Mesa is built
+    set(OSMESA_LIB "${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libOSMesa.so")
+    set(OSMESA_IS_STATIC FALSE)
+endif()
 
 include(ExternalProject)
 
@@ -107,7 +118,7 @@ ExternalProject_Add(osmesa
         -Db_lto=false
         -Db_pie=true
         -Dbuildtype=plain
-        --default-library=static
+        --default-library=shared
         --wrap-mode=nofallback
         -Dplatforms=
         -Dgallium-drivers=softpipe,llvmpipe
@@ -185,13 +196,28 @@ else()
     endif()
 endif()
 
-target_link_libraries(OSMesa INTERFACE
-    ${OSMESA_LIB}
-    ${LLVM_LIBS}
-    pthread
-    dl
-    m
-)
+# Handle static Mesa properly
+if(OSMESA_IS_STATIC)
+    # For static Mesa, we need to link all the dependencies
+    target_link_libraries(OSMesa INTERFACE
+        ${OSMESA_LIB}
+        ${MESA_INSTALL_DIR}/lib/${LIB_ARCH_DIR}/libglapi.a
+        ${LLVM_LIBS}
+        pthread
+        dl
+        m
+        z
+        expat
+    )
+else()
+    # For shared Mesa, we just need the library and basic system deps
+    target_link_libraries(OSMesa INTERFACE
+        ${OSMESA_LIB}
+        pthread
+        dl
+        m
+    )
+endif()
 
 # Create wrapper function for executables with proper RPATH
 function(add_relocatable_executable TARGET)

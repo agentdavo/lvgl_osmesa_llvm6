@@ -112,9 +112,10 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_texture.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_game.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/state_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
- /usr/include/GL/gl.h /usr/include/GL/glext.h \
- /usr/include/KHR/khrplatform.h /usr/include/c++/13/unordered_map \
- /usr/include/c++/13/initializer_list \
+ /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
+ /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
+ /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/KHR/khrplatform.h \
+ /usr/include/c++/13/unordered_map /usr/include/c++/13/initializer_list \
  /usr/include/c++/13/bits/unordered_map.h \
  /usr/include/c++/13/bits/hashtable.h \
  /usr/include/c++/13/bits/hashtable_policy.h /usr/include/c++/13/tuple \
@@ -302,6 +303,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_texture.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/pixel_shader_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_texture.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/private_data.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/guid_utils.h \

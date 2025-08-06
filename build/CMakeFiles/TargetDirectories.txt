@@ -35,6 +35,8 @@
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_backend_selection.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_framebuffer_correctness.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/package.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/package_source.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/edit_cache.dir

@@ -676,6 +676,30 @@ src/logger.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/logger.cpp.s
 .PHONY : src/logger.cpp.s
 
+src/offscreen_framebuffer.o: src/offscreen_framebuffer.cpp.o
+.PHONY : src/offscreen_framebuffer.o
+
+# target to build an object file
+src/offscreen_framebuffer.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/offscreen_framebuffer.cpp.o
+.PHONY : src/offscreen_framebuffer.cpp.o
+
+src/offscreen_framebuffer.i: src/offscreen_framebuffer.cpp.i
+.PHONY : src/offscreen_framebuffer.i
+
+# target to preprocess a source file
+src/offscreen_framebuffer.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/offscreen_framebuffer.cpp.i
+.PHONY : src/offscreen_framebuffer.cpp.i
+
+src/offscreen_framebuffer.s: src/offscreen_framebuffer.cpp.s
+.PHONY : src/offscreen_framebuffer.s
+
+# target to generate assembly for a file
+src/offscreen_framebuffer.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/offscreen_framebuffer.cpp.s
+.PHONY : src/offscreen_framebuffer.cpp.s
+
 src/osmesa_backend.o: src/osmesa_backend.cpp.o
 .PHONY : src/osmesa_backend.o
 
@@ -1207,6 +1231,9 @@ help:
 	@echo "... src/logger.o"
 	@echo "... src/logger.i"
 	@echo "... src/logger.s"
+	@echo "... src/offscreen_framebuffer.o"
+	@echo "... src/offscreen_framebuffer.i"
+	@echo "... src/offscreen_framebuffer.s"
 	@echo "... src/osmesa_backend.o"
 	@echo "... src/osmesa_backend.i"
 	@echo "... src/osmesa_backend.s"

@@ -242,7 +242,7 @@ bool Direct3DDevice8::initialize() {
     }
     
     DX8GL_INFO("%s backend initialized successfully", 
-               render_backend_->get_type() == DX8_BACKEND_OSMESA ? "OSMesa" : "EGL");
+               render_backend_->get_type() == DX8GL_BACKEND_OSMESA ? "OSMesa" : "EGL");
     
 #ifdef DX8GL_HAS_OSMESA
     // Clear any OpenGL errors from initialization

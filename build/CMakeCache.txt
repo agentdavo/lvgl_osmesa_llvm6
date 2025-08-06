@@ -257,6 +257,9 @@ CPACK_SOURCE_ZIP:BOOL=OFF
 //Enable EGL backend support
 DX8GL_ENABLE_EGL:BOOL=OFF
 
+//Enable WebGPU backend support
+DX8GL_ENABLE_WEBGPU:BOOL=OFF
+
 //Path to a file.
 FREETYPE_INCLUDE_DIR_freetype2:PATH=/usr/include/freetype2
 

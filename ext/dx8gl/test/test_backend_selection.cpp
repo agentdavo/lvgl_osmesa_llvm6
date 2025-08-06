@@ -7,6 +7,11 @@
 #include "../src/render_backend.h"
 #include "../src/logger.h"
 
+namespace dx8gl {
+    extern DX8RenderBackend* g_render_backend;
+    extern dx8gl_backend_type g_selected_backend;
+}
+
 // Test utilities
 #define TEST_ASSERT(condition, message) \
     do { \

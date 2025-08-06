@@ -131,6 +131,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "ext/dx8gl/test/CMakeFiles/test_d3dx_surface_loading.dir/DependInfo.cmake"
   "ext/dx8gl/test/CMakeFiles/test_swapchain_presentation.dir/DependInfo.cmake"
   "ext/dx8gl/test/CMakeFiles/test_state_manager_validation.dir/DependInfo.cmake"
+  "ext/dx8gl/test/CMakeFiles/test_backend_selection.dir/DependInfo.cmake"
+  "ext/dx8gl/test/CMakeFiles/test_framebuffer_correctness.dir/DependInfo.cmake"
   "src/CMakeFiles/test_xyzrhw.dir/DependInfo.cmake"
   "src/CMakeFiles/test_mixed_vertices.dir/DependInfo.cmake"
   "src/CMakeFiles/test_indexed_xyzrhw.dir/DependInfo.cmake"

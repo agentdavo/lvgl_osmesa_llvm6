@@ -5,7 +5,21 @@
 #include <cmath>
 
 // Include OpenGL headers for format constants
-#include "gl3_headers.h"
+#ifdef DX8GL_USE_DESKTOP_GL
+    #include <GL/gl.h>
+    #include <GL/glext.h>
+#else
+    #include <GLES3/gl3.h>
+    #include <GLES3/gl3ext.h>
+#endif
+
+// Define any missing constants
+#ifndef GL_BGRA
+#define GL_BGRA 0x80E1
+#endif
+#ifndef GL_BGR
+#define GL_BGR 0x80E0
+#endif
 
 namespace dx8gl {
 

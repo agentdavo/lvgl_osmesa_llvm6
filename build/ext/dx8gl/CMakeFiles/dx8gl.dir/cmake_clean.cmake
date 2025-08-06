@@ -39,6 +39,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dx8gl.dir/src/hud_system.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/logger.cpp.o"
   "CMakeFiles/dx8gl.dir/src/logger.cpp.o.d"
+  "CMakeFiles/dx8gl.dir/src/offscreen_framebuffer.cpp.o"
+  "CMakeFiles/dx8gl.dir/src/offscreen_framebuffer.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o"
   "CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o"

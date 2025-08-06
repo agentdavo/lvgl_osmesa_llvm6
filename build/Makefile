@@ -456,6 +456,32 @@ test_state_manager_validation/fast:
 .PHONY : test_state_manager_validation/fast
 
 #=============================================================================
+# Target rules for targets named test_backend_selection
+
+# Build rule for target.
+test_backend_selection: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_backend_selection
+.PHONY : test_backend_selection
+
+# fast build rule for target.
+test_backend_selection/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_backend_selection.dir/build.make ext/dx8gl/test/CMakeFiles/test_backend_selection.dir/build
+.PHONY : test_backend_selection/fast
+
+#=============================================================================
+# Target rules for targets named test_framebuffer_correctness
+
+# Build rule for target.
+test_framebuffer_correctness: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_framebuffer_correctness
+.PHONY : test_framebuffer_correctness
+
+# fast build rule for target.
+test_framebuffer_correctness/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_framebuffer_correctness.dir/build.make ext/dx8gl/test/CMakeFiles/test_framebuffer_correctness.dir/build
+.PHONY : test_framebuffer_correctness/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -12069,11 +12095,13 @@ help:
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
 	@echo "... test_async_simple"
+	@echo "... test_backend_selection"
 	@echo "... test_command_buffer_async"
 	@echo "... test_cube_texture"
 	@echo "... test_d3dx_surface_loading"
 	@echo "... test_device_reset"
 	@echo "... test_dx8gl_core_api"
+	@echo "... test_framebuffer_correctness"
 	@echo "... test_indexed_xyzrhw"
 	@echo "... test_loading_screen"
 	@echo "... test_lod_dirty_logic"

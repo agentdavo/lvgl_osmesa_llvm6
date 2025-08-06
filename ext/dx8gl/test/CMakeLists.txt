@@ -12,8 +12,12 @@ target_include_directories(test_shader_translator PRIVATE
 )
 
 # Link against OpenGL for GL constants
-find_package(OpenGL REQUIRED)
-target_link_libraries(test_shader_translator PRIVATE OpenGL::GL)
+if(TARGET OSMesa)
+    target_link_libraries(test_shader_translator PRIVATE OSMesa)
+else()
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(test_shader_translator PRIVATE OpenGL::GL)
+endif()
 
 # Test executable for texture LOD and dirty regions (simple version)
 add_executable(test_texture_simple 
@@ -29,8 +33,12 @@ target_include_directories(test_texture_simple PRIVATE
 )
 
 # Link against OpenGL
-find_package(OpenGL REQUIRED)
-target_link_libraries(test_texture_simple PRIVATE OpenGL::GL)
+if(TARGET OSMesa)
+    target_link_libraries(test_texture_simple PRIVATE OSMesa)
+else()
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(test_texture_simple PRIVATE OpenGL::GL)
+endif()
 
 # Test executable for LOD and dirty region logic (no dependencies)
 add_executable(test_lod_dirty_logic test_lod_dirty_logic.cpp)
@@ -47,7 +55,11 @@ target_include_directories(test_multi_texcoords PRIVATE
 )
 
 # Link against OpenGL for GL constants
-target_link_libraries(test_multi_texcoords PRIVATE OpenGL::GL)
+if(TARGET OSMesa)
+    target_link_libraries(test_multi_texcoords PRIVATE OSMesa)
+else()
+    target_link_libraries(test_multi_texcoords PRIVATE OpenGL::GL)
+endif()
 
 # Test executable for surface format conversions
 add_executable(test_surface_format 
@@ -61,7 +73,11 @@ target_include_directories(test_surface_format PRIVATE
 )
 
 # Link against OpenGL for GL constants
-target_link_libraries(test_surface_format PRIVATE OpenGL::GL)
+if(TARGET OSMesa)
+    target_link_libraries(test_surface_format PRIVATE OSMesa)
+else()
+    target_link_libraries(test_surface_format PRIVATE OpenGL::GL)
+endif()
 
 # Test executable for command buffer async execution
 # This test requires the full dx8gl library
@@ -173,7 +189,11 @@ target_include_directories(test_shader_cache_resize PRIVATE
 )
 
 # Link against OpenGL for GL constants
-target_link_libraries(test_shader_cache_resize PRIVATE OpenGL::GL)
+if(TARGET OSMesa)
+    target_link_libraries(test_shader_cache_resize PRIVATE OSMesa)
+else()
+    target_link_libraries(test_shader_cache_resize PRIVATE OpenGL::GL)
+endif()
 
 # Vertex shader disassembly test
 add_executable(test_vertex_shader_disassembly 
@@ -252,8 +272,12 @@ target_include_directories(test_state_manager_validation PRIVATE
 )
 
 # Link against OpenGL for GL constants
-find_package(OpenGL REQUIRED)
-target_link_libraries(test_state_manager_validation PRIVATE OpenGL::GL)
+if(TARGET OSMesa)
+    target_link_libraries(test_state_manager_validation PRIVATE OSMesa)
+else()
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(test_state_manager_validation PRIVATE OpenGL::GL)
+endif()
 
 # Enable testing
 enable_testing()
@@ -304,11 +328,13 @@ target_include_directories(test_framebuffer_correctness PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../src
 )
 
-# Link against OpenGL for GL constants
-target_link_libraries(test_framebuffer_correctness PRIVATE OpenGL::GL)
-
+# Link against OpenGL for GL constants and dx8gl
 if(TARGET dx8gl)
     target_link_libraries(test_framebuffer_correctness PRIVATE dx8gl)
+elseif(TARGET OSMesa)
+    target_link_libraries(test_framebuffer_correctness PRIVATE OSMesa)
+else()
+    target_link_libraries(test_framebuffer_correctness PRIVATE OpenGL::GL)
 endif()
 
 add_test(NAME FramebufferCorrectnessTest COMMAND test_framebuffer_correctness)

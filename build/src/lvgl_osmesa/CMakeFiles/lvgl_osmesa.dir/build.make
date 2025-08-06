@@ -100,7 +100,6 @@ src/lvgl_osmesa/lvgl_osmesa: /usr/lib/x86_64-linux-gnu/libICE.so
 src/lvgl_osmesa/lvgl_osmesa: /usr/lib/x86_64-linux-gnu/libX11.so
 src/lvgl_osmesa/lvgl_osmesa: /usr/lib/x86_64-linux-gnu/libXext.so
 src/lvgl_osmesa/lvgl_osmesa: mesa-install/lib/x86_64-linux-gnu/libOSMesa.so
-src/lvgl_osmesa/lvgl_osmesa: llvm-install/lib/libLLVM-20.so
 src/lvgl_osmesa/lvgl_osmesa: src/lvgl_osmesa/CMakeFiles/lvgl_osmesa.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/djs/lvgl_osmesa_llvm6/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lvgl_osmesa"
 	cd /home/djs/lvgl_osmesa_llvm6/build/src/lvgl_osmesa && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/lvgl_osmesa.dir/link.txt --verbose=$(VERBOSE)
