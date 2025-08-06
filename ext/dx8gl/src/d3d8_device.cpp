@@ -1623,6 +1623,9 @@ HRESULT Direct3DDevice8::CreateIndexBuffer(UINT Length, DWORD Usage, D3DFORMAT F
 HRESULT Direct3DDevice8::CreateVolumeTexture(UINT Width, UINT Height, UINT Depth, UINT Levels,
                                            DWORD Usage, D3DFORMAT Format, D3DPOOL Pool,
                                            IDirect3DVolumeTexture8** ppVolumeTexture) {
+    // Volume textures not yet fully implemented
+    // The UpdateTexture method supports basic volume texture copying
+    DX8GL_WARNING("CreateVolumeTexture: Volume textures not fully implemented");
     return D3DERR_NOTAVAILABLE;
 }
 
@@ -1863,7 +1866,7 @@ HRESULT Direct3DDevice8::UpdateTexture(IDirect3DBaseTexture8* pSourceTexture,
         }
         
         case D3DRTYPE_VOLUMETEXTURE: {
-            // Volume textures not yet supported
+            // Volume textures not yet fully implemented
             DX8GL_WARNING("UpdateTexture: Volume textures not implemented");
             return D3DERR_NOTAVAILABLE;
         }

@@ -226,10 +226,24 @@ HRESULT Direct3D8::EnumAdapterModes(UINT Adapter, UINT Mode, D3DDISPLAYMODE* pMo
         D3DFORMAT format;
         UINT refresh_rate;
     } formats[] = {
-        { D3DFMT_R5G6B5, 60 },      // 16-bit
-        { D3DFMT_X1R5G5B5, 60 },    // 16-bit
-        { D3DFMT_X8R8G8B8, 60 },    // 32-bit
-        { D3DFMT_A8R8G8B8, 60 }     // 32-bit with alpha
+        // 16-bit formats with multiple refresh rates
+        { D3DFMT_R5G6B5, 60 },      // 16-bit RGB565
+        { D3DFMT_R5G6B5, 75 },
+        { D3DFMT_R5G6B5, 85 },
+        { D3DFMT_X1R5G5B5, 60 },    // 16-bit RGB555
+        { D3DFMT_X1R5G5B5, 75 },
+        { D3DFMT_X1R5G5B5, 85 },
+        // 32-bit formats with multiple refresh rates
+        { D3DFMT_X8R8G8B8, 60 },    // 32-bit RGB
+        { D3DFMT_X8R8G8B8, 75 },
+        { D3DFMT_X8R8G8B8, 85 },
+        { D3DFMT_X8R8G8B8, 100 },
+        { D3DFMT_X8R8G8B8, 120 },
+        { D3DFMT_A8R8G8B8, 60 },    // 32-bit ARGB
+        { D3DFMT_A8R8G8B8, 75 },
+        { D3DFMT_A8R8G8B8, 85 },
+        { D3DFMT_A8R8G8B8, 100 },
+        { D3DFMT_A8R8G8B8, 120 }
     };
     
     const UINT num_resolutions = sizeof(resolutions) / sizeof(resolutions[0]);
@@ -362,10 +376,10 @@ HRESULT Direct3D8::CheckDeviceFormat(UINT Adapter, D3DDEVTYPE DeviceType,
     // Check depth/stencil formats
     if (Usage & D3DUSAGE_DEPTHSTENCIL) {
         switch (CheckFormat) {
-            case D3DFMT_D16:
-            case D3DFMT_D24S8:
-            case D3DFMT_D24X8:
-            case D3DFMT_D32:
+            case D3DFMT_D16:        // 16-bit depth
+            case D3DFMT_D24S8:      // 24-bit depth, 8-bit stencil
+            case D3DFMT_D24X8:      // 24-bit depth, no stencil
+            case D3DFMT_D32:        // 32-bit depth
                 return D3D_OK;
             default:
                 return D3DERR_NOTAVAILABLE;
@@ -429,10 +443,10 @@ HRESULT Direct3D8::CheckDepthStencilMatch(UINT Adapter, D3DDEVTYPE DeviceType,
     
     // Check if depth/stencil format is valid
     switch (DepthStencilFormat) {
-        case D3DFMT_D16:
-        case D3DFMT_D24S8:
-        case D3DFMT_D24X8:
-        case D3DFMT_D32:
+        case D3DFMT_D16:        // 16-bit depth
+        case D3DFMT_D24S8:      // 24-bit depth, 8-bit stencil
+        case D3DFMT_D24X8:      // 24-bit depth, no stencil
+        case D3DFMT_D32:        // 32-bit depth
             // All depth formats work with all render target formats
             return D3D_OK;
         default:

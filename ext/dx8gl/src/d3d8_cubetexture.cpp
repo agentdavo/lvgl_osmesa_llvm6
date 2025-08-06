@@ -243,7 +243,34 @@ DWORD Direct3DCubeTexture8::GetPriority() {
 }
 
 void Direct3DCubeTexture8::PreLoad() {
-    // TODO: Implement texture preloading
+    // PreLoad ensures all mip levels are allocated and uploaded to GPU
+    // This is useful for ensuring textures are ready before rendering
+    DX8GL_TRACE("Direct3DCubeTexture8::PreLoad() - texture %u", gl_texture_);
+    
+    // Bind the cube texture
+    glBindTexture(GL_TEXTURE_CUBE_MAP, gl_texture_);
+    
+    // In our current implementation, textures are allocated during creation
+    // PreLoad primarily ensures texture parameters are set correctly
+    // and the texture is bound for immediate use
+    
+    // Set texture parameters to ensure proper sampling
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, 
+                   levels_ > 1 ? GL_LINEAR_MIPMAP_LINEAR : GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    
+    // Enable seamless cube map filtering for better quality (OpenGL 3.2+)
+    // This eliminates seams between cube faces
+    GLint gl_version = 0;
+    glGetIntegerv(GL_MAJOR_VERSION, &gl_version);
+    if (gl_version >= 3) {
+        glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
+    }
+    
+    CHECK_GL_ERROR("Cube texture PreLoad");
 }
 
 D3DRESOURCETYPE Direct3DCubeTexture8::GetType() {
