@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <mutex>
 
 namespace dx8gl {
 
@@ -71,6 +72,9 @@ private:
     // Shader constants (c0-c7 for pixel shaders)
     float shader_constants_[MAX_PIXEL_SHADER_CONSTANTS * 4];
     bool constant_dirty_[MAX_PIXEL_SHADER_CONSTANTS];
+    
+    // Thread safety
+    mutable std::mutex shader_mutex_;  // Protects shaders_ map and current_shader_
 };
 
 } // namespace dx8gl

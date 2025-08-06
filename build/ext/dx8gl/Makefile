@@ -844,6 +844,30 @@ src/render_backend.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.s
 .PHONY : src/render_backend.cpp.s
 
+src/render_thread.o: src/render_thread.cpp.o
+.PHONY : src/render_thread.o
+
+# target to build an object file
+src/render_thread.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.o
+.PHONY : src/render_thread.cpp.o
+
+src/render_thread.i: src/render_thread.cpp.i
+.PHONY : src/render_thread.i
+
+# target to preprocess a source file
+src/render_thread.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.i
+.PHONY : src/render_thread.cpp.i
+
+src/render_thread.s: src/render_thread.cpp.s
+.PHONY : src/render_thread.s
+
+# target to generate assembly for a file
+src/render_thread.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.s
+.PHONY : src/render_thread.cpp.s
+
 src/shader_binary_cache.o: src/shader_binary_cache.cpp.o
 .PHONY : src/shader_binary_cache.o
 
@@ -1252,6 +1276,9 @@ help:
 	@echo "... src/render_backend.o"
 	@echo "... src/render_backend.i"
 	@echo "... src/render_backend.s"
+	@echo "... src/render_thread.o"
+	@echo "... src/render_thread.i"
+	@echo "... src/render_thread.s"
 	@echo "... src/shader_binary_cache.o"
 	@echo "... src/shader_binary_cache.i"
 	@echo "... src/shader_binary_cache.s"

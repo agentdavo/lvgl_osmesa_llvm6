@@ -25,7 +25,12 @@ DX8WebGPUBackend::DX8WebGPUBackend()
     , initialized_(false)
     , adapter_ready_(false)
     , device_ready_(false)
-    , buffer_mapped_(false) {
+    , buffer_mapped_(false)
+    , canvas_id_(1)  // Default canvas ID
+    , canvas_created_(false)
+    , framebuffer_ready_(false)
+    , framebuffer_callback_(nullptr)
+    , framebuffer_callback_user_data_(nullptr) {
     error_buffer_[0] = '\0';
 }
 
@@ -96,22 +101,34 @@ void* DX8WebGPUBackend::get_framebuffer(int& width, int& height, int& format) {
         return nullptr;
     }
     
-    // Ensure we have the latest frame data by reading back from GPU
+    // If framebuffer is ready from a previous async operation, return it
+    if (framebuffer_ready_) {
+        width = width_;
+        height = height_;
+        format = framebuffer_->get_gl_format();
+        return framebuffer_->get_data();
+    }
+    
+    // For backward compatibility, we still support synchronous readback
+    // but it's not recommended in worker contexts
     if (!readback_buffer_) {
         width = height = format = 0;
         return nullptr;
     }
     
-    // Map the readback buffer to get the latest frame data
+    DX8GL_WARNING("Synchronous framebuffer readback is deprecated in WebGPU backend. "
+                  "Use request_framebuffer_async() instead for better performance.");
+    
+    // Initiate mapping but don't block for too long
     buffer_mapped_ = false;
     wgpu_buffer_map_async(readback_buffer_, WGPU_MAP_MODE_READ, 0, 
                          width_ * height_ * 4, buffer_map_callback, this);
     
-    // Wait for the mapping to complete (this would be async in a real implementation)
-    // For now, we'll use a simple polling approach
-    int timeout = 100; // 100ms timeout
-    while (!buffer_mapped_ && timeout-- > 0) {
+    // Very short wait - just a few attempts
+    int attempts = 5;
+    while (!buffer_mapped_ && attempts-- > 0) {
 #ifdef __EMSCRIPTEN__
+        // In workers, we can't block for long
         emscripten_sleep(1);
 #else
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -131,12 +148,19 @@ void* DX8WebGPUBackend::get_framebuffer(int& width, int& height, int& format) {
         
         // Unmap the buffer
         wgpu_buffer_unmap(readback_buffer_);
+        framebuffer_ready_ = true;
     }
     
-    width = width_;
-    height = height_;
-    format = framebuffer_->get_gl_format();
-    return framebuffer_->get_data();
+    if (framebuffer_ready_) {
+        width = width_;
+        height = height_;
+        format = framebuffer_->get_gl_format();
+        return framebuffer_->get_data();
+    } else {
+        // Return null if data is not ready yet
+        width = height = format = 0;
+        return nullptr;
+    }
 }
 
 bool DX8WebGPUBackend::resize(int width, int height) {
@@ -150,6 +174,14 @@ bool DX8WebGPUBackend::resize(int width, int height) {
     }
     
     DX8GL_INFO("Resizing WebGPU backend from %dx%d to %dx%d", width_, height_, width, height);
+    
+#ifdef __EMSCRIPTEN__
+    // Resize the OffscreenCanvas if it exists
+    if (offscreen_canvas_is_valid(canvas_id_)) {
+        DX8GL_INFO("Resizing OffscreenCanvas %d to %dx%d", canvas_id_, width, height);
+        offscreen_canvas_set_size(canvas_id_, width, height);
+    }
+#endif
     
     // Cleanup old resources
     if (render_texture_view_) {
@@ -206,6 +238,56 @@ void DX8WebGPUBackend::shutdown() {
     buffer_mapped_ = false;
     
     DX8GL_INFO("WebGPU backend shutdown complete");
+}
+
+bool DX8WebGPUBackend::transfer_canvas_control(const char* canvas_selector) {
+#ifdef __EMSCRIPTEN__
+    if (!canvas_selector) {
+        strncpy(error_buffer_, "Canvas selector is null", sizeof(error_buffer_) - 1);
+        return false;
+    }
+    
+    DX8GL_INFO("Transferring control from HTML canvas '%s' to OffscreenCanvas ID %d", 
+               canvas_selector, canvas_id_);
+    
+    // Transfer control from the HTML canvas to an OffscreenCanvas
+    canvas_transfer_control_to_offscreen(canvas_selector, canvas_id_);
+    
+    // Verify the transfer was successful
+    if (!offscreen_canvas_is_valid(canvas_id_)) {
+        strncpy(error_buffer_, "Failed to transfer canvas control to offscreen", sizeof(error_buffer_) - 1);
+        return false;
+    }
+    
+    canvas_created_ = true;  // Mark that we now own the canvas
+    DX8GL_INFO("Successfully transferred canvas control to OffscreenCanvas");
+    return true;
+#else
+    // Not applicable for non-Emscripten builds
+    return true;
+#endif
+}
+
+void DX8WebGPUBackend::request_framebuffer_async(FramebufferReadyCallback callback, void* user_data) {
+    if (!initialized_ || !framebuffer_ || !readback_buffer_) {
+        // Call callback immediately with failure
+        if (callback) {
+            callback(nullptr, 0, 0, 0, user_data);
+        }
+        return;
+    }
+    
+    // Store the callback for later
+    framebuffer_callback_ = callback;
+    framebuffer_callback_user_data_ = user_data;
+    framebuffer_ready_ = false;
+    
+    // Initiate the async buffer mapping
+    buffer_mapped_ = false;
+    wgpu_buffer_map_async(readback_buffer_, WGPU_MAP_MODE_READ, 0,
+                         width_ * height_ * 4, buffer_map_callback, this);
+    
+    DX8GL_INFO("Initiated async framebuffer readback");
 }
 
 bool DX8WebGPUBackend::has_extension(const char* extension) const {
@@ -290,18 +372,58 @@ bool DX8WebGPUBackend::create_device() {
 }
 
 bool DX8WebGPUBackend::setup_offscreen_canvas() {
-    DX8GL_INFO("Setting up WebGPU offscreen canvas");
+    DX8GL_INFO("Setting up WebGPU offscreen canvas (ID: %d)", canvas_id_);
     
 #ifdef __EMSCRIPTEN__
-    // Create an OffscreenCanvas for WebGPU rendering
-    OffscreenCanvasId canvas_id = 1; // Use a fixed ID for simplicity
+    // First check if the canvas is already valid
+    if (!offscreen_canvas_is_valid(canvas_id_)) {
+        // Create the OffscreenCanvas with the specified size
+        DX8GL_INFO("Creating OffscreenCanvas with ID %d, size %dx%d", canvas_id_, width_, height_);
+        offscreen_canvas_create(canvas_id_, width_, height_);
+        canvas_created_ = true;
+        
+        // Verify the canvas was created successfully
+        if (!offscreen_canvas_is_valid(canvas_id_)) {
+            strncpy(error_buffer_, "Failed to create OffscreenCanvas", sizeof(error_buffer_) - 1);
+            return false;
+        }
+        
+        // Determine the threading model and dispatch the canvas accordingly
+#ifdef __EMSCRIPTEN_WASM_WORKERS__
+        // Wasm Workers mode - post to current worker thread
+        DX8GL_INFO("Using Wasm Workers mode - posting canvas to current worker");
+        emscripten_wasm_worker_t current_worker = emscripten_wasm_worker_self_id();
+        if (current_worker != 0) {
+            // We're in a worker thread, no need to post (canvas is already here)
+            DX8GL_INFO("Already in worker thread %d", current_worker);
+        }
+#elif defined(__EMSCRIPTEN_PTHREADS__)
+        // Pthreads mode - post to current pthread
+        DX8GL_INFO("Using Pthreads mode - posting canvas to current pthread");
+        pthread_t current_thread = pthread_self();
+        if (current_thread != pthread_self()) {  // Check if we're not on main thread
+            // We're in a pthread, canvas should already be accessible
+            DX8GL_INFO("Already in pthread %p", (void*)current_thread);
+        }
+#else
+        // Main thread or no threading - canvas is already accessible
+        DX8GL_INFO("No threading model detected - canvas accessible on main thread");
+#endif
+    } else {
+        DX8GL_INFO("OffscreenCanvas with ID %d already exists", canvas_id_);
+    }
     
-    // In a real implementation, you would create the OffscreenCanvas
-    // This is a simplified version that assumes the canvas setup is handled elsewhere
-    canvas_context_ = wgpu_offscreen_canvas_get_webgpu_context(canvas_id);
+    // Get the WebGPU context from the OffscreenCanvas
+    canvas_context_ = wgpu_offscreen_canvas_get_webgpu_context(canvas_id_);
     
     if (!canvas_context_) {
         strncpy(error_buffer_, "Failed to get WebGPU canvas context", sizeof(error_buffer_) - 1);
+        return false;
+    }
+    
+    // Validate the canvas one more time
+    if (!offscreen_canvas_is_valid(canvas_id_)) {
+        strncpy(error_buffer_, "OffscreenCanvas became invalid after getting context", sizeof(error_buffer_) - 1);
         return false;
     }
     
@@ -313,6 +435,8 @@ bool DX8WebGPUBackend::setup_offscreen_canvas() {
     config.alphaMode = WGPU_CANVAS_ALPHA_MODE_OPAQUE;
     
     wgpu_canvas_context_configure(canvas_context_, &config);
+    
+    DX8GL_INFO("OffscreenCanvas configured successfully");
     
 #else
     // For native platforms, we don't need an actual canvas
@@ -412,6 +536,15 @@ void DX8WebGPUBackend::cleanup_resources() {
         canvas_context_ = nullptr;
     }
     
+#ifdef __EMSCRIPTEN__
+    // Clean up the OffscreenCanvas if we created it
+    if (canvas_created_ && offscreen_canvas_is_valid(canvas_id_)) {
+        DX8GL_INFO("Destroying OffscreenCanvas with ID %d", canvas_id_);
+        offscreen_canvas_destroy(canvas_id_);
+        canvas_created_ = false;
+    }
+#endif
+    
     if (queue_) {
         wgpu_object_destroy(queue_);
         queue_ = nullptr;
@@ -468,9 +601,51 @@ void DX8WebGPUBackend::buffer_map_callback(WGpuBufferMapAsyncStatus status, void
     
     if (status == WGPU_BUFFER_MAP_ASYNC_STATUS_SUCCESS) {
         backend->buffer_mapped_ = true;
+        backend->framebuffer_ready_ = true;
+        
+        // If there's an async callback registered, process it now
+        if (backend->framebuffer_callback_ && backend->framebuffer_) {
+            // Copy data from the mapped buffer to the framebuffer
+            backend->framebuffer_->read_from_gpu([backend](void* dest, size_t size) {
+                const void* mapped_data = wgpu_buffer_get_const_mapped_range(
+                    backend->readback_buffer_, 0, WGPU_WHOLE_MAP_SIZE);
+                if (mapped_data) {
+                    memcpy(dest, mapped_data, size);
+                    return true;
+                }
+                return false;
+            });
+            
+            // Unmap the buffer
+            wgpu_buffer_unmap(backend->readback_buffer_);
+            
+            // Call the user callback with the framebuffer data
+            backend->framebuffer_callback_(
+                backend->framebuffer_->get_data(),
+                backend->width_,
+                backend->height_,
+                backend->framebuffer_->get_gl_format(),
+                backend->framebuffer_callback_user_data_
+            );
+            
+            // Clear the callback
+            backend->framebuffer_callback_ = nullptr;
+            backend->framebuffer_callback_user_data_ = nullptr;
+        }
     } else {
         DX8GL_ERROR("Failed to map WebGPU buffer: status=%d", status);
         backend->buffer_mapped_ = false;
+        backend->framebuffer_ready_ = false;
+        
+        // Call the callback with null to indicate failure
+        if (backend->framebuffer_callback_) {
+            backend->framebuffer_callback_(
+                nullptr, 0, 0, 0,
+                backend->framebuffer_callback_user_data_
+            );
+            backend->framebuffer_callback_ = nullptr;
+            backend->framebuffer_callback_user_data_ = nullptr;
+        }
     }
 }
 

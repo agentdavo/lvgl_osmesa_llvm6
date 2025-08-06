@@ -35,6 +35,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/pixel_shader_manager.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/pixel_shader_manager.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/pixel_shader_manager.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/private_data.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_thread.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_binary_cache.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_bytecode_assembler.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_bytecode_disassembler.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o.d"

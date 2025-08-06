@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 #include <memory>
+#include <mutex>
 
 namespace dx8gl {
 
@@ -93,6 +94,9 @@ private:
     
     // Cache support
     std::string bytecode_hash_;
+    
+    // Thread safety
+    mutable std::mutex shader_mutex_;  // Protects shaders_ map and current_shader_
 };
 
 } // namespace dx8gl

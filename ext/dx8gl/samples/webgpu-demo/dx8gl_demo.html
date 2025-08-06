@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>dx8gl WebGPU Demo - DirectX 8 to WebGPU</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      html, body {
+        margin: 0;
+        height: 100%;
+        display: flex;
+        place-content: center center;
+        background: #1a1a1a;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      canvas {
+        width: 600px;
+        height: 600px;
+        max-width: 100%;
+        display: block;
+        border: 1px solid #333;
+      }
+      #info {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #00ff88;
+        font-size: 14px;
+        font-family: monospace;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+        pointer-events: none;
+      }
+      #info h1 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+      }
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #00ff88;
+        font-family: monospace;
+        font-size: 20px;
+        text-align: center;
+      }
+      .spinner {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(0, 255, 136, 0.3);
+        border-top-color: #00ff88;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-top: 10px;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      #error {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 0, 0, 0.1);
+        border: 2px solid #ff0000;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 600px;
+        color: #fff;
+      }
+      #error h2 {
+        color: #ff4444;
+        margin-top: 0;
+      }
+      #fps {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 5px 10px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 14px;
+        color: #ffff00;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    
+    <div id="loading">
+      <div>Loading DirectX 8 → WebGPU Demo...</div>
+      <div class="spinner"></div>
+    </div>
+    
+    <div id="info">
+      <h1>dx8gl WebGPU Backend</h1>
+      <div>DirectX 8 API → dx8gl → WebGPU</div>
+      <div>1000 spinning cubes</div>
+    </div>
+    
+    <div id="fps">FPS: <span id="fps-value">--</span></div>
+    
+    <div id="error">
+      <h2>WebGPU Not Available</h2>
+      <p>This demo requires WebGPU support. Please use:</p>
+      <ul>
+        <li>Chrome/Edge 113+ with WebGPU enabled</li>
+        <li>Firefox Nightly with WebGPU flag enabled</li>
+        <li>Safari Technology Preview</li>
+      </ul>
+    </div>
+    
+    <script>
+      // Check WebGPU support
+      async function checkWebGPU() {
+        if (!navigator.gpu) {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('error').style.display = 'block';
+          return false;
+        }
+        try {
+          const adapter = await navigator.gpu.requestAdapter();
+          if (!adapter) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            return false;
+          }
+          return true;
+        } catch (e) {
+          console.error('WebGPU check failed:', e);
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('error').style.display = 'block';
+          return false;
+        }
+      }
+      
+      // Module configuration for Emscripten
+      var Module = {
+        canvas: document.getElementById('canvas'),
+        print: (text) => console.log('[stdout]', text),
+        printErr: (text) => console.error('[stderr]', text),
+        
+        onRuntimeInitialized: function() {
+          console.log('WASM runtime initialized');
+          document.getElementById('loading').style.display = 'none';
+          
+          // Start FPS counter
+          startFPSCounter();
+        },
+        
+        // Monitor loading progress
+        monitorRunDependencies: function(left) {
+          if (left > 0) {
+            document.getElementById('loading').innerHTML = 
+              `<div>Loading DirectX 8 → WebGPU Demo...</div>
+               <div>Preparing (${left} files remaining)</div>
+               <div class="spinner"></div>`;
+          }
+        },
+        
+        // Pre-run setup
+        preRun: function() {
+          console.log('Pre-run: Setting up dx8gl WebGPU backend');
+          
+          // The canvas element is automatically picked up by Emscripten
+          // dx8gl will use it through the WebGPU backend
+        },
+        
+        // Post-run setup
+        postRun: function() {
+          console.log('Post-run: dx8gl WebGPU demo started');
+        }
+      };
+      
+      // FPS counter
+      function startFPSCounter() {
+        let frameCount = 0;
+        let lastTime = performance.now();
+        
+        function updateFPS() {
+          frameCount++;
+          const currentTime = performance.now();
+          const deltaTime = currentTime - lastTime;
+          
+          if (deltaTime >= 1000) {
+            const fps = Math.round((frameCount * 1000) / deltaTime);
+            document.getElementById('fps-value').textContent = fps;
+            frameCount = 0;
+            lastTime = currentTime;
+          }
+          
+          requestAnimationFrame(updateFPS);
+        }
+        
+        updateFPS();
+      }
+      
+      // Handle canvas resize
+      function handleResize() {
+        const canvas = Module.canvas;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+      }
+      
+      window.addEventListener('resize', handleResize);
+      
+      // Initialize
+      checkWebGPU().then(supported => {
+        if (supported) {
+          console.log('WebGPU is supported, loading dx8gl demo...');
+          // The Emscripten module script will be loaded below
+        } else {
+          console.error('WebGPU is not supported');
+        }
+      });
+    </script>
+    
+    <!-- Load the compiled dx8gl WebGPU demo -->
+    <script async type="text/javascript" src="dx8_webgpu_demo.js"></script>
+  </body>
+</html>

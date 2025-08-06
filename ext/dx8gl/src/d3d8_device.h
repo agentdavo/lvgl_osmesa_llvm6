@@ -5,6 +5,7 @@
 #include "state_manager.h"
 #include "command_buffer.h"
 #include "thread_pool.h"
+#include "render_thread.h"
 #include "vertex_shader_manager.h"
 #include "pixel_shader_manager.h"
 #include "shader_program_manager.h"
@@ -293,11 +294,11 @@ private:
     std::unique_ptr<CommandBuffer> current_command_buffer_;
     CommandBufferPool command_buffer_pool_;
     
-    // Thread pool for parallel command execution
-    ThreadPool* thread_pool_;
+    // Render thread for sequential command execution
+    class RenderThread* render_thread_;
     
-    // Pending command buffer execution futures
-    std::vector<std::future<void>> pending_futures_;
+    // Thread pool (kept for potential future parallel tasks)
+    ThreadPool* thread_pool_;
     
     // Stream source information
     struct StreamSource {

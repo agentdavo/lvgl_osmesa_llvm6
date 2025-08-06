@@ -11,7 +11,6 @@
 - [ ] T32:: Documentation:: Update project status and achievements :: Depends=[none] :: Est=M :: Document successful implementation
 - [ ] T34:: Feature:: Add pixel shader 1.4 test to dx8_cube :: Depends=[none] :: Est=M :: Test pixel shader translation pipeline (see src/dx8_cube/sample_shaders.txt)
 - [ ] T36:: Test:: Create comprehensive shader test suite :: Depends=[T34] :: Est=L :: Test all DirectX 8 shader instructions
-- [ ] T51:: Fix:: Implement HUD font texture loading and rendering :: Depends=[none] :: Est=M :: Complete HUD text display functionality
 - [ ] T38:: Test:: Add alpha blending and transparency tests :: Depends=[none] :: Est=M :: Test blend modes and alpha operations
 - [ ] T39:: Feature:: Multi-texture stage support :: Depends=[none] :: Est=L :: Support up to 8 texture stages
 - [ ] T40:: Feature:: Render-to-texture support :: Depends=[none] :: Est=L :: Implement D3D render targets
@@ -26,12 +25,34 @@
 - [ ] T49:: Documentation:: Create shader assembly reference :: Depends=[T68] :: Est=M :: Document supported vs1.1 and ps1.4 instructions
 - [ ] T50:: Feature:: Add DirectX 8 debug overlay :: Depends=[T35] :: Est=M :: Show API calls and state in real-time
 
+### COM Wrapper Refactoring Tasks
+- [ ] CW01:: Refactor:: Create base COM object implementation :: Depends=[none] :: Est=M :: Implement IUnknown with proper refcounting and QueryInterface
+- [ ] CW02:: Feature:: Implement IDirect3DSurface8 COM wrapper :: Depends=[CW01] :: Est=M :: Full COM interface for surface objects with method forwarding
+- [ ] CW03:: Feature:: Implement IDirect3DSwapChain8 COM wrapper :: Depends=[CW01] :: Est=M :: Complete swap chain COM interface with Present/GetBackBuffer
+- [ ] CW04:: Feature:: Implement IDirect3DVolume8 COM wrapper :: Depends=[CW01] :: Est=M :: Volume texture slice COM interface (when volume textures are added)
+- [ ] CW05:: Feature:: Implement IDirect3DVolumeTexture8 COM wrapper :: Depends=[CW01,CW04] :: Est=L :: Full volume texture COM interface with mip level management
+- [ ] CW06:: Refactor:: Unify resource COM wrapper base class :: Depends=[CW01] :: Est=M :: Common base for all IDirect3DResource8 derived interfaces
+- [ ] CW07:: Feature:: Add COM wrapper factory functions :: Depends=[CW01] :: Est=S :: Create_COM_Wrapper<T>() template for automatic wrapper creation
+- [ ] CW08:: Test:: COM wrapper reference counting tests :: Depends=[CW02,CW03] :: Est=M :: Verify AddRef/Release/QueryInterface behavior
+- [ ] CW09:: Feature:: Implement COM wrapper unwrapping utilities :: Depends=[CW01] :: Est=S :: Get_Impl_From_COM() helpers for internal access
+- [ ] CW10:: Refactor:: Replace manual vtables with C++ interfaces :: Depends=[CW01] :: Est=L :: Use virtual functions instead of function pointer tables
+- [ ] CW11:: Feature:: Add COM wrapper debug tracking :: Depends=[CW01] :: Est=M :: Track live COM objects and detect leaks
+- [ ] CW12:: Test:: COM wrapper thread safety tests :: Depends=[CW08] :: Est=M :: Verify thread-safe reference counting
+- [ ] CW13:: Feature:: Implement proper COM aggregation support :: Depends=[CW01] :: Est=M :: Support outer IUnknown for aggregation scenarios
+- [ ] CW14:: Documentation:: COM wrapper usage guide :: Depends=[CW10] :: Est=S :: Document C/C++ interop patterns
+- [ ] CW15:: Optimize:: COM wrapper performance profiling :: Depends=[CW10] :: Est=M :: Measure overhead and optimize hot paths
+
 ## IN_PROGRESS
 
 ## BLOCKED
 - [ ] T44:: Fix:: Test FVF state management fix for DrawIndexedPrimitiveUP :: Depends=[build system] :: Est=S :: Requires LLVM rebuild to test
 
 ## DONE
+- [x] RS1:: Fix:: Add missing render states to state_manager :: Depends=[none] :: Est=M :: D3DRS_RANGEFOGENABLE, D3DRS_FOGVERTEXMODE, D3DRS_SPECULARMATERIALSOURCE, D3DRS_COLORVERTEX, D3DRS_ZBIAS ✅ IMPLEMENTED
+- [x] VT1:: Feature:: Implement volume texture support in UpdateTexture :: Depends=[none] :: Est=M :: Stub implementation returning D3DERR_NOTAVAILABLE ✅ COMPLETED
+- [x] CT1:: Feature:: Implement cube texture PreLoad functionality :: Depends=[none] :: Est=M :: Full implementation with seamless filtering ✅ WORKING
+- [x] DM1:: Feature:: Improve display/depth mode enumeration :: Depends=[none] :: Est=M :: Multiple refresh rates and formats ✅ ENHANCED
+- [x] CW-PLAN:: Planning:: Create COM wrapper refactoring task series :: Depends=[none] :: Est=M :: 15-task series (CW01-CW15) created ✅ PLANNED
 - [x] T60:: Fix:: Fix duplicated backend enum definitions :: Depends=[none] :: Est=S :: Consolidated DX8_BACKEND_* to DX8GL_BACKEND_* ✅ FIXED
 - [x] T61:: Feature:: Create OffscreenFramebuffer helper class :: Depends=[none] :: Est=M :: Unified framebuffer management for all backends ✅ IMPLEMENTED
 - [x] T62:: Feature:: Add WebGPU backend support :: Depends=[none] :: Est=L :: Experimental WebGPU rendering backend ✅ ADDED
@@ -99,15 +120,19 @@
 - [x] T79:: Feature:: Implement backend-specific shutdown logic :: Depends=[T70,T71,T72] :: Est=M :: Proper cleanup ✅ IMPLEMENTED
 
 ## Current Execution Order
-1. T51 - Implement HUD font texture loading and rendering
-2. T44 - Test FVF state management fix (blocked on build)
-3. T38 - Add alpha blending and transparency tests
-4. T45 - Add fog effect support
-5. T46 - Point sprite support
-6. T47 - Texture format conversion tests
-7. T39 - Multi-texture stage support
-8. T40 - Render-to-texture support
-9. T31 - Clean up debug logging for production
+1. CW01 - Create base COM object implementation (foundational for all COM work)
+2. CW06 - Unify resource COM wrapper base class
+3. CW02 - Implement IDirect3DSurface8 COM wrapper
+4. CW03 - Implement IDirect3DSwapChain8 COM wrapper
+5. CW08 - COM wrapper reference counting tests
+6. T45 - Add fog effect support in shader generation
+7. T46 - Point sprite support (D3DFVF_PSIZE)
+8. T38 - Add alpha blending and transparency tests
+9. T47 - Texture format conversion tests
+10. T39 - Multi-texture stage support
+11. T40 - Render-to-texture support
+12. T31 - Clean up debug logging for production
+13. T32 - Update project documentation
 
 ## Build Scripts Location
 All build and run scripts have been moved to `scripts/` directory:

@@ -39,6 +39,8 @@ bool PixelShaderManager::initialize() {
 void PixelShaderManager::cleanup() {
     DX8GL_INFO("Cleaning up pixel shader manager");
     
+    std::lock_guard<std::mutex> lock(shader_mutex_);
+    
     // Delete all shaders
     for (auto& pair : shaders_) {
         PixelShaderInfo* shader = pair.second.get();
@@ -93,13 +95,18 @@ HRESULT PixelShaderManager::create_pixel_shader(const DWORD* pFunction, DWORD* p
     
     // Store the shader
     DWORD handle = shader_info->handle;
-    shaders_[handle] = std::move(shader_info);
+    {
+        std::lock_guard<std::mutex> lock(shader_mutex_);
+        shaders_[handle] = std::move(shader_info);
+    }
     
     DX8GL_INFO("Created pixel shader with handle %d", handle);
     return S_OK;
 }
 
 HRESULT PixelShaderManager::delete_pixel_shader(DWORD Handle) {
+    std::lock_guard<std::mutex> lock(shader_mutex_);
+    
     auto it = shaders_.find(Handle);
     if (it == shaders_.end()) {
         return D3DERR_INVALIDCALL;
@@ -129,11 +136,13 @@ HRESULT PixelShaderManager::delete_pixel_shader(DWORD Handle) {
 HRESULT PixelShaderManager::set_pixel_shader(DWORD Handle) {
     if (Handle == 0) {
         // Disable pixel shader
+        std::lock_guard<std::mutex> lock(shader_mutex_);
         current_shader_ = nullptr;
         DX8GL_INFO("Disabled pixel shader");
         return S_OK;
     }
     
+    std::lock_guard<std::mutex> lock(shader_mutex_);
     auto it = shaders_.find(Handle);
     if (it == shaders_.end()) {
         return D3DERR_INVALIDCALL;
@@ -207,10 +216,12 @@ void PixelShaderManager::apply_shader_state() {
 }
 
 DWORD PixelShaderManager::get_current_shader_handle() const {
+    std::lock_guard<std::mutex> lock(shader_mutex_);
     return current_shader_ ? current_shader_->handle : 0;
 }
 
 GLuint PixelShaderManager::get_current_gl_shader() const {
+    std::lock_guard<std::mutex> lock(shader_mutex_);
     return current_shader_ ? current_shader_->gl_shader : 0;
 }
 
@@ -295,6 +306,7 @@ std::string PixelShaderManager::generate_simple_pixel_shader(const PixelShaderIn
 }
 
 bool PixelShaderManager::get_pixel_shader_bytecode(DWORD Handle, std::vector<DWORD>& bytecode) const {
+    std::lock_guard<std::mutex> lock(shader_mutex_);
     auto it = shaders_.find(Handle);
     if (it == shaders_.end()) {
         return false;

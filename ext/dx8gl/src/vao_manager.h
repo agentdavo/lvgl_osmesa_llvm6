@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <vector>
 #include <memory>
+#include <mutex>
 
 namespace dx8gl {
 
@@ -54,6 +55,7 @@ private:
     
     std::unordered_map<VAOKey, std::unique_ptr<CachedVAO>, VAOKeyHash> vao_cache_;
     GLuint current_vao_;
+    mutable std::mutex cache_mutex_;  // Protects vao_cache_ and current_vao_
 };
 
 // Global VAO manager instance

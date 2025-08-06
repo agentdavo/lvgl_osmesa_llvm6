@@ -16,6 +16,13 @@ This project showcases:
 - **Modern C++** with GLM for matrix operations
 - **Complete software stack** - no GPU or hardware acceleration required
 
+### Recent Achievements (August 2025)
+- ✅ **Full DirectX 8 Render State Support** - All DX8Wrapper required states implemented
+- ✅ **Enhanced Display Mode Enumeration** - Multiple refresh rates and formats
+- ✅ **Cube Texture PreLoad** - Complete implementation with seamless filtering
+- ✅ **COM Wrapper Architecture** - Comprehensive refactoring plan (15 tasks) created
+- ✅ **Volume Texture Stubs** - Foundation for future 3D texture support
+
 ## Quick Start
 
 ```bash
@@ -129,7 +136,14 @@ Build times (approximate):
 - Mesa: 5-10 minutes  
 - Examples: < 1 minute each
 
-### Recent Updates
+### Recent Updates (August 2025)
+- **DirectX 8 Compatibility**: Implemented all missing render states required by DX8Wrapper
+  - D3DRS_RANGEFOGENABLE, D3DRS_FOGVERTEXMODE, D3DRS_SPECULARMATERIALSOURCE
+  - D3DRS_COLORVERTEX, D3DRS_ZBIAS with proper OpenGL polygon offset mapping
+- **Display Mode Enumeration**: Enhanced with multiple refresh rates (60-120Hz) and formats
+- **Cube Texture Support**: PreLoad() now fully functional with seamless filtering
+- **COM Wrapper Refactoring**: Created 15-task series for complete COM interface overhaul
+- **Volume Textures**: Added stub implementation in UpdateTexture (returns D3DERR_NOTAVAILABLE)
 - Mesa now builds with shared libraries instead of static for better compatibility
 - Tests properly link against locally built Mesa 25.0.7 instead of system libraries
 - Added WebGPU backend support (experimental)

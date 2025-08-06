@@ -53,6 +53,40 @@ if(NOT EMSCRIPTEN)
     if(DX8GL_ENABLE_WEBGPU)
         message(STATUS "WebGPU backend support enabled")
         add_compile_definitions(DX8GL_HAS_WEBGPU)
+        
+        # WebGPU threading mode options
+        set(DX8GL_WEBGPU_THREADING "none" CACHE STRING "WebGPU threading mode: none, pthreads, wasm-workers")
+        set_property(CACHE DX8GL_WEBGPU_THREADING PROPERTY STRINGS none pthreads wasm-workers)
+        
+        # Find or configure WebGPU implementation
+        option(DX8GL_WEBGPU_USE_DAWN "Use Dawn for native WebGPU" OFF)
+        option(DX8GL_WEBGPU_USE_WGPU "Use wgpu-native for native WebGPU" OFF)
+        
+        if(NOT EMSCRIPTEN)
+            # Native WebGPU implementation
+            if(DX8GL_WEBGPU_USE_DAWN)
+                find_package(Dawn QUIET)
+                if(Dawn_FOUND)
+                    message(STATUS "Using Dawn for WebGPU backend")
+                    add_compile_definitions(DX8GL_WEBGPU_USE_DAWN)
+                else()
+                    message(WARNING "Dawn not found, WebGPU backend disabled")
+                    set(DX8GL_ENABLE_WEBGPU OFF)
+                endif()
+            elseif(DX8GL_WEBGPU_USE_WGPU)
+                find_package(wgpu QUIET)
+                if(wgpu_FOUND)
+                    message(STATUS "Using wgpu-native for WebGPU backend")
+                    add_compile_definitions(DX8GL_WEBGPU_USE_WGPU)
+                else()
+                    message(WARNING "wgpu-native not found, WebGPU backend disabled")
+                    set(DX8GL_ENABLE_WEBGPU OFF)
+                endif()
+            else()
+                message(WARNING "No native WebGPU implementation selected (Dawn or wgpu-native)")
+                set(DX8GL_ENABLE_WEBGPU OFF)
+            endif()
+        endif()
     endif()
     
     # Always use OSMesa from parent project
@@ -65,8 +99,9 @@ if(NOT EMSCRIPTEN)
 else()
     set(GL_INCLUDE_DIRS "")
     set(GL_LIBRARIES "")
-    # Emscripten linker flags for WebGL 2
-    add_link_options(
+    
+    # Base Emscripten linker flags
+    set(EMSCRIPTEN_LINK_FLAGS
         "-sUSE_WEBGL2=1"
         "-sMIN_WEBGL_VERSION=2"
         "-sMAX_WEBGL_VERSION=2"
@@ -75,6 +110,42 @@ else()
         "-sEXPORTED_FUNCTIONS=['_main']"
         "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap']"
     )
+    
+    # WebGPU support for Emscripten
+    if(DX8GL_ENABLE_WEBGPU)
+        message(STATUS "Configuring Emscripten for WebGPU")
+        add_compile_definitions(DX8GL_HAS_WEBGPU)
+        list(APPEND EMSCRIPTEN_LINK_FLAGS "-sUSE_WEBGPU=1")
+        
+        # Threading mode configuration
+        if(DX8GL_WEBGPU_THREADING STREQUAL "pthreads")
+            message(STATUS "WebGPU threading: pthreads")
+            add_compile_definitions(__EMSCRIPTEN_PTHREADS__)
+            list(APPEND EMSCRIPTEN_LINK_FLAGS 
+                "-pthread"
+                "-sPROXY_TO_PTHREAD=1"
+                "-sPTHREAD_POOL_SIZE=4"
+            )
+        elseif(DX8GL_WEBGPU_THREADING STREQUAL "wasm-workers")
+            message(STATUS "WebGPU threading: Wasm Workers")
+            add_compile_definitions(__EMSCRIPTEN_WASM_WORKERS__)
+            list(APPEND EMSCRIPTEN_LINK_FLAGS
+                "-sWASM_WORKERS=1"
+                "-sWORKER_POOL_SIZE=4"
+            )
+        else()
+            message(STATUS "WebGPU threading: none (main thread)")
+        endif()
+        
+        # OffscreenCanvas support
+        list(APPEND EMSCRIPTEN_LINK_FLAGS "-sOFFSCREENCANVAS_SUPPORT=1")
+    endif()
+    
+    # Apply all link options
+    foreach(flag ${EMSCRIPTEN_LINK_FLAGS})
+        add_link_options(${flag})
+    endforeach()
+    
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif()
 
@@ -96,6 +167,7 @@ set(DX8GL_SOURCES
     src/state_manager.cpp
     src/command_buffer.cpp
     src/thread_pool.cpp
+    src/render_thread.cpp
     src/logger.cpp
     src/vao_manager.cpp
     src/d3dx_shader.cpp
@@ -184,8 +256,17 @@ if(NOT EMSCRIPTEN)
     if(DX8GL_ENABLE_EGL)
         target_link_libraries(dx8gl PUBLIC ${EGL_LIBRARIES})
     endif()
+    
+    # Add WebGPU libraries if enabled
+    if(DX8GL_ENABLE_WEBGPU)
+        if(DX8GL_WEBGPU_USE_DAWN AND Dawn_FOUND)
+            target_link_libraries(dx8gl PUBLIC Dawn::dawn_native Dawn::dawn_platform)
+        elseif(DX8GL_WEBGPU_USE_WGPU AND wgpu_FOUND)
+            target_link_libraries(dx8gl PUBLIC wgpu::wgpu)
+        endif()
+    endif()
 else()
-    # Emscripten only needs GLES2
+    # Emscripten only needs GLES2 (WebGPU is handled by browser)
     target_link_libraries(dx8gl PUBLIC ${GL_LIBRARIES})
 endif()
 

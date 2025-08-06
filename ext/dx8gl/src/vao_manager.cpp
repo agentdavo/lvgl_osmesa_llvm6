@@ -29,6 +29,9 @@ GLuint VAOManager::get_vao(DWORD fvf, GLuint program, GLuint vbo, UINT stride) {
     DX8GL_INFO("VAOManager::get_vao called with FVF 0x%x, program %u, VBO %u, stride %u", 
                fvf, program, vbo, stride);
     
+    // Lock for thread-safe cache access
+    std::lock_guard<std::mutex> lock(cache_mutex_);
+    
     // Check if we already have a VAO for this combination
     auto it = vao_cache_.find(key);
     if (it != vao_cache_.end()) {
@@ -66,6 +69,8 @@ GLuint VAOManager::get_vao(DWORD fvf, GLuint program, GLuint vbo, UINT stride) {
 }
 
 void VAOManager::clear_cache() {
+    std::lock_guard<std::mutex> lock(cache_mutex_);
+    
     for (auto& pair : vao_cache_) {
         if (pair.second->vao) {
             glDeleteVertexArrays(1, &pair.second->vao);

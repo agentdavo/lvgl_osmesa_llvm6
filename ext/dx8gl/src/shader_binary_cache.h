@@ -151,6 +151,10 @@ private:
     uint32_t current_gl_version_hash_;
     uint32_t current_extension_hash_;
     
+    // Thread pool for async disk operations
+    class ThreadPool* thread_pool_;
+    std::atomic<int> pending_disk_operations_;
+    
     // Helper methods
     bool save_to_memory_cache(const std::string& hash, 
                              std::shared_ptr<CachedShaderBinary> binary);
@@ -158,7 +162,10 @@ private:
     
     bool save_to_disk_cache(const std::string& hash, 
                            const CachedShaderBinary& binary);
+    bool save_to_disk_cache_sync(const std::string& hash,
+                                const CachedShaderBinary& binary);
     std::shared_ptr<CachedShaderBinary> load_from_disk_cache(const std::string& hash);
+    std::shared_ptr<CachedShaderBinary> load_from_disk_cache_sync(const std::string& hash);
     
     void evict_lru_entries();
     void update_lru(const std::string& hash);

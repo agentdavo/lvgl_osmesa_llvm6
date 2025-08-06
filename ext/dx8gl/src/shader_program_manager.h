@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <memory>
 #include <string>
+#include <mutex>
 
 namespace dx8gl {
 
@@ -114,6 +115,9 @@ private:
     
     // Cache support
     GLuint default_pixel_shader_;
+    
+    // Thread safety
+    mutable std::mutex cache_mutex_;  // Protects program_cache_ and current state
 };
 
 } // namespace dx8gl

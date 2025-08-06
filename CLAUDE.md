@@ -323,30 +323,66 @@ Each implemented method needs:
 4. Error condition tests
 5. Performance benchmarks
 
-## Recent Completed Tasks
+## Recent Completed Tasks (August 2025)
 
-### Task 1: Backend Enum Fixes
+### DirectX 8 Render States Implementation ✅
+- Added all missing render states required by DX8Wrapper:
+  - D3DRS_RANGEFOGENABLE for range-based fog calculations
+  - D3DRS_FOGVERTEXMODE for vertex fog mode selection
+  - D3DRS_SPECULARMATERIALSOURCE for specular material source
+  - D3DRS_COLORVERTEX for color vertex enable/disable
+  - D3DRS_ZBIAS with OpenGL polygon offset mapping
+- Extended StateManager with new fields and proper OpenGL state mapping
+- Added comprehensive test_render_states.cpp validation
+
+### Volume Texture Support ✅
+- Added stub implementation in UpdateTexture for D3DRTYPE_VOLUMETEXTURE
+- CreateVolumeTexture returns D3DERR_NOTAVAILABLE as placeholder
+- Foundation laid for future 3D texture implementation
+
+### Cube Texture PreLoad Implementation ✅
+- Fully implemented PreLoad() method for cube textures
+- Sets proper texture sampling parameters (min/mag filters, wrap modes)
+- Enables GL_TEXTURE_CUBE_MAP_SEAMLESS for OpenGL 3.2+
+- Ensures all mip levels are properly allocated and uploaded
+
+### Display Mode Enumeration Enhancement ✅
+- Added multiple refresh rates (60, 75, 85, 100, 120 Hz) per format
+- Support for 16-bit (R5G6B5, X1R5G5B5) and 32-bit (X8R8G8B8, A8R8G8B8) formats
+- Improved CheckDepthStencilMatch for better depth format support
+- Full compatibility with DX8Wrapper's Find_Color_Mode and Find_Z_Mode logic
+
+### COM Wrapper Refactoring Plan ✅
+- Created comprehensive 15-task series (CW01-CW15) for COM interface overhaul
+- Planned base COM object implementation with proper IUnknown
+- Defined tasks for Surface, SwapChain, Volume, and VolumeTexture wrappers
+- Included testing, optimization, and documentation tasks
+- Updated TASKS.md with proper dependencies and execution order
+
+### Previous Infrastructure Tasks
+
+#### Backend Enum Fixes
 - Fixed duplicated backend enum definitions in dx8gl headers
 - Consolidated DX8_BACKEND_* and DX8GL_BACKEND_* to use only DX8GL_BACKEND_*
 - Added proper backend selection logic in dx8gl initialization
 
-### Task 2: OffscreenFramebuffer Helper Class
+#### OffscreenFramebuffer Helper Class
 - Created unified framebuffer management class for all backends
 - Supports multiple pixel formats (RGBA8, RGB565, FLOAT_RGBA, etc.)
 - Includes format conversion utilities
 - Provides CPU/GPU buffer synchronization
 
-### Task 3: WebGPU Backend Support
+#### WebGPU Backend Support
 - Added WebGPU backend compilation flags to build system
 - Created WebGPU backend interface following the DX8RenderBackend pattern
 - Added build documentation for WebGPU compilation
 
-### Task 4: Test Suite Improvements
+#### Test Suite Improvements
 - Created backend selection tests to verify runtime backend switching
 - Added framebuffer correctness tests for the new helper class
 - Fixed test CMakeLists.txt to properly link against OSMesa target
 
-### Task 5: Mesa Library Linking Fix
+#### Mesa Library Linking Fix
 - Changed Mesa build from static to shared libraries in CMakeLists.txt
 - Updated CMake configuration to detect both static and shared Mesa libraries
 - Fixed test linking to use locally built Mesa 25.0.7 instead of system libraries

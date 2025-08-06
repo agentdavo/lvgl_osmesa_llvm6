@@ -41,6 +41,8 @@ bool VertexShaderManager::initialize() {
 void VertexShaderManager::cleanup() {
     DX8GL_INFO("Cleaning up vertex shader manager");
     
+    std::lock_guard<std::mutex> lock(shader_mutex_);
+    
     // Delete all shaders
     for (auto& pair : shaders_) {
         VertexShaderInfo* shader = pair.second.get();
@@ -182,13 +184,18 @@ HRESULT VertexShaderManager::create_vertex_shader(const DWORD* pDeclaration, con
     
     // Store the shader
     DWORD handle = shader_info->handle;
-    shaders_[handle] = std::move(shader_info);
+    {
+        std::lock_guard<std::mutex> lock(shader_mutex_);
+        shaders_[handle] = std::move(shader_info);
+    }
     
     DX8GL_INFO("Created vertex shader with handle %d", handle);
     return S_OK;
 }
 
 HRESULT VertexShaderManager::delete_vertex_shader(DWORD Handle) {
+    std::lock_guard<std::mutex> lock(shader_mutex_);
+    
     auto it = shaders_.find(Handle);
     if (it == shaders_.end()) {
         return D3DERR_INVALIDCALL;
@@ -218,11 +225,13 @@ HRESULT VertexShaderManager::delete_vertex_shader(DWORD Handle) {
 HRESULT VertexShaderManager::set_vertex_shader(DWORD Handle) {
     if (Handle == 0) {
         // Disable vertex shader
+        std::lock_guard<std::mutex> lock(shader_mutex_);
         current_shader_ = nullptr;
         DX8GL_INFO("Disabled vertex shader");
         return S_OK;
     }
     
+    std::lock_guard<std::mutex> lock(shader_mutex_);
     auto it = shaders_.find(Handle);
     if (it == shaders_.end()) {
         return D3DERR_INVALIDCALL;

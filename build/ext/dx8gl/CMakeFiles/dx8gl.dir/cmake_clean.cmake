@@ -53,6 +53,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dx8gl.dir/src/private_data.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/render_backend.cpp.o"
   "CMakeFiles/dx8gl.dir/src/render_backend.cpp.o.d"
+  "CMakeFiles/dx8gl.dir/src/render_thread.cpp.o"
+  "CMakeFiles/dx8gl.dir/src/render_thread.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o"
   "CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o"

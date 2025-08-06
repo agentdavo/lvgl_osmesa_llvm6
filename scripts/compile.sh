@@ -18,6 +18,9 @@ JOBS=8
 BUILD_DIR="build"
 VERBOSE=false
 EGL_ENABLED=false
+WEBGPU_ENABLED=false
+WEBGPU_THREADING="none"
+WEBGPU_NATIVE=""
 
 # Print colored message
 print_msg() {
@@ -34,14 +37,18 @@ Usage: $0 [OPTIONS] [TARGET]
 Build script for LVGL OSMesa LLVM project
 
 OPTIONS:
-    -h, --help          Show this help message
-    -c, --clean         Clean build directory
-    -C, --clean-all     Clean everything including LLVM/Mesa builds
-    -d, --debug         Build in Debug mode (default: Release)
-    -j, --jobs N        Number of parallel jobs (default: 8)
-    -v, --verbose       Verbose build output
-    -r, --reconfigure   Force reconfigure with cmake
-    -e, --egl           Enable EGL backend for dx8gl
+    -h, --help              Show this help message
+    -c, --clean             Clean build directory
+    -C, --clean-all         Clean everything including LLVM/Mesa builds
+    -d, --debug             Build in Debug mode (default: Release)
+    -j, --jobs N            Number of parallel jobs (default: 8)
+    -v, --verbose           Verbose build output
+    -r, --reconfigure       Force reconfigure with cmake
+    -e, --egl               Enable EGL backend for dx8gl
+    -w, --webgpu            Enable WebGPU backend for dx8gl
+    --webgpu-threading MODE Set WebGPU threading mode (none, pthreads, wasm-workers)
+    --webgpu-dawn           Use Dawn for native WebGPU
+    --webgpu-wgpu           Use wgpu-native for native WebGPU
 
 TARGETS:
     all                 Build everything (default)
@@ -99,6 +106,19 @@ configure_cmake() {
     
     if [ "$EGL_ENABLED" = true ]; then
         CMAKE_ARGS="$CMAKE_ARGS -DDX8GL_ENABLE_EGL=ON"
+    fi
+    
+    if [ "$WEBGPU_ENABLED" = true ]; then
+        CMAKE_ARGS="$CMAKE_ARGS -DDX8GL_ENABLE_WEBGPU=ON"
+        CMAKE_ARGS="$CMAKE_ARGS -DDX8GL_WEBGPU_THREADING=$WEBGPU_THREADING"
+        
+        if [ -n "$WEBGPU_NATIVE" ]; then
+            if [ "$WEBGPU_NATIVE" = "dawn" ]; then
+                CMAKE_ARGS="$CMAKE_ARGS -DDX8GL_WEBGPU_USE_DAWN=ON"
+            elif [ "$WEBGPU_NATIVE" = "wgpu" ]; then
+                CMAKE_ARGS="$CMAKE_ARGS -DDX8GL_WEBGPU_USE_WGPU=ON"
+            fi
+        fi
     fi
     
     cmake $CMAKE_ARGS ..
@@ -280,6 +300,22 @@ while [[ $# -gt 0 ]]; do
             ;;
         -e|--egl)
             EGL_ENABLED=true
+            shift
+            ;;
+        -w|--webgpu)
+            WEBGPU_ENABLED=true
+            shift
+            ;;
+        --webgpu-threading)
+            WEBGPU_THREADING="$2"
+            shift 2
+            ;;
+        --webgpu-dawn)
+            WEBGPU_NATIVE="dawn"
+            shift
+            ;;
+        --webgpu-wgpu)
+            WEBGPU_NATIVE="wgpu"
             shift
             ;;
         *)

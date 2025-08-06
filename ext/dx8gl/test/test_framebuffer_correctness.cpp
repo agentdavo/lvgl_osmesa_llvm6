@@ -11,32 +11,10 @@
 #include "../src/logger.h"
 #include <fstream>
 
-// D3DX image file formats
-typedef enum _D3DXIMAGE_FILEFORMAT {
-    D3DXIFF_BMP = 0,
-    D3DXIFF_JPG = 1,
-    D3DXIFF_TGA = 2,
-    D3DXIFF_PNG = 3,
-    D3DXIFF_DDS = 4,
-    D3DXIFF_PPM = 5,
-    D3DXIFF_DIB = 6,
-    D3DXIFF_HDR = 7,
-    D3DXIFF_PFM = 8,
-    D3DXIFF_FORCE_DWORD = 0x7fffffff
-} D3DXIMAGE_FILEFORMAT;
-
 // OpenGL constants
 #ifndef GL_RGBA
 #define GL_RGBA 0x1908
 #endif
-
-// Function declaration
-extern "C" HRESULT WINAPI D3DXSaveSurfaceToFile(
-    const char* pDestFile,
-    DWORD DestFormat,
-    IDirect3DSurface8* pSrcSurface,
-    const PALETTEENTRY* pSrcPalette,
-    const RECT* pSrcRect);
 
 // Backend access function
 namespace dx8gl {

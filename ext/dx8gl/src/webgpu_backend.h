@@ -32,11 +32,23 @@ public:
     virtual DX8BackendType get_type() const override { return DX8GL_BACKEND_WEBGPU; }
     virtual bool has_extension(const char* extension) const override;
     
+    // Async framebuffer readback support
+    typedef void (*FramebufferReadyCallback)(void* framebuffer_data, int width, int height, int format, void* user_data);
+    void request_framebuffer_async(FramebufferReadyCallback callback, void* user_data);
+    bool is_framebuffer_ready() const { return framebuffer_ready_; }
+    
     // WebGPU-specific methods
     WGpuDevice get_device() const { return device_; }
     WGpuQueue get_queue() const { return queue_; }
     WGpuTexture get_render_texture() const { return render_texture_; }
     WGpuCanvasContext get_canvas_context() const { return canvas_context_; }
+    
+    // Configure the OffscreenCanvas ID (default: 1)
+    void set_canvas_id(int id) { canvas_id_ = id; }
+    int get_canvas_id() const { return canvas_id_; }
+    
+    // Transfer control from an HTML canvas to OffscreenCanvas (call before initialize)
+    bool transfer_canvas_control(const char* canvas_selector);
 
 private:
     // WebGPU objects
@@ -76,6 +88,15 @@ private:
     bool adapter_ready_;
     bool device_ready_;
     bool buffer_mapped_;
+    
+    // OffscreenCanvas configuration
+    int canvas_id_;
+    bool canvas_created_;
+    
+    // Async framebuffer readback state
+    bool framebuffer_ready_;
+    FramebufferReadyCallback framebuffer_callback_;
+    void* framebuffer_callback_user_data_;
 };
 
 } // namespace dx8gl

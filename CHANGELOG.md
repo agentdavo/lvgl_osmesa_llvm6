@@ -29,6 +29,32 @@ All notable changes to the LVGL OSMesa LLVM project will be documented in this f
   - Shows "LOADING..." text with animated progress bar
   - Ensures LVGL window displays properly regardless of dx8gl initialization status
   - Error screen fallback if DirectX 8 initialization fails
+
+- **DirectX 8 Render States**: Implemented missing render states for DX8Wrapper compatibility
+  - D3DRS_RANGEFOGENABLE for range-based fog calculations
+  - D3DRS_FOGVERTEXMODE for vertex fog mode selection
+  - D3DRS_SPECULARMATERIALSOURCE for specular material source
+  - D3DRS_COLORVERTEX for color vertex enable/disable
+  - D3DRS_ZBIAS with OpenGL polygon offset mapping
+
+- **Volume Texture Support**: Added stub implementation for volume textures
+  - UpdateTexture now handles D3DRTYPE_VOLUMETEXTURE (returns D3DERR_NOTAVAILABLE)
+  - CreateVolumeTexture returns D3DERR_NOTAVAILABLE until full implementation
+
+- **Cube Texture PreLoad**: Implemented PreLoad functionality for cube textures
+  - Binds texture and sets sampling parameters
+  - Enables seamless cube map filtering for OpenGL 3.2+
+
+- **Enhanced Display Mode Enumeration**: Improved compatibility with DX8Wrapper
+  - Multiple refresh rates (60, 75, 85, 100, 120 Hz) for each format
+  - Support for 16-bit (R5G6B5, X1R5G5B5) and 32-bit (X8R8G8B8, A8R8G8B8) formats
+  - Better depth format checking in CheckDepthStencilMatch
+
+- **COM Wrapper Refactoring Tasks**: Created comprehensive task series (CW01-CW15)
+  - Base COM object implementation with proper IUnknown support
+  - Individual wrappers for Surface, SwapChain, Volume, and VolumeTexture
+  - Factory functions and unwrapping utilities
+  - Thread safety and performance optimization tasks
   
 ### Changed
 - **dx8gl Initialization**: Now creates and manages a global render backend

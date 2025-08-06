@@ -1,15 +1,21 @@
 #include "shader_binary_cache.h"
 #include "logger.h"
 #include "gl3_headers.h"
+#include "thread_pool.h"
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <iomanip>
+#include <cstring>
+#include <cstdio>
 #include <sys/stat.h>
 #include <sys/mman.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
+#include <future>
+#include <thread>
+#include <chrono>
 // OpenSSL and ZLIB removed - not needed for DirectX 8 to OpenGL ES translation
 
 namespace dx8gl {
@@ -19,8 +25,30 @@ std::unique_ptr<ShaderBinaryCache> g_shader_binary_cache;
 
 // Check if binary format is supported
 static bool check_binary_format_support() {
-    // For now, disable binary caching as it requires GL 4.1+ or ARB extension
-    // This would need proper GL context and extension checking
+    // Check for GL 4.1+ support
+    const char* version_str = reinterpret_cast<const char*>(glGetString(GL_VERSION));
+    if (!version_str) {
+        DX8GL_WARNING("Unable to get OpenGL version string");
+        return false;
+    }
+    
+    // Parse version (format: "X.Y" or "X.Y.Z")
+    int major = 0, minor = 0;
+    if (sscanf(version_str, "%d.%d", &major, &minor) >= 2) {
+        if (major > 4 || (major == 4 && minor >= 1)) {
+            DX8GL_INFO("OpenGL %d.%d supports program binary (GL 4.1+)", major, minor);
+            return true;
+        }
+    }
+    
+    // Check for ARB_get_program_binary extension
+    const char* extensions = reinterpret_cast<const char*>(glGetString(GL_EXTENSIONS));
+    if (extensions && strstr(extensions, "GL_ARB_get_program_binary")) {
+        DX8GL_INFO("GL_ARB_get_program_binary extension found");
+        return true;
+    }
+    
+    DX8GL_INFO("Shader binary caching not supported (requires GL 4.1+ or GL_ARB_get_program_binary)");
     return false;
 }
 
@@ -29,13 +57,30 @@ static bool check_binary_format_support() {
 //////////////////////////////////////////////////////////////////////////////
 
 ShaderBinaryCache::ShaderBinaryCache(const ShaderBinaryCacheConfig& config)
-    : config_(config) {
+    : config_(config), thread_pool_(nullptr), pending_disk_operations_(0) {
     current_gl_version_hash_ = compute_gl_version_hash();
     current_extension_hash_ = compute_extension_hash();
+    
+    // Create thread pool for async disk operations if enabled
+    if (config_.async_disk_operations && config_.enable_disk_cache) {
+        thread_pool_ = new ThreadPool(2);  // 2 threads for disk I/O
+        DX8GL_INFO("Created thread pool with 2 threads for async disk operations");
+    }
 }
 
 ShaderBinaryCache::~ShaderBinaryCache() {
     shutdown();
+    
+    // Wait for all pending disk operations to complete
+    if (thread_pool_) {
+        int max_wait = 100;  // Wait up to 10 seconds (100 * 100ms)
+        while (pending_disk_operations_ > 0 && max_wait-- > 0) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
+        
+        delete thread_pool_;
+        thread_pool_ = nullptr;
+    }
 }
 
 bool ShaderBinaryCache::initialize() {
@@ -86,11 +131,11 @@ bool ShaderBinaryCache::save_shader_binary(GLuint program, const std::string& so
         return false;
     }
     
-    // Binary shader caching requires GL 4.1+ or ARB_get_program_binary
-    // For now, we'll skip this functionality
-    return false;
+    // Check if binary caching is supported
+    if (!is_binary_caching_supported()) {
+        return false;
+    }
     
-#if 0  // Disabled until proper GL 4.1+ support
     auto start_time = std::chrono::steady_clock::now();
     
     // Get binary length
@@ -150,7 +195,6 @@ bool ShaderBinaryCache::save_shader_binary(GLuint program, const std::string& so
     }
     
     return success;
-#endif
 }
 
 bool ShaderBinaryCache::load_shader_binary(GLuint program, const std::string& source_hash) {
@@ -158,11 +202,11 @@ bool ShaderBinaryCache::load_shader_binary(GLuint program, const std::string& so
         return false;
     }
     
-    // Binary shader caching requires GL 4.1+ or ARB_get_program_binary
-    // For now, we'll skip this functionality
-    return false;
+    // Check if binary caching is supported
+    if (!is_binary_caching_supported()) {
+        return false;
+    }
     
-#if 0  // Disabled until proper GL 4.1+ support
     auto start_time = std::chrono::steady_clock::now();
     
     std::shared_ptr<CachedShaderBinary> binary;
@@ -234,7 +278,6 @@ bool ShaderBinaryCache::load_shader_binary(GLuint program, const std::string& so
                 source_hash.c_str(), binary->binary_data.size(), duration.count());
     
     return true;
-#endif
 }
 
 void ShaderBinaryCache::clear_memory_cache() {
@@ -566,6 +609,28 @@ std::shared_ptr<CachedShaderBinary> ShaderBinaryCache::load_from_memory_cache(
 
 bool ShaderBinaryCache::save_to_disk_cache(const std::string& hash,
                                           const CachedShaderBinary& binary) {
+    // If async operations are enabled and thread pool is available, use it
+    if (config_.async_disk_operations && thread_pool_) {
+        pending_disk_operations_++;
+        
+        // Make a copy of the binary data for the async operation
+        auto binary_copy = std::make_shared<CachedShaderBinary>(binary);
+        std::string hash_copy = hash;
+        
+        thread_pool_->submit([this, hash_copy, binary_copy]() {
+            save_to_disk_cache_sync(hash_copy, *binary_copy);
+            pending_disk_operations_--;
+        });
+        
+        return true;  // Optimistically return true for async operation
+    }
+    
+    // Fall back to synchronous operation
+    return save_to_disk_cache_sync(hash, binary);
+}
+
+bool ShaderBinaryCache::save_to_disk_cache_sync(const std::string& hash,
+                                               const CachedShaderBinary& binary) {
     std::string filename = get_cache_filename(hash);
     std::string filepath = config_.disk_cache_directory + "/" + filename;
     
@@ -614,6 +679,13 @@ bool ShaderBinaryCache::save_to_disk_cache(const std::string& hash,
 }
 
 std::shared_ptr<CachedShaderBinary> ShaderBinaryCache::load_from_disk_cache(
+    const std::string& hash) {
+    // For now, always use synchronous loading
+    // Async loading would require more complex coordination
+    return load_from_disk_cache_sync(hash);
+}
+
+std::shared_ptr<CachedShaderBinary> ShaderBinaryCache::load_from_disk_cache_sync(
     const std::string& hash) {
     std::lock_guard<std::mutex> lock(cache_mutex_);
     

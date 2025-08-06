@@ -87,18 +87,83 @@ endfunction()
 
 # Define sample applications
 set(SAMPLE_APPS
-    minimal_dx8gl_test
-    spinning_triangle
-    textured_cube
-    shader_effects_cube
+    # These are samples in the current directory
 )
 
 foreach(name ${SAMPLE_APPS})
     add_dx8gl_sample(${name} ${name}.cpp)
 endforeach()
 
-# Add device_reset sample
-add_subdirectory(device_reset)
+# Add webgpu-demo from subdirectory
+add_executable(dx8gl_webgpu-demo webgpu-demo/dx8_hud_demo.cpp)
+target_link_libraries(dx8gl_webgpu-demo PRIVATE dx8gl)
 
-# Add shader_test sample
-add_subdirectory(shader_test)
+if(EMSCRIPTEN)
+    set(SHELL_FILE "${CMAKE_CURRENT_SOURCE_DIR}/shell_fullscreen.html")
+    set(BASE_EXPORT_OPTIONS
+        "-sWASM=1"
+        "-sUSE_WEBGL2=1"
+        "-sMIN_WEBGL_VERSION=2"
+        "-sMAX_WEBGL_VERSION=2"
+        "-sALLOW_MEMORY_GROWTH=1"
+        "-sEXPORTED_RUNTIME_METHODS=['ccall','cwrap']"
+        "-sNO_EXIT_RUNTIME=1"
+    )
+    
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        set(EXPORT_OPTIONS
+            "${BASE_EXPORT_OPTIONS}"
+            "-sASSERTIONS=2"
+            "-gsource-map"
+            "-O0"
+            "-sSTACK_OVERFLOW_CHECK=2"
+        )
+    else()
+        set(EXPORT_OPTIONS
+            "${BASE_EXPORT_OPTIONS}"
+            "-O3"
+            "-sASYNCIFY"
+        )
+    endif()
+    
+    string(JOIN " " EXPORT_OPTIONS_STR ${EXPORT_OPTIONS})
+    set_target_properties(dx8gl_webgpu-demo PROPERTIES
+        SUFFIX ".html"
+        LINK_FLAGS "${EXPORT_OPTIONS_STR} --shell-file ${SHELL_FILE}"
+    )
+else()
+    add_test(NAME dx8gl_webgpu-demo
+        COMMAND dx8gl_webgpu-demo
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
+    set_tests_properties(dx8gl_webgpu-demo PROPERTIES
+        TIMEOUT 30
+        LABELS "dx8gl;samples"
+        ENVIRONMENT "LD_LIBRARY_PATH=${CMAKE_BINARY_DIR}/lib/dx8gl:$ENV{LD_LIBRARY_PATH}"
+    )
+endif()
+
+# Add WebGPU sample if WebGPU backend is enabled
+if(DX8GL_ENABLE_WEBGPU)
+    add_dx8gl_sample(webgpu_complex_scene webgpu_complex_scene.cpp)
+    
+    # WebGPU sample needs special configuration for Emscripten
+    if(EMSCRIPTEN)
+        # Add WebGPU-specific flags
+        get_target_property(CURRENT_LINK_FLAGS dx8gl_webgpu_complex_scene LINK_FLAGS)
+        set_target_properties(dx8gl_webgpu_complex_scene PROPERTIES
+            LINK_FLAGS "${CURRENT_LINK_FLAGS} -sUSE_WEBGPU=1 -sOFFSCREENCANVAS_SUPPORT=1"
+        )
+        
+        # Add threading flags based on configuration
+        if(DX8GL_WEBGPU_THREADING STREQUAL "pthreads")
+            set_target_properties(dx8gl_webgpu_complex_scene PROPERTIES
+                LINK_FLAGS "${CURRENT_LINK_FLAGS} -pthread -sPROXY_TO_PTHREAD=1"
+            )
+        elseif(DX8GL_WEBGPU_THREADING STREQUAL "wasm-workers")
+            set_target_properties(dx8gl_webgpu_complex_scene PROPERTIES
+                LINK_FLAGS "${CURRENT_LINK_FLAGS} -sWASM_WORKERS=1"
+            )
+        endif()
+    endif()
+endif()

@@ -31,11 +31,28 @@ bool ShaderProgramManager::initialize(VertexShaderManager* vertex_mgr, PixelShad
     vertex_shader_manager_ = vertex_mgr;
     pixel_shader_manager_ = pixel_mgr;
     
+    // Initialize the global shader binary cache if not already initialized
+    if (!g_shader_binary_cache) {
+        ShaderBinaryCacheConfig cache_config;
+        cache_config.enable_memory_cache = true;
+        cache_config.enable_disk_cache = true;
+        cache_config.async_disk_operations = true;  // Enable async disk I/O
+        cache_config.disk_cache_directory = ".shader_cache";  // Use a hidden directory
+        
+        if (initialize_shader_binary_cache(cache_config)) {
+            DX8GL_INFO("ShaderProgramManager: Initialized shader binary cache with async disk I/O");
+        } else {
+            DX8GL_WARNING("ShaderProgramManager: Failed to initialize shader binary cache");
+        }
+    }
+    
     DX8GL_INFO("ShaderProgramManager initialized");
     return true;
 }
 
 void ShaderProgramManager::cleanup() {
+    std::lock_guard<std::mutex> lock(cache_mutex_);
+    
     // Delete all cached programs
     for (auto& pair : program_cache_) {
         if (pair.second && pair.second->program) {
@@ -59,6 +76,9 @@ GLuint ShaderProgramManager::get_current_program() {
     auto* vs_info = vertex_shader_manager_->get_current_shader();
     DWORD vs_handle = vs_info ? vs_info->handle : 0;
     DWORD ps_handle = pixel_shader_manager_->get_current_shader_handle();
+    
+    // Lock for thread-safe cache access
+    std::lock_guard<std::mutex> lock(cache_mutex_);
     
     // Check if program needs to be updated
     if (current_valid_ && 
@@ -112,6 +132,7 @@ void ShaderProgramManager::apply_shader_state() {
 }
 
 void ShaderProgramManager::invalidate_current_program() {
+    std::lock_guard<std::mutex> lock(cache_mutex_);
     current_valid_ = false;
 }
 

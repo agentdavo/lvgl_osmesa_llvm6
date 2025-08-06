@@ -103,8 +103,11 @@ Direct3DDevice8::Direct3DDevice8(Direct3D8* d3d8, UINT adapter, D3DDEVTYPE devic
     // Add reference to parent
     parent_d3d_->AddRef();
     
-    // Get thread pool
+    // Get thread pool (kept for potential future use)
     thread_pool_ = &get_global_thread_pool();
+    
+    // Initialize render thread pointer (will be created in complete_deferred_osmesa_init)
+    render_thread_ = nullptr;
     
     // Initialize statistics
     current_stats_.reset();
@@ -126,8 +129,12 @@ Direct3DDevice8::~Direct3DDevice8() {
     // Flush any pending commands
     flush_command_buffer();
     
-    // Wait for all async operations to complete
-    wait_for_pending_commands();
+    // Stop and clean up render thread
+    if (render_thread_) {
+        render_thread_->stop();
+        delete render_thread_;
+        render_thread_ = nullptr;
+    }
     
     // Release resources
     for (auto& tex : textures_) {
@@ -307,6 +314,19 @@ bool Direct3DDevice8::initialize() {
     
     // Create initial command buffer
     current_command_buffer_ = command_buffer_pool_.acquire();
+    
+    // Create and initialize render thread for sequential command execution
+    render_thread_ = new RenderThread();
+    if (!render_thread_->initialize(state_manager_.get(),
+                                   vertex_shader_manager_.get(),
+                                   pixel_shader_manager_.get(),
+                                   shader_program_manager_.get(),
+                                   render_backend_)) {
+        DX8GL_ERROR("Failed to initialize render thread");
+        delete render_thread_;
+        render_thread_ = nullptr;
+        return false;
+    }
     
     // Create back buffers
     for (UINT i = 0; i < present_params_.BackBufferCount; ++i) {
@@ -1181,92 +1201,33 @@ void Direct3DDevice8::flush_command_buffer() {
                current_command_buffer_->get_command_count(),
                current_command_buffer_->size());
     
-    // Move current buffer to a local variable for async execution
+    // Move current buffer for execution
     auto buffer_to_execute = std::move(current_command_buffer_);
     
     // Get new buffer from pool immediately to allow recording new commands
     current_command_buffer_ = command_buffer_pool_.acquire();
     
-    // Capture necessary pointers for the lambda
-    auto* state_manager = state_manager_.get();
-    auto* vertex_shader_mgr = vertex_shader_manager_.get();
-    auto* pixel_shader_mgr = pixel_shader_manager_.get();
-    auto* shader_program_mgr = shader_program_manager_.get();
-    auto* render_backend = render_backend_;  // raw pointer, no .get()
-    
-    // Submit command buffer execution to thread pool
-    if (thread_pool_) {
-        auto future = thread_pool_->submit([buffer_to_execute = std::move(buffer_to_execute),
-                                           state_manager,
-                                           vertex_shader_mgr,
-                                           pixel_shader_mgr,
-                                           shader_program_mgr,
-                                           render_backend]() mutable {
-            // Ensure OpenGL context is current in worker thread
-#ifdef DX8GL_HAS_OSMESA
-            if (render_backend && !render_backend->make_current()) {
-                DX8GL_ERROR("Failed to make render backend context current in worker thread");
-                return;
-            }
-#endif
-            
-            // Execute the command buffer
-            buffer_to_execute->execute(*state_manager,
-                                     vertex_shader_mgr,
-                                     pixel_shader_mgr,
-                                     shader_program_mgr);
-            
-            // Force OpenGL to process all commands
-            glFlush();
-            
-            // Buffer will be automatically returned to pool when it goes out of scope
-        });
-        
-        // Store the future for asynchronous execution
-        // Clean up completed futures while we're at it
-        pending_futures_.erase(
-            std::remove_if(pending_futures_.begin(), pending_futures_.end(),
-                          [](const std::future<void>& f) {
-                              return f.wait_for(std::chrono::seconds(0)) == std::future_status::ready;
-                          }),
-            pending_futures_.end());
-        
-        // Add the new future
-        pending_futures_.push_back(std::move(future));
+    // Submit to render thread for sequential execution
+    if (render_thread_) {
+        render_thread_->submit(std::move(buffer_to_execute));
     } else {
-        // Fallback to synchronous execution if no thread pool
-        DX8GL_WARN("No thread pool available, executing command buffer synchronously");
-        
-#ifdef DX8GL_HAS_OSMESA
-        if (render_backend_ && !render_backend_->make_current()) {
-            DX8GL_ERROR("Failed to make render backend context current for command buffer execution");
-            return;
-        }
-#endif
-        
+        // Fallback: execute synchronously if render thread is not available
+        DX8GL_WARNING("Render thread not available, executing command buffer synchronously");
         buffer_to_execute->execute(*state_manager_,
                                  vertex_shader_manager_.get(),
                                  pixel_shader_manager_.get(),
                                  shader_program_manager_.get());
-        
         glFlush();
     }
 }
 
 void Direct3DDevice8::wait_for_pending_commands() {
-    DX8GL_INFO("Waiting for %zu pending command buffers", pending_futures_.size());
-    
-    // Wait for all pending command buffers to complete
-    for (auto& future : pending_futures_) {
-        if (future.valid()) {
-            future.wait();
-        }
+    // Wait for render thread to complete all pending commands
+    if (render_thread_) {
+        DX8GL_INFO("Waiting for render thread to complete all pending commands");
+        render_thread_->wait_for_idle();
+        DX8GL_INFO("All pending commands completed");
     }
-    
-    // Clear the list
-    pending_futures_.clear();
-    
-    DX8GL_INFO("All pending command buffers completed");
 }
 
 bool Direct3DDevice8::validate_present_params(D3DPRESENT_PARAMETERS* params) {
