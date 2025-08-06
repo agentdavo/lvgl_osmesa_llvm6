@@ -6,6 +6,7 @@
 #include "../src/d3d8_interface.h"
 #include "../src/d3d8_device.h"
 #include "../src/d3d8_cubetexture.h"
+#include "../src/cube_texture_support.h"
 #include "../src/logger.h"
 #include "../src/dx8gl.h"
 
@@ -356,6 +357,94 @@ bool test_cube_texture_lod() {
     return true;
 }
 
+// Test cube texture support infrastructure
+bool test_cube_texture_support() {
+    std::cout << "\n=== Test: Cube Texture Support Infrastructure ===" << std::endl;
+    
+    // Test OpenGL face mapping
+    std::cout << "Testing OpenGL face mapping..." << std::endl;
+    GLenum positive_x = CubeTextureSupport::get_gl_cube_face(D3DCUBEMAP_FACE_POSITIVE_X);
+    if (positive_x != GL_TEXTURE_CUBE_MAP_POSITIVE_X) {
+        std::cerr << "Incorrect mapping for POSITIVE_X face" << std::endl;
+        return false;
+    }
+    
+    GLenum negative_z = CubeTextureSupport::get_gl_cube_face(D3DCUBEMAP_FACE_NEGATIVE_Z);
+    if (negative_z != GL_TEXTURE_CUBE_MAP_NEGATIVE_Z) {
+        std::cerr << "Incorrect mapping for NEGATIVE_Z face" << std::endl;
+        return false;
+    }
+    std::cout << "OpenGL face mapping test passed" << std::endl;
+    
+    // Test face orientation
+    std::cout << "Testing face orientation..." << std::endl;
+    auto orient = CubeTextureSupport::get_face_orientation(D3DCUBEMAP_FACE_POSITIVE_Y);
+    std::cout << "POSITIVE_Y face: rotation=" << orient.rotation_angle 
+              << " flip_h=" << orient.flip_horizontal 
+              << " flip_v=" << orient.flip_vertical << std::endl;
+    
+    // Test shader generation
+    std::cout << "Testing shader generation..." << std::endl;
+    std::string glsl_coord = CubeTextureSupport::generate_cube_texcoord_glsl(0);
+    if (glsl_coord.find("reflect") == std::string::npos) {
+        std::cerr << "GLSL coordinate generation didn't include reflection" << std::endl;
+        return false;
+    }
+    
+    std::string wgsl_sampler = CubeTextureSupport::generate_cube_sampler_wgsl(0);
+    if (wgsl_sampler.find("texture_cube") == std::string::npos) {
+        std::cerr << "WGSL sampler generation didn't include texture_cube" << std::endl;
+        return false;
+    }
+    std::cout << "Shader generation test passed" << std::endl;
+    
+    // Test cube texture state management
+    std::cout << "Testing cube texture state..." << std::endl;
+    CubeTextureState::CubeTextureBinding binding;
+    binding.texture_id = 42;
+    binding.sampler_unit = 1;
+    binding.is_cube_map = true;
+    
+    CubeTextureState::set_cube_texture(1, binding);
+    if (!CubeTextureState::has_cube_texture(1)) {
+        std::cerr << "Cube texture state not set correctly" << std::endl;
+        return false;
+    }
+    
+    const auto* retrieved = CubeTextureState::get_cube_texture(1);
+    if (!retrieved || retrieved->texture_id != 42 || !retrieved->is_cube_map) {
+        std::cerr << "Cube texture state not retrieved correctly" << std::endl;
+        return false;
+    }
+    
+    CubeTextureState::clear_cube_texture(1);
+    if (CubeTextureState::has_cube_texture(1)) {
+        std::cerr << "Cube texture state not cleared correctly" << std::endl;
+        return false;
+    }
+    std::cout << "Cube texture state test passed" << std::endl;
+    
+    // Test texture coordinate generation
+    std::cout << "Testing texture coordinate generation..." << std::endl;
+    CubeTexCoordGenerator::set_texgen_mode(0, CUBE_TEXGEN_REFLECTION_MAP);
+    if (CubeTexCoordGenerator::get_texgen_mode(0) != CUBE_TEXGEN_REFLECTION_MAP) {
+        std::cerr << "Texgen mode not set correctly" << std::endl;
+        return false;
+    }
+    
+    std::string texgen_glsl = CubeTexCoordGenerator::generate_texgen_glsl(
+        0, "position", "normal", "viewMatrix"
+    );
+    if (texgen_glsl.find("reflect") == std::string::npos) {
+        std::cerr << "GLSL texgen didn't generate reflection code" << std::endl;
+        return false;
+    }
+    std::cout << "Texture coordinate generation test passed" << std::endl;
+    
+    std::cout << "All cube texture support tests passed!" << std::endl;
+    return true;
+}
+
 int main() {
     std::cout << "Running Cube Texture Tests" << std::endl;
     std::cout << "==========================" << std::endl;
@@ -381,6 +470,10 @@ int main() {
     }
     
     if (!test_cube_texture_lod()) {
+        all_passed = false;
+    }
+    
+    if (!test_cube_texture_support()) {
         all_passed = false;
     }
     

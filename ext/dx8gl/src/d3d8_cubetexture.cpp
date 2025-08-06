@@ -1,6 +1,7 @@
 #include "d3d8_cubetexture.h"
 #include "d3d8_device.h"
 #include "d3d8_surface.h"
+#include "cube_texture_support.h"
 #include <cstring>
 #include <algorithm>
 
@@ -539,6 +540,14 @@ void Direct3DCubeTexture8::bind(UINT sampler) const {
     
     glActiveTexture(GL_TEXTURE0 + sampler);
     glBindTexture(GL_TEXTURE_CUBE_MAP, gl_texture_);
+    
+    // Update cube texture state for shader integration
+    CubeTextureState::CubeTextureBinding binding;
+    binding.texture_id = gl_texture_;
+    binding.sampler_unit = sampler;
+    binding.is_cube_map = true;
+    // Note: texture filtering modes should be set from device's texture stage states
+    CubeTextureState::set_cube_texture(sampler, binding);
 }
 
 void Direct3DCubeTexture8::release_gl_resources() {
@@ -568,15 +577,7 @@ bool Direct3DCubeTexture8::recreate_gl_resources() {
 }
 
 GLenum Direct3DCubeTexture8::get_cube_face_target(D3DCUBEMAP_FACES face) {
-    switch (face) {
-        case D3DCUBEMAP_FACE_POSITIVE_X: return GL_TEXTURE_CUBE_MAP_POSITIVE_X;
-        case D3DCUBEMAP_FACE_NEGATIVE_X: return GL_TEXTURE_CUBE_MAP_NEGATIVE_X;
-        case D3DCUBEMAP_FACE_POSITIVE_Y: return GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
-        case D3DCUBEMAP_FACE_NEGATIVE_Y: return GL_TEXTURE_CUBE_MAP_NEGATIVE_Y;
-        case D3DCUBEMAP_FACE_POSITIVE_Z: return GL_TEXTURE_CUBE_MAP_POSITIVE_Z;
-        case D3DCUBEMAP_FACE_NEGATIVE_Z: return GL_TEXTURE_CUBE_MAP_NEGATIVE_Z;
-        default: return GL_TEXTURE_CUBE_MAP_POSITIVE_X;
-    }
+    return CubeTextureSupport::get_gl_cube_face(face);
 }
 
 bool Direct3DCubeTexture8::get_gl_format(D3DFORMAT format, GLenum& internal_format, 

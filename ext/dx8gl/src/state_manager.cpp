@@ -1,8 +1,26 @@
 #include "state_manager.h"
+#ifdef DX8GL_HAS_OSMESA
 #include "osmesa_gl_loader.h"
+#endif
 #include <cstring>
 #include <cmath>
 #include <algorithm>
+
+#if !defined(DX8GL_HAS_OSMESA) && !defined(DX8GL_HAS_WEBGPU)
+#include <GL/gl.h>
+#include <GL/glext.h>
+// Simple has_extension helper for non-OSMesa builds
+static bool has_extension(const char* ext) {
+    const char* extensions = (const char*)glGetString(GL_EXTENSIONS);
+    if (!extensions || !ext) return false;
+    return strstr(extensions, ext) != nullptr;
+}
+#elif defined(DX8GL_HAS_WEBGPU)
+// WebGPU doesn't have OpenGL extensions
+static bool has_extension(const char*) {
+    return false;
+}
+#endif
 
 namespace dx8gl {
 

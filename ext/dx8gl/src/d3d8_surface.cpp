@@ -1,10 +1,14 @@
 #include "d3d8_surface.h"
 #include "d3d8_device.h"
 #include "d3d8_texture.h"
+#ifdef DX8GL_HAS_OSMESA
 #include "osmesa_gl_loader.h"
+#endif
+#if !defined(DX8GL_HAS_WEBGPU)
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glext.h>
+#endif
 #include <cstring>
 #include <algorithm>
 
@@ -19,6 +23,20 @@
 #endif
 
 namespace dx8gl {
+
+#if !defined(DX8GL_HAS_OSMESA) && !defined(DX8GL_HAS_WEBGPU)
+// Simple has_extension helper for non-OSMesa builds
+static bool has_extension(const char* ext) {
+    const char* extensions = (const char*)glGetString(GL_EXTENSIONS);
+    if (!extensions || !ext) return false;
+    return strstr(extensions, ext) != nullptr;
+}
+#elif defined(DX8GL_HAS_WEBGPU)
+// WebGPU doesn't have OpenGL extensions
+static bool has_extension(const char*) {
+    return false;
+}
+#endif
 
 // Constructor for standalone surface
 Direct3DSurface8::Direct3DSurface8(Direct3DDevice8* device, UINT width, UINT height,

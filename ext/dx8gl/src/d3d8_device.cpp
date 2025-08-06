@@ -364,8 +364,8 @@ bool Direct3DDevice8::initialize() {
     return true;
 }
 
-bool Direct3DDevice8::complete_deferred_osmesa_init() {
 #ifdef DX8GL_HAS_OSMESA
+bool Direct3DDevice8::complete_deferred_osmesa_init() {
     if (!osmesa_deferred_init_) {
         // Already initialized or not using deferred init
         return true;
@@ -429,11 +429,8 @@ bool Direct3DDevice8::complete_deferred_osmesa_init() {
     
     DX8GL_INFO("Deferred OSMesa initialization completed successfully");
     return true;
-#else
-    // Not compiled with OSMesa support
-    return true;
-#endif
 }
+#endif // DX8GL_HAS_OSMESA
 
 // IUnknown methods
 HRESULT Direct3DDevice8::QueryInterface(REFIID riid, void** ppvObj) {
@@ -546,6 +543,7 @@ HRESULT Direct3DDevice8::BeginScene() {
     FPU_PRESERVE_SAVE();
     
     // Check if we need to complete deferred OSMesa initialization
+#ifdef DX8GL_HAS_OSMESA
     if (osmesa_deferred_init_) {
         const char* complete_init = std::getenv("DX8GL_COMPLETE_OSMESA_INIT");
         if (complete_init && std::strcmp(complete_init, "1") == 0) {
@@ -557,6 +555,7 @@ HRESULT Direct3DDevice8::BeginScene() {
             }
         }
     }
+#endif
     
     if (in_scene_) {
         FPU_PRESERVE_RESTORE();
@@ -617,6 +616,7 @@ HRESULT Direct3DDevice8::Clear(DWORD Count, const D3DRECT* pRects, DWORD Flags,
     current_stats_.clear_calls++;
     
     // Check if we need to complete deferred OSMesa initialization
+#ifdef DX8GL_HAS_OSMESA
     if (osmesa_deferred_init_) {
         const char* complete_init = std::getenv("DX8GL_COMPLETE_OSMESA_INIT");
         if (complete_init && std::strcmp(complete_init, "1") == 0) {
@@ -630,6 +630,7 @@ HRESULT Direct3DDevice8::Clear(DWORD Count, const D3DRECT* pRects, DWORD Flags,
             }
         }
     }
+#endif
     
     // Only add clear command to buffer - don't execute immediately
     // This prevents double clearing when the command buffer is flushed
@@ -2717,6 +2718,7 @@ HRESULT Direct3DDevice8::copy_rect_internal(IDirect3DSurface8* src, const RECT* 
     return D3D_OK;
 }
 
+#ifdef DX8GL_HAS_OSMESA
 void* Direct3DDevice8::get_osmesa_framebuffer() const {
     if (render_backend_) {
         int width, height, format;
@@ -2738,12 +2740,9 @@ void Direct3DDevice8::get_osmesa_dimensions(int* width, int* height) const {
 }
 
 DX8OSMesaContext* Direct3DDevice8::get_osmesa_context() const {
-#ifdef DX8GL_HAS_OSMESA
     return osmesa_context_.get();
-#else
-    return nullptr;
-#endif
 }
+#endif // DX8GL_HAS_OSMESA
 
 void* Direct3DDevice8::get_framebuffer(int* width, int* height, int* format) const {
     if (render_backend_) {

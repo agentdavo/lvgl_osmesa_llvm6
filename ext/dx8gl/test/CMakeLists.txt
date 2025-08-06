@@ -108,6 +108,34 @@ target_include_directories(test_async_simple PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/../src
 )
 
+# WebGPU state mapping test (only if WebGPU is enabled)
+if(DX8GL_ENABLE_WEBGPU)
+    # Find Google Test
+    find_package(GTest QUIET)
+    
+    if(GTest_FOUND)
+        add_executable(test_webgpu_state_mapping
+            test_webgpu_state_mapping.cpp
+        )
+        
+        target_include_directories(test_webgpu_state_mapping PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}/../src
+            ${CMAKE_CURRENT_SOURCE_DIR}/../lib/lib_webgpu
+        )
+        
+        # Link against dx8gl and Google Test
+        if(TARGET dx8gl)
+            target_link_libraries(test_webgpu_state_mapping PRIVATE dx8gl GTest::gtest GTest::gtest_main)
+            add_test(NAME WebGPUStateMappingTest COMMAND test_webgpu_state_mapping)
+        else()
+            message(WARNING "dx8gl target not available, skipping test_webgpu_state_mapping")
+            set_target_properties(test_webgpu_state_mapping PROPERTIES EXCLUDE_FROM_ALL TRUE)
+        endif()
+    else()
+        message(WARNING "Google Test not found, skipping test_webgpu_state_mapping")
+    endif()
+endif()
+
 if(TARGET dx8gl)
     target_link_libraries(test_async_simple PRIVATE dx8gl)
 else()

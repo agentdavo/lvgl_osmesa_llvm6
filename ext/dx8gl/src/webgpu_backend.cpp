@@ -1,5 +1,7 @@
 #include "webgpu_backend.h"
 #include "logger.h"
+#include "state_manager.h"
+#include "cube_texture_support.h"
 #include <cstring>
 #include <cstdlib>
 
@@ -30,8 +32,10 @@ DX8WebGPUBackend::DX8WebGPUBackend()
     , canvas_created_(false)
     , framebuffer_ready_(false)
     , framebuffer_callback_(nullptr)
-    , framebuffer_callback_user_data_(nullptr) {
+    , framebuffer_callback_user_data_(nullptr)
+    , current_pipeline_(nullptr) {
     error_buffer_[0] = '\0';
+    state_mapper_ = std::make_unique<WebGPUStateMapper>();
 }
 
 DX8WebGPUBackend::~DX8WebGPUBackend() {
@@ -563,6 +567,187 @@ void DX8WebGPUBackend::cleanup_resources() {
     framebuffer_.reset();
 }
 
+void DX8WebGPUBackend::apply_render_state(const RenderState& render_state) {
+    if (!initialized_ || !state_mapper_) {
+        DX8GL_ERROR("Cannot apply render state: backend not initialized");
+        return;
+    }
+    
+    // Check if render state has changed
+    if (std::memcmp(&cached_render_state_, &render_state, sizeof(RenderState)) == 0) {
+        return; // No change needed
+    }
+    
+    cached_render_state_ = render_state;
+    
+    // Create pipeline state key from current states
+    WebGPUStateMapper::PipelineStateKey key = {};
+    
+    // Blend state
+    key.blend_enabled = render_state.alpha_blend_enable != FALSE;
+    key.src_blend = WebGPUStateMapper::d3d_to_wgpu_blend_factor(
+        static_cast<D3DBLEND>(render_state.src_blend));
+    key.dst_blend = WebGPUStateMapper::d3d_to_wgpu_blend_factor(
+        static_cast<D3DBLEND>(render_state.dest_blend));
+    key.blend_op = WebGPUStateMapper::d3d_to_wgpu_blend_op(
+        static_cast<D3DBLENDOP>(render_state.blend_op));
+    key.src_blend_alpha = WebGPUStateMapper::d3d_to_wgpu_blend_factor(
+        static_cast<D3DBLEND>(render_state.src_blend_alpha));
+    key.dst_blend_alpha = WebGPUStateMapper::d3d_to_wgpu_blend_factor(
+        static_cast<D3DBLEND>(render_state.dest_blend_alpha));
+    key.blend_op_alpha = WebGPUStateMapper::d3d_to_wgpu_blend_op(
+        static_cast<D3DBLENDOP>(render_state.blend_op_alpha));
+    
+    // Depth state
+    key.depth_test_enabled = render_state.z_enable != FALSE;
+    key.depth_write_enabled = render_state.z_write_enable != FALSE;
+    key.depth_compare = WebGPUStateMapper::d3d_to_wgpu_compare_func(
+        static_cast<D3DCMPFUNC>(render_state.z_func));
+    key.depth_bias = static_cast<int32_t>(render_state.z_bias);
+    key.depth_bias_slope_scale = render_state.slope_scale_depth_bias;
+    key.depth_bias_clamp = 0.0f; // D3D8 doesn't have depth bias clamp
+    
+    // Stencil state
+    key.stencil_enabled = render_state.stencil_enable != FALSE;
+    key.stencil_compare = WebGPUStateMapper::d3d_to_wgpu_compare_func(
+        static_cast<D3DCMPFUNC>(render_state.stencil_func));
+    key.stencil_fail_op = WebGPUStateMapper::d3d_to_wgpu_stencil_op(
+        static_cast<D3DSTENCILOP>(render_state.stencil_fail));
+    key.stencil_depth_fail_op = WebGPUStateMapper::d3d_to_wgpu_stencil_op(
+        static_cast<D3DSTENCILOP>(render_state.stencil_z_fail));
+    key.stencil_pass_op = WebGPUStateMapper::d3d_to_wgpu_stencil_op(
+        static_cast<D3DSTENCILOP>(render_state.stencil_pass));
+    key.stencil_read_mask = render_state.stencil_mask;
+    key.stencil_write_mask = render_state.stencil_write_mask;
+    
+    // Two-sided stencil (if enabled)
+    if (render_state.two_sided_stencil_mode) {
+        key.stencil_back_compare = WebGPUStateMapper::d3d_to_wgpu_compare_func(
+            static_cast<D3DCMPFUNC>(render_state.ccw_stencil_func));
+        key.stencil_back_fail_op = WebGPUStateMapper::d3d_to_wgpu_stencil_op(
+            static_cast<D3DSTENCILOP>(render_state.ccw_stencil_fail));
+        key.stencil_back_depth_fail_op = WebGPUStateMapper::d3d_to_wgpu_stencil_op(
+            static_cast<D3DSTENCILOP>(render_state.ccw_stencil_z_fail));
+        key.stencil_back_pass_op = WebGPUStateMapper::d3d_to_wgpu_stencil_op(
+            static_cast<D3DSTENCILOP>(render_state.ccw_stencil_pass));
+    } else {
+        // Use same stencil ops for both faces
+        key.stencil_back_compare = key.stencil_compare;
+        key.stencil_back_fail_op = key.stencil_fail_op;
+        key.stencil_back_depth_fail_op = key.stencil_depth_fail_op;
+        key.stencil_back_pass_op = key.stencil_pass_op;
+    }
+    
+    // Rasterizer state
+    key.cull_mode = WebGPUStateMapper::d3d_to_wgpu_cull_mode(
+        static_cast<D3DCULL>(render_state.cull_mode));
+    key.polygon_mode = (render_state.fill_mode == D3DFILL_WIREFRAME) ? 
+        WGPU_POLYGON_MODE_LINE : WGPU_POLYGON_MODE_FILL;
+    key.front_face = WGPU_FRONT_FACE_CCW; // D3D8 uses CCW
+    
+    // Multisample state
+    key.sample_count = (render_state.multisample_antialias != FALSE) ? 4 : 1;
+    key.alpha_to_coverage_enabled = false; // D3D8 doesn't have this
+    
+    // Look up or create pipeline for this state combination
+    auto pipeline = state_mapper_->get_or_create_pipeline(device_, key);
+    if (pipeline != current_pipeline_) {
+        current_pipeline_ = pipeline;
+        DX8GL_INFO("Switched to pipeline for state key (blend=%d, depth=%d, stencil=%d)",
+                   key.blend_enabled, key.depth_test_enabled, key.stencil_enabled);
+    }
+    
+    // Update texture samplers for all stages
+    for (uint32_t stage = 0; stage < 8; ++stage) {
+        auto sampler_desc = state_mapper_->create_sampler_descriptor(render_state, stage);
+        if (sampler_desc) {
+            // Create or update sampler for this stage
+            WGpuSampler sampler = wgpu_device_create_sampler(device_, sampler_desc);
+            state_mapper_->set_sampler(stage, sampler);
+            delete sampler_desc;
+        }
+    }
+}
+
+void DX8WebGPUBackend::apply_transform_state(const TransformState& transform_state) {
+    if (!initialized_ || !state_mapper_) {
+        DX8GL_ERROR("Cannot apply transform state: backend not initialized");
+        return;
+    }
+    
+    // Check if transform state has changed
+    if (std::memcmp(&cached_transform_state_, &transform_state, sizeof(TransformState)) == 0) {
+        return; // No change needed
+    }
+    
+    cached_transform_state_ = transform_state;
+    
+    // Transform state affects vertex shader constants and viewport/scissor
+    // This would typically update uniform buffers or push constants
+    
+    // Set viewport
+    if (transform_state.viewport_set) {
+        DX8GL_INFO("Setting viewport: x=%d, y=%d, w=%d, h=%d, minZ=%f, maxZ=%f",
+                   transform_state.viewport.x, transform_state.viewport.y,
+                   transform_state.viewport.width, transform_state.viewport.height,
+                   transform_state.viewport.min_z, transform_state.viewport.max_z);
+        
+        // Store viewport for use in render pass
+        // WebGPU sets viewport per render pass, not globally
+    }
+    
+    // Update transform matrices as uniform data
+    // This would be passed to shaders via uniform buffers
+    if (transform_state.world_transform_set) {
+        // Update world transform uniform
+        state_mapper_->set_transform_matrix(WebGPUStateMapper::TRANSFORM_WORLD, 
+                                           transform_state.world_transform);
+    }
+    
+    if (transform_state.view_transform_set) {
+        // Update view transform uniform
+        state_mapper_->set_transform_matrix(WebGPUStateMapper::TRANSFORM_VIEW,
+                                           transform_state.view_transform);
+    }
+    
+    if (transform_state.projection_transform_set) {
+        // Update projection transform uniform
+        state_mapper_->set_transform_matrix(WebGPUStateMapper::TRANSFORM_PROJECTION,
+                                           transform_state.projection_transform);
+    }
+    
+    // Update texture transforms
+    for (uint32_t stage = 0; stage < 8; ++stage) {
+        if (transform_state.texture_transform_set[stage]) {
+            state_mapper_->set_transform_matrix(
+                static_cast<WebGPUStateMapper::TransformType>(
+                    WebGPUStateMapper::TRANSFORM_TEXTURE0 + stage),
+                transform_state.texture_transform[stage]);
+        }
+    }
+    
+    // Update lighting state
+    if (transform_state.lighting_enabled != cached_transform_state_.lighting_enabled) {
+        state_mapper_->set_lighting_enabled(transform_state.lighting_enabled);
+    }
+    
+    // Update material properties
+    if (std::memcmp(&transform_state.material, &cached_transform_state_.material, 
+                    sizeof(transform_state.material)) != 0) {
+        state_mapper_->set_material(transform_state.material);
+    }
+    
+    // Update light properties
+    for (uint32_t i = 0; i < 8; ++i) {
+        if (transform_state.light_enabled[i]) {
+            if (std::memcmp(&transform_state.lights[i], &cached_transform_state_.lights[i],
+                           sizeof(transform_state.lights[i])) != 0) {
+                state_mapper_->set_light(i, transform_state.lights[i]);
+            }
+        }
+    }
+}
+
 // Static callback handlers
 void DX8WebGPUBackend::adapter_callback(WGpuRequestAdapterStatus status, WGpuAdapter adapter, const char* message, void* user_data) {
     DX8WebGPUBackend* backend = static_cast<DX8WebGPUBackend*>(user_data);
@@ -647,6 +832,86 @@ void DX8WebGPUBackend::buffer_map_callback(WGpuBufferMapAsyncStatus status, void
             backend->framebuffer_callback_user_data_ = nullptr;
         }
     }
+}
+
+// Cube texture support methods
+WGpuTexture DX8WebGPUBackend::create_cube_texture(uint32_t size, uint32_t mip_levels, WGpuTextureFormat format) {
+    if (!device_) {
+        DX8GL_ERROR("Cannot create cube texture: device not initialized");
+        return nullptr;
+    }
+    
+    return CubeTextureSupport::create_webgpu_cube_texture(device_, size, mip_levels, format);
+}
+
+WGpuTextureView DX8WebGPUBackend::create_cube_texture_view(WGpuTexture cube_texture) {
+    if (!cube_texture) {
+        DX8GL_ERROR("Cannot create cube texture view: invalid texture");
+        return nullptr;
+    }
+    
+    return CubeTextureSupport::create_cube_texture_view(cube_texture);
+}
+
+WGpuSampler DX8WebGPUBackend::create_cube_sampler(WGpuFilterMode min_filter, 
+                                                  WGpuFilterMode mag_filter, 
+                                                  WGpuMipmapFilterMode mipmap_filter) {
+    if (!device_) {
+        DX8GL_ERROR("Cannot create cube sampler: device not initialized");
+        return nullptr;
+    }
+    
+    return CubeTextureSupport::create_cube_sampler(device_, min_filter, mag_filter, mipmap_filter);
+}
+
+bool DX8WebGPUBackend::update_cube_face(WGpuTexture cube_texture, D3DCUBEMAP_FACES face, 
+                                        uint32_t mip_level, const void* data, 
+                                        uint32_t data_size, uint32_t row_pitch) {
+    if (!cube_texture || !data) {
+        DX8GL_ERROR("Cannot update cube face: invalid parameters");
+        return false;
+    }
+    
+    if (!queue_) {
+        DX8GL_ERROR("Cannot update cube face: queue not initialized");
+        return false;
+    }
+    
+    // Calculate the face index (0-5)
+    uint32_t face_index = static_cast<uint32_t>(face);
+    if (face_index > 5) {
+        DX8GL_ERROR("Invalid cube face index: %u", face_index);
+        return false;
+    }
+    
+    // Write texture data
+    WGpuImageCopyTexture destination = {};
+    destination.texture = cube_texture;
+    destination.mipLevel = mip_level;
+    destination.origin.x = 0;
+    destination.origin.y = 0;
+    destination.origin.z = face_index;  // Z coordinate selects the cube face
+    destination.aspect = WGPU_TEXTURE_ASPECT_ALL;
+    
+    WGpuTextureDataLayout data_layout = {};
+    data_layout.offset = 0;
+    data_layout.bytesPerRow = row_pitch;
+    data_layout.rowsPerImage = 0;  // Not used for 2D textures
+    
+    // Calculate texture size at this mip level from data_size and row_pitch
+    // Assuming square cube faces
+    uint32_t mip_size = row_pitch / 4;  // Assuming RGBA format (4 bytes per pixel)
+    if (mip_size == 0) mip_size = 1;
+    
+    WGpuExtent3D write_size = {};
+    write_size.width = mip_size;
+    write_size.height = mip_size;
+    write_size.depthOrArrayLayers = 1;
+    
+    wgpu_queue_write_texture(queue_, &destination, data, data_size, &data_layout, &write_size);
+    
+    DX8GL_TRACE("Updated cube texture face %u, mip level %u", face, mip_level);
+    return true;
 }
 
 } // namespace dx8gl

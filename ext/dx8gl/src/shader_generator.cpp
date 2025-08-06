@@ -1,5 +1,6 @@
 #include "shader_generator.h"
 #include "logger.h"
+#include "cube_texture_support.h"
 #include <sstream>
 #include <future>
 #include <cstring>
@@ -166,10 +167,9 @@ std::string ShaderGenerator::generate_vertex_shader(uint32_t features, DWORD fvf
     }
     
     // Varyings - use 'out' instead of 'varying'
-    if (features & SHADER_FEATURE_LIGHTING) {
-        ss << "\nout vec3 v_position;\n";
-        ss << "out vec3 v_normal;\n";
-    }
+    // Always output position and normal for potential cube texture usage
+    ss << "\nout vec3 v_position;\n";
+    ss << "out vec3 v_normal;\n";
     
     if (fvf & D3DFVF_DIFFUSE) {
         ss << "out vec4 v_color;\n";
@@ -183,9 +183,12 @@ std::string ShaderGenerator::generate_vertex_shader(uint32_t features, DWORD fvf
     ss << "\nvoid main() {\n";
     ss << "    gl_Position = u_mvp_matrix * vec4(a_position, 1.0);\n";
     
-    if (features & SHADER_FEATURE_LIGHTING) {
-        ss << "    v_position = (u_world_matrix * vec4(a_position, 1.0)).xyz;\n";
+    // Always compute position and normal for potential cube texture usage
+    ss << "    v_position = (u_world_matrix * vec4(a_position, 1.0)).xyz;\n";
+    if (fvf & D3DFVF_NORMAL) {
         ss << "    v_normal = normalize((u_normal_matrix * vec4(a_normal, 0.0)).xyz);\n";
+    } else {
+        ss << "    v_normal = vec3(0.0, 0.0, 1.0); // Default normal if not provided\n";
     }
     
     if (fvf & D3DFVF_DIFFUSE) {
@@ -318,10 +321,9 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
     }
     
     // Varyings - use 'in' instead of 'varying'
-    if (features & SHADER_FEATURE_LIGHTING) {
-        ss << "in vec3 v_position;\n";
-        ss << "in vec3 v_normal;\n";
-    }
+    // Always input position and normal for potential cube texture usage
+    ss << "in vec3 v_position;\n";
+    ss << "in vec3 v_normal;\n";
     
     if (features & SHADER_FEATURE_VERTEX_COLOR) {
         ss << "in vec4 v_color;\n";
@@ -352,8 +354,19 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
     
     // Uniforms
     if (features & SHADER_FEATURE_TEXTURE) {
+        // Include cube texture state definitions if needed
+        std::string cube_defines = CubeTextureState::generate_shader_defines();
+        if (!cube_defines.empty()) {
+            ss << "\n// Cube texture definitions\n" << cube_defines;
+        }
+        
         for (int i = 0; i < num_textures; i++) {
-            ss << "uniform sampler2D u_texture" << i << ";\n";
+            // Check if this stage has a cube texture
+            if (CubeTextureState::has_cube_texture(i)) {
+                ss << "uniform samplerCube u_texture" << i << ";\n";
+            } else {
+                ss << "uniform sampler2D u_texture" << i << ";\n";
+            }
         }
         ss << "uniform vec4 u_texture_factor;\n"; // For D3DTA_TFACTOR
     }
@@ -390,7 +403,36 @@ std::string ShaderGenerator::generate_fragment_shader(uint32_t features, const R
             }
             
             ss << "\n    // Texture stage " << i << "\n";
-            ss << "    texture_sample = texture(u_texture" << i << ", v_texcoord" << i << ");\n";
+            
+            // Check if this stage uses a cube texture
+            if (CubeTextureState::has_cube_texture(i)) {
+                // For cube textures, we need 3D texture coordinates
+                // These could come from texgen or from the vertex shader
+                CubeTexGenMode texgen_mode = CubeTexCoordGenerator::get_texgen_mode(i);
+                if (texgen_mode != CUBE_TEXGEN_NONE) {
+                    // Generate texture coordinates based on texgen mode
+                    ss << "    vec3 cube_coord = ";
+                    switch (texgen_mode) {
+                        case CUBE_TEXGEN_REFLECTION_MAP:
+                            ss << "normalize(reflect(-normalize(v_position), normalize(v_normal)))";
+                            break;
+                        case CUBE_TEXGEN_NORMAL_MAP:
+                            ss << "normalize(v_normal)";
+                            break;
+                        default:
+                            ss << "vec3(v_texcoord" << i << ", 0.0)";
+                            break;
+                    }
+                    ss << ";\n";
+                    ss << "    texture_sample = texture(u_texture" << i << ", cube_coord);\n";
+                } else {
+                    // Use provided 3D texture coordinates or extend 2D coords
+                    ss << "    texture_sample = texture(u_texture" << i << ", vec3(v_texcoord" << i << ", 0.0));\n";
+                }
+            } else {
+                // Regular 2D texture sampling
+                ss << "    texture_sample = texture(u_texture" << i << ", v_texcoord" << i << ");\n";
+            }
             
             // Generate color operation
             if (state.color_op[i] != D3DTOP_DISABLE) {

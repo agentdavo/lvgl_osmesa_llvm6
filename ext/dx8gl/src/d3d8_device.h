@@ -27,6 +27,7 @@ class Direct3DDevice8;
 Direct3DDevice8* get_global_device();
 class Direct3DTexture8;
 class Direct3DCubeTexture8;
+class Direct3DVolumeTexture8;
 class Direct3DVertexBuffer8;
 class Direct3DIndexBuffer8;
 class Direct3DSurface8;
@@ -161,15 +162,19 @@ public:
     HRESULT STDMETHODCALLTYPE DeletePatch(UINT Handle) override;
 
     // Custom method to complete deferred OSMesa initialization
+#ifdef DX8GL_HAS_OSMESA
     bool complete_deferred_osmesa_init();
-    
+
     // OSMesa framebuffer access methods
     void* get_osmesa_framebuffer() const;
     void get_osmesa_dimensions(int* width, int* height) const;
+    class DX8OSMesaContext* get_osmesa_context() const;
+#endif
+    
+    // Frame presentation tracking (available for all backends)
     bool was_frame_presented() const { return frame_presented_; }
     void reset_frame_presented() { frame_presented_ = false; }
-    class DX8OSMesaContext* get_osmesa_context() const;
-    
+
     // Render backend access methods
     void* get_framebuffer(int* width, int* height, int* format) const;
     DX8RenderBackend* get_render_backend() const { return render_backend_; }
@@ -242,6 +247,8 @@ public:
     void unregister_texture(Direct3DTexture8* texture);
     void register_cube_texture(Direct3DCubeTexture8* cube_texture);
     void unregister_cube_texture(Direct3DCubeTexture8* cube_texture);
+    void register_volume_texture(Direct3DVolumeTexture8* volume_texture);
+    void unregister_volume_texture(Direct3DVolumeTexture8* volume_texture);
     void register_vertex_buffer(Direct3DVertexBuffer8* vb);
     void unregister_vertex_buffer(Direct3DVertexBuffer8* vb);
     void register_index_buffer(Direct3DIndexBuffer8* ib);
@@ -275,12 +282,12 @@ private:
 #endif
 #ifdef DX8GL_HAS_OSMESA
     std::unique_ptr<class DX8OSMesaContext> osmesa_context_;  // Legacy, to be replaced
-    class DX8RenderBackend* render_backend_ = nullptr;  // Non-owning pointer to global backend
     bool osmesa_deferred_init_ = false;  // Flag to defer OSMesa initialization
     int gl_version_major_ = 0;
     int gl_version_minor_ = 0;
     bool requires_vao_ = false;
 #endif
+    class DX8RenderBackend* render_backend_ = nullptr;  // Non-owning pointer to global backend
     
     // State management
     std::unique_ptr<StateManager> state_manager_;

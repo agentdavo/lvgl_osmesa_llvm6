@@ -10,7 +10,8 @@
 #include <GL/osmesa.h>
 // MUST include osmesa_gl_loader.h AFTER GL headers to override function definitions
 #include "osmesa_gl_loader.h"
-#else
+#elif !defined(DX8GL_HAS_WEBGPU)
+// Only include OpenGL headers if not using WebGPU
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glext.h>
@@ -66,10 +67,15 @@ Direct3DIndexBuffer8::~Direct3DIndexBuffer8() {
         device_->unregister_index_buffer(this);
     }
     
+#ifdef DX8GL_HAS_OSMESA
     // Clean up OpenGL resources
     if (ibo_ && gl_DeleteBuffers) {
         gl_DeleteBuffers(1, &ibo_);
     }
+#else
+    // When not using OSMesa, clean up any allocated IBOs
+    // Note: WebGPU backend would handle its own buffer cleanup here
+#endif
     
     // Clean up lock buffer
     if (lock_buffer_) {
@@ -95,6 +101,7 @@ bool Direct3DIndexBuffer8::initialize() {
         return true;
     }
     
+#ifdef DX8GL_HAS_OSMESA
     // Ensure OSMesa context is current before creating OpenGL resources
     if (device_ && device_->get_osmesa_context()) {
         if (!device_->get_osmesa_context()->make_current()) {
@@ -102,7 +109,9 @@ bool Direct3DIndexBuffer8::initialize() {
             return false;
         }
     }
+#endif // DX8GL_HAS_OSMESA
     
+#ifdef DX8GL_HAS_OSMESA
     // Clear any existing GL errors
     GLenum clear_error;
     while ((clear_error = glGetError()) != GL_NO_ERROR) {
@@ -110,10 +119,8 @@ bool Direct3DIndexBuffer8::initialize() {
     }
     
     // For DEFAULT pool, create IBO
-#ifdef DX8GL_HAS_OSMESA
     // Skip VAO creation for OpenGL 2.1 compatibility
     DX8GL_DEBUG("Using OpenGL 2.1 compatibility - no VAO needed");
-#endif
     
     if (gl_GenBuffers) {
         gl_GenBuffers(1, &ibo_);
@@ -160,6 +167,8 @@ bool Direct3DIndexBuffer8::initialize() {
     }
     
     DX8GL_DEBUG("Created IBO %u with %u bytes", ibo_, length_);
+#endif // DX8GL_HAS_OSMESA
+    
     return true;
 }
 
@@ -309,6 +318,7 @@ HRESULT Direct3DIndexBuffer8::Unlock() {
     
     DX8GL_TRACE("Unlock IB");
     
+#ifdef DX8GL_HAS_OSMESA
     // For IBO, upload the data
     if (ibo_ && !(lock_flags_ & D3DLOCK_READONLY) && gl_BindBuffer && gl_BufferData && gl_BufferSubData) {
         gl_BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_);
@@ -325,6 +335,7 @@ HRESULT Direct3DIndexBuffer8::Unlock() {
         
         gl_BindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
+#endif
     
     locked_ = false;
     lock_offset_ = 0;
@@ -350,9 +361,11 @@ HRESULT Direct3DIndexBuffer8::GetDesc(D3DINDEXBUFFER_DESC* pDesc) {
 
 // Internal methods
 void Direct3DIndexBuffer8::bind() const {
+#ifdef DX8GL_HAS_OSMESA
     if (ibo_ && gl_BindBuffer) {
         gl_BindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo_);
     }
+#endif
 }
 
 void Direct3DIndexBuffer8::release_gl_resources() {

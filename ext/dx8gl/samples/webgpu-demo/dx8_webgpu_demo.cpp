@@ -291,7 +291,9 @@ void SetupRenderStates() {
     light.Ambient.r = 0.2f;
     light.Ambient.g = 0.2f;
     light.Ambient.b = 0.2f;
-    light.Direction = D3DXVECTOR3(0.5f, -1.0f, 0.5f);
+    light.Direction.x = 0.5f;
+    light.Direction.y = -1.0f;
+    light.Direction.z = 0.5f;
     
     g_state.device->SetLight(0, &light);
     g_state.device->LightEnable(0, TRUE);
@@ -402,7 +404,7 @@ void Cleanup() {
         g_state.d3d = nullptr;
     }
     
-    dx8gl_cleanup();
+    dx8gl_shutdown();
 }
 
 #ifdef __EMSCRIPTEN__

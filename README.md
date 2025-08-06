@@ -16,12 +16,14 @@ This project showcases:
 - **Modern C++** with GLM for matrix operations
 - **Complete software stack** - no GPU or hardware acceleration required
 
-### Recent Achievements (August 2025)
+### Recent Achievements (December 2025)
 - ✅ **Full DirectX 8 Render State Support** - All DX8Wrapper required states implemented
 - ✅ **Enhanced Display Mode Enumeration** - Multiple refresh rates and formats
-- ✅ **Cube Texture PreLoad** - Complete implementation with seamless filtering
+- ✅ **Complete Cube Texture Support** - Full implementation with shader integration and all backends
+- ✅ **Volume Texture (3D) Support** - Complete DirectX 8 volume texture implementation with OpenGL/WebGPU backends
+- ✅ **Async WebGPU Operations** - Replaced polling loops with promise/future-based async handlers
+- ✅ **Cross-Backend Testing Suite** - Automated pixel-perfect comparison across OSMesa, EGL, and WebGPU
 - ✅ **COM Wrapper Architecture** - Comprehensive refactoring plan (15 tasks) created
-- ✅ **Volume Texture Stubs** - Foundation for future 3D texture support
 
 ## Quick Start
 
@@ -136,14 +138,27 @@ Build times (approximate):
 - Mesa: 5-10 minutes  
 - Examples: < 1 minute each
 
-### Recent Updates (August 2025)
-- **DirectX 8 Compatibility**: Implemented all missing render states required by DX8Wrapper
-  - D3DRS_RANGEFOGENABLE, D3DRS_FOGVERTEXMODE, D3DRS_SPECULARMATERIALSOURCE
-  - D3DRS_COLORVERTEX, D3DRS_ZBIAS with proper OpenGL polygon offset mapping
-- **Display Mode Enumeration**: Enhanced with multiple refresh rates (60-120Hz) and formats
-- **Cube Texture Support**: PreLoad() now fully functional with seamless filtering
-- **COM Wrapper Refactoring**: Created 15-task series for complete COM interface overhaul
-- **Volume Textures**: Added stub implementation in UpdateTexture (returns D3DERR_NOTAVAILABLE)
+### Recent Updates (December 2025)
+- **Volume Texture Support**: Full 3D texture implementation
+  - Complete IDirect3DVolumeTexture8 and IDirect3DVolume8 interfaces
+  - OpenGL 3D texture creation and management
+  - GLSL/WGSL shader support for volumetric effects
+  - Ray marching volumetric fog generation helpers
+- **Async WebGPU Architecture**: Modern promise/future-based async operations
+  - WebGPUAsyncHandler for adapter, device, and buffer operations
+  - WebGPUAsyncResource RAII wrapper for resource management
+  - WebGPUAsyncCommand for async command submission with callbacks
+  - Eliminated all polling loops for better performance
+- **Cross-Backend Testing**: Comprehensive rendering consistency verification
+  - Automated pixel comparison across OSMesa, EGL, and WebGPU
+  - Test scenes: solid triangles, textured quads, alpha blending
+  - PPM/PNG output for visual debugging
+  - Configurable tolerance for rasterization differences
+- **Enhanced Cube Texture Infrastructure**: Complete environment mapping support
+  - CubeTextureSupport helper classes for all backends
+  - Automatic texture coordinate generation (reflection, normal, sphere mapping)
+  - Environment mapping with reflection, refraction, and Fresnel effects
+  - Dynamic cube textures for render-to-texture
 - Mesa now builds with shared libraries instead of static for better compatibility
 - Tests properly link against locally built Mesa 25.0.7 instead of system libraries
 - Added WebGPU backend support (experimental)
@@ -199,3 +214,51 @@ This is a demonstration project. Feel free to fork and experiment!
 - Use `./scripts/compile.sh status` to check what's built
 - Build with `-v` flag for verbose output when debugging
 - Check `build/` directory for all outputs
+
+## Testing
+
+### Unit Tests
+The dx8gl library includes comprehensive unit tests:
+
+```bash
+# Build tests
+cmake --build build --target all
+
+# Run all tests
+cd build && ctest
+
+# Run specific test
+./build/test/test_cross_backend_rendering
+./build/test/test_cube_texture
+./build/test/test_webgpu_state_mapping
+```
+
+### Cross-Backend Testing
+Verify rendering consistency across all backends:
+
+```bash
+# Run automated backend comparison
+./scripts/run_backend_test.sh
+
+# Output includes:
+# - PPM images for each backend and test scene
+# - Pixel difference statistics
+# - Pass/fail results for consistency checks
+```
+
+Test scenarios:
+- **Solid Triangle**: Basic rasterization
+- **Textured Quad**: Texture filtering and sampling
+- **Alpha Blending**: Transparency and blending operations
+
+### Manual Testing
+```bash
+# Test OSMesa backend
+DX8GL_BACKEND=osmesa ./scripts/run_dx8_cube.sh
+
+# Test EGL backend (if available)
+DX8GL_BACKEND=egl ./scripts/run_dx8_cube.sh
+
+# Test WebGPU backend (if available)
+DX8GL_BACKEND=webgpu ./scripts/run_dx8_cube.sh
+```

@@ -2,10 +2,14 @@
 #include "d3d8_interface.h"
 #include "d3d8_device.h"
 #include "logger.h"
+#ifdef DX8GL_HAS_OSMESA
 #include "osmesa_context.h"
+#include "osmesa_gl_loader.h"
+#include <GL/gl.h>
+#include <GL/glext.h>
+#endif
 #include "render_backend.h"
 #include "blue_screen.h"
-#include "osmesa_gl_loader.h"
 #include <atomic>
 #include <memory>
 #include <mutex>
@@ -289,6 +293,16 @@ dx8gl_error dx8gl_get_caps(dx8gl_device* device, dx8gl_caps* caps) {
         return DX8GL_ERROR_NOT_INITIALIZED;
     }
     
+    // Initialize with reasonable defaults for WebGPU or other backends
+    GLint max_texture_size = 4096;
+    GLint max_texture_units = 8;
+    GLint max_vertex_attribs = 16;
+    GLint max_vertex_uniform_components = 384;  // 96 vec4s
+    GLint max_fragment_uniform_components = 32;  // 8 vec4s
+    GLint max_renderbuffer_size = 4096;
+    GLint max_color_attachments = 4;
+    
+#ifdef DX8GL_HAS_OSMESA
     // Make backend context current to query OpenGL capabilities
     if (!device->backend->make_current()) {
         dx8gl::set_error("Failed to make backend context current");
@@ -296,14 +310,6 @@ dx8gl_error dx8gl_get_caps(dx8gl_device* device, dx8gl_caps* caps) {
     }
     
     // Query actual OpenGL capabilities
-    GLint max_texture_size = 0;
-    GLint max_texture_units = 0;
-    GLint max_vertex_attribs = 0;
-    GLint max_vertex_uniform_components = 0;
-    GLint max_fragment_uniform_components = 0;
-    GLint max_renderbuffer_size = 0;
-    GLint max_color_attachments = 0;
-    
     glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
     glGetIntegerv(GL_MAX_TEXTURE_IMAGE_UNITS, &max_texture_units);
     glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &max_vertex_attribs);
@@ -318,6 +324,7 @@ dx8gl_error dx8gl_get_caps(dx8gl_device* device, dx8gl_caps* caps) {
         DX8GL_WARNING("OpenGL error while querying capabilities: 0x%04x", error);
         // Continue with reasonable defaults
     }
+#endif
     
     // Fill in capabilities structure
     caps->max_texture_size = static_cast<uint32_t>(std::max(max_texture_size, 1024));
@@ -401,7 +408,8 @@ const char* dx8gl_get_version_string(void) {
     return DX8GL_VERSION_STRING;
 }
 
-// Context management
+#ifdef DX8GL_HAS_OSMESA
+// Context management (OSMesa-only)
 dx8gl_context* dx8gl_context_create(void) {
     return dx8gl_context_create_with_size(800, 600);
 }
@@ -456,6 +464,7 @@ void dx8gl_context_get_size(dx8gl_context* context, uint32_t* width, uint32_t* h
     *width = static_cast<uint32_t>(ctx->get_width());
     *height = static_cast<uint32_t>(ctx->get_height());
 }
+#endif // DX8GL_HAS_OSMESA
 
 // Get framebuffer from device for display (dx8gl extension)
 void* dx8gl_get_framebuffer(IDirect3DDevice8* device, int* width, int* height) {
@@ -498,6 +507,7 @@ void* dx8gl_get_shared_framebuffer(int* width, int* height, int* frame_number, b
         return nullptr;
     }
     
+#ifdef DX8GL_HAS_OSMESA
     // Check for OpenGL errors and show blue screen if needed
     GLenum gl_error = glGetError();
     if (gl_error != GL_NO_ERROR && !showing_blue_screen) {
@@ -520,6 +530,7 @@ void* dx8gl_get_shared_framebuffer(int* width, int* height, int* frame_number, b
         // Clear remaining errors
         while (glGetError() != GL_NO_ERROR) {}
     }
+#endif
     
     // Update output parameters
     if (width) *width = fb_width;

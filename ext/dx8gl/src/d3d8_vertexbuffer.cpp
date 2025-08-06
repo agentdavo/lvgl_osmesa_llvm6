@@ -11,7 +11,8 @@
 #include <GL/osmesa.h>
 // MUST include osmesa_gl_loader.h AFTER GL headers to override function definitions
 #include "osmesa_gl_loader.h"
-#else
+#elif !defined(DX8GL_HAS_WEBGPU)
+// Only include OpenGL headers if not using WebGPU
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glext.h>
@@ -63,6 +64,7 @@ Direct3DVertexBuffer8::~Direct3DVertexBuffer8() {
         device_->unregister_vertex_buffer(this);
     }
     
+#ifdef DX8GL_HAS_OSMESA
     // Clean up OpenGL resources
     if (vbo_ && gl_DeleteBuffers) {
         gl_DeleteBuffers(1, &vbo_);
@@ -74,6 +76,10 @@ Direct3DVertexBuffer8::~Direct3DVertexBuffer8() {
             gl_DeleteBuffers(1, &version.vbo);
         }
     }
+#else
+    // When not using OSMesa, clean up any allocated VBOs
+    // Note: WebGPU backend would handle its own buffer cleanup here
+#endif
     
     // Clean up lock buffer
     if (lock_buffer_) {
@@ -99,6 +105,7 @@ bool Direct3DVertexBuffer8::initialize() {
         return true;
     }
     
+#ifdef DX8GL_HAS_OSMESA
     // Ensure OSMesa context is current before creating OpenGL resources
     if (device_ && device_->get_osmesa_context()) {
         DX8GL_DEBUG("Making OSMesa context current for vertex buffer creation");
@@ -110,18 +117,16 @@ bool Direct3DVertexBuffer8::initialize() {
     } else {
         DX8GL_WARNING("No OSMesa context available for vertex buffer creation");
     }
+#endif
     
+#ifdef DX8GL_HAS_OSMESA
     // Debug: print GL version and current context
     const char* version = (const char*)glGetString(GL_VERSION);
     DX8GL_DEBUG("OpenGL version: %s", version ? version : "NULL");
     
     // Check if we have a current context
-#ifdef DX8GL_HAS_OSMESA
     OSMesaContext current = OSMesaGetCurrentContext();
     DX8GL_DEBUG("Current OSMesa context: %p", current);
-#else
-    DX8GL_DEBUG("OSMesa not available - using default context");
-#endif
     
     // Clear any existing GL errors
     GLenum clear_error;
@@ -136,7 +141,6 @@ bool Direct3DVertexBuffer8::initialize() {
     DX8GL_DEBUG("Cleared %d GL errors total", error_count);
     
     // For DEFAULT pool, create VBO
-#ifdef DX8GL_HAS_OSMESA
     // Debug: Check if function pointer is loaded
     DX8GL_DEBUG("gl_GenBuffers function pointer: %p", (void*)gl_GenBuffers);
     if (!gl_GenBuffers) {
@@ -146,7 +150,6 @@ bool Direct3DVertexBuffer8::initialize() {
     
     // Skip VAO creation for OpenGL 2.1 compatibility
     DX8GL_DEBUG("Using OpenGL 2.1 compatibility - no VAO needed");
-#endif
     
     // Double-check we have a current context
     OSMesaContext current_ctx = OSMesaGetCurrentContext();
@@ -244,6 +247,14 @@ bool Direct3DVertexBuffer8::initialize() {
     }
     
     DX8GL_DEBUG("Created VBO %u with %u bytes", vbo_, length_);
+#elif defined(DX8GL_HAS_WEBGPU)
+    // WebGPU backend: vertex buffers are handled differently
+    DX8GL_DEBUG("WebGPU backend: vertex buffer created with %u bytes", length_);
+#else
+    // No backend available, just allocate system memory
+    DX8GL_DEBUG("No rendering backend: vertex buffer created with %u bytes in system memory", length_);
+#endif // DX8GL_HAS_OSMESA
+    
     return true;
 }
 
@@ -423,6 +434,7 @@ HRESULT Direct3DVertexBuffer8::Unlock() {
     
     DX8GL_TRACE("Unlock VB");
     
+#ifdef DX8GL_HAS_OSMESA
     // For VBO, upload the data
     if (vbo_ && !(lock_flags_ & D3DLOCK_READONLY) && gl_BindBuffer && gl_BufferData && gl_BufferSubData) {
         gl_BindBuffer(GL_ARRAY_BUFFER, vbo_);
@@ -450,6 +462,7 @@ HRESULT Direct3DVertexBuffer8::Unlock() {
         
         gl_BindBuffer(GL_ARRAY_BUFFER, 0);
     }
+#endif
     
     locked_ = false;
     lock_offset_ = 0;
@@ -476,9 +489,11 @@ HRESULT Direct3DVertexBuffer8::GetDesc(D3DVERTEXBUFFER_DESC* pDesc) {
 
 // Internal methods
 void Direct3DVertexBuffer8::bind() const {
+#ifdef DX8GL_HAS_OSMESA
     if (vbo_ && gl_BindBuffer) {
         gl_BindBuffer(GL_ARRAY_BUFFER, vbo_);
     }
+#endif
 }
 
 UINT Direct3DVertexBuffer8::calculate_fvf_stride(DWORD fvf) {

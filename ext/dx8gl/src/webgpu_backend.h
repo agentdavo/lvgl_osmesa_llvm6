@@ -3,9 +3,11 @@
 
 #include "render_backend.h"
 #include "offscreen_framebuffer.h"
+#include "d3d8.h"
 
 #ifdef DX8GL_HAS_WEBGPU
 #include "../lib/lib_webgpu/lib_webgpu.h"
+#include "webgpu_state_mapper.h"
 #include <memory>
 #include <vector>
 
@@ -49,6 +51,18 @@ public:
     
     // Transfer control from an HTML canvas to OffscreenCanvas (call before initialize)
     bool transfer_canvas_control(const char* canvas_selector);
+    
+    // State management integration
+    void apply_render_state(const RenderState& render_state);
+    void apply_transform_state(const TransformState& transform_state);
+    WGpuRenderPipeline get_current_pipeline() const { return current_pipeline_; }
+    
+    // Cube texture support
+    WGpuTexture create_cube_texture(uint32_t size, uint32_t mip_levels, WGpuTextureFormat format);
+    WGpuTextureView create_cube_texture_view(WGpuTexture cube_texture);
+    WGpuSampler create_cube_sampler(WGpuFilterMode min_filter, WGpuFilterMode mag_filter, WGpuMipmapFilterMode mipmap_filter);
+    bool update_cube_face(WGpuTexture cube_texture, D3DCUBEMAP_FACES face, uint32_t mip_level, 
+                         const void* data, uint32_t data_size, uint32_t row_pitch);
 
 private:
     // WebGPU objects
@@ -97,6 +111,12 @@ private:
     bool framebuffer_ready_;
     FramebufferReadyCallback framebuffer_callback_;
     void* framebuffer_callback_user_data_;
+    
+    // State management
+    std::unique_ptr<WebGPUStateMapper> state_mapper_;
+    WGpuRenderPipeline current_pipeline_;
+    RenderState cached_render_state_;
+    TransformState cached_transform_state_;
 };
 
 } // namespace dx8gl

@@ -158,6 +158,9 @@ set(DX8GL_SOURCES
     src/d3d8_device.cpp
     src/d3d8_texture.cpp
     src/d3d8_cubetexture.cpp
+    src/cube_texture_support.cpp
+    src/d3d8_volumetexture.cpp
+    src/d3d8_volume.cpp
     src/d3d8_vertexbuffer.cpp
     src/d3d8_indexbuffer.cpp
     src/d3d8_surface.cpp
@@ -166,6 +169,8 @@ set(DX8GL_SOURCES
     src/shader_generator.cpp
     src/state_manager.cpp
     src/command_buffer.cpp
+    src/resource_pool.cpp
+    src/resource_pool_integration.cpp
     src/thread_pool.cpp
     src/render_thread.cpp
     src/logger.cpp
@@ -206,6 +211,10 @@ endif()
 # Conditionally add WebGPU backend
 if(DX8GL_ENABLE_WEBGPU)
     list(APPEND DX8GL_SOURCES src/webgpu_backend.cpp)
+    list(APPEND DX8GL_SOURCES src/webgpu_async_handler.cpp)
+    list(APPEND DX8GL_SOURCES src/webgpu_state_mapper.cpp)
+    list(APPEND DX8GL_SOURCES src/wgsl_shader_translator.cpp)
+    list(APPEND DX8GL_SOURCES src/wgsl_shader_cache.cpp)
     list(APPEND DX8GL_SOURCES lib/lib_webgpu/lib_webgpu.cpp)
     list(APPEND DX8GL_SOURCES lib/lib_webgpu/offscreen_canvas.c)
 endif()
