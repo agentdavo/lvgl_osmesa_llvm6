@@ -187,10 +187,10 @@ HRESULT Direct3DVolumeTexture8::QueryInterface(REFIID riid, void** ppvObj) {
         return E_POINTER;
     }
     
-    if (IsEqualGUID(riid, IID_IUnknown) || 
-        IsEqualGUID(riid, IID_IDirect3DResource8) ||
-        IsEqualGUID(riid, IID_IDirect3DBaseTexture8) ||
-        IsEqualGUID(riid, IID_IDirect3DVolumeTexture8)) {
+    if (IsEqualGUID(*riid, IID_IUnknown) || 
+        IsEqualGUID(*riid, IID_IDirect3DResource8) ||
+        IsEqualGUID(*riid, IID_IDirect3DBaseTexture8) ||
+        IsEqualGUID(*riid, IID_IDirect3DVolumeTexture8)) {
         *ppvObj = static_cast<IDirect3DVolumeTexture8*>(this);
         AddRef();
         return S_OK;
@@ -321,7 +321,6 @@ HRESULT Direct3DVolumeTexture8::GetLevelDesc(UINT Level, D3DVOLUME_DESC* pDesc) 
     pDesc->Type = D3DRTYPE_VOLUME;
     pDesc->Usage = usage_;
     pDesc->Pool = pool_;
-    pDesc->Size = calculate_texture_size(Level);
     pDesc->Width = mip_width;
     pDesc->Height = mip_height;
     pDesc->Depth = mip_depth;
@@ -778,8 +777,8 @@ void Direct3DVolumeTexture8::optimize_dirty_regions() {
             }
             
             DirtyBox dirty;
-            dirty.level = level;
             dirty.box = bounds;
+            dirty.level = level;
             dirty_regions_.push_back(dirty);
         }
     }

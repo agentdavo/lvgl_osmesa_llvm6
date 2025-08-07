@@ -20,6 +20,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/guid_utils.h \
  /usr/include/c++/13/functional \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -227,8 +228,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o: \
  /usr/include/c++/13/bits/chrono.h /usr/include/c++/13/ratio \
  /usr/include/c++/13/limits /usr/include/c++/13/ctime \
  /usr/include/c++/13/bits/parse_numbers.h \
- /usr/include/c++/13/bits/unique_lock.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
- /usr/include/c++/13/cstring /usr/include/string.h /usr/include/strings.h \
+ /usr/include/c++/13/bits/unique_lock.h /usr/include/c++/13/cstring \
+ /usr/include/string.h /usr/include/strings.h \
  /usr/include/x86_64-linux-gnu/bits/strings_fortified.h \
  /usr/include/x86_64-linux-gnu/bits/string_fortified.h

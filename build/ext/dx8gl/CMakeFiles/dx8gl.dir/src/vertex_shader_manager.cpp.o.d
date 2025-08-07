@@ -20,6 +20,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \
@@ -257,7 +258,6 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: \
  /usr/include/c++/13/bits/list.tcc \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_cpp_interfaces.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_compat.h \
  /usr/include/c++/13/math.h /usr/include/c++/13/cmath /usr/include/math.h \

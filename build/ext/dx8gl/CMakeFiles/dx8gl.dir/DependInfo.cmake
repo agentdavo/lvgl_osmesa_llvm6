@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/command_buffer.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/cube_texture_support.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_com_wrapper.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_cubetexture.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_device.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o.d"
@@ -19,6 +20,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_swapchain.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_swapchain.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_swapchain.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_texture.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_texture.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_texture.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_vertexbuffer.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_vertexbuffer.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_vertexbuffer.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_volume.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volume.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volume.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_volumetexture.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volumetexture.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volumetexture.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_math.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_math.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_math.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_shader.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_shader.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_shader.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_texture.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_texture.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3dx_texture.cpp.o.d"
@@ -36,6 +39,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/private_data.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/private_data.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_backend.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_thread.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/resource_pool.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/resource_pool_integration.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool_integration.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool_integration.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_binary_cache.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_binary_cache.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_bytecode_assembler.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_bytecode_disassembler.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_disassembler.cpp.o.d"

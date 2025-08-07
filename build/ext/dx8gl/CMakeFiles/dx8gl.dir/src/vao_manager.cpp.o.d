@@ -24,6 +24,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vao_manager.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_types.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /usr/include/c++/13/unordered_map \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -226,7 +227,6 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vao_manager.cpp.o: \
  /usr/include/c++/13/bits/parse_numbers.h \
  /usr/include/c++/13/bits/unique_lock.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/fvf_utils.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
  /usr/include/c++/13/cstdarg /usr/include/c++/13/cstring \
  /usr/include/string.h /usr/include/strings.h \

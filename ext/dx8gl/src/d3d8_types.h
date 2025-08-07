@@ -180,4 +180,52 @@ typedef struct tagPALETTEENTRY {
 }
 #endif
 
+/* Standard interface IIDs - declare as extern to avoid multiple definitions */
+#ifdef __cplusplus
+#ifndef IID_IUnknown
+extern const GUID IID_IUnknown;
+#endif
+
+#ifndef IID_IDirect3DResource8
+extern const GUID IID_IDirect3DResource8;
+#endif
+
+#ifndef IID_IDirect3DBaseTexture8
+extern const GUID IID_IDirect3DBaseTexture8;
+#endif
+
+#ifndef IID_IDirect3DVolumeTexture8
+extern const GUID IID_IDirect3DVolumeTexture8;
+#endif
+
+/* Volume texture types - need to be after d3d8_constants.h is included to get D3DFORMAT etc */
+#include "d3d8_constants.h"
+
+typedef struct _D3DBOX {
+    UINT                Left;
+    UINT                Top;
+    UINT                Right;
+    UINT                Bottom;
+    UINT                Front;
+    UINT                Back;
+} D3DBOX;
+
+typedef struct _D3DVOLUME_DESC {
+    D3DFORMAT           Format;
+    D3DRESOURCETYPE     Type;
+    DWORD               Usage;
+    D3DPOOL             Pool;
+    UINT                Width;
+    UINT                Height;
+    UINT                Depth;
+} D3DVOLUME_DESC;
+
+typedef struct _D3DLOCKED_BOX {
+    INT                 RowPitch;
+    INT                 SlicePitch;
+    void*               pBits;
+} D3DLOCKED_BOX;
+
+#endif /* __cplusplus */
+
 #endif /* DX8GL_D3D8_TYPES_H */

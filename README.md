@@ -16,14 +16,15 @@ This project showcases:
 - **Modern C++** with GLM for matrix operations
 - **Complete software stack** - no GPU or hardware acceleration required
 
-### Recent Achievements (December 2025)
+### Recent Achievements (August 2025)
+- ✅ **Thread-Safe COM Wrapper Implementation** - Complete resource wrapper classes with mutex synchronization (August 7)
+- ✅ **Cube Texture Reset Tracking** - Fixed resource leak prevention during device reset (August 7)
 - ✅ **Full DirectX 8 Render State Support** - All DX8Wrapper required states implemented
 - ✅ **Enhanced Display Mode Enumeration** - Multiple refresh rates and formats
-- ✅ **Complete Cube Texture Support** - Full implementation with shader integration and all backends
-- ✅ **Volume Texture (3D) Support** - Complete DirectX 8 volume texture implementation with OpenGL/WebGPU backends
-- ✅ **Async WebGPU Operations** - Replaced polling loops with promise/future-based async handlers
-- ✅ **Cross-Backend Testing Suite** - Automated pixel-perfect comparison across OSMesa, EGL, and WebGPU
-- ✅ **COM Wrapper Architecture** - Comprehensive refactoring plan (15 tasks) created
+- ✅ **Cube Texture PreLoad** - Full implementation with seamless filtering
+- ✅ **WebGPU Backend Support** - Experimental modern GPU API backend
+- ✅ **Backend Abstraction System** - Runtime switching between OSMesa, EGL, and WebGPU
+- ✅ **COM Wrapper Architecture** - Comprehensive refactoring with vtables and factory functions
 
 ## Quick Start
 
@@ -217,33 +218,99 @@ This is a demonstration project. Feel free to fork and experiment!
 
 ## Testing
 
-### Unit Tests
-The dx8gl library includes comprehensive unit tests:
+### Test Suite Overview
+The dx8gl library includes a comprehensive test suite with automated test runners and multiple test categories:
 
+### Running Tests
+
+#### Quick Test Run
 ```bash
-# Build tests
-cmake --build build --target all
+# Run all dx8gl tests using the automated test runner
+./scripts/run_dx8gl_tests.sh
 
-# Run all tests
-cd build && ctest
+# Run with specific options
+./scripts/run_dx8gl_tests.sh --filter shader   # Run only shader tests
+./scripts/run_dx8gl_tests.sh --valgrind        # Run with memory leak detection
+./scripts/run_dx8gl_tests.sh --coverage        # Generate code coverage report
+```
 
-# Run specific test
-./build/test/test_cross_backend_rendering
-./build/test/test_cube_texture
-./build/test/test_webgpu_state_mapping
+#### Manual Test Execution
+```bash
+# Tests are built in the Release directory
+cd build
+
+# Set library paths for OSMesa/LLVM
+export LD_LIBRARY_PATH=llvm-install/lib:mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
+# Run individual tests
+./Release/test_shader_translator      # Shader translation tests
+./Release/test_render_states         # Render state management
+./Release/test_com_wrapper_threading # COM wrapper thread safety
+./Release/test_backend_selection     # Backend switching tests
+./Release/test_alpha_blending        # Alpha blending operations
+```
+
+### Test Categories
+
+#### Core API Tests
+- `test_dx8gl_core_api` - DirectX 8 API implementation
+- `test_device_reset` - Device reset and resource recreation
+- `test_swapchain_presentation` - Swap chain functionality
+
+#### Shader Tests
+- `test_shader_translator` - DirectX to GLSL translation
+- `test_shader_cache_resize` - Shader binary caching
+- `test_multi_texcoords` - Multiple texture coordinate handling
+
+#### Resource Tests
+- `test_cube_texture` - Cube texture functionality
+- `test_surface_format` - Surface format conversions
+- `test_texture_simple` - Basic texture operations
+
+#### Threading Tests
+- `test_com_wrapper_threading` - Thread-safe COM wrapper operations
+- `test_async_simple` - Asynchronous command execution
+
+#### State Management
+- `test_render_states` - Render state validation
+- `test_state_manager_validation` - State manager correctness
+- `test_alpha_blending` - Blending state operations
+
+### Building Tests
+```bash
+# Build all tests
+./scripts/compile.sh all
+
+# Build only dx8gl library and tests
+cd build
+make dx8gl
+make -C ext/dx8gl/test
+
+# Build specific test
+make test_render_states
 ```
 
 ### Cross-Backend Testing
-Verify rendering consistency across all backends:
-
 ```bash
-# Run automated backend comparison
+# Run backend comparison tests
 ./scripts/run_backend_test.sh
 
-# Output includes:
-# - PPM images for each backend and test scene
-# - Pixel difference statistics
-# - Pass/fail results for consistency checks
+# Test specific backend
+DX8GL_BACKEND=osmesa ./Release/test_backend_selection
+DX8GL_BACKEND=egl ./Release/test_backend_selection
+```
+
+### Debugging Failed Tests
+```bash
+# Enable debug output
+export DX8GL_LOG_LEVEL=DEBUG
+export DX8GL_LOG_FILE=/tmp/dx8gl_test.log
+
+# Run with GDB
+gdb ./Release/test_render_states
+
+# Run with Valgrind for memory issues
+valgrind --leak-check=full --track-origins=yes ./Release/test_shader_translator
 ```
 
 Test scenarios:

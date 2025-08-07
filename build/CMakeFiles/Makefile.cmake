@@ -172,6 +172,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "ext/dx8gl/test/CMakeFiles/test_hud_font.dir/DependInfo.cmake"
   "ext/dx8gl/test/CMakeFiles/test_alpha_blending.dir/DependInfo.cmake"
   "ext/dx8gl/test/CMakeFiles/test_render_states.dir/DependInfo.cmake"
+  "ext/dx8gl/test/CMakeFiles/test_com_wrapper_threading.dir/DependInfo.cmake"
   "src/CMakeFiles/test_xyzrhw.dir/DependInfo.cmake"
   "src/CMakeFiles/test_mixed_vertices.dir/DependInfo.cmake"
   "src/CMakeFiles/test_indexed_xyzrhw.dir/DependInfo.cmake"

@@ -308,4 +308,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/pixel_shader_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.h \
- /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/dx8gl.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_cubetexture.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/private_data.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/guid_utils.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_volumetexture.h

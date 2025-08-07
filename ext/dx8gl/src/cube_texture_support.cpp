@@ -103,13 +103,95 @@ bool CubeTextureSupport::convert_face_data(const void* src_data, void* dst_data,
                                           D3DFORMAT d3d_format, GLenum gl_format,
                                           uint32_t width, uint32_t height,
                                           D3DCUBEMAP_FACES face) {
-    // Get face orientation
+    // Get face orientation for DirectX to OpenGL/WebGPU conversion
     FaceOrientation orient = get_face_orientation(face);
     
-    // For now, just copy the data
-    // TODO: Implement proper orientation flipping if needed
-    size_t data_size = width * height * 4;  // Assume 4 bytes per pixel for now
-    std::memcpy(dst_data, src_data, data_size);
+    // Calculate bytes per pixel based on format
+    uint32_t bytes_per_pixel = 4;  // Default to 4 bytes (RGBA)
+    switch (d3d_format) {
+        case D3DFMT_R5G6B5:
+        case D3DFMT_X1R5G5B5:
+        case D3DFMT_A1R5G5B5:
+            bytes_per_pixel = 2;
+            break;
+        case D3DFMT_R8G8B8:
+            bytes_per_pixel = 3;
+            break;
+        case D3DFMT_A8R8G8B8:
+        case D3DFMT_X8R8G8B8:
+            bytes_per_pixel = 4;
+            break;
+    }
+    
+    const uint8_t* src = static_cast<const uint8_t*>(src_data);
+    uint8_t* dst = static_cast<uint8_t*>(dst_data);
+    
+    // Apply orientation corrections based on face
+    if (orient.flip_vertical && orient.flip_horizontal) {
+        // Flip both vertically and horizontally (180 degree rotation)
+        for (uint32_t y = 0; y < height; ++y) {
+            for (uint32_t x = 0; x < width; ++x) {
+                uint32_t src_idx = (y * width + x) * bytes_per_pixel;
+                uint32_t dst_idx = ((height - 1 - y) * width + (width - 1 - x)) * bytes_per_pixel;
+                std::memcpy(&dst[dst_idx], &src[src_idx], bytes_per_pixel);
+            }
+        }
+    } else if (orient.flip_vertical) {
+        // Flip vertically (needed for Y+ and Y- faces)
+        for (uint32_t y = 0; y < height; ++y) {
+            uint32_t src_row = y * width * bytes_per_pixel;
+            uint32_t dst_row = (height - 1 - y) * width * bytes_per_pixel;
+            std::memcpy(&dst[dst_row], &src[src_row], width * bytes_per_pixel);
+        }
+    } else if (orient.flip_horizontal) {
+        // Flip horizontally
+        for (uint32_t y = 0; y < height; ++y) {
+            for (uint32_t x = 0; x < width; ++x) {
+                uint32_t src_idx = (y * width + x) * bytes_per_pixel;
+                uint32_t dst_idx = (y * width + (width - 1 - x)) * bytes_per_pixel;
+                std::memcpy(&dst[dst_idx], &src[src_idx], bytes_per_pixel);
+            }
+        }
+    } else if (std::abs(orient.rotation_angle) > 0.01f) {
+        // Handle rotation if needed (90, 180, 270 degrees)
+        if (std::abs(orient.rotation_angle - 90.0f) < 0.01f) {
+            // 90 degree clockwise rotation
+            for (uint32_t y = 0; y < height; ++y) {
+                for (uint32_t x = 0; x < width; ++x) {
+                    uint32_t src_idx = (y * width + x) * bytes_per_pixel;
+                    uint32_t dst_idx = (x * width + (height - 1 - y)) * bytes_per_pixel;
+                    std::memcpy(&dst[dst_idx], &src[src_idx], bytes_per_pixel);
+                }
+            }
+        } else if (std::abs(orient.rotation_angle - 180.0f) < 0.01f) {
+            // 180 degree rotation
+            for (uint32_t y = 0; y < height; ++y) {
+                for (uint32_t x = 0; x < width; ++x) {
+                    uint32_t src_idx = (y * width + x) * bytes_per_pixel;
+                    uint32_t dst_idx = ((height - 1 - y) * width + (width - 1 - x)) * bytes_per_pixel;
+                    std::memcpy(&dst[dst_idx], &src[src_idx], bytes_per_pixel);
+                }
+            }
+        } else if (std::abs(orient.rotation_angle + 90.0f) < 0.01f) {
+            // 90 degree counter-clockwise rotation (-90)
+            for (uint32_t y = 0; y < height; ++y) {
+                for (uint32_t x = 0; x < width; ++x) {
+                    uint32_t src_idx = (y * width + x) * bytes_per_pixel;
+                    uint32_t dst_idx = ((width - 1 - x) * width + y) * bytes_per_pixel;
+                    std::memcpy(&dst[dst_idx], &src[src_idx], bytes_per_pixel);
+                }
+            }
+        } else {
+            // No rotation needed, just copy
+            std::memcpy(dst_data, src_data, width * height * bytes_per_pixel);
+        }
+    } else {
+        // No transformation needed, direct copy
+        std::memcpy(dst_data, src_data, width * height * bytes_per_pixel);
+    }
+    
+    DX8GL_TRACE("Converted cube face %d with orientation (flip_v=%d, flip_h=%d, rot=%.1f)", 
+                face, orient.flip_vertical, orient.flip_horizontal, orient.rotation_angle);
     
     return true;
 }

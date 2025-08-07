@@ -163,6 +163,10 @@ public:
     // Additional state management methods
     WGpuRenderPipeline get_or_create_pipeline(WGpuDevice device, const PipelineStateKey& key);
     void set_sampler(uint32_t stage, WGpuSampler sampler);
+    
+    // Shader module creation methods
+    WGpuShaderModule create_vertex_shader_module(WGpuDevice device, const PipelineStateKey& key);
+    WGpuShaderModule create_fragment_shader_module(WGpuDevice device, const PipelineStateKey& key);
     void set_transform_matrix(TransformType type, const float* matrix);
     void set_lighting_enabled(bool enabled);
     void set_material(const D3DMATERIAL8& material);

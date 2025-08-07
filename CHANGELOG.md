@@ -2,9 +2,34 @@
 
 All notable changes to the LVGL OSMesa LLVM project will be documented in this file.
 
-## [Unreleased] - 2025-08-06
+## [Unreleased] - 2025-08-07
 
 ### Added
+- **Test Infrastructure Improvements** (2025-08-07):
+  - Fixed resource_pool.cpp compilation errors blocking test suite execution
+    - Fixed unique_ptr handling in EnhancedCommandBufferPool::acquire()
+    - Fixed atomic value copying with proper .load() and .store() usage
+    - Added move constructor to PoolMetrics for atomic members
+    - Fixed std::find_if usage for unique_ptr vector operations
+  - Added stub vtable definitions for COM interfaces to fix linking errors
+  - Created comprehensive test_com_wrapper_threading test for thread safety validation
+  - Updated run_dx8gl_tests.sh automated test runner script
+  - Tests now properly run from build/Release/ directory with correct library paths
+
+### Added (Earlier Today)
+- **COM Wrapper Resource Management** (2025-08-07):
+  - Implemented thread-safe wrapper classes for all DirectX 8 resource types
+  - Added vtable definitions for IDirect3DSurface8, IDirect3DSwapChain8, IDirect3DVertexBuffer8, IDirect3DIndexBuffer8, IDirect3DCubeTexture8, IDirect3DVolumeTexture8, and IDirect3DVolume8
+  - Factory functions for creating COM wrappers with proper reference counting
+  - Mutex-based thread synchronization for multi-threaded usage
+  - Updated all resource creation methods (CreateRenderTarget, CreateVertexBuffer, etc.) to use wrappers
+
+- **Cube Texture Reset Tracking** (2025-08-07):
+  - Fixed missing registration of cube textures for device reset tracking
+  - Prevents resource leaks when device is reset
+  - Ensures proper recreation of D3DPOOL_DEFAULT cube textures after reset
+
+### Added (Previous)
 - **Backend Abstraction System**: Complete refactoring of dx8gl to support multiple rendering backends
   - Abstract `DX8RenderBackend` interface for backend implementations
   - `DX8OSMesaBackend` for software rendering via OSMesa

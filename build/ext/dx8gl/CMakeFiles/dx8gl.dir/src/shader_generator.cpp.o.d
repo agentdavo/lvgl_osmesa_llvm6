@@ -289,6 +289,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_generator.cpp.o: \
  /usr/include/c++/13/charconv /usr/include/c++/13/optional \
  /usr/include/c++/13/span /usr/include/c++/13/variant \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/texcoord_generator.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/cube_texture_support.h \
  /usr/include/c++/13/future /usr/include/c++/13/condition_variable \
  /usr/include/c++/13/bits/atomic_futex.h \
  /usr/include/c++/13/bits/std_function.h

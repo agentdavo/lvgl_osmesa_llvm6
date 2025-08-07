@@ -1,6 +1,8 @@
 #include "webgpu_state_mapper.h"
 #include "logger.h"
+#include "d3d8_types.h"
 #include <cstring>
+#include <string>
 #include <functional>
 
 #ifdef DX8GL_HAS_WEBGPU
@@ -623,19 +625,328 @@ WGpuRenderPipeline WebGPUStateMapper::get_or_create_pipeline(WGpuDevice device, 
         return it->second;
     }
     
-    // Create new pipeline
-    // In a real implementation, you would need the shader modules here
-    // For now, return nullptr as a placeholder
-    WGpuRenderPipeline pipeline = nullptr;
+    // Create new pipeline from the key's state
+    DX8GL_INFO("Creating new WebGPU pipeline for state key (vertex_format: 0x%x)", key.vertex_format_hash);
     
-    // TODO: Create actual pipeline using the key and shader modules
-    // This would involve calling create_pipeline_descriptor with the key's states
-    // and then wgpu_device_create_render_pipeline
+    // Create shader modules based on the pipeline state
+    // For now, we'll use fixed-function shaders
+    // In a full implementation, this would check if custom shaders are set
+    WGpuShaderModule vertex_shader = create_vertex_shader_module(device, key);
+    WGpuShaderModule fragment_shader = create_fragment_shader_module(device, key);
+    
+    if (!vertex_shader || !fragment_shader) {
+        DX8GL_ERROR("Failed to create shader modules for pipeline");
+        return nullptr;
+    }
+    
+    // Build render state from pipeline key
+    RenderState render_state = {};
+    render_state.alpha_blend_enable = key.blend_enabled;
+    render_state.src_blend = static_cast<D3DBLEND>(key.src_blend);
+    render_state.dest_blend = static_cast<D3DBLEND>(key.dst_blend);
+    render_state.blend_op = static_cast<D3DBLENDOP>(key.blend_op);
+    render_state.z_enable = key.depth_test_enabled;
+    render_state.z_write_enable = key.depth_write_enabled;
+    render_state.z_func = static_cast<D3DCMPFUNC>(key.depth_compare);
+    render_state.z_bias = key.depth_bias;
+    render_state.stencil_enable = key.stencil_enabled;
+    render_state.stencil_fail = key.stencil_fail_op;
+    render_state.stencil_zfail = key.stencil_depth_fail_op;
+    render_state.stencil_pass = key.stencil_pass_op;
+    render_state.stencil_func = static_cast<D3DCMPFUNC>(key.stencil_compare);
+    render_state.stencil_mask = key.stencil_read_mask;
+    render_state.stencil_write_mask = key.stencil_write_mask;
+    render_state.cull_mode = static_cast<D3DCULL>(key.cull_mode);
+    
+    // Build transform state (use identity for now)
+    TransformState transform_state = {};
+    
+    // Create pipeline descriptor
+    WGpuRenderPipelineDescriptor* desc = create_pipeline_descriptor(
+        render_state, 
+        transform_state, 
+        vertex_shader, 
+        fragment_shader
+    );
+    
+    if (!desc) {
+        DX8GL_ERROR("Failed to create pipeline descriptor");
+        wgpu_object_destroy(vertex_shader);
+        wgpu_object_destroy(fragment_shader);
+        return nullptr;
+    }
+    
+    // Set vertex buffer layout based on vertex format hash
+    WGpuVertexBufferLayout* vertex_layout = create_vertex_buffer_layout(key.vertex_format_hash);
+    if (vertex_layout) {
+        desc->vertex.buffer_count = 1;
+        desc->vertex.buffers = vertex_layout;
+    }
+    
+    // Create the actual render pipeline
+    WGpuRenderPipeline pipeline = wgpu_device_create_render_pipeline(device, desc);
+    
+    if (!pipeline) {
+        DX8GL_ERROR("Failed to create WebGPU render pipeline");
+    } else {
+        DX8GL_INFO("Successfully created WebGPU render pipeline");
+    }
+    
+    // Clean up temporary resources
+    if (vertex_layout) {
+        destroy_vertex_buffer_layout(vertex_layout);
+    }
+    delete[] desc->fragment->targets;
+    delete desc->fragment;
+    if (desc->depth_stencil) {
+        delete desc->depth_stencil;
+    }
+    delete desc;
+    
+    // Clean up shader modules (pipeline retains them)
+    wgpu_object_destroy(vertex_shader);
+    wgpu_object_destroy(fragment_shader);
     
     // Cache the pipeline
     pipeline_cache_[key] = pipeline;
     
     return pipeline;
+}
+
+// Create vertex shader module from pipeline state
+WGpuShaderModule WebGPUStateMapper::create_vertex_shader_module(WGpuDevice device, const PipelineStateKey& key) {
+    // Generate WGSL shader code based on the pipeline state
+    // For now, we'll use a basic fixed-function vertex shader
+    std::string wgsl_code = R"(
+struct VertexInput {
+    @location(0) position: vec3<f32>,
+    @location(1) normal: vec3<f32>,
+    @location(2) texcoord: vec2<f32>,
+    @location(3) color: vec4<f32>,
+}
+
+struct VertexOutput {
+    @builtin(position) position: vec4<f32>,
+    @location(0) texcoord: vec2<f32>,
+    @location(1) color: vec4<f32>,
+    @location(2) world_pos: vec3<f32>,
+    @location(3) normal: vec3<f32>,
+}
+
+struct Uniforms {
+    mvp_matrix: mat4x4<f32>,
+    model_matrix: mat4x4<f32>,
+    normal_matrix: mat3x3<f32>,
+}
+
+@group(0) @binding(0) var<uniform> uniforms: Uniforms;
+
+@vertex
+fn main(input: VertexInput) -> VertexOutput {
+    var output: VertexOutput;
+    
+    // Transform position
+    output.position = uniforms.mvp_matrix * vec4<f32>(input.position, 1.0);
+    
+    // Pass through texture coordinates
+    output.texcoord = input.texcoord;
+    
+    // Pass through color
+    output.color = input.color;
+    
+    // Calculate world position for lighting
+    let world_pos4 = uniforms.model_matrix * vec4<f32>(input.position, 1.0);
+    output.world_pos = world_pos4.xyz;
+    
+    // Transform normal for lighting
+    output.normal = uniforms.normal_matrix * input.normal;
+    
+    return output;
+}
+)";
+    
+    // Create shader module descriptor
+    WGpuShaderModuleDescriptor shader_desc = {};
+    shader_desc.label = "WebGPU Vertex Shader";
+    
+    // WGSL source code
+    WGpuShaderModuleWGSLDescriptor wgsl_desc = {};
+    wgsl_desc.chain.stype = WGPU_STYPE_SHADER_MODULE_WGSL_DESCRIPTOR;
+    wgsl_desc.source = wgsl_code.c_str();
+    
+    shader_desc.next_in_chain = reinterpret_cast<const WGpuChainedStruct*>(&wgsl_desc);
+    
+    // Create the shader module
+    WGpuShaderModule shader = wgpu_device_create_shader_module(device, &shader_desc);
+    
+    if (!shader) {
+        DX8GL_ERROR("Failed to create vertex shader module");
+    }
+    
+    return shader;
+}
+
+// Create fragment shader module from pipeline state
+WGpuShaderModule WebGPUStateMapper::create_fragment_shader_module(WGpuDevice device, const PipelineStateKey& key) {
+    // Generate WGSL shader code based on the pipeline state
+    // Include alpha test logic if needed
+    std::string wgsl_code = R"(
+struct FragmentInput {
+    @location(0) texcoord: vec2<f32>,
+    @location(1) color: vec4<f32>,
+    @location(2) world_pos: vec3<f32>,
+    @location(3) normal: vec3<f32>,
+}
+
+struct FragmentOutput {
+    @location(0) color: vec4<f32>,
+}
+
+@group(1) @binding(0) var texture0: texture_2d<f32>;
+@group(1) @binding(1) var sampler0: sampler;
+
+@fragment
+fn main(input: FragmentInput) -> FragmentOutput {
+    var output: FragmentOutput;
+    
+    // Sample texture if available
+    let tex_color = textureSample(texture0, sampler0, input.texcoord);
+    
+    // Combine texture with vertex color
+    output.color = tex_color * input.color;
+    
+    // Alpha test (discard if alpha is below threshold)
+    if (output.color.a < 0.01) {
+        discard;
+    }
+    
+    return output;
+}
+)";
+    
+    // Create shader module descriptor
+    WGpuShaderModuleDescriptor shader_desc = {};
+    shader_desc.label = "WebGPU Fragment Shader";
+    
+    // WGSL source code
+    WGpuShaderModuleWGSLDescriptor wgsl_desc = {};
+    wgsl_desc.chain.stype = WGPU_STYPE_SHADER_MODULE_WGSL_DESCRIPTOR;
+    wgsl_desc.source = wgsl_code.c_str();
+    
+    shader_desc.next_in_chain = reinterpret_cast<const WGpuChainedStruct*>(&wgsl_desc);
+    
+    // Create the shader module
+    WGpuShaderModule shader = wgpu_device_create_shader_module(device, &shader_desc);
+    
+    if (!shader) {
+        DX8GL_ERROR("Failed to create fragment shader module");
+    }
+    
+    return shader;
+}
+
+// Create vertex buffer layout from FVF
+WGpuVertexBufferLayout* WebGPUStateMapper::create_vertex_buffer_layout(uint32_t fvf) {
+    WGpuVertexBufferLayout* layout = new WGpuVertexBufferLayout();
+    
+    // Count attributes based on FVF
+    uint32_t attribute_count = 0;
+    uint32_t offset = 0;
+    
+    // Position is always present in D3D8
+    attribute_count++;
+    if (fvf & D3DFVF_XYZ) {
+        offset += sizeof(float) * 3;
+    } else if (fvf & D3DFVF_XYZRHW) {
+        offset += sizeof(float) * 4;
+    }
+    
+    // Normal
+    if (fvf & D3DFVF_NORMAL) {
+        attribute_count++;
+        offset += sizeof(float) * 3;
+    }
+    
+    // Diffuse color
+    if (fvf & D3DFVF_DIFFUSE) {
+        attribute_count++;
+        offset += sizeof(uint32_t);
+    }
+    
+    // Specular color
+    if (fvf & D3DFVF_SPECULAR) {
+        attribute_count++;
+        offset += sizeof(uint32_t);
+    }
+    
+    // Texture coordinates
+    uint32_t tex_count = (fvf & D3DFVF_TEXCOUNT_MASK) >> D3DFVF_TEXCOUNT_SHIFT;
+    attribute_count += tex_count;
+    
+    // Allocate attributes array
+    WGpuVertexAttribute* attributes = new WGpuVertexAttribute[attribute_count];
+    uint32_t attr_index = 0;
+    offset = 0;
+    
+    // Position attribute
+    attributes[attr_index].format = (fvf & D3DFVF_XYZRHW) ? 
+        WGPU_VERTEX_FORMAT_FLOAT32X4 : WGPU_VERTEX_FORMAT_FLOAT32X3;
+    attributes[attr_index].offset = offset;
+    attributes[attr_index].shader_location = 0;
+    offset += (fvf & D3DFVF_XYZRHW) ? sizeof(float) * 4 : sizeof(float) * 3;
+    attr_index++;
+    
+    // Normal attribute
+    if (fvf & D3DFVF_NORMAL) {
+        attributes[attr_index].format = WGPU_VERTEX_FORMAT_FLOAT32X3;
+        attributes[attr_index].offset = offset;
+        attributes[attr_index].shader_location = 1;
+        offset += sizeof(float) * 3;
+        attr_index++;
+    }
+    
+    // Texture coordinates
+    for (uint32_t i = 0; i < tex_count; i++) {
+        attributes[attr_index].format = WGPU_VERTEX_FORMAT_FLOAT32X2;
+        attributes[attr_index].offset = offset;
+        attributes[attr_index].shader_location = 2 + i;
+        offset += sizeof(float) * 2;
+        attr_index++;
+    }
+    
+    // Diffuse color
+    if (fvf & D3DFVF_DIFFUSE) {
+        attributes[attr_index].format = WGPU_VERTEX_FORMAT_UNORM8X4;
+        attributes[attr_index].offset = offset;
+        attributes[attr_index].shader_location = 3;
+        offset += sizeof(uint32_t);
+        attr_index++;
+    }
+    
+    // Specular color
+    if (fvf & D3DFVF_SPECULAR) {
+        attributes[attr_index].format = WGPU_VERTEX_FORMAT_UNORM8X4;
+        attributes[attr_index].offset = offset;
+        attributes[attr_index].shader_location = 4;
+        offset += sizeof(uint32_t);
+        attr_index++;
+    }
+    
+    // Fill layout structure
+    layout->array_stride = offset;
+    layout->step_mode = WGPU_VERTEX_STEP_MODE_VERTEX;
+    layout->attribute_count = attribute_count;
+    layout->attributes = attributes;
+    
+    return layout;
+}
+
+// Destroy vertex buffer layout
+void WebGPUStateMapper::destroy_vertex_buffer_layout(WGpuVertexBufferLayout* layout) {
+    if (layout) {
+        delete[] layout->attributes;
+        delete layout;
+    }
 }
 
 // Set sampler for a texture stage

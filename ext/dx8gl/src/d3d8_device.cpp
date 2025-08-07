@@ -1613,8 +1613,8 @@ HRESULT Direct3DDevice8::CreateCubeTexture(UINT EdgeLength, UINT Levels, DWORD U
         return D3DERR_NOTAVAILABLE;
     }
     
-    // TODO: Register cube texture for device reset tracking
-    // register_cube_texture(texture);
+    // Register cube texture for device reset tracking
+    register_cube_texture(texture);
     
     *ppCubeTexture = texture;
     return D3D_OK;

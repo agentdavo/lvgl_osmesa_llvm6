@@ -323,7 +323,79 @@ Each implemented method needs:
 4. Error condition tests
 5. Performance benchmarks
 
+## Testing Infrastructure
+
+### Test Suite
+The dx8gl library has comprehensive unit tests located in `ext/dx8gl/test/`. Tests are built in the `build/Release/` directory.
+
+### Running Tests
+```bash
+# Automated test runner (recommended)
+./scripts/run_dx8gl_tests.sh
+
+# Run with options
+./scripts/run_dx8gl_tests.sh --filter shader   # Run only shader tests
+./scripts/run_dx8gl_tests.sh --valgrind        # Memory leak detection
+./scripts/run_dx8gl_tests.sh --coverage        # Generate coverage report
+
+# Manual test execution
+cd build
+export LD_LIBRARY_PATH=llvm-install/lib:mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+./Release/test_shader_translator
+./Release/test_render_states
+./Release/test_com_wrapper_threading
+```
+
+### Test Categories
+- **Core API**: test_dx8gl_core_api, test_device_reset, test_swapchain_presentation
+- **Shaders**: test_shader_translator, test_shader_cache_resize, test_multi_texcoords
+- **Resources**: test_cube_texture, test_surface_format, test_texture_simple
+- **Threading**: test_com_wrapper_threading, test_async_simple
+- **State**: test_render_states, test_state_manager_validation, test_alpha_blending
+- **Backend**: test_backend_selection, test_framebuffer_correctness
+
+### Building Tests
+```bash
+# Build all tests with the main build
+./scripts/compile.sh all
+
+# Build specific test
+cd build
+make test_render_states
+
+# Build all tests in dx8gl
+make -C ext/dx8gl/test
+```
+
+### Known Test Issues
+- OSMesa context warnings in multi-threaded tests are expected (OpenGL is not thread-safe)
+- test_vertex_shader_disassembly may have PIE linking issues
+- Some tests require stub COM vtable implementations (already added to d3d8_com_wrapper.cpp)
+- Resource pool metrics updates are currently commented out (need proper API)
+
+### Test Infrastructure Files
+- `scripts/run_dx8gl_tests.sh` - Main test runner script
+- `ext/dx8gl/TEST_AUTOMATION.md` - Comprehensive test automation guide
+- `ext/dx8gl/test/CMakeLists.txt` - Test build configuration
+
 ## Recent Completed Tasks (August 2025)
+
+### COM Wrapper Resource Management (August 7, 2025) ✅
+- Implemented thread-safe wrapper classes for all DirectX 8 resource types:
+  - Direct3DSurface8_COM_Wrapper with mutex synchronization
+  - Direct3DSwapChain8_COM_Wrapper for swap chain management
+  - Direct3DVertexBuffer8_COM_Wrapper and Direct3DIndexBuffer8_COM_Wrapper for buffer resources
+  - Direct3DCubeTexture8_COM_Wrapper and Direct3DVolumeTexture8_COM_Wrapper for texture resources
+  - Direct3DVolume8_COM_Wrapper for volume slices
+- Added complete vtable definitions for all COM interfaces
+- Created factory functions for wrapper instantiation with proper reference counting
+- Updated all resource creation methods to use wrappers instead of direct pass-through
+
+### Cube Texture Device Reset Tracking (August 7, 2025) ✅
+- Fixed missing registration of cube textures in CreateCubeTexture
+- Cube textures now properly tracked in all_cube_textures_ vector
+- Prevents resource leaks during device reset operations
+- Ensures D3DPOOL_DEFAULT cube textures are recreated after reset
 
 ### DirectX 8 Render States Implementation ✅
 - Added all missing render states required by DX8Wrapper:

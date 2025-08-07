@@ -35,6 +35,7 @@ extern const IID IID_IUnknown;
 extern const IID IID_IDirect3D8;
 extern const IID IID_IDirect3DDevice8;
 extern const IID IID_IDirect3DSurface8;
+extern const IID IID_IDirect3DVolume8;
 extern const IID IID_IDirect3DTexture8;
 extern const IID IID_IDirect3DVertexBuffer8;
 extern const IID IID_IDirect3DIndexBuffer8;

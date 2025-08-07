@@ -48,11 +48,16 @@
 - [ ] T44:: Fix:: Test FVF state management fix for DrawIndexedPrimitiveUP :: Depends=[build system] :: Est=S :: Requires LLVM rebuild to test
 
 ## DONE
+- [x] T-TEST-FIX:: Fix:: Fix resource_pool.cpp compilation errors :: Depends=[none] :: Est=M :: Fixed unique_ptr handling, atomic operations, and move semantics ✅ COMPLETED (2025-08-07)
+- [x] T-TEST-INFRA:: Documentation:: Update root .md files with test suite instructions :: Depends=[T-TEST-FIX] :: Est=S :: Updated README.md and CLAUDE.md with comprehensive test documentation ✅ COMPLETED (2025-08-07)
 - [x] RS1:: Fix:: Add missing render states to state_manager :: Depends=[none] :: Est=M :: D3DRS_RANGEFOGENABLE, D3DRS_FOGVERTEXMODE, D3DRS_SPECULARMATERIALSOURCE, D3DRS_COLORVERTEX, D3DRS_ZBIAS ✅ IMPLEMENTED
 - [x] VT1:: Feature:: Implement volume texture support in UpdateTexture :: Depends=[none] :: Est=M :: Stub implementation returning D3DERR_NOTAVAILABLE ✅ COMPLETED
 - [x] CT1:: Feature:: Implement cube texture PreLoad functionality :: Depends=[none] :: Est=M :: Full implementation with seamless filtering ✅ WORKING
 - [x] DM1:: Feature:: Improve display/depth mode enumeration :: Depends=[none] :: Est=M :: Multiple refresh rates and formats ✅ ENHANCED
 - [x] CW-PLAN:: Planning:: Create COM wrapper refactoring task series :: Depends=[none] :: Est=M :: 15-task series (CW01-CW15) created ✅ PLANNED
+- [x] CW-IMPL1:: Feature:: Implement resource wrapper classes for COM interfaces :: Depends=[CW01] :: Est=L :: Thread-safe wrappers for surfaces, swap chains, textures, buffers ✅ COMPLETED (2025-08-07)
+- [x] CW-IMPL2:: Feature:: Add vtable definitions for all COM interfaces :: Depends=[CW01] :: Est=M :: Complete vtable structs for all DirectX 8 resource types ✅ COMPLETED (2025-08-07)
+- [x] CT2:: Fix:: Register cube textures for device reset tracking :: Depends=[none] :: Est=S :: Prevent resource leaks during device reset ✅ FIXED (2025-08-07)
 - [x] T60:: Fix:: Fix duplicated backend enum definitions :: Depends=[none] :: Est=S :: Consolidated DX8_BACKEND_* to DX8GL_BACKEND_* ✅ FIXED
 - [x] T61:: Feature:: Create OffscreenFramebuffer helper class :: Depends=[none] :: Est=M :: Unified framebuffer management for all backends ✅ IMPLEMENTED
 - [x] T62:: Feature:: Add WebGPU backend support :: Depends=[none] :: Est=L :: Experimental WebGPU rendering backend ✅ ADDED

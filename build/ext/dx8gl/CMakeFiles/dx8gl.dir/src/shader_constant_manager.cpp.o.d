@@ -186,6 +186,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_constant_manager.cpp.o: \
  /usr/include/c++/13/bits/basic_string.tcc \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_types.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/gl3_headers.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/gl.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/glext.h \

@@ -143,13 +143,15 @@ std::unique_ptr<CommandBuffer> EnhancedCommandBufferPool::acquire() {
                    metrics_.command_buffers_allocated.load());
     }
     
-    in_use_.push_back(buffer.get());
-    
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     metrics_.total_allocation_time_us += duration.count();
     
-    return buffer;
+    // Move the buffer to in_use_ and then return it
+    in_use_.push_back(std::move(buffer));
+    
+    // Return the last element from in_use_ (which we just added)
+    return std::move(in_use_.back());
 }
 
 void EnhancedCommandBufferPool::release(std::unique_ptr<CommandBuffer> buffer) {
@@ -159,8 +161,12 @@ void EnhancedCommandBufferPool::release(std::unique_ptr<CommandBuffer> buffer) {
     
     std::unique_lock<std::mutex> lock(mutex_);
     
-    // Remove from in-use list
-    auto it = std::find(in_use_.begin(), in_use_.end(), buffer.get());
+    // Remove from in-use list using custom predicate
+    auto raw_ptr = buffer.get();
+    auto it = std::find_if(in_use_.begin(), in_use_.end(), 
+        [raw_ptr](const std::unique_ptr<CommandBuffer>& ptr) {
+            return ptr.get() == raw_ptr;
+        });
     if (it != in_use_.end()) {
         in_use_.erase(it);
     }
@@ -354,16 +360,34 @@ void WebGPUResourcePool::release_command_encoder(WGpuCommandEncoder encoder) {
 WGpuBuffer WebGPUResourcePool::acquire_buffer(const WGpuBufferDescriptor& desc) {
     std::unique_lock<std::mutex> lock(mutex_);
     
+    // Track if we found size match but usage mismatch
+    bool found_size_match_wrong_usage = false;
+    
     // Look for matching buffer in cache
+    // Buffer is compatible if it has at least the required usage flags
     for (auto it = buffer_cache_.begin(); it != buffer_cache_.end(); ++it) {
-        if (it->size == desc.size && it->usage == desc.usage) {
-            WGpuBuffer buffer = it->buffer;
-            buffer_cache_.erase(it);
-            
-            metrics_.buffer_cache_hits++;
-            DX8GL_TRACE("Reused WebGPU buffer (size=%zu)", desc.size);
-            return buffer;
+        if (it->size == desc.size) {
+            // Check usage compatibility
+            // The cached buffer must have all the usage flags requested
+            if ((it->usage & desc.usage) == desc.usage) {
+                WGpuBuffer buffer = it->buffer;
+                metrics_.buffer_memory_used -= it->size;
+                buffer_cache_.erase(it);
+                
+                metrics_.buffer_cache_hits++;
+                DX8GL_TRACE("Reused WebGPU buffer (size=%zu, usage=0x%x)", desc.size, desc.usage);
+                return buffer;
+            } else {
+                found_size_match_wrong_usage = true;
+                DX8GL_TRACE("Buffer size match but usage incompatible (cached=0x%x, needed=0x%x)", 
+                           it->usage, desc.usage);
+            }
         }
+    }
+    
+    // Track usage mismatches for metrics
+    if (found_size_match_wrong_usage) {
+        metrics_.buffer_cache_usage_mismatches++;
     }
     
     // Create new buffer
@@ -373,11 +397,11 @@ WGpuBuffer WebGPUResourcePool::acquire_buffer(const WGpuBufferDescriptor& desc) 
     metrics_.buffers_cached++;
     metrics_.buffer_memory_used += desc.size;
     
-    DX8GL_TRACE("Created new WebGPU buffer (size=%zu)", desc.size);
+    DX8GL_TRACE("Created new WebGPU buffer (size=%zu, usage=0x%x)", desc.size, desc.usage);
     return buffer;
 }
 
-void WebGPUResourcePool::release_buffer(WGpuBuffer buffer, size_t size) {
+void WebGPUResourcePool::release_buffer(WGpuBuffer buffer, size_t size, uint32_t usage_flags) {
     if (!buffer) return;
     
     std::unique_lock<std::mutex> lock(mutex_);
@@ -390,15 +414,16 @@ void WebGPUResourcePool::release_buffer(WGpuBuffer buffer, size_t size) {
         BufferEntry entry;
         entry.buffer = buffer;
         entry.size = size;
-        entry.usage = 0; // TODO: track usage flags
+        entry.usage = usage_flags;  // Store the actual usage flags for compatibility checking
         entry.frames_unused = 0;
         
         buffer_cache_.push_back(entry);
-        DX8GL_TRACE("Cached WebGPU buffer (size=%zu)", size);
+        metrics_.buffer_memory_used += size;
+        DX8GL_TRACE("Cached WebGPU buffer (size=%zu, usage=0x%x)", size, usage_flags);
     } else {
         wgpu_object_destroy(buffer);
         metrics_.buffer_memory_used -= size;
-        DX8GL_TRACE("Destroyed WebGPU buffer (size=%zu)", size);
+        DX8GL_TRACE("Destroyed WebGPU buffer (size=%zu, usage=0x%x)", size, usage_flags);
     }
 }
 
@@ -635,32 +660,34 @@ void ResourcePoolManager::end_frame() {
 }
 
 PoolMetrics ResourcePoolManager::get_combined_metrics() const {
+    // Create a local PoolMetrics and populate it atomically
     PoolMetrics combined;
     
     if (command_buffer_pool_) {
         const auto& cb_metrics = command_buffer_pool_->get_metrics();
-        combined.command_buffers_allocated = cb_metrics.command_buffers_allocated;
-        combined.command_buffers_reused = cb_metrics.command_buffers_reused;
-        combined.command_buffer_hits = cb_metrics.command_buffer_hits;
-        combined.command_buffer_misses = cb_metrics.command_buffer_misses;
+        combined.command_buffers_allocated.store(cb_metrics.command_buffers_allocated.load());
+        combined.command_buffers_reused.store(cb_metrics.command_buffers_reused.load());
+        combined.command_buffer_hits.store(cb_metrics.command_buffer_hits.load());
+        combined.command_buffer_misses.store(cb_metrics.command_buffer_misses.load());
     }
     
 #ifdef DX8GL_HAS_WEBGPU
     if (webgpu_pool_) {
         const auto& wp_metrics = webgpu_pool_->get_metrics();
-        combined.textures_cached = wp_metrics.textures_cached;
-        combined.texture_cache_hits = wp_metrics.texture_cache_hits;
-        combined.texture_cache_misses = wp_metrics.texture_cache_misses;
-        combined.texture_evictions = wp_metrics.texture_evictions;
-        combined.texture_memory_used = wp_metrics.texture_memory_used;
-        combined.buffers_cached = wp_metrics.buffers_cached;
-        combined.buffer_cache_hits = wp_metrics.buffer_cache_hits;
-        combined.buffer_cache_misses = wp_metrics.buffer_cache_misses;
-        combined.buffer_evictions = wp_metrics.buffer_evictions;
-        combined.buffer_memory_used = wp_metrics.buffer_memory_used;
+        combined.textures_cached.store(wp_metrics.textures_cached.load());
+        combined.texture_cache_hits.store(wp_metrics.texture_cache_hits.load());
+        combined.texture_cache_misses.store(wp_metrics.texture_cache_misses.load());
+        combined.texture_evictions.store(wp_metrics.texture_evictions.load());
+        combined.texture_memory_used.store(wp_metrics.texture_memory_used.load());
+        combined.buffers_cached.store(wp_metrics.buffers_cached.load());
+        combined.buffer_cache_hits.store(wp_metrics.buffer_cache_hits.load());
+        combined.buffer_cache_misses.store(wp_metrics.buffer_cache_misses.load());
+        combined.buffer_evictions.store(wp_metrics.buffer_evictions.load());
+        combined.buffer_memory_used.store(wp_metrics.buffer_memory_used.load());
     }
 #endif
     
+    // Return by value (uses move constructor)
     return combined;
 }
 

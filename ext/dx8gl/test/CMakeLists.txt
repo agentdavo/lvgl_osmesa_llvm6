@@ -419,3 +419,21 @@ else()
     message(WARNING "dx8gl target not available, skipping test_render_states")
     set_target_properties(test_render_states PROPERTIES EXCLUDE_FROM_ALL TRUE)
 endif()
+
+# COM Wrapper threading test
+add_executable(test_com_wrapper_threading 
+    test_com_wrapper_threading.cpp
+)
+
+target_include_directories(test_com_wrapper_threading PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_com_wrapper_threading PRIVATE dx8gl pthread)
+    add_test(NAME COMWrapperThreadingTest COMMAND test_com_wrapper_threading)
+    set_tests_properties(COMWrapperThreadingTest PROPERTIES TIMEOUT 60)
+else()
+    message(WARNING "dx8gl target not available, skipping test_com_wrapper_threading")
+    set_target_properties(test_com_wrapper_threading PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()

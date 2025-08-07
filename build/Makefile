@@ -898,6 +898,19 @@ test_render_states/fast:
 .PHONY : test_render_states/fast
 
 #=============================================================================
+# Target rules for targets named test_com_wrapper_threading
+
+# Build rule for target.
+test_com_wrapper_threading: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_com_wrapper_threading
+.PHONY : test_com_wrapper_threading
+
+# fast build rule for target.
+test_com_wrapper_threading/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_com_wrapper_threading.dir/build.make ext/dx8gl/test/CMakeFiles/test_com_wrapper_threading.dir/build
+.PHONY : test_com_wrapper_threading/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -12542,6 +12555,7 @@ help:
 	@echo "... test_alpha_blending"
 	@echo "... test_async_simple"
 	@echo "... test_backend_selection"
+	@echo "... test_com_wrapper_threading"
 	@echo "... test_command_buffer_async"
 	@echo "... test_cube_texture"
 	@echo "... test_d3dx_surface_loading"

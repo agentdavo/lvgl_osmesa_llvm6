@@ -95,7 +95,7 @@ foreach(name ${SAMPLE_APPS})
 endforeach()
 
 # Add webgpu-demo from subdirectory
-add_executable(dx8gl_webgpu-demo webgpu-demo/dx8_hud_demo.cpp)
+add_executable(dx8gl_webgpu-demo webgpu-demo/dx8_webgpu_demo.cpp)
 target_link_libraries(dx8gl_webgpu-demo PRIVATE dx8gl)
 
 if(EMSCRIPTEN)

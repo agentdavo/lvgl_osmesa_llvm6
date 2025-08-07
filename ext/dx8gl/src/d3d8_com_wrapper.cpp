@@ -13,6 +13,8 @@
 #include "d3d8_cpp_interfaces.h"
 #include "d3d8_interface.h"
 #include "d3d8_device.h"
+#include "d3d8_cubetexture.h"
+#include "d3d8_volumetexture.h"
 
 #include <cstdlib>
 #include <cstring>
@@ -24,6 +26,14 @@ struct Direct3DTexture8_COM_Wrapper;
 
 // Forward declarations for wrapper creation functions
 static IDirect3DTexture8* CreateTexture8_COM_Wrapper(::IDirect3DTexture8* pCppTexture);
+static IDirect3DDevice8* CreateDevice8_COM_Wrapper(::IDirect3DDevice8* pCppDevice);
+static IDirect3DSurface8* CreateSurface8_COM_Wrapper(::IDirect3DSurface8* pCppSurface);
+static IDirect3DSwapChain8* CreateSwapChain8_COM_Wrapper(::IDirect3DSwapChain8* pCppSwapChain);
+static IDirect3DVolumeTexture8* CreateVolumeTexture8_COM_Wrapper(::IDirect3DVolumeTexture8* pCppVolumeTexture);
+static IDirect3DCubeTexture8* CreateCubeTexture8_COM_Wrapper(::IDirect3DCubeTexture8* pCppCubeTexture);
+static IDirect3DVertexBuffer8* CreateVertexBuffer8_COM_Wrapper(::IDirect3DVertexBuffer8* pCppVertexBuffer);
+static IDirect3DIndexBuffer8* CreateIndexBuffer8_COM_Wrapper(::IDirect3DIndexBuffer8* pCppIndexBuffer);
+static IDirect3DVolume8* CreateVolume8_COM_Wrapper(::IDirect3DVolume8* pCppVolume);
 
 // COM wrapper for IDirect3D8
 struct Direct3D8_COM_Wrapper {
@@ -46,10 +56,73 @@ struct Direct3DTexture8_COM_Wrapper {
     ULONG refCount;
 };
 
+// COM wrapper for IDirect3DSurface8
+struct Direct3DSurface8_COM_Wrapper {
+    IDirect3DSurface8Vtbl* lpVtbl;
+    ::IDirect3DSurface8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;  // For thread safety
+};
+
+// COM wrapper for IDirect3DSwapChain8
+struct Direct3DSwapChain8_COM_Wrapper {
+    IDirect3DSwapChain8Vtbl* lpVtbl;
+    ::IDirect3DSwapChain8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;
+};
+
+// COM wrapper for IDirect3DVolumeTexture8
+struct Direct3DVolumeTexture8_COM_Wrapper {
+    IDirect3DVolumeTexture8Vtbl* lpVtbl;
+    ::IDirect3DVolumeTexture8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;
+};
+
+// COM wrapper for IDirect3DCubeTexture8
+struct Direct3DCubeTexture8_COM_Wrapper {
+    IDirect3DCubeTexture8Vtbl* lpVtbl;
+    ::IDirect3DCubeTexture8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;
+};
+
+// COM wrapper for IDirect3DVertexBuffer8
+struct Direct3DVertexBuffer8_COM_Wrapper {
+    IDirect3DVertexBuffer8Vtbl* lpVtbl;
+    ::IDirect3DVertexBuffer8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;
+};
+
+// COM wrapper for IDirect3DIndexBuffer8
+struct Direct3DIndexBuffer8_COM_Wrapper {
+    IDirect3DIndexBuffer8Vtbl* lpVtbl;
+    ::IDirect3DIndexBuffer8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;
+};
+
+// COM wrapper for IDirect3DVolume8
+struct Direct3DVolume8_COM_Wrapper {
+    IDirect3DVolume8Vtbl* lpVtbl;
+    ::IDirect3DVolume8* pCppInterface;
+    ULONG refCount;
+    std::mutex mutex;
+};
+
 // Forward declaration of vtables
 extern IDirect3D8Vtbl g_Direct3D8_Vtbl;
 extern IDirect3DDevice8Vtbl g_Direct3DDevice8_Vtbl;
 extern IDirect3DTexture8Vtbl g_Direct3DTexture8_Vtbl;
+extern IDirect3DSurface8Vtbl g_Direct3DSurface8_Vtbl;
+extern IDirect3DSwapChain8Vtbl g_Direct3DSwapChain8_Vtbl;
+extern IDirect3DVolumeTexture8Vtbl g_Direct3DVolumeTexture8_Vtbl;
+extern IDirect3DCubeTexture8Vtbl g_Direct3DCubeTexture8_Vtbl;
+extern IDirect3DVertexBuffer8Vtbl g_Direct3DVertexBuffer8_Vtbl;
+extern IDirect3DIndexBuffer8Vtbl g_Direct3DIndexBuffer8_Vtbl;
+extern IDirect3DVolume8Vtbl g_Direct3DVolume8_Vtbl;
 
 // Forward declarations for vtable functions
 static HRESULT STDMETHODCALLTYPE Direct3D8_QueryInterface(IDirect3D8* This, REFIID riid, void** ppvObj);
@@ -248,91 +321,81 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateIndexBuffer(IDirect3DDevi
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateRenderTarget(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, BOOL Lockable, IDirect3DSurface8** ppSurface);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateDepthStencilSurface(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, IDirect3DSurface8** ppSurface);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateImageSurface(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, IDirect3DSurface8** ppSurface);
-// These are defined in d3d8_missing_stubs.cpp with extern "C" linkage
-extern "C" {
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_CopyRects(IDirect3DDevice8* This, IDirect3DSurface8* pSourceSurface, const RECT* pSourceRectsArray, UINT cRects, IDirect3DSurface8* pDestinationSurface, const POINT* pDestPointsArray);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_UpdateTexture(IDirect3DDevice8* This, IDirect3DBaseTexture8* pSourceTexture, IDirect3DBaseTexture8* pDestinationTexture);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetFrontBuffer(IDirect3DDevice8* This, IDirect3DSurface8* pDestSurface);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8* pRenderTarget, IDirect3DSurface8* pNewZStencil);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8** ppRenderTarget);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetDepthStencilSurface(IDirect3DDevice8* This, IDirect3DSurface8** ppZStencilSurface);
-}
+// Forward declarations for methods that forward to C++ implementation
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CopyRects(IDirect3DDevice8* This, IDirect3DSurface8* pSourceSurface, const RECT* pSourceRectsArray, UINT cRects, IDirect3DSurface8* pDestinationSurface, const POINT* pDestPointsArray);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_UpdateTexture(IDirect3DDevice8* This, IDirect3DBaseTexture8* pSourceTexture, IDirect3DBaseTexture8* pDestinationTexture);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetFrontBuffer(IDirect3DDevice8* This, IDirect3DSurface8* pDestSurface);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8* pRenderTarget, IDirect3DSurface8* pNewZStencil);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8** ppRenderTarget);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetDepthStencilSurface(IDirect3DDevice8* This, IDirect3DSurface8** ppZStencilSurface);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_BeginScene(IDirect3DDevice8* This);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_EndScene(IDirect3DDevice8* This);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_Clear(IDirect3DDevice8* This, DWORD Count, const D3DRECT* pRects, DWORD Flags, D3DCOLOR Color, float Z, DWORD Stencil);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetTransform(IDirect3DDevice8* This, D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetTransform(IDirect3DDevice8* This, D3DTRANSFORMSTATETYPE State, D3DMATRIX* pMatrix);
-// More functions defined in d3d8_missing_stubs.cpp with extern "C" linkage
-extern "C" {
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_MultiplyTransform(IDirect3DDevice8* This, D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetViewport(IDirect3DDevice8* This, const D3DVIEWPORT8* pViewport);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetViewport(IDirect3DDevice8* This, D3DVIEWPORT8* pViewport);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetMaterial(IDirect3DDevice8* This, const D3DMATERIAL8* pMaterial);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetMaterial(IDirect3DDevice8* This, D3DMATERIAL8* pMaterial);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetLight(IDirect3DDevice8* This, DWORD Index, const D3DLIGHT8* pLight);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetLight(IDirect3DDevice8* This, DWORD Index, D3DLIGHT8* pLight);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_LightEnable(IDirect3DDevice8* This, DWORD Index, BOOL Enable);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetLightEnable(IDirect3DDevice8* This, DWORD Index, BOOL* pEnable);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetClipPlane(IDirect3DDevice8* This, DWORD Index, const float* pPlane);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetClipPlane(IDirect3DDevice8* This, DWORD Index, float* pPlane);
-}
+// More method forward declarations
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_MultiplyTransform(IDirect3DDevice8* This, D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetViewport(IDirect3DDevice8* This, const D3DVIEWPORT8* pViewport);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetViewport(IDirect3DDevice8* This, D3DVIEWPORT8* pViewport);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetMaterial(IDirect3DDevice8* This, const D3DMATERIAL8* pMaterial);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetMaterial(IDirect3DDevice8* This, D3DMATERIAL8* pMaterial);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetLight(IDirect3DDevice8* This, DWORD Index, const D3DLIGHT8* pLight);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetLight(IDirect3DDevice8* This, DWORD Index, D3DLIGHT8* pLight);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_LightEnable(IDirect3DDevice8* This, DWORD Index, BOOL Enable);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetLightEnable(IDirect3DDevice8* This, DWORD Index, BOOL* pEnable);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetClipPlane(IDirect3DDevice8* This, DWORD Index, const float* pPlane);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetClipPlane(IDirect3DDevice8* This, DWORD Index, float* pPlane);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetRenderState(IDirect3DDevice8* This, D3DRENDERSTATETYPE State, DWORD Value);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRenderState(IDirect3DDevice8* This, D3DRENDERSTATETYPE State, DWORD* pValue);
-// State block and clip status functions defined in d3d8_missing_stubs.cpp with extern "C" linkage
-extern "C" {
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_BeginStateBlock(IDirect3DDevice8* This);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_EndStateBlock(IDirect3DDevice8* This, DWORD* pToken);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_ApplyStateBlock(IDirect3DDevice8* This, DWORD Token);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_CaptureStateBlock(IDirect3DDevice8* This, DWORD Token);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeleteStateBlock(IDirect3DDevice8* This, DWORD Token);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateStateBlock(IDirect3DDevice8* This, D3DSTATEBLOCKTYPE Type, DWORD* pToken);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetClipStatus(IDirect3DDevice8* This, const D3DCLIPSTATUS8* pClipStatus);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetClipStatus(IDirect3DDevice8* This, D3DCLIPSTATUS8* pClipStatus);
-}
+// State block and clip status functions
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_BeginStateBlock(IDirect3DDevice8* This);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_EndStateBlock(IDirect3DDevice8* This, DWORD* pToken);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ApplyStateBlock(IDirect3DDevice8* This, DWORD Token);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CaptureStateBlock(IDirect3DDevice8* This, DWORD Token);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeleteStateBlock(IDirect3DDevice8* This, DWORD Token);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateStateBlock(IDirect3DDevice8* This, D3DSTATEBLOCKTYPE Type, DWORD* pToken);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetClipStatus(IDirect3DDevice8* This, const D3DCLIPSTATUS8* pClipStatus);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetClipStatus(IDirect3DDevice8* This, D3DCLIPSTATUS8* pClipStatus);
 // Texture functions - GetTexture, GetTextureStageState and SetTextureStageState are static implementations below
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetTexture(IDirect3DDevice8* This, DWORD Stage, IDirect3DBaseTexture8* pTexture);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetTexture(IDirect3DDevice8* This, DWORD Stage, IDirect3DBaseTexture8** ppTexture);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetTextureStageState(IDirect3DDevice8* This, DWORD Stage, D3DTEXTURESTAGESTATETYPE Type, DWORD* pValue);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetTextureStageState(IDirect3DDevice8* This, DWORD Stage, D3DTEXTURESTAGESTATETYPE Type, DWORD Value);
-// Validation and palette functions defined in d3d8_missing_stubs.cpp with extern "C" linkage
-extern "C" {
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_ValidateDevice(IDirect3DDevice8* This, DWORD* pNumPasses);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetInfo(IDirect3DDevice8* This, DWORD DevInfoID, void* pDevInfoStruct, DWORD DevInfoStructSize);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, const PALETTEENTRY* pEntries);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, PALETTEENTRY* pEntries);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetCurrentTexturePalette(IDirect3DDevice8* This, UINT PaletteNumber);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetCurrentTexturePalette(IDirect3DDevice8* This, UINT* PaletteNumber);
-}
+// Validation and palette functions
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ValidateDevice(IDirect3DDevice8* This, DWORD* pNumPasses);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetInfo(IDirect3DDevice8* This, DWORD DevInfoID, void* pDevInfoStruct, DWORD DevInfoStructSize);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, const PALETTEENTRY* pEntries);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, PALETTEENTRY* pEntries);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetCurrentTexturePalette(IDirect3DDevice8* This, UINT PaletteNumber);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetCurrentTexturePalette(IDirect3DDevice8* This, UINT* PaletteNumber);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawPrimitive(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT StartVertex, UINT PrimitiveCount);
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawIndexedPrimitive(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT MinIndex, UINT NumVertices, UINT StartIndex, UINT PrimitiveCount);
-// Drawing, shader and patch functions defined in d3d8_missing_stubs.cpp with extern "C" linkage
-extern "C" {
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT PrimitiveCount, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawIndexedPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT MinVertexIndex, UINT NumVertexIndices, UINT PrimitiveCount, const void* pIndexData, D3DFORMAT IndexDataFormat, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_ProcessVertices(IDirect3DDevice8* This, UINT SrcStartIndex, UINT DestIndex, UINT VertexCount, IDirect3DVertexBuffer8* pDestBuffer, DWORD Flags);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVertexShader(IDirect3DDevice8* This, const DWORD* pDeclaration, const DWORD* pFunction, DWORD* pHandle, DWORD Usage);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetVertexShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShader(IDirect3DDevice8* This, DWORD* pHandle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeleteVertexShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderDeclaration(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8** ppStreamData, UINT* pStride);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8* pIndexData, UINT BaseVertexIndex);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8** ppIndexData, UINT* pBaseVertexIndex);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreatePixelShader(IDirect3DDevice8* This, const DWORD* pFunction, DWORD* pHandle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPixelShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShader(IDirect3DDevice8* This, DWORD* pHandle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePixelShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawRectPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DRECTPATCH_INFO* pRectPatchInfo);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawTriPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DTRIPATCH_INFO* pTriPatchInfo);
-HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePatch(IDirect3DDevice8* This, UINT Handle);
-}
+// Drawing, shader and patch functions
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT PrimitiveCount, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawIndexedPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT MinVertexIndex, UINT NumVertexIndices, UINT PrimitiveCount, const void* pIndexData, D3DFORMAT IndexDataFormat, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ProcessVertices(IDirect3DDevice8* This, UINT SrcStartIndex, UINT DestIndex, UINT VertexCount, IDirect3DVertexBuffer8* pDestBuffer, DWORD Flags);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVertexShader(IDirect3DDevice8* This, const DWORD* pDeclaration, const DWORD* pFunction, DWORD* pHandle, DWORD Usage);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetVertexShader(IDirect3DDevice8* This, DWORD Handle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShader(IDirect3DDevice8* This, DWORD* pHandle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeleteVertexShader(IDirect3DDevice8* This, DWORD Handle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderDeclaration(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8** ppStreamData, UINT* pStride);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8* pIndexData, UINT BaseVertexIndex);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8** ppIndexData, UINT* pBaseVertexIndex);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreatePixelShader(IDirect3DDevice8* This, const DWORD* pFunction, DWORD* pHandle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPixelShader(IDirect3DDevice8* This, DWORD Handle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShader(IDirect3DDevice8* This, DWORD* pHandle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePixelShader(IDirect3DDevice8* This, DWORD Handle);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawRectPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DRECTPATCH_INFO* pRectPatchInfo);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawTriPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DTRIPATCH_INFO* pTriPatchInfo);
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePatch(IDirect3DDevice8* This, UINT Handle);
 
 // Static vtable for IDirect3DDevice8
 IDirect3DDevice8Vtbl g_Direct3DDevice8_Vtbl = {
@@ -536,9 +599,21 @@ static BOOL STDMETHODCALLTYPE Direct3DDevice8_ShowCursor(IDirect3DDevice8* This,
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateAdditionalSwapChain(IDirect3DDevice8* This, D3DPRESENT_PARAMETERS* pPresentationParameters, IDirect3DSwapChain8** ppSwapChain) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper swap chain wrapping when swap chain wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateAdditionalSwapChain(pPresentationParameters, (::IDirect3DSwapChain8**)ppSwapChain);
+    // Call C++ implementation to create the additional swap chain
+    ::IDirect3DSwapChain8* pCppSwapChain = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateAdditionalSwapChain(pPresentationParameters, &pCppSwapChain);
+    if (FAILED(hr) || !pCppSwapChain) {
+        return hr;
+    }
+    
+    // Wrap the swap chain in COM wrapper
+    *ppSwapChain = CreateSwapChain8_COM_Wrapper(pCppSwapChain);
+    if (!*ppSwapChain) {
+        pCppSwapChain->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_Reset(IDirect3DDevice8* This, D3DPRESENT_PARAMETERS* pPresentationParameters) {
@@ -552,9 +627,21 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_Present(IDirect3DDevice8* This,
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetBackBuffer(IDirect3DDevice8* This, UINT BackBuffer, D3DBACKBUFFER_TYPE Type, IDirect3DSurface8** ppBackBuffer) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper surface wrapping when surface wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->GetBackBuffer(BackBuffer, Type, (::IDirect3DSurface8**)ppBackBuffer);
+    // Call C++ implementation to get the back buffer
+    ::IDirect3DSurface8* pCppSurface = nullptr;
+    HRESULT hr = wrapper->pCppInterface->GetBackBuffer(BackBuffer, Type, &pCppSurface);
+    if (FAILED(hr) || !pCppSurface) {
+        return hr;
+    }
+    
+    // Wrap the surface in COM wrapper
+    *ppBackBuffer = CreateSurface8_COM_Wrapper(pCppSurface);
+    if (!*ppBackBuffer) {
+        pCppSurface->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRasterStatus(IDirect3DDevice8* This, D3DRASTER_STATUS* pRasterStatus) {
@@ -591,57 +678,141 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateTexture(IDirect3DDevice8*
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVolumeTexture(IDirect3DDevice8* This, UINT Width, UINT Height, UINT Depth, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DVolumeTexture8** ppVolumeTexture) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper volume texture wrapping when volume texture wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateVolumeTexture(Width, Height, Depth, Levels, Usage, Format, Pool, (::IDirect3DVolumeTexture8**)ppVolumeTexture);
+    // Call C++ implementation to create the volume texture
+    ::IDirect3DVolumeTexture8* pCppVolumeTexture = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateVolumeTexture(Width, Height, Depth, Levels, Usage, Format, Pool, &pCppVolumeTexture);
+    if (FAILED(hr) || !pCppVolumeTexture) {
+        return hr;
+    }
+    
+    // Wrap the volume texture in COM wrapper
+    *ppVolumeTexture = CreateVolumeTexture8_COM_Wrapper(pCppVolumeTexture);
+    if (!*ppVolumeTexture) {
+        pCppVolumeTexture->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateCubeTexture(IDirect3DDevice8* This, UINT EdgeLength, UINT Levels, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DCubeTexture8** ppCubeTexture) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper cube texture wrapping when cube texture wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateCubeTexture(EdgeLength, Levels, Usage, Format, Pool, (::IDirect3DCubeTexture8**)ppCubeTexture);
+    // Call C++ implementation to create the cube texture
+    ::IDirect3DCubeTexture8* pCppCubeTexture = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateCubeTexture(EdgeLength, Levels, Usage, Format, Pool, &pCppCubeTexture);
+    if (FAILED(hr) || !pCppCubeTexture) {
+        return hr;
+    }
+    
+    // Wrap the cube texture in COM wrapper
+    *ppCubeTexture = CreateCubeTexture8_COM_Wrapper(pCppCubeTexture);
+    if (!*ppCubeTexture) {
+        pCppCubeTexture->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVertexBuffer(IDirect3DDevice8* This, UINT Length, DWORD Usage, DWORD FVF, D3DPOOL Pool, IDirect3DVertexBuffer8** ppVertexBuffer) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper vertex buffer wrapping when buffer wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateVertexBuffer(Length, Usage, FVF, Pool, (::IDirect3DVertexBuffer8**)ppVertexBuffer);
+    // Call C++ implementation to create the vertex buffer
+    ::IDirect3DVertexBuffer8* pCppVertexBuffer = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateVertexBuffer(Length, Usage, FVF, Pool, &pCppVertexBuffer);
+    if (FAILED(hr) || !pCppVertexBuffer) {
+        return hr;
+    }
+    
+    // Wrap the vertex buffer in COM wrapper
+    *ppVertexBuffer = CreateVertexBuffer8_COM_Wrapper(pCppVertexBuffer);
+    if (!*ppVertexBuffer) {
+        pCppVertexBuffer->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateIndexBuffer(IDirect3DDevice8* This, UINT Length, DWORD Usage, D3DFORMAT Format, D3DPOOL Pool, IDirect3DIndexBuffer8** ppIndexBuffer) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper index buffer wrapping when buffer wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateIndexBuffer(Length, Usage, Format, Pool, (::IDirect3DIndexBuffer8**)ppIndexBuffer);
+    // Call C++ implementation to create the index buffer
+    ::IDirect3DIndexBuffer8* pCppIndexBuffer = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateIndexBuffer(Length, Usage, Format, Pool, &pCppIndexBuffer);
+    if (FAILED(hr) || !pCppIndexBuffer) {
+        return hr;
+    }
+    
+    // Wrap the index buffer in COM wrapper
+    *ppIndexBuffer = CreateIndexBuffer8_COM_Wrapper(pCppIndexBuffer);
+    if (!*ppIndexBuffer) {
+        pCppIndexBuffer->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateRenderTarget(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, BOOL Lockable, IDirect3DSurface8** ppSurface) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper surface wrapping when surface wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateRenderTarget(Width, Height, Format, MultiSample, Lockable, (::IDirect3DSurface8**)ppSurface);
+    // Call C++ implementation to create the render target
+    ::IDirect3DSurface8* pCppSurface = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateRenderTarget(Width, Height, Format, MultiSample, Lockable, &pCppSurface);
+    if (FAILED(hr) || !pCppSurface) {
+        return hr;
+    }
+    
+    // Wrap the surface in COM wrapper
+    *ppSurface = CreateSurface8_COM_Wrapper(pCppSurface);
+    if (!*ppSurface) {
+        pCppSurface->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateDepthStencilSurface(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, D3DMULTISAMPLE_TYPE MultiSample, IDirect3DSurface8** ppSurface) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper surface wrapping when surface wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateDepthStencilSurface(Width, Height, Format, MultiSample, (::IDirect3DSurface8**)ppSurface);
+    // Call C++ implementation to create the depth stencil surface
+    ::IDirect3DSurface8* pCppSurface = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateDepthStencilSurface(Width, Height, Format, MultiSample, &pCppSurface);
+    if (FAILED(hr) || !pCppSurface) {
+        return hr;
+    }
+    
+    // Wrap the surface in COM wrapper
+    *ppSurface = CreateSurface8_COM_Wrapper(pCppSurface);
+    if (!*ppSurface) {
+        pCppSurface->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateImageSurface(IDirect3DDevice8* This, UINT Width, UINT Height, D3DFORMAT Format, IDirect3DSurface8** ppSurface) {
     Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
     
-    // TODO: Implement proper surface wrapping when surface wrappers are implemented
-    // For now, pass through to C++ implementation
-    return wrapper->pCppInterface->CreateImageSurface(Width, Height, Format, (::IDirect3DSurface8**)ppSurface);
+    // Call C++ implementation to create the image surface
+    ::IDirect3DSurface8* pCppSurface = nullptr;
+    HRESULT hr = wrapper->pCppInterface->CreateImageSurface(Width, Height, Format, &pCppSurface);
+    if (FAILED(hr) || !pCppSurface) {
+        return hr;
+    }
+    
+    // Wrap the surface in COM wrapper
+    *ppSurface = CreateSurface8_COM_Wrapper(pCppSurface);
+    if (!*ppSurface) {
+        pCppSurface->Release();
+        return E_OUTOFMEMORY;
+    }
+    
+    return hr;
 }
 
 // Continue with minimal implementations for the rest...
@@ -741,66 +912,306 @@ static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawIndexedPrimitive(IDirect3DD
 // The implementations handle the COM wrapper forwarding to the C++ class methods
 // Removed duplicate STUB_METHOD calls to avoid multiple definition errors
 
-// External declarations for functions implemented in d3d8_missing_stubs.cpp
-extern "C" {
-HRESULT Direct3DDevice8_CopyRects(IDirect3DDevice8* This, IDirect3DSurface8* pSourceSurface, const RECT* pSourceRects, UINT cRects, IDirect3DSurface8* pDestinationSurface, const POINT* pDestPoints);
-HRESULT Direct3DDevice8_UpdateTexture(IDirect3DDevice8* This, IDirect3DBaseTexture8* pSourceTexture, IDirect3DBaseTexture8* pDestinationTexture);
-HRESULT Direct3DDevice8_GetFrontBuffer(IDirect3DDevice8* This, IDirect3DSurface8* pDestSurface);
-HRESULT Direct3DDevice8_SetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8* pRenderTarget, IDirect3DSurface8* pNewZStencil);
-HRESULT Direct3DDevice8_GetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8** ppRenderTarget);
-HRESULT Direct3DDevice8_GetDepthStencilSurface(IDirect3DDevice8* This, IDirect3DSurface8** ppZStencilSurface);
-HRESULT Direct3DDevice8_MultiplyTransform(IDirect3DDevice8* This, D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix);
-HRESULT Direct3DDevice8_SetViewport(IDirect3DDevice8* This, const D3DVIEWPORT8* pViewport);
-HRESULT Direct3DDevice8_GetViewport(IDirect3DDevice8* This, D3DVIEWPORT8* pViewport);
-HRESULT Direct3DDevice8_SetMaterial(IDirect3DDevice8* This, const D3DMATERIAL8* pMaterial);
-HRESULT Direct3DDevice8_GetMaterial(IDirect3DDevice8* This, D3DMATERIAL8* pMaterial);
-HRESULT Direct3DDevice8_SetLight(IDirect3DDevice8* This, DWORD Index, const D3DLIGHT8* pLight);
-HRESULT Direct3DDevice8_GetLight(IDirect3DDevice8* This, DWORD Index, D3DLIGHT8* pLight);
-HRESULT Direct3DDevice8_LightEnable(IDirect3DDevice8* This, DWORD LightIndex, BOOL bEnable);
-HRESULT Direct3DDevice8_GetLightEnable(IDirect3DDevice8* This, DWORD Index, BOOL* pEnable);
-HRESULT Direct3DDevice8_SetClipPlane(IDirect3DDevice8* This, DWORD Index, const float* pPlane);
-HRESULT Direct3DDevice8_GetClipPlane(IDirect3DDevice8* This, DWORD Index, float* pPlane);
-HRESULT Direct3DDevice8_BeginStateBlock(IDirect3DDevice8* This);
-HRESULT Direct3DDevice8_EndStateBlock(IDirect3DDevice8* This, DWORD* pToken);
-HRESULT Direct3DDevice8_ApplyStateBlock(IDirect3DDevice8* This, DWORD Token);
-HRESULT Direct3DDevice8_CaptureStateBlock(IDirect3DDevice8* This, DWORD Token);
-HRESULT Direct3DDevice8_DeleteStateBlock(IDirect3DDevice8* This, DWORD Token);
-HRESULT Direct3DDevice8_CreateStateBlock(IDirect3DDevice8* This, D3DSTATEBLOCKTYPE Type, DWORD* pToken);
-// GetTexture, GetTextureStageState and SetTextureStageState are implemented as static functions above
-HRESULT Direct3DDevice8_SetClipStatus(IDirect3DDevice8* This, const D3DCLIPSTATUS8* pClipStatus);
-HRESULT Direct3DDevice8_GetClipStatus(IDirect3DDevice8* This, D3DCLIPSTATUS8* pClipStatus);
-HRESULT Direct3DDevice8_ValidateDevice(IDirect3DDevice8* This, DWORD* pNumPasses);
-HRESULT Direct3DDevice8_GetInfo(IDirect3DDevice8* This, DWORD DevInfoID, void* pDevInfoStruct, DWORD DevInfoStructSize);
-HRESULT Direct3DDevice8_SetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, const PALETTEENTRY* pEntries);
-HRESULT Direct3DDevice8_GetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, PALETTEENTRY* pEntries);
-HRESULT Direct3DDevice8_SetCurrentTexturePalette(IDirect3DDevice8* This, UINT PaletteNumber);
-HRESULT Direct3DDevice8_GetCurrentTexturePalette(IDirect3DDevice8* This, UINT* pPaletteNumber);
-HRESULT Direct3DDevice8_DrawPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT PrimitiveCount, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride);
-HRESULT Direct3DDevice8_DrawIndexedPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT MinVertexIndex, UINT NumVertexIndices, UINT PrimitiveCount, const void* pIndexData, D3DFORMAT IndexDataFormat, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride);
-HRESULT Direct3DDevice8_ProcessVertices(IDirect3DDevice8* This, UINT SrcStartIndex, UINT DestIndex, UINT VertexCount, IDirect3DVertexBuffer8* pDestBuffer, DWORD Flags);
-HRESULT Direct3DDevice8_CreateVertexShader(IDirect3DDevice8* This, const DWORD* pDeclaration, const DWORD* pFunction, DWORD* pHandle, DWORD Usage);
-HRESULT Direct3DDevice8_SetVertexShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT Direct3DDevice8_GetVertexShader(IDirect3DDevice8* This, DWORD* pHandle);
-HRESULT Direct3DDevice8_DeleteVertexShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT Direct3DDevice8_SetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount);
-HRESULT Direct3DDevice8_GetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount);
-HRESULT Direct3DDevice8_GetVertexShaderDeclaration(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
-HRESULT Direct3DDevice8_GetVertexShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
-HRESULT Direct3DDevice8_SetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride);
-HRESULT Direct3DDevice8_GetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8** ppStreamData, UINT* pStride);
-HRESULT Direct3DDevice8_SetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8* pIndexData, UINT BaseVertexIndex);
-HRESULT Direct3DDevice8_GetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8** ppIndexData, UINT* pBaseVertexIndex);
-HRESULT Direct3DDevice8_CreatePixelShader(IDirect3DDevice8* This, const DWORD* pFunction, DWORD* pHandle);
-HRESULT Direct3DDevice8_GetPixelShader(IDirect3DDevice8* This, DWORD* pHandle);
-HRESULT Direct3DDevice8_SetPixelShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT Direct3DDevice8_DeletePixelShader(IDirect3DDevice8* This, DWORD Handle);
-HRESULT Direct3DDevice8_GetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount);
-HRESULT Direct3DDevice8_SetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount);
-HRESULT Direct3DDevice8_GetPixelShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData);
-HRESULT Direct3DDevice8_DrawRectPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DRECTPATCH_INFO* pRectPatchInfo);
-HRESULT Direct3DDevice8_DrawTriPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DTRIPATCH_INFO* pTriPatchInfo);
-HRESULT Direct3DDevice8_DeletePatch(IDirect3DDevice8* This, UINT Handle);
+// Implement remaining methods that forward to C++ implementation
+
+// Surface and texture management methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CopyRects(IDirect3DDevice8* This, IDirect3DSurface8* pSourceSurface, const RECT* pSourceRects, UINT cRects, IDirect3DSurface8* pDestinationSurface, const POINT* pDestPoints) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->CopyRects((::IDirect3DSurface8*)pSourceSurface, pSourceRects, cRects, (::IDirect3DSurface8*)pDestinationSurface, pDestPoints);
 }
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_UpdateTexture(IDirect3DDevice8* This, IDirect3DBaseTexture8* pSourceTexture, IDirect3DBaseTexture8* pDestinationTexture) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->UpdateTexture((::IDirect3DBaseTexture8*)pSourceTexture, (::IDirect3DBaseTexture8*)pDestinationTexture);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetFrontBuffer(IDirect3DDevice8* This, IDirect3DSurface8* pDestSurface) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetFrontBuffer((::IDirect3DSurface8*)pDestSurface);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8* pRenderTarget, IDirect3DSurface8* pNewZStencil) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetRenderTarget((::IDirect3DSurface8*)pRenderTarget, (::IDirect3DSurface8*)pNewZStencil);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetRenderTarget(IDirect3DDevice8* This, IDirect3DSurface8** ppRenderTarget) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetRenderTarget((::IDirect3DSurface8**)ppRenderTarget);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetDepthStencilSurface(IDirect3DDevice8* This, IDirect3DSurface8** ppZStencilSurface) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetDepthStencilSurface((::IDirect3DSurface8**)ppZStencilSurface);
+}
+
+// Transform and viewport methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_MultiplyTransform(IDirect3DDevice8* This, D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->MultiplyTransform(State, pMatrix);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetViewport(IDirect3DDevice8* This, const D3DVIEWPORT8* pViewport) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetViewport(pViewport);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetViewport(IDirect3DDevice8* This, D3DVIEWPORT8* pViewport) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetViewport(pViewport);
+}
+
+// Material and lighting methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetMaterial(IDirect3DDevice8* This, const D3DMATERIAL8* pMaterial) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetMaterial(pMaterial);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetMaterial(IDirect3DDevice8* This, D3DMATERIAL8* pMaterial) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetMaterial(pMaterial);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetLight(IDirect3DDevice8* This, DWORD Index, const D3DLIGHT8* pLight) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetLight(Index, pLight);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetLight(IDirect3DDevice8* This, DWORD Index, D3DLIGHT8* pLight) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetLight(Index, pLight);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_LightEnable(IDirect3DDevice8* This, DWORD Index, BOOL Enable) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->LightEnable(Index, Enable);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetLightEnable(IDirect3DDevice8* This, DWORD Index, BOOL* pEnable) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetLightEnable(Index, pEnable);
+}
+
+// Clipping plane methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetClipPlane(IDirect3DDevice8* This, DWORD Index, const float* pPlane) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetClipPlane(Index, pPlane);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetClipPlane(IDirect3DDevice8* This, DWORD Index, float* pPlane) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetClipPlane(Index, pPlane);
+}
+
+// State block methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_BeginStateBlock(IDirect3DDevice8* This) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->BeginStateBlock();
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_EndStateBlock(IDirect3DDevice8* This, DWORD* pToken) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->EndStateBlock(pToken);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ApplyStateBlock(IDirect3DDevice8* This, DWORD Token) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->ApplyStateBlock(Token);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CaptureStateBlock(IDirect3DDevice8* This, DWORD Token) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->CaptureStateBlock(Token);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeleteStateBlock(IDirect3DDevice8* This, DWORD Token) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DeleteStateBlock(Token);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateStateBlock(IDirect3DDevice8* This, D3DSTATEBLOCKTYPE Type, DWORD* pToken) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->CreateStateBlock(Type, pToken);
+}
+
+// Clip status methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetClipStatus(IDirect3DDevice8* This, const D3DCLIPSTATUS8* pClipStatus) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetClipStatus(pClipStatus);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetClipStatus(IDirect3DDevice8* This, D3DCLIPSTATUS8* pClipStatus) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetClipStatus(pClipStatus);
+}
+
+// Validation and info methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ValidateDevice(IDirect3DDevice8* This, DWORD* pNumPasses) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->ValidateDevice(pNumPasses);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetInfo(IDirect3DDevice8* This, DWORD DevInfoID, void* pDevInfoStruct, DWORD DevInfoStructSize) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetInfo(DevInfoID, pDevInfoStruct, DevInfoStructSize);
+}
+
+// Palette methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, const PALETTEENTRY* pEntries) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetPaletteEntries(PaletteNumber, pEntries);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPaletteEntries(IDirect3DDevice8* This, UINT PaletteNumber, PALETTEENTRY* pEntries) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetPaletteEntries(PaletteNumber, pEntries);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetCurrentTexturePalette(IDirect3DDevice8* This, UINT PaletteNumber) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetCurrentTexturePalette(PaletteNumber);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetCurrentTexturePalette(IDirect3DDevice8* This, UINT* PaletteNumber) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetCurrentTexturePalette(PaletteNumber);
+}
+
+// Drawing methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT PrimitiveCount, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DrawPrimitiveUP(PrimitiveType, PrimitiveCount, pVertexStreamZeroData, VertexStreamZeroStride);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawIndexedPrimitiveUP(IDirect3DDevice8* This, D3DPRIMITIVETYPE PrimitiveType, UINT MinVertexIndex, UINT NumVertexIndices, UINT PrimitiveCount, const void* pIndexData, D3DFORMAT IndexDataFormat, const void* pVertexStreamZeroData, UINT VertexStreamZeroStride) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DrawIndexedPrimitiveUP(PrimitiveType, MinVertexIndex, NumVertexIndices, PrimitiveCount, pIndexData, IndexDataFormat, pVertexStreamZeroData, VertexStreamZeroStride);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_ProcessVertices(IDirect3DDevice8* This, UINT SrcStartIndex, UINT DestIndex, UINT VertexCount, IDirect3DVertexBuffer8* pDestBuffer, DWORD Flags) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->ProcessVertices(SrcStartIndex, DestIndex, VertexCount, (::IDirect3DVertexBuffer8*)pDestBuffer, Flags);
+}
+
+// Vertex shader methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreateVertexShader(IDirect3DDevice8* This, const DWORD* pDeclaration, const DWORD* pFunction, DWORD* pHandle, DWORD Usage) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->CreateVertexShader(pDeclaration, pFunction, pHandle, Usage);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetVertexShader(IDirect3DDevice8* This, DWORD Handle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetVertexShader(Handle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShader(IDirect3DDevice8* This, DWORD* pHandle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetVertexShader(pHandle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeleteVertexShader(IDirect3DDevice8* This, DWORD Handle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DeleteVertexShader(Handle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetVertexShaderConstant(Register, pConstantData, ConstantCount);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetVertexShaderConstant(Register, pConstantData, ConstantCount);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderDeclaration(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetVertexShaderDeclaration(Handle, pData, pSizeOfData);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetVertexShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetVertexShaderFunction(Handle, pData, pSizeOfData);
+}
+
+// Stream source and indices methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8* pStreamData, UINT Stride) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetStreamSource(StreamNumber, (::IDirect3DVertexBuffer8*)pStreamData, Stride);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetStreamSource(IDirect3DDevice8* This, UINT StreamNumber, IDirect3DVertexBuffer8** ppStreamData, UINT* pStride) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetStreamSource(StreamNumber, (::IDirect3DVertexBuffer8**)ppStreamData, pStride);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8* pIndexData, UINT BaseVertexIndex) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetIndices((::IDirect3DIndexBuffer8*)pIndexData, BaseVertexIndex);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetIndices(IDirect3DDevice8* This, IDirect3DIndexBuffer8** ppIndexData, UINT* pBaseVertexIndex) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetIndices((::IDirect3DIndexBuffer8**)ppIndexData, pBaseVertexIndex);
+}
+
+// Pixel shader methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_CreatePixelShader(IDirect3DDevice8* This, const DWORD* pFunction, DWORD* pHandle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->CreatePixelShader(pFunction, pHandle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPixelShader(IDirect3DDevice8* This, DWORD Handle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetPixelShader(Handle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShader(IDirect3DDevice8* This, DWORD* pHandle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetPixelShader(pHandle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePixelShader(IDirect3DDevice8* This, DWORD Handle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DeletePixelShader(Handle);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_SetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, const void* pConstantData, DWORD ConstantCount) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->SetPixelShaderConstant(Register, pConstantData, ConstantCount);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShaderConstant(IDirect3DDevice8* This, DWORD Register, void* pConstantData, DWORD ConstantCount) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetPixelShaderConstant(Register, pConstantData, ConstantCount);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_GetPixelShaderFunction(IDirect3DDevice8* This, DWORD Handle, void* pData, DWORD* pSizeOfData) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->GetPixelShaderFunction(Handle, pData, pSizeOfData);
+}
+
+// Patch methods
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawRectPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DRECTPATCH_INFO* pRectPatchInfo) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DrawRectPatch(Handle, pNumSegs, pRectPatchInfo);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DrawTriPatch(IDirect3DDevice8* This, UINT Handle, const float* pNumSegs, const D3DTRIPATCH_INFO* pTriPatchInfo) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DrawTriPatch(Handle, pNumSegs, pTriPatchInfo);
+}
+
+static HRESULT STDMETHODCALLTYPE Direct3DDevice8_DeletePatch(IDirect3DDevice8* This, UINT Handle) {
+    Direct3DDevice8_COM_Wrapper* wrapper = (Direct3DDevice8_COM_Wrapper*)This;
+    return wrapper->pCppInterface->DeletePatch(Handle);
+}
+
+// The following declarations are no longer needed as we've implemented all methods above
+// Commenting out to avoid duplicate definitions
+/*
+extern "C" {
+*/
 
 
 // Forward declarations for texture vtable functions
@@ -988,6 +1399,76 @@ static IDirect3DDevice8* CreateDevice8_COM_Wrapper(::IDirect3DDevice8* pCppDevic
     return (IDirect3DDevice8*)wrapper;
 }
 
+// Helper function to create a surface wrapper
+static IDirect3DSurface8* CreateSurface8_COM_Wrapper(::IDirect3DSurface8* pCppSurface) {
+    if (!pCppSurface) return nullptr;
+    Direct3DSurface8_COM_Wrapper* wrapper = new Direct3DSurface8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DSurface8_Vtbl;
+    wrapper->pCppInterface = pCppSurface;
+    wrapper->refCount = 1;
+    return (IDirect3DSurface8*)wrapper;
+}
+
+// Helper function to create a swap chain wrapper
+static IDirect3DSwapChain8* CreateSwapChain8_COM_Wrapper(::IDirect3DSwapChain8* pCppSwapChain) {
+    if (!pCppSwapChain) return nullptr;
+    Direct3DSwapChain8_COM_Wrapper* wrapper = new Direct3DSwapChain8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DSwapChain8_Vtbl;
+    wrapper->pCppInterface = pCppSwapChain;
+    wrapper->refCount = 1;
+    return (IDirect3DSwapChain8*)wrapper;
+}
+
+// Helper function to create a volume texture wrapper
+static IDirect3DVolumeTexture8* CreateVolumeTexture8_COM_Wrapper(::IDirect3DVolumeTexture8* pCppVolumeTexture) {
+    if (!pCppVolumeTexture) return nullptr;
+    Direct3DVolumeTexture8_COM_Wrapper* wrapper = new Direct3DVolumeTexture8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DVolumeTexture8_Vtbl;
+    wrapper->pCppInterface = pCppVolumeTexture;
+    wrapper->refCount = 1;
+    return (IDirect3DVolumeTexture8*)wrapper;
+}
+
+// Helper function to create a cube texture wrapper
+static IDirect3DCubeTexture8* CreateCubeTexture8_COM_Wrapper(::IDirect3DCubeTexture8* pCppCubeTexture) {
+    if (!pCppCubeTexture) return nullptr;
+    Direct3DCubeTexture8_COM_Wrapper* wrapper = new Direct3DCubeTexture8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DCubeTexture8_Vtbl;
+    wrapper->pCppInterface = pCppCubeTexture;
+    wrapper->refCount = 1;
+    return (IDirect3DCubeTexture8*)wrapper;
+}
+
+// Helper function to create a vertex buffer wrapper
+static IDirect3DVertexBuffer8* CreateVertexBuffer8_COM_Wrapper(::IDirect3DVertexBuffer8* pCppVertexBuffer) {
+    if (!pCppVertexBuffer) return nullptr;
+    Direct3DVertexBuffer8_COM_Wrapper* wrapper = new Direct3DVertexBuffer8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DVertexBuffer8_Vtbl;
+    wrapper->pCppInterface = pCppVertexBuffer;
+    wrapper->refCount = 1;
+    return (IDirect3DVertexBuffer8*)wrapper;
+}
+
+// Helper function to create an index buffer wrapper
+static IDirect3DIndexBuffer8* CreateIndexBuffer8_COM_Wrapper(::IDirect3DIndexBuffer8* pCppIndexBuffer) {
+    if (!pCppIndexBuffer) return nullptr;
+    Direct3DIndexBuffer8_COM_Wrapper* wrapper = new Direct3DIndexBuffer8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DIndexBuffer8_Vtbl;
+    wrapper->pCppInterface = pCppIndexBuffer;
+    wrapper->refCount = 1;
+    return (IDirect3DIndexBuffer8*)wrapper;
+}
+
+// Helper function to create a volume wrapper
+static IDirect3DVolume8* CreateVolume8_COM_Wrapper(::IDirect3DVolume8* pCppVolume) {
+    if (!pCppVolume) return nullptr;
+    Direct3DVolume8_COM_Wrapper* wrapper = new Direct3DVolume8_COM_Wrapper();
+    wrapper->lpVtbl = &g_Direct3DVolume8_Vtbl;
+    wrapper->pCppInterface = pCppVolume;
+    wrapper->refCount = 1;
+    return (IDirect3DVolume8*)wrapper;
+}
+
 // Forward declaration for the C++ Direct3DCreate8 function
 namespace dx8gl {
     extern "C" ::IDirect3D8* Direct3DCreate8_CPP(UINT SDKVersion);
@@ -1041,3 +1522,127 @@ extern "C" IDirect3D8* WINAPI Direct3DCreate8(UINT SDKVersion) {
 extern "C" IDirect3D8* WINAPI Direct3DCreate8_NoCOM(UINT SDKVersion) {
     return dx8gl::Direct3DCreate8_CPP(SDKVersion);
 }
+
+// Define stub vtables for the missing COM interfaces
+// These are needed for linking but won't be used unless the wrappers are created
+
+// Stub Surface8 vtable
+IDirect3DSurface8Vtbl g_Direct3DSurface8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // GetDevice
+    nullptr, // SetPrivateData
+    nullptr, // GetPrivateData
+    nullptr, // FreePrivateData
+    nullptr, // GetContainer
+    nullptr, // GetDesc
+    nullptr, // LockRect
+    nullptr  // UnlockRect
+};
+
+// Stub SwapChain8 vtable
+IDirect3DSwapChain8Vtbl g_Direct3DSwapChain8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // Present
+    nullptr  // GetBackBuffer
+};
+
+// Stub VolumeTexture8 vtable
+IDirect3DVolumeTexture8Vtbl g_Direct3DVolumeTexture8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // GetDevice
+    nullptr, // SetPrivateData
+    nullptr, // GetPrivateData
+    nullptr, // FreePrivateData
+    nullptr, // SetPriority
+    nullptr, // GetPriority
+    nullptr, // PreLoad
+    nullptr, // GetType
+    nullptr, // SetLOD
+    nullptr, // GetLOD
+    nullptr, // GetLevelCount
+    nullptr, // GetLevelDesc
+    nullptr, // GetVolumeLevel
+    nullptr, // LockBox
+    nullptr, // UnlockBox
+    nullptr  // AddDirtyBox
+};
+
+// Stub CubeTexture8 vtable
+IDirect3DCubeTexture8Vtbl g_Direct3DCubeTexture8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // GetDevice
+    nullptr, // SetPrivateData
+    nullptr, // GetPrivateData
+    nullptr, // FreePrivateData
+    nullptr, // SetPriority
+    nullptr, // GetPriority
+    nullptr, // PreLoad
+    nullptr, // GetType
+    nullptr, // SetLOD
+    nullptr, // GetLOD
+    nullptr, // GetLevelCount
+    nullptr, // GetLevelDesc
+    nullptr, // GetCubeMapSurface
+    nullptr, // LockRect
+    nullptr, // UnlockRect
+    nullptr  // AddDirtyRect
+};
+
+// Stub VertexBuffer8 vtable
+IDirect3DVertexBuffer8Vtbl g_Direct3DVertexBuffer8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // GetDevice
+    nullptr, // SetPrivateData
+    nullptr, // GetPrivateData
+    nullptr, // FreePrivateData
+    nullptr, // SetPriority
+    nullptr, // GetPriority
+    nullptr, // PreLoad
+    nullptr, // GetType
+    nullptr, // Lock
+    nullptr, // Unlock
+    nullptr  // GetDesc
+};
+
+// Stub IndexBuffer8 vtable
+IDirect3DIndexBuffer8Vtbl g_Direct3DIndexBuffer8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // GetDevice
+    nullptr, // SetPrivateData
+    nullptr, // GetPrivateData
+    nullptr, // FreePrivateData
+    nullptr, // SetPriority
+    nullptr, // GetPriority
+    nullptr, // PreLoad
+    nullptr, // GetType
+    nullptr, // Lock
+    nullptr, // Unlock
+    nullptr  // GetDesc
+};
+
+// Stub Volume8 vtable
+IDirect3DVolume8Vtbl g_Direct3DVolume8_Vtbl = {
+    nullptr, // QueryInterface
+    nullptr, // AddRef
+    nullptr, // Release
+    nullptr, // GetDevice
+    nullptr, // SetPrivateData
+    nullptr, // GetPrivateData
+    nullptr, // FreePrivateData
+    nullptr, // GetContainer
+    nullptr, // GetDesc
+    nullptr, // LockBox
+    nullptr  // UnlockBox
+};

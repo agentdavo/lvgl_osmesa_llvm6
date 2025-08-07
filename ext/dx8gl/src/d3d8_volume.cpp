@@ -78,8 +78,8 @@ HRESULT Direct3DVolume8::QueryInterface(REFIID riid, void** ppvObj) {
         return E_POINTER;
     }
     
-    if (IsEqualGUID(riid, IID_IUnknown) || 
-        IsEqualGUID(riid, IID_IDirect3DVolume8)) {
+    if (IsEqualGUID(*riid, IID_IUnknown) || 
+        IsEqualGUID(*riid, IID_IDirect3DVolume8)) {
         *ppvObj = static_cast<IDirect3DVolume8*>(this);
         AddRef();
         return S_OK;
@@ -153,7 +153,6 @@ HRESULT Direct3DVolume8::GetDesc(D3DVOLUME_DESC* pDesc) {
     pDesc->Type = D3DRTYPE_VOLUME;
     pDesc->Usage = usage_;
     pDesc->Pool = pool_;
-    pDesc->Size = data_size_;
     pDesc->Width = width_;
     pDesc->Height = height_;
     pDesc->Depth = depth_;

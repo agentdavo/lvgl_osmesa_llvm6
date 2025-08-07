@@ -147,6 +147,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_bytecode_assembler.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_constants.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
  /usr/include/c++/13/cstdarg /usr/include/c++/13/cstring \
  /usr/include/string.h /usr/include/strings.h \

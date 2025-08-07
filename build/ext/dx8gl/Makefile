@@ -220,6 +220,30 @@ src/command_buffer.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.s
 .PHONY : src/command_buffer.cpp.s
 
+src/cube_texture_support.o: src/cube_texture_support.cpp.o
+.PHONY : src/cube_texture_support.o
+
+# target to build an object file
+src/cube_texture_support.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o
+.PHONY : src/cube_texture_support.cpp.o
+
+src/cube_texture_support.i: src/cube_texture_support.cpp.i
+.PHONY : src/cube_texture_support.i
+
+# target to preprocess a source file
+src/cube_texture_support.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.i
+.PHONY : src/cube_texture_support.cpp.i
+
+src/cube_texture_support.s: src/cube_texture_support.cpp.s
+.PHONY : src/cube_texture_support.s
+
+# target to generate assembly for a file
+src/cube_texture_support.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.s
+.PHONY : src/cube_texture_support.cpp.s
+
 src/d3d8_com_wrapper.o: src/d3d8_com_wrapper.cpp.o
 .PHONY : src/d3d8_com_wrapper.o
 
@@ -459,6 +483,54 @@ src/d3d8_vertexbuffer.s: src/d3d8_vertexbuffer.cpp.s
 src/d3d8_vertexbuffer.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_vertexbuffer.cpp.s
 .PHONY : src/d3d8_vertexbuffer.cpp.s
+
+src/d3d8_volume.o: src/d3d8_volume.cpp.o
+.PHONY : src/d3d8_volume.o
+
+# target to build an object file
+src/d3d8_volume.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volume.cpp.o
+.PHONY : src/d3d8_volume.cpp.o
+
+src/d3d8_volume.i: src/d3d8_volume.cpp.i
+.PHONY : src/d3d8_volume.i
+
+# target to preprocess a source file
+src/d3d8_volume.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volume.cpp.i
+.PHONY : src/d3d8_volume.cpp.i
+
+src/d3d8_volume.s: src/d3d8_volume.cpp.s
+.PHONY : src/d3d8_volume.s
+
+# target to generate assembly for a file
+src/d3d8_volume.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volume.cpp.s
+.PHONY : src/d3d8_volume.cpp.s
+
+src/d3d8_volumetexture.o: src/d3d8_volumetexture.cpp.o
+.PHONY : src/d3d8_volumetexture.o
+
+# target to build an object file
+src/d3d8_volumetexture.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volumetexture.cpp.o
+.PHONY : src/d3d8_volumetexture.cpp.o
+
+src/d3d8_volumetexture.i: src/d3d8_volumetexture.cpp.i
+.PHONY : src/d3d8_volumetexture.i
+
+# target to preprocess a source file
+src/d3d8_volumetexture.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volumetexture.cpp.i
+.PHONY : src/d3d8_volumetexture.cpp.i
+
+src/d3d8_volumetexture.s: src/d3d8_volumetexture.cpp.s
+.PHONY : src/d3d8_volumetexture.s
+
+# target to generate assembly for a file
+src/d3d8_volumetexture.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_volumetexture.cpp.s
+.PHONY : src/d3d8_volumetexture.cpp.s
 
 src/d3dx_math.o: src/d3dx_math.cpp.o
 .PHONY : src/d3dx_math.o
@@ -868,6 +940,54 @@ src/render_thread.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/render_thread.cpp.s
 .PHONY : src/render_thread.cpp.s
 
+src/resource_pool.o: src/resource_pool.cpp.o
+.PHONY : src/resource_pool.o
+
+# target to build an object file
+src/resource_pool.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool.cpp.o
+.PHONY : src/resource_pool.cpp.o
+
+src/resource_pool.i: src/resource_pool.cpp.i
+.PHONY : src/resource_pool.i
+
+# target to preprocess a source file
+src/resource_pool.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool.cpp.i
+.PHONY : src/resource_pool.cpp.i
+
+src/resource_pool.s: src/resource_pool.cpp.s
+.PHONY : src/resource_pool.s
+
+# target to generate assembly for a file
+src/resource_pool.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool.cpp.s
+.PHONY : src/resource_pool.cpp.s
+
+src/resource_pool_integration.o: src/resource_pool_integration.cpp.o
+.PHONY : src/resource_pool_integration.o
+
+# target to build an object file
+src/resource_pool_integration.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool_integration.cpp.o
+.PHONY : src/resource_pool_integration.cpp.o
+
+src/resource_pool_integration.i: src/resource_pool_integration.cpp.i
+.PHONY : src/resource_pool_integration.i
+
+# target to preprocess a source file
+src/resource_pool_integration.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool_integration.cpp.i
+.PHONY : src/resource_pool_integration.cpp.i
+
+src/resource_pool_integration.s: src/resource_pool_integration.cpp.s
+.PHONY : src/resource_pool_integration.s
+
+# target to generate assembly for a file
+src/resource_pool_integration.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/resource_pool_integration.cpp.s
+.PHONY : src/resource_pool_integration.cpp.s
+
 src/shader_binary_cache.o: src/shader_binary_cache.cpp.o
 .PHONY : src/shader_binary_cache.o
 
@@ -1198,6 +1318,9 @@ help:
 	@echo "... src/command_buffer.o"
 	@echo "... src/command_buffer.i"
 	@echo "... src/command_buffer.s"
+	@echo "... src/cube_texture_support.o"
+	@echo "... src/cube_texture_support.i"
+	@echo "... src/cube_texture_support.s"
 	@echo "... src/d3d8_com_wrapper.o"
 	@echo "... src/d3d8_com_wrapper.i"
 	@echo "... src/d3d8_com_wrapper.s"
@@ -1228,6 +1351,12 @@ help:
 	@echo "... src/d3d8_vertexbuffer.o"
 	@echo "... src/d3d8_vertexbuffer.i"
 	@echo "... src/d3d8_vertexbuffer.s"
+	@echo "... src/d3d8_volume.o"
+	@echo "... src/d3d8_volume.i"
+	@echo "... src/d3d8_volume.s"
+	@echo "... src/d3d8_volumetexture.o"
+	@echo "... src/d3d8_volumetexture.i"
+	@echo "... src/d3d8_volumetexture.s"
 	@echo "... src/d3dx_math.o"
 	@echo "... src/d3dx_math.i"
 	@echo "... src/d3dx_math.s"
@@ -1279,6 +1408,12 @@ help:
 	@echo "... src/render_thread.o"
 	@echo "... src/render_thread.i"
 	@echo "... src/render_thread.s"
+	@echo "... src/resource_pool.o"
+	@echo "... src/resource_pool.i"
+	@echo "... src/resource_pool.s"
+	@echo "... src/resource_pool_integration.o"
+	@echo "... src/resource_pool_integration.i"
+	@echo "... src/resource_pool_integration.s"
 	@echo "... src/shader_binary_cache.o"
 	@echo "... src/shader_binary_cache.i"
 	@echo "... src/shader_binary_cache.s"

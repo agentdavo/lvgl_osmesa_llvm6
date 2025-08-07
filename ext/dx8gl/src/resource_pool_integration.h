@@ -80,9 +80,51 @@ private:
         std::chrono::high_resolution_clock::time_point last_present_time;
     };
     
+    // Cached texture entry
+    struct CachedTexture {
+        IDirect3DTexture8* texture;
+        uint32_t width;
+        uint32_t height;
+        uint32_t levels;
+        DWORD usage;
+        D3DFORMAT format;
+        D3DPOOL pool;
+        uint32_t frames_unused;
+        size_t memory_size;
+    };
+    
+    // Cached vertex buffer entry
+    struct CachedVertexBuffer {
+        IDirect3DVertexBuffer8* buffer;
+        uint32_t length;
+        DWORD usage;
+        DWORD fvf;
+        D3DPOOL pool;
+        uint32_t frames_unused;
+        size_t memory_size;
+    };
+    
+    // Cached index buffer entry
+    struct CachedIndexBuffer {
+        IDirect3DIndexBuffer8* buffer;
+        uint32_t length;
+        DWORD usage;
+        D3DFORMAT format;
+        D3DPOOL pool;
+        uint32_t frames_unused;
+        size_t memory_size;
+    };
+    
     static std::unordered_map<IDirect3DDevice8*, DeviceContext> device_contexts_;
+    static std::unordered_map<ResourceKey, std::vector<CachedTexture>, ResourceKeyHash> texture_cache_;
+    static std::unordered_map<ResourceKey, std::vector<CachedVertexBuffer>, ResourceKeyHash> vertex_buffer_cache_;
+    static std::unordered_map<ResourceKey, std::vector<CachedIndexBuffer>, ResourceKeyHash> index_buffer_cache_;
     static std::mutex mutex_;
     static bool initialized_;
+    static size_t total_texture_memory_;
+    static size_t total_vertex_buffer_memory_;
+    static size_t total_index_buffer_memory_;
+    static uint32_t current_frame_;
 };
 
 /**

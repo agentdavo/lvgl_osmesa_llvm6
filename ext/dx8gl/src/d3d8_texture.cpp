@@ -317,14 +317,33 @@ HRESULT Direct3DTexture8::AddDirtyRect(const RECT* pDirtyRect) {
         dirty.rect.top = 0;
         dirty.rect.right = width_;
         dirty.rect.bottom = height_;
+        
+        // Mark entire level as dirty for optimization
+        if (dirty.level < level_fully_dirty_.size()) {
+            level_fully_dirty_[dirty.level] = true;
+            // Clear any existing dirty regions for this level since entire level is dirty
+            dirty_regions_.erase(
+                std::remove_if(dirty_regions_.begin(), dirty_regions_.end(),
+                    [&dirty](const DirtyRect& d) { return d.level == dirty.level; }),
+                dirty_regions_.end()
+            );
+        }
     }
     
-    // TODO: Merge overlapping dirty regions for efficiency
-    dirty_regions_.push_back(dirty);
+    // Use merge_dirty_rect to efficiently combine with existing dirty regions
+    // This will merge overlapping or adjacent rectangles to minimize upload calls
+    if (dirty.level < level_fully_dirty_.size() && !level_fully_dirty_[dirty.level]) {
+        merge_dirty_rect(dirty.level, dirty.rect);
+    } else if (dirty.level >= level_fully_dirty_.size()) {
+        // Fallback if level tracking not initialized
+        dirty_regions_.push_back(dirty);
+    }
+    
     has_dirty_regions_ = true;
     
-    DX8GL_DEBUG("AddDirtyRect: level=0, rect=(%ld,%ld,%ld,%ld)", 
-                dirty.rect.left, dirty.rect.top, dirty.rect.right, dirty.rect.bottom);
+    DX8GL_DEBUG("AddDirtyRect: level=0, rect=(%ld,%ld,%ld,%ld), total_regions=%zu", 
+                dirty.rect.left, dirty.rect.top, dirty.rect.right, dirty.rect.bottom,
+                dirty_regions_.size());
     
     return D3D_OK;
 }
@@ -662,14 +681,45 @@ void Direct3DTexture8::merge_dirty_rect(UINT level, const RECT& new_rect) {
     // Check if we can merge with existing dirty regions
     bool merged = false;
     
+    // Threshold for considering rectangles "close enough" to merge (in pixels)
+    const LONG merge_threshold = 32;
+    
     for (auto& dirty : dirty_regions_) {
         if (dirty.level != level) {
             continue;
         }
         
-        // Check if rectangles overlap or are adjacent
+        // Check if rectangles overlap or are close enough to merge
+        // We expand the check area by merge_threshold to catch nearby rects
+        bool should_merge = false;
+        
+        // Check for overlap
         if (!(new_rect.right < dirty.rect.left || new_rect.left > dirty.rect.right ||
               new_rect.bottom < dirty.rect.top || new_rect.top > dirty.rect.bottom)) {
+            should_merge = true;
+        }
+        // Check if rectangles are within merge threshold distance
+        else if (!(new_rect.right + merge_threshold < dirty.rect.left || 
+                   new_rect.left - merge_threshold > dirty.rect.right ||
+                   new_rect.bottom + merge_threshold < dirty.rect.top || 
+                   new_rect.top - merge_threshold > dirty.rect.bottom)) {
+            // Calculate the cost of merging (area increase)
+            LONG merged_left = std::min(dirty.rect.left, new_rect.left);
+            LONG merged_top = std::min(dirty.rect.top, new_rect.top);
+            LONG merged_right = std::max(dirty.rect.right, new_rect.right);
+            LONG merged_bottom = std::max(dirty.rect.bottom, new_rect.bottom);
+            
+            LONG merged_area = (merged_right - merged_left) * (merged_bottom - merged_top);
+            LONG current_area = (dirty.rect.right - dirty.rect.left) * (dirty.rect.bottom - dirty.rect.top);
+            LONG new_area = (new_rect.right - new_rect.left) * (new_rect.bottom - new_rect.top);
+            
+            // Merge if the wasted area is less than 50% of the combined area
+            if (merged_area < (current_area + new_area) * 3 / 2) {
+                should_merge = true;
+            }
+        }
+        
+        if (should_merge) {
             // Merge by expanding the existing rect
             dirty.rect.left = std::min(dirty.rect.left, new_rect.left);
             dirty.rect.top = std::min(dirty.rect.top, new_rect.top);

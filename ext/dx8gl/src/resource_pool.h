@@ -50,6 +50,34 @@ struct PoolConfiguration {
  * Performance metrics for resource pools
  */
 struct PoolMetrics {
+    // Default constructor
+    PoolMetrics() = default;
+    
+    // Move constructor - loads values from source atomics
+    PoolMetrics(PoolMetrics&& other) noexcept {
+        command_buffers_allocated.store(other.command_buffers_allocated.load());
+        command_buffers_reused.store(other.command_buffers_reused.load());
+        command_buffer_hits.store(other.command_buffer_hits.load());
+        command_buffer_misses.store(other.command_buffer_misses.load());
+        textures_cached.store(other.textures_cached.load());
+        texture_cache_hits.store(other.texture_cache_hits.load());
+        texture_cache_misses.store(other.texture_cache_misses.load());
+        texture_evictions.store(other.texture_evictions.load());
+        texture_memory_used.store(other.texture_memory_used.load());
+        buffers_cached.store(other.buffers_cached.load());
+        buffer_cache_hits.store(other.buffer_cache_hits.load());
+        buffer_cache_misses.store(other.buffer_cache_misses.load());
+        buffer_cache_usage_mismatches.store(other.buffer_cache_usage_mismatches.load());
+        buffer_evictions.store(other.buffer_evictions.load());
+        buffer_memory_used.store(other.buffer_memory_used.load());
+        total_allocation_time_us.store(other.total_allocation_time_us.load());
+        total_deallocation_time_us.store(other.total_deallocation_time_us.load());
+    }
+    
+    // Deleted copy constructor (atomics can't be copied)
+    PoolMetrics(const PoolMetrics&) = delete;
+    PoolMetrics& operator=(const PoolMetrics&) = delete;
+    
     // Command buffer metrics
     std::atomic<uint64_t> command_buffers_allocated{0};
     std::atomic<uint64_t> command_buffers_reused{0};
@@ -67,6 +95,7 @@ struct PoolMetrics {
     std::atomic<uint64_t> buffers_cached{0};
     std::atomic<uint64_t> buffer_cache_hits{0};
     std::atomic<uint64_t> buffer_cache_misses{0};
+    std::atomic<uint64_t> buffer_cache_usage_mismatches{0};  // Buffers with incompatible usage flags
     std::atomic<uint64_t> buffer_evictions{0};
     std::atomic<size_t> buffer_memory_used{0};
     
@@ -256,7 +285,7 @@ public:
     
     // Buffer pool
     WGpuBuffer acquire_buffer(const WGpuBufferDescriptor& desc);
-    void release_buffer(WGpuBuffer buffer, size_t size);
+    void release_buffer(WGpuBuffer buffer, size_t size, uint32_t usage_flags);
     
     // Texture pool
     WGpuTexture acquire_texture(const WGpuTextureDescriptor& desc);
@@ -284,7 +313,7 @@ private:
     struct BufferEntry {
         WGpuBuffer buffer;
         size_t size;
-        uint32_t usage;
+        uint32_t usage;  // WGPUBufferUsageFlags for compatibility checking
         uint32_t frames_unused;
     };
     std::vector<BufferEntry> buffer_cache_;
