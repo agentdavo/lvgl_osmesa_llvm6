@@ -10,3 +10,6 @@
 [submodule "ext/glm"]
 	path = ext/glm
 	url = https://github.com/g-truc/glm.git
+[submodule "ext/googletest"]
+	path = ext/googletest
+	url = https://github.com/google/googletest.git

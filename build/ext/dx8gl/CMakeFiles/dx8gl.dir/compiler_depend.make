@@ -1705,6 +1705,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o: /home/djs/lvgl_osmesa_llvm
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_texture.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_types.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_vertexbuffer.h \
+  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_volumetexture.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx8_core.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3dx_compat.h \
@@ -1719,6 +1720,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o: /home/djs/lvgl_osmesa_llvm
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/private_data.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_backend.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/render_thread.h \
+  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_constant_manager.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/state_manager.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/thread_pool.h \
@@ -9128,14 +9130,14 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_backend.cpp.o: /home/djs/lvgl_osmesa_l
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.cpp \
+  mesa-install/include/GL/gl.h \
+  mesa-install/include/GL/glext.h \
+  mesa-install/include/GL/osmesa.h \
+  mesa-install/include/KHR/khrplatform.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/blue_screen.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h \
-  /usr/include/GL/gl.h \
-  /usr/include/GL/glext.h \
-  /usr/include/GL/osmesa.h \
-  /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -9443,12 +9445,12 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_context.cpp.o: /home/djs/lvgl_osmesa_l
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/osmesa_gl_loader.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.cpp \
+  mesa-install/include/GL/gl.h \
+  mesa-install/include/GL/glext.h \
+  mesa-install/include/GL/osmesa.h \
+  mesa-install/include/KHR/khrplatform.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_gl_loader.h \
-  /usr/include/GL/gl.h \
-  /usr/include/GL/glext.h \
-  /usr/include/GL/osmesa.h \
-  /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -13193,11 +13195,11 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_constant_manager.cpp.o: /home/djs/lvgl
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_debugger.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_debugger.cpp \
+  mesa-install/include/GL/gl.h \
+  mesa-install/include/GL/glext.h \
+  mesa-install/include/KHR/khrplatform.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_debugger.h \
-  /usr/include/GL/gl.h \
-  /usr/include/GL/glext.h \
-  /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -13919,11 +13921,11 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_generator.cpp.o: /home/djs/lvgl_osmesa
   /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h
 
 ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_hot_reload.cpp.o: /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_hot_reload.cpp \
+  mesa-install/include/GL/gl.h \
+  mesa-install/include/GL/glext.h \
+  mesa-install/include/KHR/khrplatform.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_hot_reload.h \
-  /usr/include/GL/gl.h \
-  /usr/include/GL/glext.h \
-  /usr/include/KHR/khrplatform.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \
@@ -14287,11 +14289,13 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_program_manager.cpp.o: /home/djs/lvgl_
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/logger.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/pixel_shader_manager.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_binary_cache.h \
+  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_constant_manager.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.h \
   /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/vertex_shader_manager.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/array \
   /usr/include/c++/13/atomic \
   /usr/include/c++/13/backward/auto_ptr.h \
@@ -14357,6 +14361,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_program_manager.cpp.o: /home/djs/lvgl_
   /usr/include/c++/13/bits/ptr_traits.h \
   /usr/include/c++/13/bits/quoted_string.h \
   /usr/include/c++/13/bits/range_access.h \
+  /usr/include/c++/13/bits/ranges_algo.h \
   /usr/include/c++/13/bits/ranges_algobase.h \
   /usr/include/c++/13/bits/ranges_base.h \
   /usr/include/c++/13/bits/ranges_cmp.h \
@@ -14449,6 +14454,7 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/shader_program_manager.cpp.o: /home/djs/lvgl_
   /usr/include/c++/13/optional \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/ratio \
@@ -16400,12 +16406,6 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: /home/djs/lvgl_o
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/private_data.cpp:
 
-/usr/include/KHR/khrplatform.h:
-
-/usr/include/GL/osmesa.h:
-
-/usr/include/GL/glext.h:
-
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.cpp:
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_backend.h:
@@ -16427,10 +16427,6 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: /home/djs/lvgl_o
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_program_manager.cpp:
 
 /usr/include/c++/13/bits/regex_compiler.tcc:
-
-/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_constant_manager.h:
-
-/usr/include/c++/13/bits/regex_compiler.h:
 
 /usr/include/c++/13/bits/regex_automaton.h:
 
@@ -16471,6 +16467,10 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/vertex_shader_manager.cpp.o: /home/djs/lvgl_o
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_missing_stubs.cpp:
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_indexbuffer.cpp:
+
+/usr/include/c++/13/bits/regex_compiler.h:
+
+/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_constant_manager.h:
 
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_device.cpp:
 
@@ -17379,8 +17379,6 @@ mesa-install/include/GL/glext.h:
 /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm/glm/detail/type_mat2x4.inl:
 
 /usr/include/c++/13/cstdarg:
-
-/usr/include/GL/gl.h:
 
 /usr/include/c++/13/cstddef:
 

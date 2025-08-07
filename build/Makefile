@@ -85,6 +85,16 @@ package_source:
 package_source/fast: package_source
 .PHONY : package_source/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
@@ -220,6 +230,32 @@ lvgl: cmake_check_build_system
 lvgl/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lvgl.dir/build.make CMakeFiles/lvgl.dir/build
 .PHONY : lvgl/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) $(MAKESILENT) -f ext/googletest/googletest/CMakeFiles/gtest.dir/build.make ext/googletest/googletest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) $(MAKESILENT) -f ext/googletest/googletest/CMakeFiles/gtest_main.dir/build.make ext/googletest/googletest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
 
 #=============================================================================
 # Target rules for targets named dx8gl
@@ -909,6 +945,71 @@ test_com_wrapper_threading: cmake_check_build_system
 test_com_wrapper_threading/fast:
 	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_com_wrapper_threading.dir/build.make ext/dx8gl/test/CMakeFiles/test_com_wrapper_threading.dir/build
 .PHONY : test_com_wrapper_threading/fast
+
+#=============================================================================
+# Target rules for targets named test_matrix_pipeline
+
+# Build rule for target.
+test_matrix_pipeline: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_matrix_pipeline
+.PHONY : test_matrix_pipeline
+
+# fast build rule for target.
+test_matrix_pipeline/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_matrix_pipeline.dir/build.make ext/dx8gl/test/CMakeFiles/test_matrix_pipeline.dir/build
+.PHONY : test_matrix_pipeline/fast
+
+#=============================================================================
+# Target rules for targets named test_d3dx_math
+
+# Build rule for target.
+test_d3dx_math: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_d3dx_math
+.PHONY : test_d3dx_math
+
+# fast build rule for target.
+test_d3dx_math/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_d3dx_math.dir/build.make ext/dx8gl/test/CMakeFiles/test_d3dx_math.dir/build
+.PHONY : test_d3dx_math/fast
+
+#=============================================================================
+# Target rules for targets named test_shader_constants
+
+# Build rule for target.
+test_shader_constants: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_constants
+.PHONY : test_shader_constants
+
+# fast build rule for target.
+test_shader_constants/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_constants.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_constants.dir/build
+.PHONY : test_shader_constants/fast
+
+#=============================================================================
+# Target rules for targets named test_volume_texture
+
+# Build rule for target.
+test_volume_texture: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_volume_texture
+.PHONY : test_volume_texture
+
+# fast build rule for target.
+test_volume_texture/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_volume_texture.dir/build.make ext/dx8gl/test/CMakeFiles/test_volume_texture.dir/build
+.PHONY : test_volume_texture/fast
+
+#=============================================================================
+# Target rules for targets named test_shader_hot_reload
+
+# Build rule for target.
+test_shader_hot_reload: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_hot_reload
+.PHONY : test_shader_hot_reload
+
+# fast build rule for target.
+test_shader_hot_reload/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_hot_reload.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_hot_reload.dir/build
+.PHONY : test_shader_hot_reload/fast
 
 #=============================================================================
 # Target rules for targets named test_xyzrhw
@@ -12515,6 +12616,7 @@ help:
 	@echo "... package"
 	@echo "... package_source"
 	@echo "... rebuild_cache"
+	@echo "... test"
 	@echo "... Continuous"
 	@echo "... ContinuousBuild"
 	@echo "... ContinuousConfigure"
@@ -12549,6 +12651,8 @@ help:
 	@echo "... dx8_cube"
 	@echo "... dx8gl"
 	@echo "... dx8gl_webgpu-demo"
+	@echo "... gtest"
+	@echo "... gtest_main"
 	@echo "... lvgl"
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
@@ -12558,6 +12662,7 @@ help:
 	@echo "... test_com_wrapper_threading"
 	@echo "... test_command_buffer_async"
 	@echo "... test_cube_texture"
+	@echo "... test_d3dx_math"
 	@echo "... test_d3dx_surface_loading"
 	@echo "... test_device_reset"
 	@echo "... test_dx8gl_core_api"
@@ -12568,10 +12673,13 @@ help:
 	@echo "... test_lod_dirty_logic"
 	@echo "... test_lvgl_canvas"
 	@echo "... test_lvgl_platform"
+	@echo "... test_matrix_pipeline"
 	@echo "... test_mixed_vertices"
 	@echo "... test_multi_texcoords"
 	@echo "... test_render_states"
 	@echo "... test_shader_cache_resize"
+	@echo "... test_shader_constants"
+	@echo "... test_shader_hot_reload"
 	@echo "... test_shader_program_cache"
 	@echo "... test_shader_translator"
 	@echo "... test_state_manager_validation"
@@ -12581,6 +12689,7 @@ help:
 	@echo "... test_swapchain_presentation"
 	@echo "... test_texture_simple"
 	@echo "... test_vertex_shader_disassembly"
+	@echo "... test_volume_texture"
 	@echo "... test_xyzrhw"
 	@echo "... ext/lvgl/src/core/lv_group.o"
 	@echo "... ext/lvgl/src/core/lv_group.i"

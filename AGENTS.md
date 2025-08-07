@@ -2,23 +2,24 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## IMPORTANT: Task Management Requirements
+## IMPORTANT: Task Management Process
 
-When working on this project, you MUST:
-1. **Always use the TodoWrite tool** to track tasks and progress
+When working on this project, you MUST follow this development process:
+1. **Always track tasks and progress** through proper task management
 2. **Update task status immediately** when starting work (mark as "in_progress") and when completing work (mark as "completed")
 3. **Add new tasks proactively** when discovering issues or identifying work that needs to be done
 4. **Check TASKS.md regularly** for the full task list and priorities
-5. **Never work on tasks without tracking them** in the todo list
+5. **Never work on tasks without tracking them** in the task list
 6. **Keep only one task "in_progress" at a time** to maintain focus
 
-The todo list is critical for project organization and helps track complex multi-step work. Use it liberally!
+The task tracking process is critical for project organization and helps manage complex multi-step work. Follow this development process consistently!
 
 ## Project Overview
 
 This project combines LLVM, Mesa (OSMesa), LVGL, and dx8gl to create GUI applications with software-based OpenGL rendering. It demonstrates:
 - LVGL windows containing OpenGL-rendered content using OSMesa for off-screen rendering
 - DirectX 8 API compatibility through dx8gl translation layer
+- **Flexible rendering backends**: Switch between OSMesa (software) and EGL (hardware) at runtime
 - Texture loading from TGA files with full mipmap generation
 - Fixed vertex attribute binding for texture coordinates
 - Integration with GLM for modern C++ matrix operations
@@ -54,6 +55,13 @@ git submodule update --init --recursive
 # Build all examples
 ./scripts/compile.sh examples
 
+# Build with EGL backend support
+./scripts/compile.sh -e all
+
+# Build with WebGPU backend support (requires -DDX8GL_ENABLE_WEBGPU=ON)
+cmake -S . -B build -DDX8GL_ENABLE_WEBGPU=ON
+cmake --build build -j
+
 # Build individual examples
 ./scripts/compile.sh dx8_cube             # DirectX 8 spinning cube
 ./scripts/compile.sh osmesa_test          # OSMesa test (outputs PPM)
@@ -78,6 +86,9 @@ git submodule update --init --recursive
 # Set parallel jobs (default: 8)
 ./scripts/compile.sh -j 4 all
 
+# Enable EGL backend support
+./scripts/compile.sh -e all
+
 # Check build status
 ./scripts/compile.sh status
 ```
@@ -95,6 +106,13 @@ LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu \
   build/src/dx8_cube/dx8_cube
 
 # dx8_cube now exits gracefully after 100 frames (no timeout needed)
+
+# Run with different rendering backends
+DX8GL_BACKEND=osmesa ./scripts/run_dx8_cube.sh  # Software rendering (default)
+DX8GL_BACKEND=egl ./scripts/run_dx8_cube.sh     # Hardware acceleration (requires -e build)
+
+# Run EGL backend test (requires -e build)
+./scripts/run_egl_test.sh
 ```
 
 ## Architecture Overview
@@ -113,7 +131,9 @@ LD_LIBRARY_PATH=build/llvm-install/lib:build/mesa-install/lib/x86_64-linux-gnu \
   - Canvas widget for displaying OpenGL framebuffers
 - **dx8gl**: DirectX 8.1 to OpenGL 3.3 Core translation layer
   - Allows legacy DirectX 8 code to run on OpenGL
-  - Integrated with OSMesa for software rendering
+  - **Backend abstraction**: Switch between OSMesa and EGL at runtime
+  - OSMesa backend for software rendering
+  - EGL backend for hardware acceleration via surfaceless context
 - **GLM**: Header-only C++ mathematics library for graphics programming
 - **Platform Layer**: C++ abstraction (`src/lvgl_platform/`) providing unified LVGL backend interface
 
@@ -167,8 +187,56 @@ build/
 - OSMesa-only build (no hardware drivers)
 - LLVM llvmpipe driver for software rendering
 - Uses custom Meson native file with Fedora security flags
-- Static library build for easier distribution
+- Shared library build (changed from static for better compatibility)
 - No Vulkan, VA-API, VDPAU, or other acceleration APIs
+- Version 25.0.7 with LLVM 20.1.8 backend
+
+## Rendering Backend System
+
+### Backend Architecture
+The dx8gl library supports multiple rendering backends through a clean abstraction interface:
+
+```cpp
+// Select backend at runtime
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_EGL;  // or DX8GL_BACKEND_OSMESA
+dx8gl_init(&config);
+```
+
+### Available Backends
+1. **OSMesa Backend** (Default)
+   - Pure software rendering using Mesa's llvmpipe
+   - No GPU or display required
+   - Consistent behavior across all systems
+   - Ideal for testing and CI/CD environments
+
+2. **EGL Backend** (Optional)  
+   - Hardware-accelerated rendering via EGL surfaceless context
+   - Requires EGL 1.5+ with surfaceless context extension
+   - Significantly better performance when GPU is available
+   - Falls back gracefully if not available
+
+3. **WebGPU Backend** (Experimental)
+   - Modern GPU API for next-generation rendering
+   - Cross-platform support (web browsers and native)
+   - Future-proof rendering pipeline
+   - Requires WebGPU-enabled browser or native implementation
+
+### Backend Selection Methods
+```bash
+# Environment variable
+export DX8GL_BACKEND=egl  # or osmesa, webgpu, auto
+
+# Command line argument  
+export DX8GL_ARGS="--backend=egl"
+
+# API configuration
+dx8gl_config config = {};
+config.backend_type = DX8GL_BACKEND_DEFAULT;  # auto-select with fallback
+dx8gl_init(&config);
+```
+
+The "auto" backend selection uses a fallback chain: WebGPU → EGL → OSMesa
 
 ## Known Issues and Solutions
 
@@ -190,6 +258,9 @@ build/
 - **Texture Coordinate Crash**: Fixed by properly enabling texcoord0 attribute in command buffer
 - **Double Free Error**: Fixed by removing redundant dx8gl_init() call
 - **Floor Position**: Fixed Y-axis orientation when saving PPM files
+- **Mesa Library Linking**: Fixed tests linking to system Mesa instead of locally built version
+- **Backend Enum Naming**: Fixed duplicated backend enum definitions (DX8_BACKEND_* vs DX8GL_BACKEND_*)
+- **Build Configuration**: Changed Mesa from static to shared libraries for better compatibility
 
 ## Development Workflow
 
@@ -251,3 +322,140 @@ Each implemented method needs:
 3. Resource lifetime tests
 4. Error condition tests
 5. Performance benchmarks
+
+## Testing Infrastructure
+
+### Test Suite
+The dx8gl library has comprehensive unit tests located in `ext/dx8gl/test/`. Tests are built in the `build/Release/` directory.
+
+### Running Tests
+```bash
+# Automated test runner (recommended)
+./scripts/run_dx8gl_tests.sh
+
+# Run with options
+./scripts/run_dx8gl_tests.sh --filter shader   # Run only shader tests
+./scripts/run_dx8gl_tests.sh --valgrind        # Memory leak detection
+./scripts/run_dx8gl_tests.sh --coverage        # Generate coverage report
+
+# Manual test execution
+cd build
+export LD_LIBRARY_PATH=llvm-install/lib:mesa-install/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+./Release/test_shader_translator
+./Release/test_render_states
+./Release/test_com_wrapper_threading
+```
+
+### Test Categories
+- **Core API**: test_dx8gl_core_api, test_device_reset, test_swapchain_presentation
+- **Shaders**: test_shader_translator, test_shader_cache_resize, test_multi_texcoords
+- **Resources**: test_cube_texture, test_surface_format, test_texture_simple
+- **Threading**: test_com_wrapper_threading, test_async_simple
+- **State**: test_render_states, test_state_manager_validation, test_alpha_blending
+- **Backend**: test_backend_selection, test_framebuffer_correctness
+
+### Building Tests
+```bash
+# Build all tests with the main build
+./scripts/compile.sh all
+
+# Build specific test
+cd build
+make test_render_states
+
+# Build all tests in dx8gl
+make -C ext/dx8gl/test
+```
+
+### Known Test Issues
+- OSMesa context warnings in multi-threaded tests are expected (OpenGL is not thread-safe)
+- test_vertex_shader_disassembly may have PIE linking issues
+- Some tests require stub COM vtable implementations (already added to d3d8_com_wrapper.cpp)
+- Resource pool metrics updates are currently commented out (need proper API)
+
+### Test Infrastructure Files
+- `scripts/run_dx8gl_tests.sh` - Main test runner script
+- `ext/dx8gl/TEST_AUTOMATION.md` - Comprehensive test automation guide
+- `ext/dx8gl/test/CMakeLists.txt` - Test build configuration
+
+## Recent Completed Tasks (August 2025)
+
+### COM Wrapper Resource Management (August 7, 2025) ✅
+- Implemented thread-safe wrapper classes for all DirectX 8 resource types:
+  - Direct3DSurface8_COM_Wrapper with mutex synchronization
+  - Direct3DSwapChain8_COM_Wrapper for swap chain management
+  - Direct3DVertexBuffer8_COM_Wrapper and Direct3DIndexBuffer8_COM_Wrapper for buffer resources
+  - Direct3DCubeTexture8_COM_Wrapper and Direct3DVolumeTexture8_COM_Wrapper for texture resources
+  - Direct3DVolume8_COM_Wrapper for volume slices
+- Added complete vtable definitions for all COM interfaces
+- Created factory functions for wrapper instantiation with proper reference counting
+- Updated all resource creation methods to use wrappers instead of direct pass-through
+
+### Cube Texture Device Reset Tracking (August 7, 2025) ✅
+- Fixed missing registration of cube textures in CreateCubeTexture
+- Cube textures now properly tracked in all_cube_textures_ vector
+- Prevents resource leaks during device reset operations
+- Ensures D3DPOOL_DEFAULT cube textures are recreated after reset
+
+### DirectX 8 Render States Implementation ✅
+- Added all missing render states required by DX8Wrapper:
+  - D3DRS_RANGEFOGENABLE for range-based fog calculations
+  - D3DRS_FOGVERTEXMODE for vertex fog mode selection
+  - D3DRS_SPECULARMATERIALSOURCE for specular material source
+  - D3DRS_COLORVERTEX for color vertex enable/disable
+  - D3DRS_ZBIAS with OpenGL polygon offset mapping
+- Extended StateManager with new fields and proper OpenGL state mapping
+- Added comprehensive test_render_states.cpp validation
+
+### Volume Texture Support ✅
+- Added stub implementation in UpdateTexture for D3DRTYPE_VOLUMETEXTURE
+- CreateVolumeTexture returns D3DERR_NOTAVAILABLE as placeholder
+- Foundation laid for future 3D texture implementation
+
+### Cube Texture PreLoad Implementation ✅
+- Fully implemented PreLoad() method for cube textures
+- Sets proper texture sampling parameters (min/mag filters, wrap modes)
+- Enables GL_TEXTURE_CUBE_MAP_SEAMLESS for OpenGL 3.2+
+- Ensures all mip levels are properly allocated and uploaded
+
+### Display Mode Enumeration Enhancement ✅
+- Added multiple refresh rates (60, 75, 85, 100, 120 Hz) per format
+- Support for 16-bit (R5G6B5, X1R5G5B5) and 32-bit (X8R8G8B8, A8R8G8B8) formats
+- Improved CheckDepthStencilMatch for better depth format support
+- Full compatibility with DX8Wrapper's Find_Color_Mode and Find_Z_Mode logic
+
+### COM Wrapper Refactoring Plan ✅
+- Created comprehensive 15-task series (CW01-CW15) for COM interface overhaul
+- Planned base COM object implementation with proper IUnknown
+- Defined tasks for Surface, SwapChain, Volume, and VolumeTexture wrappers
+- Included testing, optimization, and documentation tasks
+- Updated TASKS.md with proper dependencies and execution order
+
+### Previous Infrastructure Tasks
+
+#### Backend Enum Fixes
+- Fixed duplicated backend enum definitions in dx8gl headers
+- Consolidated DX8_BACKEND_* and DX8GL_BACKEND_* to use only DX8GL_BACKEND_*
+- Added proper backend selection logic in dx8gl initialization
+
+#### OffscreenFramebuffer Helper Class
+- Created unified framebuffer management class for all backends
+- Supports multiple pixel formats (RGBA8, RGB565, FLOAT_RGBA, etc.)
+- Includes format conversion utilities
+- Provides CPU/GPU buffer synchronization
+
+#### WebGPU Backend Support
+- Added WebGPU backend compilation flags to build system
+- Created WebGPU backend interface following the DX8RenderBackend pattern
+- Added build documentation for WebGPU compilation
+
+#### Test Suite Improvements
+- Created backend selection tests to verify runtime backend switching
+- Added framebuffer correctness tests for the new helper class
+- Fixed test CMakeLists.txt to properly link against OSMesa target
+
+#### Mesa Library Linking Fix
+- Changed Mesa build from static to shared libraries in CMakeLists.txt
+- Updated CMake configuration to detect both static and shared Mesa libraries
+- Fixed test linking to use locally built Mesa 25.0.7 instead of system libraries
+- Verified all dx8gl tests pass with the correct Mesa version

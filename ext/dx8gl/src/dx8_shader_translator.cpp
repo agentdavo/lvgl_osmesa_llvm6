@@ -1513,7 +1513,8 @@ std::string DX8ShaderTranslator::pixel_register_to_glsl(const ShaderInstruction:
         case D3DSPR_INPUT:
             // Pixel shader inputs: t0-t3 are texture coordinates, v0-v1 are colors
             if (reg.index < 4) {
-                result += "t" + std::to_string(reg.index);
+                // Use the varying name instead of t register
+                result += "v_texcoord" + std::to_string(reg.index);
                 // Track that we need this texture coordinate varying
                 varying_texcoords_used_.insert(reg.index);
             } else if (reg.index == 4) {

@@ -349,6 +349,23 @@ if(LVGL_USE_NUTTX)
     target_compile_definitions(lvgl PUBLIC LV_USE_NUTTX=1)
 endif()
 
+# Build googletest library (for unit tests)
+option(BUILD_TESTS "Build tests" ON)
+if(BUILD_TESTS)
+    # Disable installing googletest (we only need it for our tests)
+    set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+    set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+    
+    # Add googletest subdirectory
+    add_subdirectory(ext/googletest)
+    
+    # Enable testing
+    enable_testing()
+    
+    # Make gtest headers available
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/ext/googletest/googletest/include)
+endif()
+
 # Build dx8gl library
 add_subdirectory(ext/dx8gl)
 

@@ -4,11 +4,13 @@
 #include "d3d8_indexbuffer.h"
 #include "d3d8_texture.h"
 #include "d3d8_cubetexture.h"
+#include "d3d8_volumetexture.h"
 #include "d3d8_surface.h"
 #include "logger.h"
 #include "osmesa_context.h"
 #include "render_backend.h"
 #include "dx8gl.h"
+#include "shader_constant_manager.h"
 #include <algorithm>
 #include <cstring>
 #include <cstdlib>
@@ -306,8 +308,10 @@ bool Direct3DDevice8::initialize() {
         return false;
     }
     
+    shader_constant_manager_ = std::make_unique<ShaderConstantManager>();
+    
     shader_program_manager_ = std::make_unique<ShaderProgramManager>();
-    if (!shader_program_manager_->initialize(vertex_shader_manager_.get(), pixel_shader_manager_.get())) {
+    if (!shader_program_manager_->initialize(vertex_shader_manager_.get(), pixel_shader_manager_.get(), shader_constant_manager_.get())) {
         DX8GL_ERROR("Failed to initialize shader program manager");
         return false;
     }
@@ -418,8 +422,10 @@ bool Direct3DDevice8::complete_deferred_osmesa_init() {
         return false;
     }
     
+    shader_constant_manager_ = std::make_unique<ShaderConstantManager>();
+    
     shader_program_manager_ = std::make_unique<ShaderProgramManager>();
-    if (!shader_program_manager_->initialize(vertex_shader_manager_.get(), pixel_shader_manager_.get())) {
+    if (!shader_program_manager_->initialize(vertex_shader_manager_.get(), pixel_shader_manager_.get(), shader_constant_manager_.get())) {
         DX8GL_ERROR("Failed to initialize shader program manager");
         return false;
     }
@@ -1457,6 +1463,23 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
         }
     }
     
+    // Volume textures in D3DPOOL_DEFAULT also need recreation
+    std::vector<Direct3DVolumeTexture8*> volume_textures_to_recreate;
+    for (auto* volume_texture : all_volume_textures_) {
+        if (volume_texture && volume_texture->get_pool() == D3DPOOL_DEFAULT) {
+            volume_textures_to_recreate.push_back(volume_texture);
+        }
+    }
+    
+    // Recreate volume textures
+    for (auto* volume_texture : volume_textures_to_recreate) {
+        DX8GL_INFO("Recreating volume texture %p in D3DPOOL_DEFAULT", volume_texture);
+        if (!volume_texture->recreate_gl_resources()) {
+            DX8GL_ERROR("Failed to recreate volume texture %p", volume_texture);
+            // Continue with other resources even if one fails
+        }
+    }
+    
     // Reset viewport to full window
     D3DVIEWPORT8 viewport;
     viewport.X = 0;
@@ -1585,10 +1608,51 @@ HRESULT Direct3DDevice8::CreateIndexBuffer(UINT Length, DWORD Usage, D3DFORMAT F
 HRESULT Direct3DDevice8::CreateVolumeTexture(UINT Width, UINT Height, UINT Depth, UINT Levels,
                                            DWORD Usage, D3DFORMAT Format, D3DPOOL Pool,
                                            IDirect3DVolumeTexture8** ppVolumeTexture) {
-    // Volume textures not yet fully implemented
-    // The UpdateTexture method supports basic volume texture copying
-    DX8GL_WARNING("CreateVolumeTexture: Volume textures not fully implemented");
-    return D3DERR_NOTAVAILABLE;
+    if (!ppVolumeTexture) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DX8GL_INFO("CreateVolumeTexture: %ux%ux%u, levels=%u, usage=0x%08x, format=0x%08x, pool=%d",
+               Width, Height, Depth, Levels, Usage, Format, Pool);
+    
+    // Validate dimensions (must be power of 2)
+    if (Width == 0 || Height == 0 || Depth == 0 ||
+        (Width & (Width - 1)) != 0 ||
+        (Height & (Height - 1)) != 0 ||
+        (Depth & (Depth - 1)) != 0) {
+        DX8GL_ERROR("Invalid volume texture dimensions: %ux%ux%u (must be power of 2)",
+                   Width, Height, Depth);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Check for 3D texture support
+    GLint max_3d_texture_size = 0;
+    glGetIntegerv(GL_MAX_3D_TEXTURE_SIZE, &max_3d_texture_size);
+    if (max_3d_texture_size == 0) {
+        DX8GL_ERROR("3D textures not supported by OpenGL implementation");
+        return D3DERR_NOTAVAILABLE;
+    }
+    
+    if (Width > (UINT)max_3d_texture_size || Height > (UINT)max_3d_texture_size || 
+        Depth > (UINT)max_3d_texture_size) {
+        DX8GL_ERROR("Volume texture dimensions exceed maximum: %ux%ux%u (max: %d)",
+                   Width, Height, Depth, max_3d_texture_size);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    auto texture = new Direct3DVolumeTexture8(this, Width, Height, Depth, Levels, Usage, Format, Pool);
+    if (!texture) {
+        return E_OUTOFMEMORY;
+    }
+    
+    if (!texture->initialize()) {
+        texture->Release();
+        return D3DERR_INVALIDCALL;
+    }
+    
+    *ppVolumeTexture = texture;
+    DX8GL_INFO("Created volume texture: %p", texture);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::CreateCubeTexture(UINT EdgeLength, UINT Levels, DWORD Usage,
@@ -2506,11 +2570,19 @@ HRESULT Direct3DDevice8::DeleteVertexShader(DWORD Handle) {
 
 HRESULT Direct3DDevice8::SetVertexShaderConstant(DWORD Register, const void* pConstantData,
                                                 DWORD ConstantCount) {
-    if (!vertex_shader_manager_) {
+    if (!shader_constant_manager_) {
         return D3DERR_NOTAVAILABLE;
     }
     
-    return vertex_shader_manager_->set_vertex_shader_constant(Register, pConstantData, ConstantCount);
+    // Set in the centralized constant manager
+    shader_constant_manager_->set_float_constants(Register, (const float*)pConstantData, ConstantCount);
+    
+    // Also set in vertex shader manager for compatibility (will be removed later)
+    if (vertex_shader_manager_) {
+        vertex_shader_manager_->set_vertex_shader_constant(Register, pConstantData, ConstantCount);
+    }
+    
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetVertexShaderConstant(DWORD Register, void* pConstantData,
@@ -2597,7 +2669,20 @@ HRESULT Direct3DDevice8::DeletePixelShader(DWORD Handle) {
 
 HRESULT Direct3DDevice8::SetPixelShaderConstant(DWORD Register, const void* pConstantData,
                                                DWORD ConstantCount) {
-    return pixel_shader_manager_->set_pixel_shader_constant(Register, pConstantData, ConstantCount);
+    if (!shader_constant_manager_) {
+        return D3DERR_NOTAVAILABLE;
+    }
+    
+    // Set in the centralized constant manager (pixel shader constants use a different range)
+    // DirectX 8 pixel shader constants are typically c0-c7, but we'll offset them for distinction
+    shader_constant_manager_->set_float_constants(Register + 96, (const float*)pConstantData, ConstantCount);
+    
+    // Also set in pixel shader manager for compatibility (will be removed later)
+    if (pixel_shader_manager_) {
+        pixel_shader_manager_->set_pixel_shader_constant(Register, pConstantData, ConstantCount);
+    }
+    
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetPixelShaderConstant(DWORD Register, void* pConstantData,
@@ -2919,6 +3004,25 @@ void Direct3DDevice8::unregister_cube_texture(Direct3DCubeTexture8* cube_texture
     if (it != all_cube_textures_.end()) {
         all_cube_textures_.erase(it);
         DX8GL_TRACE("Unregistered cube texture %p, remaining cube textures: %zu", cube_texture, all_cube_textures_.size());
+    }
+}
+
+void Direct3DDevice8::register_volume_texture(Direct3DVolumeTexture8* volume_texture) {
+    if (!volume_texture) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    all_volume_textures_.push_back(volume_texture);
+    DX8GL_TRACE("Registered volume texture %p, total volume textures: %zu", volume_texture, all_volume_textures_.size());
+}
+
+void Direct3DDevice8::unregister_volume_texture(Direct3DVolumeTexture8* volume_texture) {
+    if (!volume_texture) return;
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    auto it = std::find(all_volume_textures_.begin(), all_volume_textures_.end(), volume_texture);
+    if (it != all_volume_textures_.end()) {
+        all_volume_textures_.erase(it);
+        DX8GL_TRACE("Unregistered volume texture %p, remaining volume textures: %zu", volume_texture, all_volume_textures_.size());
     }
 }
 

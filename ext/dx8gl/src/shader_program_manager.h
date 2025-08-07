@@ -26,7 +26,8 @@ public:
     ~ShaderProgramManager();
     
     // Initialize with references to shader managers
-    bool initialize(VertexShaderManager* vertex_mgr, PixelShaderManager* pixel_mgr);
+    bool initialize(VertexShaderManager* vertex_mgr, PixelShaderManager* pixel_mgr, 
+                   class ShaderConstantManager* constant_mgr = nullptr);
     void cleanup();
     
     // Get or create a program for current vertex/pixel shader combination
@@ -104,6 +105,7 @@ private:
     // Member variables
     VertexShaderManager* vertex_shader_manager_;
     PixelShaderManager* pixel_shader_manager_;
+    class ShaderConstantManager* shader_constant_manager_;
     
     // Cache of compiled programs
     std::unordered_map<ProgramKey, std::unique_ptr<ShaderProgram>, ProgramKeyHash> program_cache_;

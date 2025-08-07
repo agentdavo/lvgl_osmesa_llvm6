@@ -1,15 +1,11 @@
 #include "d3d8_interface.h"
 #include "d3d8_device.h"
 #include "logger.h"
+#include "render_backend.h"
+#include "gl3_headers.h"
 #include <cstring>
 #include <cstdlib>
 #include <algorithm>
-
-#ifdef __EMSCRIPTEN__
-#include "gl3_headers.h"
-#else
-#include <GL/gl.h>
-#endif
 
 // Interface ID definitions
 const IID IID_IUnknown = { 0x00000000, 0x0000, 0x0000, { 0xC0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46 } };
@@ -633,6 +629,19 @@ void Direct3D8::populate_device_caps(AdapterInfo& adapter) {
     D3DCAPS8& caps = adapter.caps;
     memset(&caps, 0, sizeof(D3DCAPS8));
     
+    // Query actual OpenGL/backend capabilities if available
+    DX8RenderBackend* backend = get_render_backend();
+    bool has_gl_context = false;
+    
+    // Try to get capabilities from the backend if available
+    if (backend) {
+        // Backend is available, we can query capabilities
+        has_gl_context = true;
+        DX8GL_INFO("Querying capabilities from backend");
+    } else {
+        DX8GL_WARNING("No backend available, using default capability values");
+    }
+    
     // Device info
     caps.DeviceType = D3DDEVTYPE_HAL;
     caps.AdapterOrdinal = 0;
@@ -777,13 +786,55 @@ void Direct3D8::populate_device_caps(AdapterInfo& adapter) {
                    D3DLINECAPS_ALPHACMP |
                    D3DLINECAPS_FOG;
     
-    // Max texture dimensions
-    caps.MaxTextureWidth = 4096;
-    caps.MaxTextureHeight = 4096;
-    caps.MaxVolumeExtent = 512;
-    caps.MaxTextureRepeat = 8192;
-    caps.MaxTextureAspectRatio = 8192;
-    caps.MaxAnisotropy = 16;
+    // Max texture dimensions - query from OpenGL if available
+    if (has_gl_context) {
+        GLint max_texture_size = 0;
+        glGetIntegerv(GL_MAX_TEXTURE_SIZE, &max_texture_size);
+        if (max_texture_size > 0) {
+            caps.MaxTextureWidth = max_texture_size;
+            caps.MaxTextureHeight = max_texture_size;
+            DX8GL_INFO("Detected max texture size: %d", max_texture_size);
+        } else {
+            caps.MaxTextureWidth = 4096;
+            caps.MaxTextureHeight = 4096;
+        }
+        
+        GLint max_3d_texture_size = 0;
+        glGetIntegerv(GL_MAX_3D_TEXTURE_SIZE, &max_3d_texture_size);
+        if (max_3d_texture_size > 0) {
+            caps.MaxVolumeExtent = max_3d_texture_size;
+            DX8GL_INFO("Detected max 3D texture size: %d", max_3d_texture_size);
+        } else {
+            caps.MaxVolumeExtent = 512;
+        }
+        
+        // Check for anisotropic filtering support
+        GLfloat max_anisotropy = 0.0f;
+        const GLubyte* extensions = glGetString(GL_EXTENSIONS);
+        if (extensions && strstr((const char*)extensions, "GL_EXT_texture_filter_anisotropic")) {
+            glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &max_anisotropy);
+            if (max_anisotropy > 0.0f) {
+                caps.MaxAnisotropy = static_cast<DWORD>(max_anisotropy);
+                DX8GL_INFO("Detected max anisotropy: %.1f", max_anisotropy);
+            } else {
+                caps.MaxAnisotropy = 16;
+            }
+        } else {
+            caps.MaxAnisotropy = 1;
+            DX8GL_INFO("Anisotropic filtering not supported");
+        }
+        
+        caps.MaxTextureRepeat = 8192;
+        caps.MaxTextureAspectRatio = max_texture_size;
+    } else {
+        // Use default values when no GL context
+        caps.MaxTextureWidth = 4096;
+        caps.MaxTextureHeight = 4096;
+        caps.MaxVolumeExtent = 512;
+        caps.MaxTextureRepeat = 8192;
+        caps.MaxTextureAspectRatio = 8192;
+        caps.MaxAnisotropy = 16;
+    }
     caps.MaxVertexW = 1e10f;
     
     // Guard band limits
@@ -856,18 +907,62 @@ void Direct3D8::populate_device_caps(AdapterInfo& adapter) {
     caps.MaxVertexBlendMatrices = 4;
     caps.MaxVertexBlendMatrixIndex = 255;
     
-    // Point parameters
-    caps.MaxPointSize = 256.0f;
+    // Point parameters - query from OpenGL if available
+    if (has_gl_context) {
+        // Query point size range
+        GLfloat point_size_range[2] = {1.0f, 256.0f};
+        glGetFloatv(GL_POINT_SIZE_RANGE, point_size_range);
+        caps.MaxPointSize = point_size_range[1];
+        DX8GL_INFO("Detected point size range: %.1f - %.1f", point_size_range[0], point_size_range[1]);
+        
+        // Get OpenGL version info
+        const char* gl_version = (const char*)glGetString(GL_VERSION);
+        const char* glsl_version = (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+        const char* gl_vendor = (const char*)glGetString(GL_VENDOR);
+        const char* gl_renderer = (const char*)glGetString(GL_RENDERER);
+        
+        DX8GL_INFO("OpenGL vendor: %s", gl_vendor ? gl_vendor : "unknown");
+        DX8GL_INFO("OpenGL renderer: %s", gl_renderer ? gl_renderer : "unknown");
+        DX8GL_INFO("OpenGL version: %s", gl_version ? gl_version : "unknown");
+        DX8GL_INFO("GLSL version: %s", glsl_version ? glsl_version : "unknown");
+        
+        // Query max vertex shader constants
+        GLint max_vertex_uniforms = 0;
+        glGetIntegerv(GL_MAX_VERTEX_UNIFORM_COMPONENTS, &max_vertex_uniforms);
+        if (max_vertex_uniforms > 0) {
+            // Each constant is 4 components
+            caps.MaxVertexShaderConst = std::min(96, max_vertex_uniforms / 4);
+            DX8GL_INFO("Detected max vertex shader constants: %d", caps.MaxVertexShaderConst);
+        } else {
+            caps.MaxVertexShaderConst = 96;
+        }
+    } else {
+        caps.MaxPointSize = 256.0f;
+        caps.MaxVertexShaderConst = 96;
+    }
+    
     caps.MaxPrimitiveCount = 0xFFFFFF;
     caps.MaxVertexIndex = 0xFFFFFF;
     caps.MaxStreams = 16;
     caps.MaxStreamStride = 2048;
     
-    // Shader versions
+    // Shader versions - DirectX 8.1 shader models
     caps.VertexShaderVersion = D3DVS_VERSION(1, 1);  // Vertex shader 1.1
-    caps.MaxVertexShaderConst = 96;
     caps.PixelShaderVersion = D3DPS_VERSION(1, 4);   // Pixel shader 1.4
     caps.MaxPixelShaderValue = 8.0f;
+    
+    // Log capability summary
+    DX8GL_INFO("===== Device Capabilities Summary =====");
+    DX8GL_INFO("Backend: %s", backend ? "Available" : "None");
+    DX8GL_INFO("Max Texture Size: %dx%d", caps.MaxTextureWidth, caps.MaxTextureHeight);
+    DX8GL_INFO("Max 3D Texture Size: %d", caps.MaxVolumeExtent);
+    DX8GL_INFO("Max Anisotropy: %d", caps.MaxAnisotropy);
+    DX8GL_INFO("Max Texture Units: %d", caps.MaxSimultaneousTextures);
+    DX8GL_INFO("Vertex Shader Version: %d.%d", (caps.VertexShaderVersion >> 8) & 0xFF, caps.VertexShaderVersion & 0xFF);
+    DX8GL_INFO("Pixel Shader Version: %d.%d", (caps.PixelShaderVersion >> 8) & 0xFF, caps.PixelShaderVersion & 0xFF);
+    DX8GL_INFO("Max Vertex Constants: %d", caps.MaxVertexShaderConst);
+    DX8GL_INFO("Max Point Size: %.1f", caps.MaxPointSize);
+    DX8GL_INFO("=======================================");
 }
 
 D3DFORMAT Direct3D8::get_desktop_format() {

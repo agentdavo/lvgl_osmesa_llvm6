@@ -437,3 +437,93 @@ else()
     message(WARNING "dx8gl target not available, skipping test_com_wrapper_threading")
     set_target_properties(test_com_wrapper_threading PROPERTIES EXCLUDE_FROM_ALL TRUE)
 endif()
+
+# Test executable for matrix pipeline
+add_executable(test_matrix_pipeline
+    test_matrix_pipeline.cpp
+)
+
+target_include_directories(test_matrix_pipeline PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_matrix_pipeline PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME MatrixPipelineTest COMMAND test_matrix_pipeline)
+    set_tests_properties(MatrixPipelineTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_matrix_pipeline")
+    set_target_properties(test_matrix_pipeline PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for D3DX math functions
+add_executable(test_d3dx_math
+    test_d3dx_math.cpp
+)
+
+target_include_directories(test_d3dx_math PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_d3dx_math PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME D3DXMathTest COMMAND test_d3dx_math)
+    set_tests_properties(D3DXMathTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_d3dx_math")
+    set_target_properties(test_d3dx_math PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for shader constants
+add_executable(test_shader_constants
+    test_shader_constants.cpp
+)
+
+target_include_directories(test_shader_constants PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_shader_constants PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME ShaderConstantsTest COMMAND test_shader_constants)
+    set_tests_properties(ShaderConstantsTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_shader_constants")
+    set_target_properties(test_shader_constants PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for volume textures
+add_executable(test_volume_texture
+    test_volume_texture.cpp
+)
+
+target_include_directories(test_volume_texture PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_volume_texture PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME VolumeTextureTest COMMAND test_volume_texture)
+    set_tests_properties(VolumeTextureTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_volume_texture")
+    set_target_properties(test_volume_texture PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for shader hot reload
+add_executable(test_shader_hot_reload
+    test_shader_hot_reload.cpp
+)
+
+target_include_directories(test_shader_hot_reload PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_shader_hot_reload PRIVATE dx8gl gtest gtest_main stdc++fs pthread)
+    add_test(NAME ShaderHotReloadTest COMMAND test_shader_hot_reload)
+    set_tests_properties(ShaderHotReloadTest PROPERTIES TIMEOUT 60)
+else()
+    message(WARNING "dx8gl target not available, skipping test_shader_hot_reload")
+    set_target_properties(test_shader_hot_reload PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()

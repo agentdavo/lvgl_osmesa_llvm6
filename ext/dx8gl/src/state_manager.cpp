@@ -1314,31 +1314,35 @@ void StateManager::apply_transform_states(ShaderProgram* shader) {
     // Use the shader program
     glUseProgram(shader->program);
     
-    // Apply standard transform matrices
+    // DirectX uses row-major matrices, OpenGL expects column-major
+    // We need to transpose when sending to OpenGL (GL_TRUE) or pre-transpose our matrices
+    // Using GL_TRUE is simpler and more correct
+    
+    // Apply standard transform matrices with transposition
     if (shader->u_world_matrix != -1) {
-        glUniformMatrix4fv(shader->u_world_matrix, 1, GL_FALSE, 
+        glUniformMatrix4fv(shader->u_world_matrix, 1, GL_TRUE, 
                           reinterpret_cast<const GLfloat*>(&transform_state_.world));
-        DX8GL_DEBUG("Applied world matrix to uniform location %d", shader->u_world_matrix);
+        DX8GL_DEBUG("Applied world matrix to uniform location %d (transposed)", shader->u_world_matrix);
     }
     
     if (shader->u_view_matrix != -1) {
-        glUniformMatrix4fv(shader->u_view_matrix, 1, GL_FALSE,
+        glUniformMatrix4fv(shader->u_view_matrix, 1, GL_TRUE,
                           reinterpret_cast<const GLfloat*>(&transform_state_.view));
-        DX8GL_DEBUG("Applied view matrix to uniform location %d", shader->u_view_matrix);
+        DX8GL_DEBUG("Applied view matrix to uniform location %d (transposed)", shader->u_view_matrix);
     }
     
     if (shader->u_projection_matrix != -1) {
-        glUniformMatrix4fv(shader->u_projection_matrix, 1, GL_FALSE,
+        glUniformMatrix4fv(shader->u_projection_matrix, 1, GL_TRUE,
                           reinterpret_cast<const GLfloat*>(&transform_state_.projection));
-        DX8GL_DEBUG("Applied projection matrix to uniform location %d", shader->u_projection_matrix);
+        DX8GL_DEBUG("Applied projection matrix to uniform location %d (transposed)", shader->u_projection_matrix);
     }
     
     // Apply combined world-view-projection matrix if requested
     if (shader->u_world_view_proj_matrix != -1) {
         const D3DMATRIX* wvp_matrix = const_cast<StateManager*>(this)->get_world_view_projection_matrix();
-        glUniformMatrix4fv(shader->u_world_view_proj_matrix, 1, GL_FALSE,
+        glUniformMatrix4fv(shader->u_world_view_proj_matrix, 1, GL_TRUE,
                           reinterpret_cast<const GLfloat*>(wvp_matrix));
-        DX8GL_DEBUG("Applied world-view-projection matrix to uniform location %d", shader->u_world_view_proj_matrix);
+        DX8GL_DEBUG("Applied world-view-projection matrix to uniform location %d (transposed)", shader->u_world_view_proj_matrix);
     }
     
     // Apply texture matrices for active texture stages
@@ -1348,9 +1352,9 @@ void StateManager::apply_transform_states(ShaderProgram* shader) {
             std::string uniform_name = "u_texture_matrix[" + std::to_string(stage) + "]";
             auto it = shader->uniform_locations.find(uniform_name);
             if (it != shader->uniform_locations.end() && it->second != -1) {
-                glUniformMatrix4fv(it->second, 1, GL_FALSE,
+                glUniformMatrix4fv(it->second, 1, GL_TRUE,
                                   reinterpret_cast<const GLfloat*>(&transform_state_.texture[stage]));
-                DX8GL_DEBUG("Applied texture matrix %d to uniform location %d", stage, it->second);
+                DX8GL_DEBUG("Applied texture matrix %d to uniform location %d (transposed)", stage, it->second);
             }
         }
     }

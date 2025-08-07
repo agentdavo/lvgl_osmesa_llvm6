@@ -1,6 +1,7 @@
 #include "shader_program_manager.h"
 #include "vertex_shader_manager.h"
 #include "pixel_shader_manager.h"
+#include "shader_constant_manager.h"
 #include "shader_binary_cache.h"
 #include "logger.h"
 #include <cstring>
@@ -11,6 +12,7 @@ namespace dx8gl {
 ShaderProgramManager::ShaderProgramManager() 
     : vertex_shader_manager_(nullptr),
       pixel_shader_manager_(nullptr),
+      shader_constant_manager_(nullptr),
       current_program_(nullptr),
       current_valid_(false),
       default_pixel_shader_(0) {
@@ -22,7 +24,8 @@ ShaderProgramManager::~ShaderProgramManager() {
     cleanup();
 }
 
-bool ShaderProgramManager::initialize(VertexShaderManager* vertex_mgr, PixelShaderManager* pixel_mgr) {
+bool ShaderProgramManager::initialize(VertexShaderManager* vertex_mgr, PixelShaderManager* pixel_mgr,
+                                     ShaderConstantManager* constant_mgr) {
     if (!vertex_mgr || !pixel_mgr) {
         DX8GL_ERROR("ShaderProgramManager: Invalid shader managers provided");
         return false;
@@ -30,6 +33,7 @@ bool ShaderProgramManager::initialize(VertexShaderManager* vertex_mgr, PixelShad
     
     vertex_shader_manager_ = vertex_mgr;
     pixel_shader_manager_ = pixel_mgr;
+    shader_constant_manager_ = constant_mgr;
     
     // Initialize the global shader binary cache if not already initialized
     if (!g_shader_binary_cache) {
@@ -125,9 +129,15 @@ void ShaderProgramManager::apply_shader_state() {
     // Use the program
     glUseProgram(program);
     
-    // Apply uniforms
-    if (current_program_) {
-        apply_uniforms(current_program_);
+    // If we have a ShaderConstantManager, use it to upload dirty constants
+    if (shader_constant_manager_) {
+        shader_constant_manager_->init(program);
+        shader_constant_manager_->upload_dirty_constants();
+    } else {
+        // Fall back to old behavior for compatibility
+        if (current_program_) {
+            apply_uniforms(current_program_);
+        }
     }
 }
 

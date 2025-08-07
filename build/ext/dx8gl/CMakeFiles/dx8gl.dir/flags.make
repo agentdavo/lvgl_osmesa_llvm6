@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DDX8GL_BUILDING_DLL -DDX8GL_HAS_OSMESA -DDX8GL_USE_CPP_INTERFACES -DDX8GL_USE_DESKTOP_GL -DGL_GLEXT_PROTOTYPES -DSDL_MAIN_USE_CALLBACKS
 
-CXX_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src -I/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm -I/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/../osmesa/include -I/home/djs/lvgl_osmesa_llvm6/build/mesa-install/include
+CXX_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6/ext/googletest/googletest/include -I/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src -I/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/lib/glm -I/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/../osmesa/include -I/home/djs/lvgl_osmesa_llvm6/build/mesa-install/include
 
 CXX_FLAGS = -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wpedantic -O3 -march=native -ffast-math -funroll-loops -ftree-vectorize
 

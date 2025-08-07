@@ -296,6 +296,7 @@ private:
     std::unique_ptr<VertexShaderManager> vertex_shader_manager_;
     std::unique_ptr<PixelShaderManager> pixel_shader_manager_;
     std::unique_ptr<ShaderProgramManager> shader_program_manager_;
+    std::unique_ptr<class ShaderConstantManager> shader_constant_manager_;
     
     // Command buffer for batching
     std::unique_ptr<CommandBuffer> current_command_buffer_;
@@ -322,6 +323,7 @@ private:
     // Resource tracking for device reset (tracks ALL created resources)
     std::vector<Direct3DTexture8*> all_textures_;
     std::vector<Direct3DCubeTexture8*> all_cube_textures_;
+    std::vector<Direct3DVolumeTexture8*> all_volume_textures_;
     std::vector<Direct3DVertexBuffer8*> all_vertex_buffers_;
     std::vector<Direct3DIndexBuffer8*> all_index_buffers_;
     

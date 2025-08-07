@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_USE_SDL=1
 
-C_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6 -I/home/djs/lvgl_osmesa_llvm6/ext -I/home/djs/lvgl_osmesa_llvm6/ext/lvgl -isystem /usr/include/SDL2
+C_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6 -I/home/djs/lvgl_osmesa_llvm6/ext -I/home/djs/lvgl_osmesa_llvm6/ext/lvgl -I/home/djs/lvgl_osmesa_llvm6/ext/googletest/googletest/include -isystem /usr/include/SDL2
 
 C_FLAGS = -O3 -DNDEBUG -fPIC
 
 CXX_DEFINES = -DLV_CONF_INCLUDE_SIMPLE -DLV_USE_SDL=1
 
-CXX_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6 -I/home/djs/lvgl_osmesa_llvm6/ext -I/home/djs/lvgl_osmesa_llvm6/ext/lvgl -isystem /usr/include/SDL2
+CXX_INCLUDES = -I/home/djs/lvgl_osmesa_llvm6 -I/home/djs/lvgl_osmesa_llvm6/ext -I/home/djs/lvgl_osmesa_llvm6/ext/lvgl -I/home/djs/lvgl_osmesa_llvm6/ext/googletest/googletest/include -isystem /usr/include/SDL2
 
 CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17 -fPIC
 
