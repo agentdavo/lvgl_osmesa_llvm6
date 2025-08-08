@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/command_buffer.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/cube_texture_support.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o.d"
+  "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_additional_swapchain.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_com_wrapper.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_cubetexture.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o.d"
   "/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_device.cpp" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o" "gcc" "ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o.d"

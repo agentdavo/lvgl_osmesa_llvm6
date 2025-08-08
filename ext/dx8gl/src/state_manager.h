@@ -234,6 +234,91 @@ struct ClipPlaneState {
     bool enabled = false;
 };
 
+// Clip status state
+struct ClipStatusState {
+    DWORD clip_union = 0;
+    DWORD clip_intersection = 0;
+    bool valid = false;
+};
+
+// State block structure for capturing/restoring device state
+struct StateBlock {
+    // What states to capture/apply
+    D3DSTATEBLOCKTYPE type = D3DSBT_ALL;
+    bool is_recording = false;
+    
+    // Render states
+    std::unordered_map<D3DRENDERSTATETYPE, DWORD> render_states;
+    
+    // Transform states
+    std::unordered_map<D3DTRANSFORMSTATETYPE, D3DMATRIX> transforms;
+    
+    // Texture stage states
+    struct TextureStageState {
+        std::unordered_map<D3DTEXTURESTAGESTATETYPE, DWORD> states;
+    };
+    std::array<TextureStageState, 8> texture_stages;
+    
+    // Sampler states (stored as texture stage states in DX8)
+    struct SamplerState {
+        std::unordered_map<D3DTEXTURESTAGESTATETYPE, DWORD> states;
+    };
+    std::array<SamplerState, 8> sampler_states;
+    
+    // Lights
+    std::unordered_map<DWORD, LightState> lights;
+    
+    // Material
+    bool has_material = false;
+    MaterialState material;
+    
+    // Viewport
+    bool has_viewport = false;
+    ViewportState viewport;
+    
+    // Clip planes
+    std::unordered_map<DWORD, ClipPlaneState> clip_planes;
+    
+    // Vertex shader and constants
+    DWORD vertex_shader = 0;
+    bool has_vertex_shader = false;
+    std::unordered_map<DWORD, D3DXVECTOR4> vertex_shader_constants;
+    
+    // Pixel shader and constants
+    DWORD pixel_shader = 0;
+    bool has_pixel_shader = false;
+    std::unordered_map<DWORD, D3DXVECTOR4> pixel_shader_constants;
+    
+    // FVF
+    DWORD fvf = 0;
+    bool has_fvf = false;
+    
+    // Textures
+    std::array<IDirect3DBaseTexture8*, 8> textures = {};
+    std::array<bool, 8> has_texture = {};
+    
+    // Stream sources
+    struct StreamSource {
+        IDirect3DVertexBuffer8* buffer = nullptr;
+        UINT stride = 0;
+        bool valid = false;
+    };
+    std::array<StreamSource, 16> stream_sources;
+    
+    // Index buffer
+    IDirect3DIndexBuffer8* index_buffer = nullptr;
+    UINT index_base_vertex = 0;
+    bool has_index_buffer = false;
+    
+    // Clear the state block
+    void clear();
+    
+    // Check if state block should capture/apply a particular state
+    bool should_capture_render_state(D3DRENDERSTATETYPE state) const;
+    bool should_capture_texture_stage(DWORD stage, D3DTEXTURESTAGESTATETYPE state) const;
+    bool should_capture_transform(D3DTRANSFORMSTATETYPE state) const;
+};
+
 class StateManager {
 public:
     StateManager();
@@ -249,6 +334,7 @@ public:
     // Transform management
     void set_transform(D3DTRANSFORMSTATETYPE state, const D3DMATRIX* matrix);
     void get_transform(D3DTRANSFORMSTATETYPE state, D3DMATRIX* matrix) const;
+    void multiply_transform(D3DTRANSFORMSTATETYPE state, const D3DMATRIX* matrix);
     const D3DMATRIX* get_world_view_projection_matrix();
     const D3DMATRIX* get_world_view_matrix();
     const D3DMATRIX* get_view_projection_matrix();
@@ -281,6 +367,10 @@ public:
     void set_clip_plane(DWORD index, const float* plane);
     void get_clip_plane(DWORD index, float* plane) const;
     
+    // Clip status management
+    void set_clip_status(DWORD clip_union, DWORD clip_intersection);
+    void get_clip_status(DWORD* clip_union, DWORD* clip_intersection) const;
+    
     // Apply current state to OpenGL
     void apply_render_states();
     void apply_transform_states(ShaderProgram* shader);
@@ -308,6 +398,17 @@ public:
     
     // Apply shader state (for immediate mode)
     void apply_shader_state();
+    
+    // State block management
+    DWORD create_state_block(D3DSTATEBLOCKTYPE type);
+    void delete_state_block(DWORD token);
+    void begin_state_block();
+    DWORD end_state_block();
+    void apply_state_block(DWORD token);
+    void capture_state_block(DWORD token);
+    
+    // Get current recording state block (if any)
+    StateBlock* get_recording_state_block() { return recording_state_block_; }
 
 private:
     // Helper methods
@@ -342,6 +443,9 @@ private:
     std::array<LightState, MAX_LIGHTS> lights_;
     std::array<ClipPlaneState, MAX_CLIP_PLANES> clip_planes_;
     
+    // Clip status state
+    ClipStatusState clip_status_;
+    
     // State dirty flags
     bool render_state_dirty_;
     bool transform_state_dirty_;
@@ -366,6 +470,11 @@ private:
     
     // Current FVF for immediate mode
     DWORD current_fvf_;
+    
+    // State block management
+    std::unordered_map<DWORD, std::unique_ptr<StateBlock>> state_blocks_;
+    StateBlock* recording_state_block_ = nullptr;
+    DWORD next_state_block_token_ = 1;
 };
 
 } // namespace dx8gl

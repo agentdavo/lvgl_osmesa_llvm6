@@ -6,6 +6,7 @@
 #include "d3d8_cubetexture.h"
 #include "d3d8_volumetexture.h"
 #include "d3d8_surface.h"
+#include "d3d8_additional_swapchain.h"
 #include "logger.h"
 #include "osmesa_context.h"
 #include "render_backend.h"
@@ -88,10 +89,18 @@ Direct3DDevice8::Direct3DDevice8(Direct3D8* d3d8, UINT adapter, D3DDEVTYPE devic
     , device_lost_(false)
     , can_reset_device_(false)
     , frame_count_(0)
-    , is_multithreaded_(behavior_flags & D3DCREATE_MULTITHREADED) {
+    , is_multithreaded_(behavior_flags & D3DCREATE_MULTITHREADED)
+    , cursor_state_{0, 0, 0, 0, 0, false, 0, 0, false}
+    , current_palette_(0) {
     
     // Set global device instance for framebuffer access
     g_global_device = this;
+    
+    // Initialize palette data
+    for (auto& palette : palettes_) {
+        palette.valid = false;
+        std::memset(palette.entries, 0, sizeof(palette.entries));
+    }
     
     // Copy presentation parameters
     memcpy(&present_params_, presentation_params, sizeof(D3DPRESENT_PARAMETERS));
@@ -138,6 +147,14 @@ Direct3DDevice8::~Direct3DDevice8() {
         render_thread_ = nullptr;
     }
     
+    // Release additional swap chains
+    for (auto* swap_chain : additional_swap_chains_) {
+        if (swap_chain) {
+            swap_chain->Release();
+        }
+    }
+    additional_swap_chains_.clear();
+    
     // Release resources
     for (auto& tex : textures_) {
         if (tex.second) {
@@ -172,6 +189,12 @@ Direct3DDevice8::~Direct3DDevice8() {
     
     if (depth_stencil_) {
         depth_stencil_->Release();
+    }
+    
+    // Clean up cursor resources
+    if (cursor_state_.texture != 0) {
+        glDeleteTextures(1, &cursor_state_.texture);
+        cursor_state_.texture = 0;
     }
     
     // Release parent
@@ -1278,20 +1301,166 @@ bool Direct3DDevice8::validate_present_params(D3DPRESENT_PARAMETERS* params) {
 
 HRESULT Direct3DDevice8::SetCursorProperties(UINT XHotSpot, UINT YHotSpot, 
                                             IDirect3DSurface8* pCursorBitmap) {
-    return D3DERR_NOTAVAILABLE;
+    DX8GL_TRACE("SetCursorProperties: hotspot(%u, %u), bitmap=%p", XHotSpot, YHotSpot, pCursorBitmap);
+    
+    if (!pCursorBitmap) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Get surface description to know dimensions
+    D3DSURFACE_DESC desc;
+    HRESULT hr = pCursorBitmap->GetDesc(&desc);
+    if (FAILED(hr)) {
+        DX8GL_ERROR("Failed to get cursor surface description");
+        return hr;
+    }
+    
+    // DirectX 8 cursor size limitations (typically 32x32 or 64x64)
+    if (desc.Width > 64 || desc.Height > 64) {
+        DX8GL_WARN("Cursor size %ux%u exceeds typical limits", desc.Width, desc.Height);
+    }
+    
+    // Lock the surface to read pixel data
+    D3DLOCKED_RECT locked_rect;
+    hr = pCursorBitmap->LockRect(&locked_rect, nullptr, D3DLOCK_READONLY);
+    if (FAILED(hr)) {
+        DX8GL_ERROR("Failed to lock cursor surface");
+        return hr;
+    }
+    
+    // Create or update OpenGL texture for cursor
+    if (cursor_state_.texture == 0) {
+        glGenTextures(1, &cursor_state_.texture);
+    }
+    
+    glBindTexture(GL_TEXTURE_2D, cursor_state_.texture);
+    
+    // Set texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    
+    // Convert surface format to OpenGL format and upload
+    // Assume D3DFMT_A8R8G8B8 for simplicity (most common cursor format)
+    if (desc.Format == D3DFMT_A8R8G8B8 || desc.Format == D3DFMT_X8R8G8B8) {
+        // DirectX uses BGRA, OpenGL expects RGBA, so we need to swizzle
+        std::vector<uint32_t> rgba_data(desc.Width * desc.Height);
+        
+        for (UINT y = 0; y < desc.Height; y++) {
+            uint32_t* src_row = (uint32_t*)((uint8_t*)locked_rect.pBits + y * locked_rect.Pitch);
+            uint32_t* dst_row = &rgba_data[y * desc.Width];
+            
+            for (UINT x = 0; x < desc.Width; x++) {
+                uint32_t pixel = src_row[x];
+                // Convert ARGB to RGBA
+                uint8_t a = (pixel >> 24) & 0xFF;
+                uint8_t r = (pixel >> 16) & 0xFF;
+                uint8_t g = (pixel >> 8) & 0xFF;
+                uint8_t b = pixel & 0xFF;
+                
+                // Handle X8R8G8B8 (no alpha) by setting alpha to 255
+                if (desc.Format == D3DFMT_X8R8G8B8) {
+                    a = 255;
+                }
+                
+                dst_row[x] = (a << 24) | (b << 16) | (g << 8) | r; // ABGR for GL_RGBA
+            }
+        }
+        
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, desc.Width, desc.Height, 0,
+                    GL_RGBA, GL_UNSIGNED_BYTE, rgba_data.data());
+    } else {
+        DX8GL_WARN("Unsupported cursor format: %u", desc.Format);
+        // For unsupported formats, create a default cursor
+        std::vector<uint32_t> default_cursor(desc.Width * desc.Height, 0xFFFFFFFF);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, desc.Width, desc.Height, 0,
+                    GL_RGBA, GL_UNSIGNED_BYTE, default_cursor.data());
+    }
+    
+    // Unlock the surface
+    pCursorBitmap->UnlockRect();
+    
+    // Update cursor state
+    cursor_state_.hotspot_x = XHotSpot;
+    cursor_state_.hotspot_y = YHotSpot;
+    cursor_state_.width = desc.Width;
+    cursor_state_.height = desc.Height;
+    cursor_state_.has_cursor = true;
+    
+    DX8GL_INFO("Cursor properties set: size=%ux%u, hotspot=(%u,%u), texture=%u",
+              desc.Width, desc.Height, XHotSpot, YHotSpot, cursor_state_.texture);
+    
+    return D3D_OK;
 }
 
 void Direct3DDevice8::SetCursorPosition(int X, int Y, DWORD Flags) {
-    // No-op in headless mode
+    DX8GL_TRACE("SetCursorPosition: (%d, %d), flags=0x%08X", X, Y, Flags);
+    
+    cursor_state_.position_x = X;
+    cursor_state_.position_y = Y;
+    
+    // D3DCURSOR_IMMEDIATE_UPDATE flag means update immediately
+    // In our case, we always update immediately since we're not hardware-accelerated
+    
+    DX8GL_INFO("Cursor position set to (%d, %d)", X, Y);
 }
 
 BOOL Direct3DDevice8::ShowCursor(BOOL bShow) {
-    return FALSE;
+    DX8GL_TRACE("ShowCursor: %s", bShow ? "TRUE" : "FALSE");
+    
+    BOOL previous_state = cursor_state_.visible ? TRUE : FALSE;
+    cursor_state_.visible = bShow ? true : false;
+    
+    DX8GL_INFO("Cursor visibility changed from %s to %s", 
+              previous_state ? "shown" : "hidden",
+              cursor_state_.visible ? "shown" : "hidden");
+    
+    return previous_state;
 }
 
 HRESULT Direct3DDevice8::CreateAdditionalSwapChain(D3DPRESENT_PARAMETERS* pPresentationParameters,
                                                   IDirect3DSwapChain8** ppSwapChain) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pPresentationParameters || !ppSwapChain) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    *ppSwapChain = nullptr;
+    
+    DX8GL_INFO("CreateAdditionalSwapChain: Creating swap chain %dx%d, format=%d",
+               pPresentationParameters->BackBufferWidth,
+               pPresentationParameters->BackBufferHeight,
+               pPresentationParameters->BackBufferFormat);
+    
+    // Validate parameters
+    if (pPresentationParameters->BackBufferWidth == 0 ||
+        pPresentationParameters->BackBufferHeight == 0) {
+        DX8GL_ERROR("Invalid back buffer dimensions");
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Create the additional swap chain
+    AdditionalSwapChain* swap_chain = new AdditionalSwapChain(this, pPresentationParameters);
+    if (!swap_chain) {
+        DX8GL_ERROR("Failed to allocate AdditionalSwapChain");
+        return E_OUTOFMEMORY;
+    }
+    
+    // Initialize the swap chain
+    if (!swap_chain->initialize()) {
+        DX8GL_ERROR("Failed to initialize AdditionalSwapChain");
+        swap_chain->Release();
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Add to our list of additional swap chains
+    additional_swap_chains_.push_back(swap_chain);
+    
+    // Return the swap chain interface
+    *ppSwapChain = swap_chain;
+    
+    DX8GL_INFO("CreateAdditionalSwapChain: Successfully created swap chain %p", swap_chain);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
@@ -1310,6 +1479,14 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     
     // Flush any pending commands
     flush_command_buffer();
+    
+    // Store additional swap chain parameters for recreation
+    std::vector<D3DPRESENT_PARAMETERS> swap_chain_params;
+    for (auto* swap_chain : additional_swap_chains_) {
+        if (swap_chain) {
+            swap_chain_params.push_back(swap_chain->get_present_params());
+        }
+    }
     
     // Release current render targets and back buffers
     if (render_target_) {
@@ -1494,7 +1671,29 @@ HRESULT Direct3DDevice8::Reset(D3DPRESENT_PARAMETERS* pPresentationParameters) {
     device_lost_ = false;
     can_reset_device_ = false;
     
-    DX8GL_INFO("Device reset complete: %dx%d", width, height);
+    // Recreate additional swap chains with their original parameters
+    additional_swap_chains_.clear();  // Clear the vector (swap chains were already released)
+    for (const auto& params : swap_chain_params) {
+        // Update swap chain parameters with new device window if needed
+        D3DPRESENT_PARAMETERS updated_params = params;
+        
+        // Create new swap chain
+        AdditionalSwapChain* swap_chain = new AdditionalSwapChain(this, &updated_params);
+        if (swap_chain && swap_chain->initialize()) {
+            additional_swap_chains_.push_back(swap_chain);
+            DX8GL_INFO("Recreated additional swap chain %dx%d for window %p",
+                      updated_params.BackBufferWidth, updated_params.BackBufferHeight,
+                      updated_params.hDeviceWindow);
+        } else {
+            DX8GL_WARN("Failed to recreate additional swap chain");
+            if (swap_chain) {
+                swap_chain->Release();
+            }
+        }
+    }
+    
+    DX8GL_INFO("Device reset complete: %dx%d with %zu additional swap chains", 
+               width, height, additional_swap_chains_.size());
     return D3D_OK;
 }
 
@@ -1892,9 +2091,154 @@ HRESULT Direct3DDevice8::UpdateTexture(IDirect3DBaseTexture8* pSourceTexture,
         }
         
         case D3DRTYPE_VOLUMETEXTURE: {
-            // Volume textures not yet fully implemented
-            DX8GL_WARNING("UpdateTexture: Volume textures not implemented");
-            return D3DERR_NOTAVAILABLE;
+            // Volume texture copy
+            auto* src_vol_tex = static_cast<IDirect3DVolumeTexture8*>(pSourceTexture);
+            auto* dst_vol_tex = static_cast<IDirect3DVolumeTexture8*>(pDestinationTexture);
+            
+            // Get level counts
+            DWORD src_levels = src_vol_tex->GetLevelCount();
+            DWORD dst_levels = dst_vol_tex->GetLevelCount();
+            DWORD levels_to_copy = std::min(src_levels, dst_levels);
+            
+            DX8GL_DEBUG("UpdateTexture: Copying %u volume levels", levels_to_copy);
+            
+            // Copy each mip level
+            for (DWORD level = 0; level < levels_to_copy; level++) {
+                // Get volume descriptors to determine size
+                D3DVOLUME_DESC src_desc, dst_desc;
+                HRESULT hr = src_vol_tex->GetLevelDesc(level, &src_desc);
+                if (FAILED(hr)) {
+                    DX8GL_WARNING("Failed to get source volume desc for level %u", level);
+                    return hr;
+                }
+                
+                hr = dst_vol_tex->GetLevelDesc(level, &dst_desc);
+                if (FAILED(hr)) {
+                    DX8GL_WARNING("Failed to get dest volume desc for level %u", level);
+                    return hr;
+                }
+                
+                // Verify dimensions match
+                if (src_desc.Width != dst_desc.Width ||
+                    src_desc.Height != dst_desc.Height ||
+                    src_desc.Depth != dst_desc.Depth) {
+                    DX8GL_WARNING("Volume dimensions mismatch at level %u", level);
+                    return D3DERR_INVALIDCALL;
+                }
+                
+                // Lock source volume
+                D3DLOCKED_BOX src_locked;
+                hr = src_vol_tex->LockBox(level, &src_locked, nullptr, D3DLOCK_READONLY);
+                if (FAILED(hr)) {
+                    DX8GL_WARNING("Failed to lock source volume level %u", level);
+                    return hr;
+                }
+                
+                // Lock destination volume
+                D3DLOCKED_BOX dst_locked;
+                hr = dst_vol_tex->LockBox(level, &dst_locked, nullptr, 0);
+                if (FAILED(hr)) {
+                    src_vol_tex->UnlockBox(level);
+                    DX8GL_WARNING("Failed to lock destination volume level %u", level);
+                    return hr;
+                }
+                
+                // Calculate bytes per pixel based on format
+                UINT bytes_per_pixel = 4; // Default to 32-bit
+                switch (src_desc.Format) {
+                    case D3DFMT_A8R8G8B8:
+                    case D3DFMT_X8R8G8B8:
+                    case D3DFMT_A2B10G10R10:
+                    case D3DFMT_G16R16:
+                    case D3DFMT_A8B8G8R8:
+                    case D3DFMT_X8B8G8R8:
+                    case D3DFMT_A2R10G10B10:
+                    case D3DFMT_Q8W8V8U8:
+                    case D3DFMT_V16U16:
+                    case D3DFMT_D32:
+                    case D3DFMT_D24S8:
+                    case D3DFMT_D24X8:
+                    case D3DFMT_D24X4S4:
+                        bytes_per_pixel = 4;
+                        break;
+                    case D3DFMT_R8G8B8:
+                        bytes_per_pixel = 3;
+                        break;
+                    case D3DFMT_R5G6B5:
+                    case D3DFMT_X1R5G5B5:
+                    case D3DFMT_A1R5G5B5:
+                    case D3DFMT_A4R4G4B4:
+                    case D3DFMT_A8R3G3B2:
+                    case D3DFMT_X4R4G4B4:
+                    case D3DFMT_R3G3B2:
+                    case D3DFMT_A8P8:
+                    case D3DFMT_A8L8:
+                    case D3DFMT_L16:
+                    case D3DFMT_V8U8:
+                    case D3DFMT_L6V5U5:
+                    case D3DFMT_X8L8V8U8:
+                    case D3DFMT_D16:
+                    case D3DFMT_D15S1:
+                    case D3DFMT_D16_LOCKABLE:
+                        bytes_per_pixel = 2;
+                        break;
+                    case D3DFMT_A8:
+                    case D3DFMT_P8:
+                    case D3DFMT_L8:
+                    case D3DFMT_A4L4:
+                        bytes_per_pixel = 1;
+                        break;
+                    default:
+                        // DXT formats and others - estimate
+                        if (src_desc.Format >= D3DFMT_DXT1 && src_desc.Format <= D3DFMT_DXT5) {
+                            // DXT formats are block compressed
+                            bytes_per_pixel = 1; // Will be handled differently
+                        } else {
+                            bytes_per_pixel = 4; // Safe default
+                        }
+                        break;
+                }
+                
+                // Copy the volume data slice by slice
+                BYTE* src_data = static_cast<BYTE*>(src_locked.pBits);
+                BYTE* dst_data = static_cast<BYTE*>(dst_locked.pBits);
+                
+                // For DXT formats, copy the compressed blocks
+                if (src_desc.Format >= D3DFMT_DXT1 && src_desc.Format <= D3DFMT_DXT5) {
+                    // DXT1 uses 8 bytes per 4x4 block, DXT2-5 use 16 bytes per 4x4 block
+                    UINT block_size = (src_desc.Format == D3DFMT_DXT1) ? 8 : 16;
+                    UINT blocks_wide = (src_desc.Width + 3) / 4;
+                    UINT blocks_high = (src_desc.Height + 3) / 4;
+                    UINT bytes_per_slice = blocks_wide * blocks_high * block_size;
+                    
+                    for (UINT z = 0; z < src_desc.Depth; z++) {
+                        std::memcpy(dst_data + z * bytes_per_slice,
+                                   src_data + z * bytes_per_slice,
+                                   bytes_per_slice);
+                    }
+                } else {
+                    // For uncompressed formats, copy row by row, slice by slice
+                    UINT row_size = src_desc.Width * bytes_per_pixel;
+                    
+                    for (UINT z = 0; z < src_desc.Depth; z++) {
+                        for (UINT y = 0; y < src_desc.Height; y++) {
+                            BYTE* src_row = src_data + z * src_locked.SlicePitch + y * src_locked.RowPitch;
+                            BYTE* dst_row = dst_data + z * dst_locked.SlicePitch + y * dst_locked.RowPitch;
+                            std::memcpy(dst_row, src_row, row_size);
+                        }
+                    }
+                }
+                
+                // Unlock both volumes
+                src_vol_tex->UnlockBox(level);
+                dst_vol_tex->UnlockBox(level);
+                
+                DX8GL_TRACE("Copied volume level %u (%ux%ux%u)", level, 
+                           src_desc.Width, src_desc.Height, src_desc.Depth);
+            }
+            
+            DX8GL_INFO("UpdateTexture: Successfully copied %u volume levels", levels_to_copy);
+            return D3D_OK;
         }
         
         default:
@@ -1903,7 +2247,156 @@ HRESULT Direct3DDevice8::UpdateTexture(IDirect3DBaseTexture8* pSourceTexture,
 }
 
 HRESULT Direct3DDevice8::GetFrontBuffer(IDirect3DSurface8* pDestSurface) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pDestSurface) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DX8GL_DEBUG("GetFrontBuffer: Capturing front buffer to surface");
+    
+    // Get the destination surface description
+    Direct3DSurface8* dest_surface = static_cast<Direct3DSurface8*>(pDestSurface);
+    D3DSURFACE_DESC dest_desc;
+    dest_surface->GetDesc(&dest_desc);
+    
+    // Verify destination is in system memory
+    if (dest_desc.Pool != D3DPOOL_SYSTEMMEM && dest_desc.Pool != D3DPOOL_SCRATCH) {
+        DX8GL_ERROR("GetFrontBuffer: Destination must be in system memory");
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Get the current back buffer (which is what we'll copy from)
+    // In a typical swap chain, the "front buffer" is what's currently displayed,
+    // but we'll copy from the current render target/back buffer
+    IDirect3DSurface8* back_buffer = nullptr;
+    HRESULT hr = GetBackBuffer(0, D3DBACKBUFFER_TYPE_MONO, &back_buffer);
+    if (FAILED(hr)) {
+        DX8GL_ERROR("GetFrontBuffer: Failed to get back buffer");
+        return hr;
+    }
+    
+    // Get back buffer description
+    Direct3DSurface8* src_surface = static_cast<Direct3DSurface8*>(back_buffer);
+    D3DSURFACE_DESC src_desc;
+    src_surface->GetDesc(&src_desc);
+    
+    // Lock source surface
+    D3DLOCKED_RECT src_locked;
+    hr = back_buffer->LockRect(&src_locked, nullptr, D3DLOCK_READONLY);
+    if (FAILED(hr)) {
+        back_buffer->Release();
+        DX8GL_ERROR("GetFrontBuffer: Failed to lock source surface");
+        return hr;
+    }
+    
+    // Lock destination surface
+    D3DLOCKED_RECT dest_locked;
+    hr = pDestSurface->LockRect(&dest_locked, nullptr, 0);
+    if (FAILED(hr)) {
+        back_buffer->UnlockRect();
+        back_buffer->Release();
+        DX8GL_ERROR("GetFrontBuffer: Failed to lock destination surface");
+        return hr;
+    }
+    
+    // Determine copy dimensions (use smaller of the two)
+    UINT copy_width = std::min(src_desc.Width, dest_desc.Width);
+    UINT copy_height = std::min(src_desc.Height, dest_desc.Height);
+    
+    // Calculate bytes per pixel
+    UINT src_bpp = 4; // Default to 32-bit
+    UINT dest_bpp = 4;
+    
+    // Helper lambda to get bytes per pixel for a format
+    auto get_bytes_per_pixel = [](D3DFORMAT format) -> UINT {
+        switch (format) {
+            case D3DFMT_A8R8G8B8:
+            case D3DFMT_X8R8G8B8:
+            case D3DFMT_A8B8G8R8:
+            case D3DFMT_X8B8G8R8:
+                return 4;
+            case D3DFMT_R8G8B8:
+                return 3;
+            case D3DFMT_R5G6B5:
+            case D3DFMT_X1R5G5B5:
+            case D3DFMT_A1R5G5B5:
+            case D3DFMT_A4R4G4B4:
+            case D3DFMT_X4R4G4B4:
+                return 2;
+            default:
+                return 4; // Safe default
+        }
+    };
+    
+    src_bpp = get_bytes_per_pixel(src_desc.Format);
+    dest_bpp = get_bytes_per_pixel(dest_desc.Format);
+    
+    // If formats match, we can do a direct copy
+    if (src_desc.Format == dest_desc.Format) {
+        // Copy row by row
+        BYTE* src_data = static_cast<BYTE*>(src_locked.pBits);
+        BYTE* dest_data = static_cast<BYTE*>(dest_locked.pBits);
+        UINT row_size = copy_width * src_bpp;
+        
+        for (UINT y = 0; y < copy_height; y++) {
+            std::memcpy(dest_data + y * dest_locked.Pitch,
+                       src_data + y * src_locked.Pitch,
+                       row_size);
+        }
+    } else {
+        // Need format conversion
+        DX8GL_INFO("GetFrontBuffer: Format conversion from %d to %d", src_desc.Format, dest_desc.Format);
+        
+        // Simple conversion for common cases
+        BYTE* src_data = static_cast<BYTE*>(src_locked.pBits);
+        BYTE* dest_data = static_cast<BYTE*>(dest_locked.pBits);
+        
+        for (UINT y = 0; y < copy_height; y++) {
+            for (UINT x = 0; x < copy_width; x++) {
+                // Get source pixel (assuming 32-bit ARGB)
+                if (src_desc.Format == D3DFMT_A8R8G8B8 || src_desc.Format == D3DFMT_X8R8G8B8) {
+                    DWORD* src_pixel = reinterpret_cast<DWORD*>(src_data + y * src_locked.Pitch + x * 4);
+                    DWORD pixel = *src_pixel;
+                    
+                    // Convert to destination format
+                    if (dest_desc.Format == D3DFMT_A8R8G8B8 || dest_desc.Format == D3DFMT_X8R8G8B8) {
+                        // Direct copy
+                        DWORD* dest_pixel = reinterpret_cast<DWORD*>(dest_data + y * dest_locked.Pitch + x * 4);
+                        *dest_pixel = pixel;
+                    } else if (dest_desc.Format == D3DFMT_R5G6B5) {
+                        // Convert to R5G6B5
+                        BYTE r = (pixel >> 16) & 0xFF;
+                        BYTE g = (pixel >> 8) & 0xFF;
+                        BYTE b = pixel & 0xFF;
+                        
+                        WORD* dest_pixel = reinterpret_cast<WORD*>(dest_data + y * dest_locked.Pitch + x * 2);
+                        *dest_pixel = ((r >> 3) << 11) | ((g >> 2) << 5) | (b >> 3);
+                    } else if (dest_desc.Format == D3DFMT_X1R5G5B5 || dest_desc.Format == D3DFMT_A1R5G5B5) {
+                        // Convert to X1R5G5B5/A1R5G5B5
+                        BYTE a = (pixel >> 24) & 0xFF;
+                        BYTE r = (pixel >> 16) & 0xFF;
+                        BYTE g = (pixel >> 8) & 0xFF;
+                        BYTE b = pixel & 0xFF;
+                        
+                        WORD* dest_pixel = reinterpret_cast<WORD*>(dest_data + y * dest_locked.Pitch + x * 2);
+                        if (dest_desc.Format == D3DFMT_A1R5G5B5) {
+                            *dest_pixel = ((a >> 7) << 15) | ((r >> 3) << 10) | ((g >> 3) << 5) | (b >> 3);
+                        } else {
+                            *dest_pixel = 0x8000 | ((r >> 3) << 10) | ((g >> 3) << 5) | (b >> 3);
+                        }
+                    }
+                    // Add more format conversions as needed
+                }
+            }
+        }
+    }
+    
+    // Unlock surfaces
+    pDestSurface->UnlockRect();
+    back_buffer->UnlockRect();
+    back_buffer->Release();
+    
+    DX8GL_INFO("GetFrontBuffer: Successfully captured %ux%u front buffer", copy_width, copy_height);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::SetRenderTarget(IDirect3DSurface8* pRenderTarget,
@@ -2053,7 +2546,23 @@ HRESULT Direct3DDevice8::GetDepthStencilSurface(IDirect3DSurface8** ppZStencilSu
 }
 
 HRESULT Direct3DDevice8::MultiplyTransform(D3DTRANSFORMSTATETYPE State, const D3DMATRIX* pMatrix) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pMatrix) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Validate transform state type
+    if (State < D3DTS_VIEW || 
+        (State > D3DTS_PROJECTION && State < D3DTS_TEXTURE0) ||
+        State > D3DTS_TEXTURE7) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Let the state manager handle the matrix multiplication
+    state_manager_->multiply_transform(State, pMatrix);
+    
+    DX8GL_INFO("MultiplyTransform: state=%d", State);
+    
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::SetViewport(const D3DVIEWPORT8* pViewport) {
@@ -2181,35 +2690,146 @@ HRESULT Direct3DDevice8::GetClipPlane(DWORD Index, float* pPlane) {
 }
 
 HRESULT Direct3DDevice8::BeginStateBlock() {
-    return D3DERR_NOTAVAILABLE;
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    state_manager_->begin_state_block();
+    
+    DX8GL_INFO("BeginStateBlock");
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::EndStateBlock(DWORD* pToken) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pToken) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DWORD token = state_manager_->end_state_block();
+    if (token == 0) {
+        DX8GL_ERROR("EndStateBlock failed - no state block being recorded");
+        return D3DERR_INVALIDCALL;
+    }
+    
+    *pToken = token;
+    
+    DX8GL_INFO("EndStateBlock: token = %u", token);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::ApplyStateBlock(DWORD Token) {
-    return D3DERR_NOTAVAILABLE;
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    state_manager_->apply_state_block(Token);
+    
+    DX8GL_INFO("ApplyStateBlock: token = %u", Token);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::CaptureStateBlock(DWORD Token) {
-    return D3DERR_NOTAVAILABLE;
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    state_manager_->capture_state_block(Token);
+    
+    DX8GL_INFO("CaptureStateBlock: token = %u", Token);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::DeleteStateBlock(DWORD Token) {
-    return D3DERR_NOTAVAILABLE;
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    state_manager_->delete_state_block(Token);
+    
+    DX8GL_INFO("DeleteStateBlock: token = %u", Token);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::CreateStateBlock(D3DSTATEBLOCKTYPE Type, DWORD* pToken) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pToken) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Validate type
+    if (Type != D3DSBT_ALL && Type != D3DSBT_PIXELSTATE && Type != D3DSBT_VERTEXSTATE) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DWORD token = state_manager_->create_state_block(Type);
+    *pToken = token;
+    
+    DX8GL_INFO("CreateStateBlock: type = %d, token = %u", Type, token);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::SetClipStatus(const D3DCLIPSTATUS8* pClipStatus) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pClipStatus) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Validate clip status flags (they should be combinations of D3DCS_* flags)
+    // D3DCS_LEFT   = 0x00000001
+    // D3DCS_RIGHT  = 0x00000002
+    // D3DCS_TOP    = 0x00000004
+    // D3DCS_BOTTOM = 0x00000008
+    // D3DCS_FRONT  = 0x00000010
+    // D3DCS_BACK   = 0x00000020
+    // D3DCS_PLANE0-5 = 0x00000040 - 0x00000800
+    // D3DCS_ALL = 0x00000FFF
+    const DWORD D3DCS_ALL = 0x00000FFF;
+    
+    if ((pClipStatus->ClipUnion & ~D3DCS_ALL) != 0 ||
+        (pClipStatus->ClipIntersection & ~D3DCS_ALL) != 0) {
+        DX8GL_WARN("SetClipStatus: Invalid clip flags (union=0x%08X, intersection=0x%08X)",
+                   pClipStatus->ClipUnion, pClipStatus->ClipIntersection);
+    }
+    
+    state_manager_->set_clip_status(pClipStatus->ClipUnion, pClipStatus->ClipIntersection);
+    
+    DX8GL_INFO("SetClipStatus: union=0x%08X, intersection=0x%08X",
+               pClipStatus->ClipUnion, pClipStatus->ClipIntersection);
+    
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetClipStatus(D3DCLIPSTATUS8* pClipStatus) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pClipStatus) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    if (!state_manager_) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    DWORD clip_union = 0;
+    DWORD clip_intersection = 0;
+    
+    state_manager_->get_clip_status(&clip_union, &clip_intersection);
+    
+    pClipStatus->ClipUnion = clip_union;
+    pClipStatus->ClipIntersection = clip_intersection;
+    
+    DX8GL_INFO("GetClipStatus: union=0x%08X, intersection=0x%08X",
+               clip_union, clip_intersection);
+    
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetTextureStageState(DWORD Stage, D3DTEXTURESTAGESTATETYPE Type,
@@ -2404,23 +3024,165 @@ HRESULT Direct3DDevice8::ValidateDevice(DWORD* pNumPasses) {
 }
 
 HRESULT Direct3DDevice8::GetInfo(DWORD DevInfoID, void* pDevInfoStruct, DWORD DevInfoStructSize) {
-    return D3DERR_NOTAVAILABLE;
+    // GetInfo is used to retrieve driver-specific information
+    // For dx8gl, we return basic information
+    
+    if (!pDevInfoStruct || DevInfoStructSize == 0) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    // Common device info IDs from DirectX 8
+    // Note: These are driver-specific and not standardized
+    const DWORD D3DDEVINFOID_VCACHE = 1;
+    const DWORD D3DDEVINFOID_RESOURCEMANAGER = 2;
+    const DWORD D3DDEVINFOID_VERTEXSTATS = 3;
+    
+    switch (DevInfoID) {
+        case D3DDEVINFOID_VCACHE: {
+            // Vertex cache optimization info
+            struct VCacheInfo {
+                DWORD OptMethod;     // Optimization method (0 = none, 1 = simple)
+                DWORD CacheSize;     // Cache size in vertices
+                DWORD MagicNumber;   // Implementation-specific magic number
+            };
+            
+            if (DevInfoStructSize < sizeof(VCacheInfo)) {
+                return D3DERR_INVALIDCALL;
+            }
+            
+            VCacheInfo* info = static_cast<VCacheInfo*>(pDevInfoStruct);
+            info->OptMethod = 1;     // Simple optimization
+            info->CacheSize = 32;    // Typical cache size
+            info->MagicNumber = 0;   // No magic number for software renderer
+            
+            DX8GL_DEBUG("GetInfo: Returning vertex cache info");
+            return D3D_OK;
+        }
+        
+        case D3DDEVINFOID_RESOURCEMANAGER: {
+            // Resource manager statistics
+            struct ResourceManagerInfo {
+                DWORD NumCreated;        // Number of resources created
+                DWORD NumManaged;        // Number of managed resources
+                DWORD NumEvictions;      // Number of resource evictions
+                DWORD BytesDownloaded;   // Bytes downloaded to device
+            };
+            
+            if (DevInfoStructSize < sizeof(ResourceManagerInfo)) {
+                return D3DERR_INVALIDCALL;
+            }
+            
+            ResourceManagerInfo* info = static_cast<ResourceManagerInfo*>(pDevInfoStruct);
+            info->NumCreated = 0;      // Could track actual resource count
+            info->NumManaged = 0;      // Could track managed resources
+            info->NumEvictions = 0;    // No evictions in software renderer
+            info->BytesDownloaded = 0; // No hardware downloads
+            
+            DX8GL_DEBUG("GetInfo: Returning resource manager info");
+            return D3D_OK;
+        }
+        
+        case D3DDEVINFOID_VERTEXSTATS: {
+            // Vertex processing statistics
+            struct VertexStats {
+                DWORD NumRenderedTriangles;   // Triangles rendered
+                DWORD NumExtraClippingTriangles; // Additional triangles from clipping
+            };
+            
+            if (DevInfoStructSize < sizeof(VertexStats)) {
+                return D3DERR_INVALIDCALL;
+            }
+            
+            VertexStats* info = static_cast<VertexStats*>(pDevInfoStruct);
+            info->NumRenderedTriangles = get_triangles_drawn();
+            info->NumExtraClippingTriangles = 0; // No extra triangles from clipping
+            
+            DX8GL_DEBUG("GetInfo: Returning vertex statistics");
+            return D3D_OK;
+        }
+        
+        default:
+            DX8GL_WARNING("GetInfo: Unknown DevInfoID %u", DevInfoID);
+            return D3DERR_NOTAVAILABLE;
+    }
 }
 
 HRESULT Direct3DDevice8::SetPaletteEntries(UINT PaletteNumber, const PALETTEENTRY* pEntries) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pEntries) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    if (PaletteNumber >= MAX_PALETTES) {
+        DX8GL_WARNING("SetPaletteEntries: Invalid palette number %u (max %u)", PaletteNumber, MAX_PALETTES);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    // Copy the palette entries
+    std::memcpy(palettes_[PaletteNumber].entries, pEntries, sizeof(PALETTEENTRY) * 256);
+    palettes_[PaletteNumber].valid = true;
+    
+    DX8GL_DEBUG("SetPaletteEntries: Set palette %u", PaletteNumber);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetPaletteEntries(UINT PaletteNumber, PALETTEENTRY* pEntries) {
-    return D3DERR_NOTAVAILABLE;
+    if (!pEntries) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    if (PaletteNumber >= MAX_PALETTES) {
+        DX8GL_WARNING("GetPaletteEntries: Invalid palette number %u (max %u)", PaletteNumber, MAX_PALETTES);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    if (!palettes_[PaletteNumber].valid) {
+        DX8GL_WARNING("GetPaletteEntries: Palette %u not set", PaletteNumber);
+        // Return default palette (all black)
+        std::memset(pEntries, 0, sizeof(PALETTEENTRY) * 256);
+        return D3D_OK;
+    }
+    
+    // Copy the palette entries
+    std::memcpy(pEntries, palettes_[PaletteNumber].entries, sizeof(PALETTEENTRY) * 256);
+    
+    DX8GL_DEBUG("GetPaletteEntries: Retrieved palette %u", PaletteNumber);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::SetCurrentTexturePalette(UINT PaletteNumber) {
-    return D3DERR_NOTAVAILABLE;
+    if (PaletteNumber >= MAX_PALETTES) {
+        DX8GL_WARNING("SetCurrentTexturePalette: Invalid palette number %u (max %u)", PaletteNumber, MAX_PALETTES);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    if (!palettes_[PaletteNumber].valid) {
+        DX8GL_WARNING("SetCurrentTexturePalette: Palette %u not set", PaletteNumber);
+        return D3DERR_INVALIDCALL;
+    }
+    
+    current_palette_ = PaletteNumber;
+    
+    DX8GL_DEBUG("SetCurrentTexturePalette: Set current palette to %u", PaletteNumber);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::GetCurrentTexturePalette(UINT* PaletteNumber) {
-    return D3DERR_NOTAVAILABLE;
+    if (!PaletteNumber) {
+        return D3DERR_INVALIDCALL;
+    }
+    
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    *PaletteNumber = current_palette_;
+    
+    DX8GL_DEBUG("GetCurrentTexturePalette: Current palette is %u", current_palette_);
+    return D3D_OK;
 }
 
 HRESULT Direct3DDevice8::DrawPrimitiveUP(D3DPRIMITIVETYPE PrimitiveType, UINT PrimitiveCount,

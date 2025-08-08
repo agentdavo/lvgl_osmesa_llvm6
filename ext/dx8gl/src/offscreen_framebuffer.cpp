@@ -23,12 +23,15 @@
 
 namespace dx8gl {
 
-OffscreenFramebuffer::OffscreenFramebuffer(int width, int height, PixelFormat format, bool cpu_accessible)
+OffscreenFramebuffer::OffscreenFramebuffer(int width, int height, PixelFormat format, 
+                                           bool cpu_accessible, int sample_count)
     : width_(width)
     , height_(height)
     , format_(format)
     , cpu_accessible_(cpu_accessible)
+    , sample_count_(sample_count)
     , gpu_handle_(0)
+    , resolve_handle_(0)
     , cpu_dirty_(false)
     , gpu_dirty_(false) {
     
@@ -46,8 +49,10 @@ OffscreenFramebuffer::OffscreenFramebuffer(OffscreenFramebuffer&& other) noexcep
     , height_(other.height_)
     , format_(other.format_)
     , cpu_accessible_(other.cpu_accessible_)
+    , sample_count_(other.sample_count_)
     , cpu_buffer_(std::move(other.cpu_buffer_))
     , gpu_handle_(other.gpu_handle_)
+    , resolve_handle_(other.resolve_handle_)
     , cpu_dirty_(other.cpu_dirty_)
     , gpu_dirty_(other.gpu_dirty_) {
     
@@ -55,6 +60,8 @@ OffscreenFramebuffer::OffscreenFramebuffer(OffscreenFramebuffer&& other) noexcep
     other.width_ = 0;
     other.height_ = 0;
     other.gpu_handle_ = 0;
+    other.resolve_handle_ = 0;
+    other.sample_count_ = 1;
 }
 
 OffscreenFramebuffer& OffscreenFramebuffer::operator=(OffscreenFramebuffer&& other) noexcept {
@@ -63,8 +70,10 @@ OffscreenFramebuffer& OffscreenFramebuffer::operator=(OffscreenFramebuffer&& oth
         height_ = other.height_;
         format_ = other.format_;
         cpu_accessible_ = other.cpu_accessible_;
+        sample_count_ = other.sample_count_;
         cpu_buffer_ = std::move(other.cpu_buffer_);
         gpu_handle_ = other.gpu_handle_;
+        resolve_handle_ = other.resolve_handle_;
         cpu_dirty_ = other.cpu_dirty_;
         gpu_dirty_ = other.gpu_dirty_;
         
@@ -72,6 +81,8 @@ OffscreenFramebuffer& OffscreenFramebuffer::operator=(OffscreenFramebuffer&& oth
         other.width_ = 0;
         other.height_ = 0;
         other.gpu_handle_ = 0;
+        other.resolve_handle_ = 0;
+        other.sample_count_ = 1;
     }
     return *this;
 }

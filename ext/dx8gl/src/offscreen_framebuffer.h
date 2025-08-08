@@ -35,8 +35,10 @@ public:
      * @param height Framebuffer height in pixels
      * @param format Pixel format for the framebuffer
      * @param cpu_accessible Whether the framebuffer should be CPU-accessible
+     * @param sample_count Number of samples for multisampling (1 = no MSAA)
      */
-    OffscreenFramebuffer(int width, int height, PixelFormat format, bool cpu_accessible = true);
+    OffscreenFramebuffer(int width, int height, PixelFormat format, 
+                        bool cpu_accessible = true, int sample_count = 1);
     
     /**
      * Destructor
@@ -174,18 +176,43 @@ public:
      * Check if GPU buffer needs update from CPU
      */
     bool is_gpu_dirty() const { return gpu_dirty_; }
+    
+    /**
+     * Get the sample count for multisampling
+     */
+    int get_sample_count() const { return sample_count_; }
+    
+    /**
+     * Check if this framebuffer is multisampled
+     */
+    bool is_multisampled() const { return sample_count_ > 1; }
+    
+    /**
+     * Set multisample resolve framebuffer (for MSAA rendering)
+     * @param handle GPU handle to the resolve framebuffer
+     */
+    void set_resolve_handle(uintptr_t handle) { resolve_handle_ = handle; }
+    
+    /**
+     * Get multisample resolve framebuffer handle
+     */
+    uintptr_t get_resolve_handle() const { return resolve_handle_; }
 
 private:
     int width_;
     int height_;
     PixelFormat format_;
     bool cpu_accessible_;
+    int sample_count_;  // Number of samples for MSAA
     
     // CPU-side buffer
     std::vector<uint8_t> cpu_buffer_;
     
     // GPU resource handle (backend-specific)
     uintptr_t gpu_handle_;
+    
+    // Resolve framebuffer handle for MSAA (backend-specific)
+    uintptr_t resolve_handle_;
     
     // Dirty flags for synchronization
     bool cpu_dirty_;

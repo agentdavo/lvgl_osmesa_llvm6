@@ -314,6 +314,8 @@ ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_device.cpp.o: \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_cubetexture.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_volumetexture.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_surface.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/d3d8_additional_swapchain.h \
+ /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/offscreen_framebuffer.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/osmesa_context.h \
  /home/djs/lvgl_osmesa_llvm6/build/mesa-install/include/GL/osmesa.h \
  /home/djs/lvgl_osmesa_llvm6/ext/dx8gl/src/shader_constant_manager.h \

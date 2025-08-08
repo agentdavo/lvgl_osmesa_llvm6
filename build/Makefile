@@ -1103,6 +1103,84 @@ test_cross_backend_enhanced/fast:
 .PHONY : test_cross_backend_enhanced/fast
 
 #=============================================================================
+# Target rules for targets named test_cursor_management
+
+# Build rule for target.
+test_cursor_management: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_cursor_management
+.PHONY : test_cursor_management
+
+# fast build rule for target.
+test_cursor_management/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_cursor_management.dir/build.make ext/dx8gl/test/CMakeFiles/test_cursor_management.dir/build
+.PHONY : test_cursor_management/fast
+
+#=============================================================================
+# Target rules for targets named test_additional_swapchain
+
+# Build rule for target.
+test_additional_swapchain: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_additional_swapchain
+.PHONY : test_additional_swapchain
+
+# fast build rule for target.
+test_additional_swapchain/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_additional_swapchain.dir/build.make ext/dx8gl/test/CMakeFiles/test_additional_swapchain.dir/build
+.PHONY : test_additional_swapchain/fast
+
+#=============================================================================
+# Target rules for targets named test_matrix_multiplication
+
+# Build rule for target.
+test_matrix_multiplication: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_matrix_multiplication
+.PHONY : test_matrix_multiplication
+
+# fast build rule for target.
+test_matrix_multiplication/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_matrix_multiplication.dir/build.make ext/dx8gl/test/CMakeFiles/test_matrix_multiplication.dir/build
+.PHONY : test_matrix_multiplication/fast
+
+#=============================================================================
+# Target rules for targets named test_state_blocks
+
+# Build rule for target.
+test_state_blocks: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_state_blocks
+.PHONY : test_state_blocks
+
+# fast build rule for target.
+test_state_blocks/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_state_blocks.dir/build.make ext/dx8gl/test/CMakeFiles/test_state_blocks.dir/build
+.PHONY : test_state_blocks/fast
+
+#=============================================================================
+# Target rules for targets named test_clip_status
+
+# Build rule for target.
+test_clip_status: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_clip_status
+.PHONY : test_clip_status
+
+# fast build rule for target.
+test_clip_status/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_clip_status.dir/build.make ext/dx8gl/test/CMakeFiles/test_clip_status.dir/build
+.PHONY : test_clip_status/fast
+
+#=============================================================================
+# Target rules for targets named test_palette_and_device_info
+
+# Build rule for target.
+test_palette_and_device_info: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_palette_and_device_info
+.PHONY : test_palette_and_device_info
+
+# fast build rule for target.
+test_palette_and_device_info/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_palette_and_device_info.dir/build.make ext/dx8gl/test/CMakeFiles/test_palette_and_device_info.dir/build
+.PHONY : test_palette_and_device_info/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -12747,14 +12825,17 @@ help:
 	@echo "... lvgl"
 	@echo "... lvgl_osmesa"
 	@echo "... lvgl_platform"
+	@echo "... test_additional_swapchain"
 	@echo "... test_alpha_blending"
 	@echo "... test_async_simple"
 	@echo "... test_backend_selection"
+	@echo "... test_clip_status"
 	@echo "... test_com_wrapper_threading"
 	@echo "... test_command_buffer_async"
 	@echo "... test_cross_backend_enhanced"
 	@echo "... test_cross_backend_rendering"
 	@echo "... test_cube_texture"
+	@echo "... test_cursor_management"
 	@echo "... test_d3dx_color"
 	@echo "... test_d3dx_math"
 	@echo "... test_d3dx_surface_loading"
@@ -12768,9 +12849,11 @@ help:
 	@echo "... test_lod_dirty_logic"
 	@echo "... test_lvgl_canvas"
 	@echo "... test_lvgl_platform"
+	@echo "... test_matrix_multiplication"
 	@echo "... test_matrix_pipeline"
 	@echo "... test_mixed_vertices"
 	@echo "... test_multi_texcoords"
+	@echo "... test_palette_and_device_info"
 	@echo "... test_render_states"
 	@echo "... test_shader_cache_resize"
 	@echo "... test_shader_cache_simple"
@@ -12780,6 +12863,7 @@ help:
 	@echo "... test_shader_program_cache"
 	@echo "... test_shader_program_linking"
 	@echo "... test_shader_translator"
+	@echo "... test_state_blocks"
 	@echo "... test_state_manager_validation"
 	@echo "... test_static_canvas"
 	@echo "... test_stream_source_stride"

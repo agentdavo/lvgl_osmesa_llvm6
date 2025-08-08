@@ -1,0 +1,9 @@
+Test: test_cursor_management
+Result: PASSED
+Duration: 1s
+Timestamp: 20250808_103809
+
+Log files:
+  Console output: /home/djs/lvgl_osmesa_llvm6/logs/gtest_runs/test_cursor_management_20250808_103809/console_output.log
+  GTest output: /home/djs/lvgl_osmesa_llvm6/logs/gtest_runs/test_cursor_management_20250808_103809/gtest_output.log
+  XML report: /home/djs/lvgl_osmesa_llvm6/logs/gtest_runs/test_cursor_management_20250808_103809/test_results.xml

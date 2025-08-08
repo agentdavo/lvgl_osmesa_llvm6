@@ -677,3 +677,165 @@ if(DX8GL_ENABLE_WEBGPU)
         set_target_properties(test_webgpu_async PROPERTIES EXCLUDE_FROM_ALL TRUE)
     endif()
 endif()
+
+# Test executable for cursor management
+add_executable(test_cursor_management
+    test_cursor_management.cpp
+)
+
+target_include_directories(test_cursor_management PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_cursor_management PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME CursorManagementTest COMMAND test_cursor_management)
+    set_tests_properties(CursorManagementTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_cursor_management")
+    set_target_properties(test_cursor_management PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for additional swap chains
+add_executable(test_additional_swapchain
+    test_additional_swapchain.cpp
+)
+
+target_include_directories(test_additional_swapchain PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_additional_swapchain PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME AdditionalSwapChainTest COMMAND test_additional_swapchain)
+    set_tests_properties(AdditionalSwapChainTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_additional_swapchain")
+    set_target_properties(test_additional_swapchain PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for matrix multiplication
+add_executable(test_matrix_multiplication
+    test_matrix_multiplication.cpp
+)
+
+target_include_directories(test_matrix_multiplication PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_matrix_multiplication PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME MatrixMultiplicationTest COMMAND test_matrix_multiplication)
+    set_tests_properties(MatrixMultiplicationTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_matrix_multiplication")
+    set_target_properties(test_matrix_multiplication PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for state blocks
+add_executable(test_state_blocks
+    test_state_blocks.cpp
+)
+
+target_include_directories(test_state_blocks PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_state_blocks PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME StateBlocksTest COMMAND test_state_blocks)
+    set_tests_properties(StateBlocksTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_state_blocks")
+    set_target_properties(test_state_blocks PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for clip status
+add_executable(test_clip_status
+    test_clip_status.cpp
+)
+
+target_include_directories(test_clip_status PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_clip_status PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME ClipStatusTest COMMAND test_clip_status)
+    set_tests_properties(ClipStatusTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_clip_status")
+    set_target_properties(test_clip_status PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for palette and device info
+add_executable(test_palette_and_device_info
+    test_palette_and_device_info.cpp
+)
+
+target_include_directories(test_palette_and_device_info PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_palette_and_device_info PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME PaletteAndDeviceInfoTest COMMAND test_palette_and_device_info)
+    set_tests_properties(PaletteAndDeviceInfoTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_palette_and_device_info")
+    set_target_properties(test_palette_and_device_info PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for volume texture and front buffer
+add_executable(test_volume_texture_and_front_buffer
+    test_volume_texture_and_front_buffer.cpp
+)
+
+target_include_directories(test_volume_texture_and_front_buffer PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_volume_texture_and_front_buffer PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME VolumeTextureAndFrontBufferTest COMMAND test_volume_texture_and_front_buffer)
+    set_tests_properties(VolumeTextureAndFrontBufferTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_volume_texture_and_front_buffer")
+    set_target_properties(test_volume_texture_and_front_buffer PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for complete COM wrapper
+add_executable(test_com_wrapper_complete
+    test_com_wrapper_complete.cpp
+)
+
+target_include_directories(test_com_wrapper_complete PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_com_wrapper_complete PRIVATE dx8gl gtest gtest_main pthread)
+    add_test(NAME COMWrapperCompleteTest COMMAND test_com_wrapper_complete)
+    set_tests_properties(COMWrapperCompleteTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_com_wrapper_complete")
+    set_target_properties(test_com_wrapper_complete PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for multisampling
+add_executable(test_multisampling
+    test_multisampling.cpp
+)
+
+target_include_directories(test_multisampling PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_multisampling PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME MultisamplingTest COMMAND test_multisampling)
+    set_tests_properties(MultisamplingTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_multisampling")
+    set_target_properties(test_multisampling PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()

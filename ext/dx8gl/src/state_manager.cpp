@@ -193,6 +193,12 @@ void StateManager::invalidate_cached_render_states() {
 void StateManager::set_render_state(D3DRENDERSTATETYPE state, DWORD value) {
     std::lock_guard<std::mutex> lock(state_mutex_);
     
+    // If recording a state block, just record the state change
+    if (recording_state_block_) {
+        recording_state_block_->render_states[state] = value;
+        return;
+    }
+    
     switch (state) {
         case D3DRS_ZENABLE:
             DX8GL_INFO("Setting D3DRS_ZENABLE to %u", value);
@@ -384,6 +390,12 @@ void StateManager::set_transform(D3DTRANSFORMSTATETYPE state, const D3DMATRIX* m
     
     std::lock_guard<std::mutex> lock(state_mutex_);
     
+    // If recording a state block, just record the transform change
+    if (recording_state_block_) {
+        recording_state_block_->transforms[state] = *matrix;
+        return;
+    }
+    
     switch (state) {
         case D3DTS_WORLD:
             transform_state_.world = *matrix;
@@ -459,6 +471,65 @@ void StateManager::get_transform(D3DTRANSFORMSTATETYPE state, D3DMATRIX* matrix)
                 0.0f, 0.0f, 1.0f, 0.0f,
                 0.0f, 0.0f, 0.0f, 1.0f
             };
+            break;
+    }
+}
+
+void StateManager::multiply_transform(D3DTRANSFORMSTATETYPE state, const D3DMATRIX* matrix) {
+    if (!matrix) return;
+    
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    switch (state) {
+        case D3DTS_WORLD:
+            {
+                D3DMATRIX result;
+                multiply_matrices(&result, matrix, &transform_state_.world);
+                transform_state_.world = result;
+                transform_state_.world_view_dirty = true;
+                transform_state_.world_view_projection_dirty = true;
+                transform_state_dirty_ = true;
+            }
+            break;
+        case D3DTS_VIEW:
+            {
+                D3DMATRIX result;
+                multiply_matrices(&result, matrix, &transform_state_.view);
+                transform_state_.view = result;
+                transform_state_.world_view_dirty = true;
+                transform_state_.world_view_projection_dirty = true;
+                transform_state_.view_projection_dirty = true;
+                transform_state_dirty_ = true;
+            }
+            break;
+        case D3DTS_PROJECTION:
+            {
+                D3DMATRIX result;
+                multiply_matrices(&result, matrix, &transform_state_.projection);
+                transform_state_.projection = result;
+                transform_state_.world_view_projection_dirty = true;
+                transform_state_.view_projection_dirty = true;
+                transform_state_dirty_ = true;
+            }
+            break;
+        case D3DTS_TEXTURE0:
+        case D3DTS_TEXTURE1:
+        case D3DTS_TEXTURE2:
+        case D3DTS_TEXTURE3:
+        case D3DTS_TEXTURE4:
+        case D3DTS_TEXTURE5:
+        case D3DTS_TEXTURE6:
+        case D3DTS_TEXTURE7:
+            {
+                int index = state - D3DTS_TEXTURE0;
+                D3DMATRIX result;
+                multiply_matrices(&result, matrix, &transform_state_.texture[index]);
+                transform_state_.texture[index] = result;
+                texture_state_dirty_ = true;
+            }
+            break;
+        default:
+            DX8GL_WARN("Unhandled transform state for multiplication: %d", state);
             break;
     }
 }
@@ -777,6 +848,12 @@ void StateManager::set_texture_stage_state(DWORD stage, D3DTEXTURESTAGESTATETYPE
     std::lock_guard<std::mutex> lock(state_mutex_);
     
     if (stage >= 8) return;
+    
+    // If recording a state block, just record the texture stage state change
+    if (recording_state_block_) {
+        recording_state_block_->texture_stages[stage].states[type] = value;
+        return;
+    }
     
     switch (type) {
         case D3DTSS_COLOROP:
@@ -1820,6 +1897,356 @@ void StateManager::apply_shader_state() {
     // now require a ShaderProgram parameter and should be called from the rendering pipeline
     // with the current active shader program
     apply_texture_states();
+}
+
+// Clip status management
+void StateManager::set_clip_status(DWORD clip_union, DWORD clip_intersection) {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    clip_status_.clip_union = clip_union;
+    clip_status_.clip_intersection = clip_intersection;
+    clip_status_.valid = true;
+    
+    DX8GL_INFO("Set clip status: union=0x%08X, intersection=0x%08X", clip_union, clip_intersection);
+}
+
+void StateManager::get_clip_status(DWORD* clip_union, DWORD* clip_intersection) const {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (clip_union) {
+        *clip_union = clip_status_.clip_union;
+    }
+    
+    if (clip_intersection) {
+        *clip_intersection = clip_status_.clip_intersection;
+    }
+}
+
+// State block implementation
+void StateBlock::clear() {
+    render_states.clear();
+    transforms.clear();
+    for (auto& stage : texture_stages) {
+        stage.states.clear();
+    }
+    for (auto& sampler : sampler_states) {
+        sampler.states.clear();
+    }
+    lights.clear();
+    has_material = false;
+    has_viewport = false;
+    clip_planes.clear();
+    vertex_shader = 0;
+    has_vertex_shader = false;
+    vertex_shader_constants.clear();
+    pixel_shader = 0;
+    has_pixel_shader = false;
+    pixel_shader_constants.clear();
+    fvf = 0;
+    has_fvf = false;
+    
+    for (size_t i = 0; i < textures.size(); i++) {
+        textures[i] = nullptr;
+        has_texture[i] = false;
+    }
+    
+    for (auto& source : stream_sources) {
+        source.buffer = nullptr;
+        source.stride = 0;
+        source.valid = false;
+    }
+    
+    index_buffer = nullptr;
+    index_base_vertex = 0;
+    has_index_buffer = false;
+}
+
+bool StateBlock::should_capture_render_state(D3DRENDERSTATETYPE state) const {
+    switch (type) {
+        case D3DSBT_ALL:
+            return true;
+        case D3DSBT_PIXELSTATE:
+            // Pixel-related render states
+            return (state >= D3DRS_ALPHABLENDENABLE && state <= D3DRS_BLENDOP) ||
+                   (state >= D3DRS_ALPHATESTENABLE && state <= D3DRS_ALPHAREF) ||
+                   (state >= D3DRS_TEXTUREFACTOR && state <= D3DRS_WRAP7) ||
+                   (state == D3DRS_ZENABLE) || (state == D3DRS_ZFUNC) ||
+                   (state == D3DRS_ZWRITEENABLE) || (state == D3DRS_STENCILENABLE) ||
+                   (state >= D3DRS_STENCILFAIL && state <= D3DRS_STENCILWRITEMASK) ||
+                   (state == D3DRS_FOGENABLE) || (state == D3DRS_FOGCOLOR) ||
+                   (state >= D3DRS_FOGTABLEMODE && state <= D3DRS_FOGDENSITY);
+        case D3DSBT_VERTEXSTATE:
+            // Vertex-related render states
+            return (state == D3DRS_LIGHTING) || (state == D3DRS_AMBIENT) ||
+                   (state == D3DRS_COLORVERTEX) || (state == D3DRS_LOCALVIEWER) ||
+                   (state == D3DRS_NORMALIZENORMALS) || 
+                   (state >= D3DRS_DIFFUSEMATERIALSOURCE && state <= D3DRS_SPECULARMATERIALSOURCE) ||
+                   (state == D3DRS_VERTEXBLEND) || (state == D3DRS_CLIPPLANEENABLE) ||
+                   (state == D3DRS_POINTSIZE) || (state >= D3DRS_POINTSIZE_MIN && state <= D3DRS_POINTSCALE_C) ||
+                   (state == D3DRS_MULTISAMPLEANTIALIAS) || (state == D3DRS_MULTISAMPLEMASK) ||
+                   (state == D3DRS_PATCHEDGESTYLE) || (state == D3DRS_PATCHSEGMENTS);
+        default:
+            return false;
+    }
+}
+
+bool StateBlock::should_capture_texture_stage(DWORD stage, D3DTEXTURESTAGESTATETYPE state) const {
+    if (stage >= 8) return false;
+    
+    switch (type) {
+        case D3DSBT_ALL:
+            return true;
+        case D3DSBT_PIXELSTATE:
+            // All texture stage states affect pixel processing
+            return true;
+        case D3DSBT_VERTEXSTATE:
+            // Texture coordinate generation affects vertex processing
+            return (state == D3DTSS_TEXCOORDINDEX) ||
+                   (state == D3DTSS_TEXTURETRANSFORMFLAGS);
+        default:
+            return false;
+    }
+}
+
+bool StateBlock::should_capture_transform(D3DTRANSFORMSTATETYPE state) const {
+    switch (type) {
+        case D3DSBT_ALL:
+            return true;
+        case D3DSBT_VERTEXSTATE:
+            // All transforms affect vertex processing
+            return true;
+        case D3DSBT_PIXELSTATE:
+            // Transforms don't directly affect pixel processing
+            return false;
+        default:
+            return false;
+    }
+}
+
+// State block management methods
+DWORD StateManager::create_state_block(D3DSTATEBLOCKTYPE type) {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    auto state_block = std::make_unique<StateBlock>();
+    state_block->type = type;
+    
+    // Capture current state based on type
+    if (type == D3DSBT_ALL) {
+        // Capture all render states
+        for (int i = 0; i <= D3DRS_NORMALORDER; i++) {
+            state_block->render_states[static_cast<D3DRENDERSTATETYPE>(i)] = 
+                get_render_state(static_cast<D3DRENDERSTATETYPE>(i));
+        }
+        
+        // Capture all transforms
+        state_block->transforms[D3DTS_WORLD] = transform_state_.world;
+        state_block->transforms[D3DTS_VIEW] = transform_state_.view;
+        state_block->transforms[D3DTS_PROJECTION] = transform_state_.projection;
+        for (int i = 0; i < 8; i++) {
+            state_block->transforms[static_cast<D3DTRANSFORMSTATETYPE>(D3DTS_TEXTURE0 + i)] = 
+                transform_state_.texture[i];
+        }
+        
+        // Capture all texture stage states
+        for (DWORD stage = 0; stage < 8; stage++) {
+            for (int i = D3DTSS_COLOROP; i <= D3DTSS_RESULTARG; i++) {
+                state_block->texture_stages[stage].states[static_cast<D3DTEXTURESTAGESTATETYPE>(i)] = 
+                    get_texture_stage_state(stage, static_cast<D3DTEXTURESTAGESTATETYPE>(i));
+            }
+        }
+        
+        // Capture lights
+        for (DWORD i = 0; i < MAX_LIGHTS; i++) {
+            state_block->lights[i] = lights_[i];
+        }
+        
+        // Capture material
+        state_block->has_material = material_state_.valid;
+        state_block->material = material_state_;
+        
+        // Capture viewport
+        state_block->has_viewport = viewport_state_.valid;
+        state_block->viewport = viewport_state_;
+        
+        // Capture clip planes
+        for (DWORD i = 0; i < MAX_CLIP_PLANES; i++) {
+            state_block->clip_planes[i] = clip_planes_[i];
+        }
+        
+        // Capture FVF
+        state_block->fvf = current_fvf_;
+        state_block->has_fvf = true;
+    }
+    
+    DWORD token = next_state_block_token_++;
+    state_blocks_[token] = std::move(state_block);
+    
+    DX8GL_INFO("Created state block %u of type %d", token, type);
+    return token;
+}
+
+void StateManager::delete_state_block(DWORD token) {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    auto it = state_blocks_.find(token);
+    if (it != state_blocks_.end()) {
+        state_blocks_.erase(it);
+        DX8GL_INFO("Deleted state block %u", token);
+    } else {
+        DX8GL_WARN("Attempted to delete non-existent state block %u", token);
+    }
+}
+
+void StateManager::begin_state_block() {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (recording_state_block_) {
+        DX8GL_WARN("BeginStateBlock called while already recording");
+        delete recording_state_block_;
+    }
+    
+    recording_state_block_ = new StateBlock();
+    recording_state_block_->is_recording = true;
+    recording_state_block_->type = D3DSBT_ALL;  // Recording captures everything that's set
+    
+    DX8GL_INFO("Beginning state block recording");
+}
+
+DWORD StateManager::end_state_block() {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    if (!recording_state_block_) {
+        DX8GL_ERROR("EndStateBlock called without BeginStateBlock");
+        return 0;
+    }
+    
+    recording_state_block_->is_recording = false;
+    
+    DWORD token = next_state_block_token_++;
+    state_blocks_[token] = std::unique_ptr<StateBlock>(recording_state_block_);
+    recording_state_block_ = nullptr;
+    
+    DX8GL_INFO("Ended state block recording, token = %u", token);
+    return token;
+}
+
+void StateManager::apply_state_block(DWORD token) {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    auto it = state_blocks_.find(token);
+    if (it == state_blocks_.end()) {
+        DX8GL_ERROR("ApplyStateBlock: Invalid token %u", token);
+        return;
+    }
+    
+    StateBlock* block = it->second.get();
+    
+    // Apply render states
+    for (const auto& [state, value] : block->render_states) {
+        set_render_state(state, value);
+    }
+    
+    // Apply transforms
+    for (const auto& [state, matrix] : block->transforms) {
+        set_transform(state, &matrix);
+    }
+    
+    // Apply texture stage states
+    for (DWORD stage = 0; stage < 8; stage++) {
+        for (const auto& [state, value] : block->texture_stages[stage].states) {
+            set_texture_stage_state(stage, state, value);
+        }
+    }
+    
+    // Apply lights
+    for (const auto& [index, light] : block->lights) {
+        lights_[index] = light;
+        light_state_dirty_ = true;
+    }
+    
+    // Apply material
+    if (block->has_material) {
+        material_state_ = block->material;
+        material_state_dirty_ = true;
+    }
+    
+    // Apply viewport
+    if (block->has_viewport) {
+        viewport_state_ = block->viewport;
+        viewport_state_dirty_ = true;
+    }
+    
+    // Apply clip planes
+    for (const auto& [index, plane] : block->clip_planes) {
+        clip_planes_[index] = plane;
+    }
+    
+    // Apply FVF
+    if (block->has_fvf) {
+        current_fvf_ = block->fvf;
+    }
+    
+    DX8GL_INFO("Applied state block %u", token);
+}
+
+void StateManager::capture_state_block(DWORD token) {
+    std::lock_guard<std::mutex> lock(state_mutex_);
+    
+    auto it = state_blocks_.find(token);
+    if (it == state_blocks_.end()) {
+        DX8GL_ERROR("CaptureStateBlock: Invalid token %u", token);
+        return;
+    }
+    
+    StateBlock* block = it->second.get();
+    
+    // Capture only the states that were originally in the block
+    for (auto& [state, value] : block->render_states) {
+        value = get_render_state(state);
+    }
+    
+    // Capture transforms that were in the block
+    for (auto& [state, matrix] : block->transforms) {
+        get_transform(state, &matrix);
+    }
+    
+    // Capture texture stage states that were in the block
+    for (DWORD stage = 0; stage < 8; stage++) {
+        for (auto& [state, value] : block->texture_stages[stage].states) {
+            value = get_texture_stage_state(stage, state);
+        }
+    }
+    
+    // Capture lights that were in the block
+    for (auto& [index, light] : block->lights) {
+        if (index < MAX_LIGHTS) {
+            light = lights_[index];
+        }
+    }
+    
+    // Capture material if it was in the block
+    if (block->has_material) {
+        block->material = material_state_;
+    }
+    
+    // Capture viewport if it was in the block
+    if (block->has_viewport) {
+        block->viewport = viewport_state_;
+    }
+    
+    // Capture clip planes that were in the block
+    for (auto& [index, plane] : block->clip_planes) {
+        if (index < MAX_CLIP_PLANES) {
+            plane = clip_planes_[index];
+        }
+    }
+    
+    // Capture FVF if it was in the block
+    if (block->has_fvf) {
+        block->fvf = current_fvf_;
+    }
+    
+    DX8GL_INFO("Captured state block %u", token);
 }
 
 } // namespace dx8gl

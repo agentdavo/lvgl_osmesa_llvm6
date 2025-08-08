@@ -165,7 +165,9 @@ set(DX8GL_SOURCES
     src/d3d8_indexbuffer.cpp
     src/d3d8_surface.cpp
     src/d3d8_swapchain.cpp
+    src/d3d8_additional_swapchain.cpp
     src/d3d8_com_wrapper.cpp
+    src/d3d8_com_wrapper_additions.cpp
     src/shader_generator.cpp
     src/state_manager.cpp
     src/command_buffer.cpp

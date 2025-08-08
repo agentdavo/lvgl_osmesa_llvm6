@@ -5,6 +5,68 @@ All notable changes to the LVGL OSMesa LLVM project will be documented in this f
 ## [Unreleased] - 2025-08-08
 
 ### Added
+
+- **Complete DirectX 8 API Implementation** (2025-08-08):
+  - **Multisampling/Anti-Aliasing Support**:
+    - Extended CheckDeviceMultiSampleType to validate MSAA levels (2x, 4x, 8x, 16x)
+    - Updated surface creation to support multisampled renderbuffers
+    - Implemented MSAA resolve functionality using glBlitFramebuffer
+    - Added support for both color and depth/stencil multisampling
+    - Created comprehensive test suite with 11 multisampling test cases
+  
+  - **COM Wrapper Completion**:
+    - Implemented all missing IDirect3DDevice8 methods
+    - Added surface wrapping/unwrapping utilities with reference counting
+    - Thread-safe global tracking maps for COM wrapper relationships
+    - Complete IDirect3DSurface8 vtable implementation
+    - 18 comprehensive tests for COM wrapper functionality
+  
+  - **Volume Texture and Front Buffer Support**:
+    - Implemented UpdateTexture for D3DRTYPE_VOLUMETEXTURE
+    - Full volume texture data copying with format support
+    - GetFrontBuffer implementation for screen capture
+    - Support for compressed (DXT) and uncompressed formats
+    - 15 tests covering volume texture and front buffer operations
+  
+  - **Palette and Device Info Implementation**:
+    - GetInfo method returning driver capability structures
+    - Complete palette management (256 palettes × 256 entries)
+    - SetPaletteEntries, GetPaletteEntries, SetCurrentTexturePalette
+    - Support for 8-bit paletted textures
+    - 15 tests for palette and device info functionality
+  
+  - **Clip Status Management**:
+    - SetClipStatus and GetClipStatus implementations
+    - Support for all D3DCS_* clip flags
+    - Proper validation of clip plane combinations
+    - 12 tests for clip status operations
+  
+  - **State Block System**:
+    - Complete state block implementation (Begin, End, Apply, Capture, Delete, Create)
+    - Support for ALL, PIXELSTATE, and VERTEXSTATE block types
+    - Efficient state capture and replay mechanism
+    - 13 comprehensive state block tests
+  
+  - **Matrix Operations**:
+    - MultiplyTransform for incremental matrix updates
+    - DirectX pre-multiplication convention (result = matrix × current)
+    - Support for all transform types
+    - 10 matrix multiplication tests
+  
+  - **Additional Swap Chains**:
+    - CreateAdditionalSwapChain for multi-window rendering
+    - AdditionalSwapChain class wrapping OffscreenFramebuffer
+    - Device reset handling for additional swap chains
+    - 8 tests for multi-swap-chain scenarios
+  
+  - **Cursor Management**:
+    - SetCursorProperties with surface-to-texture conversion
+    - ShowCursor, SetCursorPosition implementations
+    - ARGB to RGBA format conversion for OpenGL
+    - Hotspot tracking and visibility control
+    - 10 cursor management tests
+
+### Added
 - **D3DX Math Library Complete** (2025-08-08):
   - Implemented all D3DX plane utility functions:
     - D3DXPlaneDot, D3DXPlaneDotCoord, D3DXPlaneDotNormal for plane-point operations

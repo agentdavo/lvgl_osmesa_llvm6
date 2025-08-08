@@ -417,11 +417,78 @@ HRESULT Direct3D8::CheckDeviceMultiSampleType(UINT Adapter, D3DDEVTYPE DeviceTyp
         return D3DERR_NOTAVAILABLE;
     }
     
-    // We only support no multisampling for now
+    // No multisampling is always supported
     if (MultiSampleType == D3DMULTISAMPLE_NONE) {
         return D3D_OK;
     }
     
+    // Query OpenGL for maximum supported samples
+    // Note: This requires an active GL context to query properly
+    // For now, we'll report support for common MSAA levels that are
+    // widely supported across OpenGL implementations
+    
+    // Map DirectX multisample types to sample counts
+    int requested_samples = 0;
+    switch (MultiSampleType) {
+        case D3DMULTISAMPLE_2_SAMPLES:  requested_samples = 2; break;
+        case D3DMULTISAMPLE_3_SAMPLES:  requested_samples = 3; break;
+        case D3DMULTISAMPLE_4_SAMPLES:  requested_samples = 4; break;
+        case D3DMULTISAMPLE_5_SAMPLES:  requested_samples = 5; break;
+        case D3DMULTISAMPLE_6_SAMPLES:  requested_samples = 6; break;
+        case D3DMULTISAMPLE_7_SAMPLES:  requested_samples = 7; break;
+        case D3DMULTISAMPLE_8_SAMPLES:  requested_samples = 8; break;
+        case D3DMULTISAMPLE_9_SAMPLES:  requested_samples = 9; break;
+        case D3DMULTISAMPLE_10_SAMPLES: requested_samples = 10; break;
+        case D3DMULTISAMPLE_11_SAMPLES: requested_samples = 11; break;
+        case D3DMULTISAMPLE_12_SAMPLES: requested_samples = 12; break;
+        case D3DMULTISAMPLE_13_SAMPLES: requested_samples = 13; break;
+        case D3DMULTISAMPLE_14_SAMPLES: requested_samples = 14; break;
+        case D3DMULTISAMPLE_15_SAMPLES: requested_samples = 15; break;
+        case D3DMULTISAMPLE_16_SAMPLES: requested_samples = 16; break;
+        default:
+            return D3DERR_NOTAVAILABLE;
+    }
+    
+    // Check if the format supports multisampling
+    // Most common formats support MSAA
+    switch (SurfaceFormat) {
+        case D3DFMT_X8R8G8B8:
+        case D3DFMT_A8R8G8B8:
+        case D3DFMT_R5G6B5:
+        case D3DFMT_X1R5G5B5:
+        case D3DFMT_A1R5G5B5:
+        case D3DFMT_A4R4G4B4:
+        case D3DFMT_R8G8B8:
+        case D3DFMT_X4R4G4B4:
+        case D3DFMT_A8B8G8R8:
+        case D3DFMT_X8B8G8R8:
+        case D3DFMT_D16:
+        case D3DFMT_D24S8:
+        case D3DFMT_D24X8:
+        case D3DFMT_D32:
+            // These formats can support multisampling
+            break;
+        default:
+            // Unsupported format for multisampling
+            return D3DERR_NOTAVAILABLE;
+    }
+    
+    // For OSMesa and most modern OpenGL implementations,
+    // 2x, 4x, and 8x MSAA are commonly supported
+    // 16x is less common but available on high-end hardware
+    if (requested_samples <= 2 || 
+        requested_samples == 4 || 
+        requested_samples == 8) {
+        return D3D_OK;
+    }
+    
+    // Higher sample counts might be supported but are less common
+    if (requested_samples == 16) {
+        // 16x MSAA is supported on modern hardware
+        return D3D_OK;
+    }
+    
+    // Odd sample counts (3, 5, 6, 7, 9-15) are rarely supported
     return D3DERR_NOTAVAILABLE;
 }
 

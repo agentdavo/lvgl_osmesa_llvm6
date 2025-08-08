@@ -75,6 +75,18 @@ public:
     
     // Calculate bytes per pixel
     static UINT get_format_size(D3DFORMAT format);
+    
+    // Set external buffer for additional swap chain integration
+    void set_external_buffer(void* buffer) { external_buffer_ = buffer; }
+    
+    // Check if this surface is multisampled
+    bool is_multisampled() const { return multisample_type_ != D3DMULTISAMPLE_NONE; }
+    
+    // Get multisample type
+    D3DMULTISAMPLE_TYPE get_multisample_type() const { return multisample_type_; }
+    
+    // Resolve multisampled surface to texture (for MSAA render targets)
+    bool resolve_multisample();
 
 private:
 
@@ -106,6 +118,9 @@ private:
     
     // Private data storage
     PrivateDataManager private_data_manager_;
+    
+    // External buffer for additional swap chains
+    void* external_buffer_;
 };
 
 } // namespace dx8gl

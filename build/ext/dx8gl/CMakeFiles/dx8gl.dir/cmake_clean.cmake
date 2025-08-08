@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dx8gl.dir/src/command_buffer.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o"
   "CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.o.d"
+  "CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.o"
+  "CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o"
   "CMakeFiles/dx8gl.dir/src/d3d8_com_wrapper.cpp.o.d"
   "CMakeFiles/dx8gl.dir/src/d3d8_cubetexture.cpp.o"

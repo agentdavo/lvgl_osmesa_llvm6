@@ -141,12 +141,57 @@ Build times (approximate):
 - Mesa: 5-10 minutes  
 - Examples: < 1 minute each
 
-### Recent Updates (December 2025)
-- **Volume Texture Support**: Full 3D texture implementation
-  - Complete IDirect3DVolumeTexture8 and IDirect3DVolume8 interfaces
-  - OpenGL 3D texture creation and management
-  - GLSL/WGSL shader support for volumetric effects
-  - Ray marching volumetric fog generation helpers
+### Recent Updates (August 2025)
+- **Complete DirectX 8 API Coverage**: All major DirectX 8.1 features now implemented
+  - Multisampling/anti-aliasing support (2x, 4x, 8x, 16x MSAA)
+  - Complete COM wrapper implementation with thread safety
+  - Volume textures and front buffer capture
+  - Palette management for 8-bit textures
+  - State blocks for efficient state management
+  - Additional swap chains for multi-window rendering
+  - Cursor management APIs
+  - Clip status tracking
+  - Matrix multiplication operations
+
+### Using Multisampling/Anti-Aliasing
+
+```cpp
+// Check for MSAA support
+HRESULT hr = d3d8->CheckDeviceMultiSampleType(
+    D3DADAPTER_DEFAULT,
+    D3DDEVTYPE_HAL,
+    D3DFMT_X8R8G8B8,
+    TRUE,  // Windowed
+    D3DMULTISAMPLE_4_SAMPLES  // 4x MSAA
+);
+
+if (SUCCEEDED(hr)) {
+    // Create device with multisampling
+    D3DPRESENT_PARAMETERS pp = {};
+    pp.MultiSampleType = D3DMULTISAMPLE_4_SAMPLES;
+    pp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+    // ... other parameters
+    
+    d3d8->CreateDevice(..., &pp, &device);
+}
+
+// Create multisampled render target
+IDirect3DSurface8* msaa_rt;
+device->CreateRenderTarget(
+    width, height,
+    D3DFMT_A8R8G8B8,
+    D3DMULTISAMPLE_4_SAMPLES,  // 4x MSAA
+    FALSE,  // Not lockable
+    &msaa_rt
+);
+```
+
+Supported MSAA levels:
+- `D3DMULTISAMPLE_NONE` - No antialiasing
+- `D3DMULTISAMPLE_2_SAMPLES` - 2x MSAA
+- `D3DMULTISAMPLE_4_SAMPLES` - 4x MSAA (recommended)
+- `D3DMULTISAMPLE_8_SAMPLES` - 8x MSAA
+- `D3DMULTISAMPLE_16_SAMPLES` - 16x MSAA (high-end)
 - **Async WebGPU Architecture**: Modern promise/future-based async operations
   - WebGPUAsyncHandler for adapter, device, and buffer operations
   - WebGPUAsyncResource RAII wrapper for resource management
@@ -258,6 +303,17 @@ export LD_LIBRARY_PATH=llvm-install/lib:mesa-install/lib/x86_64-linux-gnu:$LD_LI
 - `test_dx8gl_core_api` - DirectX 8 API implementation
 - `test_device_reset` - Device reset and resource recreation
 - `test_swapchain_presentation` - Swap chain functionality
+- `test_multisampling` - MSAA/anti-aliasing support (11 tests)
+- `test_com_wrapper_complete` - COM interface compliance (18 tests)
+
+#### Advanced DirectX 8 Features
+- `test_cursor_management` - Cursor API implementation (10 tests)
+- `test_additional_swapchain` - Multi-window rendering (8 tests)
+- `test_matrix_multiplication` - Matrix operations (10 tests)
+- `test_state_blocks` - State capture/replay (13 tests)
+- `test_clip_status` - Clip plane management (12 tests)
+- `test_palette_and_device_info` - Palette support (15 tests)
+- `test_volume_texture_and_front_buffer` - 3D textures & screen capture (15 tests)
 
 #### Shader Tests
 - `test_shader_translator` - DirectX to GLSL translation

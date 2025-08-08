@@ -16,6 +16,7 @@
 #include <mutex>
 #include <atomic>
 #include <future>
+#include <array>
 
 namespace dx8gl {
 
@@ -32,6 +33,7 @@ class Direct3DVertexBuffer8;
 class Direct3DIndexBuffer8;
 class Direct3DSurface8;
 class Direct3DSwapChain8;
+class AdditionalSwapChain;
 
 class Direct3DDevice8 : public IDirect3DDevice8 {
     friend class Direct3DSurface8;
@@ -332,6 +334,9 @@ private:
     IDirect3DSurface8* depth_stencil_;
     std::vector<IDirect3DSurface8*> back_buffers_;
     
+    // Additional swap chains for multi-window rendering
+    std::vector<AdditionalSwapChain*> additional_swap_chains_;
+    
     // Scene state
     bool in_scene_;
     bool frame_presented_;
@@ -353,6 +358,28 @@ private:
     // Statistics
     Statistics current_stats_;
     Statistics last_frame_stats_;
+    
+    // Cursor state
+    struct CursorState {
+        GLuint texture;           // OpenGL texture for cursor image
+        UINT hotspot_x;          // Cursor hotspot X coordinate
+        UINT hotspot_y;          // Cursor hotspot Y coordinate
+        int position_x;          // Current cursor X position
+        int position_y;          // Current cursor Y position
+        bool visible;            // Whether cursor is shown
+        UINT width;              // Cursor width
+        UINT height;             // Cursor height
+        bool has_cursor;         // Whether a cursor has been set
+    } cursor_state_;
+    
+    // Palette management
+    static constexpr UINT MAX_PALETTES = 256;
+    struct PaletteData {
+        PALETTEENTRY entries[256];
+        bool valid;
+    };
+    std::array<PaletteData, MAX_PALETTES> palettes_;
+    UINT current_palette_;
     
     // Helper methods
     HRESULT copy_rect_internal(IDirect3DSurface8* src, const RECT* src_rect,

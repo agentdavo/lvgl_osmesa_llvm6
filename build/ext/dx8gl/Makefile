@@ -254,6 +254,30 @@ src/cube_texture_support.cpp.s:
 	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/cube_texture_support.cpp.s
 .PHONY : src/cube_texture_support.cpp.s
 
+src/d3d8_additional_swapchain.o: src/d3d8_additional_swapchain.cpp.o
+.PHONY : src/d3d8_additional_swapchain.o
+
+# target to build an object file
+src/d3d8_additional_swapchain.cpp.o:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.o
+.PHONY : src/d3d8_additional_swapchain.cpp.o
+
+src/d3d8_additional_swapchain.i: src/d3d8_additional_swapchain.cpp.i
+.PHONY : src/d3d8_additional_swapchain.i
+
+# target to preprocess a source file
+src/d3d8_additional_swapchain.cpp.i:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.i
+.PHONY : src/d3d8_additional_swapchain.cpp.i
+
+src/d3d8_additional_swapchain.s: src/d3d8_additional_swapchain.cpp.s
+.PHONY : src/d3d8_additional_swapchain.s
+
+# target to generate assembly for a file
+src/d3d8_additional_swapchain.cpp.s:
+	cd /home/djs/lvgl_osmesa_llvm6/build && $(MAKE) $(MAKESILENT) -f ext/dx8gl/CMakeFiles/dx8gl.dir/build.make ext/dx8gl/CMakeFiles/dx8gl.dir/src/d3d8_additional_swapchain.cpp.s
+.PHONY : src/d3d8_additional_swapchain.cpp.s
+
 src/d3d8_com_wrapper.o: src/d3d8_com_wrapper.cpp.o
 .PHONY : src/d3d8_com_wrapper.o
 
@@ -1332,6 +1356,9 @@ help:
 	@echo "... src/cube_texture_support.o"
 	@echo "... src/cube_texture_support.i"
 	@echo "... src/cube_texture_support.s"
+	@echo "... src/d3d8_additional_swapchain.o"
+	@echo "... src/d3d8_additional_swapchain.i"
+	@echo "... src/d3d8_additional_swapchain.s"
 	@echo "... src/d3d8_com_wrapper.o"
 	@echo "... src/d3d8_com_wrapper.i"
 	@echo "... src/d3d8_com_wrapper.s"

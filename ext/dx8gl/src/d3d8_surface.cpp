@@ -59,7 +59,8 @@ Direct3DSurface8::Direct3DSurface8(Direct3DDevice8* device, UINT width, UINT hei
     , lock_buffer_(nullptr)
     , lock_rect_()
     , lock_flags_(0)
-    , pitch_(0) {
+    , pitch_(0)
+    , external_buffer_(nullptr) {
     
     // Calculate pitch
     pitch_ = width_ * get_format_size(format_);
@@ -91,7 +92,8 @@ Direct3DSurface8::Direct3DSurface8(Direct3DTexture8* texture, UINT level, UINT w
     , lock_buffer_(nullptr)
     , lock_rect_()
     , lock_flags_(0)
-    , pitch_(0) {
+    , pitch_(0)
+    , external_buffer_(nullptr) {
     
     // Calculate pitch
     pitch_ = width_ * get_format_size(format_);
@@ -117,8 +119,8 @@ Direct3DSurface8::~Direct3DSurface8() {
         glDeleteTextures(1, &texture_);
     }
     
-    // Clean up lock buffer
-    if (lock_buffer_) {
+    // Clean up lock buffer (only if we allocated it)
+    if (lock_buffer_ && lock_buffer_ != external_buffer_) {
         free(lock_buffer_);
     }
     
@@ -168,6 +170,30 @@ bool Direct3DSurface8::initialize() {
         
         if (renderbuffer_) {
             glBindRenderbuffer(GL_RENDERBUFFER, renderbuffer_);
+            
+            // Map DirectX multisample type to OpenGL samples
+            GLsizei samples = 1;
+            if (multisample_type_ != D3DMULTISAMPLE_NONE) {
+                switch (multisample_type_) {
+                    case D3DMULTISAMPLE_2_SAMPLES:  samples = 2; break;
+                    case D3DMULTISAMPLE_3_SAMPLES:  samples = 3; break;
+                    case D3DMULTISAMPLE_4_SAMPLES:  samples = 4; break;
+                    case D3DMULTISAMPLE_5_SAMPLES:  samples = 5; break;
+                    case D3DMULTISAMPLE_6_SAMPLES:  samples = 6; break;
+                    case D3DMULTISAMPLE_7_SAMPLES:  samples = 7; break;
+                    case D3DMULTISAMPLE_8_SAMPLES:  samples = 8; break;
+                    case D3DMULTISAMPLE_9_SAMPLES:  samples = 9; break;
+                    case D3DMULTISAMPLE_10_SAMPLES: samples = 10; break;
+                    case D3DMULTISAMPLE_11_SAMPLES: samples = 11; break;
+                    case D3DMULTISAMPLE_12_SAMPLES: samples = 12; break;
+                    case D3DMULTISAMPLE_13_SAMPLES: samples = 13; break;
+                    case D3DMULTISAMPLE_14_SAMPLES: samples = 14; break;
+                    case D3DMULTISAMPLE_15_SAMPLES: samples = 15; break;
+                    case D3DMULTISAMPLE_16_SAMPLES: samples = 16; break;
+                    default: samples = 1; break;
+                }
+            }
+            
 #ifdef __EMSCRIPTEN__
         // WebGL requires specific formats for renderbuffers
         GLenum rb_format = internal_format;
@@ -178,40 +204,119 @@ bool Direct3DSurface8::initialize() {
         } else if (format_ == D3DFMT_D32) {
             rb_format = GL_DEPTH_COMPONENT16;  // WebGL doesn't support 32-bit depth
         }
-        glRenderbufferStorage(GL_RENDERBUFFER, rb_format, width_, height_);
+        
+        if (samples > 1) {
+            // WebGL 2.0 supports multisampled renderbuffers
+            glRenderbufferStorageMultisample(GL_RENDERBUFFER, samples, rb_format, width_, height_);
+        } else {
+            glRenderbufferStorage(GL_RENDERBUFFER, rb_format, width_, height_);
+        }
 #else
-        glRenderbufferStorage(GL_RENDERBUFFER, internal_format, width_, height_);
+        if (samples > 1 && has_extension("GL_ARB_texture_multisample")) {
+            // Use multisampled renderbuffer storage
+            glRenderbufferStorageMultisample(GL_RENDERBUFFER, samples, internal_format, width_, height_);
+            DX8GL_DEBUG("Created multisampled depth/stencil renderbuffer %u with %d samples", renderbuffer_, samples);
+        } else {
+            glRenderbufferStorage(GL_RENDERBUFFER, internal_format, width_, height_);
+            if (samples > 1) {
+                DX8GL_WARNING("Multisampling requested but not supported, using single sample");
+            }
+        }
 #endif
             glBindRenderbuffer(GL_RENDERBUFFER, 0);
             
             DX8GL_DEBUG("Created depth/stencil renderbuffer %u", renderbuffer_);
         }
     } else {
-        // Create texture for color surfaces
-        glGenTextures(1, &texture_);
-        GLenum error = glGetError();
-        if (error != GL_NO_ERROR || !texture_) {
-            DX8GL_ERROR("Failed to generate texture: GL error 0x%04x", error);
-            return false;
+        // Map DirectX multisample type to OpenGL samples
+        GLsizei samples = 1;
+        if (multisample_type_ != D3DMULTISAMPLE_NONE) {
+            switch (multisample_type_) {
+                case D3DMULTISAMPLE_2_SAMPLES:  samples = 2; break;
+                case D3DMULTISAMPLE_3_SAMPLES:  samples = 3; break;
+                case D3DMULTISAMPLE_4_SAMPLES:  samples = 4; break;
+                case D3DMULTISAMPLE_5_SAMPLES:  samples = 5; break;
+                case D3DMULTISAMPLE_6_SAMPLES:  samples = 6; break;
+                case D3DMULTISAMPLE_7_SAMPLES:  samples = 7; break;
+                case D3DMULTISAMPLE_8_SAMPLES:  samples = 8; break;
+                case D3DMULTISAMPLE_9_SAMPLES:  samples = 9; break;
+                case D3DMULTISAMPLE_10_SAMPLES: samples = 10; break;
+                case D3DMULTISAMPLE_11_SAMPLES: samples = 11; break;
+                case D3DMULTISAMPLE_12_SAMPLES: samples = 12; break;
+                case D3DMULTISAMPLE_13_SAMPLES: samples = 13; break;
+                case D3DMULTISAMPLE_14_SAMPLES: samples = 14; break;
+                case D3DMULTISAMPLE_15_SAMPLES: samples = 15; break;
+                case D3DMULTISAMPLE_16_SAMPLES: samples = 16; break;
+                default: samples = 1; break;
+            }
         }
         
-        glBindTexture(GL_TEXTURE_2D, texture_);
-        glTexImage2D(GL_TEXTURE_2D, 0, internal_format, width_, height_, 0,
-                     format, type, nullptr);
+        // For multisampled render targets, we need to use renderbuffers instead of textures
+        if (samples > 1 && is_render_target()) {
+            bool has_renderbuffers = has_extension("GL_ARB_framebuffer_object");
+            bool has_multisample = has_extension("GL_ARB_texture_multisample");
+            
+            if (has_renderbuffers && has_multisample) {
+                // Create multisampled renderbuffer for color
+                glGenRenderbuffers(1, &renderbuffer_);
+                if (renderbuffer_) {
+                    glBindRenderbuffer(GL_RENDERBUFFER, renderbuffer_);
+                    glRenderbufferStorageMultisample(GL_RENDERBUFFER, samples, internal_format, width_, height_);
+                    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+                    
+                    DX8GL_DEBUG("Created multisampled color renderbuffer %u with %d samples", renderbuffer_, samples);
+                    
+                    // Also create a regular texture for resolving MSAA
+                    glGenTextures(1, &texture_);
+                    if (texture_) {
+                        glBindTexture(GL_TEXTURE_2D, texture_);
+                        glTexImage2D(GL_TEXTURE_2D, 0, internal_format, width_, height_, 0,
+                                   format, type, nullptr);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+                        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+                        glBindTexture(GL_TEXTURE_2D, 0);
+                        
+                        DX8GL_DEBUG("Created resolve texture %u for MSAA renderbuffer", texture_);
+                    }
+                } else {
+                    DX8GL_WARNING("Failed to create multisampled renderbuffer, falling back to single sample");
+                    samples = 1;
+                }
+            } else {
+                DX8GL_WARNING("Multisampling requested but not supported, using single sample");
+                samples = 1;
+            }
+        }
         
-        // Set default texture parameters
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        
-        glBindTexture(GL_TEXTURE_2D, 0);
-        
-        DX8GL_DEBUG("Created color texture %u", texture_);
+        // Create regular texture for non-multisampled or non-render-target surfaces
+        if (samples == 1 || !is_render_target()) {
+            glGenTextures(1, &texture_);
+            GLenum error = glGetError();
+            if (error != GL_NO_ERROR || !texture_) {
+                DX8GL_ERROR("Failed to generate texture: GL error 0x%04x", error);
+                return false;
+            }
+            
+            glBindTexture(GL_TEXTURE_2D, texture_);
+            glTexImage2D(GL_TEXTURE_2D, 0, internal_format, width_, height_, 0,
+                         format, type, nullptr);
+            
+            // Set default texture parameters
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            
+            glBindTexture(GL_TEXTURE_2D, 0);
+            
+            DX8GL_DEBUG("Created color texture %u", texture_);
+        }
     }
     
     // Create framebuffer if this is a render target
-    if (is_render_target() && texture_) {
+    if (is_render_target() && (texture_ || renderbuffer_)) {
         // Check if framebuffer objects are supported using modern method
         bool has_fbo = has_extension("GL_ARB_framebuffer_object");
         
@@ -226,10 +331,21 @@ bool Direct3DSurface8::initialize() {
                 DX8GL_WARNING("Framebuffer objects not available, using default framebuffer");
                 framebuffer_ = 0;
             } else {
-                // Bind framebuffer and attach the texture
+                // Bind framebuffer
                 glBindFramebuffer(GL_FRAMEBUFFER, framebuffer_);
-                glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                                      GL_TEXTURE_2D, texture_, 0);
+                
+                // Attach either multisampled renderbuffer or regular texture
+                if (renderbuffer_ && multisample_type_ != D3DMULTISAMPLE_NONE && !is_depth_stencil()) {
+                    // Attach multisampled color renderbuffer
+                    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                                            GL_RENDERBUFFER, renderbuffer_);
+                    DX8GL_DEBUG("Attached multisampled color renderbuffer to framebuffer");
+                } else if (texture_) {
+                    // Attach regular texture
+                    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                                          GL_TEXTURE_2D, texture_, 0);
+                    DX8GL_DEBUG("Attached texture to framebuffer");
+                }
                 
                 // Check framebuffer completeness
                 GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
@@ -237,10 +353,11 @@ bool Direct3DSurface8::initialize() {
                     DX8GL_WARNING("Framebuffer incomplete: 0x%x, falling back to default framebuffer", status);
                     glDeleteFramebuffers(1, &framebuffer_);
                     framebuffer_ = 0;
+                } else {
+                    DX8GL_DEBUG("Created framebuffer %u with color attachment", framebuffer_);
                 }
                 
                 glBindFramebuffer(GL_FRAMEBUFFER, 0);
-                DX8GL_DEBUG("Created framebuffer %u with color attachment", framebuffer_);
             }
         } else {
             // OSMesa or legacy OpenGL - use default framebuffer (0)
@@ -250,6 +367,75 @@ bool Direct3DSurface8::initialize() {
     }
     
     return true;
+}
+
+bool Direct3DSurface8::resolve_multisample() {
+    // Only resolve if we have a multisampled renderbuffer and a resolve texture
+    if (!is_multisampled() || !renderbuffer_ || !texture_ || is_depth_stencil()) {
+        return true;  // Nothing to resolve
+    }
+    
+    // Check if we have framebuffer blit support
+    bool has_fbo_blit = has_extension("GL_EXT_framebuffer_blit");
+    if (!has_fbo_blit) {
+        DX8GL_WARNING("GL_EXT_framebuffer_blit not available, cannot resolve MSAA");
+        return false;
+    }
+    
+    // Create temporary framebuffers for blitting
+    GLuint msaa_fbo = 0, resolve_fbo = 0;
+    glGenFramebuffers(1, &msaa_fbo);
+    glGenFramebuffers(1, &resolve_fbo);
+    
+    if (!msaa_fbo || !resolve_fbo) {
+        if (msaa_fbo) glDeleteFramebuffers(1, &msaa_fbo);
+        if (resolve_fbo) glDeleteFramebuffers(1, &resolve_fbo);
+        DX8GL_ERROR("Failed to create framebuffers for MSAA resolve");
+        return false;
+    }
+    
+    // Setup MSAA framebuffer with renderbuffer
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, msaa_fbo);
+    glFramebufferRenderbuffer(GL_READ_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                            GL_RENDERBUFFER, renderbuffer_);
+    
+    // Setup resolve framebuffer with texture
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, resolve_fbo);
+    glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                          GL_TEXTURE_2D, texture_, 0);
+    
+    // Check both framebuffers are complete
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, msaa_fbo);
+    GLenum read_status = glCheckFramebufferStatus(GL_READ_FRAMEBUFFER);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, resolve_fbo);
+    GLenum draw_status = glCheckFramebufferStatus(GL_DRAW_FRAMEBUFFER);
+    
+    bool success = false;
+    if (read_status == GL_FRAMEBUFFER_COMPLETE && draw_status == GL_FRAMEBUFFER_COMPLETE) {
+        // Perform the blit (resolve)
+        glBlitFramebuffer(0, 0, width_, height_,
+                         0, 0, width_, height_,
+                         GL_COLOR_BUFFER_BIT,
+                         GL_NEAREST);
+        
+        GLenum error = glGetError();
+        if (error == GL_NO_ERROR) {
+            success = true;
+            DX8GL_DEBUG("Successfully resolved MSAA surface to texture");
+        } else {
+            DX8GL_ERROR("glBlitFramebuffer failed with error 0x%04x", error);
+        }
+    } else {
+        DX8GL_ERROR("Framebuffers incomplete for MSAA resolve: read=0x%x draw=0x%x", 
+                   read_status, draw_status);
+    }
+    
+    // Cleanup
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glDeleteFramebuffers(1, &msaa_fbo);
+    glDeleteFramebuffers(1, &resolve_fbo);
+    
+    return success;
 }
 
 // IUnknown methods
@@ -392,11 +578,17 @@ HRESULT Direct3DSurface8::LockRect(D3DLOCKED_RECT* pLockedRect, const RECT* pRec
     DX8GL_TRACE("Lock surface: rect=(%d,%d,%d,%d) flags=0x%08x",
                 lock_rect_.left, lock_rect_.top, lock_rect_.right, lock_rect_.bottom, Flags);
     
-    // Allocate lock buffer
+    // Allocate lock buffer (use external buffer if available)
     if (!lock_buffer_) {
-        lock_buffer_ = malloc(pitch_ * height_);
-        if (!lock_buffer_) {
-            return E_OUTOFMEMORY;
+        if (external_buffer_) {
+            // Use the external buffer provided by AdditionalSwapChain
+            lock_buffer_ = external_buffer_;
+        } else {
+            // Allocate our own buffer
+            lock_buffer_ = malloc(pitch_ * height_);
+            if (!lock_buffer_) {
+                return E_OUTOFMEMORY;
+            }
         }
     }
     
