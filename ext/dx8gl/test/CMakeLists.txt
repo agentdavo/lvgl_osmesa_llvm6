@@ -527,3 +527,75 @@ else()
     message(WARNING "dx8gl target not available, skipping test_shader_hot_reload")
     set_target_properties(test_shader_hot_reload PROPERTIES EXCLUDE_FROM_ALL TRUE)
 endif()
+
+# Test executable for D3DX color functions
+add_executable(test_d3dx_color
+    test_d3dx_color.cpp
+)
+
+target_include_directories(test_d3dx_color PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_d3dx_color PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME D3DXColorTest COMMAND test_d3dx_color)
+    set_tests_properties(D3DXColorTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_d3dx_color")
+    set_target_properties(test_d3dx_color PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for shader program linking
+add_executable(test_shader_program_linking
+    test_shader_program_linking.cpp
+)
+
+target_include_directories(test_shader_program_linking PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_shader_program_linking PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME ShaderProgramLinkingTest COMMAND test_shader_program_linking)
+    set_tests_properties(ShaderProgramLinkingTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_shader_program_linking")
+    set_target_properties(test_shader_program_linking PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for shader constant batching
+add_executable(test_shader_constant_batching
+    test_shader_constant_batching.cpp
+)
+
+target_include_directories(test_shader_constant_batching PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_shader_constant_batching PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME ShaderConstantBatchingTest COMMAND test_shader_constant_batching)
+    set_tests_properties(ShaderConstantBatchingTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_shader_constant_batching")
+    set_target_properties(test_shader_constant_batching PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for shader cache (simple version without OpenGL)
+add_executable(test_shader_cache_simple
+    test_shader_cache_simple.cpp
+)
+
+target_include_directories(test_shader_cache_simple PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_shader_cache_simple PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME ShaderCacheSimpleTest COMMAND test_shader_cache_simple)
+    set_tests_properties(ShaderCacheSimpleTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_shader_cache_simple")
+    set_target_properties(test_shader_cache_simple PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()

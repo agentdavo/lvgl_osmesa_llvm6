@@ -19,15 +19,35 @@ D3DMATRIX* D3DXMatrixMultiply(D3DMATRIX* pOut, const D3DMATRIX* pM1, const D3DMA
     if (!pOut || !pM1 || !pM2) return nullptr;
     
     D3DMATRIX result;
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            float sum = 0.0f;
-            for (int k = 0; k < 4; k++) {
-                sum += pM1->m(i, k) * pM2->m(k, j);
-            }
-            result.m(i, j) = sum;
-        }
-    }
+    
+    // DirectX uses row-major matrices, so we multiply rows of M1 by columns of M2
+    // This follows the standard mathematical convention: result = M1 × M2
+    // where transformations are applied from right to left: v' = v × M1 × M2
+    
+    // Row 1
+    result._11 = pM1->_11 * pM2->_11 + pM1->_12 * pM2->_21 + pM1->_13 * pM2->_31 + pM1->_14 * pM2->_41;
+    result._12 = pM1->_11 * pM2->_12 + pM1->_12 * pM2->_22 + pM1->_13 * pM2->_32 + pM1->_14 * pM2->_42;
+    result._13 = pM1->_11 * pM2->_13 + pM1->_12 * pM2->_23 + pM1->_13 * pM2->_33 + pM1->_14 * pM2->_43;
+    result._14 = pM1->_11 * pM2->_14 + pM1->_12 * pM2->_24 + pM1->_13 * pM2->_34 + pM1->_14 * pM2->_44;
+    
+    // Row 2
+    result._21 = pM1->_21 * pM2->_11 + pM1->_22 * pM2->_21 + pM1->_23 * pM2->_31 + pM1->_24 * pM2->_41;
+    result._22 = pM1->_21 * pM2->_12 + pM1->_22 * pM2->_22 + pM1->_23 * pM2->_32 + pM1->_24 * pM2->_42;
+    result._23 = pM1->_21 * pM2->_13 + pM1->_22 * pM2->_23 + pM1->_23 * pM2->_33 + pM1->_24 * pM2->_43;
+    result._24 = pM1->_21 * pM2->_14 + pM1->_22 * pM2->_24 + pM1->_23 * pM2->_34 + pM1->_24 * pM2->_44;
+    
+    // Row 3
+    result._31 = pM1->_31 * pM2->_11 + pM1->_32 * pM2->_21 + pM1->_33 * pM2->_31 + pM1->_34 * pM2->_41;
+    result._32 = pM1->_31 * pM2->_12 + pM1->_32 * pM2->_22 + pM1->_33 * pM2->_32 + pM1->_34 * pM2->_42;
+    result._33 = pM1->_31 * pM2->_13 + pM1->_32 * pM2->_23 + pM1->_33 * pM2->_33 + pM1->_34 * pM2->_43;
+    result._34 = pM1->_31 * pM2->_14 + pM1->_32 * pM2->_24 + pM1->_33 * pM2->_34 + pM1->_34 * pM2->_44;
+    
+    // Row 4
+    result._41 = pM1->_41 * pM2->_11 + pM1->_42 * pM2->_21 + pM1->_43 * pM2->_31 + pM1->_44 * pM2->_41;
+    result._42 = pM1->_41 * pM2->_12 + pM1->_42 * pM2->_22 + pM1->_43 * pM2->_32 + pM1->_44 * pM2->_42;
+    result._43 = pM1->_41 * pM2->_13 + pM1->_42 * pM2->_23 + pM1->_43 * pM2->_33 + pM1->_44 * pM2->_43;
+    result._44 = pM1->_41 * pM2->_14 + pM1->_42 * pM2->_24 + pM1->_43 * pM2->_34 + pM1->_44 * pM2->_44;
+    
     *pOut = result;
     return pOut;
 }
@@ -240,6 +260,47 @@ D3DMATRIX* D3DXMatrixRotationZ(D3DMATRIX* pOut, float angle) {
     pOut->_12 = s;
     pOut->_21 = -s;
     pOut->_22 = c;
+    
+    return pOut;
+}
+
+D3DMATRIX* D3DXMatrixRotationYawPitchRoll(D3DMATRIX* pOut, float yaw, float pitch, float roll) {
+    if (!pOut) return nullptr;
+    
+    // DirectX convention: Apply rotations in the order Roll (Z), Pitch (X), Yaw (Y)
+    // This matches the standard airplane convention where:
+    // - Yaw is rotation around Y (vertical) axis
+    // - Pitch is rotation around X (lateral) axis  
+    // - Roll is rotation around Z (longitudinal) axis
+    
+    // Calculate sin/cos for all three angles
+    float cy = cosf(yaw);
+    float sy = sinf(yaw);
+    float cp = cosf(pitch);
+    float sp = sinf(pitch);
+    float cr = cosf(roll);
+    float sr = sinf(roll);
+    
+    // Combined rotation matrix (Roll × Pitch × Yaw)
+    pOut->_11 = cr * cy + sr * sp * sy;
+    pOut->_12 = sr * cp;
+    pOut->_13 = sr * sp * cy - cr * sy;
+    pOut->_14 = 0.0f;
+    
+    pOut->_21 = cr * sp * sy - sr * cy;
+    pOut->_22 = cr * cp;
+    pOut->_23 = sr * sy + cr * sp * cy;
+    pOut->_24 = 0.0f;
+    
+    pOut->_31 = cp * sy;
+    pOut->_32 = -sp;
+    pOut->_33 = cp * cy;
+    pOut->_34 = 0.0f;
+    
+    pOut->_41 = 0.0f;
+    pOut->_42 = 0.0f;
+    pOut->_43 = 0.0f;
+    pOut->_44 = 1.0f;
     
     return pOut;
 }
@@ -487,6 +548,67 @@ D3DXVECTOR3* WINAPI D3DXVec3Normalize(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV) 
     return pOut;
 }
 
+D3DXVECTOR3* WINAPI D3DXVec3Add(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2) {
+    if (!pOut || !pV1 || !pV2) return nullptr;
+    
+    pOut->x = pV1->x + pV2->x;
+    pOut->y = pV1->y + pV2->y;
+    pOut->z = pV1->z + pV2->z;
+    
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Subtract(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2) {
+    if (!pOut || !pV1 || !pV2) return nullptr;
+    
+    pOut->x = pV1->x - pV2->x;
+    pOut->y = pV1->y - pV2->y;
+    pOut->z = pV1->z - pV2->z;
+    
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Minimize(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2) {
+    if (!pOut || !pV1 || !pV2) return nullptr;
+    
+    pOut->x = (pV1->x < pV2->x) ? pV1->x : pV2->x;
+    pOut->y = (pV1->y < pV2->y) ? pV1->y : pV2->y;
+    pOut->z = (pV1->z < pV2->z) ? pV1->z : pV2->z;
+    
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Maximize(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2) {
+    if (!pOut || !pV1 || !pV2) return nullptr;
+    
+    pOut->x = (pV1->x > pV2->x) ? pV1->x : pV2->x;
+    pOut->y = (pV1->y > pV2->y) ? pV1->y : pV2->y;
+    pOut->z = (pV1->z > pV2->z) ? pV1->z : pV2->z;
+    
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Scale(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV, float s) {
+    if (!pOut || !pV) return nullptr;
+    
+    pOut->x = pV->x * s;
+    pOut->y = pV->y * s;
+    pOut->z = pV->z * s;
+    
+    return pOut;
+}
+
+D3DXVECTOR3* WINAPI D3DXVec3Lerp(D3DXVECTOR3* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2, float s) {
+    if (!pOut || !pV1 || !pV2) return nullptr;
+    
+    // Linear interpolation: result = V1 + s * (V2 - V1)
+    pOut->x = pV1->x + s * (pV2->x - pV1->x);
+    pOut->y = pV1->y + s * (pV2->y - pV1->y);
+    pOut->z = pV1->z + s * (pV2->z - pV1->z);
+    
+    return pOut;
+}
+
 D3DXVECTOR4* WINAPI D3DXVec3Transform(D3DXVECTOR4* pOut, const D3DXVECTOR3* pV, const D3DMATRIX* pM) {
     if (!pOut || !pV || !pM) return nullptr;
     
@@ -639,6 +761,204 @@ UINT D3DXGetFVFVertexSize(DWORD FVF) {
     }
     
     return size;
+}
+
+// Plane operations
+float D3DXPlaneDot(const D3DXPLANE* pP, const D3DXVECTOR4* pV) {
+    if (!pP || !pV) return 0.0f;
+    return pP->a * pV->x + pP->b * pV->y + pP->c * pV->z + pP->d * pV->w;
+}
+
+float D3DXPlaneDotCoord(const D3DXPLANE* pP, const D3DXVECTOR3* pV) {
+    if (!pP || !pV) return 0.0f;
+    // For a point in 3D space, w = 1
+    return pP->a * pV->x + pP->b * pV->y + pP->c * pV->z + pP->d;
+}
+
+float D3DXPlaneDotNormal(const D3DXPLANE* pP, const D3DXVECTOR3* pV) {
+    if (!pP || !pV) return 0.0f;
+    // For a normal vector, w = 0 (no translation component)
+    return pP->a * pV->x + pP->b * pV->y + pP->c * pV->z;
+}
+
+D3DXPLANE* D3DXPlaneNormalize(D3DXPLANE* pOut, const D3DXPLANE* pP) {
+    if (!pOut || !pP) return nullptr;
+    
+    // Normalize the plane equation: ax + by + cz + d = 0
+    // The normal vector is (a, b, c), normalize it
+    float length = sqrtf(pP->a * pP->a + pP->b * pP->b + pP->c * pP->c);
+    
+    if (length < 1e-6f) {
+        // Degenerate plane
+        pOut->a = 0.0f;
+        pOut->b = 0.0f;
+        pOut->c = 0.0f;
+        pOut->d = 0.0f;
+        return pOut;
+    }
+    
+    float invLength = 1.0f / length;
+    pOut->a = pP->a * invLength;
+    pOut->b = pP->b * invLength;
+    pOut->c = pP->c * invLength;
+    pOut->d = pP->d * invLength;
+    
+    return pOut;
+}
+
+D3DXPLANE* D3DXPlaneFromPointNormal(D3DXPLANE* pOut, const D3DXVECTOR3* pPoint, const D3DXVECTOR3* pNormal) {
+    if (!pOut || !pPoint || !pNormal) return nullptr;
+    
+    // Plane equation: normal · (p - point) = 0
+    // Expanding: normal · p - normal · point = 0
+    // So: ax + by + cz + d = 0, where d = -normal · point
+    pOut->a = pNormal->x;
+    pOut->b = pNormal->y;
+    pOut->c = pNormal->z;
+    pOut->d = -(pNormal->x * pPoint->x + pNormal->y * pPoint->y + pNormal->z * pPoint->z);
+    
+    return pOut;
+}
+
+D3DXPLANE* D3DXPlaneFromPoints(D3DXPLANE* pOut, const D3DXVECTOR3* pV1, const D3DXVECTOR3* pV2, const D3DXVECTOR3* pV3) {
+    if (!pOut || !pV1 || !pV2 || !pV3) return nullptr;
+    
+    // Create two vectors from the three points
+    D3DXVECTOR3 v12, v13;
+    v12.x = pV2->x - pV1->x;
+    v12.y = pV2->y - pV1->y;
+    v12.z = pV2->z - pV1->z;
+    
+    v13.x = pV3->x - pV1->x;
+    v13.y = pV3->y - pV1->y;
+    v13.z = pV3->z - pV1->z;
+    
+    // Cross product gives the normal to the plane
+    D3DXVECTOR3 normal;
+    D3DXVec3Cross(&normal, &v12, &v13);
+    
+    // Create plane from point and normal
+    return D3DXPlaneFromPointNormal(pOut, pV1, &normal);
+}
+
+D3DXPLANE* D3DXPlaneTransform(D3DXPLANE* pOut, const D3DXPLANE* pP, const D3DMATRIX* pM) {
+    if (!pOut || !pP || !pM) return nullptr;
+    
+    // To transform a plane, we need to use the inverse transpose of the matrix
+    // For now, we'll do a simplified version that works for orthogonal matrices
+    // Full implementation would require computing inverse transpose
+    
+    // Transform the plane as a 4D vector
+    D3DXVECTOR4 plane(pP->a, pP->b, pP->c, pP->d);
+    D3DXVECTOR4 result;
+    
+    // For proper plane transformation, we'd use inverse transpose
+    // This simplified version works for rotation and uniform scaling
+    result.x = plane.x * pM->_11 + plane.y * pM->_21 + plane.z * pM->_31 + plane.w * pM->_41;
+    result.y = plane.x * pM->_12 + plane.y * pM->_22 + plane.z * pM->_32 + plane.w * pM->_42;
+    result.z = plane.x * pM->_13 + plane.y * pM->_23 + plane.z * pM->_33 + plane.w * pM->_43;
+    result.w = plane.x * pM->_14 + plane.y * pM->_24 + plane.z * pM->_34 + plane.w * pM->_44;
+    
+    pOut->a = result.x;
+    pOut->b = result.y;
+    pOut->c = result.z;
+    pOut->d = result.w;
+    
+    return pOut;
+}
+
+// Color operations
+D3DXCOLOR* D3DXColorAdjustSaturation(D3DXCOLOR* pOut, const D3DXCOLOR* pC, float s) {
+    if (!pOut || !pC) return nullptr;
+    
+    // Convert RGB to grayscale using luminance weights
+    const float lumR = 0.2125f;
+    const float lumG = 0.7154f;
+    const float lumB = 0.0721f;
+    
+    float gray = pC->r * lumR + pC->g * lumG + pC->b * lumB;
+    
+    // Interpolate between grayscale and original color
+    pOut->r = gray + s * (pC->r - gray);
+    pOut->g = gray + s * (pC->g - gray);
+    pOut->b = gray + s * (pC->b - gray);
+    pOut->a = pC->a;
+    
+    // Clamp to [0, 1]
+    pOut->r = (pOut->r < 0.0f) ? 0.0f : (pOut->r > 1.0f) ? 1.0f : pOut->r;
+    pOut->g = (pOut->g < 0.0f) ? 0.0f : (pOut->g > 1.0f) ? 1.0f : pOut->g;
+    pOut->b = (pOut->b < 0.0f) ? 0.0f : (pOut->b > 1.0f) ? 1.0f : pOut->b;
+    
+    return pOut;
+}
+
+D3DXCOLOR* D3DXColorAdjustContrast(D3DXCOLOR* pOut, const D3DXCOLOR* pC, float c) {
+    if (!pOut || !pC) return nullptr;
+    
+    // Adjust contrast around 0.5 midpoint
+    const float midpoint = 0.5f;
+    
+    pOut->r = midpoint + c * (pC->r - midpoint);
+    pOut->g = midpoint + c * (pC->g - midpoint);
+    pOut->b = midpoint + c * (pC->b - midpoint);
+    pOut->a = pC->a;
+    
+    // Clamp to [0, 1]
+    pOut->r = (pOut->r < 0.0f) ? 0.0f : (pOut->r > 1.0f) ? 1.0f : pOut->r;
+    pOut->g = (pOut->g < 0.0f) ? 0.0f : (pOut->g > 1.0f) ? 1.0f : pOut->g;
+    pOut->b = (pOut->b < 0.0f) ? 0.0f : (pOut->b > 1.0f) ? 1.0f : pOut->b;
+    
+    return pOut;
+}
+
+D3DXCOLOR* D3DXColorLerp(D3DXCOLOR* pOut, const D3DXCOLOR* pC1, const D3DXCOLOR* pC2, float s) {
+    if (!pOut || !pC1 || !pC2) return nullptr;
+    
+    // Linear interpolation: result = c1 + s * (c2 - c1)
+    pOut->r = pC1->r + s * (pC2->r - pC1->r);
+    pOut->g = pC1->g + s * (pC2->g - pC1->g);
+    pOut->b = pC1->b + s * (pC2->b - pC1->b);
+    pOut->a = pC1->a + s * (pC2->a - pC1->a);
+    
+    return pOut;
+}
+
+D3DXCOLOR* D3DXColorModulate(D3DXCOLOR* pOut, const D3DXCOLOR* pC1, const D3DXCOLOR* pC2) {
+    if (!pOut || !pC1 || !pC2) return nullptr;
+    
+    // Component-wise multiplication
+    pOut->r = pC1->r * pC2->r;
+    pOut->g = pC1->g * pC2->g;
+    pOut->b = pC1->b * pC2->b;
+    pOut->a = pC1->a * pC2->a;
+    
+    return pOut;
+}
+
+D3DXCOLOR* D3DXColorNegative(D3DXCOLOR* pOut, const D3DXCOLOR* pC) {
+    if (!pOut || !pC) return nullptr;
+    
+    // Invert the color (1 - c)
+    pOut->r = 1.0f - pC->r;
+    pOut->g = 1.0f - pC->g;
+    pOut->b = 1.0f - pC->b;
+    pOut->a = pC->a;  // Alpha typically not inverted
+    
+    return pOut;
+}
+
+D3DXCOLOR* D3DXColorScale(D3DXCOLOR* pOut, const D3DXCOLOR* pC, float s) {
+    if (!pOut || !pC) return nullptr;
+    
+    // Scale all components by s
+    pOut->r = pC->r * s;
+    pOut->g = pC->g * s;
+    pOut->b = pC->b * s;
+    pOut->a = pC->a * s;
+    
+    // Note: No clamping here as scale might be used for HDR colors
+    
+    return pOut;
 }
 
 } // extern "C"

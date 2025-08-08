@@ -59,13 +59,13 @@ TEST_F(D3DXMathTest, MatrixMultiply) {
     D3DXMatrixScaling(&b, 2.0f, 3.0f, 4.0f);
     D3DXMatrixMultiply(&result, &a, &b);
     
-    // Result should scale then translate
+    // In row-major: Translation × Scaling scales the translation components
     EXPECT_FLOAT_EQ(result._11, 2.0f);
     EXPECT_FLOAT_EQ(result._22, 3.0f);
     EXPECT_FLOAT_EQ(result._33, 4.0f);
-    EXPECT_FLOAT_EQ(result._41, 10.0f);
-    EXPECT_FLOAT_EQ(result._42, 20.0f);
-    EXPECT_FLOAT_EQ(result._43, 30.0f);
+    EXPECT_FLOAT_EQ(result._41, 20.0f);  // 10 * 2
+    EXPECT_FLOAT_EQ(result._42, 60.0f);  // 20 * 3
+    EXPECT_FLOAT_EQ(result._43, 120.0f); // 30 * 4
 }
 
 TEST_F(D3DXMathTest, MatrixTranspose) {
@@ -413,4 +413,259 @@ TEST_F(D3DXMathTest, ComplexMatrixChain) {
     D3DXMatrixInverse(&inverse, &det, &combined);
     D3DXMatrixMultiply(&temp, &combined, &inverse);
     EXPECT_TRUE(MatrixNear(temp, IdentityMatrix()));
+}
+
+// Regression test for DirectX row-major matrix multiplication order
+TEST_F(D3DXMathTest, MatrixMultiplicationOrder) {
+    D3DMATRIX scale, rotate, translate;
+    D3DMATRIX sr, srt;  // scale-rotate, scale-rotate-translate
+    
+    // Create individual transformations
+    D3DXMatrixScaling(&scale, 2.0f, 3.0f, 4.0f);
+    D3DXMatrixRotationZ(&rotate, D3DX_PI / 2.0f);  // 90 degree rotation
+    D3DXMatrixTranslation(&translate, 100.0f, 200.0f, 300.0f);
+    
+    // Chain transformations: Scale -> Rotate -> Translate
+    // In DirectX row-major convention: Combined = Scale × Rotate × Translate
+    D3DXMatrixMultiply(&sr, &scale, &rotate);
+    D3DXMatrixMultiply(&srt, &sr, &translate);
+    
+    // Test with unit vector along X axis
+    D3DXVECTOR3 unitX(1.0f, 0.0f, 0.0f);
+    D3DXVECTOR3 result;
+    D3DXVec3TransformCoord(&result, &unitX, &srt);
+    
+    // Expected: (1,0,0) scaled to (2,0,0), rotated 90° to (0,2,0), translated to (100,202,300)
+    EXPECT_NEAR(result.x, 100.0f, 1e-4f);
+    EXPECT_NEAR(result.y, 202.0f, 1e-4f); 
+    EXPECT_NEAR(result.z, 300.0f, 1e-4f);
+    
+    // Test with unit vector along Y axis
+    D3DXVECTOR3 unitY(0.0f, 1.0f, 0.0f);
+    D3DXVec3TransformCoord(&result, &unitY, &srt);
+    
+    // Expected: (0,1,0) scaled to (0,3,0), rotated 90° to (-3,0,0), translated to (97,200,300)
+    EXPECT_NEAR(result.x, 97.0f, 1e-4f);
+    EXPECT_NEAR(result.y, 200.0f, 1e-4f);
+    EXPECT_NEAR(result.z, 300.0f, 1e-4f);
+    
+    // Verify translation components remain in 4th row
+    EXPECT_FLOAT_EQ(srt._41, 100.0f);
+    EXPECT_FLOAT_EQ(srt._42, 200.0f);
+    EXPECT_FLOAT_EQ(srt._43, 300.0f);
+    EXPECT_FLOAT_EQ(srt._44, 1.0f);
+    
+    // Verify the upper-left 3x3 contains the rotation-scale combination
+    // After Scale × Rotate, the diagonal should no longer be pure scale values
+    EXPECT_NEAR(srt._11, 0.0f, 1e-5f);   // cos(90°) * scaleX = 0
+    EXPECT_NEAR(srt._12, 2.0f, 1e-5f);   // sin(90°) * scaleX = 2
+    EXPECT_NEAR(srt._21, -3.0f, 1e-5f);  // -sin(90°) * scaleY = -3
+    EXPECT_NEAR(srt._22, 0.0f, 1e-5f);   // cos(90°) * scaleY = 0
+    EXPECT_FLOAT_EQ(srt._33, 4.0f);      // Z scale unchanged by Z rotation
+}
+
+// Test for D3DXMatrixRotationYawPitchRoll
+TEST_F(D3DXMathTest, MatrixRotationYawPitchRoll) {
+    D3DMATRIX ypr, yaw, pitch, roll, combined, temp;
+    
+    // Test 1: Simple 90-degree rotations
+    float angle90 = D3DX_PI / 2.0f;
+    
+    // Test pure yaw (Y rotation)
+    D3DXMatrixRotationYawPitchRoll(&ypr, angle90, 0.0f, 0.0f);
+    D3DXMatrixRotationY(&yaw, angle90);
+    EXPECT_TRUE(MatrixNear(ypr, yaw, 1e-5f));
+    
+    // Test pure pitch (X rotation)
+    D3DXMatrixRotationYawPitchRoll(&ypr, 0.0f, angle90, 0.0f);
+    D3DXMatrixRotationX(&pitch, angle90);
+    EXPECT_TRUE(MatrixNear(ypr, pitch, 1e-5f));
+    
+    // Test pure roll (Z rotation)
+    D3DXMatrixRotationYawPitchRoll(&ypr, 0.0f, 0.0f, angle90);
+    D3DXMatrixRotationZ(&roll, angle90);
+    EXPECT_TRUE(MatrixNear(ypr, roll, 1e-5f));
+    
+    // Test 2: Combined rotation should match sequential rotations
+    // DirectX order: Roll × Pitch × Yaw
+    float y = D3DX_PI / 6.0f;  // 30 degrees
+    float p = D3DX_PI / 4.0f;  // 45 degrees
+    float r = D3DX_PI / 3.0f;  // 60 degrees
+    
+    D3DXMatrixRotationYawPitchRoll(&ypr, y, p, r);
+    
+    D3DXMatrixRotationY(&yaw, y);
+    D3DXMatrixRotationX(&pitch, p);
+    D3DXMatrixRotationZ(&roll, r);
+    
+    // Combine in DirectX order: Roll × Pitch × Yaw
+    D3DXMatrixMultiply(&temp, &roll, &pitch);
+    D3DXMatrixMultiply(&combined, &temp, &yaw);
+    
+    EXPECT_TRUE(MatrixNear(ypr, combined, 1e-5f));
+    
+    // Test 3: Identity when all angles are zero
+    D3DXMatrixRotationYawPitchRoll(&ypr, 0.0f, 0.0f, 0.0f);
+    EXPECT_TRUE(MatrixNear(ypr, IdentityMatrix(), 1e-5f));
+    
+    // Test 4: Verify a known transformation
+    // 90° yaw should rotate X axis to -Z axis
+    D3DXMatrixRotationYawPitchRoll(&ypr, angle90, 0.0f, 0.0f);
+    D3DXVECTOR3 xAxis(1.0f, 0.0f, 0.0f);
+    D3DXVECTOR3 result;
+    D3DXVec3TransformNormal(&result, &xAxis, &ypr);
+    
+    EXPECT_NEAR(result.x, 0.0f, 1e-5f);
+    EXPECT_NEAR(result.y, 0.0f, 1e-5f);
+    EXPECT_NEAR(result.z, -1.0f, 1e-5f);
+}
+
+// Test for Vec3 utility functions
+TEST_F(D3DXMathTest, Vec3UtilityFunctions) {
+    D3DXVECTOR3 v1(1.0f, 2.0f, 3.0f);
+    D3DXVECTOR3 v2(4.0f, 5.0f, 6.0f);
+    D3DXVECTOR3 result;
+    
+    // Test Add
+    D3DXVec3Add(&result, &v1, &v2);
+    EXPECT_FLOAT_EQ(result.x, 5.0f);
+    EXPECT_FLOAT_EQ(result.y, 7.0f);
+    EXPECT_FLOAT_EQ(result.z, 9.0f);
+    
+    // Test Subtract
+    D3DXVec3Subtract(&result, &v2, &v1);
+    EXPECT_FLOAT_EQ(result.x, 3.0f);
+    EXPECT_FLOAT_EQ(result.y, 3.0f);
+    EXPECT_FLOAT_EQ(result.z, 3.0f);
+    
+    // Test Minimize
+    D3DXVECTOR3 v3(-1.0f, 5.0f, 2.0f);
+    D3DXVec3Minimize(&result, &v1, &v3);
+    EXPECT_FLOAT_EQ(result.x, -1.0f);
+    EXPECT_FLOAT_EQ(result.y, 2.0f);
+    EXPECT_FLOAT_EQ(result.z, 2.0f);
+    
+    // Test Maximize
+    D3DXVec3Maximize(&result, &v1, &v3);
+    EXPECT_FLOAT_EQ(result.x, 1.0f);
+    EXPECT_FLOAT_EQ(result.y, 5.0f);
+    EXPECT_FLOAT_EQ(result.z, 3.0f);
+    
+    // Test Scale
+    D3DXVec3Scale(&result, &v1, 2.5f);
+    EXPECT_FLOAT_EQ(result.x, 2.5f);
+    EXPECT_FLOAT_EQ(result.y, 5.0f);
+    EXPECT_FLOAT_EQ(result.z, 7.5f);
+    
+    // Test Lerp at t=0
+    D3DXVec3Lerp(&result, &v1, &v2, 0.0f);
+    EXPECT_FLOAT_EQ(result.x, v1.x);
+    EXPECT_FLOAT_EQ(result.y, v1.y);
+    EXPECT_FLOAT_EQ(result.z, v1.z);
+    
+    // Test Lerp at t=1
+    D3DXVec3Lerp(&result, &v1, &v2, 1.0f);
+    EXPECT_FLOAT_EQ(result.x, v2.x);
+    EXPECT_FLOAT_EQ(result.y, v2.y);
+    EXPECT_FLOAT_EQ(result.z, v2.z);
+    
+    // Test Lerp at t=0.5
+    D3DXVec3Lerp(&result, &v1, &v2, 0.5f);
+    EXPECT_FLOAT_EQ(result.x, 2.5f);
+    EXPECT_FLOAT_EQ(result.y, 3.5f);
+    EXPECT_FLOAT_EQ(result.z, 4.5f);
+    
+    // Test Lerp with extrapolation (t > 1)
+    D3DXVec3Lerp(&result, &v1, &v2, 2.0f);
+    EXPECT_FLOAT_EQ(result.x, 7.0f);
+    EXPECT_FLOAT_EQ(result.y, 8.0f);
+    EXPECT_FLOAT_EQ(result.z, 9.0f);
+    
+    // Test with negative vectors
+    D3DXVECTOR3 neg1(-2.0f, -3.0f, -4.0f);
+    D3DXVECTOR3 neg2(-1.0f, -5.0f, -2.0f);
+    
+    D3DXVec3Add(&result, &neg1, &neg2);
+    EXPECT_FLOAT_EQ(result.x, -3.0f);
+    EXPECT_FLOAT_EQ(result.y, -8.0f);
+    EXPECT_FLOAT_EQ(result.z, -6.0f);
+    
+    D3DXVec3Scale(&result, &neg1, -0.5f);
+    EXPECT_FLOAT_EQ(result.x, 1.0f);
+    EXPECT_FLOAT_EQ(result.y, 1.5f);
+    EXPECT_FLOAT_EQ(result.z, 2.0f);
+}
+
+// Test for Plane operations
+TEST_F(D3DXMathTest, PlaneOperations) {
+    D3DXPLANE plane;
+    D3DXVECTOR3 point(1.0f, 2.0f, 3.0f);
+    D3DXVECTOR3 normal(0.0f, 1.0f, 0.0f);  // Y-up plane
+    
+    // Test PlaneFromPointNormal
+    D3DXPlaneFromPointNormal(&plane, &point, &normal);
+    EXPECT_FLOAT_EQ(plane.a, 0.0f);
+    EXPECT_FLOAT_EQ(plane.b, 1.0f);
+    EXPECT_FLOAT_EQ(plane.c, 0.0f);
+    EXPECT_FLOAT_EQ(plane.d, -2.0f);  // -normal · point = -(0*1 + 1*2 + 0*3) = -2
+    
+    // Test PlaneDotCoord (point on plane should give 0)
+    float dist = D3DXPlaneDotCoord(&plane, &point);
+    EXPECT_NEAR(dist, 0.0f, 1e-5f);
+    
+    // Test point above plane
+    D3DXVECTOR3 above(1.0f, 3.0f, 3.0f);
+    dist = D3DXPlaneDotCoord(&plane, &above);
+    EXPECT_FLOAT_EQ(dist, 1.0f);  // 0*1 + 1*3 + 0*3 + (-2) = 1
+    
+    // Test PlaneDotNormal
+    D3DXVECTOR3 testNormal(0.0f, 1.0f, 0.0f);
+    float dotNormal = D3DXPlaneDotNormal(&plane, &testNormal);
+    EXPECT_FLOAT_EQ(dotNormal, 1.0f);  // Should be 1 for same direction
+    
+    // Test PlaneNormalize
+    D3DXPLANE unnormalized;
+    unnormalized.a = 3.0f;
+    unnormalized.b = 4.0f;
+    unnormalized.c = 0.0f;
+    unnormalized.d = 5.0f;
+    
+    D3DXPLANE normalized;
+    D3DXPlaneNormalize(&normalized, &unnormalized);
+    
+    // Length of normal (3, 4, 0) is 5
+    EXPECT_FLOAT_EQ(normalized.a, 0.6f);
+    EXPECT_FLOAT_EQ(normalized.b, 0.8f);
+    EXPECT_FLOAT_EQ(normalized.c, 0.0f);
+    EXPECT_FLOAT_EQ(normalized.d, 1.0f);
+    
+    // Test PlaneFromPoints
+    D3DXVECTOR3 p1(0.0f, 0.0f, 0.0f);
+    D3DXVECTOR3 p2(1.0f, 0.0f, 0.0f);
+    D3DXVECTOR3 p3(0.0f, 0.0f, 1.0f);
+    
+    D3DXPlaneFromPoints(&plane, &p1, &p2, &p3);
+    
+    // The plane through origin, (1,0,0), and (0,0,1)
+    // v12 = (1,0,0), v13 = (0,0,1)
+    // Cross product: v12 × v13 = (0,-1,0) pointing down
+    EXPECT_FLOAT_EQ(plane.a, 0.0f);
+    EXPECT_FLOAT_EQ(plane.b, -1.0f);
+    EXPECT_FLOAT_EQ(plane.c, 0.0f);
+    EXPECT_FLOAT_EQ(plane.d, 0.0f);
+    
+    // All three points should lie on the plane
+    EXPECT_NEAR(D3DXPlaneDotCoord(&plane, &p1), 0.0f, 1e-5f);
+    EXPECT_NEAR(D3DXPlaneDotCoord(&plane, &p2), 0.0f, 1e-5f);
+    EXPECT_NEAR(D3DXPlaneDotCoord(&plane, &p3), 0.0f, 1e-5f);
+    
+    // Test PlaneDot with 4D vector
+    D3DXVECTOR4 vec4(1.0f, 2.0f, 3.0f, 1.0f);
+    plane.a = 1.0f;
+    plane.b = 2.0f;
+    plane.c = 3.0f;
+    plane.d = 4.0f;
+    
+    float dot4 = D3DXPlaneDot(&plane, &vec4);
+    EXPECT_FLOAT_EQ(dot4, 18.0f);  // 1*1 + 2*2 + 3*3 + 4*1 = 18
 }

@@ -344,11 +344,14 @@ export LD_LIBRARY_PATH=llvm-install/lib:mesa-install/lib/x86_64-linux-gnu:$LD_LI
 ./Release/test_shader_translator
 ./Release/test_render_states
 ./Release/test_com_wrapper_threading
+./Release/test_d3dx_math
+./Release/test_d3dx_color
 ```
 
 ### Test Categories
 - **Core API**: test_dx8gl_core_api, test_device_reset, test_swapchain_presentation
-- **Shaders**: test_shader_translator, test_shader_cache_resize, test_multi_texcoords
+- **Shaders**: test_shader_translator, test_shader_cache_resize, test_shader_cache_simple, test_shader_program_linking, test_shader_constant_batching, test_multi_texcoords
+- **Math & Utilities**: test_d3dx_math (19 tests), test_d3dx_color (7 tests)
 - **Resources**: test_cube_texture, test_surface_format, test_texture_simple
 - **Threading**: test_com_wrapper_threading, test_async_simple
 - **State**: test_render_states, test_state_manager_validation, test_alpha_blending
@@ -377,6 +380,39 @@ make -C ext/dx8gl/test
 - `scripts/run_dx8gl_tests.sh` - Main test runner script
 - `ext/dx8gl/TEST_AUTOMATION.md` - Comprehensive test automation guide
 - `ext/dx8gl/test/CMakeLists.txt` - Test build configuration
+
+## Recent Completed Tasks (August 2025)
+
+### D3DX Math Library Extensions ✅ (August 8)
+- **Plane Utility Functions**: Complete implementation of all D3DX plane operations
+  - D3DXPlaneDot, D3DXPlaneDotCoord, D3DXPlaneDotNormal
+  - D3DXPlaneNormalize, D3DXPlaneFromPointNormal, D3DXPlaneFromPoints
+  - D3DXPlaneTransform with matrix multiplication
+  - Fixed cross product calculation for correct plane normal direction
+- **Color Manipulation Helpers**: Full set of color operations
+  - D3DXColorAdjustSaturation with proper luminance weights (0.2125, 0.7154, 0.0721)
+  - D3DXColorAdjustContrast, D3DXColorLerp, D3DXColorModulate
+  - D3DXColorNegative, D3DXColorScale with HDR support
+  - Comprehensive test coverage with edge cases
+
+### Shader System Enhancements ✅ (August 8)
+- **Shader Program Linking Integration**: Automatic vertex/pixel shader combination
+  - ShaderProgramManager handles program creation and caching
+  - Supports vertex-only programs with default pixel shader
+  - Program invalidation and recompilation on shader changes
+  - Comprehensive test suite with 5 test scenarios
+- **Shader Constant Management System**: Optimized uniform updates
+  - Batched constant uploads to minimize GPU calls
+  - Dirty flag tracking for changed constants
+  - Support for float4, matrix4, int4, and bool constants
+  - Global constant cache for shared uniforms
+  - Performance metrics and memory tracking
+- **Persistent Shader Caching**: Disk-based shader binary cache
+  - Memory and disk caching with LRU eviction
+  - Compression support for disk storage
+  - Async disk operations for non-blocking I/O
+  - Cache statistics and validation
+  - Memory-mapped file support for ultra-fast access
 
 ## Recent Completed Tasks (August 2025)
 

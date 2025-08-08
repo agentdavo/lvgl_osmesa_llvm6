@@ -1012,6 +1012,58 @@ test_shader_hot_reload/fast:
 .PHONY : test_shader_hot_reload/fast
 
 #=============================================================================
+# Target rules for targets named test_d3dx_color
+
+# Build rule for target.
+test_d3dx_color: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_d3dx_color
+.PHONY : test_d3dx_color
+
+# fast build rule for target.
+test_d3dx_color/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_d3dx_color.dir/build.make ext/dx8gl/test/CMakeFiles/test_d3dx_color.dir/build
+.PHONY : test_d3dx_color/fast
+
+#=============================================================================
+# Target rules for targets named test_shader_program_linking
+
+# Build rule for target.
+test_shader_program_linking: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_program_linking
+.PHONY : test_shader_program_linking
+
+# fast build rule for target.
+test_shader_program_linking/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_program_linking.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_program_linking.dir/build
+.PHONY : test_shader_program_linking/fast
+
+#=============================================================================
+# Target rules for targets named test_shader_constant_batching
+
+# Build rule for target.
+test_shader_constant_batching: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_constant_batching
+.PHONY : test_shader_constant_batching
+
+# fast build rule for target.
+test_shader_constant_batching/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_constant_batching.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_constant_batching.dir/build
+.PHONY : test_shader_constant_batching/fast
+
+#=============================================================================
+# Target rules for targets named test_shader_cache_simple
+
+# Build rule for target.
+test_shader_cache_simple: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_shader_cache_simple
+.PHONY : test_shader_cache_simple
+
+# fast build rule for target.
+test_shader_cache_simple/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_shader_cache_simple.dir/build.make ext/dx8gl/test/CMakeFiles/test_shader_cache_simple.dir/build
+.PHONY : test_shader_cache_simple/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -12662,6 +12714,7 @@ help:
 	@echo "... test_com_wrapper_threading"
 	@echo "... test_command_buffer_async"
 	@echo "... test_cube_texture"
+	@echo "... test_d3dx_color"
 	@echo "... test_d3dx_math"
 	@echo "... test_d3dx_surface_loading"
 	@echo "... test_device_reset"
@@ -12678,9 +12731,12 @@ help:
 	@echo "... test_multi_texcoords"
 	@echo "... test_render_states"
 	@echo "... test_shader_cache_resize"
+	@echo "... test_shader_cache_simple"
+	@echo "... test_shader_constant_batching"
 	@echo "... test_shader_constants"
 	@echo "... test_shader_hot_reload"
 	@echo "... test_shader_program_cache"
+	@echo "... test_shader_program_linking"
 	@echo "... test_shader_translator"
 	@echo "... test_state_manager_validation"
 	@echo "... test_static_canvas"

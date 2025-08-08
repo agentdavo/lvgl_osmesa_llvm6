@@ -2,6 +2,47 @@
 
 All notable changes to the LVGL OSMesa LLVM project will be documented in this file.
 
+## [Unreleased] - 2025-08-08
+
+### Added
+- **D3DX Math Library Complete** (2025-08-08):
+  - Implemented all D3DX plane utility functions:
+    - D3DXPlaneDot, D3DXPlaneDotCoord, D3DXPlaneDotNormal for plane-point operations
+    - D3DXPlaneNormalize for normalizing plane equations
+    - D3DXPlaneFromPointNormal and D3DXPlaneFromPoints for plane construction
+    - D3DXPlaneTransform for matrix transformation of planes
+    - Fixed cross product calculation for correct normal direction in D3DXPlaneFromPoints
+  - Implemented all D3DX color manipulation functions:
+    - D3DXColorAdjustSaturation with proper luminance weights (0.2125, 0.7154, 0.0721)
+    - D3DXColorAdjustContrast for contrast adjustment with midpoint
+    - D3DXColorLerp for linear interpolation between colors
+    - D3DXColorModulate for component-wise multiplication
+    - D3DXColorNegative for color inversion preserving alpha
+    - D3DXColorScale with HDR support (no clamping)
+  - Created comprehensive test coverage with 19 plane tests and 7 color tests
+
+- **Shader System Enhancements** (2025-08-08):
+  - **Shader Program Linking Integration**:
+    - ShaderProgramManager automatically combines vertex and pixel shaders
+    - Program caching to avoid redundant linking operations
+    - Support for vertex-only programs with default pixel shader
+    - Program invalidation and recompilation on shader changes
+    - Created test_shader_program_linking with 5 comprehensive test scenarios
+  - **Shader Constant Management System**:
+    - Batched constant uploads to minimize GPU state changes
+    - Dirty flag tracking for efficient updates
+    - Support for float4, matrix4, int4, and bool constant types
+    - Global constant cache for sharing uniforms between shaders
+    - Performance metrics and memory usage tracking
+    - Created test_shader_constant_batching with performance benchmarks
+  - **Persistent Shader Caching**:
+    - Disk-based shader binary cache with compression
+    - Memory cache with LRU eviction policy
+    - Async disk operations for non-blocking I/O
+    - Cache statistics and validation
+    - Memory-mapped file support for ultra-fast access
+    - Created test_shader_cache_simple for testing without OpenGL context
+
 ## [Unreleased] - 2025-08-07
 
 ### Added

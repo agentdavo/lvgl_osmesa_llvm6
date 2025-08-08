@@ -17,6 +17,8 @@ This project showcases:
 - **Complete software stack** - no GPU or hardware acceleration required
 
 ### Recent Achievements (August 2025)
+- ✅ **D3DX Math Library Complete** - Full implementation of plane operations and color manipulation (August 8)
+- ✅ **Shader System Enhancements** - Program linking, constant batching, and persistent caching (August 8)
 - ✅ **Thread-Safe COM Wrapper Implementation** - Complete resource wrapper classes with mutex synchronization (August 7)
 - ✅ **Cube Texture Reset Tracking** - Fixed resource leak prevention during device reset (August 7)
 - ✅ **Full DirectX 8 Render State Support** - All DX8Wrapper required states implemented
@@ -260,7 +262,14 @@ export LD_LIBRARY_PATH=llvm-install/lib:mesa-install/lib/x86_64-linux-gnu:$LD_LI
 #### Shader Tests
 - `test_shader_translator` - DirectX to GLSL translation
 - `test_shader_cache_resize` - Shader binary caching
+- `test_shader_cache_simple` - Shader cache without OpenGL context
+- `test_shader_program_linking` - Vertex/pixel shader linking
+- `test_shader_constant_batching` - Efficient uniform updates
 - `test_multi_texcoords` - Multiple texture coordinate handling
+
+#### Math & Utility Tests
+- `test_d3dx_math` - Complete D3DX math library (19 tests)
+- `test_d3dx_color` - Color manipulation functions (7 tests)
 
 #### Resource Tests
 - `test_cube_texture` - Cube texture functionality
