@@ -1,0 +1,30 @@
+=================================================================================
+Google Test Execution Log
+=================================================================================
+Test Name: test_d3dx_math
+Test Path: /home/djs/lvgl_osmesa_llvm6/build/Release/test_d3dx_math
+Backend: osmesa
+Timestamp: 2025-08-08 09:50:24
+GTest Options: --gtest_filter=*PlaneOperations*
+=================================================================================
+
+Running main() from /home/djs/lvgl_osmesa_llvm6/ext/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = *PlaneOperations*
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from D3DXMathTest
+[ RUN      ] D3DXMathTest.PlaneOperations
+[       OK ] D3DXMathTest.PlaneOperations (0 ms)
+[----------] 1 test from D3DXMathTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+
+=================================================================================
+Test Execution Summary
+=================================================================================
+Result: PASSED
+Duration: 0 seconds
+Exit Code: 0
+=================================================================================

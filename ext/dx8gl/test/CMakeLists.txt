@@ -599,3 +599,81 @@ else()
     message(WARNING "dx8gl target not available, skipping test_shader_cache_simple")
     set_target_properties(test_shader_cache_simple PROPERTIES EXCLUDE_FROM_ALL TRUE)
 endif()
+
+# Test executable for device capabilities parity
+add_executable(test_device_caps_parity
+    test_device_caps_parity.cpp
+)
+
+target_include_directories(test_device_caps_parity PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_device_caps_parity PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME DeviceCapsParityTest COMMAND test_device_caps_parity)
+    set_tests_properties(DeviceCapsParityTest PROPERTIES TIMEOUT 30)
+else()
+    message(WARNING "dx8gl target not available, skipping test_device_caps_parity")
+    set_target_properties(test_device_caps_parity PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for cross-backend rendering
+add_executable(test_cross_backend_rendering
+    test_cross_backend_rendering.cpp
+)
+
+target_include_directories(test_cross_backend_rendering PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_cross_backend_rendering PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME CrossBackendRenderingTest COMMAND test_cross_backend_rendering)
+    set_tests_properties(CrossBackendRenderingTest PROPERTIES TIMEOUT 60)
+else()
+    message(WARNING "dx8gl target not available, skipping test_cross_backend_rendering")
+    set_target_properties(test_cross_backend_rendering PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for enhanced cross-backend rendering
+add_executable(test_cross_backend_enhanced
+    test_cross_backend_enhanced.cpp
+)
+
+target_include_directories(test_cross_backend_enhanced PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+if(TARGET dx8gl)
+    target_link_libraries(test_cross_backend_enhanced PRIVATE dx8gl gtest gtest_main)
+    add_test(NAME CrossBackendEnhancedTest COMMAND test_cross_backend_enhanced)
+    set_tests_properties(CrossBackendEnhancedTest PROPERTIES TIMEOUT 60)
+else()
+    message(WARNING "dx8gl target not available, skipping test_cross_backend_enhanced")
+    set_target_properties(test_cross_backend_enhanced PROPERTIES EXCLUDE_FROM_ALL TRUE)
+endif()
+
+# Test executable for WebGPU async behavior (if WebGPU is enabled)
+if(DX8GL_ENABLE_WEBGPU)
+    add_executable(test_webgpu_async
+        test_webgpu_async.cpp
+    )
+    
+    target_include_directories(test_webgpu_async PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/../src
+    )
+    
+    target_compile_definitions(test_webgpu_async PRIVATE
+        DX8GL_HAS_WEBGPU=1
+    )
+    
+    if(TARGET dx8gl)
+        target_link_libraries(test_webgpu_async PRIVATE dx8gl gtest gtest_main pthread)
+        add_test(NAME WebGPUAsyncTest COMMAND test_webgpu_async)
+        set_tests_properties(WebGPUAsyncTest PROPERTIES TIMEOUT 60)
+    else()
+        message(WARNING "dx8gl target not available, skipping test_webgpu_async")
+        set_target_properties(test_webgpu_async PROPERTIES EXCLUDE_FROM_ALL TRUE)
+    endif()
+endif()

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" disabled="0" errors="0" time="0." timestamp="2025-08-08T09:50:24.836" name="AllTests">
+  <testsuite name="D3DXMathTest" tests="1" failures="0" disabled="0" skipped="0" errors="0" time="0." timestamp="2025-08-08T09:50:24.836">
+    <testcase name="PlaneOperations" file="/home/djs/lvgl_osmesa_llvm6/ext/dx8gl/test/test_d3dx_math.cpp" line="600" status="run" result="completed" time="0." timestamp="2025-08-08T09:50:24.836" classname="D3DXMathTest" />
+  </testsuite>
+</testsuites>

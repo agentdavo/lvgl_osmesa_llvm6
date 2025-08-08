@@ -110,6 +110,9 @@
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_shader_program_linking.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_shader_constant_batching.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_shader_cache_simple.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_device_caps_parity.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_cross_backend_rendering.dir
+/home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test_cross_backend_enhanced.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/package.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/package_source.dir
 /home/djs/lvgl_osmesa_llvm6/build/ext/dx8gl/test/CMakeFiles/test.dir

@@ -1064,6 +1064,45 @@ test_shader_cache_simple/fast:
 .PHONY : test_shader_cache_simple/fast
 
 #=============================================================================
+# Target rules for targets named test_device_caps_parity
+
+# Build rule for target.
+test_device_caps_parity: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_device_caps_parity
+.PHONY : test_device_caps_parity
+
+# fast build rule for target.
+test_device_caps_parity/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_device_caps_parity.dir/build.make ext/dx8gl/test/CMakeFiles/test_device_caps_parity.dir/build
+.PHONY : test_device_caps_parity/fast
+
+#=============================================================================
+# Target rules for targets named test_cross_backend_rendering
+
+# Build rule for target.
+test_cross_backend_rendering: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_cross_backend_rendering
+.PHONY : test_cross_backend_rendering
+
+# fast build rule for target.
+test_cross_backend_rendering/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_cross_backend_rendering.dir/build.make ext/dx8gl/test/CMakeFiles/test_cross_backend_rendering.dir/build
+.PHONY : test_cross_backend_rendering/fast
+
+#=============================================================================
+# Target rules for targets named test_cross_backend_enhanced
+
+# Build rule for target.
+test_cross_backend_enhanced: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_cross_backend_enhanced
+.PHONY : test_cross_backend_enhanced
+
+# fast build rule for target.
+test_cross_backend_enhanced/fast:
+	$(MAKE) $(MAKESILENT) -f ext/dx8gl/test/CMakeFiles/test_cross_backend_enhanced.dir/build.make ext/dx8gl/test/CMakeFiles/test_cross_backend_enhanced.dir/build
+.PHONY : test_cross_backend_enhanced/fast
+
+#=============================================================================
 # Target rules for targets named test_xyzrhw
 
 # Build rule for target.
@@ -12713,10 +12752,13 @@ help:
 	@echo "... test_backend_selection"
 	@echo "... test_com_wrapper_threading"
 	@echo "... test_command_buffer_async"
+	@echo "... test_cross_backend_enhanced"
+	@echo "... test_cross_backend_rendering"
 	@echo "... test_cube_texture"
 	@echo "... test_d3dx_color"
 	@echo "... test_d3dx_math"
 	@echo "... test_d3dx_surface_loading"
+	@echo "... test_device_caps_parity"
 	@echo "... test_device_reset"
 	@echo "... test_dx8gl_core_api"
 	@echo "... test_framebuffer_correctness"
